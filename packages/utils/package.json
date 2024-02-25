@@ -1,9 +1,9 @@
 {
   "name": "@aria-ui/utils",
+  "type": "module",
   "version": "0.0.0",
   "private": false,
   "sideEffects": false,
-  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "build": "tsup"
@@ -12,6 +12,7 @@
     "@aria-ui/core": "*"
   },
   "devDependencies": {
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "publishConfig": {

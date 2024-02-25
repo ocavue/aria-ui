@@ -1,5 +1,6 @@
 import type { Signal } from "@preact/signals-core"
 import { signal } from "@preact/signals-core"
+
 import { getObjectEntries } from "./types"
 
 export type SingalState<T extends object> = {

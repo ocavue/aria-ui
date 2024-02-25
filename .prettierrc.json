@@ -1,5 +1,4 @@
 {
-  "plugins": ["prettier-plugin-packagejson"],
   "overrides": [
     {
       "files": ["tsconfig.json", "tsconfig.*.json", "settings.json"],
