@@ -1,5 +1,21 @@
 # @aria-ui/core
 
+A compact and efficient toolkit for building reactive web components. It powers the [Aria UI](https://github.com/ocavue/aria-ui) library, but it can also be used independently.
+
+## Key Features
+
+### Reactive Signals
+
+Uses signals to manage state reactively and automatically update the DOM in response to state changes. It's powered by the mature and battle-tested [`@preact/signals-core`](https://github.com/preactjs/signals) library.
+
+### Context Management
+
+Shares signals easily across widely nested HTML elements through context.
+
+### DOM Manipulation Utilities
+
+A comprehensive collection of utilities for DOM interactions, enabling declarative management of attributes, styles, and event listeners.
+
 ## Classes
 
 ### BaseElement

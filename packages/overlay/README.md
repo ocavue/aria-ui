@@ -1,5 +1,9 @@
 # @aria-ui/overlay
 
+A collection of low-level utilities for creating custom elements that display floating content.
+
+You probably won't need to use this module directly.
+
 ## OverlayAnchor
 
 ### useOverlayAnchor()
