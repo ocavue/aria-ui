@@ -11,7 +11,7 @@
   "dependencies": {
     "@aria-ui/core": "*",
     "@floating-ui/dom": "^1.6.3",
-    "@zag-js/dismissable": "^0.36.3"
+    "@zag-js/dom-query": "^0.37.3"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
