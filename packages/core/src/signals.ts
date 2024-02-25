@@ -15,7 +15,7 @@ export { signal as createSignal, computed as createComputed, batch, untracked }
 
 export function useEffect(
   element: ConnectableElement,
-  callback: (() => VoidFunction) | (() => void),
+  callback: () => VoidFunction | void,
 ) {
   let cleanup: VoidFunction | undefined = undefined
 

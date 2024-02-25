@@ -20,7 +20,7 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 
 | Property | Type | Description |
 | :------ | :------ | :------ |
-| `addConnectedCallback` | (`callback`: () => `VoidFunction` \| () => `void`) => `void` | Registers a callback to be called when the element is connected to the DOM.<br />This callback can return a cleanup function that will be called when the<br />element is disconnected from the DOM. |
+| `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM.<br />This callback can return a cleanup function that will be called when the<br />element is disconnected from the DOM. |
 
 <!-- prettier-ignore-end -->
 
@@ -65,7 +65,10 @@ type SingalState<T>: { [K in keyof T]: Signal<T[K]> };
 ### assignProps()
 
 ```ts
-assignProps<T>(defaultProps: Readonly<T>, props?: Partial<T>): Readonly<T>
+function assignProps<T>(
+  defaultProps: Readonly<T>,
+  props?: Partial<T>,
+): Readonly<T>;
 ```
 
 Merge two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
@@ -73,7 +76,7 @@ Merge two objects, with the second object taking precedence. Only keys present i
 ### createContext()
 
 ```ts
-createContext<S>(key: string | symbol): Context<S>
+function createContext<S>(key: string | symbol): Context<S>;
 ```
 
 Creates a new context.
@@ -81,7 +84,7 @@ Creates a new context.
 ### mapSignals()
 
 ```ts
-mapSignals<T>(values: T): SingalState<T>
+function mapSignals<T>(values: T): SingalState<T>;
 ```
 
 Maps every value in the given object to a signal.
@@ -89,7 +92,7 @@ Maps every value in the given object to a signal.
 ### mapValues()
 
 ```ts
-mapValues<T>(signals: SingalState<T>): T
+function mapValues<T>(signals: SingalState<T>): T;
 ```
 
 Maps every signal in the given object to its current value.
@@ -97,48 +100,58 @@ Maps every signal in the given object to its current value.
 ### useAriaAttribute()
 
 ```ts
-useAriaAttribute<K>(
-   element: ConnectableElement,
-   key: K,
-   compute:     () => AriaAttributes[K]): () => void
+function useAriaAttribute<K>(
+  element: ConnectableElement,
+  key: K,
+  compute: () => AriaAttributes[K],
+): () => void;
 ```
 
 ### useAriaRole()
 
 ```ts
-useAriaRole(element: ConnectableElement, compute:     () => undefined | AriaRole): () => void
+function useAriaRole(
+  element: ConnectableElement,
+  compute: () => undefined | AriaRole,
+): () => void;
 ```
 
 ### useAttribute()
 
 ```ts
-useAttribute(
-   element: ConnectableElement,
-   key: string,
-   compute:     () => undefined | string | number): () => void
+function useAttribute(
+  element: ConnectableElement,
+  key: string,
+  compute: () => undefined | string | number,
+): () => void;
 ```
 
 ### useEffect()
 
 ```ts
-useEffect(element: ConnectableElement, callback: () => VoidFunction | () => void): () => void
+function useEffect(
+  element: ConnectableElement,
+  callback: () => void | VoidFunction,
+): () => void;
 ```
 
 ### useEventListener()
 
 ```ts
-useEventListener<K>(
-   element: ConnectableElement,
-   type: K,
-   listener:     (event: HTMLElementEventMap[K]) => void,
-   options?: boolean | AddEventListenerOptions): void
+function useEventListener<K>(
+  element: ConnectableElement,
+  type: K,
+  listener: (event: HTMLElementEventMap[K]) => void,
+  options?: boolean | AddEventListenerOptions,
+): void;
 ```
 
 ### useStyle()
 
 ```ts
-useStyle<K>(
-   element: ConnectableElement,
-   key: K,
-   compute:     () => CSSStyleDeclaration[K]): () => void
+function useStyle<K>(
+  element: ConnectableElement,
+  key: K,
+  compute: () => CSSStyleDeclaration[K],
+): () => void;
 ```

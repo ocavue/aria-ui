@@ -5,7 +5,7 @@ import type { ConnectableElement } from "./connectable-element"
  * {@link ConnectableElement} interface.
  */
 export class BaseElement extends HTMLElement implements ConnectableElement {
-  private _connectedCallbacks: Array<(() => VoidFunction) | (() => void)> = []
+  private _connectedCallbacks: Array<() => VoidFunction | void> = []
   private _disconnectedCallback: VoidFunction[] = []
   private _connected = false
 
@@ -44,7 +44,7 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
   /**
    * @hidden
    */
-  addConnectedCallback(callback: (() => VoidFunction) | (() => void)) {
+  addConnectedCallback(callback: () => VoidFunction | void) {
     this._connectedCallbacks.push(callback)
     if (!this._connected) {
       return
