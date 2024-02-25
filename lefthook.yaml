@@ -1,0 +1,7 @@
+pre-commit:
+  commands:
+    check:
+      run: |
+        bun run fix:prettier
+        bun run fix:biome
+        git update-index --again

@@ -1,0 +1,22 @@
+{
+  "name": "@aria-ui/utils",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@aria-ui/core": "*"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts"
+  }
+}

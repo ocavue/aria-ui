@@ -1,0 +1,28 @@
+{
+  "name": "aria-ui-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b . && turbo run build",
+    "fix": "bun run fix:tsconfig && bun run fix:prettier && bun run fix:biome",
+    "fix:biome": "biome check --apply-unsafe .",
+    "fix:prettier": "prettier -w .",
+    "fix:tsconfig": "update-ts-references",
+    "release": "pnpm publish -r --dry-run"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.5.3",
+    "@types/bun": "^1.0.7",
+    "lefthook": "^1.6.1",
+    "prettier": "^3.2.5",
+    "prettier-plugin-packagejson": "^2.4.12",
+    "tsup": "^8.0.2",
+    "turbo": "^1.12.4",
+    "typescript": "^5.0.0",
+    "update-ts-references": "^3.2.1"
+  }
+}
