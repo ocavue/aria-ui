@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
-    "outDir": "temp",
+    "outDir": "temp/ts",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
@@ -23,7 +23,7 @@
     "noUnusedParameters": false,
     "noFallthroughCasesInSwitch": true,
   },
-  "include": ["./*.js", "./*.ts"],
+  "include": ["./*.js", "./*.ts", "./scripts/"],
   "references": [
     {
       "path": "packages/core",
@@ -32,7 +32,7 @@
       "path": "packages/overlay",
     },
     {
-      "path": "packages/utils",
+      "path": "packages/typedoc-plugin",
     },
   ],
 }
