@@ -13,6 +13,7 @@
     "rules": {
       "recommended": true,
       "suspicious": {
+        "noConfusingVoidType": "off",
         "noEmptyInterface": "off",
         "noUnsafeDeclarationMerging": "off"
       },

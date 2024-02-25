@@ -2,6 +2,7 @@ import {
   type DeclarationReflection,
   type Reflection,
   SignatureReflection,
+  ReflectionKind,
 } from "typedoc"
 import {
   type MarkdownApplication,
@@ -35,6 +36,7 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
     super(...args)
 
     const partials = this.partials
+    const helpers = this.helpers
 
     this.partials = {
       ...partials,
@@ -71,12 +73,9 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
         headingLevel: number,
       ) => {
         const implementedTypes = reflection.implementedTypes
-        const typeParameters = reflection.typeParameters
         reflection.implementedTypes = undefined
-        // reflection.typeParameters = undefined
         const result = partials.reflectionMember(reflection, headingLevel)
         reflection.implementedTypes = implementedTypes
-        reflection.typeParameters = typeParameters
         return result
       },
 
@@ -98,6 +97,17 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
           result,
           "<!-- prettier-ignore-end -->",
         ].join("\n\n")
+      },
+    }
+
+    this.helpers = {
+      ...helpers,
+      getKeyword: (kind: ReflectionKind) => {
+        switch (kind) {
+          case ReflectionKind.Function:
+            return "function"
+        }
+        return helpers.getKeyword(kind)
       },
     }
   }

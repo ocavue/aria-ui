@@ -7,5 +7,5 @@ export interface ConnectableElement extends HTMLElement {
    * This callback can return a cleanup function that will be called when the
    * element is disconnected from the DOM.
    */
-  addConnectedCallback: (callback: (() => VoidFunction) | (() => void)) => void
+  addConnectedCallback: (callback: () => VoidFunction | void) => void
 }

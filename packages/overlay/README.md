@@ -5,7 +5,7 @@
 ### useOverlayAnchor()
 
 ```ts
-useOverlayAnchor(element: ConnectableElement): void
+function useOverlayAnchor(element: ConnectableElement): void;
 ```
 
 ## OverlayPositioner
@@ -40,7 +40,10 @@ useOverlayAnchor(element: ConnectableElement): void
 ### useOverlayPositioner()
 
 ```ts
-useOverlayPositioner(element: ConnectableElement, props?: Partial<OverlayPositionerProps>): SingalState<Readonly<OverlayPositionerProps>>
+function useOverlayPositioner(
+  element: ConnectableElement,
+  props?: Partial<OverlayPositionerProps>,
+): SingalState<Readonly<OverlayPositionerProps>>;
 ```
 
 ## OverlayRoot
@@ -48,5 +51,5 @@ useOverlayPositioner(element: ConnectableElement, props?: Partial<OverlayPositio
 ### useOverlayRoot()
 
 ```ts
-useOverlayRoot(element: ConnectableElement): void
+function useOverlayRoot(element: ConnectableElement): void;
 ```
