@@ -1,4 +1,5 @@
 {
+  "proseWrap": "never",
   "overrides": [
     {
       "files": ["tsconfig.json", "tsconfig.*.json", "settings.json"],

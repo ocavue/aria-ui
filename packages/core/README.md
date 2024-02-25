@@ -4,8 +4,7 @@
 
 ### BaseElement
 
-Base class for all custom elements in Aria UI. It implements the
-[ConnectableElement](README.md#connectableelement) interface.
+Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectableelement) interface.
 
 ```ts
 new BaseElement(): BaseElement
@@ -69,8 +68,7 @@ type SingalState<T>: { [K in keyof T]: Signal<T[K]> };
 assignProps<T>(defaultProps: Readonly<T>, props?: Partial<T>): Readonly<T>
 ```
 
-Merge two objects, with the second object taking precedence. Only keys
-present in the first object will be included in the result.
+Merge two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
 
 ### createContext()
 
