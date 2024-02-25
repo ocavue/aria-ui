@@ -1,0 +1,58 @@
+import type { AriaAttributes } from "@dddstack/ariatype-aria-attributes"
+import type { AriaRole } from "@dddstack/ariatype-aria-roles"
+import type { ConnectableElement } from "./connectable-element"
+import { createEffect } from "./signals"
+
+export function useEventListener<K extends keyof HTMLElementEventMap>(
+  element: ConnectableElement,
+  type: K,
+  listener: (event: HTMLElementEventMap[K]) => void,
+  options?: boolean | AddEventListenerOptions,
+) {
+  createEffect(element, () => {
+    element.addEventListener(type, listener, options)
+    return () => {
+      element.removeEventListener(type, listener, options)
+    }
+  })
+}
+
+export function useStyle<K extends keyof CSSStyleDeclaration>(
+  element: ConnectableElement,
+  key: K,
+  compute: () => CSSStyleDeclaration[K],
+) {
+  return createEffect(element, () => {
+    element.style[key] = compute()
+  })
+}
+
+export function useAttribute(
+  element: ConnectableElement,
+  key: string,
+  compute: () => string | number | undefined,
+) {
+  return createEffect(element, () => {
+    const value = compute()
+    if (value == null) {
+      element.removeAttribute(key)
+    } else {
+      element.setAttribute(key, String(value))
+    }
+  })
+}
+
+export function useAriaAttribute<K extends keyof AriaAttributes>(
+  element: ConnectableElement,
+  key: K,
+  compute: () => AriaAttributes[K],
+) {
+  return useAttribute(element, key, compute)
+}
+
+export function useAriaRole(
+  element: ConnectableElement,
+  compute: () => AriaRole | undefined,
+) {
+  return useAttribute(element, "role", compute)
+}
