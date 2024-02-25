@@ -1,0 +1,53 @@
+// https://typedoc.org/options/
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "plugin": ["typedoc-plugin-markdown", "aria-ui-typedoc-plugin"],
+  "theme": "custom-theme",
+  "githubPages": false,
+  "treatWarningsAsErrors": true,
+  "cleanOutputDir": true,
+  "disableSources": true,
+
+  "excludeExternals": true,
+  "excludeInternal": true,
+  "excludePrivate": true,
+  "validation": {
+    "notDocumented": true
+  },
+  "requiredToBeDocumented": [
+    "Enum"
+    // "EnumMember",
+    // "Variable"
+    // "Function",
+    // "Class",
+    // "Interface",
+    // "Property",
+    // "Method",
+    // "Accessor",
+    // "TypeAlias"
+  ],
+  "visibilityFilters": {
+    "protected": false,
+    "private": false,
+    "inherited": false,
+    "external": false,
+    "@alpha": false,
+    "@beta": false
+  },
+
+  "readme": "none",
+
+  // https://www.typedoc-plugin-markdown.org/options
+  "hideBreadcrumbs": true,
+  "hidePageHeader": true,
+  "enumMembersFormat": "table",
+  "propertiesFormat": "table",
+  "outputFileStrategy": "modules",
+  "useCodeBlocks": true,
+  "expandParameters": true,
+  "textContentMappings": {
+    "kind.typeParameter.plural": "TYPEDOC_REMOVE_PLACEHOLDER",
+    "kind.constructor.plural": "TYPEDOC_REMOVE_PLACEHOLDER",
+    "kind.property.plural": "TYPEDOC_REMOVE_PLACEHOLDER"
+  }
+}

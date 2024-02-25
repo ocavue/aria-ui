@@ -7,7 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsc -b . && turbo run build",
+    "build": "bun run build:packages && bun run build:tsc && bun run build:readme",
+    "build:readme": "bun run scripts/build-readme.ts",
+    "build:packages": "turbo run build",
+    "build:tsc": "tsc -b .",
     "fix": "bun run fix:tsconfig && bun run fix:prettier && bun run fix:biome && bun run fix:eslint",
     "fix:biome": "biome check --apply-unsafe .",
     "fix:eslint": "eslint --fix .",
@@ -28,6 +31,8 @@
     "lefthook": "^1.6.1",
     "prettier": "^3.2.5",
     "turbo": "^1.12.4",
+    "typedoc": "^0.25.8",
+    "typedoc-plugin-markdown": "4.0.0-next.53",
     "typescript": "^5.0.0",
     "update-ts-references": "^3.2.1"
   }

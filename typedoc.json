@@ -1,0 +1,7 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "extends": ["./config/typedoc-base.json"],
+  "entryPointStrategy": "packages",
+  "entryPoints": ["./packages/core", "./packages/overlay"],
+  "out": "temp/typedoc"
+}

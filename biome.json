@@ -15,6 +15,9 @@
       "suspicious": {
         "noEmptyInterface": "off",
         "noUnsafeDeclarationMerging": "off"
+      },
+      "complexity": {
+        "noForEach": "off"
       }
     }
   },
