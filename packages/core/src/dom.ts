@@ -1,7 +1,7 @@
 import type { AriaAttributes } from "@dddstack/ariatype-aria-attributes"
 import type { AriaRole } from "@dddstack/ariatype-aria-roles"
 import type { ConnectableElement } from "./connectable-element"
-import { createEffect } from "./signals"
+import { useEffect } from "./signals"
 
 export function useEventListener<K extends keyof HTMLElementEventMap>(
   element: ConnectableElement,
@@ -9,7 +9,7 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
   listener: (event: HTMLElementEventMap[K]) => void,
   options?: boolean | AddEventListenerOptions,
 ) {
-  createEffect(element, () => {
+  useEffect(element, () => {
     element.addEventListener(type, listener, options)
     return () => {
       element.removeEventListener(type, listener, options)
@@ -22,7 +22,7 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
   key: K,
   compute: () => CSSStyleDeclaration[K],
 ) {
-  return createEffect(element, () => {
+  return useEffect(element, () => {
     element.style[key] = compute()
   })
 }
@@ -32,7 +32,7 @@ export function useAttribute(
   key: string,
   compute: () => string | number | undefined,
 ) {
-  return createEffect(element, () => {
+  return useEffect(element, () => {
     const value = compute()
     if (value == null) {
       element.removeAttribute(key)

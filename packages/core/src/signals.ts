@@ -12,7 +12,7 @@ import type { ConnectableElement } from "./connectable-element"
 export type { Signal, ReadonlySignal }
 export { signal as createSignal, computed as createComputed, batch, untracked }
 
-export function createEffect(
+export function useEffect(
   element: ConnectableElement,
   callback: (() => VoidFunction) | (() => void),
 ) {

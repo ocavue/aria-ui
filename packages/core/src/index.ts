@@ -3,9 +3,9 @@ export {
   type ReadonlySignal,
   type Signal,
   type SignalValue,
+  useEffect,
   batch,
   createComputed,
-  createEffect,
   createSignal,
   untracked,
 } from "./signals"
