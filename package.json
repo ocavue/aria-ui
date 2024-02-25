@@ -21,6 +21,7 @@
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint:ts": "tsc -b .",
+    "change": "changeset",
     "release": "pnpm publish -r --dry-run"
   },
   "devDependencies": {
