@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
+    "@changesets/cli": "^2.27.1",
     "@ocavue/eslint-config": "^1.4.3",
     "@types/bun": "^1.0.7",
     "eslint": "^8.57.0",
