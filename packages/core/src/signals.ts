@@ -24,6 +24,7 @@ export function useEffect(
   }
 
   element.addConnectedCallback((): VoidFunction => {
+    cleanup?.()
     cleanup = effect(callback)
     return dispose
   })
