@@ -6,7 +6,7 @@ An open-source collection of unstyled Web Components and tools that helps you bu
 
 | Package | Version |
 | --- | --- |
-| [`@aria-ui/core`](packages/vite) | ![core version](https://img.shields.io/npm/v/%40aria-ui%2Fcore?label=%20) |
+| [`@aria-ui/core`](packages/core) | ![core version](https://img.shields.io/npm/v/%40aria-ui%2Fcore?label=%20) |
 | [`@aria-ui/overlay`](packages/overlay) | ![overlay version](https://img.shields.io/npm/v/%40aria-ui%2Foverlay?label=%20) |
 
 ## License

@@ -21,10 +21,13 @@
     "lint:eslint": "eslint .",
     "lint:prettier": "prettier --check .",
     "lint:ts": "tsc -b .",
-    "release": "pnpm publish -r --dry-run"
+    "change": "changeset",
+    "ci:version": "changeset version && bun install",
+    "ci:publish": "bun run build && pnpm publish -r --no-git-checks"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
+    "@changesets/cli": "^2.27.1",
     "@ocavue/eslint-config": "^1.4.3",
     "@types/bun": "^1.0.7",
     "eslint": "^8.57.0",
