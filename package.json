@@ -12,6 +12,10 @@
     "fix:biome": "biome check --apply-unsafe .",
     "fix:prettier": "prettier -w .",
     "fix:tsconfig": "update-ts-references",
+    "lint": "bun run lint:ts && bun run lint:prettier && bun run lint:biome",
+    "lint:biome": "biome check .",
+    "lint:prettier": "prettier --check .",
+    "lint:ts": "tsc -b .",
     "release": "pnpm publish -r --dry-run"
   },
   "devDependencies": {

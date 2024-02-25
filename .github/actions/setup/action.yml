@@ -1,0 +1,29 @@
+name: Setup
+description: Setup the environment
+
+inputs:
+  node-version:
+    description: The version of node.js
+    required: false
+    default: "18"
+
+runs:
+  using: composite
+  steps:
+    - name: Install pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        run_install: false
+
+    - name: Install bun
+      uses: oven-sh/setup-bun@v1
+
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        registry-url: "https://registry.npmjs.org"
+
+    - name: Install
+      run: bun install --frozen-lockfile
+      shell: bash
