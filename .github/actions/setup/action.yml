@@ -10,7 +10,7 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install bun
+    - name: Setup bun
       uses: oven-sh/setup-bun@v1
 
     - name: Setup node
@@ -19,7 +19,7 @@ runs:
         node-version: ${{ inputs.node-version }}
         registry-url: "https://registry.npmjs.org"
 
-    - name: Install pnpm
+    - name: Setup pnpm
       run: corepack enable
       shell: bash
 
