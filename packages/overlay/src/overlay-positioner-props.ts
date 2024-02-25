@@ -28,7 +28,7 @@ export interface OverlayPositionerProps {
   /**
    * Options to activate auto-update listeners
    *
-   * @see https://floating-ui.com/docs/auto-update
+   * @see https://floating-ui.com/docs/autoUpdate
    *
    * @default true
    */
