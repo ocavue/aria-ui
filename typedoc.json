@@ -2,6 +2,10 @@
   "$schema": "https://typedoc.org/schema.json",
   "extends": ["./config/typedoc-base.json"],
   "entryPointStrategy": "packages",
-  "entryPoints": ["./packages/core", "./packages/overlay"],
+  "entryPoints": [
+    "./packages/core",
+    "./packages/overlay",
+    "./packages/tooltip"
+  ],
   "out": "temp/typedoc"
 }

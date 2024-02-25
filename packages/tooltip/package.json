@@ -1,7 +1,7 @@
 {
-  "name": "@aria-ui/overlay",
+  "name": "@aria-ui/tooltip",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@aria-ui/core": "0.0.4",
-    "@floating-ui/dom": "^1.6.3",
-    "@zag-js/dom-query": "^0.37.3"
+    "@aria-ui/overlay": "0.0.1",
+    "nanoid": "^5.0.6"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
