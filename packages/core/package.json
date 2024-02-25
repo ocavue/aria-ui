@@ -2,6 +2,7 @@
   "name": "@aria-ui/core",
   "version": "0.0.3",
   "private": false,
+  "sideEffects": false,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {

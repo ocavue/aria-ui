@@ -2,6 +2,7 @@
   "name": "@aria-ui/utils",
   "version": "0.0.0",
   "private": false,
+  "sideEffects": false,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
