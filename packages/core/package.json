@@ -2,10 +2,16 @@
   "name": "@aria-ui/core",
   "version": "0.0.3",
   "private": false,
+  "sideEffects": false,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "build": "tsup"
+  },
+  "dependencies": {
+    "@dddstack/ariatype-aria-attributes": "^2.0.0",
+    "@dddstack/ariatype-aria-roles": "^2.0.0",
+    "@preact/signals-core": "^1.5.1"
   },
   "devDependencies": {
     "typescript": "^5.3.3"
