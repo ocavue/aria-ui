@@ -10,11 +10,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Install pnpm
-      uses: pnpm/action-setup@v2
-      with:
-        run_install: false
-
     - name: Install bun
       uses: oven-sh/setup-bun@v1
 
@@ -23,6 +18,10 @@ runs:
       with:
         node-version: ${{ inputs.node-version }}
         registry-url: "https://registry.npmjs.org"
+
+    - name: Install pnpm
+      run: corepack enable
+      shell: bash
 
     - name: Install
       run: bun install --frozen-lockfile
