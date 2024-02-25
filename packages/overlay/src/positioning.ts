@@ -1,8 +1,3 @@
-import type {
-  FloatingElement,
-  Middleware,
-  ReferenceElement,
-} from "@floating-ui/dom"
 import {
   autoUpdate,
   computePosition,
@@ -13,9 +8,14 @@ import {
   shift,
   size,
 } from "@floating-ui/dom"
+import type {
+  FloatingElement,
+  Middleware,
+  ReferenceElement,
+} from "@floating-ui/dom"
+import type { DetectOverflowOptions } from "@floating-ui/dom"
 import { getWindow } from "@zag-js/dom-query"
 
-import type { DetectOverflowOptions } from "@floating-ui/dom"
 import type { OverlayPositionerProps } from "./overlay-positioner-props"
 
 export function updatePlacement(
@@ -97,7 +97,7 @@ export function updatePlacement(
     : undefined
 
   if (!options.autoUpdate) {
-    update()
+    void update()
   }
 
   return () => {

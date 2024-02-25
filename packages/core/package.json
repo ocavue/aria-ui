@@ -1,9 +1,9 @@
 {
   "name": "@aria-ui/core",
+  "type": "module",
   "version": "0.0.3",
   "private": false,
   "sideEffects": false,
-  "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "build": "tsup"
@@ -14,6 +14,7 @@
     "@preact/signals-core": "^1.5.1"
   },
   "devDependencies": {
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "publishConfig": {

@@ -7,6 +7,7 @@ import {
   signal,
   untracked,
 } from "@preact/signals-core"
+
 import type { ConnectableElement } from "./connectable-element"
 
 export type { Signal, ReadonlySignal }
