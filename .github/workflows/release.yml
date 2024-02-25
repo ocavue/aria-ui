@@ -16,6 +16,10 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - name: Setup NPM
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ".npmrc"
+
       - name: Create Release Pull Request
         id: changesets
         uses: changesets/action@v1
