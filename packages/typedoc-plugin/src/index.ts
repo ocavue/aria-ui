@@ -92,11 +92,7 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
           prop.inheritedFrom = inheritedFromValues[i]
         }
 
-        return [
-          "<!-- prettier-ignore-start -->",
-          result,
-          "<!-- prettier-ignore-end -->",
-        ].join("\n\n")
+        return result
       },
     }
 
