@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/overlay",
   "type": "module",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -9,7 +9,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.5",
+    "@aria-ui/core": "^0.0.6",
     "@floating-ui/dom": "^1.6.3",
     "@zag-js/dom-query": "^0.37.3"
   },

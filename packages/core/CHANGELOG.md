@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.6
+
+### Patch Changes
+
+- d4e70a4: The default value for a context needs to be assigned when creating the context.
+
 ## 0.0.5
 
 ### Patch Changes
