@@ -1,69 +1,13 @@
-import { BaseElement, type SingalState } from "@aria-ui/core"
 import {
-  useOverlayAnchor,
-  useOverlayPositioner,
-  useOverlayRoot,
-  type OverlayPositionerProps,
+  OverlayAnchorElement,
+  OverlayPositionerElement,
+  OverlayRootElement,
 } from "@aria-ui/overlay"
 import { html, render } from "lit-html"
 
-export class OverlayAnchor extends BaseElement {
-  constructor() {
-    super()
-    useOverlayAnchor(this)
-  }
-}
-
-export class OverlayPositioner extends BaseElement {
-  readonly state: SingalState<OverlayPositionerProps>
-
-  constructor() {
-    super()
-    this.state = useOverlayPositioner(this)
-  }
-
-  get placement() {
-    return this.state.placement.value
-  }
-  set placement(placement:
-    | "top"
-    | "top-start"
-    | "top-end"
-    | "bottom"
-    | "bottom-start"
-    | "bottom-end"
-    | "left"
-    | "left-start"
-    | "left-end"
-    | "right"
-    | "right-start"
-    | "right-end") {
-    this.state.placement.value = placement
-  }
-
-  get offset() {
-    return this.state.offset.value as number
-  }
-  set offset(value: number) {
-    this.state.offset.value = value
-  }
-
-  connectedCallback() {
-    super.connectedCallback()
-    this.setAttribute("data-placement", this.placement)
-  }
-}
-
-export class OverlayRoot extends BaseElement {
-  constructor() {
-    super()
-    useOverlayRoot(this)
-  }
-}
-
-customElements.define("aui-overlay-root", OverlayRoot)
-customElements.define("aui-overlay-anchor", OverlayAnchor)
-customElements.define("aui-overlay-positioner", OverlayPositioner)
+customElements.define("aui-overlay-root", OverlayRootElement)
+customElements.define("aui-overlay-anchor", OverlayAnchorElement)
+customElements.define("aui-overlay-positioner", OverlayPositionerElement)
 
 function query(selector: string): HTMLElement {
   const element = document.querySelector(selector)

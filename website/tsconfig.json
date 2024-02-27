@@ -12,5 +12,8 @@
     {
       "path": "../packages/overlay",
     },
+    {
+      "path": "../packages/tooltip",
+    },
   ],
 }
