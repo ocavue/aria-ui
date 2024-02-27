@@ -8,10 +8,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run build:packages && bun run build:tsc && bun run build:readme",
-    "build:readme": "bun run scripts/build-readme.ts",
+    "build": "bun run build:packages && bun run build:tsc",
     "build:packages": "turbo run build",
     "build:tsc": "tsc -b .",
+    "gen": "bun run scripts/gen-element.ts && bun run scripts/gen-readme.ts",
     "fix": "bun run fix:tsconfig && bun run fix:prettier && bun run fix:biome && bun run fix:eslint",
     "fix:biome": "biome check --apply-unsafe .",
     "fix:eslint": "eslint --fix .",
@@ -29,8 +29,10 @@
   "devDependencies": {
     "@biomejs/biome": "^1.5.3",
     "@changesets/cli": "^2.27.1",
+    "@happy-dom/global-registrator": "^13.6.2",
     "@ocavue/eslint-config": "^1.4.3",
     "@types/bun": "^1.0.7",
+    "change-case": "^5.4.3",
     "eslint": "^8.57.0",
     "lefthook": "^1.6.1",
     "prettier": "^3.2.5",

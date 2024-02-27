@@ -1,69 +1,13 @@
-import { BaseElement, type SingalState } from "@aria-ui/core"
 import {
-  useTooltipTrigger,
-  useTooltipPositioner,
-  useTooltipRoot,
-  type TooltipPositionerProps,
+  TooltipPositionerElement,
+  TooltipRootElement,
+  TooltipTriggerElement,
 } from "@aria-ui/tooltip"
 import { html, render } from "lit-html"
 
-export class TooltipTrigger extends BaseElement {
-  constructor() {
-    super()
-    useTooltipTrigger(this)
-  }
-}
-
-export class TooltipPositioner extends BaseElement {
-  readonly state: SingalState<TooltipPositionerProps>
-
-  constructor() {
-    super()
-    this.state = useTooltipPositioner(this)
-  }
-
-  get placement() {
-    return this.state.placement.value
-  }
-  set placement(placement:
-    | "top"
-    | "top-start"
-    | "top-end"
-    | "bottom"
-    | "bottom-start"
-    | "bottom-end"
-    | "left"
-    | "left-start"
-    | "left-end"
-    | "right"
-    | "right-start"
-    | "right-end") {
-    this.state.placement.value = placement
-  }
-
-  get offset() {
-    return this.state.offset.value as number
-  }
-  set offset(value: number) {
-    this.state.offset.value = value
-  }
-
-  connectedCallback() {
-    super.connectedCallback()
-    this.setAttribute("data-placement", this.placement)
-  }
-}
-
-export class TooltipRoot extends BaseElement {
-  constructor() {
-    super()
-    useTooltipRoot(this)
-  }
-}
-
-customElements.define("aui-tooltip-root", TooltipRoot)
-customElements.define("aui-tooltip-trigger", TooltipTrigger)
-customElements.define("aui-tooltip-positioner", TooltipPositioner)
+customElements.define("aui-tooltip-root", TooltipRootElement)
+customElements.define("aui-tooltip-trigger", TooltipTriggerElement)
+customElements.define("aui-tooltip-positioner", TooltipPositionerElement)
 
 function query(selector: string): HTMLElement {
   const element = document.querySelector(selector)

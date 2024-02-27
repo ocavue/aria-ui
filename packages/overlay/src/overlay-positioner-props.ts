@@ -44,7 +44,7 @@ export interface OverlayPositionerProps {
    *
    * @default false
    */
-  popover: boolean
+  hoist: boolean
 
   // ------------------------------------------------------------------
   // Middlewares
@@ -170,7 +170,7 @@ export const defaultOverlayPositionerProps = Object.freeze({
   strategy: "absolute",
   placement: "top",
   autoUpdate: true,
-  popover: false,
+  hoist: false,
 
   offset: null,
   flip: false,
