@@ -1,0 +1,22 @@
+{
+  "name": "aria-ui-website",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "devDependencies": {
+    "@aria-ui/core": "*",
+    "@aria-ui/overlay": "*",
+    "@astrojs/check": "^0.5.6",
+    "@astrojs/starlight": "^0.20.1",
+    "astro": "^4.3.5",
+    "lit-html": "^3.1.2",
+    "typescript": "^5.3.3"
+  }
+}

@@ -24,7 +24,11 @@
     "noFallthroughCasesInSwitch": true,
   },
   "include": ["./*.js", "./*.ts", "./scripts/"],
+  "exclude": ["**/node_modules", "**/dist", "**/temp"],
   "references": [
+    {
+      "path": "website",
+    },
     {
       "path": "packages/core",
     },
