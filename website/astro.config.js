@@ -5,21 +5,23 @@ import { defineConfig } from "astro/config"
 export default defineConfig({
   integrations: [
     starlight({
-      title: "My Docs",
+      title: "Aria UI",
       social: {
-        github: "https://github.com/withastro/starlight",
+        github: "https://github.com/ocavue/aria-ui",
       },
       sidebar: [
         {
           label: "Guides",
           items: [
-            // Each item here is one entry in the navigation menu.
-            { label: "Example Guide", link: "/guides/example/" },
+            {
+              label: "Introduction",
+              link: "/guides/introduction",
+            },
           ],
         },
         {
-          label: "Reference",
-          autogenerate: { directory: "reference" },
+          label: "Components",
+          autogenerate: { directory: "components" },
         },
       ],
     }),
