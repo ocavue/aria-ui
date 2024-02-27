@@ -58,6 +58,11 @@ new TooltipRootElement(props?: Partial<TooltipRootProps>): TooltipRootElement
 
 ### TooltipRootProps
 
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `closeDelay` | `number` | The delay in milliseconds before the tooltip closes.<br /><br />**Default**<br />`300` |
+| `openDelay` | `number` | The delay in milliseconds before the tooltip opens.<br /><br />**Default**<br />`700` |
+
 ### useTooltipRoot()
 
 ```ts
