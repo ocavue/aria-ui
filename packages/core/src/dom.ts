@@ -4,6 +4,9 @@ import type { AriaRole } from "@dddstack/ariatype-aria-roles"
 import type { ConnectableElement } from "./connectable-element"
 import { useEffect } from "./signals"
 
+/**
+ * @group DOM
+ */
 export function useEventListener<K extends keyof HTMLElementEventMap>(
   element: ConnectableElement,
   type: K,
@@ -18,6 +21,9 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
   })
 }
 
+/**
+ * @group DOM
+ */
 export function useStyle<K extends keyof CSSStyleDeclaration>(
   element: ConnectableElement,
   key: K,
@@ -28,6 +34,9 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
   })
 }
 
+/**
+ * @group DOM
+ */
 export function useAttribute(
   element: ConnectableElement,
   key: string,
@@ -43,6 +52,9 @@ export function useAttribute(
   })
 }
 
+/**
+ * @group DOM
+ */
 export function useAriaAttribute<K extends keyof AriaAttributes>(
   element: ConnectableElement,
   key: K,
@@ -51,6 +63,9 @@ export function useAriaAttribute<K extends keyof AriaAttributes>(
   return useAttribute(element, key, compute)
 }
 
+/**
+ * @group DOM
+ */
 export function useAriaRole(
   element: ConnectableElement,
   compute: () => AriaRole | undefined,

@@ -1,5 +1,7 @@
 /**
  * Any HTML element that has implemented the `addConnectedCallback` method.
+ *
+ * @group Elements
  */
 export interface ConnectableElement extends HTMLElement {
   /**

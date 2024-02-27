@@ -12,6 +12,8 @@ class ContextRequestEvent<T> extends Event {
 
 /**
  * A context is a way to provide and consume signals in a HTML tree.
+ *
+ * @group Contexts
  */
 export interface Context<T> {
   /**
@@ -88,6 +90,8 @@ function bind<T>(provider: Signal<T>, consumer: Signal<T>): VoidFunction {
 
 /**
  * Creates a new context.
+ *
+ * @group Contexts
  */
 export function createContext<T>(key: string | symbol): Context<T> {
   return new ContextImpl<T>(
