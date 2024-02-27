@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.7
+
+### Patch Changes
+
+- d5a98e5: Reduce npm package size by removing unnecessary files from the package.
+
 ## 0.0.6
 
 ### Patch Changes
