@@ -1,10 +1,10 @@
 import type { ConnectableElement } from "./connectable-element"
-import type { Signal } from "./signals"
+import { createSignal, type Signal } from "./signals"
 
-class ContextRequestEvent<S extends Signal> extends Event {
+class ContextRequestEvent<T> extends Event {
   public constructor(
     public readonly key: string | symbol,
-    public readonly callback: (singal: S) => void,
+    public readonly callback: (singal: Signal<T>) => void,
   ) {
     super("aria-ui/context-request", { bubbles: true, composed: true })
   }
@@ -13,54 +13,84 @@ class ContextRequestEvent<S extends Signal> extends Event {
 /**
  * A context is a way to provide and consume signals in a HTML tree.
  */
-export interface Context<S extends Signal> {
+export interface Context<T> {
   /**
    * Provides a signal to all children of the element.
    * @param element The element to provide the signal to.
    * @param signal The signal to provide.
    */
-  provide(element: ConnectableElement, signal: S): void
+  provide(element: ConnectableElement, signal: Signal<T>): void
   /**
    * Receives the signal from a parent element.
    * @param element The element to consume the signal from.
-   * @returns The signal or undefined if the signal is not provided.
+   * @param defaultValue The default value to return if the signal is not provided.
+   * @returns A signal that is double bound to the provided signal.
    */
-  consume(element: ConnectableElement): S | undefined
+  consume(element: ConnectableElement, defaultValue: T): Signal<T>
 }
 
-class ContextImpl<S extends Signal> implements Context<S> {
+class ContextImpl<T> implements Context<T> {
   public constructor(private readonly key: string | symbol) {
     this.provide = this.provide.bind(this)
     this.consume = this.consume.bind(this)
   }
 
-  public provide(element: ConnectableElement, signal: S): void {
+  public provide(element: ConnectableElement, signal: Signal<T>): void {
     element.addEventListener("aria-ui/context-request", (event) => {
-      const { key, callback } = event as ContextRequestEvent<S>
+      const { key, callback } = event as ContextRequestEvent<T>
       if (key === this.key) {
         callback(signal)
       }
     })
   }
 
-  public consume(element: ConnectableElement): S | undefined {
-    let signal: S | undefined
-    element.dispatchEvent(
-      new ContextRequestEvent<S>(this.key, (s) => {
-        signal = s
-      }),
-    )
-    return signal
+  public consume(element: ConnectableElement, defaultValue: T): Signal<T> {
+    const consumer = createSignal<T>(defaultValue)
+    let dispose: VoidFunction | undefined = undefined
+
+    element.addConnectedCallback(() => {
+      element.dispatchEvent(
+        new ContextRequestEvent<T>(this.key, (provider) => {
+          dispose?.()
+          dispose = bind(provider, consumer)
+        }),
+      )
+      return () => {
+        dispose?.()
+        dispose = undefined
+      }
+    })
+
+    return consumer
+  }
+}
+
+function bind<T>(provider: Signal<T>, consumer: Signal<T>): VoidFunction {
+  consumer.value = provider.peek()
+
+  const unsubscribeProvider = provider.subscribe((value) => {
+    if (consumer.peek() !== value) {
+      consumer.value = value
+    }
+  })
+
+  const unsubscribeConsumer = consumer.subscribe((value) => {
+    if (provider.peek() !== value) {
+      provider.value = value
+    }
+  })
+
+  return () => {
+    unsubscribeProvider()
+    unsubscribeConsumer()
   }
 }
 
 /**
  * Creates a new context.
  */
-export function createContext<S extends Signal>(
-  key: string | symbol,
-): Context<S> {
-  return new ContextImpl<S>(
-    typeof key === "string" ? `aira-ui/context/${key}` : key,
+export function createContext<T>(key: string | symbol): Context<T> {
+  return new ContextImpl<T>(
+    typeof key === "string" ? `aria-ui/context/${key}` : key,
   )
 }
