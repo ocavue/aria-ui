@@ -1,5 +1,7 @@
 temp
 .turbo
+.astro
+.npmrc
 
 # Logs
 logs

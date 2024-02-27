@@ -1,0 +1,31 @@
+---
+title: Overlay
+---
+
+import Preview from "../../../components/overlay-preview.astro";
+import PreviewCode from "../../../components/overlay-preview.ts?raw";
+import {
+  Code,
+  Tabs,
+  TabItem,
+  LinkCard,
+  CardGrid,
+} from "@astrojs/starlight/components";
+
+A low-level component that is used to create a overlay element, such as a tooltip or a dialog.
+
+<CardGrid>
+  <LinkCard
+    title="API Reference"
+    href="https://github.com/ocavue/aria-ui/blob/master/packages/overlay/README.md"
+  />
+</CardGrid>
+
+<Tabs>
+  <TabItem label="Preview">
+    <Preview />
+  </TabItem>
+  <TabItem label="Code">
+    <Code code={PreviewCode} lang="ts" />
+  </TabItem>
+</Tabs>

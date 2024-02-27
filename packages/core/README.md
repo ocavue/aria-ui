@@ -36,7 +36,7 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 | :-- | :-- | :-- |
 | `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM.<br />This callback can return a cleanup function that will be called when the<br />element is disconnected from the DOM. |
 
-### Context\<S\>
+### Context\<T\>
 
 A context is a way to provide and consume signals in a HTML tree.
 
@@ -45,7 +45,7 @@ A context is a way to provide and consume signals in a HTML tree.
 ##### consume()
 
 ```ts
-consume(element: ConnectableElement): undefined | S
+consume(element: ConnectableElement, defaultValue: T): Signal<T>
 ```
 
 Receives the signal from a parent element.
@@ -53,7 +53,7 @@ Receives the signal from a parent element.
 ##### provide()
 
 ```ts
-provide(element: ConnectableElement, signal: S): void
+provide(element: ConnectableElement, signal: Signal<T>): void
 ```
 
 Provides a signal to all children of the element.
@@ -88,7 +88,7 @@ Merge two objects, with the second object taking precedence. Only keys present i
 ### createContext()
 
 ```ts
-function createContext<S>(key: string | symbol): Context<S>;
+function createContext<T>(key: string | symbol): Context<T>;
 ```
 
 Creates a new context.
