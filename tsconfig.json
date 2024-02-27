@@ -36,6 +36,9 @@
       "path": "packages/overlay",
     },
     {
+      "path": "packages/tooltip",
+    },
+    {
       "path": "packages/typedoc-plugin",
     },
   ],

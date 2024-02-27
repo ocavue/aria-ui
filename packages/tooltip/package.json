@@ -1,0 +1,26 @@
+{
+  "name": "@aria-ui/tooltip",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@aria-ui/core": "^0.0.6",
+    "@aria-ui/overlay": "^0.0.3",
+    "nanoid": "^5.0.6"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.3.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts"
+  }
+}
