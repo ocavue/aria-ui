@@ -9,8 +9,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.5",
-    "@aria-ui/overlay": "^0.0.2",
+    "@aria-ui/core": "^0.0.6",
+    "@aria-ui/overlay": "^0.0.3",
     "nanoid": "^5.0.6"
   },
   "devDependencies": {
