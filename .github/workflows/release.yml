@@ -24,8 +24,8 @@ jobs:
         id: changesets
         uses: changesets/action@v1
         with:
-          version: bun run ci:version
-          publish: bun run ci:publish
+          version: pnpm run ci:version
+          publish: pnpm run ci:publish
           commit: "chore: version packages"
           title: "chore: version packages"
           createGithubReleases: true

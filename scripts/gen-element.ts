@@ -1,3 +1,4 @@
+import "./root"
 import path from "node:path"
 
 import { GlobalRegistrator } from "@happy-dom/global-registrator"

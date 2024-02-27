@@ -2,6 +2,7 @@ temp
 .turbo
 .astro
 .npmrc
+.DS_Store
 
 # Logs
 logs
