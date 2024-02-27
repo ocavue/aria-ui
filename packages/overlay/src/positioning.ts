@@ -192,4 +192,5 @@ function roundByDPR(win: Window, value: number) {
  * Whether the browser supports the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API).
  */
 export const popoverAvailable: boolean =
-  typeof HTMLElement !== "undefined" && Object.hasOwn(HTMLElement, "popover")
+  typeof HTMLElement !== "undefined" &&
+  Object.hasOwn(HTMLElement.prototype, "popover")

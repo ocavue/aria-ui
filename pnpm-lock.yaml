@@ -92,6 +92,19 @@ importers:
         specifier: ^5.3.3
         version: 5.3.3
 
+  packages/presence:
+    dependencies:
+      '@aria-ui/core':
+        specifier: ^0.0.7
+        version: link:../core
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   packages/tooltip:
     dependencies:
       '@aria-ui/core':
@@ -100,6 +113,9 @@ importers:
       '@aria-ui/overlay':
         specifier: ^0.0.5
         version: link:../overlay
+      '@aria-ui/presence':
+        specifier: ^0.0.0
+        version: link:../presence
       nanoid:
         specifier: ^5.0.6
         version: 5.0.6

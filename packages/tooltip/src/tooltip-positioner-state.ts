@@ -2,11 +2,11 @@ import {
   assignProps,
   useAriaAttribute,
   useAttribute,
-  useStyle,
   type ConnectableElement,
   type SingalState,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
+import { usePresence } from "@aria-ui/presence"
 
 import { idContext, openContext } from "./tooltip-contexts"
 import {
@@ -15,6 +15,10 @@ import {
 } from "./tooltip-positioner-props"
 
 /**
+ * Properties: {@link TooltipPositionerProps}
+ *
+ * Data attributes: {@link TooltipPositionerDataAttributes}
+ *
  * @group TooltipPositioner
  */
 export function useTooltipPositioner(
@@ -31,7 +35,8 @@ export function useTooltipPositioner(
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
   useAttribute(element, "id", () => id.value || undefined)
-  useStyle(element, "display", () => (open.value ? "" : "none"))
+  usePresence(element, open)
+  useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
 
   return state
 }

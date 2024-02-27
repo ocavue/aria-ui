@@ -9,11 +9,5 @@
     {
       "path": "../core",
     },
-    {
-      "path": "../overlay",
-    },
-    {
-      "path": "../presence",
-    },
   ],
 }
