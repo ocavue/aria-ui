@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/core",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
