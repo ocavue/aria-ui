@@ -157,6 +157,26 @@ Maps every signal in the given object to its current value.
 
 ## Signals
 
+### ReadonlySignal\<T\>
+
+```ts
+type ReadonlySignal<T>: _ReadonlySignal<T>;
+```
+
+A read-only signal, providing a way to observe state changes without the ability to modify the state.
+
+This is a re-export of `ReadonlySignal` type from `@preact/signals-core`.
+
+### Signal\<T\>
+
+```ts
+type Signal<T>: _Signal<T>;
+```
+
+A mutable signal that can be used to manage reactive state changes.
+
+This is a re-export of `Signal` type from `@preact/signals-core`.
+
 ### SignalValue\<S\>
 
 ```ts
@@ -171,7 +191,9 @@ Extracts the value type from a signal type.
 function batch<T>(callback: () => T): T;
 ```
 
-A re-export of `batch` from `@preact/signals-core`.
+Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
+
+This is a re-export of `batch` from `@preact/signals-core`.
 
 ### createComputed()
 
@@ -179,7 +201,7 @@ A re-export of `batch` from `@preact/signals-core`.
 function createComputed<T>(compute: () => T): ReadonlySignal<T>;
 ```
 
-Creates a new signal that is computed based on the values of other signals.
+Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
 
 This is an alias for `computed` from `@preact/signals-core`.
 
@@ -189,7 +211,7 @@ This is an alias for `computed` from `@preact/signals-core`.
 function createSignal<T>(value: T): Signal<T>;
 ```
 
-Creates a new signal with the given initial value.
+Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
 
 This is an alias for `signal` from `@preact/signals-core`.
 
@@ -199,7 +221,9 @@ This is an alias for `signal` from `@preact/signals-core`.
 function untracked<T>(callback: () => T): T;
 ```
 
-A re-export of `untracked` from `@preact/signals-core`.
+Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
+
+This is a re-export of `untracked` from `@preact/signals-core`.
 
 ### useEffect()
 
