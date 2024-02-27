@@ -27,7 +27,7 @@ A context is a way to provide and consume signals in a HTML tree.
 ##### consume()
 
 ```ts
-consume(element: ConnectableElement, defaultValue: T): Signal<T>
+consume(element: ConnectableElement): Signal<T>
 ```
 
 Receives the signal from a parent element.
@@ -43,7 +43,7 @@ Provides a signal to all children of the element.
 ### createContext()
 
 ```ts
-function createContext<T>(key: string | symbol): Context<T>;
+function createContext<T>(key: string | symbol, defaultValue: T): Context<T>;
 ```
 
 Creates a new context.

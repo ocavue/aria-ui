@@ -6,7 +6,7 @@ import { referenceContext } from "./contexts"
  * @group OverlayAnchor
  */
 export function useOverlayAnchor(element: ConnectableElement) {
-  const reference = referenceContext.consume(element, null)
+  const reference = referenceContext.consume(element)
 
   useEffect(element, () => {
     reference.value = element
