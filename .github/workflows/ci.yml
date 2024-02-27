@@ -58,6 +58,6 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: aria-ui
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          workingDirectory: website/dist/
-          directory: .
+          workingDirectory: website
+          directory: dist
           wranglerVersion: "3"
