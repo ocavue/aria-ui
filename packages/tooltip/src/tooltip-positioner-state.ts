@@ -26,8 +26,8 @@ export function useTooltipPositioner(
     assignProps(defaultTooltipPositionerProps, props),
   )
 
-  const open = openContext.consume(element, false)
-  const id = idContext.consume(element, "")
+  const open = openContext.consume(element)
+  const id = idContext.consume(element)
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
   useAttribute(element, "id", () => id.value || undefined)
