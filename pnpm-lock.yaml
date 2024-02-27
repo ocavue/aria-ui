@@ -111,10 +111,10 @@ importers:
         specifier: ^0.0.7
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.5
+        specifier: ^0.0.6
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.0
+        specifier: ^0.0.1
         version: link:../presence
       nanoid:
         specifier: ^5.0.6
