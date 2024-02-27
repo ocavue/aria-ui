@@ -23,13 +23,13 @@ render(
       style="display: inline-block; width: min-content; margin: 32px 8px;"
     >
       <aui-tooltip-trigger style="display: block; width: max-content;">
-        <button>Hovering me</button>
+        <button>Hover me</button>
       </aui-tooltip-trigger>
       <aui-tooltip-positioner
         style="display: block; margin: 0; border: 1px solid red; padding: 4px 8px;"
         .offset=${4}
       >
-        <div>Tooltip</div>
+        <div>I come up after a delay.</div>
       </aui-tooltip-positioner>
     </aui-tooltip-root>
 
@@ -37,13 +37,13 @@ render(
       style="display: inline-block; width: min-content; margin: 32px 8px;"
     >
       <aui-tooltip-trigger style="display: block; width: max-content;">
-        <button>Hovering me</button>
+        <button>Then Hover me</button>
       </aui-tooltip-trigger>
       <aui-tooltip-positioner
         style="display: block; margin: 0; border: 1px solid red; padding: 4px 8px;"
         .offset=${4}
       >
-        <div>Tooltip</div>
+        <div>If you did it quickly, I appear immediately.</div>
       </aui-tooltip-positioner>
     </aui-tooltip-root>
   `,

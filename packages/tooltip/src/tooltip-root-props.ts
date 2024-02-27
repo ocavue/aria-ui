@@ -3,21 +3,23 @@
  */
 export interface TooltipRootProps {
   /**
-   * TODO: not used yet
-   * @hidden
+   * The delay in milliseconds before the tooltip opens.
+   *
+   * @default 700
    */
-  delay: number
+  openDelay: number
   /**
-   * TODO: not used yet
-   * @hidden
+   * The delay in milliseconds before the tooltip closes.
+   *
+   * @default 300
    */
-  skipDelay: number
+  closeDelay: number
 }
 
 /**
  * @hidden
  */
 export const defaultTooltipRootProps = Object.freeze({
-  delay: 700,
-  skipDelay: 300,
+  openDelay: 700,
+  closeDelay: 300,
 }) satisfies TooltipRootProps
