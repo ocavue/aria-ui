@@ -60,8 +60,8 @@ async function updateElementCode(
   const propsCode = Object.keys(defaultProps)
     .map(
       (prop) => `
-	/** @hidden */ get ${prop}(): ${pascal}Props["${prop}"] { return this._s.${prop}.value }
-	/** @hidden */ set ${prop}(v: ${pascal}Props["${prop}"]) { this._s.${prop}.value = v }`,
+  /** @hidden */ get ${prop}(): ${pascal}Props["${prop}"] { return this._s.${prop}.value }
+  /** @hidden */ set ${prop}(v: ${pascal}Props["${prop}"]) { this._s.${prop}.value = v }`,
     )
     .join("")
 
@@ -83,7 +83,7 @@ import { use${pascal} } from "./${kebab}-state"
 ${commnet}
  */
 export class ${pascal}Element extends BaseElement implements ${pascal}Props {
-	private _s: SingalState<${pascal}Props>;
+  private _s: SingalState<${pascal}Props>;
 
   constructor(props?: Partial<${pascal}Props>) {
     super();
@@ -100,10 +100,10 @@ import { use${pascal} } from "./${kebab}-state"
 ${commnet}
  */
 export class ${pascal}Element extends BaseElement {
-	constructor() {
-		super()
-		use${pascal}(this)
-	}
+  constructor() {
+    super()
+    use${pascal}(this)
+  }
 }
 `.trim()
 

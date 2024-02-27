@@ -7,8 +7,8 @@ import { useOverlayRoot } from "./overlay-root-state"
  * @group OverlayRoot
  */
 export class OverlayRootElement extends BaseElement {
-	constructor() {
-		super()
-		useOverlayRoot(this)
-	}
+  constructor() {
+    super()
+    useOverlayRoot(this)
+  }
 }

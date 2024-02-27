@@ -7,8 +7,8 @@ import { useOverlayAnchor } from "./overlay-anchor-state"
  * @group OverlayAnchor
  */
 export class OverlayAnchorElement extends BaseElement {
-	constructor() {
-		super()
-		useOverlayAnchor(this)
-	}
+  constructor() {
+    super()
+    useOverlayAnchor(this)
+  }
 }

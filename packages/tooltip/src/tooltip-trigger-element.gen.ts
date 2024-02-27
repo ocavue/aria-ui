@@ -7,8 +7,8 @@ import { useTooltipTrigger } from "./tooltip-trigger-state"
  * @group TooltipTrigger
  */
 export class TooltipTriggerElement extends BaseElement {
-	constructor() {
-		super()
-		useTooltipTrigger(this)
-	}
+  constructor() {
+    super()
+    useTooltipTrigger(this)
+  }
 }
