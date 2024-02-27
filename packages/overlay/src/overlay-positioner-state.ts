@@ -22,7 +22,7 @@ export function useOverlayPositioner(
 ) {
   const mergedProps = assignProps(defaultOverlayPositionerProps, props)
   const state = mapSignals(mergedProps)
-  const reference = referenceContext.consume(element, null)
+  const reference = referenceContext.consume(element)
 
   useEffect(element, () => {
     const stateValues = mapValues(state)
