@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/tooltip",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@aria-ui/core": "^0.0.6",
-    "@aria-ui/overlay": "^0.0.3",
+    "@aria-ui/overlay": "^0.0.4",
     "nanoid": "^5.0.6"
   },
   "devDependencies": {

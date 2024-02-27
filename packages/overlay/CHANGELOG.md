@@ -1,5 +1,12 @@
 # @aria-ui/overlay
 
+## 0.0.4
+
+### Patch Changes
+
+- 6fe6e2c: Add `OverlayAnchorElement`, `OverlayPositionerElement`, and `OverlayRootElement`.
+- 6fe6e2c: Rename the `popover` property to `hoist`.
+
 ## 0.0.3
 
 ### Patch Changes
