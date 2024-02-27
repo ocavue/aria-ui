@@ -18,10 +18,10 @@ import {
 export function useTooltipTrigger(element: ConnectableElement): void {
   useOverlayAnchor(element)
 
-  const hovering = hoveringContext.consume(element)
-  const focused = focusedContext.consume(element)
-  const open = openContext.consume(element)
-  const id = idContext.consume(element)
+  const hovering = hoveringContext.consume(element, false)
+  const focused = focusedContext.consume(element, false)
+  const open = openContext.consume(element, false)
+  const id = idContext.consume(element, "")
 
   if (hovering) {
     useEventListener(element, "pointerenter", () => {
@@ -40,6 +40,6 @@ export function useTooltipTrigger(element: ConnectableElement): void {
     })
   }
   useAriaAttribute(element, "aria-describedby", () => {
-    return open?.value && id?.value ? id.value : undefined
+    return open.value && id.value ? id.value : undefined
   })
 }
