@@ -1,4 +1,4 @@
-import { type ConnectableElement, useEffect } from "@aria-ui/core"
+import { useEffect, type ConnectableElement } from "@aria-ui/core"
 
 import { referenceContext } from "./contexts"
 
@@ -6,11 +6,9 @@ import { referenceContext } from "./contexts"
  * @group OverlayAnchor
  */
 export function useOverlayAnchor(element: ConnectableElement) {
-  const reference = referenceContext.consume(element)
+  const reference = referenceContext.consume(element, null)
 
   useEffect(element, () => {
-    if (reference) {
-      reference.value = element
-    }
+    reference.value = element
   })
 }
