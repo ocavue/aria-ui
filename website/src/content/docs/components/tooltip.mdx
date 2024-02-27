@@ -1,0 +1,29 @@
+---
+title: Tooltip
+---
+
+import Preview from "../../../components/tooltip-preview.astro";
+import PreviewCode from "../../../components/tooltip-preview.ts?raw";
+import {
+  Code,
+  Tabs,
+  TabItem,
+  LinkCard,
+  CardGrid,
+} from "@astrojs/starlight/components";
+
+<CardGrid>
+  <LinkCard
+    title="API Reference"
+    href="https://github.com/ocavue/aria-ui/blob/master/packages/tooltip/README.md"
+  />
+</CardGrid>
+
+<Tabs>
+  <TabItem label="Preview">
+    <Preview />
+  </TabItem>
+  <TabItem label="Code">
+    <Code code={PreviewCode} lang="ts" />
+  </TabItem>
+</Tabs>
