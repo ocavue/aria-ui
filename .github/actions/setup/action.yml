@@ -10,9 +10,6 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Setup bun
-      uses: oven-sh/setup-bun@v1
-
     - name: Setup node
       uses: actions/setup-node@v4
       with:
@@ -24,5 +21,5 @@ runs:
       shell: bash
 
     - name: Install
-      run: bun install --frozen-lockfile
+      run: pnpm install --frozen-lockfile
       shell: bash

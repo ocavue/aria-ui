@@ -1,3 +1,4 @@
+import "./root"
 import { $ } from "bun"
 
 import { listGitFiles } from "./list-git-files"
@@ -22,7 +23,7 @@ async function main() {
   for (const filePath of await listReadmeFiles()) {
     await modifyReadmeFile(filePath)
   }
-  await $`bun run fix:prettier`
+  await $`pnpm run fix:prettier`
 }
 
 void main()

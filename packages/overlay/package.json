@@ -11,7 +11,7 @@
   "dependencies": {
     "@aria-ui/core": "^0.0.6",
     "@floating-ui/dom": "^1.6.3",
-    "@zag-js/dom-query": "^0.37.3"
+    "@zag-js/dom-query": "^0.38.0"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
