@@ -21,5 +21,5 @@ export interface TooltipRootProps {
  */
 export const defaultTooltipRootProps = Object.freeze({
   openDelay: 700,
-  closeDelay: 200,
+  closeDelay: 300,
 }) satisfies TooltipRootProps
