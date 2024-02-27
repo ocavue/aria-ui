@@ -35,12 +35,10 @@ export interface OverlayPositionerProps {
   autoUpdate: boolean | AutoUpdateOptions
 
   /**
-   * Whether to use the browser Popover API to place the floating element on top
-   * of other page content. When enabled, the floating element won't be clipped
-   * by an ancestor. This provides a similar result to React's `<Portals>` or
-   * Vue's `<Teleport>`.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/Popover_API
+   * Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)
+   * to place the floating element on top of other page content. When enabled,
+   * the floating element won't be clipped by an ancestor. This provides a
+   * similar result to React's `<Portals>` or Vue's `<Teleport>`.
    *
    * @default false
    */

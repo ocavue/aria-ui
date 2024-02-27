@@ -3,7 +3,8 @@ title: Tooltip
 ---
 
 import Preview from "../../../components/tooltip-preview.astro";
-import PreviewCode from "../../../components/tooltip-preview.ts?raw";
+import PreviewTs from "../../../components/tooltip-preview.ts?raw";
+import PreviewCss from "../../../components/tooltip-preview.css?raw";
 import {
   Code,
   Tabs,
@@ -24,6 +25,7 @@ import {
     <Preview />
   </TabItem>
   <TabItem label="Code">
-    <Code code={PreviewCode} lang="ts" />
+    <Code code={PreviewTs} lang="ts" />
+    <Code code={PreviewCss} lang="css" />
   </TabItem>
 </Tabs>

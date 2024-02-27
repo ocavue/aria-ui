@@ -1,3 +1,5 @@
+import "./tooltip-preview.css"
+
 import {
   TooltipPositionerElement,
   TooltipRootElement,

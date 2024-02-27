@@ -5,6 +5,7 @@
   "entryPoints": [
     "./packages/core",
     "./packages/overlay",
+    "./packages/presence",
     "./packages/tooltip"
   ],
   "out": "temp/typedoc"

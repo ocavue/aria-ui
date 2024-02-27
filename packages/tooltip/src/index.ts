@@ -1,5 +1,8 @@
 export { TooltipPositionerElement } from "./tooltip-positioner-element.gen"
-export type { TooltipPositionerProps } from "./tooltip-positioner-props"
+export type {
+  TooltipPositionerProps,
+  TooltipPositionerDataAttributes,
+} from "./tooltip-positioner-props"
 export { useTooltipPositioner } from "./tooltip-positioner-state"
 export { TooltipRootElement } from "./tooltip-root-element.gen"
 export type { TooltipRootProps } from "./tooltip-root-props"

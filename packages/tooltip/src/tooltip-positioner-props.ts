@@ -5,13 +5,13 @@ import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
  * @group TooltipPositioner
  */
 export interface TooltipPositionerProps
-  extends Omit<OverlayPositionerProps, "strategy"> {
+  extends Omit<OverlayPositionerProps, "hoist"> {
   /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.strategy}
+   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.hoist}
    *
-   * @default "fixed"
+   * @default "true"
    */
-  strategy: OverlayPositionerProps["strategy"]
+  hoist: OverlayPositionerProps["hoist"]
 }
 
 /**
@@ -19,5 +19,12 @@ export interface TooltipPositionerProps
  */
 export const defaultTooltipPositionerProps = Object.freeze({
   ...defaultOverlayPositionerProps,
-  strategy: "fixed",
+  hoist: true,
 }) satisfies TooltipPositionerProps
+
+/**
+ * @group TooltipPositioner
+ */
+export interface TooltipPositionerDataAttributes {
+  "data-state": "open" | "closed"
+}
