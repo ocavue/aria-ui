@@ -12,6 +12,8 @@ class ContextRequestEvent<T> extends Event {
 
 /**
  * A context is a way to provide and consume signals in a HTML tree.
+ *
+ * @group Contexts
  */
 export interface Context<T> {
   /**
@@ -23,14 +25,16 @@ export interface Context<T> {
   /**
    * Receives the signal from a parent element.
    * @param element The element to consume the signal from.
-   * @param defaultValue The default value to return if the signal is not provided.
    * @returns A signal that is double bound to the provided signal.
    */
-  consume(element: ConnectableElement, defaultValue: T): Signal<T>
+  consume(element: ConnectableElement): Signal<T>
 }
 
 class ContextImpl<T> implements Context<T> {
-  public constructor(private readonly key: string | symbol) {
+  public constructor(
+    private readonly key: string | symbol,
+    private readonly defaultValue: T,
+  ) {
     this.provide = this.provide.bind(this)
     this.consume = this.consume.bind(this)
   }
@@ -44,8 +48,8 @@ class ContextImpl<T> implements Context<T> {
     })
   }
 
-  public consume(element: ConnectableElement, defaultValue: T): Signal<T> {
-    const consumer = createSignal<T>(defaultValue)
+  public consume(element: ConnectableElement): Signal<T> {
+    const consumer = createSignal<T>(this.defaultValue)
     let dispose: VoidFunction | undefined = undefined
 
     element.addConnectedCallback(() => {
@@ -88,9 +92,18 @@ function bind<T>(provider: Signal<T>, consumer: Signal<T>): VoidFunction {
 
 /**
  * Creates a new context.
+ *
+ * @param key The key to use for the context.
+ * @param defaultValue The default value to return if the signal is not provided.
+ *
+ * @group Contexts
  */
-export function createContext<T>(key: string | symbol): Context<T> {
+export function createContext<T>(
+  key: string | symbol,
+  defaultValue: T,
+): Context<T> {
   return new ContextImpl<T>(
     typeof key === "string" ? `aria-ui/context/${key}` : key,
+    defaultValue,
   )
 }
