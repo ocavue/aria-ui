@@ -3,6 +3,8 @@ import { getObjectKeys } from "./types"
 /**
  * Merge two objects, with the second object taking precedence. Only keys
  * present in the first object will be included in the result.
+ *
+ * @group Props and States
  */
 export function assignProps<T extends object>(
   defaultProps: Readonly<T>,
