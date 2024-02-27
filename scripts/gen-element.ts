@@ -76,6 +76,7 @@ async function updateElementCode(
   const code = hasProps
     ? `
 import { BaseElement, type SingalState } from "@aria-ui/core";
+
 import type { ${pascal}Props } from "./${kebab}-props"
 import { use${pascal} } from "./${kebab}-state"
 
@@ -94,6 +95,7 @@ ${propsCode}
 `.trim()
     : `
 import { BaseElement } from "@aria-ui/core"
+
 import { use${pascal} } from "./${kebab}-state"
 
 /**
