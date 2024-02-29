@@ -1,5 +1,12 @@
 # @aria-ui/overlay
 
+## 0.0.6
+
+### Patch Changes
+
+- 8d7aff0: Set `hoist` to `true` by default to enable the Web Popover API.
+- 8d7aff0: Fix an issue where the Web Popover API not being used when `hoist` is `true`.
+
 ## 0.0.5
 
 ### Patch Changes
