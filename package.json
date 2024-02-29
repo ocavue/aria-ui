@@ -32,7 +32,7 @@
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "^5.4.3",
     "eslint": "^8.57.0",
-    "lefthook": "^1.6.3",
+    "lefthook": "^1.6.4",
     "prettier": "^3.2.5",
     "turbo": "^1.12.4",
     "typedoc": "^0.25.9",
