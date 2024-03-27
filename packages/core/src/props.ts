@@ -16,7 +16,7 @@ export function assignProps<T extends object>(
 
   const merged: T = { ...defaultProps }
   for (const key of getObjectKeys(defaultProps)) {
-    const prop = props[key]
+    const prop = props[key] as T[keyof T] | undefined
     if (prop !== undefined) {
       merged[key] = prop
     }
