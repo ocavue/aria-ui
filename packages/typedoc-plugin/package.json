@@ -8,11 +8,11 @@
     "build": "tsup"
   },
   "peerDependencies": {
-    "typedoc-plugin-markdown": "4.0.0-next.53",
-    "typedoc": "^0.25.8"
+    "typedoc": "^0.25.12",
+    "typedoc-plugin-markdown": "4.0.0-next.54"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.4.3"
   }
 }

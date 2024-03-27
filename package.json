@@ -28,7 +28,7 @@
     "@happy-dom/global-registrator": "^14.3.3",
     "@manypkg/get-packages": "^2.2.1",
     "@ocavue/eslint-config": "^1.4.3",
-    "@types/bun": "^1.0.8",
+    "@types/bun": "^1.0.11",
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "^5.4.3",
     "comment-json": "^4.2.3",
@@ -36,8 +36,8 @@
     "lefthook": "^1.6.4",
     "prettier": "^3.2.5",
     "turbo": "^1.12.4",
-    "typedoc": "^0.25.9",
-    "typedoc-plugin-markdown": "4.0.0-next.53",
-    "typescript": "^5.3.3"
+    "typedoc": "^0.25.12",
+    "typedoc-plugin-markdown": "4.0.0-next.54",
+    "typescript": "^5.4.3"
   }
 }

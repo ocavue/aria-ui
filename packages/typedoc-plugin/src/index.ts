@@ -1,17 +1,13 @@
+import { DeclarationReflection, ReflectionKind, type Reflection } from "typedoc"
 import {
-  type DeclarationReflection,
-  type Reflection,
-  SignatureReflection,
-  ReflectionKind,
-} from "typedoc"
-import {
-  type MarkdownApplication,
   MarkdownPageEvent,
   MarkdownTheme,
   MarkdownThemeRenderContext,
+  type MarkdownApplication,
 } from "typedoc-plugin-markdown"
 
-import { members } from "./members.js"
+import { memberWithGroups } from "./particals/member.memberWithGroups"
+import { signature } from "./particals/member.signature"
 
 export function load(app: MarkdownApplication) {
   app.renderer.defineTheme("custom-theme", MyMarkdownTheme)
@@ -19,7 +15,7 @@ export function load(app: MarkdownApplication) {
 
 class MyMarkdownTheme extends MarkdownTheme {
   getRenderContext(
-    page: MarkdownPageEvent<Reflection> | null,
+    page: MarkdownPageEvent<Reflection>,
   ): MyMarkdownThemeRenderContext {
     return new MyMarkdownThemeRenderContext(
       this,
@@ -43,43 +39,29 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
 
       inheritance: () => "",
 
-      accessorMember: () => "",
+      accessor: () => "",
 
-      memberHierarchy: () => "",
+      hierarchy: () => "",
 
-      signatureMemberReturns: () => "",
+      signatureReturns: () => "",
 
-      members: bind(members, this),
-
-      // declarationMember: bind(declarationMember, this),
-
-      constructorMember: (
-        reflection: DeclarationReflection,
-        headingLevel: number,
-      ): string => {
-        const md: string[] = []
-        for (const signature of reflection.signatures ?? []) {
-          md.push(this.partials.signatureMember(signature, headingLevel))
-        }
-        return md.join("\n\n")
+      members: (...args) => {
+        const output = partials.members(...args)
+        return output.replaceAll("\n\n***\n\n", "\n\n")
       },
 
-      signatureMember: bind(signatureMember, this),
+      memberWithGroups: bind(memberWithGroups, this),
+
+      constructor: (...args): string => {
+        const output = partials.constructor(...args)
+        return output.replaceAll(/#+\s.*\n/g, "\n")
+      },
+
+      signature: bind(signature, this),
 
       typeParametersList: () => "",
 
-      reflectionMember: (
-        reflection: DeclarationReflection,
-        headingLevel: number,
-      ) => {
-        const implementedTypes = reflection.implementedTypes
-        reflection.implementedTypes = undefined
-        const result = partials.reflectionMember(reflection, headingLevel)
-        reflection.implementedTypes = implementedTypes
-        return result
-      },
-
-      propertiesTable: (
+      declarationsTable: (
         props: DeclarationReflection[],
         isEventProps = false,
       ) => {
@@ -87,7 +69,7 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
         for (const p of props) {
           p.inheritedFrom = undefined
         }
-        const result = partials.propertiesTable(props, isEventProps)
+        const result = partials.declarationsTable(props, isEventProps)
         for (const [i, prop] of props.entries()) {
           prop.inheritedFrom = inheritedFromValues[i]
         }
@@ -103,7 +85,7 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
           case ReflectionKind.Function:
             return "function"
         }
-        return helpers.getKeyword(kind)
+        return helpers.getKeyword(kind) as string
       },
     }
   }
@@ -111,52 +93,4 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
 
 function bind<F, L extends unknown[], R>(fn: (f: F, ...a: L) => R, first: F) {
   return (...args: L) => fn(first, ...args)
-}
-
-export function signatureMember(
-  context: MarkdownThemeRenderContext,
-  signature: SignatureReflection,
-  headingLevel: number,
-  nested = false,
-  accessor?: string,
-): string {
-  const md: string[] = []
-
-  md.push(context.partials.reflectionFlags(signature))
-
-  if (!nested) {
-    md.push(
-      context.partials.signatureMemberIdentifier(signature, {
-        accessor,
-      }),
-    )
-  }
-
-  if (signature.comment) {
-    md.push(
-      context.partials.comment(signature.comment, headingLevel, true, false),
-    )
-  }
-
-  if (signature.type) {
-    md.push(context.partials.signatureMemberReturns(signature, headingLevel))
-  }
-
-  md.push(context.partials.inheritance(signature, headingLevel))
-
-  if (signature.comment) {
-    md.push(
-      context.partials.comment(signature.comment, headingLevel, false, true),
-    )
-  }
-
-  if (
-    !nested &&
-    signature.sources &&
-    !context.options.getValue("disableSources")
-  ) {
-    md.push(context.partials.sources(signature, headingLevel))
-  }
-
-  return md.join("\n\n")
 }

@@ -16,6 +16,7 @@ async function modifyReadmeFile(filePath: string) {
 }
 
 async function main() {
+  await $`turbo --filter aria-ui-typedoc-plugin build`
   await $`typedoc`
 
   await $`rsync -av ./temp/typedoc/@aria-ui/ ./packages/`
