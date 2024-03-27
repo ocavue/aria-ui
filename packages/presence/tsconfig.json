@@ -5,9 +5,4 @@
     "outDir": "temp",
   },
   "include": ["."],
-  "references": [
-    {
-      "path": "../core",
-    },
-  ],
 }

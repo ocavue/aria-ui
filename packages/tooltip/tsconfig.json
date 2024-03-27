@@ -5,15 +5,4 @@
     "outDir": "temp",
   },
   "include": ["."],
-  "references": [
-    {
-      "path": "../core",
-    },
-    {
-      "path": "../overlay",
-    },
-    {
-      "path": "../presence",
-    },
-  ],
 }

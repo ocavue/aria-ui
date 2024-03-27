@@ -3,12 +3,12 @@
   "extends": ["./config/typedoc-base.json"],
   "entryPointStrategy": "packages",
   "entryPoints": [
-    "./packages/core",
-    "./packages/overlay",
-    "./packages/presence",
-    "./packages/combobox",
-    "./packages/listbox",
-    "./packages/tooltip"
+    "packages/combobox",
+    "packages/core",
+    "packages/listbox",
+    "packages/overlay",
+    "packages/presence",
+    "packages/tooltip"
   ],
   "out": "temp/typedoc"
 }
