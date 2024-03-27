@@ -11,11 +11,11 @@
     "astro": "astro"
   },
   "devDependencies": {
-    "@aria-ui/combobox": "*",
-    "@aria-ui/core": "*",
-    "@aria-ui/listbox": "*",
-    "@aria-ui/overlay": "*",
-    "@aria-ui/tooltip": "*",
+    "@aria-ui/combobox": "workspace:*",
+    "@aria-ui/core": "workspace:*",
+    "@aria-ui/listbox": "workspace:*",
+    "@aria-ui/overlay": "workspace:*",
+    "@aria-ui/tooltip": "workspace:*",
     "@astrojs/check": "^0.5.10",
     "@astrojs/starlight": "^0.21.2",
     "astro": "^4.5.10",
