@@ -11,7 +11,9 @@
     "astro": "astro"
   },
   "devDependencies": {
+    "@aria-ui/combobox": "*",
     "@aria-ui/core": "*",
+    "@aria-ui/listbox": "*",
     "@aria-ui/overlay": "*",
     "@aria-ui/tooltip": "*",
     "@astrojs/check": "^0.5.6",

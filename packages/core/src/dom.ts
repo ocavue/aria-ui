@@ -2,7 +2,12 @@ import type { AriaAttributes } from "@dddstack/ariatype-aria-attributes"
 import type { AriaRole } from "@dddstack/ariatype-aria-roles"
 
 import type { ConnectableElement } from "./connectable-element"
-import { useEffect } from "./signals"
+import {
+  createComputed,
+  createSignal,
+  useEffect,
+  type ReadonlySignal,
+} from "./signals"
 
 /**
  * @group DOM
@@ -12,8 +17,8 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
   type: K,
   listener: (event: HTMLElementEventMap[K]) => void,
   options?: boolean | AddEventListenerOptions,
-) {
-  useEffect(element, () => {
+): VoidFunction {
+  return useEffect(element, () => {
     element.addEventListener(type, listener, options)
     return () => {
       element.removeEventListener(type, listener, options)
@@ -28,7 +33,7 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
   element: ConnectableElement,
   key: K,
   compute: () => CSSStyleDeclaration[K],
-) {
+): VoidFunction {
   return useEffect(element, () => {
     element.style[key] = compute()
   })
@@ -41,7 +46,7 @@ export function useAttribute(
   element: ConnectableElement,
   key: string,
   compute: () => string | number | undefined,
-) {
+): VoidFunction {
   return useEffect(element, () => {
     const value = compute()
     if (value == null) {
@@ -59,7 +64,7 @@ export function useAriaAttribute<K extends keyof AriaAttributes>(
   element: ConnectableElement,
   key: K,
   compute: () => AriaAttributes[K],
-) {
+): VoidFunction {
   return useAttribute(element, key, compute)
 }
 
@@ -69,6 +74,70 @@ export function useAriaAttribute<K extends keyof AriaAttributes>(
 export function useAriaRole(
   element: ConnectableElement,
   compute: () => AriaRole | undefined,
-) {
+): VoidFunction {
   return useAttribute(element, "role", compute)
+}
+
+/**
+ * @group DOM
+ */
+export function setAriaRole(element: ConnectableElement, role: AriaRole): void {
+  element.setAttribute("role", role)
+}
+
+function useMutationObserver(
+  element: ConnectableElement,
+  options: MutationObserverInit,
+) {
+  const mutationCounter = createSignal(1)
+
+  useEffect(element, () => {
+    const observer = new MutationObserver((mutationList) => {
+      if (mutationList.length > 0) {
+        mutationCounter.value += 1
+      }
+    })
+
+    observer.observe(element, options)
+
+    return () => {
+      observer.disconnect()
+    }
+  })
+
+  return mutationCounter
+}
+
+/**
+ * @group DOM
+ */
+export function useQuerySelector<E extends Element = Element>(
+  element: ConnectableElement,
+  selector: string,
+): ReadonlySignal<E | null> {
+  const mutationCounter = useMutationObserver(element, {
+    childList: true,
+  })
+
+  return createComputed(() => {
+    mutationCounter.value
+    return element.querySelector<E>(selector)
+  })
+}
+
+/**
+ * @group DOM
+ */
+export function useQuerySelectorAll<E extends Element = Element>(
+  element: ConnectableElement,
+  selector: string,
+): ReadonlySignal<NodeListOf<E>> {
+  const mutationCounter = useMutationObserver(element, {
+    childList: true,
+  })
+
+  return createComputed(() => {
+    mutationCounter.value
+    return element.querySelectorAll<E>(selector)
+  })
 }

@@ -1,0 +1,12 @@
+aui-listbox {
+  display: flex;
+  flex-direction: column;
+}
+
+aui-listbox-item {
+  display: block;
+}
+
+aui-listbox-item[aria-selected="true"] {
+  background-color: Highlight;
+}

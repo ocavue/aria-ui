@@ -27,10 +27,13 @@ export { BaseElement } from "./base-element"
 export type { ConnectableElement } from "./connectable-element"
 export { createContext, type Context } from "./context"
 export {
+  setAriaRole,
   useAriaAttribute,
   useAriaRole,
   useAttribute,
   useEventListener,
+  useQuerySelector,
+  useQuerySelectorAll,
   useStyle,
 } from "./dom"
 export { assignProps } from "./props"

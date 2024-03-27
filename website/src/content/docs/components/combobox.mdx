@@ -1,0 +1,31 @@
+---
+title: Combobox
+---
+
+import Preview from "../../../components/combobox-preview.astro";
+import PreviewTs from "../../../components/combobox-preview.ts?raw";
+import PreviewCss from "../../../components/combobox-preview.css?raw";
+import {
+  Code,
+  Tabs,
+  TabItem,
+  LinkCard,
+  CardGrid,
+} from "@astrojs/starlight/components";
+
+<CardGrid>
+  <LinkCard
+    title="API Reference"
+    href="https://github.com/ocavue/aria-ui/blob/master/packages/combobox/README.md"
+  />
+</CardGrid>
+
+<Tabs>
+  <TabItem label="Preview">
+    <Preview />
+  </TabItem>
+  <TabItem label="Code">
+    <Code code={PreviewTs} lang="ts" />
+    <Code code={PreviewCss} lang="css" />
+  </TabItem>
+</Tabs>
