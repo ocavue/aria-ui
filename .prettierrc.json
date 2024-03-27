@@ -1,11 +1,3 @@
 {
-  "proseWrap": "never",
-  "overrides": [
-    {
-      "files": ["tsconfig.json", "tsconfig.*.json", "settings.json"],
-      "options": {
-        "parser": "jsonc"
-      }
-    }
-  ]
+  "proseWrap": "never"
 }

@@ -1,4 +1,4 @@
-import { SignatureReflection } from "typedoc"
+import type { SignatureReflection } from "typedoc"
 import type { MarkdownThemeRenderContext } from "typedoc-plugin-markdown"
 
 /**

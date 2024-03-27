@@ -21,34 +21,34 @@
     "forceConsistentCasingInFileNames": true,
     "noUnusedLocals": true,
     "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true,
+    "noFallthroughCasesInSwitch": true
   },
   "include": ["./*.js", "./*.ts", "./scripts/"],
   "exclude": ["**/node_modules", "**/dist", "**/temp"],
   "references": [
     {
-      "path": "packages/combobox",
+      "path": "packages/combobox"
     },
     {
-      "path": "packages/core",
+      "path": "packages/core"
     },
     {
-      "path": "packages/listbox",
+      "path": "packages/listbox"
     },
     {
-      "path": "packages/overlay",
+      "path": "packages/overlay"
     },
     {
-      "path": "packages/presence",
+      "path": "packages/presence"
     },
     {
-      "path": "packages/tooltip",
+      "path": "packages/tooltip"
     },
     {
-      "path": "packages/typedoc-plugin",
+      "path": "packages/typedoc-plugin"
     },
     {
-      "path": "website",
-    },
-  ],
+      "path": "website"
+    }
+  ]
 }

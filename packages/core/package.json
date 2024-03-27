@@ -5,16 +5,14 @@
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup"
   },
   "dependencies": {
     "@dddstack/ariatype-aria-attributes": "^2.0.0",
     "@dddstack/ariatype-aria-roles": "^2.0.0",
-    "@preact/signals-core": "^1.5.1"
+    "@preact/signals-core": "^1.6.0"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
