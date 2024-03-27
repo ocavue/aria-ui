@@ -60,10 +60,10 @@ importers:
   packages/combobox:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.0
+        specifier: ^0.0.1
         version: link:../listbox
     devDependencies:
       tsup:
@@ -95,10 +95,10 @@ importers:
   packages/listbox:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../core
       '@aria-ui/presence':
-        specifier: ^0.0.1
+        specifier: ^0.0.2
         version: link:../presence
     devDependencies:
       tsup:
@@ -111,7 +111,7 @@ importers:
   packages/overlay:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../core
       '@floating-ui/dom':
         specifier: ^1.6.3
@@ -130,7 +130,7 @@ importers:
   packages/presence:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../core
     devDependencies:
       tsup:
@@ -143,13 +143,13 @@ importers:
   packages/tooltip:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.7
+        specifier: ^0.0.8
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.6
+        specifier: ^0.0.7
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.1
+        specifier: ^0.0.2
         version: link:../presence
       nanoid:
         specifier: ^5.0.6

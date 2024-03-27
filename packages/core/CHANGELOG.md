@@ -1,5 +1,12 @@
 # @aria-ui/core
 
+## 0.0.8
+
+### Patch Changes
+
+- b18a983: Add `useQuerySelector` and `useQuerySelectorAll`.
+- b18a983: Add `setAriaRole`.
+
 ## 0.0.7
 
 ### Patch Changes
