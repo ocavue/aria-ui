@@ -1,6 +1,10 @@
-import { DeclarationReflection, ReflectionKind, type Reflection } from "typedoc"
 import {
-  MarkdownPageEvent,
+  type DeclarationReflection,
+  ReflectionKind,
+  type Reflection,
+} from "typedoc"
+import {
+  type MarkdownPageEvent,
   MarkdownTheme,
   MarkdownThemeRenderContext,
   type MarkdownApplication,

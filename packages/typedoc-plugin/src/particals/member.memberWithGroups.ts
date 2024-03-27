@@ -1,4 +1,4 @@
-import { DeclarationReflection } from "typedoc"
+import type { DeclarationReflection } from "typedoc"
 import type { MarkdownThemeRenderContext } from "typedoc-plugin-markdown"
 
 import { heading } from "../heading"

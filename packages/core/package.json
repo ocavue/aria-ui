@@ -5,9 +5,7 @@
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup"
   },
