@@ -212,7 +212,7 @@ Extracts the value type from a signal type.
 ### batch()
 
 ```ts
-function batch<T>(callback: () => T): T;
+function batch<T>(fn: () => T): T;
 ```
 
 Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
@@ -222,7 +222,7 @@ This is a re-export of `batch` from `@preact/signals-core`.
 ### createComputed()
 
 ```ts
-function createComputed<T>(compute: () => T): ReadonlySignal<T>;
+function createComputed<T>(fn: () => T): ReadonlySignal<T>;
 ```
 
 Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
@@ -242,7 +242,7 @@ This is an alias for `signal` from `@preact/signals-core`.
 ### untracked()
 
 ```ts
-function untracked<T>(callback: () => T): T;
+function untracked<T>(fn: () => T): T;
 ```
 
 Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
