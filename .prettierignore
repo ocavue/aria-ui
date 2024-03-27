@@ -1,3 +1,4 @@
 *.ts
 *.js
 pnpm-lock.yaml
+*.json

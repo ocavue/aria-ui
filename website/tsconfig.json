@@ -1,6 +1,8 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
+    "allowJs": false,
+    "noUncheckedIndexedAccess": true,
     "composite": true,
     "outDir": "temp"
   },
