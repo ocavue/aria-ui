@@ -6,6 +6,8 @@
     "./packages/core",
     "./packages/overlay",
     "./packages/presence",
+    "./packages/combobox",
+    "./packages/listbox",
     "./packages/tooltip"
   ],
   "out": "temp/typedoc"

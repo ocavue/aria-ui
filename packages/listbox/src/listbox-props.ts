@@ -1,3 +1,6 @@
+/**
+ * @group Listbox
+ */
 export interface ListboxProps {
   /**
    * Listbox selection mode
@@ -28,6 +31,9 @@ function defaultFilter({ value, query }: { value: string; query: string }) {
   return value.toLowerCase().includes(query.toLowerCase())
 }
 
+/**
+ * @hidden
+ */
 export const defaultListboxProps = Object.freeze({
   selectionMode: "single",
   query: "",

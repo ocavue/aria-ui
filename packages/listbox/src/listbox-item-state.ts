@@ -20,6 +20,9 @@ import {
   type ListboxItemProps,
 } from "./listbox-item-props"
 
+/**
+ * @group ListboxItem
+ */
 export function useListboxItem(
   element: ConnectableElement,
   props?: Partial<ListboxItemProps>,

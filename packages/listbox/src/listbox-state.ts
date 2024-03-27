@@ -19,6 +19,9 @@ import {
 } from "./listbox-contexts"
 import { type ListboxProps, defaultListboxProps } from "./listbox-props"
 
+/**
+ * @group Listbox
+ */
 export function useListbox(
   element: ConnectableElement,
   props?: Partial<ListboxProps>,

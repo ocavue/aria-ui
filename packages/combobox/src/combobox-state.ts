@@ -36,6 +36,9 @@ function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
   return inputValue
 }
 
+/**
+ * @group Combobox
+ */
 export function useCombobox(element: ConnectableElement) {
   setAriaRole(element, "combobox")
 
