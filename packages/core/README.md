@@ -50,6 +50,12 @@ Creates a new context.
 
 ## DOM
 
+### setAriaRole()
+
+```ts
+function setAriaRole(element: ConnectableElement, role: AriaRole): void;
+```
+
 ### useAriaAttribute()
 
 ```ts
@@ -57,7 +63,7 @@ function useAriaAttribute<K>(
   element: ConnectableElement,
   key: K,
   compute: () => AriaAttributes[K],
-): () => void;
+): VoidFunction;
 ```
 
 ### useAriaRole()
@@ -66,7 +72,7 @@ function useAriaAttribute<K>(
 function useAriaRole(
   element: ConnectableElement,
   compute: () => undefined | AriaRole,
-): () => void;
+): VoidFunction;
 ```
 
 ### useAttribute()
@@ -76,7 +82,7 @@ function useAttribute(
   element: ConnectableElement,
   key: string,
   compute: () => undefined | string | number,
-): () => void;
+): VoidFunction;
 ```
 
 ### useEventListener()
@@ -87,7 +93,25 @@ function useEventListener<K>(
   type: K,
   listener: (event: HTMLElementEventMap[K]) => void,
   options?: boolean | AddEventListenerOptions,
-): void;
+): VoidFunction;
+```
+
+### useQuerySelector()
+
+```ts
+function useQuerySelector<E>(
+  element: ConnectableElement,
+  selector: string,
+): ReadonlySignal<E | null>;
+```
+
+### useQuerySelectorAll()
+
+```ts
+function useQuerySelectorAll<E>(
+  element: ConnectableElement,
+  selector: string,
+): ReadonlySignal<NodeListOf<E>>;
 ```
 
 ### useStyle()
@@ -97,7 +121,7 @@ function useStyle<K>(
   element: ConnectableElement,
   key: K,
   compute: () => CSSStyleDeclaration[K],
-): () => void;
+): VoidFunction;
 ```
 
 ## Elements

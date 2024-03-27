@@ -54,6 +54,22 @@ importers:
         specifier: ^3.2.1
         version: 3.2.1
 
+  packages/combobox:
+    dependencies:
+      '@aria-ui/core':
+        specifier: ^0.0.7
+        version: link:../core
+      '@aria-ui/listbox':
+        specifier: ^0.0.0
+        version: link:../listbox
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
   packages/core:
     dependencies:
       '@dddstack/ariatype-aria-attributes':
@@ -65,6 +81,22 @@ importers:
       '@preact/signals-core':
         specifier: ^1.5.1
         version: 1.5.1
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.3.3)
+      typescript:
+        specifier: ^5.3.3
+        version: 5.3.3
+
+  packages/listbox:
+    dependencies:
+      '@aria-ui/core':
+        specifier: ^0.0.7
+        version: link:../core
+      '@aria-ui/presence':
+        specifier: ^0.0.1
+        version: link:../presence
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -145,9 +177,15 @@ importers:
 
   website:
     devDependencies:
+      '@aria-ui/combobox':
+        specifier: '*'
+        version: link:../packages/combobox
       '@aria-ui/core':
         specifier: '*'
         version: link:../packages/core
+      '@aria-ui/listbox':
+        specifier: '*'
+        version: link:../packages/listbox
       '@aria-ui/overlay':
         specifier: '*'
         version: link:../packages/overlay

@@ -7,7 +7,13 @@
   "include": ["."],
   "references": [
     {
+      "path": "../packages/combobox",
+    },
+    {
       "path": "../packages/core",
+    },
+    {
+      "path": "../packages/listbox",
     },
     {
       "path": "../packages/overlay",
