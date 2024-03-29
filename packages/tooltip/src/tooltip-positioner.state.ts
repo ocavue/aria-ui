@@ -36,7 +36,7 @@ export function useTooltipPositioner(
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
   useAttribute(element, "id", () => id.value || undefined)
   usePresence(element, open)
-  useAttribute(element, "data.state", () => (open.value ? "open" : "closed"))
+  useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
 
   return state
 }

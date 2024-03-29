@@ -110,7 +110,7 @@ export class ${pascal}Element extends BaseElement {
 }
 `.trim()
 
-  return code
+  return `${code}\n`
 }
 
 void main()
