@@ -58,7 +58,7 @@ export function useListbox(
     console.log("focus")
   })
 
-  const handleKeydown = (event: KeyboardEvent) => {
+  const keydownListener = (event: KeyboardEvent) => {
     console.log("keydown", selectedValue.value, event.key)
     if (event.defaultPrevented || event.isComposing) {
       return
@@ -80,12 +80,10 @@ export function useListbox(
   }
 
   useEffect(element, () => {
-    const root = state.root.value
-    if (root) {
-      root.addEventListener("keydown", handleKeydown)
-      return () => {
-        root.removeEventListener("keydown", handleKeydown)
-      }
+    const keydownListenerRef = state.keydownListenerRef.value
+    if (keydownListenerRef) {
+      keydownListenerRef(keydownListener)
+      return () => keydownListenerRef(null)
     }
   })
 

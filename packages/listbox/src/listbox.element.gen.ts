@@ -20,6 +20,6 @@ export class ListboxElement extends BaseElement implements ListboxProps {
 
   /** @hidden */ get selectionMode(): ListboxProps["selectionMode"] { return this._s.selectionMode.value }
   /** @hidden */ set selectionMode(v: ListboxProps["selectionMode"]) { this._s.selectionMode.value = v }
-  /** @hidden */ get root(): ListboxProps["root"] { return this._s.root.value }
-  /** @hidden */ set root(v: ListboxProps["root"]) { this._s.root.value = v }
+  /** @hidden */ get keydownListenerRef(): ListboxProps["keydownListenerRef"] { return this._s.keydownListenerRef.value }
+  /** @hidden */ set keydownListenerRef(v: ListboxProps["keydownListenerRef"]) { this._s.keydownListenerRef.value = v }
 }
