@@ -7,13 +7,13 @@
  * @module
  */
 
-export { OverlayAnchorElement } from "./overlay-anchor-element.gen"
-export { useOverlayAnchor } from "./overlay-anchor-state"
-export { OverlayPositionerElement } from "./overlay-positioner-element.gen"
+export { OverlayAnchorElement } from "./overlay-anchor.element.gen"
+export { useOverlayAnchor } from "./overlay-anchor.state"
+export { OverlayPositionerElement } from "./overlay-positioner.element.gen"
 export {
   defaultOverlayPositionerProps,
   type OverlayPositionerProps,
-} from "./overlay-positioner-props"
-export { useOverlayPositioner } from "./overlay-positioner-state"
-export { OverlayRootElement } from "./overlay-root-element.gen"
-export { useOverlayRoot } from "./overlay-root-state"
+} from "./overlay-positioner.props"
+export { useOverlayPositioner } from "./overlay-positioner.state"
+export { OverlayRootElement } from "./overlay-root.element.gen"
+export { useOverlayRoot } from "./overlay-root.state"

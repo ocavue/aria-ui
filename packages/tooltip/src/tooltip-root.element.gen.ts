@@ -1,7 +1,7 @@
 import { BaseElement, type SingalState } from "@aria-ui/core";
 
-import type { TooltipRootProps } from "./tooltip-root-props"
-import { useTooltipRoot } from "./tooltip-root-state"
+import type { TooltipRootProps } from "./tooltip-root.props"
+import { useTooltipRoot } from "./tooltip-root.state"
 
 /**
  * A custom TooltipRoot element.

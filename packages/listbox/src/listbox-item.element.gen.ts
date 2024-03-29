@@ -1,7 +1,7 @@
 import { BaseElement, type SingalState } from "@aria-ui/core";
 
-import type { ListboxItemProps } from "./listbox-item-props"
-import { useListboxItem } from "./listbox-item-state"
+import type { ListboxItemProps } from "./listbox-item.props"
+import { useListboxItem } from "./listbox-item.state"
 
 /**
  * A custom ListboxItem element.

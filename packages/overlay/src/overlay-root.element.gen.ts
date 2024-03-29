@@ -1,6 +1,6 @@
 import { BaseElement } from "@aria-ui/core"
 
-import { useOverlayRoot } from "./overlay-root-state"
+import { useOverlayRoot } from "./overlay-root.state"
 
 /**
  * A custom OverlayRoot element.

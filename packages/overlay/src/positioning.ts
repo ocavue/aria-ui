@@ -16,7 +16,7 @@ import type {
 import type { DetectOverflowOptions } from "@floating-ui/dom"
 import { getWindow } from "@zag-js/dom-query"
 
-import type { OverlayPositionerProps } from "./overlay-positioner-props"
+import type { OverlayPositionerProps } from "./overlay-positioner.props"
 
 export function updatePlacement(
   floating: FloatingElement | null,

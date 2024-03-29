@@ -12,7 +12,7 @@ async function main() {
   const filePaths = await listGitFiles()
 
   for (const filePath of filePaths) {
-    const suffix = "-element.gen.ts"
+    const suffix = ".element.gen.ts"
 
     if (!filePath.endsWith(suffix)) {
       continue
@@ -26,8 +26,8 @@ async function main() {
 
     const dirPath = path.dirname(filePath)
     const elementFilePath = path.join(dirPath, name + suffix)
-    const stateFilePath = path.join(dirPath, `${name}-state.ts`)
-    const propsFilePath = path.join(dirPath, `${name}-props.ts`)
+    const stateFilePath = path.join(dirPath, `${name}.state.ts`)
+    const propsFilePath = path.join(dirPath, `${name}.props.ts`)
 
     if (!filePaths.includes(stateFilePath)) {
       continue
@@ -78,8 +78,8 @@ async function updateElementCode(
     ? `
 import { BaseElement, type SingalState } from "@aria-ui/core";
 
-import type { ${pascal}Props } from "./${kebab}-props"
-import { use${pascal} } from "./${kebab}-state"
+import type { ${pascal}Props } from "./${kebab}.props"
+import { use${pascal} } from "./${kebab}.state"
 
 /**
 ${commnet}
@@ -97,7 +97,7 @@ ${propsCode}
     : `
 import { BaseElement } from "@aria-ui/core"
 
-import { use${pascal} } from "./${kebab}-state"
+import { use${pascal} } from "./${kebab}.state"
 
 /**
 ${commnet}
@@ -110,7 +110,7 @@ export class ${pascal}Element extends BaseElement {
 }
 `.trim()
 
-  return code
+  return `${code}\n`
 }
 
 void main()

@@ -16,8 +16,8 @@ import {
   selectedValueContext,
   keydownHandlerContext,
   queryContext,
-} from "./listbox-contexts"
-import { type ListboxProps, defaultListboxProps } from "./listbox-props"
+} from "./listbox.contexts"
+import { type ListboxProps, defaultListboxProps } from "./listbox.props"
 
 /**
  * @group Listbox
