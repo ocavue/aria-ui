@@ -1,6 +1,6 @@
 import { BaseElement } from "@aria-ui/core"
 
-import { useCombobox } from "./combobox-state"
+import { useCombobox } from "./combobox.state"
 
 /**
  * A custom Combobox element.

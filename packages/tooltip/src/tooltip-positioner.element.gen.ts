@@ -1,7 +1,7 @@
 import { BaseElement, type SingalState } from "@aria-ui/core";
 
-import type { TooltipPositionerProps } from "./tooltip-positioner-props"
-import { useTooltipPositioner } from "./tooltip-positioner-state"
+import type { TooltipPositionerProps } from "./tooltip-positioner.props"
+import { useTooltipPositioner } from "./tooltip-positioner.state"
 
 /**
  * A custom TooltipPositioner element.

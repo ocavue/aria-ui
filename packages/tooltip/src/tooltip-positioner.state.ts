@@ -8,11 +8,11 @@ import {
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
 
-import { idContext, openContext } from "./tooltip-contexts"
 import {
   defaultTooltipPositionerProps,
   type TooltipPositionerProps,
-} from "./tooltip-positioner-props"
+} from "./tooltip-positioner.props"
+import { idContext, openContext } from "./tooltip.contexts"
 
 /**
  * Properties: {@link TooltipPositionerProps}
@@ -36,7 +36,7 @@ export function useTooltipPositioner(
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
   useAttribute(element, "id", () => id.value || undefined)
   usePresence(element, open)
-  useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
+  useAttribute(element, "data.state", () => (open.value ? "open" : "closed"))
 
   return state
 }

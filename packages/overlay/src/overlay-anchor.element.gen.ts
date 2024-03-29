@@ -1,6 +1,6 @@
 import { BaseElement } from "@aria-ui/core"
 
-import { useOverlayAnchor } from "./overlay-anchor-state"
+import { useOverlayAnchor } from "./overlay-anchor.state"
 
 /**
  * A custom OverlayAnchor element.

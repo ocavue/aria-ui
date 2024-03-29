@@ -10,7 +10,7 @@ import { referenceContext } from "./contexts"
 import {
   defaultOverlayPositionerProps,
   type OverlayPositionerProps,
-} from "./overlay-positioner-props"
+} from "./overlay-positioner.props"
 import { updatePlacement } from "./positioning"
 
 /**

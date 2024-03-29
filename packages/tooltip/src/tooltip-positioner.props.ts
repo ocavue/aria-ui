@@ -26,5 +26,5 @@ export const defaultTooltipPositionerProps = Object.freeze({
  * @group TooltipPositioner
  */
 export interface TooltipPositionerDataAttributes {
-  "data-state": "open" | "closed"
+  "data.state": "open" | "closed"
 }

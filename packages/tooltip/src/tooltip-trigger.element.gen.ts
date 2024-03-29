@@ -1,6 +1,6 @@
 import { BaseElement } from "@aria-ui/core"
 
-import { useTooltipTrigger } from "./tooltip-trigger-state"
+import { useTooltipTrigger } from "./tooltip-trigger.state"
 
 /**
  * A custom TooltipTrigger element.

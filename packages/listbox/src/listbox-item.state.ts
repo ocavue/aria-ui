@@ -11,14 +11,14 @@ import {
 import { usePresence } from "@aria-ui/presence"
 
 import {
+  defaultListboxItemProps,
+  type ListboxItemProps,
+} from "./listbox-item.props"
+import {
   handlersContext,
   queryContext,
   selectedValueContext,
-} from "./listbox-contexts"
-import {
-  defaultListboxItemProps,
-  type ListboxItemProps,
-} from "./listbox-item-props"
+} from "./listbox.contexts"
 
 /**
  * @group ListboxItem

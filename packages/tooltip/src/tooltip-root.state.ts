@@ -12,15 +12,15 @@ import { useOverlayRoot } from "@aria-ui/overlay"
 import { nanoid } from "nanoid"
 
 import {
+  defaultTooltipRootProps,
+  type TooltipRootProps,
+} from "./tooltip-root.props"
+import {
   focusedContext,
   hoveringContext,
   idContext,
   openContext,
-} from "./tooltip-contexts"
-import {
-  defaultTooltipRootProps,
-  type TooltipRootProps,
-} from "./tooltip-root-props"
+} from "./tooltip.contexts"
 
 let activatedAt = 0
 let deactivatedAt = 0
