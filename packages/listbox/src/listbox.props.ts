@@ -10,9 +10,13 @@ export interface ListboxProps {
   selectionMode: "multiple" | "single"
 
   /**
-   * A element that listens to keydown events.
+   * A callback to register a keydown listener. This callback receives a keydown
+   * event listener when the Listbox element is mounted, and null when it is
+   * unmounted.
+   *
+   * @default null
    */
-  root: HTMLElement | null
+  keydownListenerRef: RefCallback<(event: KeyboardEvent) => void> | null
 }
 
 /**
@@ -20,5 +24,7 @@ export interface ListboxProps {
  */
 export const defaultListboxProps = Object.freeze({
   selectionMode: "single",
-  root: null,
+  keydownListenerRef: null,
 }) satisfies ListboxProps
+
+export type RefCallback<T> = (ref: T | null) => void
