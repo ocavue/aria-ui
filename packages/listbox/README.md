@@ -1,5 +1,13 @@
 # @aria-ui/listbox
 
+## Type Aliases
+
+### RefCallback()\<T\>
+
+```ts
+type RefCallback<T>: (ref: T | null) => void;
+```
+
 ## Listbox
 
 ### ListboxElement
@@ -16,7 +24,7 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `root` | `null` \| `HTMLElement` | A element that listens to keydown events. |
+| `keydownListenerRef` | `null` \| [`RefCallback`](README.md#refcallbackt)\<(`event`: `KeyboardEvent`) => `void`\> | A callback to register a keydown listener. This callback receives a keydown<br />event listener when the Listbox element is mounted, and null when it is<br />unmounted.<br /><br />**Default**<br />`null` |
 | `selectionMode` | `"multiple"` \| `"single"` | Listbox selection mode<br /><br />**Default**<br />`"single"` |
 
 ### useListbox()

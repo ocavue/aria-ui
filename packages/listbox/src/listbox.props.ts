@@ -27,7 +27,4 @@ export const defaultListboxProps = Object.freeze({
   keydownListenerRef: null,
 }) satisfies ListboxProps
 
-/**
- * @internal
- */
 export type RefCallback<T> = (ref: T | null) => void
