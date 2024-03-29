@@ -14,11 +14,7 @@ import {
   defaultListboxItemProps,
   type ListboxItemProps,
 } from "./listbox-item.props"
-import {
-  handlersContext,
-  queryContext,
-  selectedValueContext,
-} from "./listbox.contexts"
+import { handlersContext, selectedValueContext } from "./listbox.context"
 
 /**
  * @group ListboxItem
@@ -50,12 +46,11 @@ export function useListboxItem(
     return value && value === selectedValue?.value ? "true" : "false"
   })
 
-  const query = queryContext.consume(element)
-
   const shouldShow = createComputed((): boolean => {
-    const value = state.value.value
-    const q = query.value
-    return !q || value?.includes(q) || false
+    const query = state.query.value || ""
+    const value = state.value.value || ""
+    const filter = state.filter.value
+    return filter({ query, value })
   })
 
   useAriaAttribute(element, "aria-disabled", () => {

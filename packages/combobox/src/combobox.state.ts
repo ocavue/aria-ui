@@ -4,10 +4,10 @@ import {
   useQuerySelector,
   type ConnectableElement,
   type ReadonlySignal,
-  useEventListener,
   setAriaRole,
 } from "@aria-ui/core"
-import { keydownHandlerContext, queryContext } from "@aria-ui/listbox"
+
+import { queryContext, rootContext } from "./combobox.context"
 
 function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
   const input = useQuerySelector<HTMLInputElement>(element, "input")
@@ -45,12 +45,5 @@ export function useCombobox(element: ConnectableElement) {
   const inputValue = useInputValue(element)
   queryContext.provide(element, inputValue)
 
-  const keydownHandler = createSignal<((event: KeyboardEvent) => void) | null>(
-    null,
-  )
-  keydownHandlerContext.provide(element, keydownHandler)
-
-  useEventListener(element, "keydown", (event) => {
-    keydownHandler.value?.(event)
-  })
+  rootContext.provide(element, createSignal(element))
 }

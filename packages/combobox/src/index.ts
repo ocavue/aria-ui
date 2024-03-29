@@ -1,2 +1,7 @@
 export { ComboboxElement } from "./combobox.element.gen"
+export { ComboboxListElement } from "./combobox-list.element.gen"
 export { useCombobox } from "./combobox.state"
+export { useComboboxList } from "./combobox-list.state"
+export { ComboboxItemElement } from "./combobox-item.element.gen"
+export { useComboboxItem } from "./combobox-item.state"
+export type { ComboboxItemProps } from "./combobox-item.props"

@@ -16,8 +16,7 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `filter` | (`options`: `Object`) => `boolean` | The filter function to determine if an item should be shown in the listbox.<br /><br />By default, a simple case-insensitive substring match is used. |
-| `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
+| `root` | `null` \| `HTMLElement` | A element that listens to keydown events. |
 | `selectionMode` | `"multiple"` \| `"single"` | Listbox selection mode<br /><br />**Default**<br />`"single"` |
 
 ### useListbox()
@@ -43,9 +42,19 @@ new ListboxItemElement(props?: Partial<ListboxItemProps>): ListboxItemElement
 
 ### ListboxItemProps
 
-| Property | Type               |
-| :------- | :----------------- |
-| `value`  | `null` \| `string` |
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `filter` | [`ListboxItemFilter`](README.md#listboxitemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />By default, a simple case-insensitive substring match is used. |
+| `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
+| `value` | `null` \| `string` | The value of the item. Every item must have a unique value in the parent<br />list. |
+
+### ListboxItemFilter()
+
+```ts
+type ListboxItemFilter: (options: Object) => boolean;
+```
+
+The filter function to determine if an item should be shown in the listbox.
 
 ### useListboxItem()
 
