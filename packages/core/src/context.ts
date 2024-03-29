@@ -41,9 +41,15 @@ class ContextImpl<T> implements Context<T> {
 
   public provide(element: ConnectableElement, signal: Signal<T>): void {
     element.addEventListener("aria-ui/context-request", (event) => {
+      // Don't consume the event if it's dispatched from the same element.
+      if (element === event.target) {
+        return
+      }
+
       const { key, callback } = event as ContextRequestEvent<T>
       if (key === this.key) {
         callback(signal)
+        event.stopPropagation()
       }
     })
   }

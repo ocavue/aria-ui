@@ -10,7 +10,7 @@ import {
   hoveringContext,
   idContext,
   openContext,
-} from "./tooltip.contexts"
+} from "./tooltip.context"
 
 /**
  * @group TooltipTrigger

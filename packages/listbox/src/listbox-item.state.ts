@@ -1,20 +1,14 @@
 import {
-  assignProps,
   createComputed,
-  mapSignals,
   setAriaRole,
   useAriaAttribute,
-  useEffect,
   useEventListener,
   type ConnectableElement,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 
-import {
-  defaultListboxItemProps,
-  type ListboxItemProps,
-} from "./listbox-item.props"
-import { handlersContext, selectedValueContext } from "./listbox.context"
+import { useListboxItemProps } from "./listbox-item.context.gen"
+import type { ListboxItemProps } from "./listbox-item.props"
 
 /**
  * @group ListboxItem
@@ -23,27 +17,34 @@ export function useListboxItem(
   element: ConnectableElement,
   props?: Partial<ListboxItemProps>,
 ) {
-  const mergedProps = assignProps(defaultListboxItemProps, props)
-  const state = mapSignals(mergedProps)
-
-  const handlers = handlersContext.consume(element)
-  const selectedValue = selectedValueContext.consume(element)
+  const state = useListboxItemProps(element, props)
 
   setAriaRole(element, "option")
-
-  useEffect(element, () => handlers?.value?.onConnected?.())
 
   useEventListener(element, "pointerdown", () => {
     const value = state.value.value
     if (value == null) {
       return
     }
-    handlers?.value?.onHighlight?.(value)
+    state.onSelect.value?.(value)
+  })
+
+  useEventListener(element, "pointerenter", () => {
+    const value = state.value.value
+    if (value == null) {
+      return
+    }
+    state.onHighlight.value?.(value)
+  })
+
+  const selected = createComputed(() => {
+    return (
+      !!state.value.value && state.value.value === state.selectedValue.value
+    )
   })
 
   useAriaAttribute(element, "aria-selected", () => {
-    const value = state.value.value
-    return value && value === selectedValue?.value ? "true" : "false"
+    return selected.value ? "true" : "false"
   })
 
   const shouldShow = createComputed((): boolean => {
