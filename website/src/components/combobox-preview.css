@@ -1,12 +1,12 @@
-aui-listbox {
+aui-combobox-list {
   display: flex;
   flex-direction: column;
 }
 
-aui-listbox-item {
+aui-combobox-item {
   display: block;
 }
 
-aui-listbox-item[aria-selected="true"] {
+aui-combobox-item[aria-selected="true"] {
   background-color: Highlight;
 }

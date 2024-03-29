@@ -10,25 +10,9 @@ export interface ListboxProps {
   selectionMode: "multiple" | "single"
 
   /**
-   * The query string to filter the listbox items.
-   *
-   * @default ""
+   * A element that listens to keydown events.
    */
-  query: string
-
-  /**
-   * The filter function to determine if an item should be shown in the listbox.
-   *
-   * By default, a simple case-insensitive substring match is used.
-   */
-  filter: (options: { value: string; query: string }) => boolean
-}
-
-function defaultFilter({ value, query }: { value: string; query: string }) {
-  if (!query) {
-    return true
-  }
-  return value.toLowerCase().includes(query.toLowerCase())
+  root: HTMLElement | null
 }
 
 /**
@@ -36,6 +20,5 @@ function defaultFilter({ value, query }: { value: string; query: string }) {
  */
 export const defaultListboxProps = Object.freeze({
   selectionMode: "single",
-  query: "",
-  filter: defaultFilter,
+  root: null,
 }) satisfies ListboxProps

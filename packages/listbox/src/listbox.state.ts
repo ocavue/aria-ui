@@ -11,12 +11,7 @@ import {
 } from "@aria-ui/core"
 
 import { Collection } from "./collection"
-import {
-  handlersContext,
-  selectedValueContext,
-  keydownHandlerContext,
-  queryContext,
-} from "./listbox.contexts"
+import { handlersContext, selectedValueContext } from "./listbox.context"
 import { type ListboxProps, defaultListboxProps } from "./listbox.props"
 
 /**
@@ -28,13 +23,7 @@ export function useListbox(
 ) {
   const mergedProps = assignProps(defaultListboxProps, props)
 
-  let state = mapSignals(mergedProps)
-  if (!state.query.value) {
-    state = {
-      ...state,
-      query: queryContext.consume(element),
-    }
-  }
+  const state = mapSignals(mergedProps)
 
   setAriaRole(element, "listbox")
 
@@ -90,10 +79,14 @@ export function useListbox(
     event.preventDefault()
   }
 
-  const keydownHandler = keydownHandlerContext.consume(element)
-
   useEffect(element, () => {
-    keydownHandler.value = handleKeydown
+    const root = state.root.value
+    if (root) {
+      root.addEventListener("keydown", handleKeydown)
+      return () => {
+        root.removeEventListener("keydown", handleKeydown)
+      }
+    }
   })
 
   return state

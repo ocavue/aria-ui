@@ -1,7 +1,6 @@
-export { keydownHandlerContext, queryContext } from "./listbox.contexts"
 export { ListboxElement } from "./listbox.element.gen"
 export { ListboxItemElement } from "./listbox-item.element.gen"
-export type { ListboxItemProps } from "./listbox-item.props"
+export type { ListboxItemProps, ListboxItemFilter } from "./listbox-item.props"
 export { useListboxItem } from "./listbox-item.state"
 export type { ListboxProps } from "./listbox.props"
 export { useListbox } from "./listbox.state"
