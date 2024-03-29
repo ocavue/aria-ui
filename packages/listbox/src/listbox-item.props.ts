@@ -9,11 +9,9 @@ export interface ListboxItemProps {
   value: string | null
 
   /**
-   * The filter function to determine if an item should be shown in the listbox.
-   *
-   * By default, a simple case-insensitive substring match is used.
+   * The value of the selected item in the current list.
    */
-  filter: ListboxItemFilter
+  selectedValue: string | null
 
   /**
    * The query string to filter the listbox items.
@@ -21,6 +19,23 @@ export interface ListboxItemProps {
    * @default ""
    */
   query: string
+
+  /**
+   * The filter function to determine if an item should be shown in the listbox.
+   *
+   * @default {@link defaultListboxItemFilter}
+   */
+  filter: ListboxItemFilter
+
+  /**
+   * The function to call when the item is highlighted.
+   */
+  onHighlight: (value: string) => void
+
+  /**
+   * The function to call when the item is selected.
+   */
+  onSelect: (value: string) => void
 }
 
 /**
@@ -33,7 +48,15 @@ export type ListboxItemFilter = (options: {
   query: string
 }) => boolean
 
-const defaultFilter: ListboxItemFilter = ({ value, query }) => {
+/**
+ * A simple case-insensitive substring match filter.
+ *
+ * @group ListboxItem
+ */
+export const defaultListboxItemFilter: ListboxItemFilter = ({
+  value,
+  query,
+}) => {
   if (!query) {
     return true
   }
@@ -49,6 +72,13 @@ const defaultFilter: ListboxItemFilter = ({ value, query }) => {
  */
 export const defaultListboxItemProps = Object.freeze({
   value: null,
-  filter: defaultFilter,
+  selectedValue: null,
   query: "",
+  filter: defaultListboxItemFilter,
+  onHighlight: voidFunction,
+  onSelect: voidFunction,
 }) satisfies ListboxItemProps
+
+function voidFunction() {
+  // do nothing
+}

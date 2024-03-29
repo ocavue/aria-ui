@@ -61,7 +61,7 @@ new OverlayPositionerElement(props?: Partial<OverlayPositionerProps>): OverlayPo
 function useOverlayPositioner(
   element: ConnectableElement,
   props?: Partial<OverlayPositionerProps>,
-): SingalState<Readonly<OverlayPositionerProps>>;
+): SingalState<OverlayPositionerProps>;
 ```
 
 ## OverlayRoot

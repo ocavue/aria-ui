@@ -1,18 +1,14 @@
 import {
-  assignProps,
   useAriaAttribute,
   useAttribute,
   type ConnectableElement,
   type SingalState,
 } from "@aria-ui/core"
-import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
 
-import {
-  defaultTooltipPositionerProps,
-  type TooltipPositionerProps,
-} from "./tooltip-positioner.props"
-import { idContext, openContext } from "./tooltip.contexts"
+import { useTooltipPositionerProps } from "./tooltip-positioner.context.gen"
+import type { TooltipPositionerProps } from "./tooltip-positioner.props"
+import { idContext, openContext } from "./tooltip.context"
 
 /**
  * Properties: {@link TooltipPositionerProps}
@@ -25,10 +21,7 @@ export function useTooltipPositioner(
   element: ConnectableElement,
   props?: Partial<TooltipPositionerProps>,
 ): SingalState<TooltipPositionerProps> {
-  const state = useOverlayPositioner(
-    element,
-    assignProps(defaultTooltipPositionerProps, props),
-  )
+  const state = useTooltipPositionerProps(element, props)
 
   const open = openContext.consume(element)
   const id = idContext.consume(element)

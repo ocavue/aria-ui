@@ -1,18 +1,17 @@
 import {
-  assignProps,
+  createComputed,
   createSignal,
-  mapSignals,
+  setAriaRole,
   useEffect,
   useEventListener,
-  type ConnectableElement,
   useQuerySelectorAll,
-  createComputed,
-  setAriaRole,
+  type ConnectableElement,
 } from "@aria-ui/core"
 
 import { Collection } from "./collection"
-import { handlersContext, selectedValueContext } from "./listbox.context"
-import { type ListboxProps, defaultListboxProps } from "./listbox.props"
+import { useListboxItemPropsProvider } from "./listbox-item.context.gen"
+import { useListboxProps } from "./listbox.context.gen"
+import type { ListboxProps } from "./listbox.props"
 
 /**
  * @group Listbox
@@ -21,25 +20,17 @@ export function useListbox(
   element: ConnectableElement,
   props?: Partial<ListboxProps>,
 ) {
-  const mergedProps = assignProps(defaultListboxProps, props)
-
-  const state = mapSignals(mergedProps)
+  const state = useListboxProps(element, props)
 
   setAriaRole(element, "listbox")
 
   const selectedValue = createSignal<string | null>(null)
 
-  const handlers = createSignal({
-    onConnected: () => {
-      // listboxItemConnected.value = true
-    },
-    onHighlight: (value: string) => {
-      selectedValue.value = value
-    },
+  const onHighlight = createSignal((value: string) => {
+    selectedValue.value = value
   })
 
-  handlersContext.provide(element, handlers)
-  selectedValueContext.provide(element, selectedValue)
+  useListboxItemPropsProvider(element, { selectedValue, onHighlight })
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
@@ -59,7 +50,6 @@ export function useListbox(
   })
 
   const keydownListener = (event: KeyboardEvent) => {
-    console.log("keydown", selectedValue.value, event.key)
     if (event.defaultPrevented || event.isComposing) {
       return
     }

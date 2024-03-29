@@ -33,7 +33,7 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 function useListbox(
   element: ConnectableElement,
   props?: Partial<ListboxProps>,
-): SingalState<Readonly<ListboxProps>>;
+): SingalState<ListboxProps>;
 ```
 
 ## ListboxItem
@@ -52,8 +52,11 @@ new ListboxItemElement(props?: Partial<ListboxItemProps>): ListboxItemElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `filter` | [`ListboxItemFilter`](README.md#listboxitemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />By default, a simple case-insensitive substring match is used. |
+| `filter` | [`ListboxItemFilter`](README.md#listboxitemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`{@link defaultListboxItemFilter}` |
+| `onHighlight` | (`value`: `string`) => `void` | The function to call when the item is highlighted. |
+| `onSelect` | (`value`: `string`) => `void` | The function to call when the item is selected. |
 | `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
+| `selectedValue` | `null` \| `string` | The value of the selected item in the current list. |
 | `value` | `null` \| `string` | The value of the item. Every item must have a unique value in the parent<br />list. |
 
 ### ListboxItemFilter()
@@ -64,11 +67,19 @@ type ListboxItemFilter: (options: Object) => boolean;
 
 The filter function to determine if an item should be shown in the listbox.
 
+### defaultListboxItemFilter()
+
+```ts
+function defaultListboxItemFilter(options: Object): boolean;
+```
+
+A simple case-insensitive substring match filter.
+
 ### useListboxItem()
 
 ```ts
 function useListboxItem(
   element: ConnectableElement,
   props?: Partial<ListboxItemProps>,
-): SingalState<Readonly<ListboxItemProps>>;
+): SingalState<ListboxItemProps>;
 ```

@@ -1,16 +1,8 @@
-import {
-  assignProps,
-  mapSignals,
-  mapValues,
-  useEffect,
-  type ConnectableElement,
-} from "@aria-ui/core"
+import { mapValues, useEffect, type ConnectableElement } from "@aria-ui/core"
 
 import { referenceContext } from "./contexts"
-import {
-  defaultOverlayPositionerProps,
-  type OverlayPositionerProps,
-} from "./overlay-positioner.props"
+import { useOverlayPositionerProps } from "./overlay-positioner.context.gen"
+import type { OverlayPositionerProps } from "./overlay-positioner.props"
 import { updatePlacement } from "./positioning"
 
 /**
@@ -20,8 +12,7 @@ export function useOverlayPositioner(
   element: ConnectableElement,
   props?: Partial<OverlayPositionerProps>,
 ) {
-  const mergedProps = assignProps(defaultOverlayPositionerProps, props)
-  const state = mapSignals(mergedProps)
+  const state = useOverlayPositionerProps(element, props)
   const reference = referenceContext.consume(element)
 
   useEffect(element, () => {
