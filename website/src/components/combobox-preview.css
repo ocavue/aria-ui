@@ -1,12 +1,25 @@
-aui-listbox {
+aui-combobox-list {
   display: flex;
   flex-direction: column;
 }
 
-aui-listbox-item {
+aui-combobox-item {
   display: block;
-}
+  position: relative;
+  padding-left: 28px;
+  padding-right: 28px;
 
-aui-listbox-item[aria-selected="true"] {
-  background-color: Highlight;
+  &[data-focused] {
+    background-color: Highlight;
+  }
+
+  &[data-selected] {
+    font-weight: bold;
+
+    &::before {
+      content: "✓";
+      position: absolute;
+      left: 4px;
+    }
+  }
 }

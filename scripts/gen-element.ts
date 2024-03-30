@@ -26,7 +26,6 @@ async function main() {
 
     const dirPath = path.dirname(filePath)
     const elementFilePath = path.join(dirPath, name + suffix)
-    const contextFilePath = path.join(dirPath, `${name}.context.gen.ts`)
     const stateFilePath = path.join(dirPath, `${name}.state.ts`)
     const propsFilePath = path.join(dirPath, `${name}.props.ts`)
 
@@ -46,11 +45,6 @@ async function main() {
 
     const elementCode = updateElementCode(name, defaultProps)
     await Bun.write(elementFilePath, elementCode)
-
-    if (Object.keys(defaultProps).length > 0) {
-      const contextCode = updateContextCode(name)
-      await Bun.write(contextFilePath, contextCode)
-    }
   }
 }
 
@@ -112,51 +106,6 @@ export class ${pascal}Element extends BaseElement {
     super()
     use${pascal}(this)
   }
-}
-`.trim()
-
-  return `${code}\n`
-}
-
-function updateContextCode(name: string) {
-  const kebab = kebabCase(name)
-  const pascal = pascalCase(name)
-
-  const code = `
-import {
-  createContext,
-  useProps,
-  usePropsProvider,
-  type ConnectableElement,
-  type SingalState,
-} from "@aria-ui/core"
-
-import { default${pascal}Props, type ${pascal}Props } from "./${kebab}.props"
-
-const context = createContext<Partial<${pascal}Props>>("${pascal}", {})
-
-/**
- * @internal
- */
-export function use${pascal}Props(
-  element: ConnectableElement,
-  props?: Partial<${pascal}Props>,
-): SingalState<${pascal}Props> {
-  return useProps(element, context, default${pascal}Props, props)
-}
-
-/**
- * Set the props for the child ${pascal} elements.
- * 
- * @internal
- *
- * @group ${pascal}
- */
-export function use${pascal}PropsProvider(
-  element: ConnectableElement,
-  state: SingalState<Partial<${pascal}Props>>,
-): void {
-  usePropsProvider<${pascal}Props>(element, context, state)
 }
 `.trim()
 

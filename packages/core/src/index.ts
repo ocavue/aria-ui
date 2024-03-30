@@ -36,10 +36,7 @@ export {
   useQuerySelectorAll,
   useStyle,
 } from "./dom"
-export {
-  useProps,
-  usePropsProvider,
-} from "./props"
+export { assignProps } from "./props"
 export {
   batch,
   createComputed,

@@ -1,6 +1,8 @@
 import {
+  assignProps,
   createComputed,
   createSignal,
+  mapSignals,
   setAriaRole,
   useEffect,
   useEventListener,
@@ -9,9 +11,11 @@ import {
 } from "@aria-ui/core"
 
 import { Collection } from "./collection"
-import { useListboxItemPropsProvider } from "./listbox-item.context.gen"
-import { useListboxProps } from "./listbox.context.gen"
-import type { ListboxProps } from "./listbox.props"
+import {
+  focusedValueContext,
+  selectedValueContext,
+} from "./listbox-item.context"
+import { defaultListboxProps, type ListboxProps } from "./listbox.props"
 
 /**
  * @group Listbox
@@ -20,17 +24,15 @@ export function useListbox(
   element: ConnectableElement,
   props?: Partial<ListboxProps>,
 ) {
-  const state = useListboxProps(element, props)
+  const state = mapSignals(assignProps(defaultListboxProps, props))
 
   setAriaRole(element, "listbox")
 
-  const selectedValue = createSignal<string | null>(null)
+  const selectedValue = createSignal("")
+  const focusedValue = createSignal("")
 
-  const onHighlight = createSignal((value: string) => {
-    selectedValue.value = value
-  })
-
-  useListboxItemPropsProvider(element, { selectedValue, onHighlight })
+  selectedValueContext.provide(element, selectedValue)
+  focusedValueContext.provide(element, focusedValue)
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
@@ -54,16 +56,26 @@ export function useListbox(
       return
     }
 
-    if (event.key === "ArrowDown") {
-      selectedValue.value = collection.value.next(selectedValue.value)
-    } else if (event.key === "ArrowUp") {
-      selectedValue.value = collection.value.prev(selectedValue.value)
-    } else if (event.key === "Home") {
-      selectedValue.value = collection.value.first()
-    } else if (event.key === "End") {
-      selectedValue.value = collection.value.last()
-    } else {
-      return
+    switch (event.key) {
+      case "ArrowDown":
+        focusedValue.value = collection.value.next(focusedValue.value) || ""
+        break
+      case "ArrowUp":
+        focusedValue.value = collection.value.prev(focusedValue.value) || ""
+        break
+      case "Home":
+        focusedValue.value = collection.value.first() || ""
+        break
+      case "End":
+        focusedValue.value = collection.value.last() || ""
+        break
+      case "Enter":
+        if (focusedValue.value) {
+          selectedValue.value = focusedValue.value
+        }
+        break
+      default:
+        return
     }
 
     event.preventDefault()

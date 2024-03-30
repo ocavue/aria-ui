@@ -5,13 +5,10 @@ export interface ListboxItemProps {
   /**
    * The value of the item. Every item must have a unique value in the parent
    * list.
+   *
+   * @default ""
    */
-  value: string | null
-
-  /**
-   * The value of the selected item in the current list.
-   */
-  selectedValue: string | null
+  value: string
 
   /**
    * The query string to filter the listbox items.
@@ -26,16 +23,6 @@ export interface ListboxItemProps {
    * @default {@link defaultListboxItemFilter}
    */
   filter: ListboxItemFilter
-
-  /**
-   * The function to call when the item is highlighted.
-   */
-  onHighlight: (value: string) => void
-
-  /**
-   * The function to call when the item is selected.
-   */
-  onSelect: (value: string) => void
 }
 
 /**
@@ -71,14 +58,7 @@ export const defaultListboxItemFilter: ListboxItemFilter = ({
  * @hidden
  */
 export const defaultListboxItemProps = Object.freeze({
-  value: null,
-  selectedValue: null,
+  value: "",
   query: "",
   filter: defaultListboxItemFilter,
-  onHighlight: voidFunction,
-  onSelect: voidFunction,
 }) satisfies ListboxItemProps
-
-function voidFunction() {
-  // do nothing
-}

@@ -1,16 +1,14 @@
 import {
   createSignal,
+  setAriaRole,
   useEffect,
   useQuerySelector,
   type ConnectableElement,
   type ReadonlySignal,
-  setAriaRole,
 } from "@aria-ui/core"
-import {
-  useListboxItemPropsProvider,
-  useListboxPropsProvider,
-  type ListboxProps,
-} from "@aria-ui/listbox"
+
+import { inputValueContext } from "./combobox-item.context"
+import { keydownListenerContext } from "./combobox-list.context"
 
 function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
   const input = useQuerySelector<HTMLInputElement>(element, "input")
@@ -53,13 +51,7 @@ export function useKeyboardListener(element: ConnectableElement) {
     }
   })
 
-  const keydownListenerRef = createSignal<ListboxProps["keydownListenerRef"]>(
-    (value) => {
-      keydownListener.value = value
-    },
-  )
-
-  return keydownListenerRef
+  return keydownListener
 }
 
 /**
@@ -68,9 +60,9 @@ export function useKeyboardListener(element: ConnectableElement) {
 export function useCombobox(element: ConnectableElement) {
   setAriaRole(element, "combobox")
 
-  const query = useInputValue(element)
-  const keydownListenerRef = useKeyboardListener(element)
+  const inputValue = useInputValue(element)
+  inputValueContext.provide(element, inputValue)
 
-  useListboxItemPropsProvider(element, { query })
-  useListboxPropsProvider(element, { keydownListenerRef })
+  const keydownListener = useKeyboardListener(element)
+  keydownListenerContext.provide(element, keydownListener)
 }
