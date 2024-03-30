@@ -1,21 +1,5 @@
 # @aria-ui/combobox
 
-## Combobox
-
-### ComboboxElement
-
-A custom Combobox element.
-
-```ts
-new ComboboxElement(): ComboboxElement
-```
-
-### useCombobox()
-
-```ts
-function useCombobox(element: ConnectableElement): void;
-```
-
 ## ComboboxItem
 
 ### ComboboxItemElement
@@ -57,4 +41,20 @@ new ComboboxListElement(): ComboboxListElement
 
 ```ts
 function useComboboxList(element: ConnectableElement): void;
+```
+
+## ComboboxRoot
+
+### ComboboxRootElement
+
+A custom ComboboxRoot element.
+
+```ts
+new ComboboxRootElement(): ComboboxRootElement
+```
+
+### useComboboxRoot()
+
+```ts
+function useComboboxRoot(element: ConnectableElement): void;
 ```
