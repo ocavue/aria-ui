@@ -1,38 +1,18 @@
-# @aria-ui/overlay
+# @aria-ui/popover
 
-A collection of low-level utilities for creating custom elements that display floating content.
+## PopoverPositioner
 
-You probably won't need to use this module directly.
+### PopoverPositionerElement
 
-## OverlayAnchor
+A custom PopoverPositioner element.
 
-### OverlayAnchorElement
-
-A custom OverlayAnchor element.
+Properties: [PopoverPositionerProps](README.md#popoverpositionerprops)
 
 ```ts
-new OverlayAnchorElement(): OverlayAnchorElement
+new PopoverPositionerElement(props?: Partial<PopoverPositionerProps>): PopoverPositionerElement
 ```
 
-### useOverlayAnchor()
-
-```ts
-function useOverlayAnchor(element: ConnectableElement): void;
-```
-
-## OverlayPositioner
-
-### OverlayPositionerElement
-
-A custom OverlayPositioner element.
-
-Properties: [OverlayPositionerProps](README.md#overlaypositionerprops)
-
-```ts
-new OverlayPositionerElement(props?: Partial<OverlayPositionerProps>): OverlayPositionerElement
-```
-
-### OverlayPositionerProps
+### PopoverPositionerProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -46,6 +26,7 @@ new OverlayPositionerElement(props?: Partial<OverlayPositionerProps>): OverlayPo
 | `hoist` | `boolean` | Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API)<br />to place the floating element on top of other page content. When enabled,<br />the floating element won't be clipped by an ancestor. This provides a<br />similar result to React's `<Portals>` or Vue's `<Teleport>`.<br /><br />**Default**<br />`false` |
 | `inline` | `boolean` | Whether to improve positioning for inline reference elements that span over<br />multiple lines.<br /><br />**Default**<br />`false` |
 | `offset` | `null` \| `OffsetOptions` | The distance between the reference and floating element.<br /><br />**Default**<br />`null` |
+| `open` | `boolean` | Whether the popover is open.<br /><br />**Default**<br />`"false"` |
 | `overflowPadding` | `number` | **See**<br />https://floating-ui.com/docs/detectoverflow<br /><br />**Default**<br />`0` |
 | `overlap` | `boolean` | Whether the floating element can overlap the reference element to keep it<br />in view.<br /><br />**Default**<br />`false` |
 | `placement` | `Placement` | The initial placement of the floating element<br /><br />**Default**<br />`"top"` |
@@ -55,27 +36,13 @@ new OverlayPositionerElement(props?: Partial<OverlayPositionerProps>): OverlayPo
 | `shift` | `boolean` | Whether the floating element should shift to keep it in view.<br /><br />**Default**<br />`false` |
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 
-### useOverlayPositioner()
+### usePopoverPositioner()
 
 ```ts
-function useOverlayPositioner(
+function usePopoverPositioner(
   element: ConnectableElement,
-  props?: Partial<OverlayPositionerProps>,
-): SingalState<Readonly<OverlayPositionerProps>>;
+  props?: Partial<PopoverPositionerProps>,
+): SingalState<PopoverPositionerProps>;
 ```
 
-## OverlayRoot
-
-### OverlayRootElement
-
-A custom OverlayRoot element.
-
-```ts
-new OverlayRootElement(): OverlayRootElement
-```
-
-### useOverlayRoot()
-
-```ts
-function useOverlayRoot(element: ConnectableElement): void;
-```
+Properties: [PopoverPositionerProps](README.md#popoverpositionerprops)

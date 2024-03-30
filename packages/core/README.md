@@ -152,6 +152,17 @@ type SingalState<T>: { [K in keyof T]: Signal<T[K]> };
 
 A plain object containing signals.
 
+### assignProps()
+
+```ts
+function assignProps<T>(
+  defaultProps: Readonly<T>,
+  props?: Partial<T>,
+): Readonly<T>;
+```
+
+Merges two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
+
 ### mapSignals()
 
 ```ts

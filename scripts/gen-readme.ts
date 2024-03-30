@@ -25,6 +25,7 @@ async function main() {
     await modifyReadmeFile(filePath)
   }
   await $`pnpm run fix:prettier`
+  await $`pnpm run fix:biome`
 }
 
 void main()

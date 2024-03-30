@@ -16,8 +16,10 @@ export interface ListboxProps {
    *
    * @default null
    */
-  keydownListenerRef: RefCallback<(event: KeyboardEvent) => void> | null
+  keydownListenerRef: RefCallback<KeydownListener> | null
 }
+
+export type KeydownListener = (event: KeyboardEvent) => void
 
 /**
  * @hidden

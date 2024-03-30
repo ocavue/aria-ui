@@ -4,9 +4,9 @@ import {
   type ConnectableElement,
   type SingalState,
 } from "@aria-ui/core"
+import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
 
-import { useOverlayPositioner } from "@aria-ui/overlay"
 import {
   defaultTooltipPositionerProps,
   type TooltipPositionerProps,
