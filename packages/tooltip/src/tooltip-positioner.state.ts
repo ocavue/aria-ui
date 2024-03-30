@@ -6,8 +6,11 @@ import {
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 
-import { useTooltipPositionerProps } from "./tooltip-positioner.context.gen"
-import type { TooltipPositionerProps } from "./tooltip-positioner.props"
+import { useOverlayPositioner } from "@aria-ui/overlay"
+import {
+  defaultTooltipPositionerProps,
+  type TooltipPositionerProps,
+} from "./tooltip-positioner.props"
 import { idContext, openContext } from "./tooltip.context"
 
 /**
@@ -21,7 +24,10 @@ export function useTooltipPositioner(
   element: ConnectableElement,
   props?: Partial<TooltipPositionerProps>,
 ): SingalState<TooltipPositionerProps> {
-  const state = useTooltipPositionerProps(element, props)
+  const state = useOverlayPositioner(element, {
+    ...defaultTooltipPositionerProps,
+    ...props,
+  })
 
   const open = openContext.consume(element)
   const id = idContext.consume(element)
