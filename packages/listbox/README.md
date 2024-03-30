@@ -2,12 +2,6 @@
 
 ## Type Aliases
 
-### KeydownListener()
-
-```ts
-type KeydownListener: (event: KeyboardEvent) => void;
-```
-
 ### RefCallback()\<T\>
 
 ```ts
@@ -30,7 +24,7 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `keydownListenerRef` | `null` \| [`RefCallback`](README.md#refcallbackt)\<[`KeydownListener`](README.md#keydownlistener)\> | A callback to register a keydown listener. This callback receives a keydown<br />event listener when the Listbox element is mounted, and null when it is<br />unmounted.<br /><br />**Default**<br />`null` |
+| `onKeydownHandlerAdd` | `null` \| (`handler`: (`event`: `KeyboardEvent`) => `void`) => `VoidFunction` | By default, the Listbox element will listen for keydown events. However,<br />you can pass `onKeydownHandlerAdd` to override the default behavior.<br />`onKeydownHandlerAdd` receives a keydown handler when the Listbox element<br />is mounted, and returns a function that will be called when the Listbox<br />element is unmounted.<br /><br />**Default**<br />`null` |
 | `selectionMode` | `"multiple"` \| `"single"` | Listbox selection mode<br /><br />**Default**<br />`"single"` |
 
 ### useListbox()
