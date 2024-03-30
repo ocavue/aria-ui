@@ -1,4 +1,9 @@
-import { mapValues, useEffect, type ConnectableElement } from "@aria-ui/core"
+import {
+  mapValues,
+  useEffect,
+  type ConnectableElement,
+  type SingalState,
+} from "@aria-ui/core"
 
 import { referenceContext } from "./contexts"
 import { useOverlayPositionerProps } from "./overlay-positioner.context.gen"
@@ -7,12 +12,13 @@ import { updatePlacement } from "./positioning"
 
 /**
  * @group OverlayPositioner
+ *
+ * @internal
  */
-export function useOverlayPositioner(
+export function useOverlayPositionerState(
   element: ConnectableElement,
-  props?: Partial<OverlayPositionerProps>,
-) {
-  const state = useOverlayPositionerProps(element, props)
+  state: SingalState<OverlayPositionerProps>,
+): void {
   const reference = referenceContext.consume(element)
 
   useEffect(element, () => {
@@ -32,6 +38,16 @@ export function useOverlayPositioner(
       dispose = undefined
     }
   })
+}
 
+/**
+ * @group OverlayPositioner
+ */
+export function useOverlayPositioner(
+  element: ConnectableElement,
+  props?: Partial<OverlayPositionerProps>,
+) {
+  const state = useOverlayPositionerProps(element, props)
+  useOverlayPositionerState(element, state)
   return state
 }

@@ -127,6 +127,25 @@ importers:
         specifier: ^5.4.3
         version: 5.4.3
 
+  packages/popover:
+    dependencies:
+      '@aria-ui/core':
+        specifier: ^0.0.8
+        version: link:../core
+      '@aria-ui/overlay':
+        specifier: ^0.0.7
+        version: link:../overlay
+      '@aria-ui/presence':
+        specifier: ^0.0.2
+        version: link:../presence
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.4.3)
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+
   packages/presence:
     dependencies:
       '@aria-ui/core':

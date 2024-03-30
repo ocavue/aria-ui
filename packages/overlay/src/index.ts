@@ -14,6 +14,9 @@ export {
   defaultOverlayPositionerProps,
   type OverlayPositionerProps,
 } from "./overlay-positioner.props"
-export { useOverlayPositioner } from "./overlay-positioner.state"
+export {
+  useOverlayPositioner,
+  useOverlayPositionerState,
+} from "./overlay-positioner.state"
 export { OverlayRootElement } from "./overlay-root.element.gen"
 export { useOverlayRoot } from "./overlay-root.state"
