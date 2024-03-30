@@ -10,23 +10,25 @@ export interface ListboxProps {
   selectionMode: "multiple" | "single"
 
   /**
-   * A callback to register a keydown listener. This callback receives a keydown
-   * event listener when the Listbox element is mounted, and null when it is
-   * unmounted.
+   * By default, the Listbox element will listen for keydown events. However,
+   * you can pass `onKeydownHandlerAdd` to override the default behavior.
+   * `onKeydownHandlerAdd` receives a keydown handler when the Listbox element
+   * is mounted, and returns a function that will be called when the Listbox
+   * element is unmounted.
    *
    * @default null
    */
-  keydownListenerRef: RefCallback<KeydownListener> | null
+  onKeydownHandlerAdd:
+    | ((handler: (event: KeyboardEvent) => void) => VoidFunction)
+    | null
 }
-
-export type KeydownListener = (event: KeyboardEvent) => void
 
 /**
  * @hidden
  */
 export const defaultListboxProps = Object.freeze({
   selectionMode: "single",
-  keydownListenerRef: null,
+  onKeydownHandlerAdd: null,
 }) satisfies ListboxProps
 
 export type RefCallback<T> = (ref: T | null) => void

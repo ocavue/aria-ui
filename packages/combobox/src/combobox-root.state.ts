@@ -8,7 +8,7 @@ import {
 } from "@aria-ui/core"
 
 import { inputValueContext } from "./combobox-item.context"
-import { keydownListenerContext } from "./combobox-list.context"
+import { keydownHandlerContext } from "./combobox-list.context"
 
 function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
   const input = useQuerySelector<HTMLInputElement>(element, "input")
@@ -38,20 +38,20 @@ function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
 }
 
 export function useKeyboardListener(element: ConnectableElement) {
-  const keydownListener = createSignal<((event: KeyboardEvent) => void) | null>(
+  const keydownHandler = createSignal<((event: KeyboardEvent) => void) | null>(
     null,
   )
 
   useEffect(element, () => {
-    const keydownListenerValue = keydownListener.value
+    const keydownHandlerValue = keydownHandler.value
 
-    if (keydownListenerValue) {
-      element.addEventListener("keydown", keydownListenerValue)
-      return () => element.removeEventListener("keydown", keydownListenerValue)
+    if (keydownHandlerValue) {
+      element.addEventListener("keydown", keydownHandlerValue)
+      return () => element.removeEventListener("keydown", keydownHandlerValue)
     }
   })
 
-  return keydownListener
+  return keydownHandler
 }
 
 /**
@@ -63,6 +63,6 @@ export function useComboboxRoot(element: ConnectableElement) {
   const inputValue = useInputValue(element)
   inputValueContext.provide(element, inputValue)
 
-  const keydownListener = useKeyboardListener(element)
-  keydownListenerContext.provide(element, keydownListener)
+  const keydownHandler = useKeyboardListener(element)
+  keydownHandlerContext.provide(element, keydownHandler)
 }
