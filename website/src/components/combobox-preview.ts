@@ -1,13 +1,13 @@
 import "./combobox-preview.css"
 
 import {
-  ComboboxElement,
   ComboboxItemElement,
   ComboboxListElement,
+  ComboboxRootElement,
 } from "@aria-ui/combobox"
 import { html, render } from "lit-html"
 
-customElements.define("aui-combobox", ComboboxElement)
+customElements.define("aui-combobox-root", ComboboxRootElement)
 customElements.define("aui-combobox-list", ComboboxListElement)
 customElements.define("aui-combobox-item", ComboboxItemElement)
 
@@ -21,7 +21,7 @@ function query(selector: string): HTMLElement {
 
 render(
   html`
-    <aui-combobox>
+    <aui-combobox-root>
       <input type="text">
       <aui-combobox-list>
         <aui-combobox-item .value=${"option1"}>Option 1</aui-combobox-item>
@@ -45,7 +45,7 @@ render(
         <aui-combobox-item .value=${"option19"}>Option 19</aui-combobox-item>
         <aui-combobox-item .value=${"option20"}>Option 20</aui-combobox-item>
       </aui-combobox-list>
-    </aui-combobox>
+    </aui-combobox-root>
   `,
   query(".example-combobox-preview"),
 )
