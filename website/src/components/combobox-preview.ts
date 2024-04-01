@@ -1,5 +1,3 @@
-import "./combobox-preview.css"
-
 import {
   ComboboxItemElement,
   ComboboxListElement,

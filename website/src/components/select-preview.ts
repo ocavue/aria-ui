@@ -1,5 +1,3 @@
-import "./select-preview.css"
-
 import {
   SelectItemElement,
   SelectListElement,
