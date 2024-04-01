@@ -50,12 +50,6 @@ Creates a new context.
 
 ## DOM
 
-### setAriaRole()
-
-```ts
-function setAriaRole(element: ConnectableElement, role: AriaRole): void;
-```
-
 ### useAriaAttribute()
 
 ```ts
@@ -69,11 +63,12 @@ function useAriaAttribute<K>(
 ### useAriaRole()
 
 ```ts
-function useAriaRole(
-  element: ConnectableElement,
-  compute: () => undefined | AriaRole,
-): VoidFunction;
+function useAriaRole(element: ConnectableElement, role: AriaRole | () => AriaRole | undefined): VoidFunction
 ```
+
+Set the `role` attribute of the element when it's connected.
+
+You can pass a string or a compute function that returns a string.
 
 ### useAttribute()
 
