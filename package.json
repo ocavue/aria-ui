@@ -29,7 +29,7 @@
     "@happy-dom/global-registrator": "^14.3.9",
     "@manypkg/get-packages": "^2.2.1",
     "@ocavue/eslint-config": "^1.4.3",
-    "@types/bun": "^1.0.11",
+    "@types/bun": "^1.0.12",
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "^5.4.3",
     "comment-json": "^4.2.3",
