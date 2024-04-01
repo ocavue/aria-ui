@@ -1,5 +1,11 @@
 # @aria-ui/popover
 
+## 0.0.7
+
+### Patch Changes
+
+- a97d1cd: Rename `PopoverPositioner` to `PopoverContent`.
+
 ## 0.0.6
 
 ### Patch Changes
