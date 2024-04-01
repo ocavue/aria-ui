@@ -29,7 +29,7 @@ export function usePopoverRoot(
   }
 
   useEffect(element, () => {
-    state.onOpenChange.value?.(state.open.value)
+    state.onOpenChange.peek()?.(state.open.value)
   })
 
   const triggerElement = createSignal<HTMLElement | null>(null)
