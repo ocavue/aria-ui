@@ -45,6 +45,9 @@
       "path": "packages/presence"
     },
     {
+      "path": "packages/select"
+    },
+    {
       "path": "packages/tooltip"
     },
     {
