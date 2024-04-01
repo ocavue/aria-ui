@@ -3,11 +3,11 @@ import {
   createComputed,
   createSignal,
   mapSignals,
-  setAriaRole,
   useEffect,
   useEventListener,
   useQuerySelectorAll,
   type ConnectableElement,
+  useAriaRole,
 } from "@aria-ui/core"
 
 import { Collection } from "./collection"
@@ -26,7 +26,7 @@ export function useListbox(
 ) {
   const state = mapSignals(assignProps(defaultListboxProps, props))
 
-  setAriaRole(element, "listbox")
+  useAriaRole(element, "listbox")
 
   const focusedValue = createSignal("")
 

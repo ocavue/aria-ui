@@ -1,6 +1,6 @@
 import {
   createSignal,
-  setAriaRole,
+  useAriaRole,
   useEffect,
   useQuerySelector,
   type ConnectableElement,
@@ -58,7 +58,7 @@ export function useKeyboardListener(element: ConnectableElement) {
  * @group ComboboxRoot
  */
 export function useComboboxRoot(element: ConnectableElement) {
-  setAriaRole(element, "combobox")
+  useAriaRole(element, "combobox")
 
   const inputValue = useInputValue(element)
   inputValueContext.provide(element, inputValue)

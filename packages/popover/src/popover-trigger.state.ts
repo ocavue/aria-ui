@@ -1,8 +1,8 @@
 import {
-  setAriaRole,
   useEventListener,
   type ConnectableElement,
   useEffect,
+  useAriaRole,
 } from "@aria-ui/core"
 import { useOverlayAnchor } from "@aria-ui/overlay"
 
@@ -13,10 +13,12 @@ import { openContext, triggerElementContext } from "./popover-root.context"
  */
 export function usePopoverTrigger(element: ConnectableElement): void {
   useOverlayAnchor(element)
-  setAriaRole(element, "button")
+  useAriaRole(element, "button")
 
   // Make the trigger focusable
-  element.tabIndex = 0
+  useEffect(element, () => {
+    element.tabIndex = 0
+  })
 
   const open = openContext.consume(element)
   const triggerElement = triggerElementContext.consume(element)
