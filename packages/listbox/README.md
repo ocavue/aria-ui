@@ -1,13 +1,5 @@
 # @aria-ui/listbox
 
-## Type Aliases
-
-### RefCallback()\<T\>
-
-```ts
-type RefCallback<T>: (ref: T | null) => void;
-```
-
 ## Listbox
 
 ### ListboxElement
