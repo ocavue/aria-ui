@@ -3,6 +3,20 @@
  */
 export interface ListboxProps {
   /**
+   * The selected value.
+   *
+   * @default ""
+   */
+  value: string
+
+  /**
+   * Event handler called when the value changes.
+   *
+   * @default null
+   */
+  onValueChange: ((value: string) => void) | null
+
+  /**
    * Listbox selection mode
    *
    * @default "single"
@@ -27,6 +41,8 @@ export interface ListboxProps {
  * @hidden
  */
 export const defaultListboxProps = Object.freeze({
+  value: "",
+  onValueChange: null,
   selectionMode: "single",
   onKeydownHandlerAdd: null,
 }) satisfies ListboxProps
