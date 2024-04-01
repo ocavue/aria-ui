@@ -2,12 +2,12 @@ import {
   assignProps,
   createComputed,
   mapSignals,
-  setAriaRole,
   useAriaAttribute,
   useEventListener,
   type ConnectableElement,
   useAttribute,
   useEffect,
+  useAriaRole,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 
@@ -32,7 +32,7 @@ export function useListboxItem(
   const selectedValue = selectedValueContext.consume(element)
   const focusedValue = focusedValueContext.consume(element)
 
-  setAriaRole(element, "option")
+  useAriaRole(element, "option")
 
   useEventListener(element, "pointerenter", () => {
     const value = state.value.value

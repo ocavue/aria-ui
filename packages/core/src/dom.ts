@@ -69,20 +69,18 @@ export function useAriaAttribute<K extends keyof AriaAttributes>(
 }
 
 /**
+ * Set the `role` attribute of the element when it's connected.
+ *
+ * You can pass a string or a compute function that returns a string.
+ *
  * @group DOM
  */
 export function useAriaRole(
   element: ConnectableElement,
-  compute: () => AriaRole | undefined,
+  role: AriaRole | (() => AriaRole | undefined),
 ): VoidFunction {
+  const compute = typeof role === "string" ? () => role : role
   return useAttribute(element, "role", compute)
-}
-
-/**
- * @group DOM
- */
-export function setAriaRole(element: ConnectableElement, role: AriaRole): void {
-  element.setAttribute("role", role)
 }
 
 function useMutationObserver(

@@ -27,7 +27,6 @@ export { BaseElement } from "./base-element"
 export type { ConnectableElement } from "./connectable-element"
 export { createContext, type Context } from "./context"
 export {
-  setAriaRole,
   useAriaAttribute,
   useAriaRole,
   useAttribute,
