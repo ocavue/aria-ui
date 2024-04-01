@@ -1,5 +1,15 @@
 # @aria-ui/tooltip
 
+## 0.0.7
+
+### Patch Changes
+
+- Updated dependencies [7dadc33]
+- Updated dependencies [7dadc33]
+- Updated dependencies [7dadc33]
+  - @aria-ui/presence@0.0.4
+  - @aria-ui/overlay@0.0.9
+
 ## 0.0.6
 
 ### Patch Changes
