@@ -1,5 +1,13 @@
 # @aria-ui/select
 
+## 0.0.6
+
+### Patch Changes
+
+- a97d1cd: Rename `SelectPositioner` to `SelectContent`.
+- Updated dependencies [a97d1cd]
+  - @aria-ui/popover@0.0.7
+
 ## 0.0.5
 
 ### Patch Changes

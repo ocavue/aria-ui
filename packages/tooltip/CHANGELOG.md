@@ -1,5 +1,11 @@
 # @aria-ui/tooltip
 
+## 0.0.8
+
+### Patch Changes
+
+- a97d1cd: Rename `TooltipPositioner` to `TooltipContent`.
+
 ## 0.0.7
 
 ### Patch Changes
