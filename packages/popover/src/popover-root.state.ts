@@ -28,14 +28,24 @@ export function usePopoverRoot(
     state.open.value = props.defaultOpen
   }
 
+  const internalOpen = createSignal(state.open.peek())
+
   useEffect(element, () => {
-    state.onOpenChange.peek()?.(state.open.value)
+    const internalOpenValue = internalOpen.value
+    state.onOpenChange.peek()?.(internalOpenValue)
   })
 
   const triggerElement = createSignal<HTMLElement | null>(null)
 
-  openContext.provide(element, state.open)
+  openContext.provide(element, internalOpen)
   triggerElementContext.provide(element, triggerElement)
+
+  useEffect(element, () => {
+    state.open.value = internalOpen.value
+  })
+  useEffect(element, () => {
+    internalOpen.value = state.open.value
+  })
 
   return state
 }
