@@ -24,8 +24,8 @@ importers:
         specifier: ^1.4.3
         version: 1.4.3(eslint@8.57.0)(typescript@5.4.3)
       '@types/bun':
-        specifier: ^1.0.11
-        version: 1.0.11
+        specifier: ^1.0.12
+        version: 1.0.12
       aria-ui-typedoc-plugin:
         specifier: workspace:*
         version: link:packages/typedoc-plugin
@@ -117,8 +117,8 @@ importers:
         specifier: ^1.6.3
         version: 1.6.3
       '@zag-js/dom-query':
-        specifier: ^0.40.0
-        version: 0.40.0
+        specifier: ^0.41.0
+        version: 0.41.0
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -139,8 +139,8 @@ importers:
         specifier: ^0.0.2
         version: link:../presence
       '@zag-js/dismissable':
-        specifier: ^0.40.0
-        version: 0.40.0
+        specifier: ^0.41.0
+        version: 0.41.0
       '@zag-js/tabbable':
         specifier: ^0.41.0
         version: 0.41.0
@@ -249,11 +249,11 @@ importers:
         specifier: ^0.5.10
         version: 0.5.10(prettier@3.2.5)(typescript@5.4.3)
       '@astrojs/starlight':
-        specifier: ^0.21.2
-        version: 0.21.2(astro@4.5.10)
+        specifier: ^0.21.3
+        version: 0.21.3(astro@4.5.12)
       astro:
-        specifier: ^4.5.10
-        version: 4.5.10(typescript@5.4.3)
+        specifier: ^4.5.12
+        version: 4.5.12(typescript@5.4.3)
       lit-html:
         specifier: ^3.1.2
         version: 3.1.2
@@ -300,8 +300,8 @@ packages:
     resolution: {integrity: sha512-XpC8MAaWjD1ff6/IfkRq/5k1EFj6zhCNqXRd5J43SVJEBj/Bsmizkm8N0xOYscGcDFQkRgEw6/eKnI5x/1l6aA==}
     dev: true
 
-  /@astrojs/internal-helpers@0.3.0:
-    resolution: {integrity: sha512-tGmHvrhpzuz0JBHaJX8GywN9g4rldVNHtkoVDC3m/DdzBO70jGoVuc0uuNVglRYnsdwkbG0K02Iw3nOOR3/Y4g==}
+  /@astrojs/internal-helpers@0.4.0:
+    resolution: {integrity: sha512-6B13lz5n6BrbTqCTwhXjJXuR1sqiX/H6rTxzlXx+lN1NnV4jgnq/KJldCQaUWJzPL5SiWahQyinxAbxQtwgPHA==}
     dev: true
 
   /@astrojs/language-server@2.8.4(prettier@3.2.5)(typescript@5.4.3):
@@ -362,7 +362,7 @@ packages:
       - supports-color
     dev: true
 
-  /@astrojs/mdx@2.2.2(astro@4.5.10):
+  /@astrojs/mdx@2.2.2(astro@4.5.12):
     resolution: {integrity: sha512-5SIFtOctC813HFyqJwBf5TBvlT9sbiOOv+bdvzAoiBSab95dC7PZhss22EvUEx+897c81YoIZ4F9fg4ZkxBFIw==}
     engines: {node: '>=18.14.1'}
     peerDependencies:
@@ -371,7 +371,7 @@ packages:
       '@astrojs/markdown-remark': 4.3.2
       '@mdx-js/mdx': 3.0.1
       acorn: 8.11.3
-      astro: 4.5.10(typescript@5.4.3)
+      astro: 4.5.12(typescript@5.4.3)
       es-module-lexer: 1.4.1
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -402,18 +402,18 @@ packages:
       zod: 3.22.4
     dev: true
 
-  /@astrojs/starlight@0.21.2(astro@4.5.10):
-    resolution: {integrity: sha512-ziDfrbhBjw/+HwMITk6yz7SbkQKQJZY9GlaPHntSPq4kYs+b2ru3toIxj2l3T9LUFtUpNWHkj+C1wJTmfLZfaw==}
+  /@astrojs/starlight@0.21.3(astro@4.5.12):
+    resolution: {integrity: sha512-SvIKB8ECR+RhYdTg3bKsTL2e5Yac75eTatfOMGjkp3ced9Bx34xXMSURuKx/AHBWo1X/+WoWzKT3Y3d2y7kkVg==}
     peerDependencies:
       astro: ^4.2.7
     dependencies:
-      '@astrojs/mdx': 2.2.2(astro@4.5.10)
+      '@astrojs/mdx': 2.2.2(astro@4.5.12)
       '@astrojs/sitemap': 3.1.1
       '@pagefind/default-ui': 1.0.4
       '@types/hast': 3.0.4
       '@types/mdast': 4.0.3
-      astro: 4.5.10(typescript@5.4.3)
-      astro-expressive-code: 0.33.4(astro@4.5.10)
+      astro: 4.5.12(typescript@5.4.3)
+      astro-expressive-code: 0.33.4(astro@4.5.12)
       bcp-47: 2.1.0
       hast-util-from-html: 2.0.1
       hast-util-select: 6.0.2
@@ -1938,10 +1938,10 @@ packages:
       '@babel/types': 7.24.0
     dev: true
 
-  /@types/bun@1.0.11:
-    resolution: {integrity: sha512-kU4yU7vs/J/yIBoocc9j0sR/CxQ/WD4hSx3rl+WA2nLjcYuGR5aHJXVIBRcT5zvMmTt4CnSVkiONiWPob5trFg==}
+  /@types/bun@1.0.12:
+    resolution: {integrity: sha512-qPb5FcygbpSS1NDBjWyQCWeI9kKXwSYSR1Enu7yb+gMXgFwGMhlyOvgV/7FGrdvAjlSXWRY6IDepos7k8WzAtQ==}
     dependencies:
-      bun-types: 1.0.35
+      bun-types: 1.0.36
     dev: true
 
   /@types/debug@4.1.12:
@@ -2292,43 +2292,33 @@ packages:
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
     dev: true
 
-  /@zag-js/dismissable@0.40.0:
-    resolution: {integrity: sha512-Rw+LEonAcgZ1PRY7cPxotYksYQWDOOSmIVsRXLYlw2Sw40dRS2fKYi4L8QuA3Af7Q2vZtLwaG5En51OZJhXPRg==}
+  /@zag-js/dismissable@0.41.0:
+    resolution: {integrity: sha512-NrjFpPaM4kTGMdNTyQKdP9x0eLWx6XufH+JX9aOAF3HF+bEjG7SYiPJp5L066JLQCayJupkbpxxz5Yia9rfrvQ==}
     dependencies:
-      '@zag-js/dom-event': 0.40.0
-      '@zag-js/dom-query': 0.40.0
-      '@zag-js/interact-outside': 0.40.0
-      '@zag-js/utils': 0.40.0
+      '@zag-js/dom-event': 0.41.0
+      '@zag-js/dom-query': 0.41.0
+      '@zag-js/interact-outside': 0.41.0
+      '@zag-js/utils': 0.41.0
     dev: false
 
-  /@zag-js/dom-event@0.40.0:
-    resolution: {integrity: sha512-8Up7/i8wlsxkVLd1cHFcnBKUryAwMPnTm3uPGNji3/WHEcjVq5Ootb5iKq7uTZPwcpnc58UAoO8t/0rQEUkeNA==}
+  /@zag-js/dom-event@0.41.0:
+    resolution: {integrity: sha512-MlUoLLUreyi5qgejjsDbtGOFN9KrPvaD9UyJ0fLF4+Dz7KC7nn33nh50rNpH+OSyBCZzeap4YT07FKkKBCr9pA==}
     dependencies:
-      '@zag-js/text-selection': 0.40.0
-      '@zag-js/types': 0.40.0
-    dev: false
-
-  /@zag-js/dom-query@0.40.0:
-    resolution: {integrity: sha512-ZqS8AOMayY5gtUGqizJRDWIJkkhyxs1dckXTsDYi160Q490gSqWrMaMBLadLN0r73wpLHKeXk8gtB8Sej/zoRw==}
+      '@zag-js/text-selection': 0.41.0
+      '@zag-js/types': 0.41.0
     dev: false
 
   /@zag-js/dom-query@0.41.0:
     resolution: {integrity: sha512-+wcn1ziDydOfesNPBVSGcx2/pMbD4y9Oa7mna6RjCuGZ9XAR7ngt4arMLZ2Qa3I9fEYRxH3H/EAp+j5D9VvV7g==}
     dev: false
 
-  /@zag-js/interact-outside@0.40.0:
-    resolution: {integrity: sha512-rDP0rzfL/6UY6VvcKmdoaLmk/mzBFdyKRHnNNma1fhyNWn/abW7ftuxyxz7MyVfv3/jvWh3BWaUMOiky2csuTw==}
+  /@zag-js/interact-outside@0.41.0:
+    resolution: {integrity: sha512-OlAdKa1XnYCCuiPev7a89DhFqgLQUsK4CdZ1Iqae16Hb/+TW+ZoX24ar54mVxrPgK7kUbYEU2i6qV0w2DaWEBA==}
     dependencies:
-      '@zag-js/dom-event': 0.40.0
-      '@zag-js/dom-query': 0.40.0
-      '@zag-js/tabbable': 0.40.0
-      '@zag-js/utils': 0.40.0
-    dev: false
-
-  /@zag-js/tabbable@0.40.0:
-    resolution: {integrity: sha512-c3cyrGBNHNXi+LvGTOV6ThfyFUlbkrYcAyIT+lfYci8in5zAe01kvRyjvFY3xpq0DyyOi+7ASMqdbtE9bgE9TQ==}
-    dependencies:
-      '@zag-js/dom-query': 0.40.0
+      '@zag-js/dom-event': 0.41.0
+      '@zag-js/dom-query': 0.41.0
+      '@zag-js/tabbable': 0.41.0
+      '@zag-js/utils': 0.41.0
     dev: false
 
   /@zag-js/tabbable@0.41.0:
@@ -2337,20 +2327,20 @@ packages:
       '@zag-js/dom-query': 0.41.0
     dev: false
 
-  /@zag-js/text-selection@0.40.0:
-    resolution: {integrity: sha512-6l2qXso1Y2sLjNCN2SmSb1utxcYmRx0TsLuJQyD5qFfMtVxo0CNMR/0nScfgDi/ziN0/gUIg47F2rBwrW7kCAw==}
+  /@zag-js/text-selection@0.41.0:
+    resolution: {integrity: sha512-J29NCY7S8G8fjAwM7BIY2kISSB9ol2YKetPSEF8uLsuw+miLsEZD+VY9uo2sVEGyDs8CGgYT5spiYzXRldmRYA==}
     dependencies:
-      '@zag-js/dom-query': 0.40.0
+      '@zag-js/dom-query': 0.41.0
     dev: false
 
-  /@zag-js/types@0.40.0:
-    resolution: {integrity: sha512-+sa7fJneQ+bD7jem1DWqKalOi3BPWQ3q0QcpaTB6DiveoSUH7c/tqiL+CzlkVNX6+cJrHfqfQ4FKoU5/TC6haA==}
+  /@zag-js/types@0.41.0:
+    resolution: {integrity: sha512-q6rOZmTe/9BqxnJyu4z6OWqdrdiPB9p9LVWQtDa01KBZzr4ICbx3S4Yg5lfBVvVlTFUfhu//hPBDOgkuCZeriQ==}
     dependencies:
       csstype: 3.1.3
     dev: false
 
-  /@zag-js/utils@0.40.0:
-    resolution: {integrity: sha512-GgLAXSfk6I2eAizT7sNHtT0qCU+4H2hElNi6JlEuaRY249MUlPLmP+a5QgqsqwH813BcJLn7LLhH7iXQZFm3Kg==}
+  /@zag-js/utils@0.41.0:
+    resolution: {integrity: sha512-27if0UnlG2qn33jsiy9BIqRTKWrBxiaVYgoJRTkAmmNdVICTNY0Ddl1gZ39BmccJwIh7Ua2fHypJY2eyLrNtAQ==}
     dev: false
 
   /acorn-jsx@5.3.2(acorn@8.11.3):
@@ -2559,23 +2549,23 @@ packages:
     hasBin: true
     dev: true
 
-  /astro-expressive-code@0.33.4(astro@4.5.10):
+  /astro-expressive-code@0.33.4(astro@4.5.12):
     resolution: {integrity: sha512-PtXLjd89WBA1WsDYlt3V1LZs9Pa8FFoXilaGDSyfxtbYJ2OPHjWh2JJvCiXmfXmY3HkPJ2oW9Jjo6om5vUlVcg==}
     peerDependencies:
       astro: ^3.3.0 || ^4.0.0-beta
     dependencies:
-      astro: 4.5.10(typescript@5.4.3)
+      astro: 4.5.12(typescript@5.4.3)
       hast-util-to-html: 8.0.4
       remark-expressive-code: 0.33.4
     dev: true
 
-  /astro@4.5.10(typescript@5.4.3):
-    resolution: {integrity: sha512-xW/ZTSqSHEQyzWzXHJa9gEQXC+MUD3mhzEBJyrMp/JWT+geLgUK2m0Rrc/AnBl8EfdS/6uFadiJV1fWao4lc7w==}
+  /astro@4.5.12(typescript@5.4.3):
+    resolution: {integrity: sha512-xIJcFI2hbyV8+h5pWjL7SKD1jIP0K01fYVAH+gdAt0mJaXy+u8Mj+goD0cPlK6sEaykR+7zxQLYGKJ44U4qarg==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
       '@astrojs/compiler': 2.7.0
-      '@astrojs/internal-helpers': 0.3.0
+      '@astrojs/internal-helpers': 0.4.0
       '@astrojs/markdown-remark': 4.3.2
       '@astrojs/telemetry': 3.0.4
       '@babel/core': 7.24.3
@@ -2838,8 +2828,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /bun-types@1.0.35:
-    resolution: {integrity: sha512-JlFllUCVMZbDyGfbv9dBWXd2tRdZSzyP1EWDKcTTVRViYNYX8AEsfpMN/vu6Hk8CBhKrhbbBkKZcNjJev8QQHQ==}
+  /bun-types@1.0.36:
+    resolution: {integrity: sha512-gaIb1SyhB0JZfIEg73/kSFhqolUqJXC68peguhXGwqr27HuvI8nkD0LTIHp/1DY4cNadfXHYgYrZIWX7oEoXlg==}
     dependencies:
       '@types/node': 20.11.20
       '@types/ws': 8.5.10
