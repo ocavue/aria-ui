@@ -1,5 +1,11 @@
 # @aria-ui/popover
 
+## 0.0.6
+
+### Patch Changes
+
+- b3da9c2: Fix an issue where clicking the popover trigger won't call `onOpenChange` if `open` is controlled.
+
 ## 0.0.5
 
 ### Patch Changes

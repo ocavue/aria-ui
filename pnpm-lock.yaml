@@ -174,7 +174,7 @@ importers:
         specifier: ^0.0.4
         version: link:../listbox
       '@aria-ui/popover':
-        specifier: ^0.0.5
+        specifier: ^0.0.6
         version: link:../popover
     devDependencies:
       tsup:
