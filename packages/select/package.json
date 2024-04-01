@@ -1,18 +1,20 @@
 {
   "name": "@aria-ui/select",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "tsup"
   },
   "dependencies": {
     "@aria-ui/core": "^0.0.8",
-    "@aria-ui/listbox": "^0.0.1",
-    "@aria-ui/popover": "^0.0.0"
+    "@aria-ui/listbox": "^0.0.2",
+    "@aria-ui/popover": "^0.0.1"
   },
   "devDependencies": {
     "tsup": "^8.0.2",

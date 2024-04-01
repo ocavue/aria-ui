@@ -1,5 +1,12 @@
 # @aria-ui/listbox
 
+## 0.0.2
+
+### Patch Changes
+
+- 63c6ff0: Add `value` and `onValueChange` props to `Listbox`.
+- bc0eb70: Add focused state.
+
 ## 0.0.1
 
 ### Patch Changes

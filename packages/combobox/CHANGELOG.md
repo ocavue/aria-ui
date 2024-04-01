@@ -1,5 +1,15 @@
 # @aria-ui/combobox
 
+## 0.0.2
+
+### Patch Changes
+
+- bc0eb70: Add `ComboboxList` and `ComboboxItem`.
+- 360a7f1: Rename `Combobox` to `ComboboxRoot`.
+- Updated dependencies [63c6ff0]
+- Updated dependencies [bc0eb70]
+  - @aria-ui/listbox@0.0.2
+
 ## 0.0.1
 
 ### Patch Changes
