@@ -195,3 +195,11 @@ export const defaultOverlayPositionerProps = Object.freeze({
   elementContext: "floating",
   altBoundary: true,
 }) satisfies OverlayPositionerProps
+
+/**
+ * @group OverlayPositioner
+ */
+export interface OverlayPositionerDataAttributes {
+  "data-side": "top" | "right" | "bottom" | "left"
+  "data-align": "start" | "center" | "end"
+}

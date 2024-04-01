@@ -1,8 +1,11 @@
 import type {
+  Alignment,
   DetectOverflowOptions,
   FloatingElement,
   Middleware,
+  Placement,
   ReferenceElement,
+  Side,
 } from "@floating-ui/dom"
 import {
   autoUpdate,
@@ -16,7 +19,10 @@ import {
 } from "@floating-ui/dom"
 import { getWindow } from "@zag-js/dom-query"
 
-import type { OverlayPositionerProps } from "./overlay-positioner.props"
+import type {
+  OverlayPositionerDataAttributes,
+  OverlayPositionerProps,
+} from "./overlay-positioner.props"
 
 export function updatePlacement(
   floating: FloatingElement | null,
@@ -96,6 +102,15 @@ export function updatePlacement(
       floating.style.left = `${x}px`
       floating.style.top = `${y}px`
       floating.style.removeProperty("transform")
+    }
+
+    const [side, align] = getSideAndAlignFromPlacement(pos.placement)
+    const attributes = {
+      "data-side": side,
+      "data-align": align,
+    } satisfies OverlayPositionerDataAttributes
+    for (const [key, value] of Object.entries(attributes)) {
+      floating.setAttribute(key, value)
     }
   }
 
@@ -201,6 +216,11 @@ function roundByDPR(element: Element, value: number): number {
 function getDPR(element: Element): number {
   const win = getWindow(element)
   return win.devicePixelRatio || 1
+}
+
+function getSideAndAlignFromPlacement(placement: Placement) {
+  const [side, align = "center"] = placement.split("-")
+  return [side as Side, align as Alignment | "center"] as const
 }
 
 /**

@@ -17,6 +17,7 @@ import { getFirstTabbable } from "@zag-js/tabbable"
 
 import {
   defaultPopoverPositionerProps,
+  type PopoverPositionerDataAttributes,
   type PopoverPositionerProps,
 } from "./popover-positioner.props"
 import { openContext, triggerElementContext } from "./popover-root.context"
@@ -56,7 +57,13 @@ export function usePopoverPositioner(
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
   usePresence(element, open)
-  useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
+  useAttribute(
+    element,
+    "data-state",
+    (): PopoverPositionerDataAttributes["data-state"] => {
+      return open.value ? "open" : "closed"
+    },
+  )
 
   useAutoFocus(element, open)
 
