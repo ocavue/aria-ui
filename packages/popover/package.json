@@ -1,0 +1,28 @@
+{
+  "name": "@aria-ui/popover",
+  "type": "module",
+  "version": "0.0.0",
+  "private": false,
+  "sideEffects": false,
+  "main": "src/index.ts",
+  "files": ["dist"],
+  "scripts": {
+    "build": "tsup"
+  },
+  "dependencies": {
+    "@aria-ui/core": "^0.0.8",
+    "@aria-ui/overlay": "^0.0.7",
+    "@aria-ui/presence": "^0.0.2",
+    "@zag-js/dismissable": "^0.40.0"
+  },
+  "devDependencies": {
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "types": "dist/index.d.ts"
+  }
+}
