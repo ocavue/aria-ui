@@ -8,6 +8,20 @@ export interface PopoverRootProps {
    * @default false
    */
   defaultOpen: boolean
+
+  /**
+   * Whether the popover is open.
+   *
+   * @default false
+   */
+  open: boolean
+
+  /**
+   * Event handler called when the popover's open state changes.
+   *
+   * @default null
+   */
+  onOpenChange: ((open: boolean) => void) | null
 }
 
 /**
@@ -15,4 +29,6 @@ export interface PopoverRootProps {
  */
 export const defaultPopoverRootProps = Object.freeze({
   defaultOpen: false,
+  open: false,
+  onOpenChange: null,
 }) satisfies PopoverRootProps

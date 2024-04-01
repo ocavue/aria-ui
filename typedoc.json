@@ -9,6 +9,7 @@
     "packages/overlay",
     "packages/popover",
     "packages/presence",
+    "packages/select",
     "packages/tooltip"
   ],
   "out": "temp/typedoc"

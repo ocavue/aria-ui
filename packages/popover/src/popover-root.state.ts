@@ -4,6 +4,7 @@ import {
   mapSignals,
   type ConnectableElement,
   type SingalState,
+  useEffect,
 } from "@aria-ui/core"
 import { useOverlayRoot } from "@aria-ui/overlay"
 
@@ -23,10 +24,17 @@ export function usePopoverRoot(
   const state = mapSignals(assignProps(defaultPopoverRootProps, props))
   useOverlayRoot(element)
 
-  const open = createSignal(state.defaultOpen.peek())
+  if (typeof props?.defaultOpen === "boolean") {
+    state.open.value = props.defaultOpen
+  }
+
+  useEffect(element, () => {
+    state.onOpenChange.value?.(state.open.value)
+  })
+
   const triggerElement = createSignal<HTMLElement | null>(null)
 
-  openContext.provide(element, open)
+  openContext.provide(element, state.open)
   triggerElementContext.provide(element, triggerElement)
 
   return state

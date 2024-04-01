@@ -15,6 +15,9 @@ export function usePopoverTrigger(element: ConnectableElement): void {
   useOverlayAnchor(element)
   setAriaRole(element, "button")
 
+  // Make the trigger focusable
+  element.tabIndex = 0
+
   const open = openContext.consume(element)
   const triggerElement = triggerElementContext.consume(element)
 

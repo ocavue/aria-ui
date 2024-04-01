@@ -25,7 +25,9 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `onKeydownHandlerAdd` | `null` \| (`handler`: (`event`: `KeyboardEvent`) => `void`) => `VoidFunction` | By default, the Listbox element will listen for keydown events. However,<br />you can pass `onKeydownHandlerAdd` to override the default behavior.<br />`onKeydownHandlerAdd` receives a keydown handler when the Listbox element<br />is mounted, and returns a function that will be called when the Listbox<br />element is unmounted.<br /><br />**Default**<br />`null` |
+| `onValueChange` | `null` \| (`value`: `string`) => `void` | Event handler called when the value changes.<br /><br />**Default**<br />`null` |
 | `selectionMode` | `"multiple"` \| `"single"` | Listbox selection mode<br /><br />**Default**<br />`"single"` |
+| `value` | `string` | The selected value.<br /><br />**Default**<br />`""` |
 
 ### useListbox()
 

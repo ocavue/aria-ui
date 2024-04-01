@@ -28,11 +28,14 @@ export function useListbox(
 
   setAriaRole(element, "listbox")
 
-  const selectedValue = createSignal("")
   const focusedValue = createSignal("")
 
-  selectedValueContext.provide(element, selectedValue)
+  selectedValueContext.provide(element, state.value)
   focusedValueContext.provide(element, focusedValue)
+
+  useEffect(element, () => {
+    state.onValueChange.value?.(state.value.value)
+  })
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
@@ -71,7 +74,7 @@ export function useListbox(
         break
       case "Enter":
         if (focusedValue.value) {
-          selectedValue.value = focusedValue.value
+          state.value.value = focusedValue.value
         }
         break
       default:

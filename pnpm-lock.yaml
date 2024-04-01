@@ -141,6 +141,9 @@ importers:
       '@zag-js/dismissable':
         specifier: ^0.40.0
         version: 0.40.0
+      '@zag-js/tabbable':
+        specifier: ^0.41.0
+        version: 0.41.0
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -154,6 +157,25 @@ importers:
       '@aria-ui/core':
         specifier: ^0.0.8
         version: link:../core
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.4.3)
+      typescript:
+        specifier: ^5.4.3
+        version: 5.4.3
+
+  packages/select:
+    dependencies:
+      '@aria-ui/core':
+        specifier: ^0.0.8
+        version: link:../core
+      '@aria-ui/listbox':
+        specifier: ^0.0.1
+        version: link:../listbox
+      '@aria-ui/popover':
+        specifier: ^0.0.0
+        version: link:../popover
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -217,6 +239,9 @@ importers:
       '@aria-ui/popover':
         specifier: workspace:*
         version: link:../packages/popover
+      '@aria-ui/select':
+        specifier: workspace:*
+        version: link:../packages/select
       '@aria-ui/tooltip':
         specifier: workspace:*
         version: link:../packages/tooltip
@@ -2287,6 +2312,10 @@ packages:
     resolution: {integrity: sha512-ZqS8AOMayY5gtUGqizJRDWIJkkhyxs1dckXTsDYi160Q490gSqWrMaMBLadLN0r73wpLHKeXk8gtB8Sej/zoRw==}
     dev: false
 
+  /@zag-js/dom-query@0.41.0:
+    resolution: {integrity: sha512-+wcn1ziDydOfesNPBVSGcx2/pMbD4y9Oa7mna6RjCuGZ9XAR7ngt4arMLZ2Qa3I9fEYRxH3H/EAp+j5D9VvV7g==}
+    dev: false
+
   /@zag-js/interact-outside@0.40.0:
     resolution: {integrity: sha512-rDP0rzfL/6UY6VvcKmdoaLmk/mzBFdyKRHnNNma1fhyNWn/abW7ftuxyxz7MyVfv3/jvWh3BWaUMOiky2csuTw==}
     dependencies:
@@ -2300,6 +2329,12 @@ packages:
     resolution: {integrity: sha512-c3cyrGBNHNXi+LvGTOV6ThfyFUlbkrYcAyIT+lfYci8in5zAe01kvRyjvFY3xpq0DyyOi+7ASMqdbtE9bgE9TQ==}
     dependencies:
       '@zag-js/dom-query': 0.40.0
+    dev: false
+
+  /@zag-js/tabbable@0.41.0:
+    resolution: {integrity: sha512-jaNmhpUSvDqm3iFV23dweF1lqgUXXu8lcSyKRsS6KqNJlrJO/uZZFJkrF4MwY/dkFis3ShG4lLZr69pZV/aHuQ==}
+    dependencies:
+      '@zag-js/dom-query': 0.41.0
     dev: false
 
   /@zag-js/text-selection@0.40.0:
