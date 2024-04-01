@@ -46,5 +46,3 @@ export const defaultListboxProps = Object.freeze({
   selectionMode: "single",
   onKeydownHandlerAdd: null,
 }) satisfies ListboxProps
-
-export type RefCallback<T> = (ref: T | null) => void
