@@ -141,9 +141,6 @@ importers:
       '@zag-js/dismissable':
         specifier: ^0.40.0
         version: 0.40.0
-      nanoid:
-        specifier: ^5.0.6
-        version: 5.0.6
     devDependencies:
       tsup:
         specifier: ^8.0.2
