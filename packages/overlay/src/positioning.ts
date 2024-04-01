@@ -1,3 +1,12 @@
+import type {
+  Alignment,
+  DetectOverflowOptions,
+  FloatingElement,
+  Middleware,
+  Placement,
+  ReferenceElement,
+  Side,
+} from "@floating-ui/dom"
 import {
   autoUpdate,
   computePosition,
@@ -8,15 +17,12 @@ import {
   shift,
   size,
 } from "@floating-ui/dom"
-import type {
-  FloatingElement,
-  Middleware,
-  ReferenceElement,
-} from "@floating-ui/dom"
-import type { DetectOverflowOptions } from "@floating-ui/dom"
 import { getWindow } from "@zag-js/dom-query"
 
-import type { OverlayPositionerProps } from "./overlay-positioner.props"
+import type {
+  OverlayPositionerDataAttributes,
+  OverlayPositionerProps,
+} from "./overlay-positioner.props"
 
 export function updatePlacement(
   floating: FloatingElement | null,
@@ -78,15 +84,34 @@ export function updatePlacement(
       floating.style.visibility = hidden ? "hidden" : "visible"
     }
 
-    const win = getWindow(floating)
-    const x = roundByDPR(win, pos.x)
-    const y = roundByDPR(win, pos.y)
+    const x = roundByDPR(floating, pos.x)
+    const y = roundByDPR(floating, pos.y)
 
     floating.style.position = pos.strategy
-    floating.style.left = "0"
-    floating.style.top = "0"
-    // translate3d() has better performance than translate() and top/left.
-    floating.style.transform = `translate3d(${x}px,${y}px,0)`
+
+    if (options.transform) {
+      floating.style.left = "0"
+      floating.style.top = "0"
+      // translate3d() has better performance than translate() and top/left.
+      floating.style.transform = `translate3d(${x}px,${y}px,0)`
+      if (getDPR(floating) >= 1.5) {
+        // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
+        floating.style.willChange = "transform"
+      }
+    } else {
+      floating.style.left = `${x}px`
+      floating.style.top = `${y}px`
+      floating.style.removeProperty("transform")
+    }
+
+    const [side, align] = getSideAndAlignFromPlacement(pos.placement)
+    const attributes = {
+      "data-side": side,
+      "data-align": align,
+    } satisfies OverlayPositionerDataAttributes
+    for (const [key, value] of Object.entries(attributes)) {
+      floating.setAttribute(key, value)
+    }
   }
 
   const autoUpdateOptions =
@@ -183,9 +208,19 @@ function setupHide(props: OverlayPositionerProps) {
 }
 
 // https://floating-ui.com/docs/misc#subpixel-and-accelerated-positioning
-function roundByDPR(win: Window, value: number) {
-  const dpr = win.devicePixelRatio || 1
+function roundByDPR(element: Element, value: number): number {
+  const dpr = getDPR(element)
   return Math.round(value * dpr) / dpr
+}
+
+function getDPR(element: Element): number {
+  const win = getWindow(element)
+  return win.devicePixelRatio || 1
+}
+
+function getSideAndAlignFromPlacement(placement: Placement) {
+  const [side, align = "center"] = placement.split("-")
+  return [side as Side, align as Alignment | "center"] as const
 }
 
 /**

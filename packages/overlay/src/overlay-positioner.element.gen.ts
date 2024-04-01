@@ -26,6 +26,8 @@ export class OverlayPositionerElement extends BaseElement implements OverlayPosi
   /** @hidden */ set autoUpdate(v: OverlayPositionerProps["autoUpdate"]) { this._s.autoUpdate.value = v }
   /** @hidden */ get hoist(): OverlayPositionerProps["hoist"] { return this._s.hoist.value }
   /** @hidden */ set hoist(v: OverlayPositionerProps["hoist"]) { this._s.hoist.value = v }
+  /** @hidden */ get transform(): OverlayPositionerProps["transform"] { return this._s.transform.value }
+  /** @hidden */ set transform(v: OverlayPositionerProps["transform"]) { this._s.transform.value = v }
   /** @hidden */ get offset(): OverlayPositionerProps["offset"] { return this._s.offset.value }
   /** @hidden */ set offset(v: OverlayPositionerProps["offset"]) { this._s.offset.value = v }
   /** @hidden */ get flip(): OverlayPositionerProps["flip"] { return this._s.flip.value }

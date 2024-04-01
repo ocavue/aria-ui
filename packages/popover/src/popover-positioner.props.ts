@@ -1,4 +1,7 @@
-import type { OverlayPositionerProps } from "@aria-ui/overlay"
+import type {
+  OverlayPositionerDataAttributes,
+  OverlayPositionerProps,
+} from "@aria-ui/overlay"
 import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
 import type {
   FocusOutsideEvent,
@@ -102,6 +105,7 @@ export const defaultPopoverPositionerProps = Object.freeze({
 /**
  * @group PopoverPositioner
  */
-export interface PopoverPositionerDataAttributes {
+export interface PopoverPositionerDataAttributes
+  extends OverlayPositionerDataAttributes {
   "data-state": "open" | "closed"
 }

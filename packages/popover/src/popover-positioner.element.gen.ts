@@ -26,6 +26,8 @@ export class PopoverPositionerElement extends BaseElement implements PopoverPosi
   /** @hidden */ set autoUpdate(v: PopoverPositionerProps["autoUpdate"]) { this._s.autoUpdate.value = v }
   /** @hidden */ get hoist(): PopoverPositionerProps["hoist"] { return this._s.hoist.value }
   /** @hidden */ set hoist(v: PopoverPositionerProps["hoist"]) { this._s.hoist.value = v }
+  /** @hidden */ get transform(): PopoverPositionerProps["transform"] { return this._s.transform.value }
+  /** @hidden */ set transform(v: PopoverPositionerProps["transform"]) { this._s.transform.value = v }
   /** @hidden */ get offset(): PopoverPositionerProps["offset"] { return this._s.offset.value }
   /** @hidden */ set offset(v: PopoverPositionerProps["offset"]) { this._s.offset.value = v }
   /** @hidden */ get flip(): PopoverPositionerProps["flip"] { return this._s.flip.value }

@@ -26,6 +26,8 @@ export class SelectPositionerElement extends BaseElement implements SelectPositi
   /** @hidden */ set autoUpdate(v: SelectPositionerProps["autoUpdate"]) { this._s.autoUpdate.value = v }
   /** @hidden */ get hoist(): SelectPositionerProps["hoist"] { return this._s.hoist.value }
   /** @hidden */ set hoist(v: SelectPositionerProps["hoist"]) { this._s.hoist.value = v }
+  /** @hidden */ get transform(): SelectPositionerProps["transform"] { return this._s.transform.value }
+  /** @hidden */ set transform(v: SelectPositionerProps["transform"]) { this._s.transform.value = v }
   /** @hidden */ get offset(): SelectPositionerProps["offset"] { return this._s.offset.value }
   /** @hidden */ set offset(v: SelectPositionerProps["offset"]) { this._s.offset.value = v }
   /** @hidden */ get flip(): SelectPositionerProps["flip"] { return this._s.flip.value }

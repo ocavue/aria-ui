@@ -26,6 +26,8 @@ export class TooltipPositionerElement extends BaseElement implements TooltipPosi
   /** @hidden */ set autoUpdate(v: TooltipPositionerProps["autoUpdate"]) { this._s.autoUpdate.value = v }
   /** @hidden */ get hoist(): TooltipPositionerProps["hoist"] { return this._s.hoist.value }
   /** @hidden */ set hoist(v: TooltipPositionerProps["hoist"]) { this._s.hoist.value = v }
+  /** @hidden */ get transform(): TooltipPositionerProps["transform"] { return this._s.transform.value }
+  /** @hidden */ set transform(v: TooltipPositionerProps["transform"]) { this._s.transform.value = v }
   /** @hidden */ get offset(): TooltipPositionerProps["offset"] { return this._s.offset.value }
   /** @hidden */ set offset(v: TooltipPositionerProps["offset"]) { this._s.offset.value = v }
   /** @hidden */ get flip(): TooltipPositionerProps["flip"] { return this._s.flip.value }
