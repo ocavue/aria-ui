@@ -32,6 +32,13 @@ Properties: [OverlayPositionerProps](README.md#overlaypositionerprops)
 new OverlayPositionerElement(props?: Partial<OverlayPositionerProps>): OverlayPositionerElement
 ```
 
+### OverlayPositionerDataAttributes
+
+| Property     | Type                                           |
+| :----------- | :--------------------------------------------- |
+| `data-align` | `"center"` \| `"start"` \| `"end"`             |
+| `data-side`  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` |
+
 ### OverlayPositionerProps
 
 | Property | Type | Description |

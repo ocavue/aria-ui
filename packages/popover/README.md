@@ -14,9 +14,11 @@ new PopoverPositionerElement(props?: Partial<PopoverPositionerProps>): PopoverPo
 
 ### PopoverPositionerDataAttributes
 
-| Property     | Type                   |
-| :----------- | :--------------------- |
-| `data-state` | `"open"` \| `"closed"` |
+| Property     | Type                                           |
+| :----------- | :--------------------------------------------- |
+| `data-align` | `"center"` \| `"start"` \| `"end"`             |
+| `data-side`  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` |
+| `data-state` | `"open"` \| `"closed"`                         |
 
 ### PopoverPositionerProps
 
