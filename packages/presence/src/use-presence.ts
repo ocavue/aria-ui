@@ -24,12 +24,14 @@ export function usePresence(
     element.style.display = "none"
   }
 
-  const initialPresent = present.peek()
-  if (initialPresent) {
-    show()
-  } else {
-    hide()
-  }
+  useEffect(element, () => {
+    const initialPresent = present.peek()
+    if (initialPresent) {
+      show()
+    } else {
+      hide()
+    }
+  })
 
   const handlePresentChange = (presentValue: boolean) => {
     const style = getComputedStyle(element)

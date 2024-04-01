@@ -34,7 +34,7 @@ export function useListbox(
   focusedValueContext.provide(element, focusedValue)
 
   useEffect(element, () => {
-    state.onValueChange.value?.(state.value.value)
+    state.onValueChange.peek()?.(state.value.value)
   })
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
