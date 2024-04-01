@@ -1,5 +1,16 @@
 # @aria-ui/popover
 
+## 0.0.5
+
+### Patch Changes
+
+- 7dadc33: Add two new attributes `data-side` and `data-align`.
+- Updated dependencies [7dadc33]
+- Updated dependencies [7dadc33]
+- Updated dependencies [7dadc33]
+  - @aria-ui/presence@0.0.4
+  - @aria-ui/overlay@0.0.9
+
 ## 0.0.4
 
 ### Patch Changes

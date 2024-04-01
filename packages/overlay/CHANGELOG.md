@@ -1,5 +1,12 @@
 # @aria-ui/overlay
 
+## 0.0.9
+
+### Patch Changes
+
+- 7dadc33: Add two new attributes `data-side` and `data-align`.
+- 7dadc33: You can now use `OverlayPositionerProps.transform` to choose between using `transform` or `top`/`left` for positioning.
+
 ## 0.0.8
 
 ### Patch Changes

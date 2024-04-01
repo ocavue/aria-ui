@@ -1,5 +1,11 @@
 # @aria-ui/presence
 
+## 0.0.4
+
+### Patch Changes
+
+- 7dadc33: Fix an issue where the `animationed` event doesn't hide the element when it should.
+
 ## 0.0.3
 
 ### Patch Changes
