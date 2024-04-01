@@ -39,6 +39,9 @@
       "path": "packages/overlay"
     },
     {
+      "path": "packages/popover"
+    },
+    {
       "path": "packages/presence"
     },
     {

@@ -15,6 +15,7 @@
     "@aria-ui/core": "workspace:*",
     "@aria-ui/listbox": "workspace:*",
     "@aria-ui/overlay": "workspace:*",
+    "@aria-ui/popover": "workspace:*",
     "@aria-ui/tooltip": "workspace:*",
     "@astrojs/check": "^0.5.10",
     "@astrojs/starlight": "^0.21.2",
