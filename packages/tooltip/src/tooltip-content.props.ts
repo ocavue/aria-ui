@@ -2,9 +2,9 @@ import type { OverlayPositionerProps } from "@aria-ui/overlay"
 import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
 
 /**
- * @group TooltipPositioner
+ * @group TooltipContent
  */
-export interface TooltipPositionerProps
+export interface TooltipContentProps
   extends Omit<OverlayPositionerProps, "hoist"> {
   /**
    * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.hoist}
@@ -17,14 +17,14 @@ export interface TooltipPositionerProps
 /**
  * @hidden
  */
-export const defaultTooltipPositionerProps = Object.freeze({
+export const defaultTooltipContentProps = Object.freeze({
   ...defaultOverlayPositionerProps,
   hoist: true,
-}) satisfies TooltipPositionerProps
+}) satisfies TooltipContentProps
 
 /**
- * @group TooltipPositioner
+ * @group TooltipContent
  */
-export interface TooltipPositionerDataAttributes {
+export interface TooltipContentDataAttributes {
   "data-state": "open" | "closed"
 }

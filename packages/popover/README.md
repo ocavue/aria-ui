@@ -1,18 +1,18 @@
 # @aria-ui/popover
 
-## PopoverPositioner
+## PopoverContent
 
-### PopoverPositionerElement
+### PopoverContentElement
 
-A custom PopoverPositioner element.
+A custom PopoverContent element.
 
-Properties: [PopoverPositionerProps](README.md#popoverpositionerprops)
+Properties: [PopoverContentProps](README.md#popovercontentprops)
 
 ```ts
-new PopoverPositionerElement(props?: Partial<PopoverPositionerProps>): PopoverPositionerElement
+new PopoverContentElement(props?: Partial<PopoverContentProps>): PopoverContentElement
 ```
 
-### PopoverPositionerDataAttributes
+### PopoverContentDataAttributes
 
 | Property     | Type                                           |
 | :----------- | :--------------------------------------------- |
@@ -20,7 +20,7 @@ new PopoverPositionerElement(props?: Partial<PopoverPositionerProps>): PopoverPo
 | `data-side`  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` |
 | `data-state` | `"open"` \| `"closed"`                         |
 
-### PopoverPositionerProps
+### PopoverContentProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -48,18 +48,18 @@ new PopoverPositionerElement(props?: Partial<PopoverPositionerProps>): PopoverPo
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
 
-### usePopoverPositioner()
+### usePopoverContent()
 
 ```ts
-function usePopoverPositioner(
+function usePopoverContent(
   element: ConnectableElement,
-  props?: Partial<PopoverPositionerProps>,
-): SingalState<PopoverPositionerProps>;
+  props?: Partial<PopoverContentProps>,
+): SingalState<PopoverContentProps>;
 ```
 
-Properties: [PopoverPositionerProps](README.md#popoverpositionerprops)
+Properties: [PopoverContentProps](README.md#popovercontentprops)
 
-Data attributes: [PopoverPositionerDataAttributes](README.md#popoverpositionerdataattributes)
+Data attributes: [PopoverContentDataAttributes](README.md#popovercontentdataattributes)
 
 ## PopoverRoot
 

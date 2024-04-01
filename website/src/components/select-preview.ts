@@ -3,7 +3,7 @@ import "./select-preview.css"
 import {
   SelectItemElement,
   SelectListElement,
-  SelectPositionerElement,
+  SelectContentElement,
   SelectRootElement,
   SelectTriggerElement,
   SelectValueElement,
@@ -15,7 +15,7 @@ customElements.define("aui-select-list", SelectListElement)
 customElements.define("aui-select-item", SelectItemElement)
 customElements.define("aui-select-value", SelectValueElement)
 customElements.define("aui-select-trigger", SelectTriggerElement)
-customElements.define("aui-select-positioner", SelectPositionerElement)
+customElements.define("aui-select-content", SelectContentElement)
 
 function query(selector: string): HTMLElement {
   const element = document.querySelector(selector)
@@ -31,7 +31,7 @@ render(
       <aui-select-trigger>
         <aui-select-value .placeholder=${"Select an option..."} ></aui-select-value>
       </aui-select-trigger>
-      <aui-select-positioner>
+      <aui-select-content>
         <aui-select-list>
           <aui-select-item .value=${"option1"}>Option 1</aui-select-item>
           <aui-select-item .value=${"option2"}>Option 2</aui-select-item>
@@ -40,7 +40,7 @@ render(
           <aui-select-item .value=${"option12"}>Option 12</aui-select-item>
           <aui-select-item .value=${"option13"}>Option 13</aui-select-item>
         </aui-select-list>
-      </aui-select-positioner>
+      </aui-select-content>
     </aui-select-root>
   `,
   query(".example-select-preview"),

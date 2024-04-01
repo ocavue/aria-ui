@@ -10,9 +10,9 @@ import type {
 } from "@zag-js/dismissable"
 
 /**
- * @group PopoverPositioner
+ * @group PopoverContent
  */
-export interface PopoverPositionerProps
+export interface PopoverContentProps
   extends Omit<
     OverlayPositionerProps,
     "hoist" | "flip" | "shift" | "offset" | "overflowPadding"
@@ -89,7 +89,7 @@ export interface PopoverPositionerProps
 /**
  * @hidden
  */
-export const defaultPopoverPositionerProps = Object.freeze({
+export const defaultPopoverContentProps = Object.freeze({
   ...defaultOverlayPositionerProps,
   hoist: true,
   flip: true,
@@ -100,12 +100,12 @@ export const defaultPopoverPositionerProps = Object.freeze({
   onPointerDownOutside: null,
   onFocusOutside: null,
   onInteractOutside: null,
-}) satisfies PopoverPositionerProps
+}) satisfies PopoverContentProps
 
 /**
- * @group PopoverPositioner
+ * @group PopoverContent
  */
-export interface PopoverPositionerDataAttributes
+export interface PopoverContentDataAttributes
   extends OverlayPositionerDataAttributes {
   "data-state": "open" | "closed"
 }

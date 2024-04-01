@@ -7,7 +7,7 @@ import {
 } from "@aria-ui/combobox"
 import {
   PopoverRootElement,
-  PopoverPositionerElement,
+  PopoverContentElement,
   PopoverTriggerElement,
 } from "@aria-ui/popover"
 import { html, render } from "lit-html"
@@ -16,7 +16,7 @@ customElements.define("aui-combobox-root", ComboboxRootElement)
 customElements.define("aui-combobox-list", ComboboxListElement)
 customElements.define("aui-combobox-item", ComboboxItemElement)
 customElements.define("aui-popover-root", PopoverRootElement)
-customElements.define("aui-popover-positioner", PopoverPositionerElement)
+customElements.define("aui-popover-content", PopoverContentElement)
 customElements.define("aui-popover-trigger", PopoverTriggerElement)
 
 function query(selector: string): HTMLElement {
@@ -31,7 +31,7 @@ render(
   html`
     <aui-popover-root>
       <aui-popover-trigger>Open</aui-popover-trigger>
-      <aui-popover-positioner .placement=${"bottom"}>
+      <aui-popover-content .placement=${"bottom"}>
         <aui-combobox-root>
           <input type="text" />
           <aui-combobox-list>
@@ -43,7 +43,7 @@ render(
             <aui-combobox-item .value=${"option13"}>Option 13</aui-combobox-item>
           </aui-combobox-list>
         </aui-combobox-root>
-      </aui-popover-positioner>
+      </aui-popover-content>
     </aui-popover-root>
   `,
   query(".example-combobox-preview"),

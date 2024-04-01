@@ -1,10 +1,10 @@
-export { PopoverPositionerElement } from "./popover-positioner.element.gen"
+export { PopoverContentElement } from "./popover-content.element.gen"
 export {
-  defaultPopoverPositionerProps,
-  type PopoverPositionerDataAttributes,
-  type PopoverPositionerProps,
-} from "./popover-positioner.props"
-export { usePopoverPositioner } from "./popover-positioner.state"
+  defaultPopoverContentProps,
+  type PopoverContentDataAttributes,
+  type PopoverContentProps,
+} from "./popover-content.props"
+export { usePopoverContent } from "./popover-content.state"
 export { PopoverRootElement } from "./popover-root.element.gen"
 export {
   defaultPopoverRootProps,
