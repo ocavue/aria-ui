@@ -1,8 +1,8 @@
 import {
   useEffect,
+  useEventListener,
   type ConnectableElement,
   type ReadonlySignal,
-  useEventListener,
 } from "@aria-ui/core"
 
 /**
@@ -12,63 +12,49 @@ export function usePresence(
   element: ConnectableElement,
   present: ReadonlySignal<boolean>,
 ): void {
-  let currentAnimationName = "none"
-
-  const show = () => {
-    if (element.style.display === "none") {
-      element.style.display = ""
-    }
-  }
-
-  const hide = () => {
-    element.style.display = "none"
-  }
-
   useEffect(element, () => {
     const initialPresent = present.peek()
     if (initialPresent) {
-      show()
+      show(element)
     } else {
-      hide()
+      hide(element)
     }
   })
-
-  const handlePresentChange = (presentValue: boolean) => {
-    const style = getComputedStyle(element)
-    currentAnimationName = style.animationName || "none"
-
-    if (presentValue) {
-      show()
-    } else {
-      if (currentAnimationName === "none") {
-        hide()
-      }
-    }
-  }
 
   const handleAnimationEnd = (event: AnimationEvent) => {
-    const isCurrentAnimation = currentAnimationName.includes(
-      event.animationName,
-    )
     if (
-      isCurrentAnimation &&
+      getAnimationName(element).includes(event.animationName) &&
       event.target === element &&
-      present.peek() === false
+      !present.peek()
     ) {
-      hide()
+      hide(element)
     }
   }
 
-  useEffect(element, () => {
-    const presentValue = present.value
-
-    const id = requestAnimationFrame(() => {
-      if (present.peek() === presentValue) {
-        handlePresentChange(presentValue)
-      }
-    })
-    return () => cancelAnimationFrame(id)
-  })
-
+  useEffect(element, () => handlePresentChange(element, present.value))
   useEventListener(element, "animationend", handleAnimationEnd)
+}
+
+function handlePresentChange(element: HTMLElement, present: boolean) {
+  if (present) {
+    show(element)
+  } else {
+    if (getAnimationName(element) === "none") {
+      hide(element)
+    }
+  }
+}
+
+function getAnimationName(element: HTMLElement) {
+  return getComputedStyle(element).animationName || "none"
+}
+
+function show(element: HTMLElement) {
+  if (element.style.display === "none") {
+    element.style.display = ""
+  }
+}
+
+function hide(element: HTMLElement) {
+  element.style.display = "none"
 }

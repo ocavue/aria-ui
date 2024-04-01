@@ -44,6 +44,14 @@ export interface OverlayPositionerProps {
    */
   hoist: boolean
 
+  /**
+   * Whether to use `transform: translate3d()` for positioning instead of `top`
+   * and `left` (layout) to place the floating element.
+   *
+   * @default false
+   */
+  transform: boolean
+
   // ------------------------------------------------------------------
   // Middlewares
   // ------------------------------------------------------------------
@@ -169,6 +177,7 @@ export const defaultOverlayPositionerProps = Object.freeze({
   placement: "top",
   autoUpdate: true,
   hoist: false,
+  transform: false,
 
   offset: null,
   flip: false,
