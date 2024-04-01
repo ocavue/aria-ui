@@ -6,12 +6,12 @@ export {
 export { useSelectItem } from "./select-item.state"
 export { SelectListElement } from "./select-list.element.gen"
 export { useSelectList } from "./select-list.state"
-export { SelectPositionerElement } from "./select-positioner.element.gen"
+export { SelectContentElement } from "./select-content.element.gen"
 export {
-  defaultSelectPositionerProps,
-  type SelectPositionerProps,
-} from "./select-positioner.props"
-export { useSelectPositioner } from "./select-positioner.state"
+  defaultSelectContentProps,
+  type SelectContentProps,
+} from "./select-content.props"
+export { useSelectContent } from "./select-content.state"
 export { SelectRootElement } from "./select-root.element.gen"
 export { useSelectRoot } from "./select-root.state"
 export { SelectTriggerElement } from "./select-trigger.element.gen"

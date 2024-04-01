@@ -1,8 +1,8 @@
-aui-tooltip-positioner[data-state="open"] {
+aui-tooltip-content[data-state="open"] {
   animation: fadeIn 0.1s ease-in forwards;
 }
 
-aui-tooltip-positioner[data-state="closed"] {
+aui-tooltip-content[data-state="closed"] {
   animation: fadeOut 0.1s ease-out forwards;
 }
 

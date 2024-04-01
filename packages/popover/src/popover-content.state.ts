@@ -16,40 +16,40 @@ import {
 import { getFirstTabbable } from "@zag-js/tabbable"
 
 import {
-  defaultPopoverPositionerProps,
-  type PopoverPositionerDataAttributes,
-  type PopoverPositionerProps,
-} from "./popover-positioner.props"
+  defaultPopoverContentProps,
+  type PopoverContentDataAttributes,
+  type PopoverContentProps,
+} from "./popover-content.props"
 import { openContext, triggerElementContext } from "./popover-root.context"
 
 /**
- * Properties: {@link PopoverPositionerProps}
+ * Properties: {@link PopoverContentProps}
  *
- * Data attributes: {@link PopoverPositionerDataAttributes}
+ * Data attributes: {@link PopoverContentDataAttributes}
  *
- * @group PopoverPositioner
+ * @group PopoverContent
  */
-export function usePopoverPositioner(
+export function usePopoverContent(
   element: ConnectableElement,
-  props?: Partial<PopoverPositionerProps>,
-): SingalState<PopoverPositionerProps> {
+  props?: Partial<PopoverContentProps>,
+): SingalState<PopoverContentProps> {
   const overlayPositionerState = useOverlayPositioner(element, {
-    ...defaultPopoverPositionerProps,
+    ...defaultPopoverContentProps,
     ...props,
   })
 
   const onEscapeKeyDown = createSignal(
-    props?.onEscapeKeyDown ?? defaultPopoverPositionerProps.onEscapeKeyDown,
+    props?.onEscapeKeyDown ?? defaultPopoverContentProps.onEscapeKeyDown,
   )
   const onPointerDownOutside = createSignal(
     props?.onPointerDownOutside ??
-      defaultPopoverPositionerProps.onPointerDownOutside,
+      defaultPopoverContentProps.onPointerDownOutside,
   )
   const onFocusOutside = createSignal(
-    props?.onFocusOutside ?? defaultPopoverPositionerProps.onFocusOutside,
+    props?.onFocusOutside ?? defaultPopoverContentProps.onFocusOutside,
   )
   const onInteractOutside = createSignal(
-    props?.onInteractOutside ?? defaultPopoverPositionerProps.onInteractOutside,
+    props?.onInteractOutside ?? defaultPopoverContentProps.onInteractOutside,
   )
 
   const open = openContext.consume(element)
@@ -60,7 +60,7 @@ export function usePopoverPositioner(
   useAttribute(
     element,
     "data-state",
-    (): PopoverPositionerDataAttributes["data-state"] => {
+    (): PopoverContentDataAttributes["data-state"] => {
       return open.value ? "open" : "closed"
     },
   )

@@ -8,24 +8,24 @@ import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
 
 import {
-  defaultTooltipPositionerProps,
-  type TooltipPositionerProps,
-} from "./tooltip-positioner.props"
+  defaultTooltipContentProps,
+  type TooltipContentProps,
+} from "./tooltip-content.props"
 import { idContext, openContext } from "./tooltip.context"
 
 /**
- * Properties: {@link TooltipPositionerProps}
+ * Properties: {@link TooltipContentProps}
  *
- * Data attributes: {@link TooltipPositionerDataAttributes}
+ * Data attributes: {@link TooltipContentDataAttributes}
  *
- * @group TooltipPositioner
+ * @group TooltipContent
  */
-export function useTooltipPositioner(
+export function useTooltipContent(
   element: ConnectableElement,
-  props?: Partial<TooltipPositionerProps>,
-): SingalState<TooltipPositionerProps> {
+  props?: Partial<TooltipContentProps>,
+): SingalState<TooltipContentProps> {
   const state = useOverlayPositioner(element, {
-    ...defaultTooltipPositionerProps,
+    ...defaultTooltipContentProps,
     ...props,
   })
 

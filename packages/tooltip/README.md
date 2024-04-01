@@ -1,24 +1,24 @@
 # @aria-ui/tooltip
 
-## TooltipPositioner
+## TooltipContent
 
-### TooltipPositionerElement
+### TooltipContentElement
 
-A custom TooltipPositioner element.
+A custom TooltipContent element.
 
-Properties: [TooltipPositionerProps](README.md#tooltippositionerprops)
+Properties: [TooltipContentProps](README.md#tooltipcontentprops)
 
 ```ts
-new TooltipPositionerElement(props?: Partial<TooltipPositionerProps>): TooltipPositionerElement
+new TooltipContentElement(props?: Partial<TooltipContentProps>): TooltipContentElement
 ```
 
-### TooltipPositionerDataAttributes
+### TooltipContentDataAttributes
 
 | Property     | Type                   |
 | :----------- | :--------------------- |
 | `data-state` | `"open"` \| `"closed"` |
 
-### TooltipPositionerProps
+### TooltipContentProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -42,18 +42,18 @@ new TooltipPositionerElement(props?: Partial<TooltipPositionerProps>): TooltipPo
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
 
-### useTooltipPositioner()
+### useTooltipContent()
 
 ```ts
-function useTooltipPositioner(
+function useTooltipContent(
   element: ConnectableElement,
-  props?: Partial<TooltipPositionerProps>,
-): SingalState<TooltipPositionerProps>;
+  props?: Partial<TooltipContentProps>,
+): SingalState<TooltipContentProps>;
 ```
 
-Properties: [TooltipPositionerProps](README.md#tooltippositionerprops)
+Properties: [TooltipContentProps](README.md#tooltipcontentprops)
 
-Data attributes: [TooltipPositionerDataAttributes](README.md#tooltippositionerdataattributes)
+Data attributes: [TooltipContentDataAttributes](README.md#tooltipcontentdataattributes)
 
 ## TooltipRoot
 
