@@ -58,7 +58,7 @@ export function useKeyboardListener(element: ConnectableElement) {
  * @group ComboboxRoot
  */
 export function useComboboxRoot(element: ConnectableElement) {
-  useAriaRole(element, () => "combobox")
+  useAriaRole(element, "combobox")
 
   const inputValue = useInputValue(element)
   inputValueContext.provide(element, inputValue)
