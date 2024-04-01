@@ -1,10 +1,11 @@
 import {
+  createSignal,
   useAriaAttribute,
   useAttribute,
-  type ConnectableElement,
-  type SingalState,
-  createSignal,
   useEffect,
+  type ConnectableElement,
+  type ReadonlySignal,
+  type SingalState,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
@@ -12,6 +13,7 @@ import {
   trackDismissableElement,
   type DismissableElementOptions,
 } from "@zag-js/dismissable"
+import { getFirstTabbable } from "@zag-js/tabbable"
 
 import {
   defaultPopoverPositionerProps,
@@ -56,6 +58,8 @@ export function usePopoverPositioner(
   usePresence(element, open)
   useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
 
+  useAutoFocus(element, open)
+
   const options: DismissableElementOptions = {
     onDismiss: () => {
       open.value = false
@@ -88,4 +92,27 @@ export function usePopoverPositioner(
     onInteractOutside,
     ...overlayPositionerState,
   }
+}
+
+function useAutoFocus(
+  element: ConnectableElement,
+  open: ReadonlySignal<boolean>,
+) {
+  let previousOpenValue = open.peek()
+
+  useEffect(element, () => {
+    const openValue = open.value
+    const shouldFocus = openValue && !previousOpenValue
+    previousOpenValue = openValue
+
+    if (!shouldFocus) return
+
+    // Use animation frame because focus is not applied immediately
+    const id = requestAnimationFrame(() => {
+      if (open.peek()) {
+        getFirstTabbable(element)?.focus({ preventScroll: true })
+      }
+    })
+    return () => cancelAnimationFrame(id)
+  })
 }

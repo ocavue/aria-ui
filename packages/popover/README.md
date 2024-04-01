@@ -75,6 +75,8 @@ new PopoverRootElement(props?: Partial<PopoverRootProps>): PopoverRootElement
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `defaultOpen` | `boolean` | Whether the popover is open by default.<br /><br />**Default**<br />`false` |
+| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | Event handler called when the popover's open state changes.<br /><br />**Default**<br />`null` |
+| `open` | `boolean` | Whether the popover is open.<br /><br />**Default**<br />`false` |
 
 ### usePopoverRoot()
 
