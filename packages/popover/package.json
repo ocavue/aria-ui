@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/popover",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -10,9 +10,9 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.8",
-    "@aria-ui/overlay": "^0.0.7",
-    "@aria-ui/presence": "^0.0.2",
+    "@aria-ui/core": "^0.0.9",
+    "@aria-ui/overlay": "^0.0.8",
+    "@aria-ui/presence": "^0.0.3",
     "@zag-js/dismissable": "^0.41.0",
     "@zag-js/tabbable": "^0.41.0"
   },

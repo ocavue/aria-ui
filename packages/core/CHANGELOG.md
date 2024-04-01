@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.9
+
+### Patch Changes
+
+- 21c7a2e: `useAriaRole` now accepts a string role value. `setAriaRole` is removed in favor of `useAriaRole`.
+
 ## 0.0.8
 
 ### Patch Changes

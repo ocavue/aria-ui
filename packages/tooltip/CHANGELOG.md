@@ -1,5 +1,15 @@
 # @aria-ui/tooltip
 
+## 0.0.6
+
+### Patch Changes
+
+- 182bd46: Export default props.
+- Updated dependencies [21c7a2e]
+  - @aria-ui/core@0.0.9
+  - @aria-ui/overlay@0.0.8
+  - @aria-ui/presence@0.0.3
+
 ## 0.0.5
 
 ### Patch Changes
