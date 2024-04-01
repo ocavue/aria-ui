@@ -1,5 +1,14 @@
 # @aria-ui/listbox
 
+## 0.0.3
+
+### Patch Changes
+
+- 182bd46: Export default props.
+- Updated dependencies [21c7a2e]
+  - @aria-ui/core@0.0.9
+  - @aria-ui/presence@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

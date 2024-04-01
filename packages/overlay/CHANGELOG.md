@@ -1,5 +1,12 @@
 # @aria-ui/overlay
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [21c7a2e]
+  - @aria-ui/core@0.0.9
+
 ## 0.0.7
 
 ### Patch Changes
