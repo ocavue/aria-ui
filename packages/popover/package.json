@@ -13,12 +13,12 @@
     "@aria-ui/core": "^0.0.9",
     "@aria-ui/overlay": "^0.0.9",
     "@aria-ui/presence": "^0.0.4",
-    "@zag-js/dismissable": "^0.41.0",
-    "@zag-js/tabbable": "^0.41.0"
+    "@zag-js/dismissable": "^0.45.0",
+    "@zag-js/tabbable": "^0.45.0"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "publishConfig": {
     "access": "public",
