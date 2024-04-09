@@ -164,7 +164,7 @@ export function useQuerySelectorAll<E extends Element = Element>(
  * Executes an effect in the next animation frame.
  *
  * The given `effect` function will be called when the element is connected, and
- * when the dependencies change afterwards.
+ * when the dependencies change afterward.
  *
  * `effect` could return a function `callback`. `callback` will be called in the
  * next animation frame.
