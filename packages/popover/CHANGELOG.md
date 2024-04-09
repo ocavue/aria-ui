@@ -1,5 +1,11 @@
 # @aria-ui/popover
 
+## 0.0.8
+
+### Patch Changes
+
+- 4bddac3: PopoverTrigger is not focusable anymore by default now. It should containe a focusable element, like a `<button>` element.
+
 ## 0.0.7
 
 ### Patch Changes
