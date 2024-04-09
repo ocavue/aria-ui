@@ -77,7 +77,9 @@ export function useTooltipRoot(
   useEffect(element, () => {
     if (activated.value) {
       activatedAt = Date.now()
+      deactivatedAt = 0
     } else {
+      activatedAt = 0
       deactivatedAt = Date.now()
     }
 
