@@ -10,9 +10,9 @@ import {
 } from "./signals"
 
 /**
- * @group DOM
- *
  * Registers an event listener on the element.
+ *
+ * @group DOM
  */
 export function useEventListener<K extends keyof HTMLElementEventMap>(
   element: ConnectableElement,
@@ -29,9 +29,9 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
 }
 
 /**
- * @group DOM
- *
  * Sets the computed style of the element when it's connected.
+ *
+ * @group DOM
  */
 export function useStyle<K extends keyof CSSStyleDeclaration>(
   element: ConnectableElement,
@@ -44,9 +44,9 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
 }
 
 /**
- * @group DOM
- *
  * Sets the computed attribute of the element when it's connected.
+ *
+ * @group DOM
  */
 export function useAttribute(
   element: ConnectableElement,
@@ -64,11 +64,11 @@ export function useAttribute(
 }
 
 /**
- * @group DOM
- *
  * Sets the computed attribute of the element when it's connected.
  *
  * This is a TypeScript type-safe version of {@link useAttribute}.
+ *
+ * @group DOM
  */
 export function useAriaAttribute<K extends keyof AriaAttributes>(
   element: ConnectableElement,
@@ -121,9 +121,9 @@ function useMutationObserver(
 }
 
 /**
- * @group DOM
- *
  * Returns the first element matching the given selector.
+ *
+ * @group DOM
  */
 export function useQuerySelector<E extends Element = Element>(
   element: ConnectableElement,
@@ -140,9 +140,9 @@ export function useQuerySelector<E extends Element = Element>(
 }
 
 /**
- * @group DOM
- *
  * Returns all elements matching the given selector.
+ *
+ * @group DOM
  */
 export function useQuerySelectorAll<E extends Element = Element>(
   element: ConnectableElement,
@@ -159,7 +159,6 @@ export function useQuerySelectorAll<E extends Element = Element>(
 }
 
 /**
- * @group DOM
  *
  * Executes an effect in the next animation frame.
  *
@@ -171,6 +170,8 @@ export function useQuerySelectorAll<E extends Element = Element>(
  *
  * `callback` could return a function `dispose`. `dispose` will be called when
  * the effect is disposed.
+ *
+ * @group DOM
  */
 export function useAnimationFrame(
   element: ConnectableElement,
