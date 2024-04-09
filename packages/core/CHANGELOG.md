@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.10
+
+### Patch Changes
+
+- e6428d8: Add `useAnimationFrame`.
+
 ## 0.0.9
 
 ### Patch Changes
