@@ -13,11 +13,11 @@
     "@aria-ui/core": "^0.0.9",
     "@aria-ui/overlay": "^0.0.9",
     "@aria-ui/presence": "^0.0.4",
-    "nanoid": "^5.0.6"
+    "nanoid": "^5.0.7"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
-    "typescript": "^5.4.3"
+    "typescript": "^5.4.4"
   },
   "publishConfig": {
     "access": "public",
