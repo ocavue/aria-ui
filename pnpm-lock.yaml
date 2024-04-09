@@ -60,10 +60,10 @@ importers:
   packages/combobox:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.4
+        specifier: ^0.0.5
         version: link:../listbox
     devDependencies:
       tsup:
@@ -95,10 +95,10 @@ importers:
   packages/listbox:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@aria-ui/presence':
-        specifier: ^0.0.4
+        specifier: ^0.0.5
         version: link:../presence
     devDependencies:
       tsup:
@@ -111,7 +111,7 @@ importers:
   packages/overlay:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@floating-ui/dom':
         specifier: ^1.6.3
@@ -130,13 +130,13 @@ importers:
   packages/popover:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.4
+        specifier: ^0.0.5
         version: link:../presence
       '@zag-js/dismissable':
         specifier: ^0.45.0
@@ -155,7 +155,7 @@ importers:
   packages/presence:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
     devDependencies:
       tsup:
@@ -168,13 +168,13 @@ importers:
   packages/select:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.4
+        specifier: ^0.0.5
         version: link:../listbox
       '@aria-ui/popover':
-        specifier: ^0.0.8
+        specifier: ^0.0.9
         version: link:../popover
     devDependencies:
       tsup:
@@ -187,13 +187,13 @@ importers:
   packages/tooltip:
     dependencies:
       '@aria-ui/core':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.9
+        specifier: ^0.0.10
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.4
+        specifier: ^0.0.5
         version: link:../presence
       nanoid:
         specifier: ^5.0.7

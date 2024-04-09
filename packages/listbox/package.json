@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/listbox",
   "type": "module",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -10,8 +10,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.9",
-    "@aria-ui/presence": "^0.0.4"
+    "@aria-ui/core": "^0.0.10",
+    "@aria-ui/presence": "^0.0.5"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
