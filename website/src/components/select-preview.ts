@@ -27,7 +27,9 @@ render(
   html`
     <aui-select-root>
       <aui-select-trigger>
-        <aui-select-value .placeholder=${"Select an option..."} ></aui-select-value>
+        <button>
+          <aui-select-value .placeholder=${"Select an option..."} ></aui-select-value>
+        </button>
       </aui-select-trigger>
       <aui-select-content>
         <aui-select-list>
