@@ -1,12 +1,8 @@
-import { basic, tsPlugin } from "@ocavue/eslint-config"
+import { basic } from "@ocavue/eslint-config"
 
 export default [
   ...basic(),
   {
-    files: ["scripts/**/*.ts"],
-    plugins: {
-      "@typescript-eslint/": tsPlugin,
-    },
     rules: {
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unsafe-argument": "off",
