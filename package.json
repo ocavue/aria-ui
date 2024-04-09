@@ -28,7 +28,7 @@
     "@changesets/cli": "^2.27.1",
     "@happy-dom/global-registrator": "^14.3.9",
     "@manypkg/get-packages": "^2.2.1",
-    "@ocavue/eslint-config": "^1.4.3",
+    "@ocavue/eslint-config": "^1.5.0",
     "@types/bun": "^1.0.12",
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "^5.4.3",
