@@ -1,5 +1,11 @@
 # @aria-ui/tooltip
 
+## 0.0.10
+
+### Patch Changes
+
+- 4c507f9: Fix an issue where the next tooltip won't show up without delay.
+
 ## 0.0.9
 
 ### Patch Changes
