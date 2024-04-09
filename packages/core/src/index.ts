@@ -34,6 +34,7 @@ export {
   useQuerySelector,
   useQuerySelectorAll,
   useStyle,
+  useAnimationFrame,
 } from "./dom"
 export { assignProps } from "./props"
 export {

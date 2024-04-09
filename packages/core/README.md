@@ -50,6 +50,20 @@ Creates a new context.
 
 ## DOM
 
+### useAnimationFrame()
+
+```ts
+function useAnimationFrame(element: ConnectableElement, effect: () => void | () => void | VoidFunction): () => void
+```
+
+Executes an effect in the next animation frame.
+
+The given `effect` function will be called when the element is connected, and when the dependencies change afterward.
+
+`effect` could return a function `callback`. `callback` will be called in the next animation frame.
+
+`callback` could return a function `dispose`. `dispose` will be called when the effect is disposed.
+
 ### useAriaAttribute()
 
 ```ts
@@ -60,13 +74,17 @@ function useAriaAttribute<K>(
 ): VoidFunction;
 ```
 
+Sets the computed attribute of the element when it's connected.
+
+This is a TypeScript type-safe version of [useAttribute](README.md#useattribute).
+
 ### useAriaRole()
 
 ```ts
 function useAriaRole(element: ConnectableElement, role: AriaRole | () => AriaRole | undefined): VoidFunction
 ```
 
-Set the `role` attribute of the element when it's connected.
+Sets the `role` attribute of the element when it's connected.
 
 You can pass a string or a compute function that returns a string.
 
@@ -80,6 +98,8 @@ function useAttribute(
 ): VoidFunction;
 ```
 
+Sets the computed attribute of the element when it's connected.
+
 ### useEventListener()
 
 ```ts
@@ -91,6 +111,8 @@ function useEventListener<K>(
 ): VoidFunction;
 ```
 
+Registers an event listener on the element.
+
 ### useQuerySelector()
 
 ```ts
@@ -99,6 +121,8 @@ function useQuerySelector<E>(
   selector: string,
 ): ReadonlySignal<E | null>;
 ```
+
+Returns the first element matching the given selector.
 
 ### useQuerySelectorAll()
 
@@ -109,6 +133,8 @@ function useQuerySelectorAll<E>(
 ): ReadonlySignal<NodeListOf<E>>;
 ```
 
+Returns all elements matching the given selector.
+
 ### useStyle()
 
 ```ts
@@ -118,6 +144,8 @@ function useStyle<K>(
   compute: () => CSSStyleDeclaration[K],
 ): VoidFunction;
 ```
+
+Sets the computed style of the element when it's connected.
 
 ## Elements
 

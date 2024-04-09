@@ -11,10 +11,13 @@ export { OverlayAnchorElement } from "./overlay-anchor.element.gen"
 export { useOverlayAnchor } from "./overlay-anchor.state"
 export { OverlayPositionerElement } from "./overlay-positioner.element.gen"
 export {
-  type OverlayPositionerDataAttributes,
   defaultOverlayPositionerProps,
+  type OverlayPositionerDataAttributes,
   type OverlayPositionerProps,
 } from "./overlay-positioner.props"
-export { useOverlayPositioner } from "./overlay-positioner.state"
+export {
+  useOverlayPositioner,
+  useOverlayPositionerState,
+} from "./overlay-positioner.state"
 export { OverlayRootElement } from "./overlay-root.element.gen"
 export { useOverlayRoot } from "./overlay-root.state"

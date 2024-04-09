@@ -6,6 +6,7 @@ import {
   type ConnectableElement,
   type ReadonlySignal,
   type SingalState,
+  useAnimationFrame,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
@@ -107,19 +108,18 @@ function useAutoFocus(
 ) {
   let previousOpenValue = open.peek()
 
-  useEffect(element, () => {
+  // Use animation frame because focus is not applied immediately
+  useAnimationFrame(element, () => {
     const openValue = open.value
     const shouldFocus = openValue && !previousOpenValue
     previousOpenValue = openValue
 
     if (!shouldFocus) return
 
-    // Use animation frame because focus is not applied immediately
-    const id = requestAnimationFrame(() => {
+    return () => {
       if (open.peek()) {
         getFirstTabbable(element)?.focus({ preventScroll: true })
       }
-    })
-    return () => cancelAnimationFrame(id)
+    }
   })
 }

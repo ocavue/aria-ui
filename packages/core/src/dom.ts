@@ -10,6 +10,8 @@ import {
 } from "./signals"
 
 /**
+ * Registers an event listener on the element.
+ *
  * @group DOM
  */
 export function useEventListener<K extends keyof HTMLElementEventMap>(
@@ -27,6 +29,8 @@ export function useEventListener<K extends keyof HTMLElementEventMap>(
 }
 
 /**
+ * Sets the computed style of the element when it's connected.
+ *
  * @group DOM
  */
 export function useStyle<K extends keyof CSSStyleDeclaration>(
@@ -40,6 +44,8 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
 }
 
 /**
+ * Sets the computed attribute of the element when it's connected.
+ *
  * @group DOM
  */
 export function useAttribute(
@@ -58,6 +64,10 @@ export function useAttribute(
 }
 
 /**
+ * Sets the computed attribute of the element when it's connected.
+ *
+ * This is a TypeScript type-safe version of {@link useAttribute}.
+ *
  * @group DOM
  */
 export function useAriaAttribute<K extends keyof AriaAttributes>(
@@ -69,7 +79,7 @@ export function useAriaAttribute<K extends keyof AriaAttributes>(
 }
 
 /**
- * Set the `role` attribute of the element when it's connected.
+ * Sets the `role` attribute of the element when it's connected.
  *
  * You can pass a string or a compute function that returns a string.
  *
@@ -83,6 +93,10 @@ export function useAriaRole(
   return useAttribute(element, "role", compute)
 }
 
+/**
+ * Returns a signal that changes when the mutation observer detects a change in
+ * the element.
+ */
 function useMutationObserver(
   element: ConnectableElement,
   options: MutationObserverInit,
@@ -107,6 +121,8 @@ function useMutationObserver(
 }
 
 /**
+ * Returns the first element matching the given selector.
+ *
  * @group DOM
  */
 export function useQuerySelector<E extends Element = Element>(
@@ -124,6 +140,8 @@ export function useQuerySelector<E extends Element = Element>(
 }
 
 /**
+ * Returns all elements matching the given selector.
+ *
  * @group DOM
  */
 export function useQuerySelectorAll<E extends Element = Element>(
@@ -137,5 +155,45 @@ export function useQuerySelectorAll<E extends Element = Element>(
   return createComputed(() => {
     mutationCounter.value
     return element.querySelectorAll<E>(selector)
+  })
+}
+
+/**
+ *
+ * Executes an effect in the next animation frame.
+ *
+ * The given `effect` function will be called when the element is connected, and
+ * when the dependencies change afterward.
+ *
+ * `effect` could return a function `callback`. `callback` will be called in the
+ * next animation frame.
+ *
+ * `callback` could return a function `dispose`. `dispose` will be called when
+ * the effect is disposed.
+ *
+ * @group DOM
+ */
+export function useAnimationFrame(
+  element: ConnectableElement,
+  effect: () => (() => void | VoidFunction) | void,
+) {
+  return useEffect(element, () => {
+    const callback = effect()
+
+    if (!callback) {
+      return
+    }
+
+    let dispose: VoidFunction | undefined = undefined
+
+    const id = requestAnimationFrame(() => {
+      dispose?.()
+      dispose = callback() || undefined
+    })
+    return () => {
+      cancelAnimationFrame(id)
+      dispose?.()
+      dispose = undefined
+    }
   })
 }
