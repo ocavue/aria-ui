@@ -1,5 +1,11 @@
 # @aria-ui/tooltip
 
+## 0.0.9
+
+### Patch Changes
+
+- 4ce3969: Hide the tooltip content when the trigger is pressed.
+
 ## 0.0.8
 
 ### Patch Changes
