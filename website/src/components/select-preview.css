@@ -6,11 +6,6 @@ aui-select-root {
   display: block;
 }
 
-aui-select-trigger {
-  display: inline-block;
-  border: 1px solid ButtonBorder;
-}
-
 aui-select-list {
   display: flex;
   flex-direction: column;

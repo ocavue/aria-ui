@@ -6,11 +6,6 @@ aui-popover-root {
   display: block;
 }
 
-aui-popover-trigger {
-  display: inline-block;
-  border: 1px solid ButtonBorder;
-}
-
 aui-combobox-content {
   display: flex;
   flex-direction: column;

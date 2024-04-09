@@ -28,7 +28,9 @@ function query(selector: string): HTMLElement {
 render(
   html`
     <aui-popover-root>
-      <aui-popover-trigger>Open</aui-popover-trigger>
+      <aui-popover-trigger>
+        <button>Open</button>
+      </aui-popover-trigger>
       <aui-popover-content .placement=${"bottom"}>
         <aui-combobox-root>
           <input type="text" />
