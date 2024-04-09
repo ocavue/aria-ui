@@ -41,7 +41,7 @@ export function useTooltipTrigger(element: ConnectableElement): void {
     hovering.value = false
     focused.value = false
   }
-  useEventListener(element, "pointerdown", handlePress)
+  useEventListener(element, "click", handlePress)
   useEventListener(element, "keydown", handlePress)
 
   useAriaAttribute(element, "aria-describedby", () => {
