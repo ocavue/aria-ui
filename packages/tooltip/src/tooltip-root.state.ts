@@ -49,8 +49,10 @@ export function useTooltipRoot(
     const now = Date.now()
     if (activated.peek()) {
       if (
+        // The trigger has been activated for a while
         now - activatedAt >= state.openDelay.peek() ||
-        now - deactivatedAt <= state.closeDelay.peek()
+        // The previous opened tooltip has just been closed
+        (openingId && now - deactivatedAt <= state.closeDelay.peek())
       ) {
         open.value = true
 
@@ -77,9 +79,7 @@ export function useTooltipRoot(
   useEffect(element, () => {
     if (activated.value) {
       activatedAt = Date.now()
-      deactivatedAt = 0
     } else {
-      activatedAt = 0
       deactivatedAt = Date.now()
     }
 
