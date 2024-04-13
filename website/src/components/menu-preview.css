@@ -1,0 +1,23 @@
+aui-menu-content {
+  display: block;
+}
+
+aui-menu-root {
+  display: block;
+}
+
+aui-menu-trigger {
+  display: flex;
+  flex-direction: column;
+}
+
+aui-menu-item {
+  display: block;
+  position: relative;
+  padding-left: 28px;
+  padding-right: 28px;
+
+  &[data-focused] {
+    background-color: Highlight;
+  }
+}

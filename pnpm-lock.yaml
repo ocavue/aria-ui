@@ -57,6 +57,15 @@ importers:
         specifier: ^5.4.4
         version: 5.4.4
 
+  packages/collection:
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.4.4)
+      typescript:
+        specifier: ^5.4.4
+        version: 5.4.4
+
   packages/combobox:
     dependencies:
       '@aria-ui/core':
@@ -94,12 +103,43 @@ importers:
 
   packages/listbox:
     dependencies:
+      '@aria-ui/collection':
+        specifier: ^0.0.0
+        version: link:../collection
       '@aria-ui/core':
         specifier: ^0.0.10
         version: link:../core
       '@aria-ui/presence':
         specifier: ^0.0.5
         version: link:../presence
+    devDependencies:
+      tsup:
+        specifier: ^8.0.2
+        version: 8.0.2(typescript@5.4.4)
+      typescript:
+        specifier: ^5.4.4
+        version: 5.4.4
+
+  packages/menu:
+    dependencies:
+      '@aria-ui/collection':
+        specifier: ^0.0.0
+        version: link:../collection
+      '@aria-ui/core':
+        specifier: ^0.0.10
+        version: link:../core
+      '@aria-ui/overlay':
+        specifier: ^0.0.10
+        version: link:../overlay
+      '@aria-ui/popover':
+        specifier: ^0.0.9
+        version: link:../popover
+      '@aria-ui/presence':
+        specifier: ^0.0.5
+        version: link:../presence
+      nanoid:
+        specifier: ^5.0.7
+        version: 5.0.7
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -233,6 +273,9 @@ importers:
       '@aria-ui/listbox':
         specifier: workspace:*
         version: link:../packages/listbox
+      '@aria-ui/menu':
+        specifier: workspace:*
+        version: link:../packages/menu
       '@aria-ui/overlay':
         specifier: workspace:*
         version: link:../packages/overlay

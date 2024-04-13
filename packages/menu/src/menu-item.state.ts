@@ -3,36 +3,35 @@ import {
   createComputed,
   mapSignals,
   useAriaAttribute,
-  useEventListener,
-  type ConnectableElement,
+  useAriaRole,
   useAttribute,
   useEffect,
-  useAriaRole,
+  useEventListener,
+  type ConnectableElement,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
+import { nanoid } from "nanoid"
 
-import {
-  focusedValueContext,
-  selectedValueContext,
-} from "./listbox-item.context"
-import {
-  defaultListboxItemProps,
-  type ListboxItemProps,
-} from "./listbox-item.props"
+import { focusedValueContext, selectedValueContext } from "./menu-item.context"
+import { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
 
 /**
- * @group ListboxItem
+ * @group MenuItem
  */
-export function useListboxItem(
+export function useMenuItem(
   element: ConnectableElement,
-  props?: Partial<ListboxItemProps>,
+  props?: Partial<MenuItemProps>,
 ) {
-  const state = mapSignals(assignProps(defaultListboxItemProps, props))
+  const state = mapSignals(assignProps(defaultMenuItemProps, props))
 
-  const selectedValue = selectedValueContext.consume(element)
+  if (!state.value.value) {
+    state.value.value = nanoid()
+  }
+
   const focusedValue = focusedValueContext.consume(element)
+  const selectedValue = selectedValueContext.consume(element)
 
-  useAriaRole(element, "option")
+  useAriaRole(element, "menuitem")
 
   useEventListener(element, "pointerenter", () => {
     const value = state.value.value
@@ -48,17 +47,6 @@ export function useListboxItem(
       return
     }
     selectedValue.value = value
-  })
-
-  const selected = createComputed(() => {
-    return !!state.value.value && state.value.value === selectedValue.value
-  })
-
-  useAriaAttribute(element, "aria-selected", () => {
-    return selected.value ? "true" : "false"
-  })
-  useAttribute(element, "data-selected", () => {
-    return selected.value ? "true" : undefined
   })
 
   const focused = createComputed(() => {
@@ -88,9 +76,6 @@ export function useListboxItem(
     if (!presence.value) {
       if (focused.value) {
         focusedValue.value = ""
-      }
-      if (selected.value) {
-        selectedValue.value = ""
       }
     }
   })

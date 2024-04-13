@@ -12,4 +12,8 @@ export {
 } from "./popover-root.props"
 export { usePopoverRoot } from "./popover-root.state"
 export { PopoverTriggerElement } from "./popover-trigger.element.gen"
+export {
+  type PopoverTriggerProps,
+  defaultPopoverTriggerProps,
+} from "./popover-trigger.props"
 export { usePopoverTrigger } from "./popover-trigger.state"

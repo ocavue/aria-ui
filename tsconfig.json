@@ -27,6 +27,9 @@
   "exclude": ["**/node_modules", "**/dist", "**/temp"],
   "references": [
     {
+      "path": "packages/collection"
+    },
+    {
       "path": "packages/combobox"
     },
     {
@@ -34,6 +37,9 @@
     },
     {
       "path": "packages/listbox"
+    },
+    {
+      "path": "packages/menu"
     },
     {
       "path": "packages/overlay"

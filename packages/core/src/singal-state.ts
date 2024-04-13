@@ -3,6 +3,7 @@ import { signal } from "@preact/signals-core"
 
 import { getObjectEntries } from "./types"
 
+// TODO: correct typo
 /**
  * A plain object containing signals.
  *

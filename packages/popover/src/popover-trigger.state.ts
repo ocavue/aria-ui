@@ -1,8 +1,8 @@
 import {
+  useAriaRole,
+  useEffect,
   useEventListener,
   type ConnectableElement,
-  useEffect,
-  useAriaRole,
 } from "@aria-ui/core"
 import { useOverlayAnchor } from "@aria-ui/overlay"
 
@@ -11,7 +11,7 @@ import { openContext, triggerElementContext } from "./popover-root.context"
 /**
  * @group PopoverTrigger
  */
-export function usePopoverTrigger(element: ConnectableElement): void {
+export function usePopoverTrigger(element: ConnectableElement) {
   useOverlayAnchor(element)
   useAriaRole(element, "button")
 

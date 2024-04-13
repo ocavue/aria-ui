@@ -99,4 +99,30 @@ export class Collection {
 
     return null
   }
+
+  getElement(value: string): HTMLElement | null {
+    return this._map.get(value)?.element ?? null
+  }
 }
+
+/**
+ * A simple case-insensitive substring match filter.
+ */
+export const defaultItemFilter: ItemFilter = ({ value, query }) => {
+  if (!query) {
+    return true
+  }
+
+  return value
+    .toLowerCase()
+    .replace(/\s/g, "")
+    .includes(query.toLowerCase().replace(/\s/g, ""))
+}
+
+/**
+ * The filter function to determine if an item should be shown in the collection.
+ */
+export type ItemFilter = (options: {
+  value: string
+  query: string
+}) => boolean
