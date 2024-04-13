@@ -24,7 +24,7 @@ new ComboboxItemElement(props?: Partial<ComboboxItemProps>): ComboboxItemElement
 function useComboboxItem(
   element: ConnectableElement,
   props?: Partial<ComboboxItemProps>,
-): SingalState<ComboboxItemProps>;
+): SignalState<ComboboxItemProps>;
 ```
 
 ## ComboboxList

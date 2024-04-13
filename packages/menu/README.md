@@ -55,7 +55,7 @@ new MenuContentElement(props?: Partial<MenuContentProps>): MenuContentElement
 function useMenu(
   element: ConnectableElement,
   props?: Partial<MenuContentProps>,
-): SingalState<MenuContentProps>;
+): SignalState<MenuContentProps>;
 ```
 
 ## MenuItem
@@ -85,7 +85,7 @@ new MenuItemElement(props?: Partial<MenuItemProps>): MenuItemElement
 function useMenuItem(
   element: ConnectableElement,
   props?: Partial<MenuItemProps>,
-): SingalState<Readonly<MenuItemProps>>;
+): SignalState<Readonly<MenuItemProps>>;
 ```
 
 ## MenuRoot
@@ -112,7 +112,7 @@ type MenuRootProps: PopoverRootProps;
 function useMenuRoot(
   element: ConnectableElement,
   props?: Partial<PopoverRootProps>,
-): SingalState<MenuRootProps>;
+): SignalState<MenuRootProps>;
 ```
 
 ## MenuTrigger

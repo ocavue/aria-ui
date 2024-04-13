@@ -27,7 +27,7 @@ new ListboxElement(props?: Partial<ListboxProps>): ListboxElement
 function useListbox(
   element: ConnectableElement,
   props?: Partial<ListboxProps>,
-): SingalState<Readonly<ListboxProps>>;
+): SignalState<Readonly<ListboxProps>>;
 ```
 
 ## ListboxItem
@@ -56,5 +56,5 @@ new ListboxItemElement(props?: Partial<ListboxItemProps>): ListboxItemElement
 function useListboxItem(
   element: ConnectableElement,
   props?: Partial<ListboxItemProps>,
-): SingalState<Readonly<ListboxItemProps>>;
+): SignalState<Readonly<ListboxItemProps>>;
 ```

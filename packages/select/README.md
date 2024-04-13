@@ -46,7 +46,7 @@ new SelectContentElement(props?: Partial<SelectContentProps>): SelectContentElem
 function useSelectContent(
   element: ConnectableElement,
   props?: Partial<SelectContentProps>,
-): SingalState<SelectContentProps>;
+): SignalState<SelectContentProps>;
 ```
 
 ## SelectItem
@@ -73,7 +73,7 @@ new SelectItemElement(props?: Partial<SelectItemProps>): SelectItemElement
 function useSelectItem(
   element: ConnectableElement,
   props?: Partial<SelectItemProps>,
-): SingalState<SelectItemProps>;
+): SignalState<SelectItemProps>;
 ```
 
 ## SelectList
@@ -148,5 +148,5 @@ new SelectValueElement(props?: Partial<SelectValueProps>): SelectValueElement
 function useSelectValue(
   element: ConnectableElement,
   props?: Partial<SelectValueProps>,
-): SingalState<Readonly<SelectValueProps>>;
+): SignalState<Readonly<SelectValueProps>>;
 ```

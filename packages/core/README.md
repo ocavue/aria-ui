@@ -167,10 +167,10 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 
 ## Props and States
 
-### SingalState\<T\>
+### SignalState\<T\>
 
 ```ts
-type SingalState<T>: { [K in keyof T]: Signal<T[K]> };
+type SignalState<T>: { [K in keyof T]: Signal<T[K]> };
 ```
 
 A plain object containing signals.
@@ -189,7 +189,7 @@ Merges two objects, with the second object taking precedence. Only keys present 
 ### mapSignals()
 
 ```ts
-function mapSignals<T>(values: T): SingalState<T>;
+function mapSignals<T>(values: T): SignalState<T>;
 ```
 
 Maps every value in the given object to a signal.
@@ -197,7 +197,7 @@ Maps every value in the given object to a signal.
 ### mapValues()
 
 ```ts
-function mapValues<T>(signals: SingalState<T>): T;
+function mapValues<T>(signals: SignalState<T>): T;
 ```
 
 Maps every signal in the given object to its current value.
