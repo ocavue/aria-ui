@@ -8,7 +8,17 @@
 function useMenuTrigger(element: ConnectableElement): void;
 ```
 
-## Menu
+## MenuContent
+
+### MenuContentElement
+
+A custom MenuContent element.
+
+Properties: [MenuContentProps](README.md#menucontentprops)
+
+```ts
+new MenuContentElement(props?: Partial<MenuContentProps>): MenuContentElement
+```
 
 ### MenuContentProps
 
@@ -38,18 +48,6 @@ function useMenuTrigger(element: ConnectableElement): void;
 | `shift` | `boolean` | Whether the floating element should shift to keep it in view.<br /><br />**Default**<br />`true` |
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
-
-## MenuContent
-
-### MenuContentElement
-
-A custom MenuContent element.
-
-Properties: [MenuContentProps](README.md#menucontentprops)
-
-```ts
-new MenuContentElement(props?: Partial<MenuContentProps>): MenuContentElement
-```
 
 ### useMenu()
 

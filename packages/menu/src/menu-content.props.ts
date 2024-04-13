@@ -4,7 +4,7 @@ import {
 } from "@aria-ui/popover"
 
 /**
- * @group Menu
+ * @group MenuContent
  */
 export interface MenuContentProps extends PopoverContentProps {
   /**
