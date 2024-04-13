@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.11
+
+### Patch Changes
+
+- 566b55c: Correct a typo.
+
 ## 0.0.10
 
 ### Patch Changes
