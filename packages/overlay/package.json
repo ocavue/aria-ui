@@ -12,11 +12,11 @@
   "dependencies": {
     "@aria-ui/core": "^0.0.10",
     "@floating-ui/dom": "^1.6.3",
-    "@zag-js/dom-query": "^0.45.0"
+    "@zag-js/dom-query": "^0.46.0"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
-    "typescript": "^5.4.4"
+    "typescript": "^5.4.5"
   },
   "publishConfig": {
     "access": "public",
