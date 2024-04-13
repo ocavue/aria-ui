@@ -1,7 +1,7 @@
 import {
   useEffect,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 import { useListboxItem } from "@aria-ui/listbox"
 
@@ -14,7 +14,7 @@ import type { ComboboxItemProps } from "./combobox-item.props"
 export function useComboboxItem(
   element: ConnectableElement,
   props?: Partial<ComboboxItemProps>,
-): SingalState<ComboboxItemProps> {
+): SignalState<ComboboxItemProps> {
   const listboxItemState = useListboxItem(element, {
     ...props,
   })

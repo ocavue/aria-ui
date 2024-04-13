@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { TooltipRootProps } from "./tooltip-root.props"
 import { useTooltipRoot } from "./tooltip-root.state"
@@ -11,7 +11,7 @@ import { useTooltipRoot } from "./tooltip-root.state"
  * @group TooltipRoot
  */
 export class TooltipRootElement extends BaseElement implements TooltipRootProps {
-  private _s: SingalState<TooltipRootProps>;
+  private _s: SignalState<TooltipRootProps>;
 
   constructor(props?: Partial<TooltipRootProps>) {
     super();

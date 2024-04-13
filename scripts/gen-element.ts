@@ -75,7 +75,7 @@ function updateElementCode(
 
   const code = hasProps
     ? `
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { ${pascal}Props } from "./${kebab}.props"
 import { use${pascal} } from "./${kebab}.state"
@@ -84,7 +84,7 @@ import { use${pascal} } from "./${kebab}.state"
 ${commnet}
  */
 export class ${pascal}Element extends BaseElement implements ${pascal}Props {
-  private _s: SingalState<${pascal}Props>;
+  private _s: SignalState<${pascal}Props>;
 
   constructor(props?: Partial<${pascal}Props>) {
     super();

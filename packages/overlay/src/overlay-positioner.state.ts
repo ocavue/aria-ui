@@ -4,7 +4,7 @@ import {
   mapValues,
   useAnimationFrame,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 import type { ReferenceElement } from "@floating-ui/dom"
 
@@ -21,7 +21,7 @@ import { updatePlacement } from "./positioning"
 export function useOverlayPositioner(
   element: ConnectableElement,
   props?: Partial<OverlayPositionerProps>,
-): SingalState<OverlayPositionerProps> {
+): SignalState<OverlayPositionerProps> {
   const state = mapSignals(assignProps(defaultOverlayPositionerProps, props))
   const reference = referenceContext.consume(element)
   useOverlayPositionerState(element, state, { reference })
@@ -35,8 +35,8 @@ export function useOverlayPositioner(
  */
 export function useOverlayPositionerState(
   element: ConnectableElement,
-  state: SingalState<OverlayPositionerProps>,
-  context: SingalState<{ reference: ReferenceElement | null }>,
+  state: SignalState<OverlayPositionerProps>,
+  context: SignalState<{ reference: ReferenceElement | null }>,
 ): void {
   // Use animation frame because we only want to calculate the position at
   // most once per frame.

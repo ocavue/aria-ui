@@ -2,7 +2,7 @@ import {
   useAriaAttribute,
   useAttribute,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
@@ -23,7 +23,7 @@ import { idContext, openContext } from "./tooltip.context"
 export function useTooltipContent(
   element: ConnectableElement,
   props?: Partial<TooltipContentProps>,
-): SingalState<TooltipContentProps> {
+): SignalState<TooltipContentProps> {
   const state = useOverlayPositioner(element, {
     ...defaultTooltipContentProps,
     ...props,

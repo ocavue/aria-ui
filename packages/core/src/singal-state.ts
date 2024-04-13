@@ -9,7 +9,7 @@ import { getObjectEntries } from "./types"
  *
  * @group Props and States
  */
-export type SingalState<T extends object> = {
+export type SignalState<T extends object> = {
   [K in keyof T]: Signal<T[K]>
 }
 
@@ -18,7 +18,7 @@ export type SingalState<T extends object> = {
  *
  * @group Props and States
  */
-export function mapValues<T extends object>(signals: SingalState<T>): T {
+export function mapValues<T extends object>(signals: SignalState<T>): T {
   const values = {} as T
   for (const [key, signal] of getObjectEntries(signals)) {
     values[key] = signal.value
@@ -31,8 +31,8 @@ export function mapValues<T extends object>(signals: SingalState<T>): T {
  *
  * @group Props and States
  */
-export function mapSignals<T extends object>(values: T): SingalState<T> {
-  const signals = {} as SingalState<T>
+export function mapSignals<T extends object>(values: T): SignalState<T> {
+  const signals = {} as SignalState<T>
   for (const [key, value] of getObjectEntries(values)) {
     signals[key] = signal(value)
   }

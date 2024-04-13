@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { SelectContentProps } from "./select-content.props"
 import { useSelectContent } from "./select-content.state"
@@ -11,7 +11,7 @@ import { useSelectContent } from "./select-content.state"
  * @group SelectContent
  */
 export class SelectContentElement extends BaseElement implements SelectContentProps {
-  private _s: SingalState<SelectContentProps>;
+  private _s: SignalState<SelectContentProps>;
 
   constructor(props?: Partial<SelectContentProps>) {
     super();

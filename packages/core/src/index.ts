@@ -50,5 +50,5 @@ export {
 export {
   mapSignals,
   mapValues,
-  type SingalState,
+  type SignalState,
 } from "./singal-state"

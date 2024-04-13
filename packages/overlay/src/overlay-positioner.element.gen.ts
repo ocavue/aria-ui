@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { OverlayPositionerProps } from "./overlay-positioner.props"
 import { useOverlayPositioner } from "./overlay-positioner.state"
@@ -11,7 +11,7 @@ import { useOverlayPositioner } from "./overlay-positioner.state"
  * @group OverlayPositioner
  */
 export class OverlayPositionerElement extends BaseElement implements OverlayPositionerProps {
-  private _s: SingalState<OverlayPositionerProps>;
+  private _s: SignalState<OverlayPositionerProps>;
 
   constructor(props?: Partial<OverlayPositionerProps>) {
     super();

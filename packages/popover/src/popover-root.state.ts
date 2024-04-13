@@ -3,7 +3,7 @@ import {
   createSignal,
   mapSignals,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
   useEffect,
 } from "@aria-ui/core"
 import { useOverlayRoot } from "@aria-ui/overlay"
@@ -20,7 +20,7 @@ import {
 export function usePopoverRoot(
   element: ConnectableElement,
   props?: Partial<PopoverRootProps>,
-): SingalState<PopoverRootProps> {
+): SignalState<PopoverRootProps> {
   const state = mapSignals(assignProps(defaultPopoverRootProps, props))
   useOverlayRoot(element)
 

@@ -3,7 +3,7 @@ import {
   mapSignals,
   useEffect,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 
 import { selectedValueContext } from "./select-root.context"
@@ -18,7 +18,7 @@ import {
 export function useSelectValue(
   element: ConnectableElement,
   props?: Partial<SelectValueProps>,
-): SingalState<Readonly<SelectValueProps>> {
+): SignalState<Readonly<SelectValueProps>> {
   const state = mapSignals(assignProps(defaultSelectValueProps, props))
 
   const selectedValue = selectedValueContext.consume(element)

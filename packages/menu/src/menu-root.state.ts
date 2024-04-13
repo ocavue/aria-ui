@@ -1,4 +1,4 @@
-import type { ConnectableElement, SingalState } from "@aria-ui/core"
+import type { ConnectableElement, SignalState } from "@aria-ui/core"
 import { usePopoverRoot } from "@aria-ui/popover"
 
 import { openContext } from "./contexts"
@@ -10,7 +10,7 @@ import type { MenuRootProps } from "./menu-root.props"
 export function useMenuRoot(
   element: ConnectableElement,
   props?: Partial<MenuRootProps>,
-): SingalState<MenuRootProps> {
+): SignalState<MenuRootProps> {
   const state = usePopoverRoot(element, props)
 
   openContext.provide(element, state.open)

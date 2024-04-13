@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { PopoverRootProps } from "./popover-root.props"
 import { usePopoverRoot } from "./popover-root.state"
@@ -11,7 +11,7 @@ import { usePopoverRoot } from "./popover-root.state"
  * @group PopoverRoot
  */
 export class PopoverRootElement extends BaseElement implements PopoverRootProps {
-  private _s: SingalState<PopoverRootProps>;
+  private _s: SignalState<PopoverRootProps>;
 
   constructor(props?: Partial<PopoverRootProps>) {
     super();
