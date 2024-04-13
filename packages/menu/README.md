@@ -76,7 +76,7 @@ new MenuItemElement(props?: Partial<MenuItemProps>): MenuItemElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`{@link @aria-ui/collection!defaultItemFilter}` |
+| `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`defaultItemFilter` |
 | `onSelect` | `null` \| `VoidFunction` | Callback function that is called when the item is selected.<br /><br />**Default**<br />`null` |
 | `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
 | `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list. By default, a random value is generated.<br /><br />**Default**<br />`""` |

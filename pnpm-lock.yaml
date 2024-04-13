@@ -58,13 +58,6 @@ importers:
         version: 5.4.4
 
   packages/collection:
-    dependencies:
-      '@aria-ui/core':
-        specifier: ^0.0.10
-        version: link:../core
-      '@aria-ui/presence':
-        specifier: ^0.0.5
-        version: link:../presence
     devDependencies:
       tsup:
         specifier: ^8.0.2

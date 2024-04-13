@@ -22,7 +22,7 @@ export interface ListboxItemProps {
   /**
    * The filter function to determine if an item should be shown in the listbox.
    *
-   * @default {@link @aria-ui/collection!defaultItemFilter}
+   * @default defaultItemFilter
    */
   filter: ItemFilter
 }
