@@ -7,6 +7,8 @@ import { getObjectEntries } from "./types"
  * A plain object containing signals.
  *
  * @group Props and States
+ *
+ * TODO: correct typo
  */
 export type SingalState<T extends object> = {
   [K in keyof T]: Signal<T[K]>

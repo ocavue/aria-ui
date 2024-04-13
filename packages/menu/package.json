@@ -1,7 +1,7 @@
 {
-  "name": "@aria-ui/listbox",
+  "name": "@aria-ui/menu",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.0",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -12,7 +12,10 @@
   "dependencies": {
     "@aria-ui/collection": "^0.0.0",
     "@aria-ui/core": "^0.0.10",
-    "@aria-ui/presence": "^0.0.5"
+    "@aria-ui/overlay": "^0.0.10",
+    "@aria-ui/popover": "^0.0.9",
+    "@aria-ui/presence": "^0.0.5",
+    "nanoid": "^5.0.7"
   },
   "devDependencies": {
     "tsup": "^8.0.2",

@@ -1,12 +1,12 @@
 import { type ItemFilter, defaultItemFilter } from "@aria-ui/collection"
 
 /**
- * @group ListboxItem
+ * @group MenuItem
  */
-export interface ListboxItemProps {
+export interface MenuItemProps {
   /**
    * The value of the item. Every item must have a unique value in the parent
-   * list.
+   * list. By default, a random value is generated.
    *
    * @default ""
    */
@@ -25,13 +25,21 @@ export interface ListboxItemProps {
    * @default {@link @aria-ui/collection!defaultItemFilter}
    */
   filter: ItemFilter
+
+  /**
+   * Callback function that is called when the item is selected.
+   *
+   * @default null
+   */
+  onSelect: VoidFunction | null
 }
 
 /**
  * @hidden
  */
-export const defaultListboxItemProps = Object.freeze({
+export const defaultMenuItemProps = Object.freeze({
   value: "",
   query: "",
   filter: defaultItemFilter,
-}) satisfies ListboxItemProps
+  onSelect: null,
+}) satisfies MenuItemProps

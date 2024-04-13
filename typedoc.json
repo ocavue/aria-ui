@@ -3,9 +3,11 @@
   "extends": ["./config/typedoc-base.json"],
   "entryPointStrategy": "packages",
   "entryPoints": [
+    "packages/collection",
     "packages/combobox",
     "packages/core",
     "packages/listbox",
+    "packages/menu",
     "packages/overlay",
     "packages/popover",
     "packages/presence",

@@ -1,48 +1,55 @@
 import { Collection } from "@aria-ui/collection"
 import {
-  assignProps,
   createComputed,
   createSignal,
-  mapSignals,
+  useAriaRole,
   useEffect,
   useQuerySelectorAll,
   type ConnectableElement,
-  useAriaRole,
-  type Signal,
   type ReadonlySignal,
+  type Signal,
+  type SingalState,
 } from "@aria-ui/core"
+import { usePopoverContent } from "@aria-ui/popover"
 
+import { openContext } from "./contexts"
 import {
-  focusedValueContext,
-  selectedValueContext,
-} from "./listbox-item.context"
-import { defaultListboxProps, type ListboxProps } from "./listbox.props"
+  defaultMenuContentProps,
+  type MenuContentProps,
+} from "./menu-content.props"
+import { focusedValueContext, selectedValueContext } from "./menu-item.context"
+import type { MenuItemProps } from "./menu-item.props"
 
 /**
- * @group Listbox
+ * @group MenuContent
  */
-export function useListbox(
+export function useMenuContent(
   element: ConnectableElement,
-  props?: Partial<ListboxProps>,
+  props?: Partial<MenuContentProps>,
 ) {
-  const state = mapSignals(assignProps(defaultListboxProps, props))
+  const popoverState = usePopoverContent(element, props)
 
-  useAriaRole(element, "listbox")
+  const state: SingalState<MenuContentProps> = {
+    ...popoverState,
+    onKeydownHandlerAdd: createSignal<MenuContentProps["onKeydownHandlerAdd"]>(
+      props?.onKeydownHandlerAdd ?? defaultMenuContentProps.onKeydownHandlerAdd,
+    ),
+  }
+
+  useAriaRole(element, "menu")
 
   const focusedValue = createSignal("")
+  const selectedValue = createSignal("")
 
-  selectedValueContext.provide(element, state.value)
+  selectedValueContext.provide(element, selectedValue)
   focusedValueContext.provide(element, focusedValue)
-
-  useEffect(element, () => {
-    state.onValueChange.peek()?.(state.value.value)
-  })
+  const open = openContext.consume(element)
 
   useEffect(element, () => {
     element.tabIndex = 0
   })
 
-  const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
+  const items = useQuerySelectorAll<HTMLElement>(element, '[role="menuitem"]')
   const collection = createComputed(() => {
     return new Collection(Array.from(items.value))
   })
@@ -51,9 +58,11 @@ export function useListbox(
     element,
     collection,
     focusedValue,
-    state.value,
+    selectedValue,
     state.onKeydownHandlerAdd,
   )
+
+  useSelect(element, open, selectedValue, collection)
 
   return state
 }
@@ -66,7 +75,7 @@ export function useCollectionKeydownHandler(
   collection: ReadonlySignal<Collection>,
   focusedValue: Signal<string>,
   selectedValue: Signal<string>,
-  onKeydownHandlerAdd: Signal<ListboxProps["onKeydownHandlerAdd"]>,
+  onKeydownHandlerAdd: Signal<MenuContentProps["onKeydownHandlerAdd"]>,
 ) {
   const keydownHandler = (event: KeyboardEvent) => {
     if (event.defaultPrevented || event.isComposing) {
@@ -105,5 +114,27 @@ export function useCollectionKeydownHandler(
     }
     element.addEventListener("keydown", keydownHandler)
     return () => element.removeEventListener("keydown", keydownHandler)
+  })
+}
+
+function useSelect(
+  element: ConnectableElement,
+  open: Signal<boolean>,
+  selectedValue: ReadonlySignal<string>,
+  collection: ReadonlySignal<Collection>,
+) {
+  useEffect(element, () => {
+    const value = selectedValue.value
+    if (!value) return
+
+    const target = collection.peek().getElement(value) as
+      | (HTMLElement & MenuItemProps)
+      | null
+    if (!target) return
+
+    if (target.onSelect && typeof target.onSelect === "function") {
+      target.onSelect()
+      open.value = false
+    }
   })
 }

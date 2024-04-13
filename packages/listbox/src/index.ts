@@ -1,8 +1,6 @@
 export { ListboxItemElement } from "./listbox-item.element.gen"
 export {
-  defaultListboxItemFilter,
   defaultListboxItemProps,
-  type ListboxItemFilter,
   type ListboxItemProps,
 } from "./listbox-item.props"
 export { useListboxItem } from "./listbox-item.state"

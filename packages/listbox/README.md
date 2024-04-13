@@ -46,25 +46,9 @@ new ListboxItemElement(props?: Partial<ListboxItemProps>): ListboxItemElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `filter` | [`ListboxItemFilter`](README.md#listboxitemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`{@link defaultListboxItemFilter}` |
+| `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`{@link @aria-ui/collection!defaultItemFilter}` |
 | `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
 | `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list.<br /><br />**Default**<br />`""` |
-
-### ListboxItemFilter()
-
-```ts
-type ListboxItemFilter: (options: Object) => boolean;
-```
-
-The filter function to determine if an item should be shown in the listbox.
-
-### defaultListboxItemFilter()
-
-```ts
-function defaultListboxItemFilter(options: Object): boolean;
-```
-
-A simple case-insensitive substring match filter.
 
 ### useListboxItem()
 
