@@ -4,7 +4,7 @@ import { createSignal, type Signal } from "./signals"
 class ContextRequestEvent<T> extends Event {
   public constructor(
     public readonly key: string | symbol,
-    public readonly callback: (singal: Signal<T>) => void,
+    public readonly callback: (signal: Signal<T>) => void,
   ) {
     super("aria-ui/context-request", { bubbles: true, composed: true })
   }

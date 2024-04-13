@@ -1,4 +1,4 @@
-import type { ConnectableElement, SingalState } from "@aria-ui/core"
+import type { ConnectableElement, SignalState } from "@aria-ui/core"
 import { useListboxItem } from "@aria-ui/listbox"
 
 import type { SelectItemProps } from "./select-item.props"
@@ -9,7 +9,7 @@ import type { SelectItemProps } from "./select-item.props"
 export function useSelectItem(
   element: ConnectableElement,
   props?: Partial<SelectItemProps>,
-): SingalState<SelectItemProps> {
+): SignalState<SelectItemProps> {
   const listboxItemState = useListboxItem(element, {
     ...props,
   })

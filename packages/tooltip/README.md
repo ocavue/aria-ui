@@ -48,7 +48,7 @@ new TooltipContentElement(props?: Partial<TooltipContentProps>): TooltipContentE
 function useTooltipContent(
   element: ConnectableElement,
   props?: Partial<TooltipContentProps>,
-): SingalState<TooltipContentProps>;
+): SignalState<TooltipContentProps>;
 ```
 
 Properties: [TooltipContentProps](README.md#tooltipcontentprops)
@@ -80,7 +80,7 @@ new TooltipRootElement(props?: Partial<TooltipRootProps>): TooltipRootElement
 function useTooltipRoot(
   element: ConnectableElement,
   props?: Partial<TooltipRootProps>,
-): SingalState<TooltipRootProps>;
+): SignalState<TooltipRootProps>;
 ```
 
 ## TooltipTrigger

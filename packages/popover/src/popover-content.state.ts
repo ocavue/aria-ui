@@ -5,7 +5,7 @@ import {
   useEffect,
   type ConnectableElement,
   type ReadonlySignal,
-  type SingalState,
+  type SignalState,
   useAnimationFrame,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
@@ -33,7 +33,7 @@ import { openContext, triggerElementContext } from "./popover-root.context"
 export function usePopoverContent(
   element: ConnectableElement,
   props?: Partial<PopoverContentProps>,
-): SingalState<PopoverContentProps> {
+): SignalState<PopoverContentProps> {
   const overlayPositionerState = useOverlayPositioner(element, {
     ...defaultPopoverContentProps,
     ...props,

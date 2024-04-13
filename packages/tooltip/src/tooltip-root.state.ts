@@ -4,7 +4,7 @@ import {
   useEffect,
   type ConnectableElement,
   type Signal,
-  type SingalState,
+  type SignalState,
   assignProps,
   mapSignals,
 } from "@aria-ui/core"
@@ -35,7 +35,7 @@ let openingId: string | null = null
 export function useTooltipRoot(
   element: ConnectableElement,
   props?: Partial<TooltipRootProps>,
-): SingalState<TooltipRootProps> {
+): SignalState<TooltipRootProps> {
   const state = mapSignals(assignProps(defaultTooltipRootProps, props))
   useOverlayRoot(element)
 

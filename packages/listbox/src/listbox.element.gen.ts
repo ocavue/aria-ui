@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { ListboxProps } from "./listbox.props"
 import { useListbox } from "./listbox.state"
@@ -11,7 +11,7 @@ import { useListbox } from "./listbox.state"
  * @group Listbox
  */
 export class ListboxElement extends BaseElement implements ListboxProps {
-  private _s: SingalState<ListboxProps>;
+  private _s: SignalState<ListboxProps>;
 
   constructor(props?: Partial<ListboxProps>) {
     super();

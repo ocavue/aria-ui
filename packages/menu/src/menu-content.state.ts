@@ -8,7 +8,7 @@ import {
   type ConnectableElement,
   type ReadonlySignal,
   type Signal,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 import { usePopoverContent } from "@aria-ui/popover"
 
@@ -29,7 +29,7 @@ export function useMenuContent(
 ) {
   const popoverState = usePopoverContent(element, props)
 
-  const state: SingalState<MenuContentProps> = {
+  const state: SignalState<MenuContentProps> = {
     ...popoverState,
     onKeydownHandlerAdd: createSignal<MenuContentProps["onKeydownHandlerAdd"]>(
       props?.onKeydownHandlerAdd ?? defaultMenuContentProps.onKeydownHandlerAdd,

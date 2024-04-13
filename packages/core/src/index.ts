@@ -27,6 +27,7 @@ export { BaseElement } from "./base-element"
 export type { ConnectableElement } from "./connectable-element"
 export { createContext, type Context } from "./context"
 export {
+  useAnimationFrame,
   useAriaAttribute,
   useAriaRole,
   useAttribute,
@@ -34,9 +35,13 @@ export {
   useQuerySelector,
   useQuerySelectorAll,
   useStyle,
-  useAnimationFrame,
 } from "./dom"
 export { assignProps } from "./props"
+export {
+  mapSignals,
+  mapValues,
+  type SignalState,
+} from "./signal-state"
 export {
   batch,
   createComputed,
@@ -47,8 +52,3 @@ export {
   type Signal,
   type SignalValue,
 } from "./signals"
-export {
-  mapSignals,
-  mapValues,
-  type SingalState,
-} from "./singal-state"

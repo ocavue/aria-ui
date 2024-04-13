@@ -54,7 +54,7 @@ new PopoverContentElement(props?: Partial<PopoverContentProps>): PopoverContentE
 function usePopoverContent(
   element: ConnectableElement,
   props?: Partial<PopoverContentProps>,
-): SingalState<PopoverContentProps>;
+): SignalState<PopoverContentProps>;
 ```
 
 Properties: [PopoverContentProps](README.md#popovercontentprops)
@@ -87,7 +87,7 @@ new PopoverRootElement(props?: Partial<PopoverRootProps>): PopoverRootElement
 function usePopoverRoot(
   element: ConnectableElement,
   props?: Partial<PopoverRootProps>,
-): SingalState<PopoverRootProps>;
+): SignalState<PopoverRootProps>;
 ```
 
 ## PopoverTrigger

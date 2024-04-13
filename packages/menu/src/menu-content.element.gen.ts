@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { MenuContentProps } from "./menu-content.props"
 import { useMenuContent } from "./menu-content.state"
@@ -11,7 +11,7 @@ import { useMenuContent } from "./menu-content.state"
  * @group MenuContent
  */
 export class MenuContentElement extends BaseElement implements MenuContentProps {
-  private _s: SingalState<MenuContentProps>;
+  private _s: SignalState<MenuContentProps>;
 
   constructor(props?: Partial<MenuContentProps>) {
     super();

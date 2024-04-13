@@ -1,7 +1,7 @@
 import {
   assignProps,
   type ConnectableElement,
-  type SingalState,
+  type SignalState,
 } from "@aria-ui/core"
 import { usePopoverContent } from "@aria-ui/popover"
 
@@ -16,7 +16,7 @@ import {
 export function useSelectContent(
   element: ConnectableElement,
   props?: Partial<SelectContentProps>,
-): SingalState<SelectContentProps> {
+): SignalState<SelectContentProps> {
   return usePopoverContent(
     element,
     assignProps(defaultSelectContentProps, props),

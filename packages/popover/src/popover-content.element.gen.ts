@@ -1,4 +1,4 @@
-import { BaseElement, type SingalState } from "@aria-ui/core";
+import { BaseElement, type SignalState } from "@aria-ui/core";
 
 import type { PopoverContentProps } from "./popover-content.props"
 import { usePopoverContent } from "./popover-content.state"
@@ -11,7 +11,7 @@ import { usePopoverContent } from "./popover-content.state"
  * @group PopoverContent
  */
 export class PopoverContentElement extends BaseElement implements PopoverContentProps {
-  private _s: SingalState<PopoverContentProps>;
+  private _s: SignalState<PopoverContentProps>;
 
   constructor(props?: Partial<PopoverContentProps>) {
     super();
