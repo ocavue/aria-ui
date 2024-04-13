@@ -12,6 +12,7 @@ aui-combobox-content {
 }
 
 aui-combobox-item {
+  margin: 8px 0px 0px 0px !important;
   display: block;
   position: relative;
   padding-left: 28px;
