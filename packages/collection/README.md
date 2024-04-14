@@ -26,6 +26,12 @@ first(): null | string
 getElement(value: string): null | HTMLElement
 ```
 
+##### getValues()
+
+```ts
+getValues(): string[]
+```
+
 ##### last()
 
 ```ts

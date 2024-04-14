@@ -12,9 +12,10 @@ import {
 import { usePresence } from "@aria-ui/presence"
 
 import {
+  availableValueSetContext,
   focusedValueContext,
   selectedValueContext,
-} from "./listbox-item.context"
+} from "./context"
 import {
   defaultListboxItemProps,
   type ListboxItemProps,
@@ -69,11 +70,10 @@ export function useListboxItem(
     return focused.value ? "true" : undefined
   })
 
+  const availableValueSet = availableValueSetContext.consume(element)
+
   const presence = createComputed((): boolean => {
-    const query = state.query.value || ""
-    const value = state.value.value || ""
-    const filter = state.filter.value
-    return filter({ query, value })
+    return availableValueSet.value.has(state.value.value || "")
   })
 
   useAriaAttribute(element, "aria-disabled", () => {

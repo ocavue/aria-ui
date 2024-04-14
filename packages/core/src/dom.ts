@@ -131,6 +131,7 @@ export function useQuerySelector<E extends Element = Element>(
 ): ReadonlySignal<E | null> {
   const mutationCounter = useMutationObserver(element, {
     childList: true,
+    attributes: true,
   })
 
   return createComputed(() => {
@@ -150,6 +151,7 @@ export function useQuerySelectorAll<E extends Element = Element>(
 ): ReadonlySignal<NodeListOf<E>> {
   const mutationCounter = useMutationObserver(element, {
     childList: true,
+    attributes: true,
   })
 
   return createComputed(() => {

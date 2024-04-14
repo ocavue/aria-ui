@@ -1,3 +1,5 @@
+import { defaultItemFilter, type ItemFilter } from "@aria-ui/collection"
+
 /**
  * @group Listbox
  */
@@ -24,6 +26,20 @@ export interface ListboxProps {
   selectionMode: "multiple" | "single"
 
   /**
+   * The query string to filter the listbox items.
+   *
+   * @default ""
+   */
+  query: string
+
+  /**
+   * The filter function to determine if an item should be shown in the listbox.
+   *
+   * @default defaultItemFilter
+   */
+  filter: ItemFilter
+
+  /**
    * By default, the Listbox element will listen for keydown events. However,
    * you can pass `onKeydownHandlerAdd` to override the default behavior.
    * `onKeydownHandlerAdd` receives a keydown handler when the Listbox element
@@ -44,5 +60,7 @@ export const defaultListboxProps = Object.freeze({
   value: "",
   onValueChange: null,
   selectionMode: "single",
+  query: "",
+  filter: defaultItemFilter,
   onKeydownHandlerAdd: null,
 }) satisfies ListboxProps

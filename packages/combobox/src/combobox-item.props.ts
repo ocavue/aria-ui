@@ -1,20 +1,17 @@
+import {
+  defaultListboxItemProps,
+  type ListboxItemProps,
+} from "@aria-ui/listbox"
+
 /**
  * @group ComboboxItem
  */
-export interface ComboboxItemProps {
-  /**
-   * {@inheritDoc @aria-ui/listbox!ListboxItemProps.value}
-   *
-   * @default ""
-   */
-  value: string
-}
+export interface ComboboxItemProps extends ListboxItemProps {}
 
 /**
- * @group ComboboxList
- *
+ * @group ComboboxItem
  * @internal
  */
 export const defaultComboboxItemProps = Object.freeze({
-  value: "",
+  ...defaultListboxItemProps,
 }) satisfies ComboboxItemProps

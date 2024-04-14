@@ -11,7 +11,8 @@ aui-combobox-content {
   flex-direction: column;
 }
 
-aui-combobox-item {
+aui-combobox-item,
+aui-combobox-empty {
   margin: 8px 0px 0px 0px !important;
   display: block;
   position: relative;
