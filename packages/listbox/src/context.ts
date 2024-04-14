@@ -11,3 +11,8 @@ export const availableValueSetContext = createContext<Set<string>>(
   "Listbox/availableValueSet",
   new Set(),
 )
+
+export const pointerMovingContext = createContext(
+  "Listbox/pointerMoving",
+  false,
+)

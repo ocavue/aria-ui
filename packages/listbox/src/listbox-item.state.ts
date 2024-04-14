@@ -14,6 +14,7 @@ import { usePresence } from "@aria-ui/presence"
 import {
   availableValueSetContext,
   focusedValueContext,
+  pointerMovingContext,
   selectedValueContext,
 } from "./context"
 import {
@@ -32,12 +33,14 @@ export function useListboxItem(
 
   const selectedValue = selectedValueContext.consume(element)
   const focusedValue = focusedValueContext.consume(element)
+  const pointerMoving = pointerMovingContext.consume(element)
 
   useAriaRole(element, "option")
 
   useEventListener(element, "pointerenter", () => {
     const value = state.value.value
-    if (value == null) {
+    const pointerMovingValue = pointerMoving.value
+    if (value == null || !pointerMovingValue) {
       return
     }
     focusedValue.value = value

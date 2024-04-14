@@ -10,11 +10,13 @@ import {
   useAriaRole,
   type Signal,
   type ReadonlySignal,
+  useEventListener,
 } from "@aria-ui/core"
 
 import {
   availableValueSetContext,
   focusedValueContext,
+  pointerMovingContext,
   selectedValueContext,
 } from "./context"
 import type { ListboxItemProps } from "./listbox-item.props"
@@ -35,6 +37,7 @@ export function useListbox(
 
   selectedValueContext.provide(element, state.value)
   focusedValueContext.provide(element, focusedValue)
+  pointerMovingContext.provide(element, useMouseMoving(element))
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
@@ -98,6 +101,11 @@ export function useCollectionKeydownHandler(
   selectedValue: Signal<string>,
   onKeydownHandlerAdd: Signal<ListboxProps["onKeydownHandlerAdd"]>,
 ) {
+  const scrollFocusedItemIntoView = () => {
+    const target = collection.peek().getElement(focusedValue.value)
+    target?.scrollIntoView({ block: "nearest" })
+  }
+
   const keydownHandler = (event: KeyboardEvent) => {
     if (event.defaultPrevented || event.isComposing) {
       return
@@ -106,15 +114,19 @@ export function useCollectionKeydownHandler(
     switch (event.key) {
       case "ArrowDown":
         focusedValue.value = collection.value.next(focusedValue.value) || ""
+        scrollFocusedItemIntoView()
         break
       case "ArrowUp":
         focusedValue.value = collection.value.prev(focusedValue.value) || ""
+        scrollFocusedItemIntoView()
         break
       case "Home":
         focusedValue.value = collection.value.first() || ""
+        scrollFocusedItemIntoView()
         break
       case "End":
         focusedValue.value = collection.value.last() || ""
+        scrollFocusedItemIntoView()
         break
       case "Enter":
         if (focusedValue.value) {
@@ -136,4 +148,30 @@ export function useCollectionKeydownHandler(
     element.addEventListener("keydown", keydownHandler)
     return () => element.removeEventListener("keydown", keydownHandler)
   })
+}
+
+export function useMouseMoving(element: ConnectableElement) {
+  const pointerMoving = createSignal(false)
+  let lastMoveMoveTime = 0
+
+  useEventListener(element, "pointermove", () => {
+    lastMoveMoveTime = Date.now()
+    pointerMoving.value = true
+  })
+
+  // A simple debouncing implementation
+  useEffect(element, () => {
+    if (!pointerMoving.value) {
+      return
+    }
+    const id = setInterval(() => {
+      if (Date.now() - lastMoveMoveTime > 200) {
+        pointerMoving.value = false
+        lastMoveMoveTime = 0
+      }
+    }, 50)
+    return () => clearInterval(id)
+  })
+
+  return pointerMoving
 }
