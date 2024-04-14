@@ -25,6 +25,13 @@ export interface ListboxItemProps {
    * @default defaultItemFilter
    */
   filter: ItemFilter
+
+  /**
+   * The function to call when the item is selected.
+   *
+   * @default null
+   */
+  onSelect: VoidFunction | null
 }
 
 /**
@@ -34,4 +41,5 @@ export const defaultListboxItemProps = Object.freeze({
   value: "",
   query: "",
   filter: defaultItemFilter,
+  onSelect: null,
 }) satisfies ListboxItemProps

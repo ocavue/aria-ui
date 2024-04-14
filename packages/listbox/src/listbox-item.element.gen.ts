@@ -24,4 +24,6 @@ export class ListboxItemElement extends BaseElement implements ListboxItemProps 
   /** @hidden */ set query(v: ListboxItemProps["query"]) { this._s.query.value = v }
   /** @hidden */ get filter(): ListboxItemProps["filter"] { return this._s.filter.value }
   /** @hidden */ set filter(v: ListboxItemProps["filter"]) { this._s.filter.value = v }
+  /** @hidden */ get onSelect(): ListboxItemProps["onSelect"] { return this._s.onSelect.value }
+  /** @hidden */ set onSelect(v: ListboxItemProps["onSelect"]) { this._s.onSelect.value = v }
 }

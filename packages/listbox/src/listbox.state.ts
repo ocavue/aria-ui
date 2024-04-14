@@ -16,6 +16,7 @@ import {
   focusedValueContext,
   selectedValueContext,
 } from "./listbox-item.context"
+import type { ListboxItemProps } from "./listbox-item.props"
 import { defaultListboxProps, type ListboxProps } from "./listbox.props"
 
 /**
@@ -34,17 +35,27 @@ export function useListbox(
   selectedValueContext.provide(element, state.value)
   focusedValueContext.provide(element, focusedValue)
 
+  const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
+  const collection = createComputed(() => {
+    return new Collection(Array.from(items.value))
+  })
+
   useEffect(element, () => {
-    state.onValueChange.peek()?.(state.value.value)
+    const selected: string = state.value.value
+
+    state.onValueChange.peek()?.(selected)
+
+    const target = collection.peek().getElement(selected) as
+      | (ListboxItemProps & HTMLElement)
+      | null
+
+    if (target?.onSelect && typeof target.onSelect === "function") {
+      target.onSelect()
+    }
   })
 
   useEffect(element, () => {
     element.tabIndex = 0
-  })
-
-  const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
-  const collection = createComputed(() => {
-    return new Collection(Array.from(items.value))
   })
 
   useCollectionKeydownHandler(

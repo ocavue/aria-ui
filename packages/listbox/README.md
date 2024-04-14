@@ -47,6 +47,7 @@ new ListboxItemElement(props?: Partial<ListboxItemProps>): ListboxItemElement
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox.<br /><br />**Default**<br />`defaultItemFilter` |
+| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected.<br /><br />**Default**<br />`null` |
 | `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
 | `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list.<br /><br />**Default**<br />`""` |
 
