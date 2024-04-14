@@ -113,7 +113,7 @@ export class Collection {
   getElement(value: string): HTMLElement | null {
     const index = this._indexes.get(value)
     if (index == null) return null
-    return this._items[index]
+    return this._items[index] ?? null
   }
 
   /**
