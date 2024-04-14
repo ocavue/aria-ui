@@ -1,5 +1,12 @@
 # @aria-ui/listbox
 
+## 0.0.9
+
+### Patch Changes
+
+- Updated dependencies [00d225a]
+  - @aria-ui/collection@0.0.3
+
 ## 0.0.8
 
 ### Patch Changes

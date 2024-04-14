@@ -1,5 +1,12 @@
 # @aria-ui/menu
 
+## 0.0.3
+
+### Patch Changes
+
+- Updated dependencies [00d225a]
+  - @aria-ui/collection@0.0.3
+
 ## 0.0.2
 
 ### Patch Changes

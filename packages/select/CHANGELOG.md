@@ -1,5 +1,11 @@
 # @aria-ui/select
 
+## 0.0.12
+
+### Patch Changes
+
+- @aria-ui/listbox@0.0.9
+
 ## 0.0.11
 
 ### Patch Changes
