@@ -1,123 +1,126 @@
-class Node {
-  constructor(
-    public element: HTMLElement,
-    public prev: Node | null = null,
-    public next: Node | null = null,
-  ) {}
+function getValue(element: HTMLElement): string {
+  return (
+    (element as HTMLOptionElement).value ||
+    element.textContent ||
+    element.innerText ||
+    element.innerHTML
+  )
+}
 
-  get value(): string {
-    return (
-      (this.element as HTMLOptionElement).value ||
-      this.element.textContent ||
-      this.element.innerText ||
-      this.element.innerHTML
-    )
-  }
-
-  get disabled(): boolean {
-    return (
-      (this.element as HTMLOptionElement).disabled ||
-      this.element.getAttribute("aria-disabled") === "true" ||
-      this.element.getAttribute("aria-hidden") === "true"
-    )
-  }
+function isDisabled(element: HTMLElement): boolean {
+  return (
+    (element as HTMLOptionElement).disabled ||
+    element.getAttribute("aria-disabled") === "true" ||
+    element.getAttribute("aria-hidden") === "true"
+  )
 }
 
 export class Collection {
-  private _map = new Map<string, Node>()
-  private _head: Node | null = null
-  private _tail: Node | null = null
+  private _items: HTMLElement[] = []
+  private _indexes = new Map<string, number>()
 
   constructor(
     items: Iterable<HTMLElement>,
     readonly loop = true,
   ) {
-    let prev: Node | undefined
-
     for (const item of items) {
-      const node = new Node(item)
-      const value = node.value
-      if (!value || this._map.has(value)) {
+      const value = getValue(item)
+      if (!value || this._indexes.has(value)) {
         continue
       }
 
-      this._map.set(value, node)
-
-      if (!this._head) {
-        this._head = node
-      }
-      this._tail = node
-
-      if (prev) {
-        node.prev = prev
-        prev.next = node
-      }
-
-      prev = node
-    }
-
-    if (this.loop && this._head && this._tail) {
-      this._tail.next = this._head
-      this._head.prev = this._tail
+      this._indexes.set(value, this._items.length)
+      this._items.push(item)
     }
   }
 
-  first() {
-    return this._head?.value || null
+  size(): number {
+    return this._items.length
   }
 
-  last() {
-    return this._tail?.value || null
+  private _find(startIndex: number, dir: 1 | -1): string | null {
+    let index = startIndex
+    const n = this._items.length
+
+    for (let i = 0; i < n; i++) {
+      if (index < 0 || index >= n) {
+        if (this.loop) {
+          index = (index + n) % n
+        } else {
+          break
+        }
+      }
+
+      const item = this._items[index]
+      if (item && !isDisabled(item)) {
+        return getValue(item)
+      }
+
+      index += dir
+    }
+    return null
   }
 
-  size() {
-    return this._map.size
+  /**
+   * Returns the first enabled value.
+   */
+  first(): string | null {
+    return this._find(0, +1)
   }
 
+  /**
+   * Returns the last enabled value.
+   */
+  last(): string | null {
+    return this._find(this.size() - 1, -1)
+  }
+
+  /**
+   * Returns the next enabled value.
+   */
   next(value: string | null): string | null {
-    const curr = value == null ? null : this._map.get(value)
-    let next = curr?.next ?? this._head
-
-    const size = this.size()
-    for (let i = 0; i < size; i++) {
-      if (next && !next.disabled) return next.value
-      next = next?.next ?? null
+    if (value == null) {
+      return this.first()
     }
 
-    return null
+    const index = this._indexes.get(value)
+    if (index == null) {
+      return this.first()
+    }
+
+    return this._find(index + 1, +1)
   }
 
+  /**
+   * Returns the previous enabled value.
+   */
   prev(value: string | null): string | null {
-    const curr = value == null ? null : this._map.get(value)
-    let prev = curr?.prev ?? this._tail
-
-    const size = this.size()
-    for (let i = 0; i < size; i++) {
-      if (prev && !prev.disabled) return prev.value
-      prev = prev?.prev ?? null
+    if (value == null) {
+      return this.last()
     }
 
-    return null
+    const index = this._indexes.get(value)
+    if (index == null) {
+      return this.last()
+    }
+
+    return this._find(index - 1, -1)
   }
 
+  /**
+   * Finds an element from its value.
+   */
   getElement(value: string): HTMLElement | null {
-    return this._map.get(value)?.element ?? null
+    const index = this._indexes.get(value)
+    if (index == null) return null
+    return this._items[index] ?? null
   }
 
+  /**
+   * Returns all values.
+   */
   getValues(): string[] {
-    const values: string[] = []
-    const head = this._head
-    let node: Node | null = head
-
-    while (node) {
-      values.push(node.value)
-      node = node.next
-      if (node === head) {
-        node = null
-      }
-    }
-
-    return values
+    return this._items.map(getValue)
   }
 }
 
