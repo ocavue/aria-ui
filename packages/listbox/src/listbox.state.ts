@@ -42,6 +42,12 @@ export function useListbox(
   })
 
   useEffect(element, () => {
+    if (state.autoFocus.value) {
+      focusedValue.value = collection.value.first() || ""
+    }
+  })
+
+  useEffect(element, () => {
     const selected: string = state.value.value
 
     state.onValueChange.peek()?.(selected)

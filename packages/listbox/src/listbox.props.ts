@@ -21,9 +21,18 @@ export interface ListboxProps {
   /**
    * Listbox selection mode
    *
+   * (Currently only single selection mode is implemented)
+   *
    * @default "single"
    */
   selectionMode: "multiple" | "single"
+
+  /**
+   * Whether the listbox should automatically set the focus to the first item.
+   *
+   * @default false
+   */
+  autoFocus: boolean
 
   /**
    * The query string to filter the listbox items.
@@ -60,6 +69,7 @@ export const defaultListboxProps = Object.freeze({
   value: "",
   onValueChange: null,
   selectionMode: "single",
+  autoFocus: false,
   query: "",
   filter: defaultItemFilter,
   onKeydownHandlerAdd: null,
