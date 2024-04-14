@@ -52,7 +52,7 @@ export class Collection {
       }
 
       const item = this._items[index]
-      if (!isDisabled(item)) {
+      if (item && !isDisabled(item)) {
         return getValue(item)
       }
 
