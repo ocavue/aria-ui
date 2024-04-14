@@ -1,5 +1,11 @@
 # @aria-ui/listbox
 
+## 0.0.10
+
+### Patch Changes
+
+- c3c1c84: Ignore keyboard event when there is no available item.
+
 ## 0.0.9
 
 ### Patch Changes
