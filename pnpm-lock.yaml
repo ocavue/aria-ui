@@ -72,7 +72,7 @@ importers:
         specifier: ^0.0.12
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.8
+        specifier: ^0.0.9
         version: link:../listbox
     devDependencies:
       tsup:
@@ -104,7 +104,7 @@ importers:
   packages/listbox:
     dependencies:
       '@aria-ui/collection':
-        specifier: ^0.0.2
+        specifier: ^0.0.3
         version: link:../collection
       '@aria-ui/core':
         specifier: ^0.0.12
@@ -126,7 +126,7 @@ importers:
   packages/menu:
     dependencies:
       '@aria-ui/collection':
-        specifier: ^0.0.2
+        specifier: ^0.0.3
         version: link:../collection
       '@aria-ui/core':
         specifier: ^0.0.12
@@ -214,7 +214,7 @@ importers:
         specifier: ^0.0.12
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.8
+        specifier: ^0.0.9
         version: link:../listbox
       '@aria-ui/popover':
         specifier: ^0.0.11

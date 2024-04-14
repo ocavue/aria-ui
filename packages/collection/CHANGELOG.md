@@ -1,5 +1,11 @@
 # @aria-ui/collection
 
+## 0.0.3
+
+### Patch Changes
+
+- 00d225a: `collection.first()` should return first enabled value
+
 ## 0.0.2
 
 ### Patch Changes
