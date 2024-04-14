@@ -6,3 +6,8 @@ export const selectedValueContext = createContext(
 )
 
 export const focusedValueContext = createContext("ListboxItem/focusedValue", "")
+
+export const availableValueSetContext = createContext<Set<string>>(
+  "Listbox/availableValueSet",
+  new Set(),
+)

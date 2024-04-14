@@ -1,4 +1,5 @@
 import {
+  ComboboxEmptyElement,
   ComboboxItemElement,
   ComboboxListElement,
   ComboboxRootElement,
@@ -13,6 +14,7 @@ import { html, render } from "lit-html"
 customElements.define("aui-combobox-root", ComboboxRootElement)
 customElements.define("aui-combobox-list", ComboboxListElement)
 customElements.define("aui-combobox-item", ComboboxItemElement)
+customElements.define("aui-combobox-empty", ComboboxEmptyElement)
 customElements.define("aui-popover-root", PopoverRootElement)
 customElements.define("aui-popover-content", PopoverContentElement)
 customElements.define("aui-popover-trigger", PopoverTriggerElement)
@@ -41,6 +43,7 @@ render(
             <aui-combobox-item .value=${"option11"}>Option 11</aui-combobox-item>
             <aui-combobox-item .value=${"option12"}>Option 12</aui-combobox-item>
             <aui-combobox-item .value=${"option13"}>Option 13</aui-combobox-item>
+            <aui-combobox-empty>No option found</aui-combobox-empty>
           </aui-combobox-list>
         </aui-combobox-root>
       </aui-popover-content>

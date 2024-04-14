@@ -1,11 +1,6 @@
-import {
-  useEffect,
-  type ConnectableElement,
-  type SignalState,
-} from "@aria-ui/core"
+import type { ConnectableElement, SignalState } from "@aria-ui/core"
 import { useListboxItem } from "@aria-ui/listbox"
 
-import { inputValueContext } from "./combobox-item.context"
 import type { ComboboxItemProps } from "./combobox-item.props"
 
 /**
@@ -15,16 +10,5 @@ export function useComboboxItem(
   element: ConnectableElement,
   props?: Partial<ComboboxItemProps>,
 ): SignalState<ComboboxItemProps> {
-  const listboxItemState = useListboxItem(element, {
-    ...props,
-  })
-
-  const inputValue = inputValueContext.consume(element)
-
-  useEffect(element, () => {
-    listboxItemState.query.value = inputValue.value
-  })
-
-  const { value } = listboxItemState
-  return { value }
+  return useListboxItem(element, props)
 }

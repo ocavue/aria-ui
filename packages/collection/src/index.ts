@@ -1,8 +1,8 @@
 class Node {
   constructor(
     public element: HTMLElement,
-    public prev?: Node,
-    public next?: Node,
+    public prev: Node | null = null,
+    public next: Node | null = null,
   ) {}
 
   get value(): string {
@@ -102,6 +102,22 @@ export class Collection {
 
   getElement(value: string): HTMLElement | null {
     return this._map.get(value)?.element ?? null
+  }
+
+  getValues(): string[] {
+    const values: string[] = []
+    const head = this._head
+    let node: Node | null = head
+
+    while (node) {
+      values.push(node.value)
+      node = node.next
+      if (node === head) {
+        node = null
+      }
+    }
+
+    return values
   }
 }
 

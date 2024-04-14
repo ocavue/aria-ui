@@ -1,5 +1,3 @@
-import { type ItemFilter, defaultItemFilter } from "@aria-ui/collection"
-
 /**
  * @group ListboxItem
  */
@@ -13,18 +11,11 @@ export interface ListboxItemProps {
   value: string
 
   /**
-   * The query string to filter the listbox items.
+   * The function to call when the item is selected.
    *
-   * @default ""
+   * @default null
    */
-  query: string
-
-  /**
-   * The filter function to determine if an item should be shown in the listbox.
-   *
-   * @default defaultItemFilter
-   */
-  filter: ItemFilter
+  onSelect: VoidFunction | null
 }
 
 /**
@@ -32,6 +23,5 @@ export interface ListboxItemProps {
  */
 export const defaultListboxItemProps = Object.freeze({
   value: "",
-  query: "",
-  filter: defaultItemFilter,
+  onSelect: null,
 }) satisfies ListboxItemProps

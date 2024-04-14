@@ -12,7 +12,8 @@
   "dependencies": {
     "@aria-ui/collection": "^0.0.1",
     "@aria-ui/core": "^0.0.11",
-    "@aria-ui/presence": "^0.0.6"
+    "@aria-ui/presence": "^0.0.6",
+    "immer": "^10.0.4"
   },
   "devDependencies": {
     "tsup": "^8.0.2",

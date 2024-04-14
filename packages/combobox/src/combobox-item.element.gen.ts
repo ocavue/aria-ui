@@ -20,4 +20,6 @@ export class ComboboxItemElement extends BaseElement implements ComboboxItemProp
 
   /** @hidden */ get value(): ComboboxItemProps["value"] { return this._s.value.value }
   /** @hidden */ set value(v: ComboboxItemProps["value"]) { this._s.value.value = v }
+  /** @hidden */ get onSelect(): ComboboxItemProps["onSelect"] { return this._s.onSelect.value }
+  /** @hidden */ set onSelect(v: ComboboxItemProps["onSelect"]) { this._s.onSelect.value = v }
 }
