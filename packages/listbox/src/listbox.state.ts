@@ -68,25 +68,26 @@ export function useListbox(
     element.tabIndex = 0
   })
 
+  const availableValues = createComputed(() => {
+    const queryValue = state.query.value
+    const values = collection.value
+      .getValues()
+      .filter((value) => state.filter.value({ query: queryValue, value }))
+    return new Set(values)
+  })
+
+  availableValueSetContext.provide(element, availableValues)
+
+  const available = createComputed(() => availableValues.value.size > 0)
+
   useCollectionKeydownHandler(
     element,
     collection,
     focusedValue,
     state.value,
     state.onKeydownHandlerAdd,
+    available,
   )
-
-  const availableValues = createComputed(() => {
-    const queryValue = state.query.value
-    const values = collection.value
-      .getValues()
-      .filter((value) => state.filter.value({ query: queryValue, value }))
-
-    console.log("values", values)
-    return new Set(values)
-  })
-
-  availableValueSetContext.provide(element, availableValues)
 
   return state
 }
@@ -100,6 +101,7 @@ export function useCollectionKeydownHandler(
   focusedValue: Signal<string>,
   selectedValue: Signal<string>,
   onKeydownHandlerAdd: Signal<ListboxProps["onKeydownHandlerAdd"]>,
+  available: Signal<boolean>,
 ) {
   const scrollFocusedItemIntoView = () => {
     const target = collection.peek().getElement(focusedValue.value)
@@ -107,7 +109,7 @@ export function useCollectionKeydownHandler(
   }
 
   const keydownHandler = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing) {
+    if (event.defaultPrevented || event.isComposing || !available.value) {
       return
     }
 
