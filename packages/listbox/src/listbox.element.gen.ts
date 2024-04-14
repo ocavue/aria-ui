@@ -24,6 +24,8 @@ export class ListboxElement extends BaseElement implements ListboxProps {
   /** @hidden */ set onValueChange(v: ListboxProps["onValueChange"]) { this._s.onValueChange.value = v }
   /** @hidden */ get selectionMode(): ListboxProps["selectionMode"] { return this._s.selectionMode.value }
   /** @hidden */ set selectionMode(v: ListboxProps["selectionMode"]) { this._s.selectionMode.value = v }
+  /** @hidden */ get autoFocus(): ListboxProps["autoFocus"] { return this._s.autoFocus.value }
+  /** @hidden */ set autoFocus(v: ListboxProps["autoFocus"]) { this._s.autoFocus.value = v }
   /** @hidden */ get query(): ListboxProps["query"] { return this._s.query.value }
   /** @hidden */ set query(v: ListboxProps["query"]) { this._s.query.value = v }
   /** @hidden */ get filter(): ListboxProps["filter"] { return this._s.filter.value }
