@@ -1,5 +1,12 @@
 # @aria-ui/listbox
 
+## 0.0.8
+
+### Patch Changes
+
+- 85478bf: Add auto focus.
+- e1b1da9: The focused listbox item will scroll itself into the view now.
+
 ## 0.0.7
 
 ### Patch Changes
