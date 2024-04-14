@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.12
+
+### Patch Changes
+
+- 8ea9a91: Fix a bug where `useQuerySelectorAll` and `useQuerySelector` won't get triggered when children changed.
+
 ## 0.0.11
 
 ### Patch Changes
