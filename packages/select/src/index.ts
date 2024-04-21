@@ -22,3 +22,15 @@ export {
   type SelectValueProps,
 } from "./select-value.props"
 export { useSelectValue } from "./select-value.state"
+
+import type { OverlayPositionerProps as __OverlayPositionerProps } from "@aria-ui/popover"
+
+// type OverlayPositionerProps = _OverlayPositionerProps
+
+export type { __OverlayPositionerProps as OverlayPositionerProps }
+
+export type { __OverlayPositionerProps as _OverlayPositionerProps }
+
+import type { PopoverContentProps } from "@aria-ui/popover"
+
+export type { PopoverContentProps as _PopoverContentProps }

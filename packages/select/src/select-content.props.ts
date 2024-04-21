@@ -1,17 +1,17 @@
-import type { PopoverContentProps } from "@aria-ui/popover"
+import type { PopoverContentProps as _PopoverContentProps } from "@aria-ui/popover"
 import { defaultPopoverContentProps } from "@aria-ui/popover"
 
 /**
  * @group SelectContent
  */
 export interface SelectContentProps
-  extends Omit<PopoverContentProps, "placement"> {
+  extends Omit<_PopoverContentProps, "placement"> {
   /**
    * {@inheritDoc @aria-ui/popover!PopoverContentProps.placement}
    *
    * @default "bottom"
    */
-  placement: PopoverContentProps["placement"]
+  placement: _PopoverContentProps["placement"]
 }
 
 /**

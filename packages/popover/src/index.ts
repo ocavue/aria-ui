@@ -17,3 +17,7 @@ export {
   defaultPopoverTriggerProps,
 } from "./popover-trigger.props"
 export { usePopoverTrigger } from "./popover-trigger.state"
+
+import type { OverlayPositionerProps } from "@aria-ui/overlay"
+
+export type { OverlayPositionerProps }

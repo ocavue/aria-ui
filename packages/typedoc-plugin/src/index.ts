@@ -85,9 +85,8 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
     this.helpers = {
       ...helpers,
       getKeyword: (kind: ReflectionKind) => {
-        switch (kind) {
-          case ReflectionKind.Function:
-            return "function"
+        if (kind === ReflectionKind.Function) {
+          return "function"
         }
         return helpers.getKeyword(kind) as string
       },

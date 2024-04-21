@@ -9,6 +9,8 @@ import type {
   PointerDownOutsideEvent,
 } from "@zag-js/dismissable"
 
+export type { OverlayPositionerProps }
+
 /**
  * @group PopoverContent
  */
@@ -18,7 +20,7 @@ export interface PopoverContentProps
     "hoist" | "flip" | "shift" | "offset" | "overflowPadding"
   > {
   /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.hoist}
+   * {@inheritDoc  OverlayPositionerProps.hoist}
    *
    * @default true
    */

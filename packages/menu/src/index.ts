@@ -16,3 +16,5 @@ export {
   type MenuTriggerProps,
 } from "./menu-trigger.props"
 export { useMenuTrigger } from "./menu-trigger.state"
+
+export type { OverlayPositionerProps } from "@aria-ui/overlay"

@@ -1,5 +1,6 @@
 // https://typedoc.org/options/
 {
+  "excludeReferences": true,
   "$schema": "https://typedoc.org/schema.json",
   "plugin": ["typedoc-plugin-markdown", "aria-ui-typedoc-plugin"],
   "theme": "custom-theme",
