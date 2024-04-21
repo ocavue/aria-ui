@@ -69,6 +69,10 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
             (...args) => {
               try {
                 console.log("partials", key, args[0].name)
+
+                // if (args[0].name.startsWith("_")) {
+                //   return ""
+                // }
               } catch (error) {
                 //
               }
@@ -93,6 +97,16 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
       hierarchy: () => "",
 
       signatureReturns: () => "",
+
+      member: (...args) => {
+        const a = args[0]
+        if (a.name.startsWith("_")) {
+          return ""
+        }
+
+        const output = partials.member(...args)
+        return output.replaceAll("\n\n***\n\n", "\n\n")
+      },
 
       members: (...args) => {
         const output = partials.members(...args)
