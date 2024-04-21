@@ -70,10 +70,12 @@ export function useListbox(
 
   const availableValues = createComputed(() => {
     const queryValue = state.query.value
-    const values = collection.value
-      .getValues()
-      .filter((value) => state.filter.value({ query: queryValue, value }))
-    return new Set(values)
+    const values = collection.value.getValues()
+    const filter = state.filter.value
+    const filteredValues = filter
+      ? values.filter((value) => filter({ query: queryValue, value }))
+      : values
+    return new Set(filteredValues)
   })
 
   availableValueSetContext.provide(element, availableValues)

@@ -43,10 +43,14 @@ export interface ListboxProps {
 
   /**
    * The filter function to determine if an item should be shown in the listbox.
+   * By default, a simple case-insensitive substring match is used. You can
+   * provide a custom filter function to match against a more complex pattern.
+   * You can also pass `null` to disable filtering and allow all items to be
+   * shown.
    *
    * @default defaultItemFilter
    */
-  filter: ItemFilter
+  filter: ItemFilter | null
 
   /**
    * By default, the Listbox element will listen for keydown events. However,
