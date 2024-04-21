@@ -101,6 +101,8 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
       member: (...args) => {
         const a = args[0]
         if (a.name.startsWith("_")) {
+          Error.stackTraceLimit = Number.POSITIVE_INFINITY
+          console.trace("HEEEE")
           return ""
         }
 
@@ -151,6 +153,23 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
         console.log("declaration", model.name)
 
         const output = partials.declaration(model, options)
+        return output
+      },
+
+      categories(model, headingLevel) {
+        console.log(
+          "categories",
+          model.map((m) => m?.name),
+        )
+
+        const output = partials.categories(model, headingLevel)
+        return output
+      },
+
+      body: (container, headingLevel) => {
+        console.log("body ->>> ", container.name)
+
+        const output = partials.body(container, headingLevel)
         return output
       },
     }

@@ -15,6 +15,25 @@ export function memberWithGroups(
 ): string {
   const md: string[] = []
 
+  console.log("memberWithGroups")
+
+  if (model.name.startsWith("_")) {
+    return ""
+  }
+
+  const categories = model.categories
+  if (categories && categories.length > 0) {
+    console.log(
+      "category.title",
+      categories.map((category) => category.title),
+    )
+    // if (categories.every((category) => category.title === "")) {
+    //   return ""
+    // }
+
+    // md.push(context.partials.categories(model, headingLevel))
+  }
+
   if (model.comment) {
     md.push(context.partials.comment(model.comment, { headingLevel }))
   }
