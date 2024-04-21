@@ -38,8 +38,53 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
     const partials = this.partials
     const helpers = this.helpers
 
+    // // @ts-expect-error: TODO
+    // const partials2 = Object.fromEntries(
+    //   Object.entries({ ...partials }).map((key, func) => {
+    //     return [
+    //       key,
+    //       func,
+    //       // // @ts-expect-error: TODO
+    //       // (...args) => {
+    //       //   try {
+    //       //     console.log("partials", key, args[0].name)
+    //       //   } catch (error) {
+    //       //     //
+    //       //   }
+
+    //       //   // @ts-expect-error: TODO
+    //       //   const result = func(...args)
+    //       //   return result
+    //       // },
+    //     ]
+    //   }),
+    // ) as typeof partials2
+
+    const partials3 = Object.fromEntries(
+      Object.entries({ ...partials }).map(([key, func]) => {
+        if (typeof func === "function") {
+          return [
+            key,
+            // @ts-expect-error: TODO
+            (...args) => {
+              try {
+                console.log("partials", key, args[0].name)
+              } catch (error) {
+                //
+              }
+
+              // @ts-expect-error: TODO
+              return func(...args)
+            },
+          ]
+        }
+
+        return [key, func]
+      }),
+    ) as typeof partials
+
     this.partials = {
-      ...partials,
+      ...partials3,
 
       inheritance: () => "",
 
@@ -79,6 +124,20 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
         }
 
         return result
+      },
+
+      typeDeclaration(model, headingLevel) {
+        console.log("typeDeclaration")
+
+        const output = partials.typeDeclaration(model, headingLevel)
+        return output
+      },
+
+      declaration(model, options) {
+        console.log("declaration", model.name)
+
+        const output = partials.declaration(model, options)
+        return output
       },
     }
 

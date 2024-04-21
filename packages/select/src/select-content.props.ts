@@ -7,7 +7,7 @@ import { defaultPopoverContentProps } from "@aria-ui/popover"
 export interface SelectContentProps
   extends Omit<_PopoverContentProps, "placement"> {
   /**
-   * {@inheritDoc @aria-ui/popover!PopoverContentProps.placement}
+   * {@inheritDoc _PopoverContentProps.placement}
    *
    * @default "bottom"
    */
