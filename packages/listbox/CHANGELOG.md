@@ -1,5 +1,11 @@
 # @aria-ui/listbox
 
+## 0.0.11
+
+### Patch Changes
+
+- cf57064: Disable the default listbox filter by setting `filter` as `null`.
+
 ## 0.0.10
 
 ### Patch Changes
