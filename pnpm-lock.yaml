@@ -91,8 +91,8 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0
       server-dom-shim:
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
     devDependencies:
       tsup:
         specifier: ^8.0.2
@@ -7348,8 +7348,8 @@ packages:
       lru-cache: 6.0.0
     dev: true
 
-  /server-dom-shim@1.0.1:
-    resolution: {integrity: sha512-dG1dmREu7DlIkyPbVHW0FOvYDX/vgp4RHufjtQpPx/WZMa5V8BhgoC5tlSUjeEPXMJMYd5avvAWZC/Q1taqB5g==}
+  /server-dom-shim@1.0.2:
+    resolution: {integrity: sha512-6MTS2ouF/fXZMUdPzAzPOXgeuIwj3wNianF4BYEmFC5XdCLIAkNkUSxHk0kW58nObQnyHc6wp4wL7xdt3m7X+Q==}
     dependencies:
       '@lit-labs/ssr-dom-shim': 1.2.0
     dev: false
