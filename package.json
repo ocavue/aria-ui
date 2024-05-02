@@ -26,7 +26,6 @@
   "devDependencies": {
     "@biomejs/biome": "^1.6.4",
     "@changesets/cli": "^2.27.1",
-    "@happy-dom/global-registrator": "^14.7.1",
     "@manypkg/get-packages": "^2.2.1",
     "@ocavue/eslint-config": "^1.5.0",
     "@types/bun": "^1.0.12",

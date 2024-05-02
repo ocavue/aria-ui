@@ -5,6 +5,7 @@ import { selectedValueContext } from "./select-root.context"
 
 /**
  * @group SelectRoot
+ * @hidden
  */
 export function useSelectRoot(element: ConnectableElement) {
   const selectedValue = createSignal("")
@@ -17,4 +18,6 @@ export function useSelectRoot(element: ConnectableElement) {
       popoverRootState.open.value = false
     })
   })
+
+  return {}
 }

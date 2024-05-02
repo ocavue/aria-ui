@@ -5,6 +5,7 @@ import {
 
 /**
  * @group MenuContent
+ * @hidden
  */
 export interface MenuContentProps extends PopoverContentProps {
   /**

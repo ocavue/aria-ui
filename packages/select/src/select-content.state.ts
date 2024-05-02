@@ -12,6 +12,7 @@ import {
 
 /**
  * @group SelectContent
+ * @hidden
  */
 export function useSelectContent(
   element: ConnectableElement,

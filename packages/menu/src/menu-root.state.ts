@@ -6,6 +6,7 @@ import type { MenuRootProps } from "./menu-root.props"
 
 /**
  * @group MenuRoot
+ * @hidden
  */
 export function useMenuRoot(
   element: ConnectableElement,

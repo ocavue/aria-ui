@@ -5,7 +5,7 @@
 ### useMenuTrigger()
 
 ```ts
-function useMenuTrigger(element: ConnectableElement): void;
+function useMenuTrigger(element: ConnectableElement): Object;
 ```
 
 ## MenuContent
@@ -14,13 +14,9 @@ function useMenuTrigger(element: ConnectableElement): void;
 
 A custom MenuContent element.
 
-Properties: [MenuContentProps](README.md#menucontentprops)
-
 ```ts
-new MenuContentElement(props?: Partial<MenuContentProps>): MenuContentElement
+new MenuContentElement(): MenuContentElement
 ```
-
-### MenuContentProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -49,28 +45,15 @@ new MenuContentElement(props?: Partial<MenuContentProps>): MenuContentElement
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
 
-### useMenu()
-
-```ts
-function useMenu(
-  element: ConnectableElement,
-  props?: Partial<MenuContentProps>,
-): SignalState<MenuContentProps>;
-```
-
 ## MenuItem
 
 ### MenuItemElement
 
 A custom MenuItem element.
 
-Properties: [MenuItemProps](README.md#menuitemprops)
-
 ```ts
-new MenuItemElement(props?: Partial<MenuItemProps>): MenuItemElement
+new MenuItemElement(): MenuItemElement
 ```
-
-### MenuItemProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -79,40 +62,26 @@ new MenuItemElement(props?: Partial<MenuItemProps>): MenuItemElement
 | `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
 | `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list. By default, a random value is generated.<br /><br />**Default**<br />`""` |
 
-### useMenuItem()
-
-```ts
-function useMenuItem(
-  element: ConnectableElement,
-  props?: Partial<MenuItemProps>,
-): SignalState<Readonly<MenuItemProps>>;
-```
-
 ## MenuRoot
 
 ### MenuRootElement
 
 A custom MenuRoot element.
 
-Properties: [MenuRootProps](README.md#menurootprops)
-
 ```ts
-new MenuRootElement(props?: Partial<PopoverRootProps>): MenuRootElement
+new MenuRootElement(): MenuRootElement
 ```
+
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `defaultOpen` | `boolean` | Whether the popover is open by default.<br /><br />**Default**<br />`false` |
+| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | Event handler called when the popover's open state changes.<br /><br />**Default**<br />`null` |
+| `open` | `boolean` | Whether the popover is open.<br /><br />**Default**<br />`false` |
 
 ### MenuRootProps
 
 ```ts
 type MenuRootProps: PopoverRootProps;
-```
-
-### useMenuRoot()
-
-```ts
-function useMenuRoot(
-  element: ConnectableElement,
-  props?: Partial<PopoverRootProps>,
-): SignalState<MenuRootProps>;
 ```
 
 ## MenuTrigger

@@ -3,7 +3,8 @@ import { usePopoverTrigger } from "@aria-ui/popover"
 
 /**
  * @group SelectTrigger
+ * @hidden
  */
 export function useSelectTrigger(element: ConnectableElement) {
-  usePopoverTrigger(element)
+  return usePopoverTrigger(element)
 }

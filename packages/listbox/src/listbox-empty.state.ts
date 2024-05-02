@@ -9,6 +9,7 @@ import { availableValueSetContext } from "./context"
 
 /**
  * @group ListboxEmpty
+ * @hidden
  */
 export function useListboxEmpty(element: ConnectableElement) {
   const availableValueSet = availableValueSetContext.consume(element)
@@ -26,4 +27,6 @@ export function useListboxEmpty(element: ConnectableElement) {
   })
 
   usePresence(element, presence)
+
+  return {}
 }

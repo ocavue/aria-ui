@@ -1,5 +1,6 @@
-import { BaseElement } from "@aria-ui/core"
+import { ElementMixin } from "@aria-ui/core"
 
+import { defaultMenuTriggerProps, type MenuTriggerProps } from "./menu-trigger.props"
 import { useMenuTrigger } from "./menu-trigger.state"
 
 /**
@@ -7,9 +8,7 @@ import { useMenuTrigger } from "./menu-trigger.state"
  *
  * @group MenuTrigger
  */
-export class MenuTriggerElement extends BaseElement {
-  constructor() {
-    super()
-    useMenuTrigger(this)
-  }
-}
+export class MenuTriggerElement extends ElementMixin<MenuTriggerProps>(
+  useMenuTrigger,
+  defaultMenuTriggerProps,
+) {}

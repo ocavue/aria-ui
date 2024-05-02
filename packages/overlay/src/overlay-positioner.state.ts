@@ -17,6 +17,7 @@ import { updatePlacement } from "./positioning"
 
 /**
  * @group OverlayPositioner
+ * @hidden
  */
 export function useOverlayPositioner(
   element: ConnectableElement,

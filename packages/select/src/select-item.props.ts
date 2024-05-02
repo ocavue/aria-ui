@@ -2,6 +2,7 @@ import type { ListboxItemProps } from "@aria-ui/listbox"
 
 /**
  * @group SelectItem
+ * @hidden
  */
 export interface SelectItemProps {
   /**

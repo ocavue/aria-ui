@@ -5,6 +5,7 @@ import type { ComboboxItemProps } from "./combobox-item.props"
 
 /**
  * @group ComboboxItem
+ * @hidden
  */
 export function useComboboxItem(
   element: ConnectableElement,

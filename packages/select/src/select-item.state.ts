@@ -5,6 +5,7 @@ import type { SelectItemProps } from "./select-item.props"
 
 /**
  * @group SelectItem
+ * @hidden
  */
 export function useSelectItem(
   element: ConnectableElement,

@@ -24,6 +24,7 @@ import { defaultListboxProps, type ListboxProps } from "./listbox.props"
 
 /**
  * @group Listbox
+ * @hidden
  */
 export function useListbox(
   element: ConnectableElement,

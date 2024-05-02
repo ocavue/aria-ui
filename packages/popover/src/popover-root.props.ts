@@ -1,5 +1,6 @@
 /**
  * @group PopoverRoot
+ * @hidden
  */
 export interface PopoverRootProps {
   /**

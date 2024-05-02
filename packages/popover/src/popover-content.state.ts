@@ -29,6 +29,7 @@ import { openContext, triggerElementContext } from "./popover-root.context"
  * Data attributes: {@link PopoverContentDataAttributes}
  *
  * @group PopoverContent
+ * @hidden
  */
 export function usePopoverContent(
   element: ConnectableElement,

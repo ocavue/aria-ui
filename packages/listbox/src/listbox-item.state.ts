@@ -24,6 +24,7 @@ import {
 
 /**
  * @group ListboxItem
+ * @hidden
  */
 export function useListboxItem(
   element: ConnectableElement,

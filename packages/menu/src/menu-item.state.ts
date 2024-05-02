@@ -17,6 +17,7 @@ import { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
 
 /**
  * @group MenuItem
+ * @hidden
  */
 export function useMenuItem(
   element: ConnectableElement,

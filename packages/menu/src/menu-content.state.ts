@@ -22,6 +22,7 @@ import type { MenuItemProps } from "./menu-item.props"
 
 /**
  * @group MenuContent
+ * @hidden
  */
 export function useMenuContent(
   element: ConnectableElement,

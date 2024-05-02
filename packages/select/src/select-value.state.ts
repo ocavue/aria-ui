@@ -14,6 +14,7 @@ import {
 
 /**
  * @group SelectValue
+ * @hidden
  */
 export function useSelectValue(
   element: ConnectableElement,

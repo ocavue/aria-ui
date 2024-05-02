@@ -6,19 +6,9 @@
 
 A custom TooltipContent element.
 
-Properties: [TooltipContentProps](README.md#tooltipcontentprops)
-
 ```ts
-new TooltipContentElement(props?: Partial<TooltipContentProps>): TooltipContentElement
+new TooltipContentElement(): TooltipContentElement
 ```
-
-### TooltipContentDataAttributes
-
-| Property     | Type                   |
-| :----------- | :--------------------- |
-| `data-state` | `"open"` \| `"closed"` |
-
-### TooltipContentProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -42,18 +32,11 @@ new TooltipContentElement(props?: Partial<TooltipContentProps>): TooltipContentE
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
 
-### useTooltipContent()
+### TooltipContentDataAttributes
 
-```ts
-function useTooltipContent(
-  element: ConnectableElement,
-  props?: Partial<TooltipContentProps>,
-): SignalState<TooltipContentProps>;
-```
-
-Properties: [TooltipContentProps](README.md#tooltipcontentprops)
-
-Data attributes: [TooltipContentDataAttributes](README.md#tooltipcontentdataattributes)
+| Property     | Type                   |
+| :----------- | :--------------------- |
+| `data-state` | `"open"` \| `"closed"` |
 
 ## TooltipRoot
 
@@ -61,27 +44,14 @@ Data attributes: [TooltipContentDataAttributes](README.md#tooltipcontentdataattr
 
 A custom TooltipRoot element.
 
-Properties: [TooltipRootProps](README.md#tooltiprootprops)
-
 ```ts
-new TooltipRootElement(props?: Partial<TooltipRootProps>): TooltipRootElement
+new TooltipRootElement(): TooltipRootElement
 ```
-
-### TooltipRootProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `closeDelay` | `number` | The delay in milliseconds before the tooltip closes.<br /><br />**Default**<br />`300` |
 | `openDelay` | `number` | The delay in milliseconds before the tooltip opens.<br /><br />**Default**<br />`700` |
-
-### useTooltipRoot()
-
-```ts
-function useTooltipRoot(
-  element: ConnectableElement,
-  props?: Partial<TooltipRootProps>,
-): SignalState<TooltipRootProps>;
-```
 
 ## TooltipTrigger
 
@@ -91,10 +61,4 @@ A custom TooltipTrigger element.
 
 ```ts
 new TooltipTriggerElement(): TooltipTriggerElement
-```
-
-### useTooltipTrigger()
-
-```ts
-function useTooltipTrigger(element: ConnectableElement): void;
 ```

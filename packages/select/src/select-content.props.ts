@@ -3,6 +3,7 @@ import { defaultPopoverContentProps } from "@aria-ui/popover"
 
 /**
  * @group SelectContent
+ * @hidden
  */
 export interface SelectContentProps
   extends Omit<PopoverContentProps, "placement"> {
