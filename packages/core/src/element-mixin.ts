@@ -39,7 +39,7 @@ function defineProperties<Props extends object>(
   for (const prop of Object.keys(defaultProps)) {
     Object.defineProperty(ElementConstructor.prototype, prop, {
       get() {
-        return this._s[prop].value
+        return this._s[prop].value as unknown
       },
       set(v: unknown) {
         this._s[prop].value = v
