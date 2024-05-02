@@ -16,6 +16,7 @@ import {
 
 /**
  * @group PopoverRoot
+ * @hidden
  */
 export function usePopoverRoot(
   element: ConnectableElement,

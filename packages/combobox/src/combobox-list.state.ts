@@ -6,6 +6,7 @@ import { keydownHandlerContext } from "./combobox-list.context"
 
 /**
  * @group ComboboxList
+ * @hidden
  */
 export function useComboboxList(element: ConnectableElement) {
   const keydownHandler = keydownHandlerContext.consume(element)
@@ -24,4 +25,6 @@ export function useComboboxList(element: ConnectableElement) {
   useEffect(element, () => {
     query.value = inputValue.value
   })
+
+  return {}
 }

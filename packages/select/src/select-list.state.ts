@@ -5,6 +5,7 @@ import { selectedValueContext } from "./select-root.context"
 
 /**
  * @group SelectList
+ * @hidden
  */
 export function useSelectList(element: ConnectableElement) {
   const selectedValue = selectedValueContext.consume(element)
@@ -14,4 +15,6 @@ export function useSelectList(element: ConnectableElement) {
       selectedValue.value = value
     },
   })
+
+  return {}
 }

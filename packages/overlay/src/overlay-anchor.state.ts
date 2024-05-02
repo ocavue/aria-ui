@@ -4,6 +4,7 @@ import { referenceContext } from "./contexts"
 
 /**
  * @group OverlayAnchor
+ * @hidden
  */
 export function useOverlayAnchor(element: ConnectableElement) {
   const reference = referenceContext.consume(element)
@@ -11,4 +12,6 @@ export function useOverlayAnchor(element: ConnectableElement) {
   useEffect(element, () => {
     reference.value = element
   })
+
+  return {}
 }

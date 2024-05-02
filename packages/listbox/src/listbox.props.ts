@@ -2,6 +2,7 @@ import { defaultItemFilter, type ItemFilter } from "@aria-ui/collection"
 
 /**
  * @group Listbox
+ * @hidden
  */
 export interface ListboxProps {
   /**

@@ -2,6 +2,7 @@ import { type ItemFilter, defaultItemFilter } from "@aria-ui/collection"
 
 /**
  * @group MenuItem
+ * @hidden
  */
 export interface MenuItemProps {
   /**

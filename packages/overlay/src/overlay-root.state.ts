@@ -5,8 +5,11 @@ import { referenceContext } from "./contexts"
 
 /**
  * @group OverlayRoot
+ * @hidden
  */
 export function useOverlayRoot(element: ConnectableElement) {
   const reference = createSignal<ReferenceElement | null>(null)
   referenceContext.provide(element, reference)
+
+  return {}
 }

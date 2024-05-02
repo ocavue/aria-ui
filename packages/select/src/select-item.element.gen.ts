@@ -1,23 +1,14 @@
-import { BaseElement, type SignalState } from "@aria-ui/core";
+import { ElementMixin } from "@aria-ui/core"
 
-import type { SelectItemProps } from "./select-item.props"
+import { defaultSelectItemProps, type SelectItemProps } from "./select-item.props"
 import { useSelectItem } from "./select-item.state"
 
 /**
  * A custom SelectItem element.
  *
- * Properties: {@link SelectItemProps}
- *
  * @group SelectItem
  */
-export class SelectItemElement extends BaseElement implements SelectItemProps {
-  private _s: SignalState<SelectItemProps>;
-
-  constructor(props?: Partial<SelectItemProps>) {
-    super();
-    this._s = useSelectItem(this, props);
-  }
-
-  /** @hidden */ get value(): SelectItemProps["value"] { return this._s.value.value }
-  /** @hidden */ set value(v: SelectItemProps["value"]) { this._s.value.value = v }
-}
+export class SelectItemElement extends ElementMixin<SelectItemProps>(
+  useSelectItem,
+  defaultSelectItemProps,
+) {}

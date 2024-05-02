@@ -1,12 +1,9 @@
 import "./root"
 import path from "node:path"
 
-import { GlobalRegistrator } from "@happy-dom/global-registrator"
 import { kebabCase, pascalCase } from "change-case"
 
 import { listGitFiles } from "./list-git-files"
-
-GlobalRegistrator.register()
 
 async function main() {
   const filePaths = await listGitFiles()
@@ -27,86 +24,38 @@ async function main() {
     const dirPath = path.dirname(filePath)
     const elementFilePath = path.join(dirPath, name + suffix)
     const stateFilePath = path.join(dirPath, `${name}.state.ts`)
-    const propsFilePath = path.join(dirPath, `${name}.props.ts`)
 
     if (!filePaths.includes(stateFilePath)) {
       continue
     }
 
-    let defaultProps: Record<string, unknown> = {}
-
-    if (await Bun.file(propsFilePath).exists()) {
-      const props = (await import(propsFilePath)) as Record<
-        string,
-        Record<string, unknown>
-      >
-      defaultProps = props[`default${pascalCase(name)}Props`] || {}
-    }
-
-    const elementCode = updateElementCode(name, defaultProps)
+    const elementCode = updateElementCode(name)
     await Bun.write(elementFilePath, elementCode)
   }
 }
 
-function updateElementCode(
-  name: string,
-  defaultProps: Record<string, unknown>,
-) {
+function updateElementCode(name: string) {
   const kebab = kebabCase(name)
   const pascal = pascalCase(name)
 
-  const hasProps = Object.keys(defaultProps).length > 0
+  const code = `
 
-  const propsCode = Object.keys(defaultProps)
-    .map(
-      (prop) => `
-  /** @hidden */ get ${prop}(): ${pascal}Props["${prop}"] { return this._s.${prop}.value }
-  /** @hidden */ set ${prop}(v: ${pascal}Props["${prop}"]) { this._s.${prop}.value = v }`,
-    )
-    .join("")
+import { ElementMixin } from "@aria-ui/core"
 
-  const commnet = [
-    ` * A custom ${pascal} element.`,
-    hasProps ? ` * Properties: {@link ${pascal}Props}` : "",
-    ` * @group ${pascal}`,
-  ]
-    .filter(Boolean)
-    .join("\n *\n")
-
-  const code = hasProps
-    ? `
-import { BaseElement, type SignalState } from "@aria-ui/core";
-
-import type { ${pascal}Props } from "./${kebab}.props"
+import { default${pascal}Props, type ${pascal}Props } from "./${kebab}.props"
 import { use${pascal} } from "./${kebab}.state"
 
 /**
-${commnet}
+ * A custom ${pascal} element.
+ *
+ * @group ${pascal}
  */
-export class ${pascal}Element extends BaseElement implements ${pascal}Props {
-  private _s: SignalState<${pascal}Props>;
+export class ${pascal}Element extends ElementMixin<${pascal}Props>(
+  use${pascal},
+  default${pascal}Props,
+) {}
 
-  constructor(props?: Partial<${pascal}Props>) {
-    super();
-    this._s = use${pascal}(this, props);
-  }
-${propsCode}
-}
-`.trim()
-    : `
-import { BaseElement } from "@aria-ui/core"
 
-import { use${pascal} } from "./${kebab}.state"
-
-/**
-${commnet}
- */
-export class ${pascal}Element extends BaseElement {
-  constructor() {
-    super()
-    use${pascal}(this)
-  }
-}
 `.trim()
 
   return `${code}\n`

@@ -31,6 +31,7 @@ let openingId: string | null = null
 
 /**
  * @group TooltipRoot
+ * @hidden
  */
 export function useTooltipRoot(
   element: ConnectableElement,

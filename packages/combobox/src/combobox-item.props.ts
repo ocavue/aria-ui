@@ -5,6 +5,7 @@ import {
 
 /**
  * @group ComboboxItem
+ * @hidden
  */
 export interface ComboboxItemProps extends ListboxItemProps {}
 

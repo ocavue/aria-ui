@@ -3,6 +3,7 @@ import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
 
 /**
  * @group TooltipContent
+ * @hidden
  */
 export interface TooltipContentProps
   extends Omit<OverlayPositionerProps, "hoist"> {

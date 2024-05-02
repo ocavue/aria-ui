@@ -1,5 +1,6 @@
-import { BaseElement } from "@aria-ui/core"
+import { ElementMixin } from "@aria-ui/core"
 
+import { defaultTooltipTriggerProps, type TooltipTriggerProps } from "./tooltip-trigger.props"
 import { useTooltipTrigger } from "./tooltip-trigger.state"
 
 /**
@@ -7,9 +8,7 @@ import { useTooltipTrigger } from "./tooltip-trigger.state"
  *
  * @group TooltipTrigger
  */
-export class TooltipTriggerElement extends BaseElement {
-  constructor() {
-    super()
-    useTooltipTrigger(this)
-  }
-}
+export class TooltipTriggerElement extends ElementMixin<TooltipTriggerProps>(
+  useTooltipTrigger,
+  defaultTooltipTriggerProps,
+) {}

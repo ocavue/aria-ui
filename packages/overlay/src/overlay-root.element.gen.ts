@@ -1,5 +1,6 @@
-import { BaseElement } from "@aria-ui/core"
+import { ElementMixin } from "@aria-ui/core"
 
+import { defaultOverlayRootProps, type OverlayRootProps } from "./overlay-root.props"
 import { useOverlayRoot } from "./overlay-root.state"
 
 /**
@@ -7,9 +8,7 @@ import { useOverlayRoot } from "./overlay-root.state"
  *
  * @group OverlayRoot
  */
-export class OverlayRootElement extends BaseElement {
-  constructor() {
-    super()
-    useOverlayRoot(this)
-  }
-}
+export class OverlayRootElement extends ElementMixin<OverlayRootProps>(
+  useOverlayRoot,
+  defaultOverlayRootProps,
+) {}

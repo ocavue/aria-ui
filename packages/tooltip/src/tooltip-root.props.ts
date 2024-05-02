@@ -1,5 +1,6 @@
 /**
  * @group TooltipRoot
+ * @hidden
  */
 export interface TooltipRootProps {
   /**

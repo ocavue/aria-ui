@@ -1,5 +1,6 @@
-import { BaseElement } from "@aria-ui/core"
+import { ElementMixin } from "@aria-ui/core"
 
+import { defaultOverlayAnchorProps, type OverlayAnchorProps } from "./overlay-anchor.props"
 import { useOverlayAnchor } from "./overlay-anchor.state"
 
 /**
@@ -7,9 +8,7 @@ import { useOverlayAnchor } from "./overlay-anchor.state"
  *
  * @group OverlayAnchor
  */
-export class OverlayAnchorElement extends BaseElement {
-  constructor() {
-    super()
-    useOverlayAnchor(this)
-  }
-}
+export class OverlayAnchorElement extends ElementMixin<OverlayAnchorProps>(
+  useOverlayAnchor,
+  defaultOverlayAnchorProps,
+) {}

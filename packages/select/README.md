@@ -6,13 +6,9 @@
 
 A custom SelectContent element.
 
-Properties: [SelectContentProps](README.md#selectcontentprops)
-
 ```ts
-new SelectContentElement(props?: Partial<SelectContentProps>): SelectContentElement
+new SelectContentElement(): SelectContentElement
 ```
-
-### SelectContentProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
@@ -40,41 +36,19 @@ new SelectContentElement(props?: Partial<SelectContentProps>): SelectContentElem
 | `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning<br /><br />**Default**<br />`"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top`<br />and `left` (layout) to place the floating element.<br /><br />**Default**<br />`false` |
 
-### useSelectContent()
-
-```ts
-function useSelectContent(
-  element: ConnectableElement,
-  props?: Partial<SelectContentProps>,
-): SignalState<SelectContentProps>;
-```
-
 ## SelectItem
 
 ### SelectItemElement
 
 A custom SelectItem element.
 
-Properties: [SelectItemProps](README.md#selectitemprops)
-
 ```ts
-new SelectItemElement(props?: Partial<SelectItemProps>): SelectItemElement
+new SelectItemElement(): SelectItemElement
 ```
-
-### SelectItemProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list.<br /><br />**Default**<br />`""` |
-
-### useSelectItem()
-
-```ts
-function useSelectItem(
-  element: ConnectableElement,
-  props?: Partial<SelectItemProps>,
-): SignalState<SelectItemProps>;
-```
 
 ## SelectList
 
@@ -84,12 +58,6 @@ A custom SelectList element.
 
 ```ts
 new SelectListElement(): SelectListElement
-```
-
-### useSelectList()
-
-```ts
-function useSelectList(element: ConnectableElement): void;
 ```
 
 ## SelectRoot
@@ -102,12 +70,6 @@ A custom SelectRoot element.
 new SelectRootElement(): SelectRootElement
 ```
 
-### useSelectRoot()
-
-```ts
-function useSelectRoot(element: ConnectableElement): void;
-```
-
 ## SelectTrigger
 
 ### SelectTriggerElement
@@ -118,35 +80,16 @@ A custom SelectTrigger element.
 new SelectTriggerElement(): SelectTriggerElement
 ```
 
-### useSelectTrigger()
-
-```ts
-function useSelectTrigger(element: ConnectableElement): void;
-```
-
 ## SelectValue
 
 ### SelectValueElement
 
 A custom SelectValue element.
 
-Properties: [SelectValueProps](README.md#selectvalueprops)
-
 ```ts
-new SelectValueElement(props?: Partial<SelectValueProps>): SelectValueElement
+new SelectValueElement(): SelectValueElement
 ```
-
-### SelectValueProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `placeholder` | `string` | The value to show when no item is selected<br /><br />**Default**<br />`""` |
-
-### useSelectValue()
-
-```ts
-function useSelectValue(
-  element: ConnectableElement,
-  props?: Partial<SelectValueProps>,
-): SignalState<Readonly<SelectValueProps>>;
-```

@@ -10,6 +10,7 @@ import { openContext, triggerElementContext } from "./popover-root.context"
 
 /**
  * @group PopoverTrigger
+ * @hidden
  */
 export function usePopoverTrigger(element: ConnectableElement) {
   useOverlayAnchor(element)
@@ -25,4 +26,6 @@ export function usePopoverTrigger(element: ConnectableElement) {
   useEventListener(element, "click", () => {
     open.value = !open.value
   })
+
+  return {}
 }

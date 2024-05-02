@@ -1,7 +1,7 @@
 import {
-  type ConnectableElement,
-  useEventListener,
   useAriaAttribute,
+  useEventListener,
+  type ConnectableElement,
 } from "@aria-ui/core"
 import { useOverlayAnchor } from "@aria-ui/overlay"
 
@@ -14,8 +14,9 @@ import {
 
 /**
  * @group TooltipTrigger
+ * @hidden
  */
-export function useTooltipTrigger(element: ConnectableElement): void {
+export function useTooltipTrigger(element: ConnectableElement) {
   useOverlayAnchor(element)
 
   const hovering = hoveringContext.consume(element)
@@ -47,4 +48,6 @@ export function useTooltipTrigger(element: ConnectableElement): void {
   useAriaAttribute(element, "aria-describedby", () => {
     return open.value && id.value ? id.value : undefined
   })
+
+  return {}
 }

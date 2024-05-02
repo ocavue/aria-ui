@@ -19,6 +19,7 @@ import { idContext, openContext } from "./tooltip.context"
  * Data attributes: {@link TooltipContentDataAttributes}
  *
  * @group TooltipContent
+ * @hidden
  */
 export function useTooltipContent(
   element: ConnectableElement,

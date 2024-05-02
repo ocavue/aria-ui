@@ -1,5 +1,6 @@
 /**
  * @group SelectValue
+ * @hidden
  */
 export interface SelectValueProps {
   /**

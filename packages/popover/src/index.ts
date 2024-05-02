@@ -13,7 +13,7 @@ export {
 export { usePopoverRoot } from "./popover-root.state"
 export { PopoverTriggerElement } from "./popover-trigger.element.gen"
 export {
-  type PopoverTriggerProps,
   defaultPopoverTriggerProps,
+  type PopoverTriggerProps,
 } from "./popover-trigger.props"
 export { usePopoverTrigger } from "./popover-trigger.state"

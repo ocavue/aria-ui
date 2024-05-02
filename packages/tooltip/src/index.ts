@@ -12,4 +12,8 @@ export {
 } from "./tooltip-root.props"
 export { useTooltipRoot } from "./tooltip-root.state"
 export { TooltipTriggerElement } from "./tooltip-trigger.element.gen"
+export {
+  defaultTooltipTriggerProps,
+  type TooltipTriggerProps,
+} from "./tooltip-trigger.props"
 export { useTooltipTrigger } from "./tooltip-trigger.state"

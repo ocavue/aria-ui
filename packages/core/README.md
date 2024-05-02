@@ -16,6 +16,22 @@ Shares signals easily across widely nested HTML elements through context.
 
 A comprehensive collection of utilities for DOM interactions, enabling declarative management of attributes, styles, and event listeners.
 
+## Functions
+
+### ElementMixin()
+
+```ts
+function ElementMixin<Props>(
+  useElement: (
+    host: ConnectableElement,
+    props?: Partial<Props>,
+  ) => SignalState<Props>,
+  defaultProps: Props,
+): () => BaseElement & Props;
+```
+
+A mixin for creating custom elements.
+
 ## Contexts
 
 ### Context\<T\>

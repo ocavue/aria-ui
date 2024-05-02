@@ -1,3 +1,5 @@
+import { HTMLElement } from "server-dom-shim"
+
 import type { ConnectableElement } from "./connectable-element"
 
 /**

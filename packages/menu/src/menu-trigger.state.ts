@@ -3,4 +3,6 @@ import { usePopoverTrigger } from "@aria-ui/popover"
 
 export function useMenuTrigger(element: ConnectableElement) {
   usePopoverTrigger(element)
+
+  return {}
 }

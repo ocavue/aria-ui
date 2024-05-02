@@ -12,7 +12,8 @@
   "dependencies": {
     "@dddstack/ariatype-aria-attributes": "^2.0.0",
     "@dddstack/ariatype-aria-roles": "^2.0.0",
-    "@preact/signals-core": "^1.6.0"
+    "@preact/signals-core": "^1.6.0",
+    "server-dom-shim": "^1.0.1"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
