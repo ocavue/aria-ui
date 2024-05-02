@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/combobox",
   "type": "module",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -10,8 +10,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.12",
-    "@aria-ui/listbox": "^0.0.11"
+    "@aria-ui/core": "^0.0.13",
+    "@aria-ui/listbox": "^0.0.12"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
