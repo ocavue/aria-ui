@@ -1,5 +1,13 @@
 # @aria-ui/combobox
 
+## 0.0.12
+
+### Patch Changes
+
+- Updated dependencies [0235e12]
+  - @aria-ui/core@0.0.13
+  - @aria-ui/listbox@0.0.12
+
 ## 0.0.11
 
 ### Patch Changes
