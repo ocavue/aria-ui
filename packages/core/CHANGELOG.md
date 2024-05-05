@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.14
+
+### Patch Changes
+
+- f58eba1: Add a third parameter to `useQuerySelectorAll` and `useQuerySelector` to allow the user to specify mutation observer options.
+
 ## 0.0.13
 
 ### Patch Changes

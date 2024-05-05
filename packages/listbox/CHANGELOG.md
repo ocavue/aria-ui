@@ -1,5 +1,14 @@
 # @aria-ui/listbox
 
+## 0.0.13
+
+### Patch Changes
+
+- f58eba1: Automatically set the focus to the first item when the listbox is mounted or when the query changes.
+- Updated dependencies [f58eba1]
+  - @aria-ui/core@0.0.14
+  - @aria-ui/presence@0.0.9
+
 ## 0.0.12
 
 ### Patch Changes
