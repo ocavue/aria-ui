@@ -135,6 +135,7 @@ Registers an event listener on the element.
 function useQuerySelector<E>(
   element: ConnectableElement,
   selector: string,
+  options: MutationObserverInit,
 ): ReadonlySignal<E | null>;
 ```
 
@@ -146,6 +147,7 @@ Returns the first element matching the given selector.
 function useQuerySelectorAll<E>(
   element: ConnectableElement,
   selector: string,
+  options: MutationObserverInit,
 ): ReadonlySignal<NodeListOf<E>>;
 ```
 

@@ -45,9 +45,17 @@ export function useListbox(
     return new Collection(Array.from(items.value))
   })
 
+  // Get the first value in the collection. This ensure that the effect below
+  // won't run for every change in the collection.
+  const firstValue = createComputed(() => {
+    return collection.value.first()
+  })
+
+  // Reset the focused value to the first item when the query changes.
   useEffect(element, () => {
     if (state.autoFocus.value) {
-      focusedValue.value = collection.value.first() || ""
+      state.query.value
+      focusedValue.value = firstValue.value || ""
     }
   })
 

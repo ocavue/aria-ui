@@ -5,8 +5,8 @@
   "private": true,
   "packageManager": "pnpm@8.15.6",
   "scripts": {
-    "build": "pnpm run build:packages && pnpm run build:tsc",
-    "build:packages": "turbo run build",
+    "build": "turbo run build && pnpm run build:tsc",
+    "build:packages": "turbo run build --filter './packages/*'",
     "build:tsc": "tsc -b .",
     "gen": "bun run scripts/gen-config.ts && bun run scripts/gen-element.ts && bun run scripts/gen-readme.ts",
     "fix": "pnpm run fix:prettier && pnpm run fix:biome && pnpm run fix:eslint",
