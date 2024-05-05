@@ -128,11 +128,13 @@ function useMutationObserver(
 export function useQuerySelector<E extends Element = Element>(
   element: ConnectableElement,
   selector: string,
-): ReadonlySignal<E | null> {
-  const mutationCounter = useMutationObserver(element, {
+  options: MutationObserverInit = {
+    attributeFilter: ["aria-hidden", "aria-selected", "aria-disabled"],
     childList: true,
-    attributes: true,
-  })
+    subtree: true,
+  },
+): ReadonlySignal<E | null> {
+  const mutationCounter = useMutationObserver(element, options)
 
   return createComputed(() => {
     mutationCounter.value
@@ -148,11 +150,13 @@ export function useQuerySelector<E extends Element = Element>(
 export function useQuerySelectorAll<E extends Element = Element>(
   element: ConnectableElement,
   selector: string,
-): ReadonlySignal<NodeListOf<E>> {
-  const mutationCounter = useMutationObserver(element, {
+  options: MutationObserverInit = {
+    attributeFilter: ["aria-hidden", "aria-selected", "aria-disabled"],
     childList: true,
-    attributes: true,
-  })
+    subtree: true,
+  },
+): ReadonlySignal<NodeListOf<E>> {
+  const mutationCounter = useMutationObserver(element, options)
 
   return createComputed(() => {
     mutationCounter.value
