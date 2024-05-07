@@ -39,8 +39,8 @@ importers:
         specifier: 1.6.10
         version: 1.6.10
       prettier:
-        specifier: 3.2.5
-        version: 3.2.5
+        specifier: 3.2.4
+        version: 3.2.4
       turbo:
         specifier: 1.13.2
         version: 1.13.2
@@ -293,7 +293,7 @@ importers:
         version: link:../packages/tooltip
       '@astrojs/check':
         specifier: ^0.5.10
-        version: 0.5.10(prettier@3.2.5)(typescript@5.4.5)
+        version: 0.5.10(prettier@3.2.4)(typescript@5.4.5)
       '@astrojs/starlight':
         specifier: ^0.21.5
         version: 0.21.5(astro@4.6.1)
@@ -325,13 +325,13 @@ packages:
       '@jridgewell/trace-mapping': 0.3.25
     dev: true
 
-  /@astrojs/check@0.5.10(prettier@3.2.5)(typescript@5.4.5):
+  /@astrojs/check@0.5.10(prettier@3.2.4)(typescript@5.4.5):
     resolution: {integrity: sha512-vliHXM9cu/viGeKiksUM4mXfO816ohWtawTl2ADPgTsd4nUMjFiyAl7xFZhF34yy4hq4qf7jvK1F2PlR3b5I5w==}
     hasBin: true
     peerDependencies:
       typescript: ^5.0.0
     dependencies:
-      '@astrojs/language-server': 2.8.4(prettier@3.2.5)(typescript@5.4.5)
+      '@astrojs/language-server': 2.8.4(prettier@3.2.4)(typescript@5.4.5)
       chokidar: 3.6.0
       fast-glob: 3.3.2
       kleur: 4.1.5
@@ -350,7 +350,7 @@ packages:
     resolution: {integrity: sha512-6B13lz5n6BrbTqCTwhXjJXuR1sqiX/H6rTxzlXx+lN1NnV4jgnq/KJldCQaUWJzPL5SiWahQyinxAbxQtwgPHA==}
     dev: true
 
-  /@astrojs/language-server@2.8.4(prettier@3.2.5)(typescript@5.4.5):
+  /@astrojs/language-server@2.8.4(prettier@3.2.4)(typescript@5.4.5):
     resolution: {integrity: sha512-sJH5vGTBkhgA8+hdhzX78UUp4cFz4Mt7xkEkevD188OS5bDMkaue6hK+dtXWM47mnrXFveXA2u38K7S+5+IRjA==}
     hasBin: true
     peerDependencies:
@@ -370,11 +370,11 @@ packages:
       '@volar/language-service': 2.1.5
       '@volar/typescript': 2.1.5
       fast-glob: 3.3.2
-      prettier: 3.2.5
+      prettier: 3.2.4
       volar-service-css: 0.0.34(@volar/language-service@2.1.5)
       volar-service-emmet: 0.0.34(@volar/language-service@2.1.5)
       volar-service-html: 0.0.34(@volar/language-service@2.1.5)
-      volar-service-prettier: 0.0.34(@volar/language-service@2.1.5)(prettier@3.2.5)
+      volar-service-prettier: 0.0.34(@volar/language-service@2.1.5)(prettier@3.2.4)
       volar-service-typescript: 0.0.34(@volar/language-service@2.1.5)
       volar-service-typescript-twoslash-queries: 0.0.34(@volar/language-service@2.1.5)
       vscode-html-languageservice: 5.1.2
@@ -6872,8 +6872,8 @@ packages:
     hasBin: true
     dev: true
 
-  /prettier@3.2.5:
-    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==, tarball: https://registry.npmjs.org/prettier/-/prettier-3.2.5.tgz}
+  /prettier@3.2.4:
+    resolution: {integrity: sha512-FWu1oLHKCrtpO1ypU6J0SbK2d9Ckwysq6bHj/uaCP26DxrPpppCLQRGVuqAxSTvhF00AcvDRyYrLNW7ocBhFFQ==, tarball: https://registry.npmjs.org/prettier/-/prettier-3.2.4.tgz}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
@@ -8544,7 +8544,7 @@ packages:
       vscode-uri: 3.0.8
     dev: true
 
-  /volar-service-prettier@0.0.34(@volar/language-service@2.1.5)(prettier@3.2.5):
+  /volar-service-prettier@0.0.34(@volar/language-service@2.1.5)(prettier@3.2.4):
     resolution: {integrity: sha512-BNfJ8FwfPi1Wm/JkuzNjraOLdtKieGksNT/bDyquygVawv1QUzO2HB1hiMKfZGdcSFG5ZL9R0j7bBfRTfXA2gg==}
     peerDependencies:
       '@volar/language-service': ~2.1.0
@@ -8556,7 +8556,7 @@ packages:
         optional: true
     dependencies:
       '@volar/language-service': 2.1.5
-      prettier: 3.2.5
+      prettier: 3.2.4
       vscode-uri: 3.0.8
     dev: true
 
