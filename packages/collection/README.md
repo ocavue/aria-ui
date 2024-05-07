@@ -8,9 +8,9 @@
 new Collection(items: Iterable<HTMLElement>, loop: boolean): Collection
 ```
 
-| Property | Modifier   | Type      |
-| :------- | :--------- | :-------- |
-| `loop`   | `readonly` | `boolean` |
+| Property | Modifier   | Type      | Default value |
+| :------- | :--------- | :-------- | :------------ |
+| `loop`   | `readonly` | `boolean` | `true`        |
 
 #### Methods
 
@@ -73,7 +73,7 @@ size(): number
 ### ItemFilter()
 
 ```ts
-type ItemFilter: (options: Object) => boolean;
+type ItemFilter: (options: object) => boolean;
 ```
 
 The filter function to determine if an item should be shown in the collection.
@@ -83,7 +83,7 @@ The filter function to determine if an item should be shown in the collection.
 ### defaultItemFilter()
 
 ```ts
-function defaultItemFilter(options: Object): boolean;
+function defaultItemFilter(options: object): boolean;
 ```
 
 A simple case-insensitive substring match filter.

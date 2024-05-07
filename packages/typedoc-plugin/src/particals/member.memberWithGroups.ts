@@ -1,5 +1,5 @@
 import type { DeclarationReflection } from "typedoc"
-import type { MarkdownThemeRenderContext } from "typedoc-plugin-markdown"
+import type { MarkdownThemeContext } from "typedoc-plugin-markdown"
 
 import { heading } from "../heading"
 
@@ -9,9 +9,13 @@ import { heading } from "../heading"
  * @category Member Partials
  */
 export function memberWithGroups(
-  context: MarkdownThemeRenderContext,
+  context: MarkdownThemeContext,
   model: DeclarationReflection,
-  headingLevel: number,
+  {
+    headingLevel,
+  }: {
+    headingLevel: number
+  },
 ): string {
   const md: string[] = []
 
@@ -20,16 +24,11 @@ export function memberWithGroups(
   }
 
   if (model.typeHierarchy?.next) {
-    md.push(context.partials.hierarchy(model.typeHierarchy, headingLevel))
+    md.push(context.partials.hierarchy(model.typeHierarchy, { headingLevel }))
   }
 
   if (model.typeParameters) {
-    md.push(
-      heading(
-        headingLevel,
-        context.helpers.getText("kind.typeParameter.plural"),
-      ),
-    )
+    md.push(heading(headingLevel, context.getText("kind.typeParameter.plural")))
     if (context.options.getValue("parametersFormat") === "table") {
       md.push(context.partials.typeParametersTable(model.typeParameters))
     } else {
@@ -64,7 +63,7 @@ export function memberWithGroups(
   //   md.push(context.partials.reflectionIndex(model, headingLevel + 1))
   // }
 
-  md.push(context.partials.body(model, headingLevel))
+  md.push(context.partials.body(model, { headingLevel }))
 
   return md.join("\n\n")
 }
