@@ -6,7 +6,7 @@ import {
 import {
   type MarkdownPageEvent,
   MarkdownTheme,
-  MarkdownThemeRenderContext,
+  MarkdownThemeContext,
   type MarkdownApplication,
 } from "typedoc-plugin-markdown"
 
@@ -20,19 +20,13 @@ export function load(app: MarkdownApplication) {
 class MyMarkdownTheme extends MarkdownTheme {
   getRenderContext(
     page: MarkdownPageEvent<Reflection>,
-  ): MyMarkdownThemeRenderContext {
-    return new MyMarkdownThemeRenderContext(
-      this,
-      page,
-      this.application.options,
-    )
+  ): MyMarkdownThemeContext {
+    return new MyMarkdownThemeContext(this, page, this.application.options)
   }
 }
 
-class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
-  constructor(
-    ...args: ConstructorParameters<typeof MarkdownThemeRenderContext>
-  ) {
+class MyMarkdownThemeContext extends MarkdownThemeContext {
+  constructor(...args: ConstructorParameters<typeof MarkdownThemeContext>) {
     super(...args)
 
     const partials = this.partials
@@ -67,13 +61,13 @@ class MyMarkdownThemeRenderContext extends MarkdownThemeRenderContext {
 
       declarationsTable: (
         props: DeclarationReflection[],
-        isEventProps = false,
+        options?: { isEventProps: boolean },
       ) => {
         const inheritedFromValues = props.map((p) => p.inheritedFrom)
         for (const p of props) {
           p.inheritedFrom = undefined
         }
-        const result = partials.declarationsTable(props, isEventProps)
+        const result = partials.declarationsTable(props, options)
         for (const [i, prop] of props.entries()) {
           prop.inheritedFrom = inheritedFromValues[i]
         }

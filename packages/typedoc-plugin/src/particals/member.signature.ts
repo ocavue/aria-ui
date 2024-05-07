@@ -1,5 +1,5 @@
 import type { SignatureReflection } from "typedoc"
-import type { MarkdownThemeRenderContext } from "typedoc-plugin-markdown"
+import type { MarkdownThemeContext } from "typedoc-plugin-markdown"
 
 /**
  * Renders a signature member.
@@ -7,11 +7,17 @@ import type { MarkdownThemeRenderContext } from "typedoc-plugin-markdown"
  * @category Member Partials
  */
 export function signature(
-  context: MarkdownThemeRenderContext,
+  context: MarkdownThemeContext,
   model: SignatureReflection,
-  headingLevel: number,
-  nested = false,
-  accessor?: string,
+  {
+    headingLevel,
+    nested,
+    accessor,
+  }: {
+    headingLevel: number
+    nested?: boolean
+    accessor?: string
+  },
 ): string {
   const md: string[] = []
 
@@ -82,7 +88,7 @@ export function signature(
   }
 
   if (!nested && model.sources && !context.options.getValue("disableSources")) {
-    md.push(context.partials.sources(model, headingLevel))
+    md.push(context.partials.sources(model, { headingLevel }))
   }
 
   return md.join("\n\n")
