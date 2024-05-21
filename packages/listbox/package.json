@@ -13,7 +13,7 @@
     "@aria-ui/collection": "^0.0.3",
     "@aria-ui/core": "^0.0.14",
     "@aria-ui/presence": "^0.0.9",
-    "immer": "^10.0.4"
+    "immer": "^10.1.1"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
