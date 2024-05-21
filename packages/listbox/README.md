@@ -12,13 +12,13 @@ new ListboxElement(): ListboxElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `autoFocus` | `boolean` | Whether the listbox should automatically set the focus to the first item<br />when the listbox is mounted or when the query changes.<br /><br />**Default**<br />`false` |
-| `filter` | `null` \| [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox.<br />By default, a simple case-insensitive substring match is used. You can<br />provide a custom filter function to match against a more complex pattern.<br />You can also pass `null` to disable filtering and allow all items to be<br />shown.<br /><br />**Default**<br />`defaultItemFilter` |
-| `onKeydownHandlerAdd` | `null` \| (`handler`: (`event`: `KeyboardEvent`) => `void`) => `VoidFunction` | By default, the Listbox element will listen for keydown events. However,<br />you can pass `onKeydownHandlerAdd` to override the default behavior.<br />`onKeydownHandlerAdd` receives a keydown handler when the Listbox element<br />is mounted, and returns a function that will be called when the Listbox<br />element is unmounted.<br /><br />**Default**<br />`null` |
-| `onValueChange` | `null` \| (`value`: `string`) => `void` | Event handler called when the value changes.<br /><br />**Default**<br />`null` |
-| `query` | `string` | The query string to filter the listbox items.<br /><br />**Default**<br />`""` |
-| `selectionMode` | `"multiple"` \| `"single"` | Listbox selection mode<br /><br />(Currently only single selection mode is implemented)<br /><br />**Default**<br />`"single"` |
-| `value` | `string` | The selected value.<br /><br />**Default**<br />`""` |
+| `autoFocus` | `boolean` | <p>Whether the listbox should automatically set the focus to the first item when the listbox is mounted or when the query changes.</p><p>**Default**</p><code>false</code> |
+| `filter` | `null` \| [`ItemFilter`](../collection/README.md#itemfilter) | <p>The filter function to determine if an item should be shown in the listbox. By default, a simple case-insensitive substring match is used. You can provide a custom filter function to match against a more complex pattern. You can also pass `null` to disable filtering and allow all items to be shown.</p><p>**Default**</p><code>defaultItemFilter</code> |
+| `onKeydownHandlerAdd` | `null` \| (`handler`: (`event`: `KeyboardEvent`) => `void`) => `VoidFunction` | <p>By default, the Listbox element will listen for keydown events. However, you can pass `onKeydownHandlerAdd` to override the default behavior. `onKeydownHandlerAdd` receives a keydown handler when the Listbox element is mounted, and returns a function that will be called when the Listbox element is unmounted.</p><p>**Default**</p><code>null</code> |
+| `onValueChange` | `null` \| (`value`: `string`) => `void` | <p>Event handler called when the value changes.</p><p>**Default**</p><code>null</code> |
+| `query` | `string` | <p>The query string to filter the listbox items.</p><p>**Default**</p><code>""</code> |
+| `selectionMode` | `"multiple"` \| `"single"` | <p>Listbox selection mode</p><p>(Currently only single selection mode is implemented)</p><p>**Default**</p><code>"single"</code> |
+| `value` | `string` | <p>The selected value.</p><p>**Default**</p><code>""</code> |
 
 ## ListboxEmpty
 
@@ -42,12 +42,12 @@ new ListboxItemElement(): ListboxItemElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected.<br /><br />**Default**<br />`null` |
-| `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list.<br /><br />**Default**<br />`""` |
+| `onSelect` | `null` \| `VoidFunction` | <p>The function to call when the item is selected.</p><p>**Default**</p><code>null</code> |
+| `value` | `string` | <p>The value of the item. Every item must have a unique value in the parent list.</p><p>**Default**</p><code>""</code> |
 
 ### ListboxItemProps
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected.<br /><br />**Default**<br />`null` |
-| `value` | `string` | The value of the item. Every item must have a unique value in the parent<br />list.<br /><br />**Default**<br />`""` |
+| `onSelect` | `null` \| `VoidFunction` | <p>The function to call when the item is selected.</p><p>**Default**</p><code>null</code> |
+| `value` | `string` | <p>The value of the item. Every item must have a unique value in the parent list.</p><p>**Default**</p><code>""</code> |

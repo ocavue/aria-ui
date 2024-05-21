@@ -181,7 +181,7 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
-| `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM.<br />This callback can return a cleanup function that will be called when the<br />element is disconnected from the DOM. |
+| `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM. This callback can return a cleanup function that will be called when the element is disconnected from the DOM. |
 
 ## Props and States
 
