@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/select",
   "type": "module",
-  "version": "0.0.16",
+  "version": "0.0.17",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -12,7 +12,7 @@
   "dependencies": {
     "@aria-ui/core": "^0.0.14",
     "@aria-ui/listbox": "^0.0.13",
-    "@aria-ui/popover": "^0.0.13"
+    "@aria-ui/popover": "^0.0.14"
   },
   "devDependencies": {
     "tsup": "^8.0.2",
