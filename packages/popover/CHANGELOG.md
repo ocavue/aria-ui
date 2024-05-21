@@ -1,5 +1,14 @@
 # @aria-ui/popover
 
+## 0.0.14
+
+### Patch Changes
+
+- 5b37958: Update dependency zag-js to v0.50.0.
+- 21b6152: Fix an issue where the Escape keydown event is captured even when the popover is not open.
+- Updated dependencies [5b37958]
+  - @aria-ui/overlay@0.0.15
+
 ## 0.0.13
 
 ### Patch Changes

@@ -132,10 +132,10 @@ importers:
         specifier: ^0.0.14
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.14
+        specifier: ^0.0.15
         version: link:../overlay
       '@aria-ui/popover':
-        specifier: ^0.0.13
+        specifier: ^0.0.14
         version: link:../popover
       '@aria-ui/presence':
         specifier: ^0.0.9
@@ -176,7 +176,7 @@ importers:
         specifier: ^0.0.14
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.14
+        specifier: ^0.0.15
         version: link:../overlay
       '@aria-ui/presence':
         specifier: ^0.0.9
@@ -217,7 +217,7 @@ importers:
         specifier: ^0.0.13
         version: link:../listbox
       '@aria-ui/popover':
-        specifier: ^0.0.13
+        specifier: ^0.0.14
         version: link:../popover
     devDependencies:
       tsup:
@@ -233,7 +233,7 @@ importers:
         specifier: ^0.0.14
         version: link:../core
       '@aria-ui/overlay':
-        specifier: ^0.0.14
+        specifier: ^0.0.15
         version: link:../overlay
       '@aria-ui/presence':
         specifier: ^0.0.9

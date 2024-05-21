@@ -1,5 +1,11 @@
 # @aria-ui/overlay
 
+## 0.0.15
+
+### Patch Changes
+
+- 5b37958: Update dependency zag-js to v0.50.0.
+
 ## 0.0.14
 
 ### Patch Changes
