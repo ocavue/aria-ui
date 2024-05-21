@@ -91,7 +91,13 @@ export function usePopoverContent(
   }
 
   useEffect(element, () => {
-    trackDismissableElement(element, options)
+    // Only call `trackDismissableElement` when the menu is opened, so that the
+    // Escape keydown event won't be captured when the menu is closed.
+    if (!open.value) {
+      return
+    }
+
+    return trackDismissableElement(element, options)
   })
 
   return {
