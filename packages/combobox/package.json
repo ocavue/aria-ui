@@ -14,7 +14,7 @@
     "@aria-ui/listbox": "^0.0.13"
   },
   "devDependencies": {
-    "tsup": "^8.0.2",
+    "tsup": "^8.1.0",
     "typescript": "^5.4.5"
   },
   "publishConfig": {

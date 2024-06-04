@@ -12,10 +12,10 @@
   "dependencies": {
     "@aria-ui/core": "^0.0.14",
     "@floating-ui/dom": "^1.6.5",
-    "@zag-js/dom-query": "^0.50.0"
+    "@zag-js/dom-query": "^0.53.0"
   },
   "devDependencies": {
-    "tsup": "^8.0.2",
+    "tsup": "^8.1.0",
     "typescript": "^5.4.5"
   },
   "publishConfig": {
