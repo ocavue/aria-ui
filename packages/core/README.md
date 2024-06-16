@@ -16,6 +16,68 @@ Shares signals easily across widely nested HTML elements through context.
 
 A comprehensive collection of utilities for DOM interactions, enabling declarative management of attributes, styles, and event listeners.
 
+## Interfaces
+
+### ReadonlySignal\<T\>
+
+A read-only signal that holds a reactive value.
+
+| Property | Type |
+| :------- | :--- |
+| `value`  | `T`  |
+
+#### Methods
+
+##### get()
+
+```ts
+get(): T
+```
+
+Get the signal's current value.
+
+##### peek()
+
+```ts
+peek(): T
+```
+
+Get the signal's current value without subscribing.
+
+### Signal\<T\>
+
+A mutable signal that can be used to manage reactive state changes.
+
+| Property | Type | Overrides |
+| :------- | :--- | :-------- |
+| `value`  | `T`  | -         |
+
+#### Methods
+
+##### get()
+
+```ts
+get(): T
+```
+
+Get the signal's current value.
+
+##### peek()
+
+```ts
+peek(): T
+```
+
+Get the signal's current value without subscribing.
+
+##### set()
+
+```ts
+set(value: T): void
+```
+
+Set the value of the signal.
+
 ## Functions
 
 ### ElementMixin()
@@ -43,7 +105,7 @@ A context is a way to provide and consume signals in a HTML tree.
 ##### consume()
 
 ```ts
-consume(element: ConnectableElement): Signal<T>
+consume(element: ConnectableElement): ReadonlySignal<T>
 ```
 
 Receives the signal from a parent element.
@@ -51,7 +113,7 @@ Receives the signal from a parent element.
 ##### provide()
 
 ```ts
-provide(element: ConnectableElement, signal: Signal<T>): void
+provide(element: ConnectableElement, signal: ReadonlySignal<T>): void
 ```
 
 Provides a signal to all children of the element.
@@ -69,7 +131,7 @@ Creates a new context.
 ### useAnimationFrame()
 
 ```ts
-function useAnimationFrame(element: ConnectableElement, effect: () => void | () => void | VoidFunction): void
+function useAnimationFrame(element: ConnectableElement, effect: () => void | () => void | VoidFunction): () => void
 ```
 
 Executes an effect in the next animation frame.
@@ -87,7 +149,7 @@ function useAriaAttribute<K>(
   element: ConnectableElement,
   key: K,
   compute: () => AriaAttributes[K],
-): void;
+): VoidFunction;
 ```
 
 Sets the computed attribute of the element when it's connected.
@@ -97,7 +159,7 @@ This is a TypeScript type-safe version of [useAttribute](README.md#useattribute)
 ### useAriaRole()
 
 ```ts
-function useAriaRole(element: ConnectableElement, role: AriaRole | () => AriaRole | undefined): void
+function useAriaRole(element: ConnectableElement, role: AriaRole | () => AriaRole | undefined): VoidFunction
 ```
 
 Sets the `role` attribute of the element when it's connected.
@@ -111,7 +173,7 @@ function useAttribute(
   element: ConnectableElement,
   key: string,
   compute: () => undefined | string | number,
-): void;
+): VoidFunction;
 ```
 
 Sets the computed attribute of the element when it's connected.
@@ -124,7 +186,7 @@ function useEventListener<K>(
   type: K,
   listener: (event: HTMLElementEventMap[K]) => void,
   options?: boolean | AddEventListenerOptions,
-): void;
+): VoidFunction;
 ```
 
 Registers an event listener on the element.
@@ -160,10 +222,28 @@ function useStyle<K>(
   element: ConnectableElement,
   key: K,
   compute: () => CSSStyleDeclaration[K],
-): void;
+): VoidFunction;
 ```
 
 Sets the computed style of the element when it's connected.
+
+## Elements
+
+### BaseElement
+
+Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectableelement) interface.
+
+```ts
+new BaseElement(): BaseElement
+```
+
+### ConnectableElement
+
+Any HTML element that has implemented the `addConnectedCallback` method.
+
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM. This callback can return a cleanup function that will be called when the element is disconnected from the DOM. |
 
 ## Props and States
 
@@ -207,7 +287,56 @@ Maps every signal in the given object to its current value.
 ### SignalValue\<S\>
 
 ```ts
-type SignalValue<S>: S extends ReadonlySignal<infer T> ? T : never;
+type SignalValue<S>: S extends Signal<infer T> ? T : never;
 ```
 
 Extracts the value type from a signal type.
+
+### batch()
+
+```ts
+function batch<T>(fn: () => T): T;
+```
+
+Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
+
+This is a re-export of `batch` from `@preact/signals-core`.
+
+### createComputed()
+
+```ts
+function createComputed<T>(fn: () => T): ReadonlySignal<T>;
+```
+
+Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
+
+### createSignal()
+
+```ts
+function createSignal<T>(value: T): Signal<T>;
+```
+
+Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
+
+### untracked()
+
+```ts
+function untracked<T>(fn: () => T): T;
+```
+
+Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
+
+This is a re-export of `untracked` from `@preact/signals-core`.
+
+### useEffect()
+
+```ts
+function useEffect(
+  element: ConnectableElement,
+  callback: () => void | VoidFunction,
+): () => void;
+```
+
+Registers a callback to be called when the given element is connected to the DOM. It will track which signals are accessed and re-run their callback when those signals change. The callback can return a cleanup function that will be called when the effect is destroyed.
+
+The effect will be destroyed and all signals it was subscribed to will be unsubscribed from, when the element is disconnected from the DOM. You can also manually destroy the effect by calling the returned function.

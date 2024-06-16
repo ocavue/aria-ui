@@ -75,7 +75,7 @@ new MenuRootElement(): MenuRootElement
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `defaultOpen` | `boolean` | <p>Whether the popover is open by default.</p><p>**Default**</p><code>false</code> |
-| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | <p>Event handler called when the popover's open state changes.</p><p>**Default**</p><code>null</code> |
+| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | <p>Event handler called when the user opens or closes the popover.</p><p>**Default**</p><code>null</code> |
 | `open` | `boolean` | <p>Whether the popover is open.</p><p>**Default**</p><code>false</code> |
 
 ### MenuRootProps
