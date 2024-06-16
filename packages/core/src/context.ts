@@ -1,10 +1,5 @@
 import type { ConnectableElement } from "./connectable-element"
-import {
-  createSignal,
-  useEffect,
-  type ReadonlySignal,
-  type Signal,
-} from "./signals"
+import type { ReadonlySignal, Signal } from "./signals"
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
