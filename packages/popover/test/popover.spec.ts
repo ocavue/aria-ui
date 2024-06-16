@@ -25,7 +25,7 @@ describe("Popover", () => {
     expect(screen.getByTestId("content")).not.toBeVisible()
   })
 
-  it("should toggle the visibility", async () => {
+  it("should toggle the visibility by clicking on trigger", async () => {
     const { render, screen } = setup()
 
     render(html`
@@ -44,6 +44,28 @@ describe("Popover", () => {
     expect(content).toBeVisible()
 
     await userEvent.click(trigger)
+    expect(content).not.toBeVisible()
+  })
+
+  it("should toggle the visibility by setting open property", async () => {
+    const { render, screen } = setup()
+
+    render(html`
+      <aria-popover-root data-testid="root">
+        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
+        <aria-popover-content data-testid="content">Content</aria-popover-content>
+      </aria-popover-root>
+    `)
+
+    const root = screen.getByTestId<PopoverRootElement>("root")
+    const content = screen.getByTestId("content")
+
+    expect(content).not.toBeVisible()
+
+    root.open = true
+    expect(content).toBeVisible()
+
+    root.open = false
     expect(content).not.toBeVisible()
   })
 
@@ -90,17 +112,14 @@ describe("Popover", () => {
     const onOpenChange = vi.fn()
     root.onOpenChange = onOpenChange
     expect(root.open).toBe(false)
-    expect(screen.getByTestId("content")).not.toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
     root.open = true
     expect(root.open).toBe(true)
-    expect(screen.getByTestId("content")).toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
     root.open = false
     expect(root.open).toBe(false)
-    expect(screen.getByTestId("content")).not.toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
   })
 })
