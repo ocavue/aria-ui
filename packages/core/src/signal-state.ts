@@ -1,9 +1,6 @@
-import type { Signal } from "@preact/signals-core"
-import { signal } from "@preact/signals-core"
-
+import { createSignal, type Signal } from "./signals"
 import { getObjectEntries } from "./types"
 
-// TODO: correct typo
 /**
  * A plain object containing signals.
  *
@@ -34,7 +31,7 @@ export function mapValues<T extends object>(signals: SignalState<T>): T {
 export function mapSignals<T extends object>(values: T): SignalState<T> {
   const signals = {} as SignalState<T>
   for (const [key, value] of getObjectEntries(values)) {
-    signals[key] = signal(value)
+    signals[key] = createSignal(value)
   }
   return signals
 }

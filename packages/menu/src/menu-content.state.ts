@@ -12,7 +12,7 @@ import {
 } from "@aria-ui/core"
 import { usePopoverContent } from "@aria-ui/popover"
 
-import { openContext } from "./contexts"
+import { onOpenChangeContext } from "./contexts"
 import {
   defaultMenuContentProps,
   type MenuContentProps,
@@ -44,7 +44,7 @@ export function useMenuContent(
 
   selectedValueContext.provide(element, selectedValue)
   focusedValueContext.provide(element, focusedValue)
-  const open = openContext.consume(element)
+  const onOpenChange = onOpenChangeContext.consume(element)
 
   useEffect(element, () => {
     element.tabIndex = 0
@@ -63,7 +63,7 @@ export function useMenuContent(
     state.onKeydownHandlerAdd,
   )
 
-  useSelect(element, open, selectedValue, collection)
+  useSelect(element, onOpenChange, selectedValue, collection)
 
   return state
 }
@@ -120,7 +120,7 @@ export function useCollectionKeydownHandler(
 
 function useSelect(
   element: ConnectableElement,
-  open: Signal<boolean>,
+  onOpenChange: ReadonlySignal<((open: boolean) => void) | null>,
   selectedValue: ReadonlySignal<string>,
   collection: ReadonlySignal<Collection>,
 ) {
@@ -135,7 +135,7 @@ function useSelect(
 
     if (target.onSelect && typeof target.onSelect === "function") {
       target.onSelect()
-      open.value = false
+      onOpenChange.peek()?.(false)
     }
   })
 }

@@ -16,6 +16,68 @@ Shares signals easily across widely nested HTML elements through context.
 
 A comprehensive collection of utilities for DOM interactions, enabling declarative management of attributes, styles, and event listeners.
 
+## Interfaces
+
+### ReadonlySignal\<T\>
+
+A read-only signal that holds a reactive value.
+
+#### Accessors
+
+##### value
+
+#### Methods
+
+##### get()
+
+```ts
+get(): T
+```
+
+Get the signal's current value.
+
+##### peek()
+
+```ts
+peek(): T
+```
+
+Get the signal's current value without subscribing.
+
+### Signal\<T\>
+
+A mutable signal that can be used to manage reactive state changes.
+
+#### Accessors
+
+##### value
+
+#### Methods
+
+##### get()
+
+```ts
+get(): T
+```
+
+Get the signal's current value.
+
+##### peek()
+
+```ts
+peek(): T
+```
+
+Get the signal's current value without subscribing.
+
+##### set()
+
+```ts
+set(value: T): void
+```
+
+Set the value of the signal.
+
 ## Functions
 
 ### ElementMixin()
@@ -51,7 +113,7 @@ Receives the signal from a parent element.
 ##### provide()
 
 ```ts
-provide(element: ConnectableElement, signal: Signal<T>): void
+provide(element: ConnectableElement, signal: Signal<T> | ReadonlySignal<T>): void
 ```
 
 Provides a signal to all children of the element.
@@ -222,26 +284,6 @@ Maps every signal in the given object to its current value.
 
 ## Signals
 
-### ReadonlySignal\<T\>
-
-```ts
-type ReadonlySignal<T>: _ReadonlySignal<T>;
-```
-
-A read-only signal, providing a way to observe state changes without the ability to modify the state.
-
-This is a re-export of `ReadonlySignal` type from `@preact/signals-core`.
-
-### Signal\<T\>
-
-```ts
-type Signal<T>: _Signal<T>;
-```
-
-A mutable signal that can be used to manage reactive state changes.
-
-This is a re-export of `Signal` type from `@preact/signals-core`.
-
 ### SignalValue\<S\>
 
 ```ts
@@ -268,8 +310,6 @@ function createComputed<T>(fn: () => T): ReadonlySignal<T>;
 
 Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
 
-This is an alias for `computed` from `@preact/signals-core`.
-
 ### createSignal()
 
 ```ts
@@ -277,8 +317,6 @@ function createSignal<T>(value: T): Signal<T>;
 ```
 
 Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
-
-This is an alias for `signal` from `@preact/signals-core`.
 
 ### untracked()
 

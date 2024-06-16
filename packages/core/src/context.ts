@@ -1,5 +1,5 @@
 import type { ConnectableElement } from "./connectable-element"
-import { createSignal, type Signal } from "./signals"
+import type { ReadonlySignal, Signal } from "./signals"
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
@@ -21,11 +21,15 @@ export interface Context<T> {
    * @param element The element to provide the signal to.
    * @param signal The signal to provide.
    */
-  provide(element: ConnectableElement, signal: Signal<T>): void
+  provide(
+    element: ConnectableElement,
+    signal: Signal<T> | ReadonlySignal<T>,
+  ): void
+
   /**
    * Receives the signal from a parent element.
    * @param element The element to consume the signal from.
-   * @returns A signal that is double bound to the provided signal.
+   * @returns A signal that is double-bound to the provided signal.
    */
   consume(element: ConnectableElement): Signal<T>
 }
@@ -55,44 +59,53 @@ class ContextImpl<T> implements Context<T> {
   }
 
   public consume(element: ConnectableElement): Signal<T> {
-    const consumer = createSignal<T>(this.defaultValue)
-    let dispose: VoidFunction | undefined = undefined
+    let getter: (() => T) | null = null
+    let peeker: (() => T) | null = null
+    let setter: ((value: T) => void) | null = null
 
     element.addConnectedCallback(() => {
       element.dispatchEvent(
         new ContextRequestEvent<T>(this.key, (provider) => {
-          dispose?.()
-          dispose = bind(provider, consumer)
+          getter = () => provider.get()
+          peeker = () => provider.peek()
+          setter = (value: T) => provider.set(value)
         }),
       )
-      return () => {
-        dispose?.()
-        dispose = undefined
-      }
     })
 
-    return consumer
-  }
-}
-
-function bind<T>(provider: Signal<T>, consumer: Signal<T>): VoidFunction {
-  consumer.value = provider.peek()
-
-  const unsubscribeProvider = provider.subscribe((value) => {
-    if (consumer.peek() !== value) {
-      consumer.value = value
+    const get = () => {
+      return getter ? getter() : this.defaultValue
     }
-  })
 
-  const unsubscribeConsumer = consumer.subscribe((value) => {
-    if (provider.peek() !== value) {
-      provider.value = value
+    const set = (value: T) => {
+      setter?.(value)
     }
-  })
 
-  return () => {
-    unsubscribeProvider()
-    unsubscribeConsumer()
+    const peek = () => {
+      return peeker ? peeker() : this.defaultValue
+    }
+
+    return {
+      get,
+
+      /**
+       * @deprecated
+       */
+      get value() {
+        return get()
+      },
+
+      set,
+
+      /**
+       * @deprecated
+       */
+      set value(value: T) {
+        set(value)
+      },
+
+      peek,
+    }
   }
 }
 

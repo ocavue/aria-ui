@@ -112,7 +112,7 @@ export function useCollectionKeydownHandler(
   focusedValue: Signal<string>,
   selectedValue: Signal<string>,
   onKeydownHandlerAdd: Signal<ListboxProps["onKeydownHandlerAdd"]>,
-  available: Signal<boolean>,
+  available: ReadonlySignal<boolean>,
 ) {
   const scrollFocusedItemIntoView = () => {
     const target = collection.peek().getElement(focusedValue.value)
