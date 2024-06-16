@@ -1,12 +1,13 @@
 import { within } from "@testing-library/dom"
+import userEvent from "@testing-library/user-event"
 import { html, render, type TemplateResult } from "lit-html"
 import { describe, expect, it } from "vitest"
+
 import {
   PopoverContentElement,
   PopoverRootElement,
   PopoverTriggerElement,
 } from "../src/index"
-import userEvent from "@testing-library/user-event"
 
 describe("Popover", () => {
   it("should render popover", () => {

@@ -1,10 +1,10 @@
 export function escapeChars(str: string) {
   return str
-    .replace(/>/g, "\\>")
-    .replace(/</g, "\\<")
-    .replace(/{/g, "\\{")
-    .replace(/_/g, "\\_")
+    .replace(/>/g, String.raw`\>`)
+    .replace(/</g, String.raw`\<`)
+    .replace(/{/g, String.raw`\{`)
+    .replace(/_/g, String.raw`\_`)
     .replace(/`/g, "\\`")
-    .replace(/\|/g, "\\|")
-    .replace(/\*/g, "\\*")
+    .replace(/\|/g, String.raw`\|`)
+    .replace(/\*/g, String.raw`\*`)
 }

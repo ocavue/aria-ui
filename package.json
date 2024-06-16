@@ -11,7 +11,7 @@
     "test": "vitest",
     "gen": "bun run scripts/gen-config.ts && bun run scripts/gen-element.ts && bun run scripts/gen-readme.ts",
     "fix": "pnpm run fix:prettier && pnpm run fix:biome && pnpm run fix:eslint",
-    "fix:biome": "biome check --apply-unsafe .",
+    "fix:biome": "biome check --write --unsafe .",
     "fix:eslint": "eslint --fix .",
     "fix:prettier": "prettier -w .",
     "lint": "pnpm run lint:ts && pnpm run lint:prettier && pnpm run lint:biome && pnpm run lint:eslint",
