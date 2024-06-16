@@ -30,10 +30,10 @@
       "path": "packages/collection"
     },
     {
-      "path": "packages/config"
+      "path": "packages/combobox"
     },
     {
-      "path": "packages/combobox"
+      "path": "packages/config"
     },
     {
       "path": "packages/core"
