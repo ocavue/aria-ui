@@ -14,9 +14,12 @@ export function useSelectRoot(element: ConnectableElement) {
   const popoverRootState = usePopoverRoot(element)
 
   useEffect(element, () => {
-    return selectedValue.subscribe(() => {
+    let prevSelected = ""
+    const currSelected = selectedValue.get()
+    if (currSelected !== prevSelected) {
       popoverRootState.open.value = false
-    })
+    }
+    prevSelected = currSelected
   })
 
   return {}
