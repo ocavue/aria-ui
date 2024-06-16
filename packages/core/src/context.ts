@@ -64,57 +64,54 @@ class ContextImpl<T> implements Context<T> {
   }
 
   public consume(element: ConnectableElement): Signal<T> {
-    const consumer = createSignal<T>(this.defaultValue)
-    const comsumerSetter = createSignal<((value: T) => void) | null>(null)
+    let getter: (() => T) | null = null
+    let peeker: (() => T) | null = null
+    let setter: ((value: T) => void) | null = null
 
     element.addConnectedCallback(() => {
       element.dispatchEvent(
         new ContextRequestEvent<T>(this.key, (provider) => {
-          bind(element, provider, consumer, comsumerSetter)
+          getter = () => provider.get()
+          peeker = () => provider.peek()
+          setter = (value: T) => provider.set(value)
         }),
       )
     })
 
+    const get = () => {
+      return getter ? getter() : this.defaultValue
+    }
+
+    const set = (value: T) => {
+      setter?.(value)
+    }
+
+    const peek = () => {
+      return peeker ? peeker() : this.defaultValue
+    }
+
     return {
-      get: () => {
-        return consumer.value
-      },
+      get,
 
       /**
        * @deprecated
        */
       get value() {
-        return consumer.value
+        return get()
       },
 
-      set: (value: T) => {
-        comsumerSetter.peek()?.(value)
-      },
+      set,
 
       /**
        * @deprecated
        */
       set value(value: T) {
-        comsumerSetter.peek()?.(value)
+        set(value)
       },
 
-      peek: () => consumer.peek(),
+      peek,
     }
   }
-}
-
-function bind<T>(
-  element: ConnectableElement,
-  provider: Signal<T>,
-  consumer: Signal<T>,
-  comsumerSetter: Signal<((value: T) => void) | null>,
-): void {
-  consumer.set(provider.peek())
-  comsumerSetter.set((value: T) => provider.set(value))
-
-  useEffect(element, () => {
-    consumer.set(provider.get())
-  })
 }
 
 /**
