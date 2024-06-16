@@ -22,9 +22,9 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 A read-only signal that holds a reactive value.
 
-| Property | Type |
-| :------- | :--- |
-| `value`  | `T`  |
+#### Accessors
+
+##### value
 
 #### Methods
 
@@ -48,9 +48,9 @@ Get the signal's current value without subscribing.
 
 A mutable signal that can be used to manage reactive state changes.
 
-| Property | Type | Overrides |
-| :------- | :--- | :-------- |
-| `value`  | `T`  | -         |
+#### Accessors
+
+##### value
 
 #### Methods
 
@@ -105,7 +105,7 @@ A context is a way to provide and consume signals in a HTML tree.
 ##### consume()
 
 ```ts
-consume(element: ConnectableElement): ReadonlySignal<T>
+consume(element: ConnectableElement): Signal<T>
 ```
 
 Receives the signal from a parent element.
@@ -113,7 +113,7 @@ Receives the signal from a parent element.
 ##### provide()
 
 ```ts
-provide(element: ConnectableElement, signal: ReadonlySignal<T>): void
+provide(element: ConnectableElement, signal: Signal<T> | ReadonlySignal<T>): void
 ```
 
 Provides a signal to all children of the element.
