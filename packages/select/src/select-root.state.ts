@@ -17,7 +17,7 @@ export function useSelectRoot(element: ConnectableElement) {
     let prevSelected = ""
     const currSelected = selectedValue.get()
     if (currSelected !== prevSelected) {
-      popoverRootState.open.value = false
+      popoverRootState.open.set(false)
     }
     prevSelected = currSelected
   })
