@@ -47,7 +47,7 @@ describe("Popover", () => {
     expect(content).not.toBeVisible()
   })
 
-  it("should toggle the visibility by setting open property", async () => {
+  it("should toggle the visibility by setting open property", () => {
     const { render, screen } = setup()
 
     render(html`
@@ -97,7 +97,7 @@ describe("Popover", () => {
     expect(onOpenChange).toHaveBeenCalledTimes(2)
   })
 
-  it("should not emit event when the open state is changed programatically", async () => {
+  it("should not emit event when the open state is changed programatically", () => {
     const { render, screen } = setup()
 
     render(html`
