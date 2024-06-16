@@ -7,7 +7,7 @@ import {
   PopoverContentElement,
   PopoverRootElement,
   PopoverTriggerElement,
-} from "../src/index"
+} from "./index"
 
 describe("Popover", () => {
   it("should render popover", () => {

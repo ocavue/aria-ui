@@ -27,7 +27,7 @@ importers:
         specifier: ^6.4.6
         version: 6.4.6(@types/bun@1.1.4)(vitest@1.6.0)
       '@types/bun':
-        specifier: 1.1.4
+        specifier: ^1.1.4
         version: 1.1.4
       aria-ui-typedoc-plugin:
         specifier: workspace:*
@@ -296,6 +296,21 @@ importers:
         specifier: ^5.0.7
         version: 5.0.7
     devDependencies:
+      '@aria-ui/config':
+        specifier: workspace:*
+        version: link:../config
+      '@testing-library/dom':
+        specifier: ^10.1.0
+        version: 10.1.0
+      '@testing-library/user-event':
+        specifier: ^14.5.2
+        version: 14.5.2(@testing-library/dom@10.1.0)
+      '@vitest/browser':
+        specifier: ^1.6.0
+        version: 1.6.0(playwright@1.44.1)(vitest@1.6.0)
+      lit-html:
+        specifier: ^3.1.4
+        version: 3.1.4
       tsup:
         specifier: ^8.1.0
         version: 8.1.0(typescript@5.4.5)

@@ -31,7 +31,7 @@
     "@ocavue/eslint-config": "1.6.0",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/jest-dom": "^6.4.6",
-    "@types/bun": "1.1.4",
+    "@types/bun": "^1.1.4",
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "5.4.4",
     "comment-json": "4.2.3",
