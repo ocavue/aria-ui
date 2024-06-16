@@ -1,5 +1,5 @@
 import type { ConnectableElement } from "./connectable-element"
-import { createSignal, type Signal } from "./signals"
+import { createSignal, useEffect, type Signal } from "./signals"
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
@@ -56,44 +56,33 @@ class ContextImpl<T> implements Context<T> {
 
   public consume(element: ConnectableElement): Signal<T> {
     const consumer = createSignal<T>(this.defaultValue)
-    let dispose: VoidFunction | undefined = undefined
 
     element.addConnectedCallback(() => {
       element.dispatchEvent(
         new ContextRequestEvent<T>(this.key, (provider) => {
-          dispose?.()
-          dispose = bind(provider, consumer)
+          bind(element, provider, consumer)
         }),
       )
-      return () => {
-        dispose?.()
-        dispose = undefined
-      }
     })
 
     return consumer
   }
 }
 
-function bind<T>(provider: Signal<T>, consumer: Signal<T>): VoidFunction {
-  consumer.value = provider.peek()
+function bind<T>(
+  element: ConnectableElement,
+  provider: Signal<T>,
+  consumer: Signal<T>,
+): void {
+  consumer.set(provider.peek())
 
-  const unsubscribeProvider = provider.subscribe((value) => {
-    if (consumer.peek() !== value) {
-      consumer.value = value
-    }
+  useEffect(element, () => {
+    consumer.set(provider.get())
   })
 
-  const unsubscribeConsumer = consumer.subscribe((value) => {
-    if (provider.peek() !== value) {
-      provider.value = value
-    }
+  useEffect(element, () => {
+    provider.set(consumer.get())
   })
-
-  return () => {
-    unsubscribeProvider()
-    unsubscribeConsumer()
-  }
 }
 
 /**
