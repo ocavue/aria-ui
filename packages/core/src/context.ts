@@ -1,6 +1,5 @@
 import type { ConnectableElement } from "./connectable-element"
 import {
-  createComputed,
   createSignal,
   useEffect,
   type ReadonlySignal,
@@ -10,7 +9,7 @@ import {
 class ContextRequestEvent<T> extends Event {
   public constructor(
     public readonly key: string | symbol,
-    public readonly callback: (signal: ReadonlySignal<T>) => void,
+    public readonly callback: (signal: Signal<T>) => void,
   ) {
     super("aria-ui/context-request", { bubbles: true, composed: true })
   }
@@ -27,13 +26,17 @@ export interface Context<T> {
    * @param element The element to provide the signal to.
    * @param signal The signal to provide.
    */
-  provide(element: ConnectableElement, signal: ReadonlySignal<T>): void
+  provide(
+    element: ConnectableElement,
+    signal: Signal<T> | ReadonlySignal<T>,
+  ): void
+
   /**
    * Receives the signal from a parent element.
    * @param element The element to consume the signal from.
-   * @returns A readonly signal that is bound to the provided signal.
+   * @returns A signal that is double-bound to the provided signal.
    */
-  consume(element: ConnectableElement): ReadonlySignal<T>
+  consume(element: ConnectableElement): Signal<T>
 }
 
 class ContextImpl<T> implements Context<T> {
@@ -60,27 +63,44 @@ class ContextImpl<T> implements Context<T> {
     })
   }
 
-  public consume(element: ConnectableElement): ReadonlySignal<T> {
+  public consume(element: ConnectableElement): Signal<T> {
     const consumer = createSignal<T>(this.defaultValue)
+    const comsumerSetter = createSignal<((value: T) => void) | null>(null)
 
     element.addConnectedCallback(() => {
       element.dispatchEvent(
         new ContextRequestEvent<T>(this.key, (provider) => {
-          bind(element, provider, consumer)
+          bind(element, provider, consumer, comsumerSetter)
         }),
       )
     })
 
-    return createComputed(() => consumer.value)
+    return {
+      get: () => {
+        return consumer.value
+      },
+      get value() {
+        return consumer.value
+      },
+      set: (value: T) => {
+        comsumerSetter.peek()?.(value)
+      },
+      set value(value: T) {
+        comsumerSetter.peek()?.(value)
+      },
+      peek: () => consumer.peek(),
+    }
   }
 }
 
 function bind<T>(
   element: ConnectableElement,
-  provider: ReadonlySignal<T>,
+  provider: Signal<T>,
   consumer: Signal<T>,
+  comsumerSetter: Signal<((value: T) => void) | null>,
 ): void {
   consumer.set(provider.peek())
+  comsumerSetter.set((value: T) => provider.set(value))
 
   useEffect(element, () => {
     consumer.set(provider.get())
