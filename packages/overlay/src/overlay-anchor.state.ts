@@ -10,7 +10,7 @@ export function useOverlayAnchor(element: ConnectableElement) {
   const reference = referenceContext.consume(element)
 
   useEffect(element, () => {
-    reference.value = element
+    reference.set(element)
   })
 
   return {}

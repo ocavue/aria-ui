@@ -33,10 +33,10 @@ export function useTooltipContent(
   const open = openContext.consume(element)
   const id = idContext.consume(element)
 
-  useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
-  useAttribute(element, "id", () => id.value || undefined)
+  useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
+  useAttribute(element, "id", () => id.get() || undefined)
   usePresence(element, open)
-  useAttribute(element, "data-state", () => (open.value ? "open" : "closed"))
+  useAttribute(element, "data-state", () => (open.get() ? "open" : "closed"))
 
   return state
 }

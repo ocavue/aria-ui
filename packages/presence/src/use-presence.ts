@@ -31,7 +31,7 @@ export function usePresence(
     }
   }
 
-  useEffect(element, () => handlePresentChange(element, present.value))
+  useEffect(element, () => handlePresentChange(element, present.get()))
   useEventListener(element, "animationend", handleAnimationEnd)
 }
 

@@ -52,7 +52,7 @@ export function useMenuContent(
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="menuitem"]')
   const collection = createComputed(() => {
-    return new Collection(Array.from(items.value))
+    return new Collection(Array.from(items.get()))
   })
 
   useCollectionKeydownHandler(
@@ -85,20 +85,20 @@ export function useCollectionKeydownHandler(
 
     switch (event.key) {
       case "ArrowDown":
-        focusedValue.value = collection.value.next(focusedValue.value) || ""
+        focusedValue.set(collection.get().next(focusedValue.get()) || "")
         break
       case "ArrowUp":
-        focusedValue.value = collection.value.prev(focusedValue.value) || ""
+        focusedValue.set(collection.get().prev(focusedValue.get()) || "")
         break
       case "Home":
-        focusedValue.value = collection.value.first() || ""
+        focusedValue.set(collection.get().first() || "")
         break
       case "End":
-        focusedValue.value = collection.value.last() || ""
+        focusedValue.set(collection.get().last() || "")
         break
       case "Enter":
-        if (focusedValue.value) {
-          selectedValue.value = focusedValue.value
+        if (focusedValue.get()) {
+          selectedValue.set(focusedValue.get())
         }
         break
       default:
@@ -109,7 +109,7 @@ export function useCollectionKeydownHandler(
   }
 
   useEffect(element, () => {
-    const onKeydownHandlerAddValue = onKeydownHandlerAdd.value
+    const onKeydownHandlerAddValue = onKeydownHandlerAdd.get()
     if (onKeydownHandlerAddValue) {
       return onKeydownHandlerAddValue(keydownHandler)
     }
@@ -125,7 +125,7 @@ function useSelect(
   collection: ReadonlySignal<Collection>,
 ) {
   useEffect(element, () => {
-    const value = selectedValue.value
+    const value = selectedValue.get()
     if (!value) return
 
     const target = collection.peek().getElement(value) as

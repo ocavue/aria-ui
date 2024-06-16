@@ -12,7 +12,7 @@ export function useSelectList(element: ConnectableElement) {
 
   useListbox(element, {
     onValueChange: (value: string) => {
-      selectedValue.value = value
+      selectedValue.set(value)
     },
   })
 

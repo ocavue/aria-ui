@@ -13,9 +13,9 @@ export function useComboboxList(element: ConnectableElement) {
 
   const { query } = useListbox(element, {
     onKeydownHandlerAdd: (handler) => {
-      keydownHandler.value = handler
+      keydownHandler.set(handler)
       return () => {
-        keydownHandler.value = null
+        keydownHandler.set(null)
       }
     },
   })
@@ -23,7 +23,7 @@ export function useComboboxList(element: ConnectableElement) {
   const inputValue = inputValueContext.consume(element)
 
   useEffect(element, () => {
-    query.value = inputValue.value
+    query.set(inputValue.get())
   })
 
   return {}

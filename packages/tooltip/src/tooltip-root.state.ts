@@ -42,7 +42,7 @@ export function useTooltipRoot(
 
   const hovering = createSignal(false)
   const focused = createSignal(false)
-  const activated = createComputed(() => hovering.value || focused.value)
+  const activated = createComputed(() => hovering.get() || focused.get())
   const open = createSignal(false)
   const id = nanoid()
 
@@ -55,11 +55,11 @@ export function useTooltipRoot(
         // The previous opened tooltip has just been closed
         (openingId && now - deactivatedAt <= state.closeDelay.peek())
       ) {
-        open.value = true
+        open.set(true)
 
         // Close the previous open tooltip
         if (openingTooltip && openingId !== id) {
-          openingTooltip.value = false
+          openingTooltip.set(false)
         }
 
         openingTooltip = open
@@ -67,7 +67,7 @@ export function useTooltipRoot(
       }
     } else {
       if (now - deactivatedAt >= state.closeDelay.peek()) {
-        open.value = false
+        open.set(false)
 
         if (openingId === id) {
           openingTooltip = null
@@ -78,7 +78,7 @@ export function useTooltipRoot(
   }
 
   useEffect(element, () => {
-    if (activated.value) {
+    if (activated.get()) {
       activatedAt = Date.now()
     } else {
       deactivatedAt = Date.now()

@@ -16,7 +16,7 @@ function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
   const inputValue = createSignal("")
 
   useEffect(element, () => {
-    const inputElement = input.value
+    const inputElement = input.get()
 
     if (!inputElement) {
       return
@@ -27,7 +27,7 @@ function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
       if (!target) {
         return
       }
-      inputValue.value = target.value
+      inputValue.set(target.value)
     }
 
     inputElement.addEventListener("input", handler)
@@ -43,7 +43,7 @@ export function useKeyboardListener(element: ConnectableElement) {
   )
 
   useEffect(element, () => {
-    const keydownHandlerValue = keydownHandler.value
+    const keydownHandlerValue = keydownHandler.get()
 
     if (keydownHandlerValue) {
       element.addEventListener("keydown", keydownHandlerValue)

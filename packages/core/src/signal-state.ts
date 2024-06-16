@@ -18,7 +18,7 @@ export type SignalState<T extends object> = {
 export function mapValues<T extends object>(signals: SignalState<T>): T {
   const values = {} as T
   for (const [key, signal] of getObjectEntries(signals)) {
-    values[key] = signal.value
+    values[key] = signal.get()
   }
   return values
 }

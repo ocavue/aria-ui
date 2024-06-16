@@ -44,7 +44,7 @@ export function useOverlayPositionerState(
   // most once per frame.
   useAnimationFrame(element, () => {
     const stateValues = mapValues(state)
-    const referenceValue = context.reference.value
+    const referenceValue = context.reference.get()
 
     return () => updatePlacement(element, referenceValue, stateValues)
   })

@@ -15,15 +15,15 @@ export function useListboxEmpty(element: ConnectableElement) {
   const availableValueSet = availableValueSetContext.consume(element)
 
   const presence = createComputed((): boolean => {
-    return availableValueSet.value.size === 0
+    return availableValueSet.get().size === 0
   })
 
   useAriaAttribute(element, "aria-disabled", () => {
-    return presence.value ? undefined : "true"
+    return presence.get() ? undefined : "true"
   })
 
   useAriaAttribute(element, "aria-hidden", () => {
-    return presence.value ? undefined : "true"
+    return presence.get() ? undefined : "true"
   })
 
   usePresence(element, presence)
