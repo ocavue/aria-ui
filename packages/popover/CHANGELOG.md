@@ -1,5 +1,11 @@
 # @aria-ui/popover
 
+## 0.0.15
+
+### Patch Changes
+
+- c6b4694: `onOpenChange` should only be triggered with user interactions.
+
 ## 0.0.14
 
 ### Patch Changes
