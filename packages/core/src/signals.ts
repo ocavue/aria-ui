@@ -22,6 +22,8 @@ export interface ReadonlySignal<T> {
    * Get the signal's current value without subscribing.
    */
   peek(): T
+
+  value: T
 }
 
 /**
@@ -32,6 +34,8 @@ export interface Signal<T> extends ReadonlySignal<T> {
    * Set the value of the signal.
    */
   set(value: T): void
+
+  value: T
 }
 
 class MutableSignal<T> implements Signal<T> {
@@ -108,7 +112,9 @@ export const untracked = _untracked
  *
  * @group Signals
  */
-export const createSignal = <T>(value: T): Signal<T> => new MutableSignal(value)
+export function createSignal<T>(value: T): Signal<T> {
+  return new MutableSignal(value)
+}
 
 /**
  * Creates a computed signal that automatically updates its value based on the
@@ -118,8 +124,9 @@ export const createSignal = <T>(value: T): Signal<T> => new MutableSignal(value)
  *
  * @group Signals
  */
-export const createComputed = <T>(fn: () => T): ReadonlySignal<T> =>
-  new ComputedSignal(fn)
+export function createComputed<T>(fn: () => T): ReadonlySignal<T> {
+  return new ComputedSignal(fn)
+}
 
 /**
  * Registers a callback to be called when the given element is connected to the
