@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/listbox",
   "type": "module",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "@aria-ui/collection": "^0.0.3",
-    "@aria-ui/core": "^0.0.14",
-    "@aria-ui/presence": "^0.0.9",
+    "@aria-ui/core": "^0.0.15",
+    "@aria-ui/presence": "^0.0.10",
     "immer": "^10.1.1"
   },
   "devDependencies": {
