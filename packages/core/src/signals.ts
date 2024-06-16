@@ -23,6 +23,9 @@ export interface ReadonlySignal<T> {
    */
   peek(): T
 
+  /**
+   * @deprecated
+   */
   get value(): T
 }
 
@@ -35,6 +38,9 @@ export interface Signal<T> extends ReadonlySignal<T> {
    */
   set(value: T): void
 
+  /**
+   * @deprecated
+   */
   set value(value: T)
 }
 
@@ -45,10 +51,16 @@ class MutableSignal<T> implements Signal<T> {
     this.impl = signal(value)
   }
 
+  /**
+   * @deprecated
+   */
   get value(): T {
     return this.impl.value
   }
 
+  /**
+   * @deprecated
+   */
   set value(value: T) {
     this.impl.value = value
   }
@@ -73,6 +85,9 @@ class ComputedSignal<T> implements ReadonlySignal<T> {
     this.impl = computed(fn)
   }
 
+  /**
+   * @deprecated
+   */
   get value(): T {
     return this.impl.value
   }

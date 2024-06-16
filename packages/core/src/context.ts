@@ -79,15 +79,25 @@ class ContextImpl<T> implements Context<T> {
       get: () => {
         return consumer.value
       },
+
+      /**
+       * @deprecated
+       */
       get value() {
         return consumer.value
       },
+
       set: (value: T) => {
         comsumerSetter.peek()?.(value)
       },
+
+      /**
+       * @deprecated
+       */
       set value(value: T) {
         comsumerSetter.peek()?.(value)
       },
+
       peek: () => consumer.peek(),
     }
   }
