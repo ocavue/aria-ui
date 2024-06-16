@@ -4,30 +4,83 @@ import {
   computed,
   effect,
   signal,
-  type ReadonlySignal as _ReadonlySignal,
-  type Signal as _Signal,
+  type Signal as PreactSignal,
 } from "@preact/signals-core"
 
 import type { ConnectableElement } from "./connectable-element"
 
 /**
- * A mutable signal that can be used to manage reactive state changes.
- *
- * This is a re-export of `Signal` type from `@preact/signals-core`.
- *
- * @group Signals
+ * A read-only signal that holds a reactive value.
  */
-export type Signal<T> = _Signal<T>
+export interface ReadonlySignal<T> {
+  /**
+   * Get the signal's current value.
+   */
+  get(): T
+
+  /**
+   * Get the signal's current value without subscribing.
+   */
+  peek(): T
+}
 
 /**
- * A read-only signal, providing a way to observe state changes without the
- * ability to modify the state.
- *
- * This is a re-export of `ReadonlySignal` type from `@preact/signals-core`.
- *
- * @group Signals
+ * A mutable signal that can be used to manage reactive state changes.
  */
-export type ReadonlySignal<T> = _ReadonlySignal<T>
+export interface Signal<T> extends ReadonlySignal<T> {
+  /**
+   * Set the value of the signal.
+   */
+  set(value: T): void
+}
+
+class MutableSignal<T> implements Signal<T> {
+  private readonly impl: PreactSignal<T>
+
+  constructor(value: T) {
+    this.impl = signal(value)
+  }
+
+  get value(): T {
+    return this.impl.value
+  }
+
+  set value(value: T) {
+    this.impl.value = value
+  }
+
+  get(): T {
+    return this.impl.value
+  }
+
+  set(value: T): void {
+    this.impl.value = value
+  }
+
+  peek(): T {
+    return this.impl.peek()
+  }
+}
+
+class ComputedSignal<T> implements ReadonlySignal<T> {
+  private readonly impl: PreactSignal<T>
+
+  constructor(fn: () => T) {
+    this.impl = computed(fn)
+  }
+
+  get value(): T {
+    return this.impl.value
+  }
+
+  get(): T {
+    return this.impl.value
+  }
+
+  peek(): T {
+    return this.impl.peek()
+  }
+}
 
 /**
  * Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
@@ -53,11 +106,9 @@ export const untracked = _untracked
  * reactive data sources that can be read and written to, allowing components to
  * reactively update when their values change.
  *
- * This is an alias for `signal` from `@preact/signals-core`.
- *
  * @group Signals
  */
-export const createSignal = signal
+export const createSignal = <T>(value: T): Signal<T> => new MutableSignal(value)
 
 /**
  * Creates a computed signal that automatically updates its value based on the
@@ -65,11 +116,10 @@ export const createSignal = signal
  * derive state from other signals, recalculating their value when dependencies
  * change.
  *
- * This is an alias for `computed` from `@preact/signals-core`.
- *
  * @group Signals
  */
-export const createComputed = computed
+export const createComputed = <T>(fn: () => T): ReadonlySignal<T> =>
+  new ComputedSignal(fn)
 
 /**
  * Registers a callback to be called when the given element is connected to the
