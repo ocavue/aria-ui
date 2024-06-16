@@ -1,12 +1,12 @@
 import {
   createSignal,
+  useAnimationFrame,
   useAriaAttribute,
   useAttribute,
   useEffect,
   type ConnectableElement,
   type ReadonlySignal,
   type SignalState,
-  useAnimationFrame,
 } from "@aria-ui/core"
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
@@ -21,7 +21,11 @@ import {
   type PopoverContentDataAttributes,
   type PopoverContentProps,
 } from "./popover-content.props"
-import { openContext, triggerElementContext } from "./popover-root.context"
+import {
+  onOpenChangeContext,
+  openContext,
+  triggerElementContext,
+} from "./popover-root.context"
 
 /**
  * Properties: {@link PopoverContentProps}
@@ -55,6 +59,7 @@ export function usePopoverContent(
   )
 
   const open = openContext.consume(element)
+  const onOpenChange = onOpenChangeContext.consume(element)
   const triggerElement = triggerElementContext.consume(element)
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
@@ -71,7 +76,7 @@ export function usePopoverContent(
 
   const options: DismissableElementOptions = {
     onDismiss: () => {
-      open.value = false
+      onOpenChange.value?.(false)
     },
     onEscapeKeyDown: (event) => {
       onEscapeKeyDown.value?.(event)

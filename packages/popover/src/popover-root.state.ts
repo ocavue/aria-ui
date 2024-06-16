@@ -1,14 +1,18 @@
 import {
   assignProps,
+  createComputed,
   createSignal,
   mapSignals,
   type ConnectableElement,
   type SignalState,
-  useEffect,
 } from "@aria-ui/core"
 import { useOverlayRoot } from "@aria-ui/overlay"
 
-import { openContext, triggerElementContext } from "./popover-root.context"
+import {
+  onOpenChangeContext,
+  openContext,
+  triggerElementContext,
+} from "./popover-root.context"
 import {
   defaultPopoverRootProps,
   type PopoverRootProps,
@@ -29,24 +33,21 @@ export function usePopoverRoot(
     state.open.value = props.defaultOpen
   }
 
-  const internalOpen = createSignal(state.open.peek())
-
-  useEffect(element, () => {
-    const internalOpenValue = internalOpen.value
-    state.onOpenChange.peek()?.(internalOpenValue)
-  })
-
   const triggerElement = createSignal<HTMLElement | null>(null)
 
-  openContext.provide(element, internalOpen)
-  triggerElementContext.provide(element, triggerElement)
+  openContext.provide(
+    element,
+    createComputed(() => state.open.value),
+  )
+  onOpenChangeContext.provide(
+    element,
+    createSignal((value: boolean) => {
+      state.open.value = value
+      state.onOpenChange.peek()?.(value)
+    }),
+  )
 
-  useEffect(element, () => {
-    state.open.value = internalOpen.value
-  })
-  useEffect(element, () => {
-    internalOpen.value = state.open.value
-  })
+  triggerElementContext.provide(element, triggerElement)
 
   return state
 }

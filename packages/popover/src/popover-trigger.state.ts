@@ -6,7 +6,11 @@ import {
 } from "@aria-ui/core"
 import { useOverlayAnchor } from "@aria-ui/overlay"
 
-import { openContext, triggerElementContext } from "./popover-root.context"
+import {
+  onOpenChangeContext,
+  openContext,
+  triggerElementContext,
+} from "./popover-root.context"
 
 /**
  * @group PopoverTrigger
@@ -17,6 +21,7 @@ export function usePopoverTrigger(element: ConnectableElement) {
   useAriaRole(element, "button")
 
   const open = openContext.consume(element)
+  const onOpenChange = onOpenChangeContext.consume(element)
   const triggerElement = triggerElementContext.consume(element)
 
   useEffect(element, () => {
@@ -24,7 +29,7 @@ export function usePopoverTrigger(element: ConnectableElement) {
   })
 
   useEventListener(element, "click", () => {
-    open.value = !open.value
+    onOpenChange?.peek()?.(!open.peek())
   })
 
   return {}

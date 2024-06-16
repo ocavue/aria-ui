@@ -1,7 +1,7 @@
 import { within } from "@testing-library/dom"
 import userEvent from "@testing-library/user-event"
 import { html, render, type TemplateResult } from "lit-html"
-import { describe, expect, it } from "vitest"
+import { describe, expect, it, vi } from "vitest"
 
 import {
   PopoverContentElement,
@@ -45,6 +45,60 @@ describe("Popover", () => {
 
     await userEvent.click(trigger)
     expect(content).not.toBeVisible()
+  })
+
+  it("should emit event when the open state is changed by user", async () => {
+    const { render, screen } = setup()
+
+    render(html`
+      <aria-popover-root data-testid="root">
+        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
+        <aria-popover-content data-testid="content">Content</aria-popover-content>
+      </aria-popover-root>
+    `)
+
+    const root = screen.getByTestId<PopoverRootElement>("root")
+
+    const onOpenChange = vi.fn()
+    root.onOpenChange = onOpenChange
+    expect(root.open).toBe(false)
+    expect(onOpenChange).toHaveBeenCalledTimes(0)
+
+    await userEvent.click(screen.getByTestId("trigger"))
+    expect(root.open).toBe(true)
+    expect(onOpenChange).toHaveBeenLastCalledWith(true)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
+
+    await userEvent.click(screen.getByTestId("trigger"))
+    expect(root.open).toBe(false)
+    expect(onOpenChange).toHaveBeenLastCalledWith(false)
+    expect(onOpenChange).toHaveBeenCalledTimes(2)
+  })
+
+  it("should not emit event when the open state is changed programatically", async () => {
+    const { render, screen } = setup()
+
+    render(html`
+      <aria-popover-root data-testid="root">
+        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
+        <aria-popover-content data-testid="content">Content</aria-popover-content>
+      </aria-popover-root>
+    `)
+
+    const root = screen.getByTestId<PopoverRootElement>("root")
+
+    const onOpenChange = vi.fn()
+    root.onOpenChange = onOpenChange
+    expect(root.open).toBe(false)
+    expect(onOpenChange).toHaveBeenCalledTimes(0)
+
+    root.open = true
+    expect(root.open).toBe(true)
+    expect(onOpenChange).toHaveBeenCalledTimes(0)
+
+    root.open = false
+    expect(root.open).toBe(false)
+    expect(onOpenChange).toHaveBeenCalledTimes(0)
   })
 })
 
