@@ -1,13 +1,3 @@
-import { defineConfig } from "vitest/config"
+import { config } from "@aria-ui/config/vitest-workspace"
 
-export default defineConfig({
-  test: {
-    setupFiles: ["./vitest-setup.ts"],
-    browser: {
-      enabled: true,
-      provider: "playwright",
-      name: "chromium",
-      headless: true,
-    },
-  },
-})
+export default config

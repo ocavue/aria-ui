@@ -30,6 +30,9 @@
       "path": "packages/collection"
     },
     {
+      "path": "packages/config"
+    },
+    {
       "path": "packages/combobox"
     },
     {
