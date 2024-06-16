@@ -25,28 +25,30 @@ export function useTooltipTrigger(element: ConnectableElement) {
   const id = idContext.consume(element)
 
   useEventListener(element, "pointerenter", () => {
-    hovering.value = true
+    hovering.set(true)
   })
   useEventListener(element, "pointerleave", () => {
-    hovering.value = false
+    hovering.set(false)
   })
   useEventListener(element, "focusin", () => {
-    focused.value = true
+    focused.set(true)
   })
   useEventListener(element, "focusout", () => {
-    focused.value = false
+    focused.set(false)
   })
 
   // Close the tooltip when the trigger is pressed (by pointer or keyboard)
   const handlePress = () => {
-    hovering.value = false
-    focused.value = false
+    hovering.set(false)
+    focused.set(false)
   }
   useEventListener(element, "click", handlePress)
   useEventListener(element, "keydown", handlePress)
 
   useAriaAttribute(element, "aria-describedby", () => {
-    return open.value && id.value ? id.value : undefined
+    const openValue = open.get()
+    const idValue = id.get()
+    return openValue && idValue ? idValue : undefined
   })
 
   return {}

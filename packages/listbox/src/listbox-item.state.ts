@@ -39,62 +39,62 @@ export function useListboxItem(
   useAriaRole(element, "option")
 
   useEventListener(element, "pointerenter", () => {
-    const value = state.value.value
-    const pointerMovingValue = pointerMoving.value
+    const value = state.value.get()
+    const pointerMovingValue = pointerMoving.get()
     if (value == null || !pointerMovingValue) {
       return
     }
-    focusedValue.value = value
+    focusedValue.set(value)
   })
 
   useEventListener(element, "pointerdown", () => {
-    const value = state.value.value
+    const value = state.value.get()
     if (value == null) {
       return
     }
-    selectedValue.value = value
+    selectedValue.set(value)
   })
 
   const selected = createComputed(() => {
-    return !!state.value.value && state.value.value === selectedValue.value
+    return !!state.value.get() && state.value.get() === selectedValue.get()
   })
 
   useAriaAttribute(element, "aria-selected", () => {
-    return selected.value ? "true" : "false"
+    return selected.get() ? "true" : "false"
   })
   useAttribute(element, "data-selected", () => {
-    return selected.value ? "true" : undefined
+    return selected.get() ? "true" : undefined
   })
 
   const focused = createComputed(() => {
-    return !!state.value.value && state.value.value === focusedValue.value
+    return !!state.value.get() && state.value.get() === focusedValue.get()
   })
 
   useAttribute(element, "data-focused", () => {
-    return focused.value ? "true" : undefined
+    return focused.get() ? "true" : undefined
   })
 
   const availableValueSet = availableValueSetContext.consume(element)
 
   const presence = createComputed((): boolean => {
-    return availableValueSet.value.has(state.value.value || "")
+    return availableValueSet.get().has(state.value.get() || "")
   })
 
   useAriaAttribute(element, "aria-disabled", () => {
-    return presence.value ? undefined : "true"
+    return presence.get() ? undefined : "true"
   })
 
   useAriaAttribute(element, "aria-hidden", () => {
-    return presence.value ? undefined : "true"
+    return presence.get() ? undefined : "true"
   })
 
   useEffect(element, () => {
-    if (!presence.value) {
-      if (focused.value) {
-        focusedValue.value = ""
+    if (!presence.get()) {
+      if (focused.get()) {
+        focusedValue.set("")
       }
-      if (selected.value) {
-        selectedValue.value = ""
+      if (selected.get()) {
+        selectedValue.set("")
       }
     }
   })

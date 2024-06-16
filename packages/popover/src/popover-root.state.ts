@@ -30,19 +30,19 @@ export function usePopoverRoot(
   useOverlayRoot(element)
 
   if (typeof props?.defaultOpen === "boolean") {
-    state.open.value = props.defaultOpen
+    state.open.set(props.defaultOpen)
   }
 
   const triggerElement = createSignal<HTMLElement | null>(null)
 
   openContext.provide(
     element,
-    createComputed(() => state.open.value),
+    createComputed(() => state.open.get()),
   )
   onOpenChangeContext.provide(
     element,
     createSignal((value: boolean) => {
-      state.open.value = value
+      state.open.set(value)
       state.onOpenChange.peek()?.(value)
     }),
   )

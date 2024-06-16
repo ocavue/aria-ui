@@ -106,7 +106,7 @@ function useMutationObserver(
   useEffect(element, () => {
     const observer = new MutationObserver((mutationList) => {
       if (mutationList.length > 0) {
-        mutationCounter.value += 1
+        mutationCounter.set(mutationCounter.get() + 1)
       }
     })
 
@@ -137,7 +137,7 @@ export function useQuerySelector<E extends Element = Element>(
   const mutationCounter = useMutationObserver(element, options)
 
   return createComputed(() => {
-    mutationCounter.value
+    mutationCounter.get()
     return element.querySelector<E>(selector)
   })
 }
@@ -159,7 +159,7 @@ export function useQuerySelectorAll<E extends Element = Element>(
   const mutationCounter = useMutationObserver(element, options)
 
   return createComputed(() => {
-    mutationCounter.value
+    mutationCounter.get()
     return element.querySelectorAll<E>(selector)
   })
 }

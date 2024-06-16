@@ -42,25 +42,25 @@ export function useListbox(
 
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
-    return new Collection(Array.from(items.value))
+    return new Collection(Array.from(items.get()))
   })
 
   // Get the first value in the collection. This ensure that the effect below
   // won't run for every change in the collection.
   const firstValue = createComputed(() => {
-    return collection.value.first()
+    return collection.get().first()
   })
 
   // Reset the focused value to the first item when the query changes.
   useEffect(element, () => {
-    if (state.autoFocus.value) {
-      state.query.value
-      focusedValue.value = firstValue.value || ""
+    if (state.autoFocus.get()) {
+      state.query.get()
+      focusedValue.set(firstValue.get() || "")
     }
   })
 
   useEffect(element, () => {
-    const selected: string = state.value.value
+    const selected: string = state.value.get()
 
     state.onValueChange.peek()?.(selected)
 
@@ -78,9 +78,9 @@ export function useListbox(
   })
 
   const availableValues = createComputed(() => {
-    const queryValue = state.query.value
-    const values = collection.value.getValues()
-    const filter = state.filter.value
+    const queryValue = state.query.get()
+    const values = collection.get().getValues()
+    const filter = state.filter.get()
     const filteredValues = filter
       ? values.filter((value) => filter({ query: queryValue, value }))
       : values
@@ -89,7 +89,7 @@ export function useListbox(
 
   availableValueSetContext.provide(element, availableValues)
 
-  const available = createComputed(() => availableValues.value.size > 0)
+  const available = createComputed(() => availableValues.get().size > 0)
 
   useCollectionKeydownHandler(
     element,
@@ -115,35 +115,35 @@ export function useCollectionKeydownHandler(
   available: ReadonlySignal<boolean>,
 ) {
   const scrollFocusedItemIntoView = () => {
-    const target = collection.peek().getElement(focusedValue.value)
+    const target = collection.peek().getElement(focusedValue.get())
     target?.scrollIntoView({ block: "nearest" })
   }
 
   const keydownHandler = (event: KeyboardEvent) => {
-    if (event.defaultPrevented || event.isComposing || !available.value) {
+    if (event.defaultPrevented || event.isComposing || !available.get()) {
       return
     }
 
     switch (event.key) {
       case "ArrowDown":
-        focusedValue.value = collection.value.next(focusedValue.value) || ""
+        focusedValue.set(collection.get().next(focusedValue.get()) || "")
         scrollFocusedItemIntoView()
         break
       case "ArrowUp":
-        focusedValue.value = collection.value.prev(focusedValue.value) || ""
+        focusedValue.set(collection.get().prev(focusedValue.get()) || "")
         scrollFocusedItemIntoView()
         break
       case "Home":
-        focusedValue.value = collection.value.first() || ""
+        focusedValue.set(collection.get().first() || "")
         scrollFocusedItemIntoView()
         break
       case "End":
-        focusedValue.value = collection.value.last() || ""
+        focusedValue.set(collection.get().last() || "")
         scrollFocusedItemIntoView()
         break
       case "Enter":
-        if (focusedValue.value) {
-          selectedValue.value = focusedValue.value
+        if (focusedValue.get()) {
+          selectedValue.set(focusedValue.get())
         }
         break
       default:
@@ -154,7 +154,7 @@ export function useCollectionKeydownHandler(
   }
 
   useEffect(element, () => {
-    const onKeydownHandlerAddValue = onKeydownHandlerAdd.value
+    const onKeydownHandlerAddValue = onKeydownHandlerAdd.get()
     if (onKeydownHandlerAddValue) {
       return onKeydownHandlerAddValue(keydownHandler)
     }
@@ -169,17 +169,17 @@ export function useMouseMoving(element: ConnectableElement) {
 
   useEventListener(element, "pointermove", () => {
     lastMoveMoveTime = Date.now()
-    pointerMoving.value = true
+    pointerMoving.set(true)
   })
 
   // A simple debouncing implementation
   useEffect(element, () => {
-    if (!pointerMoving.value) {
+    if (!pointerMoving.get()) {
       return
     }
     const id = setInterval(() => {
       if (Date.now() - lastMoveMoveTime > 200) {
-        pointerMoving.value = false
+        pointerMoving.set(false)
         lastMoveMoveTime = 0
       }
     }, 50)

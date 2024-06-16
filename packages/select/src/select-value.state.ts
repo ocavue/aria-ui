@@ -25,7 +25,7 @@ export function useSelectValue(
   const selectedValue = selectedValueContext.consume(element)
 
   useEffect(element, () => {
-    const text = selectedValue.value || state.placeholder.value || ""
+    const text = selectedValue.get() || state.placeholder.get() || ""
     element.textContent = text
   })
 

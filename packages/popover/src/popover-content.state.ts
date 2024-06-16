@@ -62,13 +62,13 @@ export function usePopoverContent(
   const onOpenChange = onOpenChangeContext.consume(element)
   const triggerElement = triggerElementContext.consume(element)
 
-  useAriaAttribute(element, "aria-hidden", () => `${!open.value}`)
+  useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
   usePresence(element, open)
   useAttribute(
     element,
     "data-state",
     (): PopoverContentDataAttributes["data-state"] => {
-      return open.value ? "open" : "closed"
+      return open.get() ? "open" : "closed"
     },
   )
 
@@ -76,29 +76,29 @@ export function usePopoverContent(
 
   const options: DismissableElementOptions = {
     onDismiss: () => {
-      onOpenChange.value?.(false)
+      onOpenChange.get()?.(false)
     },
     onEscapeKeyDown: (event) => {
-      onEscapeKeyDown.value?.(event)
+      onEscapeKeyDown.get()?.(event)
     },
     onPointerDownOutside: (event) => {
-      onPointerDownOutside.value?.(event)
+      onPointerDownOutside.get()?.(event)
     },
     onFocusOutside: (event) => {
-      onFocusOutside.value?.(event)
+      onFocusOutside.get()?.(event)
     },
     onInteractOutside: (event) => {
-      onInteractOutside.value?.(event)
+      onInteractOutside.get()?.(event)
     },
     exclude: () => {
-      return triggerElement.value
+      return triggerElement.get()
     },
   }
 
   useEffect(element, () => {
     // Only call `trackDismissableElement` when the menu is opened, so that the
     // Escape keydown event won't be captured when the menu is closed.
-    if (!open.value) {
+    if (!open.get()) {
       return
     }
 
@@ -122,7 +122,7 @@ function useAutoFocus(
 
   // Use animation frame because focus is not applied immediately
   useAnimationFrame(element, () => {
-    const openValue = open.value
+    const openValue = open.get()
     const shouldFocus = openValue && !previousOpenValue
     previousOpenValue = openValue
 

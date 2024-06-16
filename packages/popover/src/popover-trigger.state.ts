@@ -25,7 +25,7 @@ export function usePopoverTrigger(element: ConnectableElement) {
   const triggerElement = triggerElementContext.consume(element)
 
   useEffect(element, () => {
-    triggerElement.value = element
+    triggerElement.set(element)
   })
 
   useEventListener(element, "click", () => {
