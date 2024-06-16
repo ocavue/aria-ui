@@ -90,14 +90,17 @@ describe("Popover", () => {
     const onOpenChange = vi.fn()
     root.onOpenChange = onOpenChange
     expect(root.open).toBe(false)
+    expect(screen.getByTestId("content")).not.toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
     root.open = true
     expect(root.open).toBe(true)
+    expect(screen.getByTestId("content")).toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
     root.open = false
     expect(root.open).toBe(false)
+    expect(screen.getByTestId("content")).not.toBeVisible()
     expect(onOpenChange).toHaveBeenCalledTimes(0)
   })
 })
