@@ -8,7 +8,7 @@ const config = defineProject({
       enabled: true,
       provider: "playwright",
       name: "chromium",
-      headless: process.env.CI,
+      headless: !!process.env.CI,
     },
   },
 })
