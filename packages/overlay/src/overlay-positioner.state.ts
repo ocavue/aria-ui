@@ -4,6 +4,7 @@ import {
   mapValues,
   useAnimationFrame,
   type ConnectableElement,
+  type ReadonlySignal,
   type SignalState,
 } from "@aria-ui/core"
 import type { ReferenceElement } from "@floating-ui/dom"
@@ -37,7 +38,7 @@ export function useOverlayPositioner(
 export function useOverlayPositionerState(
   element: ConnectableElement,
   state: SignalState<OverlayPositionerProps>,
-  context: SignalState<{ reference: ReferenceElement | null }>,
+  context: { reference: ReadonlySignal<ReferenceElement | null> },
 ): void {
   // Use animation frame because we only want to calculate the position at
   // most once per frame.

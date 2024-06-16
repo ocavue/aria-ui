@@ -1,10 +1,15 @@
 import type { ConnectableElement } from "./connectable-element"
-import { createSignal, useEffect, type Signal } from "./signals"
+import {
+  createSignal,
+  useEffect,
+  type ReadonlySignal,
+  type Signal,
+} from "./signals"
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
     public readonly key: string | symbol,
-    public readonly callback: (signal: Signal<T>) => void,
+    public readonly callback: (signal: ReadonlySignal<T>) => void,
   ) {
     super("aria-ui/context-request", { bubbles: true, composed: true })
   }
@@ -21,13 +26,13 @@ export interface Context<T> {
    * @param element The element to provide the signal to.
    * @param signal The signal to provide.
    */
-  provide(element: ConnectableElement, signal: Signal<T>): void
+  provide(element: ConnectableElement, signal: ReadonlySignal<T>): void
   /**
    * Receives the signal from a parent element.
    * @param element The element to consume the signal from.
-   * @returns A signal that is double bound to the provided signal.
+   * @returns A readonly signal that is bound to the provided signal.
    */
-  consume(element: ConnectableElement): Signal<T>
+  consume(element: ConnectableElement): ReadonlySignal<T>
 }
 
 class ContextImpl<T> implements Context<T> {
@@ -71,17 +76,13 @@ class ContextImpl<T> implements Context<T> {
 
 function bind<T>(
   element: ConnectableElement,
-  provider: Signal<T>,
+  provider: ReadonlySignal<T>,
   consumer: Signal<T>,
 ): void {
   consumer.set(provider.peek())
 
   useEffect(element, () => {
     consumer.set(provider.get())
-  })
-
-  useEffect(element, () => {
-    provider.set(consumer.get())
   })
 }
 

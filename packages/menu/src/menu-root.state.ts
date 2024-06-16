@@ -1,7 +1,11 @@
-import type { ConnectableElement, SignalState } from "@aria-ui/core"
+import {
+  createSignal,
+  type ConnectableElement,
+  type SignalState,
+} from "@aria-ui/core"
 import { usePopoverRoot } from "@aria-ui/popover"
 
-import { openContext } from "./contexts"
+import { onOpenChangeContext } from "./contexts"
 import type { MenuRootProps } from "./menu-root.props"
 
 /**
@@ -14,7 +18,13 @@ export function useMenuRoot(
 ): SignalState<MenuRootProps> {
   const state = usePopoverRoot(element, props)
 
-  openContext.provide(element, state.open)
+  onOpenChangeContext.provide(
+    element,
+    createSignal((value: boolean) => {
+      state.open.set(value)
+      state.onOpenChange.peek()?.(value)
+    }),
+  )
 
   return state
 }

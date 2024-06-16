@@ -1,6 +1,8 @@
 import { createContext } from "@aria-ui/core"
 
-export const openContext = createContext<boolean>("menu/open", false)
+export const onOpenChangeContext = createContext<
+  ((open: boolean) => void) | null
+>("menu/onOpenChange", null)
 
 export const triggerElementContext = createContext<HTMLElement | null>(
   "menu/triggerElement",
