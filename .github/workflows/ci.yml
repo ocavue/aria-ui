@@ -34,3 +34,14 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup
+
+      - name: Test
+        run: pnpm run test
