@@ -43,5 +43,8 @@ jobs:
 
       - uses: ./.github/actions/setup
 
+      - name: Install Playwright
+        run: node_modules/.bin/playwright install
+
       - name: Test
         run: pnpm run test
