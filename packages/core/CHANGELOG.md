@@ -1,5 +1,13 @@
 # @aria-ui/core
 
+## 0.0.15
+
+### Patch Changes
+
+- eec595a: Signals now use `.get()` and `.set()` instead of `.value`.
+
+  This matches the design of the stage-1 JavaScript Signals standard proposal.
+
 ## 0.0.14
 
 ### Patch Changes
