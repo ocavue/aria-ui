@@ -1,5 +1,6 @@
 import type { ConnectableElement } from "./connectable-element"
 import {
+  createComputed,
   createSignal,
   useEffect,
   type ReadonlySignal,
@@ -59,7 +60,7 @@ class ContextImpl<T> implements Context<T> {
     })
   }
 
-  public consume(element: ConnectableElement): Signal<T> {
+  public consume(element: ConnectableElement): ReadonlySignal<T> {
     const consumer = createSignal<T>(this.defaultValue)
 
     element.addConnectedCallback(() => {
@@ -70,7 +71,7 @@ class ContextImpl<T> implements Context<T> {
       )
     })
 
-    return consumer
+    return createComputed(() => consumer.value)
   }
 }
 

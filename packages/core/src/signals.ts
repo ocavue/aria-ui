@@ -23,7 +23,7 @@ export interface ReadonlySignal<T> {
    */
   peek(): T
 
-  value: T
+  get value(): T
 }
 
 /**
@@ -35,7 +35,7 @@ export interface Signal<T> extends ReadonlySignal<T> {
    */
   set(value: T): void
 
-  value: T
+  set value(value: T)
 }
 
 class MutableSignal<T> implements Signal<T> {
