@@ -83,6 +83,9 @@ importers:
       '@aria-ui/listbox':
         specifier: ^0.0.14
         version: link:../listbox
+      '@zag-js/dom-query':
+        specifier: ^0.58.0
+        version: 0.58.0
     devDependencies:
       tsup:
         specifier: ^8.1.0
@@ -120,6 +123,9 @@ importers:
       '@preact/signals-core':
         specifier: ^1.6.1
         version: 1.6.1
+      '@zag-js/dom-query':
+        specifier: ^0.58.0
+        version: 0.58.0
       server-dom-shim:
         specifier: ^1.0.2
         version: 1.0.2
@@ -254,6 +260,9 @@ importers:
       '@aria-ui/core':
         specifier: ^0.0.15
         version: link:../core
+      '@zag-js/dom-query':
+        specifier: ^0.58.0
+        version: 0.58.0
     devDependencies:
       tsup:
         specifier: ^8.1.0

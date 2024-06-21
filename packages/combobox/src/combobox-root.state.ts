@@ -6,6 +6,7 @@ import {
   type ConnectableElement,
   type ReadonlySignal,
 } from "@aria-ui/core"
+import { getEventTarget } from "@zag-js/dom-query"
 
 import { inputValueContext } from "./combobox-item.context"
 import { keydownHandlerContext } from "./combobox-list.context"
@@ -23,7 +24,7 @@ function useInputValue(element: ConnectableElement): ReadonlySignal<string> {
     }
 
     const handler = (event: Event) => {
-      const target = event.target as HTMLInputElement | null
+      const target = getEventTarget<HTMLInputElement>(event)
       if (!target) {
         return
       }
