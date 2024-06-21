@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultSelectTriggerProps, type SelectTriggerProps } from "./select-trigger.props"
 import { useSelectTrigger } from "./select-trigger.state"
@@ -8,7 +8,7 @@ import { useSelectTrigger } from "./select-trigger.state"
  *
  * @group SelectTrigger
  */
-export class SelectTriggerElement extends ElementMixin<SelectTriggerProps>(
+export class SelectTriggerElement extends ElementBuilder<SelectTriggerProps>(
   useSelectTrigger,
   defaultSelectTriggerProps,
 ) {}

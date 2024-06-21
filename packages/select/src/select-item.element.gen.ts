@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultSelectItemProps, type SelectItemProps } from "./select-item.props"
 import { useSelectItem } from "./select-item.state"
@@ -8,7 +8,7 @@ import { useSelectItem } from "./select-item.state"
  *
  * @group SelectItem
  */
-export class SelectItemElement extends ElementMixin<SelectItemProps>(
+export class SelectItemElement extends ElementBuilder<SelectItemProps>(
   useSelectItem,
   defaultSelectItemProps,
 ) {}

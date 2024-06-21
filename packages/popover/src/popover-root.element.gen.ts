@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultPopoverRootProps, type PopoverRootProps } from "./popover-root.props"
 import { usePopoverRoot } from "./popover-root.state"
@@ -8,7 +8,7 @@ import { usePopoverRoot } from "./popover-root.state"
  *
  * @group PopoverRoot
  */
-export class PopoverRootElement extends ElementMixin<PopoverRootProps>(
+export class PopoverRootElement extends ElementBuilder<PopoverRootProps>(
   usePopoverRoot,
   defaultPopoverRootProps,
 ) {}

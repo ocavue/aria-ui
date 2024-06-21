@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultListboxEmptyProps, type ListboxEmptyProps } from "./listbox-empty.props"
 import { useListboxEmpty } from "./listbox-empty.state"
@@ -8,7 +8,7 @@ import { useListboxEmpty } from "./listbox-empty.state"
  *
  * @group ListboxEmpty
  */
-export class ListboxEmptyElement extends ElementMixin<ListboxEmptyProps>(
+export class ListboxEmptyElement extends ElementBuilder<ListboxEmptyProps>(
   useListboxEmpty,
   defaultListboxEmptyProps,
 ) {}

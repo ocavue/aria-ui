@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultComboboxListProps, type ComboboxListProps } from "./combobox-list.props"
 import { useComboboxList } from "./combobox-list.state"
@@ -8,7 +8,7 @@ import { useComboboxList } from "./combobox-list.state"
  *
  * @group ComboboxList
  */
-export class ComboboxListElement extends ElementMixin<ComboboxListProps>(
+export class ComboboxListElement extends ElementBuilder<ComboboxListProps>(
   useComboboxList,
   defaultComboboxListProps,
 ) {}

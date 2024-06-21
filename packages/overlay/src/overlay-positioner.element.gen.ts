@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultOverlayPositionerProps, type OverlayPositionerProps } from "./overlay-positioner.props"
 import { useOverlayPositioner } from "./overlay-positioner.state"
@@ -8,7 +8,7 @@ import { useOverlayPositioner } from "./overlay-positioner.state"
  *
  * @group OverlayPositioner
  */
-export class OverlayPositionerElement extends ElementMixin<OverlayPositionerProps>(
+export class OverlayPositionerElement extends ElementBuilder<OverlayPositionerProps>(
   useOverlayPositioner,
   defaultOverlayPositionerProps,
 ) {}

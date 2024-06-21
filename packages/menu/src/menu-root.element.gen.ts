@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultMenuRootProps, type MenuRootProps } from "./menu-root.props"
 import { useMenuRoot } from "./menu-root.state"
@@ -8,7 +8,7 @@ import { useMenuRoot } from "./menu-root.state"
  *
  * @group MenuRoot
  */
-export class MenuRootElement extends ElementMixin<MenuRootProps>(
+export class MenuRootElement extends ElementBuilder<MenuRootProps>(
   useMenuRoot,
   defaultMenuRootProps,
 ) {}

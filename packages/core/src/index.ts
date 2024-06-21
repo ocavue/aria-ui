@@ -23,7 +23,6 @@
  * @module
  */
 
-export { BaseElement } from "./base-element"
 export type { ConnectableElement } from "./connectable-element"
 export { createContext, type Context } from "./context"
 export {
@@ -36,6 +35,7 @@ export {
   useQuerySelectorAll,
   useStyle,
 } from "./dom"
+export { BaseElement, ElementBuilder } from "./element"
 export { assignProps } from "./props"
 export {
   mapSignals,
@@ -52,4 +52,3 @@ export {
   type Signal,
   type SignalValue,
 } from "./signals"
-export { ElementMixin } from "./element-mixin"
