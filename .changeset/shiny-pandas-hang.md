@@ -9,4 +9,4 @@
 "@aria-ui/menu": patch
 ---
 
-Refactor element creation API.
+Simplify element creation by using `ElementBuilder`.
