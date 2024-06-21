@@ -4,6 +4,7 @@ import {
   type ConnectableElement,
   type ReadonlySignal,
 } from "@aria-ui/core"
+import { getEventTarget } from "@zag-js/dom-query"
 
 /**
  * @internal
@@ -24,7 +25,7 @@ export function usePresence(
   const handleAnimationEnd = (event: AnimationEvent) => {
     if (
       getAnimationName(element).includes(event.animationName) &&
-      event.target === element &&
+      getEventTarget(event) === element &&
       !present.peek()
     ) {
       hide(element)

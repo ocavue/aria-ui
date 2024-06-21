@@ -1,3 +1,5 @@
+import { getEventTarget } from "@zag-js/dom-query"
+
 import type { ConnectableElement } from "./connectable-element"
 import type { ReadonlySignal, Signal } from "./signals"
 
@@ -46,7 +48,7 @@ class ContextImpl<T> implements Context<T> {
   public provide(element: ConnectableElement, signal: Signal<T>): void {
     element.addEventListener("aria-ui/context-request", (event) => {
       // Don't consume the event if it's dispatched from the same element.
-      if (element === event.target) {
+      if (element === getEventTarget(event)) {
         return
       }
 

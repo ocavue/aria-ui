@@ -10,7 +10,8 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.15"
+    "@aria-ui/core": "^0.0.15",
+    "@zag-js/dom-query": "^0.58.0"
   },
   "devDependencies": {
     "tsup": "^8.1.0",
