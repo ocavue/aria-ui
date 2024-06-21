@@ -6,4 +6,4 @@
 "@aria-ui/core": patch
 ---
 
-Update dependencies.
+Update zag-js.
