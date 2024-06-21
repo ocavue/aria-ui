@@ -18,7 +18,7 @@ export interface PopoverRootProps {
   open: boolean
 
   /**
-   * Event handler called when the user opens or closes the popover.
+   * Event handler called then the open state changes because of a user interaction.
    *
    * @default null
    */

@@ -19,9 +19,9 @@
     "@aria-ui/config": "workspace:*",
     "@testing-library/dom": "^10.1.0",
     "@testing-library/user-event": "^14.5.2",
+    "@vitest/browser": "^1.6.0",
     "lit-html": "^3.1.4",
     "tsup": "^8.1.0",
-    "@vitest/browser": "^1.6.0",
     "typescript": "^5.4.5"
   },
   "publishConfig": {
