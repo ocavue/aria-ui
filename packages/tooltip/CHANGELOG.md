@@ -1,5 +1,11 @@
 # @aria-ui/tooltip
 
+## 0.0.18
+
+### Patch Changes
+
+- d5993cf: Add `open` and `onOpenChange` props to `TooltipRoot`.
+
 ## 0.0.17
 
 ### Patch Changes
