@@ -84,10 +84,7 @@ Set the value of the signal.
 
 ```ts
 function ElementMixin<Props>(
-  useElement: (
-    host: ConnectableElement,
-    props?: Partial<Props>,
-  ) => SignalState<Props>,
+  useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
   defaultProps: Props,
 ): () => BaseElement & Props;
 ```

@@ -5,16 +5,11 @@ import {
   type ConnectableElement,
   type Signal,
   type SignalState,
-  assignProps,
-  mapSignals,
 } from "@aria-ui/core"
 import { useOverlayRoot } from "@aria-ui/overlay"
 import { nanoid } from "nanoid"
 
-import {
-  defaultTooltipRootProps,
-  type TooltipRootProps,
-} from "./tooltip-root.props"
+import type { TooltipRootProps } from "./tooltip-root.props"
 import {
   focusedContext,
   hoveringContext,
@@ -35,9 +30,8 @@ let openingId: string | null = null
  */
 export function useTooltipRoot(
   element: ConnectableElement,
-  props?: Partial<TooltipRootProps>,
-): SignalState<TooltipRootProps> {
-  const state = mapSignals(assignProps(defaultTooltipRootProps, props))
+  state: SignalState<TooltipRootProps>,
+): void {
   useOverlayRoot(element)
 
   const hovering = createSignal(false)
@@ -106,6 +100,4 @@ export function useTooltipRoot(
     createComputed(() => open.get()),
   )
   idContext.provide(element, createSignal(id))
-
-  return state
 }

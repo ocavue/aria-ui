@@ -9,7 +9,7 @@ import type { ComboboxItemProps } from "./combobox-item.props"
  */
 export function useComboboxItem(
   element: ConnectableElement,
-  props?: Partial<ComboboxItemProps>,
-): SignalState<ComboboxItemProps> {
-  return useListboxItem(element, props)
+  state: SignalState<ComboboxItemProps>,
+): void {
+  useListboxItem(element, state)
 }

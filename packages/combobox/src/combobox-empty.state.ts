@@ -5,6 +5,6 @@ import { useListboxEmpty } from "@aria-ui/listbox"
  * @group ComboboxEmpty
  * @hidden
  */
-export function useComboboxEmpty(element: ConnectableElement) {
-  return useListboxEmpty(element)
+export function useComboboxEmpty(element: ConnectableElement): void {
+  useListboxEmpty(element)
 }

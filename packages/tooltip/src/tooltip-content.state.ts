@@ -7,10 +7,7 @@ import {
 import { useOverlayPositioner } from "@aria-ui/overlay"
 import { usePresence } from "@aria-ui/presence"
 
-import {
-  defaultTooltipContentProps,
-  type TooltipContentProps,
-} from "./tooltip-content.props"
+import type { TooltipContentProps } from "./tooltip-content.props"
 import { idContext, openContext } from "./tooltip.context"
 
 /**
@@ -23,12 +20,9 @@ import { idContext, openContext } from "./tooltip.context"
  */
 export function useTooltipContent(
   element: ConnectableElement,
-  props?: Partial<TooltipContentProps>,
-): SignalState<TooltipContentProps> {
-  const state = useOverlayPositioner(element, {
-    ...defaultTooltipContentProps,
-    ...props,
-  })
+  state: SignalState<TooltipContentProps>,
+): void {
+  useOverlayPositioner(element, state)
 
   const open = openContext.consume(element)
   const id = idContext.consume(element)
@@ -37,6 +31,4 @@ export function useTooltipContent(
   useAttribute(element, "id", () => id.get() || undefined)
   usePresence(element, open)
   useAttribute(element, "data-state", () => (open.get() ? "open" : "closed"))
-
-  return state
 }

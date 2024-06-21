@@ -1,19 +1,18 @@
 import {
-  assignProps,
   createComputed,
-  mapSignals,
   useAriaAttribute,
   useAriaRole,
   useAttribute,
   useEffect,
   useEventListener,
   type ConnectableElement,
+  type SignalState,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 import { nanoid } from "nanoid"
 
 import { focusedValueContext, selectedValueContext } from "./menu-item.context"
-import { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
+import type { MenuItemProps } from "./menu-item.props"
 
 /**
  * @group MenuItem
@@ -21,10 +20,8 @@ import { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
  */
 export function useMenuItem(
   element: ConnectableElement,
-  props?: Partial<MenuItemProps>,
-) {
-  const state = mapSignals(assignProps(defaultMenuItemProps, props))
-
+  state: SignalState<MenuItemProps>,
+): void {
   if (!state.value.peek()) {
     state.value.set(nanoid())
   }
@@ -82,6 +79,4 @@ export function useMenuItem(
   })
 
   usePresence(element, presence)
-
-  return state
 }

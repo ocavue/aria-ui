@@ -1,13 +1,12 @@
 import {
-  assignProps,
   createComputed,
-  mapSignals,
   useAriaAttribute,
-  useEventListener,
-  type ConnectableElement,
+  useAriaRole,
   useAttribute,
   useEffect,
-  useAriaRole,
+  useEventListener,
+  type ConnectableElement,
+  type SignalState,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 
@@ -17,10 +16,7 @@ import {
   pointerMovingContext,
   selectedValueContext,
 } from "./context"
-import {
-  defaultListboxItemProps,
-  type ListboxItemProps,
-} from "./listbox-item.props"
+import type { ListboxItemProps } from "./listbox-item.props"
 
 /**
  * @group ListboxItem
@@ -28,10 +24,8 @@ import {
  */
 export function useListboxItem(
   element: ConnectableElement,
-  props?: Partial<ListboxItemProps>,
-) {
-  const state = mapSignals(assignProps(defaultListboxItemProps, props))
-
+  state: SignalState<ListboxItemProps>,
+): void {
   const selectedValue = selectedValueContext.consume(element)
   const focusedValue = focusedValueContext.consume(element)
   const pointerMoving = pointerMovingContext.consume(element)
@@ -100,6 +94,4 @@ export function useListboxItem(
   })
 
   usePresence(element, presence)
-
-  return state
 }

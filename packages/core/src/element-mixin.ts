@@ -1,6 +1,7 @@
 import { BaseElement } from "./base-element"
 import type { ConnectableElement } from "./connectable-element"
-import type { SignalState } from "./signal-state"
+import { mapSignals, type SignalState } from "./signal-state"
+import type { Signal } from "./signals"
 
 /**
  * A mixin for creating custom elements.
@@ -8,10 +9,7 @@ import type { SignalState } from "./signal-state"
  * @public
  */
 export function ElementMixin<Props extends object>(
-  useElement: (
-    host: ConnectableElement,
-    props?: Partial<Props>,
-  ) => SignalState<Props>,
+  useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
   defaultProps: Props,
 ): {
   new (): BaseElement & Props
@@ -22,13 +20,14 @@ export function ElementMixin<Props extends object>(
 
     constructor() {
       super()
-      this._s = useElement(this)
+      this._s = mapSignals(defaultProps)
+      useElement(this, this._s)
     }
   }
 
   defineProperties(CustomElement, defaultProps)
 
-  // @ts-expect-error: we are using a mixin
+  // @ts-expect-error: ignore return type
   return CustomElement
 }
 
@@ -39,10 +38,10 @@ function defineProperties<Props extends object>(
   for (const prop of Object.keys(defaultProps)) {
     Object.defineProperty(ElementConstructor.prototype, prop, {
       get() {
-        return this._s[prop].value as unknown
+        return (this._s[prop] as Signal<unknown>).get()
       },
       set(v: unknown) {
-        this._s[prop].value = v
+        ;(this._s[prop] as Signal<unknown>).set(v)
       },
     })
   }

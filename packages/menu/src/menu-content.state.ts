@@ -13,10 +13,7 @@ import {
 import { usePopoverContent } from "@aria-ui/popover"
 
 import { onOpenChangeContext } from "./contexts"
-import {
-  defaultMenuContentProps,
-  type MenuContentProps,
-} from "./menu-content.props"
+import type { MenuContentProps } from "./menu-content.props"
 import { focusedValueContext, selectedValueContext } from "./menu-item.context"
 import type { MenuItemProps } from "./menu-item.props"
 
@@ -26,16 +23,9 @@ import type { MenuItemProps } from "./menu-item.props"
  */
 export function useMenuContent(
   element: ConnectableElement,
-  props?: Partial<MenuContentProps>,
-) {
-  const popoverState = usePopoverContent(element, props)
-
-  const state: SignalState<MenuContentProps> = {
-    ...popoverState,
-    onKeydownHandlerAdd: createSignal<MenuContentProps["onKeydownHandlerAdd"]>(
-      props?.onKeydownHandlerAdd ?? defaultMenuContentProps.onKeydownHandlerAdd,
-    ),
-  }
+  state: SignalState<MenuContentProps>,
+): void {
+  usePopoverContent(element, state)
 
   useAriaRole(element, "menu")
 
@@ -64,8 +54,6 @@ export function useMenuContent(
   )
 
   useSelect(element, onOpenChange, selectedValue, collection)
-
-  return state
 }
 
 /**

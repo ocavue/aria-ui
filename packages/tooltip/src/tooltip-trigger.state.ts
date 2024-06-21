@@ -16,7 +16,7 @@ import {
  * @group TooltipTrigger
  * @hidden
  */
-export function useTooltipTrigger(element: ConnectableElement) {
+export function useTooltipTrigger(element: ConnectableElement): void {
   useOverlayAnchor(element)
 
   const hovering = hoveringContext.consume(element)
@@ -50,6 +50,4 @@ export function useTooltipTrigger(element: ConnectableElement) {
     const idValue = id.get()
     return openValue && idValue ? idValue : undefined
   })
-
-  return {}
 }
