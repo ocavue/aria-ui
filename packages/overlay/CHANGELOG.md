@@ -1,5 +1,13 @@
 # @aria-ui/overlay
 
+## 0.0.17
+
+### Patch Changes
+
+- e00f767: Simplify element creation by using `ElementBuilder`.
+- Updated dependencies [e00f767]
+  - @aria-ui/core@0.0.16
+
 ## 0.0.16
 
 ### Patch Changes
