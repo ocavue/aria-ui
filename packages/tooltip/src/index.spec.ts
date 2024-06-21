@@ -72,6 +72,41 @@ describe("Tooltip", () => {
     expect(screen.getByTestId("content1")).not.toBeVisible()
     expect(screen.getByTestId("content2")).toBeVisible()
   })
+
+  it("should trigger onOpenChange when the open state changes", async () => {
+    const { render, screen } = setup()
+
+    render(html`
+      <aria-tooltip-root data-testid="root">
+        <aria-tooltip-trigger data-testid="trigger">Trigger</aria-tooltip-trigger>
+        <aria-tooltip-content data-testid="content">Content</aria-tooltip-content>
+      </aria-tooltip-root>
+    `)
+
+    const root = screen.getByTestId("root") as TooltipRootElement
+    const trigger = screen.getByTestId("trigger") as TooltipTriggerElement
+
+    const onOpenChange = vi.fn()
+    root.onOpenChange = onOpenChange
+
+    expect(onOpenChange).not.toHaveBeenCalled()
+
+    await userEvent.hover(trigger)
+    await vi.advanceTimersByTimeAsync(1000)
+    expect(onOpenChange).toHaveBeenCalledTimes(1)
+    expect(onOpenChange).toHaveBeenLastCalledWith(true)
+
+    await userEvent.unhover(trigger)
+    await vi.advanceTimersByTimeAsync(1000)
+    expect(onOpenChange).toHaveBeenCalledTimes(2)
+    expect(onOpenChange).toHaveBeenLastCalledWith(false)
+
+    root.open = true
+    await vi.advanceTimersByTimeAsync(1000)
+    root.open = false
+    await vi.advanceTimersByTimeAsync(1000)
+    expect(onOpenChange).toHaveBeenCalledTimes(2)
+  })
 })
 
 function setup() {

@@ -51,6 +51,8 @@ new TooltipRootElement(): TooltipRootElement
 | Property | Type | Description |
 | :-- | :-- | :-- |
 | `closeDelay` | `number` | <p>The delay in milliseconds before the tooltip closes.</p><p>**Default**</p><code>300</code> |
+| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | <p>Event handler called then the open state changes because of a user interaction.</p><p>**Default**</p><code>null</code> |
+| `open` | `boolean` | <p>Whether the popover is open.</p><p>**Default**</p><code>false</code> |
 | `openDelay` | `number` | <p>The delay in milliseconds before the tooltip opens.</p><p>**Default**</p><code>700</code> |
 
 ## TooltipTrigger

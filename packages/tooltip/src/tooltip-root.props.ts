@@ -9,12 +9,27 @@ export interface TooltipRootProps {
    * @default 700
    */
   openDelay: number
+
   /**
    * The delay in milliseconds before the tooltip closes.
    *
    * @default 300
    */
   closeDelay: number
+
+  /**
+   * Whether the popover is open.
+   *
+   * @default false
+   */
+  open: boolean
+
+  /**
+   * Event handler called then the open state changes because of a user interaction.
+   *
+   * @default null
+   */
+  onOpenChange: ((open: boolean) => void) | null
 }
 
 /**
@@ -23,4 +38,6 @@ export interface TooltipRootProps {
 export const defaultTooltipRootProps = Object.freeze({
   openDelay: 700,
   closeDelay: 300,
+  open: false,
+  onOpenChange: null,
 }) satisfies TooltipRootProps
