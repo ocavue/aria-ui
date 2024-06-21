@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultListboxProps, type ListboxProps } from "./listbox.props"
 import { useListbox } from "./listbox.state"
@@ -8,7 +8,7 @@ import { useListbox } from "./listbox.state"
  *
  * @group Listbox
  */
-export class ListboxElement extends ElementMixin<ListboxProps>(
+export class ListboxElement extends ElementBuilder<ListboxProps>(
   useListbox,
   defaultListboxProps,
 ) {}

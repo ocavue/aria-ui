@@ -39,8 +39,7 @@ function updateElementCode(name: string) {
   const pascal = pascalCase(name)
 
   const code = `
-
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { default${pascal}Props, type ${pascal}Props } from "./${kebab}.props"
 import { use${pascal} } from "./${kebab}.state"
@@ -50,12 +49,10 @@ import { use${pascal} } from "./${kebab}.state"
  *
  * @group ${pascal}
  */
-export class ${pascal}Element extends ElementMixin<${pascal}Props>(
+export class ${pascal}Element extends ElementBuilder<${pascal}Props>(
   use${pascal},
   default${pascal}Props,
 ) {}
-
-
 `.trim()
 
   return `${code}\n`

@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultComboboxEmptyProps, type ComboboxEmptyProps } from "./combobox-empty.props"
 import { useComboboxEmpty } from "./combobox-empty.state"
@@ -8,7 +8,7 @@ import { useComboboxEmpty } from "./combobox-empty.state"
  *
  * @group ComboboxEmpty
  */
-export class ComboboxEmptyElement extends ElementMixin<ComboboxEmptyProps>(
+export class ComboboxEmptyElement extends ElementBuilder<ComboboxEmptyProps>(
   useComboboxEmpty,
   defaultComboboxEmptyProps,
 ) {}

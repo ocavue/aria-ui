@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultMenuContentProps, type MenuContentProps } from "./menu-content.props"
 import { useMenuContent } from "./menu-content.state"
@@ -8,7 +8,7 @@ import { useMenuContent } from "./menu-content.state"
  *
  * @group MenuContent
  */
-export class MenuContentElement extends ElementMixin<MenuContentProps>(
+export class MenuContentElement extends ElementBuilder<MenuContentProps>(
   useMenuContent,
   defaultMenuContentProps,
 ) {}

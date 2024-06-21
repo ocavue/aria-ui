@@ -14,9 +14,9 @@ import type { MenuRootProps } from "./menu-root.props"
  */
 export function useMenuRoot(
   element: ConnectableElement,
-  props?: Partial<MenuRootProps>,
-): SignalState<MenuRootProps> {
-  const state = usePopoverRoot(element, props)
+  state: SignalState<MenuRootProps>,
+): void {
+  usePopoverRoot(element, state)
 
   onOpenChangeContext.provide(
     element,
@@ -25,6 +25,4 @@ export function useMenuRoot(
       state.onOpenChange.peek()?.(value)
     }),
   )
-
-  return state
 }

@@ -1,17 +1,13 @@
-import type { ListboxItemProps } from "@aria-ui/listbox"
+import {
+  defaultListboxItemProps,
+  type ListboxItemProps,
+} from "@aria-ui/listbox"
 
 /**
  * @group SelectItem
  * @hidden
  */
-export interface SelectItemProps {
-  /**
-   * {@inheritDoc @aria-ui/listbox!ListboxItemProps.value}
-   *
-   * @default ""
-   */
-  value: ListboxItemProps["value"]
-}
+export interface SelectItemProps extends ListboxItemProps {}
 
 /**
  * @group SelectList
@@ -19,5 +15,5 @@ export interface SelectItemProps {
  * @internal
  */
 export const defaultSelectItemProps = Object.freeze({
-  value: "",
+  ...defaultListboxItemProps,
 }) satisfies SelectItemProps

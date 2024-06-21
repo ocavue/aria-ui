@@ -80,19 +80,16 @@ Set the value of the signal.
 
 ## Functions
 
-### ElementMixin()
+### ElementBuilder()
 
 ```ts
-function ElementMixin<Props>(
-  useElement: (
-    host: ConnectableElement,
-    props?: Partial<Props>,
-  ) => SignalState<Props>,
+function ElementBuilder<Props>(
+  useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
   defaultProps: Props,
 ): () => BaseElement & Props;
 ```
 
-A mixin for creating custom elements.
+Create a custom element class.
 
 ## Contexts
 

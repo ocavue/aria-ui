@@ -1,8 +1,11 @@
+import type { HTMLElement } from "server-dom-shim"
+
 /**
  * Any HTML element that has implemented the `addConnectedCallback` method.
  *
  * @group Elements
  */
+
 export interface ConnectableElement extends HTMLElement {
   /**
    * Registers a callback to be called when the element is connected to the DOM.

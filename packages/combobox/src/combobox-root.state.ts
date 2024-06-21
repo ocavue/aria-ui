@@ -59,7 +59,7 @@ export function useKeyboardListener(element: ConnectableElement) {
  * @group ComboboxRoot
  * @hidden
  */
-export function useComboboxRoot(element: ConnectableElement) {
+export function useComboboxRoot(element: ConnectableElement): void {
   useAriaRole(element, "combobox")
 
   const inputValue = useInputValue(element)
@@ -67,5 +67,4 @@ export function useComboboxRoot(element: ConnectableElement) {
 
   const keydownHandler = useKeyboardListener(element)
   keydownHandlerContext.provide(element, keydownHandler)
-  return {}
 }

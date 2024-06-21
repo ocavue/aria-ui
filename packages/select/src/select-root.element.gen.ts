@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultSelectRootProps, type SelectRootProps } from "./select-root.props"
 import { useSelectRoot } from "./select-root.state"
@@ -8,7 +8,7 @@ import { useSelectRoot } from "./select-root.state"
  *
  * @group SelectRoot
  */
-export class SelectRootElement extends ElementMixin<SelectRootProps>(
+export class SelectRootElement extends ElementBuilder<SelectRootProps>(
   useSelectRoot,
   defaultSelectRootProps,
 ) {}

@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultComboboxRootProps, type ComboboxRootProps } from "./combobox-root.props"
 import { useComboboxRoot } from "./combobox-root.state"
@@ -8,7 +8,7 @@ import { useComboboxRoot } from "./combobox-root.state"
  *
  * @group ComboboxRoot
  */
-export class ComboboxRootElement extends ElementMixin<ComboboxRootProps>(
+export class ComboboxRootElement extends ElementBuilder<ComboboxRootProps>(
   useComboboxRoot,
   defaultComboboxRootProps,
 ) {}

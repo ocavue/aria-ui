@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultTooltipRootProps, type TooltipRootProps } from "./tooltip-root.props"
 import { useTooltipRoot } from "./tooltip-root.state"
@@ -8,7 +8,7 @@ import { useTooltipRoot } from "./tooltip-root.state"
  *
  * @group TooltipRoot
  */
-export class TooltipRootElement extends ElementMixin<TooltipRootProps>(
+export class TooltipRootElement extends ElementBuilder<TooltipRootProps>(
   useTooltipRoot,
   defaultTooltipRootProps,
 ) {}

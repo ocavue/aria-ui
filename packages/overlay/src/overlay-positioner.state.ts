@@ -1,6 +1,4 @@
 import {
-  assignProps,
-  mapSignals,
   mapValues,
   useAnimationFrame,
   type ConnectableElement,
@@ -10,10 +8,7 @@ import {
 import type { ReferenceElement } from "@floating-ui/dom"
 
 import { referenceContext } from "./contexts"
-import {
-  defaultOverlayPositionerProps,
-  type OverlayPositionerProps,
-} from "./overlay-positioner.props"
+import type { OverlayPositionerProps } from "./overlay-positioner.props"
 import { updatePlacement } from "./positioning"
 
 /**
@@ -22,12 +17,10 @@ import { updatePlacement } from "./positioning"
  */
 export function useOverlayPositioner(
   element: ConnectableElement,
-  props?: Partial<OverlayPositionerProps>,
-): SignalState<OverlayPositionerProps> {
-  const state = mapSignals(assignProps(defaultOverlayPositionerProps, props))
+  state: SignalState<OverlayPositionerProps>,
+): void {
   const reference = referenceContext.consume(element)
   useOverlayPositionerState(element, state, { reference })
-  return state
 }
 
 /**

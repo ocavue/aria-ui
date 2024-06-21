@@ -1,5 +1,4 @@
 import {
-  createSignal,
   useAnimationFrame,
   useAriaAttribute,
   useAttribute,
@@ -16,10 +15,9 @@ import {
 } from "@zag-js/dismissable"
 import { getFirstTabbable } from "@zag-js/tabbable"
 
-import {
-  defaultPopoverContentProps,
-  type PopoverContentDataAttributes,
-  type PopoverContentProps,
+import type {
+  PopoverContentDataAttributes,
+  PopoverContentProps,
 } from "./popover-content.props"
 import {
   onOpenChangeContext,
@@ -37,26 +35,9 @@ import {
  */
 export function usePopoverContent(
   element: ConnectableElement,
-  props?: Partial<PopoverContentProps>,
-): SignalState<PopoverContentProps> {
-  const overlayPositionerState = useOverlayPositioner(element, {
-    ...defaultPopoverContentProps,
-    ...props,
-  })
-
-  const onEscapeKeyDown = createSignal(
-    props?.onEscapeKeyDown ?? defaultPopoverContentProps.onEscapeKeyDown,
-  )
-  const onPointerDownOutside = createSignal(
-    props?.onPointerDownOutside ??
-      defaultPopoverContentProps.onPointerDownOutside,
-  )
-  const onFocusOutside = createSignal(
-    props?.onFocusOutside ?? defaultPopoverContentProps.onFocusOutside,
-  )
-  const onInteractOutside = createSignal(
-    props?.onInteractOutside ?? defaultPopoverContentProps.onInteractOutside,
-  )
+  state: SignalState<PopoverContentProps>,
+): void {
+  useOverlayPositioner(element, state)
 
   const open = openContext.consume(element)
   const onOpenChange = onOpenChangeContext.consume(element)
@@ -79,16 +60,16 @@ export function usePopoverContent(
       onOpenChange.get()?.(false)
     },
     onEscapeKeyDown: (event) => {
-      onEscapeKeyDown.get()?.(event)
+      state.onEscapeKeyDown.get()?.(event)
     },
     onPointerDownOutside: (event) => {
-      onPointerDownOutside.get()?.(event)
+      state.onPointerDownOutside.get()?.(event)
     },
     onFocusOutside: (event) => {
-      onFocusOutside.get()?.(event)
+      state.onFocusOutside.get()?.(event)
     },
     onInteractOutside: (event) => {
-      onInteractOutside.get()?.(event)
+      state.onInteractOutside.get()?.(event)
     },
     exclude: () => {
       return triggerElement.get()
@@ -104,14 +85,6 @@ export function usePopoverContent(
 
     return trackDismissableElement(element, options)
   })
-
-  return {
-    onEscapeKeyDown,
-    onPointerDownOutside,
-    onFocusOutside,
-    onInteractOutside,
-    ...overlayPositionerState,
-  }
 }
 
 function useAutoFocus(

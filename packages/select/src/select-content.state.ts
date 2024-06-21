@@ -1,14 +1,7 @@
-import {
-  assignProps,
-  type ConnectableElement,
-  type SignalState,
-} from "@aria-ui/core"
+import type { ConnectableElement, SignalState } from "@aria-ui/core"
 import { usePopoverContent } from "@aria-ui/popover"
 
-import {
-  defaultSelectContentProps,
-  type SelectContentProps,
-} from "./select-content.props"
+import type { SelectContentProps } from "./select-content.props"
 
 /**
  * @group SelectContent
@@ -16,10 +9,7 @@ import {
  */
 export function useSelectContent(
   element: ConnectableElement,
-  props?: Partial<SelectContentProps>,
-): SignalState<SelectContentProps> {
-  return usePopoverContent(
-    element,
-    assignProps(defaultSelectContentProps, props),
-  )
+  state: SignalState<SelectContentProps>,
+): void {
+  usePopoverContent(element, state)
 }

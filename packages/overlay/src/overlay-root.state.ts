@@ -7,9 +7,7 @@ import { referenceContext } from "./contexts"
  * @group OverlayRoot
  * @hidden
  */
-export function useOverlayRoot(element: ConnectableElement) {
+export function useOverlayRoot(element: ConnectableElement): void {
   const reference = createSignal<ReferenceElement | null>(null)
   referenceContext.provide(element, reference)
-
-  return {}
 }

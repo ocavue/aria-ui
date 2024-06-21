@@ -48,6 +48,7 @@ new SelectItemElement(): SelectItemElement
 
 | Property | Type | Description |
 | :-- | :-- | :-- |
+| `onSelect` | `null` \| `VoidFunction` | <p>The function to call when the item is selected.</p><p>**Default**</p><code>null</code> |
 | `value` | `string` | <p>The value of the item. Every item must have a unique value in the parent list.</p><p>**Default**</p><code>""</code> |
 
 ## SelectList
@@ -69,6 +70,12 @@ A custom SelectRoot element.
 ```ts
 new SelectRootElement(): SelectRootElement
 ```
+
+| Property | Type | Description |
+| :-- | :-- | :-- |
+| `defaultOpen` | `boolean` | <p>Whether the popover is open by default.</p><p>**Default**</p><code>false</code> |
+| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | <p>Event handler called then the open state changes because of a user interaction.</p><p>**Default**</p><code>null</code> |
+| `open` | `boolean` | <p>Whether the popover is open.</p><p>**Default**</p><code>false</code> |
 
 ## SelectTrigger
 

@@ -1,16 +1,11 @@
 import {
-  assignProps,
-  mapSignals,
   useEffect,
   type ConnectableElement,
   type SignalState,
 } from "@aria-ui/core"
 
 import { selectedValueContext } from "./select-root.context"
-import {
-  defaultSelectValueProps,
-  type SelectValueProps,
-} from "./select-value.props"
+import type { SelectValueProps } from "./select-value.props"
 
 /**
  * @group SelectValue
@@ -18,16 +13,12 @@ import {
  */
 export function useSelectValue(
   element: ConnectableElement,
-  props?: Partial<SelectValueProps>,
-): SignalState<Readonly<SelectValueProps>> {
-  const state = mapSignals(assignProps(defaultSelectValueProps, props))
-
+  state: SignalState<SelectValueProps>,
+): void {
   const selectedValue = selectedValueContext.consume(element)
 
   useEffect(element, () => {
     const text = selectedValue.get() || state.placeholder.get() || ""
     element.textContent = text
   })
-
-  return state
 }

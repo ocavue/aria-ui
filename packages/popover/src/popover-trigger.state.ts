@@ -16,7 +16,7 @@ import {
  * @group PopoverTrigger
  * @hidden
  */
-export function usePopoverTrigger(element: ConnectableElement) {
+export function usePopoverTrigger(element: ConnectableElement): void {
   useOverlayAnchor(element)
   useAriaRole(element, "button")
 
@@ -31,6 +31,4 @@ export function usePopoverTrigger(element: ConnectableElement) {
   useEventListener(element, "click", () => {
     onOpenChange?.peek()?.(!open.peek())
   })
-
-  return {}
 }

@@ -1,16 +1,15 @@
 import { Collection } from "@aria-ui/collection"
 import {
-  assignProps,
   createComputed,
   createSignal,
-  mapSignals,
+  useAriaRole,
   useEffect,
+  useEventListener,
   useQuerySelectorAll,
   type ConnectableElement,
-  useAriaRole,
-  type Signal,
   type ReadonlySignal,
-  useEventListener,
+  type Signal,
+  type SignalState,
 } from "@aria-ui/core"
 
 import {
@@ -20,7 +19,7 @@ import {
   selectedValueContext,
 } from "./context"
 import type { ListboxItemProps } from "./listbox-item.props"
-import { defaultListboxProps, type ListboxProps } from "./listbox.props"
+import type { ListboxProps } from "./listbox.props"
 
 /**
  * @group Listbox
@@ -28,10 +27,8 @@ import { defaultListboxProps, type ListboxProps } from "./listbox.props"
  */
 export function useListbox(
   element: ConnectableElement,
-  props?: Partial<ListboxProps>,
-) {
-  const state = mapSignals(assignProps(defaultListboxProps, props))
-
+  state: SignalState<ListboxProps>,
+): void {
   useAriaRole(element, "listbox")
 
   const focusedValue = createSignal("")
@@ -99,8 +96,6 @@ export function useListbox(
     state.onKeydownHandlerAdd,
     available,
   )
-
-  return state
 }
 
 /**

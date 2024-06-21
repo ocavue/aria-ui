@@ -1,4 +1,4 @@
-import { ElementMixin } from "@aria-ui/core"
+import { ElementBuilder } from "@aria-ui/core"
 
 import { defaultPopoverTriggerProps, type PopoverTriggerProps } from "./popover-trigger.props"
 import { usePopoverTrigger } from "./popover-trigger.state"
@@ -8,7 +8,7 @@ import { usePopoverTrigger } from "./popover-trigger.state"
  *
  * @group PopoverTrigger
  */
-export class PopoverTriggerElement extends ElementMixin<PopoverTriggerProps>(
+export class PopoverTriggerElement extends ElementBuilder<PopoverTriggerProps>(
   usePopoverTrigger,
   defaultPopoverTriggerProps,
 ) {}

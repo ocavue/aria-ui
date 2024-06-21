@@ -11,7 +11,7 @@ import { availableValueSetContext } from "./context"
  * @group ListboxEmpty
  * @hidden
  */
-export function useListboxEmpty(element: ConnectableElement) {
+export function useListboxEmpty(element: ConnectableElement): void {
   const availableValueSet = availableValueSetContext.consume(element)
 
   const presence = createComputed((): boolean => {
@@ -27,6 +27,4 @@ export function useListboxEmpty(element: ConnectableElement) {
   })
 
   usePresence(element, presence)
-
-  return {}
 }

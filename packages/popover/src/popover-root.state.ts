@@ -1,8 +1,6 @@
 import {
-  assignProps,
   createComputed,
   createSignal,
-  mapSignals,
   type ConnectableElement,
   type SignalState,
 } from "@aria-ui/core"
@@ -13,10 +11,7 @@ import {
   openContext,
   triggerElementContext,
 } from "./popover-root.context"
-import {
-  defaultPopoverRootProps,
-  type PopoverRootProps,
-} from "./popover-root.props"
+import type { PopoverRootProps } from "./popover-root.props"
 
 /**
  * @group PopoverRoot
@@ -24,14 +19,11 @@ import {
  */
 export function usePopoverRoot(
   element: ConnectableElement,
-  props?: Partial<PopoverRootProps>,
-): SignalState<PopoverRootProps> {
-  const state = mapSignals(assignProps(defaultPopoverRootProps, props))
+  state: SignalState<PopoverRootProps>,
+): void {
   useOverlayRoot(element)
 
-  if (typeof props?.defaultOpen === "boolean") {
-    state.open.set(props.defaultOpen)
-  }
+  state.open.set(state.defaultOpen.get())
 
   const triggerElement = createSignal<HTMLElement | null>(null)
 
@@ -48,6 +40,4 @@ export function usePopoverRoot(
   )
 
   triggerElementContext.provide(element, triggerElement)
-
-  return state
 }

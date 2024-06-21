@@ -1,5 +1,5 @@
-import type { ConnectableElement } from "@aria-ui/core"
-import { useListbox } from "@aria-ui/listbox"
+import { mapSignals, type ConnectableElement } from "@aria-ui/core"
+import { defaultListboxProps, useListbox } from "@aria-ui/listbox"
 
 import { selectedValueContext } from "./select-root.context"
 
@@ -7,14 +7,16 @@ import { selectedValueContext } from "./select-root.context"
  * @group SelectList
  * @hidden
  */
-export function useSelectList(element: ConnectableElement) {
+export function useSelectList(element: ConnectableElement): void {
   const selectedValue = selectedValueContext.consume(element)
 
-  useListbox(element, {
-    onValueChange: (value: string) => {
-      selectedValue.set(value)
-    },
-  })
-
-  return {}
+  useListbox(
+    element,
+    mapSignals({
+      ...defaultListboxProps,
+      onValueChange: (value: string) => {
+        selectedValue.set(value)
+      },
+    }),
+  )
 }

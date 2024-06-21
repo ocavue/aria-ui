@@ -5,7 +5,7 @@
 ### useMenuTrigger()
 
 ```ts
-function useMenuTrigger(element: ConnectableElement): object;
+function useMenuTrigger(element: ConnectableElement): void;
 ```
 
 ## MenuContent
