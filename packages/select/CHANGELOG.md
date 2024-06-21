@@ -1,5 +1,15 @@
 # @aria-ui/select
 
+## 0.0.20
+
+### Patch Changes
+
+- e00f767: Simplify element creation by using `ElementBuilder`.
+- Updated dependencies [e00f767]
+  - @aria-ui/listbox@0.0.15
+  - @aria-ui/popover@0.0.17
+  - @aria-ui/core@0.0.16
+
 ## 0.0.19
 
 ### Patch Changes

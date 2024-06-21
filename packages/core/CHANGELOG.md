@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.16
+
+### Patch Changes
+
+- e00f767: Simplify element creation by using `ElementBuilder`.
+
 ## 0.0.15
 
 ### Patch Changes

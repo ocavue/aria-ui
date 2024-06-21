@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/menu",
   "type": "module",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -11,10 +11,10 @@
   },
   "dependencies": {
     "@aria-ui/collection": "^0.0.3",
-    "@aria-ui/core": "^0.0.15",
-    "@aria-ui/overlay": "^0.0.16",
-    "@aria-ui/popover": "^0.0.16",
-    "@aria-ui/presence": "^0.0.10",
+    "@aria-ui/core": "^0.0.16",
+    "@aria-ui/overlay": "^0.0.17",
+    "@aria-ui/popover": "^0.0.17",
+    "@aria-ui/presence": "^0.0.11",
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
