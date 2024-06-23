@@ -3,7 +3,7 @@ export {
   defaultMenuContentProps,
   type MenuContentProps,
 } from "./menu-content.props"
-export { useMenuContent as useMenu } from "./menu-content.state"
+export { useMenuContent } from "./menu-content.state"
 export { MenuItemElement } from "./menu-item.element.gen"
 export { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
 export { useMenuItem } from "./menu-item.state"
