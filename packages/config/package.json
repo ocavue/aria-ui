@@ -14,10 +14,10 @@
     }
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.1.0",
+    "@testing-library/dom": "^10.3.0",
     "@testing-library/jest-dom": "^6.4.6",
     "@vitest/browser": "^1.6.0",
-    "typescript": "^5.5.2",
+    "typescript": "^5.5.3",
     "vitest": "^1.6.0"
   }
 }

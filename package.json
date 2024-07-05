@@ -25,29 +25,29 @@
     "ci:publish": "pnpm run build && changeset publish"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.8.2",
-    "@changesets/cli": "2.27.5",
-    "@manypkg/get-packages": "2.2.1",
-    "@ocavue/eslint-config": "1.6.0",
-    "@testing-library/dom": "^10.1.0",
+    "@biomejs/biome": "1.8.3",
+    "@changesets/cli": "2.27.7",
+    "@manypkg/get-packages": "2.2.2",
+    "@ocavue/eslint-config": "1.7.0",
+    "@testing-library/dom": "^10.3.0",
     "@testing-library/jest-dom": "^6.4.6",
-    "@types/bun": "^1.1.5",
+    "@types/bun": "^1.1.6",
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "5.4.4",
-    "comment-json": "4.2.3",
+    "comment-json": "4.2.4",
     "eslint": "8.57.0",
     "lefthook": "1.6.18",
-    "playwright": "^1.44.1",
+    "playwright": "^1.45.1",
     "prettier": "3.3.2",
     "turbo": "1.13.4",
     "typedoc": "0.26.3",
     "typedoc-plugin-markdown": "4.1.1",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "vitest": "^1.6.0"
   },
   "pnpm": {
     "overrides": {
-      "typescript": "5.4.5"
+      "typescript": "5.5.3"
     }
   }
 }
