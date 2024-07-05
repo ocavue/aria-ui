@@ -1,6 +1,8 @@
 import {
+  createSignal,
   useAriaAttribute,
   useAttribute,
+  useEffect,
   type ConnectableElement,
   type SignalState,
 } from "@aria-ui/core"
@@ -22,13 +24,21 @@ export function useTooltipContent(
   element: ConnectableElement,
   state: SignalState<TooltipContentProps>,
 ): void {
-  useOverlayPositioner(element, state)
-
   const open = openContext.consume(element)
   const id = idContext.consume(element)
 
+  const hoist = createSignal<boolean>(state.hoist.peek())
+  const visible = usePresence(element, open)
+  // Only set hoist to true if the tooltip is visible. By doing that, we can
+  // ensure that the tooltip is at the top of the top-layer stacking context, so
+  // that it is not hidden behind other elements.
+  useEffect(element, () => {
+    hoist.set(visible.get() ? state.hoist.get() : false)
+  })
+
+  useOverlayPositioner(element, { ...state, hoist })
+
   useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
   useAttribute(element, "id", () => id.get() || undefined)
-  usePresence(element, open)
   useAttribute(element, "data-state", () => (open.get() ? "open" : "closed"))
 }
