@@ -1,4 +1,5 @@
 import {
+  createSignal,
   useEffect,
   useEventListener,
   type ConnectableElement,
@@ -11,39 +12,37 @@ import { getEventTarget } from "@zag-js/dom-query"
  */
 export function usePresence(
   element: ConnectableElement,
-  present: ReadonlySignal<boolean>,
-): void {
+  open: ReadonlySignal<boolean>,
+): ReadonlySignal<boolean> {
+  const visible = createSignal(open.peek())
+
   useEffect(element, () => {
-    const initialPresent = present.peek()
-    if (initialPresent) {
+    if (visible.get()) {
       show(element)
     } else {
       hide(element)
     }
   })
 
-  const handleAnimationEnd = (event: AnimationEvent) => {
+  useEffect(element, () => {
+    if (open.get()) {
+      visible.set(true)
+    } else if (getAnimationName(element) === "none") {
+      visible.set(false)
+    }
+  })
+
+  useEventListener(element, "animationend", (event: AnimationEvent) => {
     if (
       getAnimationName(element).includes(event.animationName) &&
       getEventTarget(event) === element &&
-      !present.peek()
+      !open.peek()
     ) {
-      hide(element)
+      visible.set(false)
     }
-  }
+  })
 
-  useEffect(element, () => handlePresentChange(element, present.get()))
-  useEventListener(element, "animationend", handleAnimationEnd)
-}
-
-function handlePresentChange(element: HTMLElement, present: boolean) {
-  if (present) {
-    show(element)
-  } else {
-    if (getAnimationName(element) === "none") {
-      hide(element)
-    }
-  }
+  return visible
 }
 
 function getAnimationName(element: HTMLElement) {
