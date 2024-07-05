@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/combobox",
   "type": "module",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@aria-ui/core": "^0.0.16",
-    "@aria-ui/listbox": "^0.0.15",
+    "@aria-ui/listbox": "^0.0.16",
     "@zag-js/dom-query": "^0.59.0"
   },
   "devDependencies": {

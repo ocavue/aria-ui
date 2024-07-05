@@ -84,7 +84,7 @@ importers:
         specifier: ^0.0.16
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.15
+        specifier: ^0.0.16
         version: link:../listbox
       '@zag-js/dom-query':
         specifier: ^0.59.0
@@ -149,7 +149,7 @@ importers:
         specifier: ^0.0.16
         version: link:../core
       '@aria-ui/presence':
-        specifier: ^0.0.11
+        specifier: ^0.0.12
         version: link:../presence
       immer:
         specifier: ^10.1.1
@@ -174,10 +174,10 @@ importers:
         specifier: ^0.0.17
         version: link:../overlay
       '@aria-ui/popover':
-        specifier: ^0.0.17
+        specifier: ^0.0.18
         version: link:../popover
       '@aria-ui/presence':
-        specifier: ^0.0.11
+        specifier: ^0.0.12
         version: link:../presence
       nanoid:
         specifier: ^5.0.7
@@ -218,7 +218,7 @@ importers:
         specifier: ^0.0.17
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.11
+        specifier: ^0.0.12
         version: link:../presence
       '@zag-js/dismissable':
         specifier: ^0.59.0
@@ -280,10 +280,10 @@ importers:
         specifier: ^0.0.16
         version: link:../core
       '@aria-ui/listbox':
-        specifier: ^0.0.15
+        specifier: ^0.0.16
         version: link:../listbox
       '@aria-ui/popover':
-        specifier: ^0.0.17
+        specifier: ^0.0.18
         version: link:../popover
     devDependencies:
       tsup:
@@ -302,7 +302,7 @@ importers:
         specifier: ^0.0.17
         version: link:../overlay
       '@aria-ui/presence':
-        specifier: ^0.0.11
+        specifier: ^0.0.12
         version: link:../presence
       nanoid:
         specifier: ^5.0.7

@@ -1,5 +1,12 @@
 # @aria-ui/popover
 
+## 0.0.18
+
+### Patch Changes
+
+- Updated dependencies [b13ba5f]
+  - @aria-ui/presence@0.0.12
+
 ## 0.0.17
 
 ### Patch Changes
