@@ -1,5 +1,14 @@
 # @aria-ui/popover
 
+## 0.0.19
+
+### Patch Changes
+
+- Updated dependencies [b8160e8]
+  - @aria-ui/core@0.0.17
+  - @aria-ui/overlay@0.0.18
+  - @aria-ui/presence@0.0.13
+
 ## 0.0.18
 
 ### Patch Changes
