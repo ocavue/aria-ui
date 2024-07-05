@@ -10,7 +10,7 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.16",
+    "@aria-ui/core": "workspace:^",
     "@floating-ui/dom": "^1.6.7",
     "@zag-js/dom-query": "^0.59.0"
   },
