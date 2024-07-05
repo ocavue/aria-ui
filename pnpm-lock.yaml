@@ -228,7 +228,7 @@ importers:
         version: 0.49.0
     devDependencies:
       '@aria-ui/config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../config
       '@testing-library/dom':
         specifier: ^10.3.0
@@ -309,7 +309,7 @@ importers:
         version: 5.0.7
     devDependencies:
       '@aria-ui/config':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../config
       '@testing-library/dom':
         specifier: ^10.3.0
