@@ -1,7 +1,8 @@
 import { getEventTarget } from "@zag-js/dom-query"
 
+import { effect } from "@preact/signals-core"
 import type { ConnectableElement } from "./connectable-element"
-import type { ReadonlySignal, Signal } from "./signals"
+import { createSignal, type ReadonlySignal, type Signal } from "./signals"
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
@@ -61,30 +62,37 @@ class ContextImpl<T> implements Context<T> {
   }
 
   public consume(element: ConnectableElement): Signal<T> {
-    let getter: (() => T) | null = null
-    let peeker: (() => T) | null = null
-    let setter: ((value: T) => void) | null = null
+    const consumer = createSignal(this.defaultValue)
+    let dispose: VoidFunction | undefined
+    let provider: Signal<T> | undefined
 
     element.addConnectedCallback(() => {
       element.dispatchEvent(
-        new ContextRequestEvent<T>(this.key, (provider) => {
-          getter = () => provider.get()
-          peeker = () => provider.peek()
-          setter = (value: T) => provider.set(value)
+        new ContextRequestEvent<T>(this.key, (contextProvider) => {
+          dispose?.()
+          dispose = effect(() => {
+            consumer.set(contextProvider.get())
+          })
+          provider = contextProvider
         }),
       )
+      return () => {
+        dispose?.()
+        dispose = undefined
+        provider = undefined
+      }
     })
 
+    const peek = () => {
+      return consumer.peek()
+    }
+
     const get = () => {
-      return getter ? getter() : this.defaultValue
+      return consumer.get()
     }
 
     const set = (value: T) => {
-      setter?.(value)
-    }
-
-    const peek = () => {
-      return peeker ? peeker() : this.defaultValue
+      provider?.set(value)
     }
 
     return {
