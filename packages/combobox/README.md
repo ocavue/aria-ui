@@ -6,6 +6,8 @@
 
 A custom ComboboxEmpty element.
 
+#### Constructors
+
 ```ts
 new ComboboxEmptyElement(): ComboboxEmptyElement
 ```
@@ -16,20 +18,26 @@ new ComboboxEmptyElement(): ComboboxEmptyElement
 
 A custom ComboboxItem element.
 
+#### Constructors
+
 ```ts
 new ComboboxItemElement(): ComboboxItemElement
 ```
 
-| Property | Type | Description |
-| :-- | :-- | :-- |
-| `onSelect` | `null` \| `VoidFunction` | <p>The function to call when the item is selected.</p><p>**Default**</p><code>null</code> |
-| `value` | `string` | <p>The value of the item. Every item must have a unique value in the parent list.</p><p>**Default**</p><code>""</code> |
+#### Properties
+
+| Property | Type | Description | Inherited from |
+| --- | --- | --- | --- |
+| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected. **Default** `null` |  |
+| `value` | `string` | The value of the item. Every item must have a unique value in the parent list. **Default** `""` |  |
 
 ## ComboboxList
 
 ### ComboboxListElement
 
 A custom ComboboxList element.
+
+#### Constructors
 
 ```ts
 new ComboboxListElement(): ComboboxListElement
@@ -40,6 +48,8 @@ new ComboboxListElement(): ComboboxListElement
 ### ComboboxRootElement
 
 A custom ComboboxRoot element.
+
+#### Constructors
 
 ```ts
 new ComboboxRootElement(): ComboboxRootElement
