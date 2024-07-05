@@ -1,5 +1,14 @@
 # @aria-ui/menu
 
+## 0.0.10
+
+### Patch Changes
+
+- 0e56698: Correct `useMenuContent` export name.
+- Updated dependencies [b13ba5f]
+  - @aria-ui/presence@0.0.12
+  - @aria-ui/popover@0.0.18
+
 ## 0.0.9
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @aria-ui/select
 
+## 0.0.21
+
+### Patch Changes
+
+- @aria-ui/listbox@0.0.16
+- @aria-ui/popover@0.0.18
+
 ## 0.0.20
 
 ### Patch Changes

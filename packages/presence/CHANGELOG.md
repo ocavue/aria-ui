@@ -1,5 +1,11 @@
 # @aria-ui/presence
 
+## 0.0.12
+
+### Patch Changes
+
+- b13ba5f: `usePresence` now returns a readonly signal indicating if the element should be visible.
+
 ## 0.0.11
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @aria-ui/tooltip
 
+## 0.0.20
+
+### Patch Changes
+
+- b13ba5f: Tooltip will put itself at the top of the stacking context when open.
+- Updated dependencies [b13ba5f]
+  - @aria-ui/presence@0.0.12
+
 ## 0.0.19
 
 ### Patch Changes
