@@ -10,9 +10,9 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/collection": "^0.0.3",
-    "@aria-ui/core": "^0.0.16",
-    "@aria-ui/presence": "^0.0.12",
+    "@aria-ui/collection": "workspace:^",
+    "@aria-ui/core": "workspace:^",
+    "@aria-ui/presence": "workspace:^",
     "immer": "^10.1.1"
   },
   "devDependencies": {

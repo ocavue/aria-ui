@@ -10,9 +10,9 @@
     "build": "tsup"
   },
   "dependencies": {
-    "@aria-ui/core": "^0.0.16",
-    "@aria-ui/overlay": "^0.0.17",
-    "@aria-ui/presence": "^0.0.12",
+    "@aria-ui/core": "workspace:^",
+    "@aria-ui/overlay": "workspace:^",
+    "@aria-ui/presence": "workspace:^",
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
