@@ -26,10 +26,10 @@ new ComboboxItemElement(): ComboboxItemElement
 
 #### Properties
 
-| Property | Type | Description | Inherited from |
-| --- | --- | --- | --- |
-| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected. **Default** `null` |  |
-| `value` | `string` | The value of the item. Every item must have a unique value in the parent list. **Default** `""` |  |
+| Property | Type | Description |
+| --- | --- | --- |
+| `onSelect` | `null` \| `VoidFunction` | The function to call when the item is selected. **Default** `null` |
+| `value` | `string` | The value of the item. Every item must have a unique value in the parent list. **Default** `""` |
 
 ## ComboboxList
 
