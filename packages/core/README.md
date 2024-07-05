@@ -22,6 +22,8 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 A read-only signal that holds a reactive value.
 
+#### Type Parameters
+
 #### Accessors
 
 ##### value
@@ -47,6 +49,8 @@ Get the signal's current value without subscribing.
 ### Signal\<T\>
 
 A mutable signal that can be used to manage reactive state changes.
+
+#### Type Parameters
 
 #### Accessors
 
@@ -96,6 +100,8 @@ Create a custom element class.
 ### Context\<T\>
 
 A context is a way to provide and consume signals in a HTML tree.
+
+#### Type Parameters
 
 #### Methods
 
@@ -230,6 +236,8 @@ Sets the computed style of the element when it's connected.
 
 Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectableelement) interface.
 
+#### Constructors
+
 ```ts
 new BaseElement(): BaseElement
 ```
@@ -238,8 +246,10 @@ new BaseElement(): BaseElement
 
 Any HTML element that has implemented the `addConnectedCallback` method.
 
+#### Properties
+
 | Property | Type | Description |
-| :-- | :-- | :-- |
+| --- | --- | --- |
 | `addConnectedCallback` | (`callback`: () => `void` \| `VoidFunction`) => `void` | Registers a callback to be called when the element is connected to the DOM. This callback can return a cleanup function that will be called when the element is disconnected from the DOM. |
 
 ## Props and States
@@ -251,6 +261,8 @@ type SignalState<T>: { [K in keyof T]: Signal<T[K]> };
 ```
 
 A plain object containing signals.
+
+#### Type Parameters
 
 ### assignProps()
 
@@ -289,15 +301,19 @@ type SignalValue<S>: S extends Signal<infer T> ? T : never;
 
 Extracts the value type from a signal type.
 
+#### Type Parameters
+
 ### batch()
 
 ```ts
 function batch<T>(fn: () => T): T;
 ```
 
-Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
+Combine multiple value updates into one "commit" at the end of the provided callback.
 
-This is a re-export of `batch` from `@preact/signals-core`.
+Batches can be nested and changes are only flushed once the outermost batch callback completes.
+
+Accessing a signal that has been modified within a batch will reflect its updated value.
 
 ### createComputed()
 
@@ -321,9 +337,7 @@ Creates and returns a new signal with the given initial value. Signals are react
 function untracked<T>(fn: () => T): T;
 ```
 
-Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
-
-This is a re-export of `untracked` from `@preact/signals-core`.
+Run a callback function that can access signal values without subscribing to the signal updates.
 
 ### useEffect()
 

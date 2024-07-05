@@ -1,8 +1,4 @@
-import {
-  type DeclarationReflection,
-  ReflectionKind,
-  type Reflection,
-} from "typedoc"
+import { ReflectionKind, type Reflection } from "typedoc"
 import {
   type MarkdownPageEvent,
   MarkdownTheme,
@@ -58,22 +54,6 @@ class MyMarkdownThemeContext extends MarkdownThemeContext {
       signature: bind(signature, this),
 
       typeParametersList: () => "",
-
-      declarationsTable: (
-        props: DeclarationReflection[],
-        options?: { isEventProps: boolean },
-      ) => {
-        const inheritedFromValues = props.map((p) => p.inheritedFrom)
-        for (const p of props) {
-          p.inheritedFrom = undefined
-        }
-        const result = partials.declarationsTable(props, options)
-        for (const [i, prop] of props.entries()) {
-          prop.inheritedFrom = inheritedFromValues[i]
-        }
-
-        return result
-      },
     }
 
     this.helpers = {

@@ -1,4 +1,4 @@
-import type { DeclarationReflection } from "typedoc"
+import { ReflectionKind, type DeclarationReflection } from "typedoc"
 import type { MarkdownThemeContext } from "typedoc-plugin-markdown"
 
 import { heading } from "../heading"
@@ -28,7 +28,14 @@ export function memberWithGroups(
   }
 
   if (model.typeParameters) {
-    md.push(heading(headingLevel, context.getText("kind.typeParameter.plural")))
+    md.push(
+      heading(
+        headingLevel,
+        context.internationalization.kindPluralString(
+          ReflectionKind.TypeParameter,
+        ),
+      ),
+    )
     if (context.options.getValue("parametersFormat") === "table") {
       md.push(context.partials.typeParametersTable(model.typeParameters))
     } else {

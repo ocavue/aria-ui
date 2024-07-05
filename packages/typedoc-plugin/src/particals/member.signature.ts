@@ -1,48 +1,44 @@
 import type { SignatureReflection } from "typedoc"
 import type { MarkdownThemeContext } from "typedoc-plugin-markdown"
 
-/**
- * Renders a signature member.
- *
- * @category Member Partials
- */
 export function signature(
   context: MarkdownThemeContext,
   model: SignatureReflection,
-  {
-    headingLevel,
-    nested,
-    accessor,
-  }: {
+  options: {
     headingLevel: number
     nested?: boolean
     accessor?: string
+    multipleSignatures?: boolean
   },
 ): string {
   const md: string[] = []
 
-  if (Math.random() + 1 < 0.5) {
-    return "signature"
-  }
-
-  md.push(context.partials.reflectionFlags(model))
-
-  if (!nested) {
+  if (!options.nested) {
     md.push(
       context.partials.signatureTitle(model, {
-        accessor,
+        accessor: options.accessor,
       }),
     )
   }
 
-  if (model.comment) {
+  const modelComments = model.comment || model.parent?.comment
+
+  if (modelComments) {
     md.push(
-      context.partials.comment(model.comment, {
-        headingLevel,
+      context.partials.comment(modelComments, {
+        headingLevel: options.headingLevel,
         showTags: false,
       }),
     )
   }
+
+  // if (!options.multipleSignatures && model.parent?.documents) {
+  //   md.push(
+  //     this.partials.documents(model?.parent, {
+  //       headingLevel: options.headingLevel,
+  //     }),
+  //   )
+  // }
 
   // if (
   //   model.typeParameters?.length &&
@@ -50,45 +46,62 @@ export function signature(
   // ) {
   //   md.push(
   //     heading(
-  //       headingLevel,
-  //       context.helpers.getText('kind.typeParameter.plural'),
+  //       options.headingLevel,
+  //       this.internationalization.kindPluralString(
+  //         ReflectionKind.TypeParameter,
+  //       ),
   //     ),
-  //   );
-  //   if (context.options.getValue('parametersFormat') === 'table') {
-  //     md.push(context.partials.typeParametersTable(model.typeParameters));
+  //   )
+  //   if (this.helpers.useTableFormat("parameters")) {
+  //     md.push(this.partials.typeParametersTable(model.typeParameters))
   //   } else {
-  //     md.push(context.partials.typeParametersList(model.typeParameters));
+  //     md.push(this.partials.typeParametersList(model.typeParameters))
   //   }
   // }
 
   // if (model.parameters?.length) {
   //   md.push(
-  //     heading(headingLevel, context.helpers.getText('kind.parameter.plural')),
-  //   );
-  //   if (context.options.getValue('parametersFormat') === 'table') {
-  //     md.push(context.partials.parametersTable(model.parameters));
+  //     heading(
+  //       options.headingLevel,
+  //       this.internationalization.kindPluralString(ReflectionKind.Parameter),
+  //     ),
+  //   )
+  //   if (this.helpers.useTableFormat("parameters")) {
+  //     md.push(this.partials.parametersTable(model.parameters))
   //   } else {
-  //     md.push(context.partials.parametersList(model.parameters));
+  //     md.push(this.partials.parametersList(model.parameters))
   //   }
   // }
 
   // if (model.type) {
-  //   md.push(context.partials.signatureReturns(model, headingLevel));
+  //   md.push(
+  //     this.partials.signatureReturns(model, {
+  //       headingLevel: options.headingLevel,
+  //     }),
+  //   )
   // }
 
-  // md.push(context.partials.inheritance(model, headingLevel));
-
-  if (model.comment) {
+  if (modelComments) {
     md.push(
-      context.partials.comment(model.comment, {
-        headingLevel,
+      context.partials.comment(modelComments, {
+        headingLevel: options.headingLevel,
         showSummary: false,
       }),
     )
   }
 
-  if (!nested && model.sources && !context.options.getValue("disableSources")) {
-    md.push(context.partials.sources(model, { headingLevel }))
+  md.push(
+    context.partials.inheritance(model, { headingLevel: options.headingLevel }),
+  )
+
+  if (
+    !options.nested &&
+    model.sources &&
+    !context.options.getValue("disableSources")
+  ) {
+    md.push(
+      context.partials.sources(model, { headingLevel: options.headingLevel }),
+    )
   }
 
   return md.join("\n\n")

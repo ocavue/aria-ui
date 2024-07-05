@@ -49,5 +49,12 @@
     "kind.typeParameter.plural": "TYPEDOC_REMOVE_PLACEHOLDER",
     "kind.constructor.plural": "TYPEDOC_REMOVE_PLACEHOLDER",
     "kind.property.plural": "TYPEDOC_REMOVE_PLACEHOLDER"
+  },
+  "tableColumnSettings": {
+    "hideDefaults": false,
+    "hideInherited": true,
+    "hideOverrides": true,
+    "hideSources": true,
+    "hideValues": false
   }
 }

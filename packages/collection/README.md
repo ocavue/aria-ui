@@ -4,12 +4,16 @@
 
 ### Collection
 
+#### Constructors
+
 ```ts
 new Collection(items: Iterable<HTMLElement>, loop: boolean): Collection
 ```
 
+#### Properties
+
 | Property | Modifier   | Type      | Default value |
-| :------- | :--------- | :-------- | :------------ |
+| -------- | ---------- | --------- | ------------- |
 | `loop`   | `readonly` | `boolean` | `true`        |
 
 #### Methods
