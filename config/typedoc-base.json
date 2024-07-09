@@ -37,7 +37,7 @@
 
   "readme": "none",
 
-  // https://www.typedoc-plugin-markdown.org/options
+  // https://www.typedoc-plugin-markdown.org/docs/options
   "hideBreadcrumbs": true,
   "hidePageHeader": true,
   "enumMembersFormat": "table",

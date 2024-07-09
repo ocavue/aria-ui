@@ -28,4 +28,4 @@ async function main() {
   await $`pnpm run fix:biome`
 }
 
-void main()
+await main()
