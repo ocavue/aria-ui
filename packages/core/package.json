@@ -12,8 +12,8 @@
   "dependencies": {
     "@dddstack/ariatype-aria-attributes": "^2.0.0",
     "@dddstack/ariatype-aria-roles": "^2.0.0",
-    "@preact/signals-core": "^1.6.1",
-    "@zag-js/dom-query": "^0.59.0",
+    "@preact/signals-core": "^1.7.0",
+    "@zag-js/dom-query": "^0.61.0",
     "server-dom-shim": "^1.0.2"
   },
   "devDependencies": {
