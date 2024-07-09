@@ -1,5 +1,13 @@
 # @aria-ui/core
 
+<pre>
+<code>
+code <a href="https://github.com/ocavue/aria-ui">aria-ui</a>
+
+code 
+</code>
+</pre>
+
 A compact and efficient toolkit for building reactive web components. It powers the [Aria UI](https://github.com/ocavue/aria-ui) library, but it can also be used independently.
 
 ## Key Features
