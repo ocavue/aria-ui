@@ -25,7 +25,7 @@ new MenuContentElement(): MenuContentElement
 | Property | Type | Description |
 | --- | --- | --- |
 | `altBoundary` | `boolean` | **See** https://floating-ui.com/docs/detectoverflow **Default** `true` |
-| `autoUpdate` | `boolean` \| `Partial`\<`object`\> | Options to activate auto-update listeners **See** https://floating-ui.com/docs/autoUpdate **Default** `true` |
+| `autoUpdate` | `boolean` \| `AutoUpdateOptions` | Options to activate auto-update listeners **See** https://floating-ui.com/docs/autoUpdate **Default** `true` |
 | `boundary` | `Boundary` | **See** https://floating-ui.com/docs/detectoverflow **Default** `'clippingAncestors'` |
 | `elementContext` | `ElementContext` | **See** https://floating-ui.com/docs/detectoverflow **Default** `'floating'` |
 | `fitViewport` | `boolean` | Whether to constrain the floating element's width and height to not exceed the viewport. **Default** `false` |
