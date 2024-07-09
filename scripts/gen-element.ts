@@ -58,4 +58,4 @@ export class ${pascal}Element extends ElementBuilder<${pascal}Props>(
   return `${code}\n`
 }
 
-void main()
+await main()

@@ -1,6 +1,6 @@
+import { effect } from "@preact/signals-core"
 import { getEventTarget } from "@zag-js/dom-query"
 
-import { effect } from "@preact/signals-core"
 import type { ConnectableElement } from "./connectable-element"
 import { createSignal, type ReadonlySignal, type Signal } from "./signals"
 

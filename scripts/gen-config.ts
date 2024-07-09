@@ -49,4 +49,4 @@ async function main() {
   await genRootTsconfig()
 }
 
-void main()
+await main()
