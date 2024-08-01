@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group ListboxItem
  * @internal
  */
-export interface ListboxEmptyProps {}
+export interface ListboxEmptyProps extends EmptyObject {}
 
 /**
  * @hidden

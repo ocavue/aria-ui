@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group ComboboxList
  * @internal
  */
-export interface ComboboxListProps {}
+export interface ComboboxListProps extends EmptyObject {}
 
 /**
  * @group ComboboxList

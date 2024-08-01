@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group OverlayRoot
  * @internal
  */
-export interface OverlayRootProps {}
+export interface OverlayRootProps extends EmptyObject {}
 
 /**
  * @group OverlayRoot

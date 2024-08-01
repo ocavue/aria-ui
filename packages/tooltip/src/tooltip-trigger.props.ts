@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group TooltipTrigger
  * @internal
  */
-export interface TooltipTriggerProps {}
+export interface TooltipTriggerProps extends EmptyObject {}
 
 /**
  * @group TooltipTrigger
