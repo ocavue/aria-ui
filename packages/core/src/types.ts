@@ -46,5 +46,6 @@ declare const emptyObjectSymbol: unique symbol
  * @public
  */
 export interface EmptyObject {
+  /** @internal */
   [emptyObjectSymbol]?: never
 }
