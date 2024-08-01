@@ -1,7 +1,9 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @internal
  */
-export interface PopoverTriggerProps {}
+export interface PopoverTriggerProps extends EmptyObject {}
 
 /**
  * @internal

@@ -52,3 +52,4 @@ export {
   type Signal,
   type SignalValue,
 } from "./signals"
+export type { EmptyObject } from "./types"

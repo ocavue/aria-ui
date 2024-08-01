@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group SelectList
  * @internal
  */
-export interface SelectListProps {}
+export interface SelectListProps extends EmptyObject {}
 
 /**
  * @group SelectList

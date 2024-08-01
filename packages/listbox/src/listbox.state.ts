@@ -172,7 +172,8 @@ export function useMouseMoving(element: ConnectableElement) {
     if (!pointerMoving.get()) {
       return
     }
-    const id = setInterval(() => {
+    // @ts-expect-error: I don't know why this `setInterval` uses the Node.js version.
+    const id: number = setInterval(() => {
       if (Date.now() - lastMoveMoveTime > 200) {
         pointerMoving.set(false)
         lastMoveMoveTime = 0

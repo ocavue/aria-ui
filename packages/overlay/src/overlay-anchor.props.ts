@@ -1,8 +1,10 @@
+import type { EmptyObject } from "@aria-ui/core"
+
 /**
  * @group OverlayAnchor
  * @internal
  */
-export interface OverlayAnchorProps {}
+export interface OverlayAnchorProps extends EmptyObject {}
 
 /**
  * @group OverlayAnchor
