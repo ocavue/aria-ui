@@ -1,5 +1,12 @@
 # @aria-ui/presence
 
+## 0.0.14
+
+### Patch Changes
+
+- Updated dependencies [5356852]
+  - @aria-ui/core@0.0.18
+
 ## 0.0.13
 
 ### Patch Changes
