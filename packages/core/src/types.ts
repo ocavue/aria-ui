@@ -33,3 +33,18 @@ export const getObjectKeys = Object.keys as <T extends object>(
 export const getObjectValues = Object.values as <T extends object>(
   obj: T,
 ) => Array<T[keyof T]>
+
+declare const emptyObjectSymbol: unique symbol
+
+/**
+ * Represents a strictly empty plain object, the `{}` value.
+ *
+ * When you annotate something as the type `{}`, it can be anything except
+ * `null` and `undefined`. This means that you cannot use `{}` to represent an
+ * empty plain object.
+ *
+ * @public
+ */
+export interface EmptyObject {
+  [emptyObjectSymbol]?: never
+}
