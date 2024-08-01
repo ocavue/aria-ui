@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.18
+
+### Patch Changes
+
+- 5356852: Export type `EmptyObject`.
+
 ## 0.0.17
 
 ### Patch Changes
