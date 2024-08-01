@@ -18,8 +18,8 @@
     "nanoid": "^5.0.7"
   },
   "devDependencies": {
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.3"
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4"
   },
   "publishConfig": {
     "access": "public",

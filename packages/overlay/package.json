@@ -11,12 +11,12 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
-    "@floating-ui/dom": "^1.6.7",
-    "@zag-js/dom-query": "^0.61.0"
+    "@floating-ui/dom": "^1.6.8",
+    "@zag-js/dom-query": "^0.63.0"
   },
   "devDependencies": {
-    "tsup": "^8.1.0",
-    "typescript": "^5.5.3"
+    "tsup": "^8.2.3",
+    "typescript": "^5.5.4"
   },
   "publishConfig": {
     "access": "public",
