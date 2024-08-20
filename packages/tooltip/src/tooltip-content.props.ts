@@ -1,5 +1,7 @@
-import type { OverlayPositionerProps } from "@aria-ui/overlay"
-import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
+import {
+  type OverlayPositionerProps,
+  defaultOverlayPositionerProps,
+} from "@aria-ui/overlay"
 
 /**
  * @group TooltipContent

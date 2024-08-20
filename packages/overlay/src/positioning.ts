@@ -1,13 +1,11 @@
-import type {
-  Alignment,
-  DetectOverflowOptions,
-  FloatingElement,
-  Middleware,
-  Placement,
-  ReferenceElement,
-  Side,
-} from "@floating-ui/dom"
 import {
+  type Alignment,
+  type DetectOverflowOptions,
+  type FloatingElement,
+  type Middleware,
+  type Placement,
+  type ReferenceElement,
+  type Side,
   autoUpdate,
   computePosition,
   flip,
