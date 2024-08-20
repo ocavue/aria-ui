@@ -1,5 +1,7 @@
-import type { PopoverContentProps } from "@aria-ui/popover"
-import { defaultPopoverContentProps } from "@aria-ui/popover"
+import {
+  type PopoverContentProps,
+  defaultPopoverContentProps,
+} from "@aria-ui/popover"
 
 /**
  * @group SelectContent

@@ -1,8 +1,8 @@
-import type {
-  OverlayPositionerDataAttributes,
-  OverlayPositionerProps,
+import {
+  type OverlayPositionerDataAttributes,
+  type OverlayPositionerProps,
+  defaultOverlayPositionerProps,
 } from "@aria-ui/overlay"
-import { defaultOverlayPositionerProps } from "@aria-ui/overlay"
 import type {
   FocusOutsideEvent,
   InteractOutsideEvent,
