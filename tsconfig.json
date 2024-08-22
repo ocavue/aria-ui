@@ -11,6 +11,7 @@
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
     "outDir": "temp/ts",
+    "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
