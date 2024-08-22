@@ -1,8 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "composite": true,
-    "outDir": "temp"
+    "composite": true
   },
   "include": ["."]
 }
