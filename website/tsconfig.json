@@ -3,8 +3,7 @@
   "compilerOptions": {
     "allowJs": true,
     "noUncheckedIndexedAccess": true,
-    "composite": true,
-    "outDir": "temp"
+    "composite": true
   },
   "include": ["."]
 }
