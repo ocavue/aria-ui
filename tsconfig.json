@@ -10,7 +10,7 @@
     "resolveJsonModule": true,
     "verbatimModuleSyntax": true,
     "esModuleInterop": true,
-    "outDir": "<configDir>/node_modules/.cache/tsc",
+    "outDir": "${configDir}/node_modules/.cache/tsc",
     "jsx": "preserve",
     "declaration": true,
     "declarationMap": true,
