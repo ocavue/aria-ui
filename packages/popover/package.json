@@ -20,7 +20,7 @@
   "devDependencies": {
     "@aria-ui/config": "workspace:*",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.4.8",
+    "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/user-event": "^14.5.2",
     "@vitest/browser": "^2.0.5",
     "lit-html": "^3.2.0",
