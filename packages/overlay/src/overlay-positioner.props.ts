@@ -215,4 +215,5 @@ export const overlayPositionerProps = defineProps<OverlayPositionerProps>({
 export interface OverlayPositionerDataAttributes {
   "data-side": "top" | "right" | "bottom" | "left"
   "data-align": "start" | "center" | "end"
+  "data-mounted": ""
 }
