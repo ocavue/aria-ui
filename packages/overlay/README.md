@@ -56,10 +56,11 @@ new OverlayPositionerElement(): OverlayPositionerElement
 
 #### Properties
 
-| Property     | Type                                           |
-| ------------ | ---------------------------------------------- |
-| `data-align` | `"center"` \| `"start"` \| `"end"`             |
-| `data-side`  | `"bottom"` \| `"left"` \| `"right"` \| `"top"` |
+| Property       | Type                                           |
+| -------------- | ---------------------------------------------- |
+| `data-align`   | `"center"` \| `"start"` \| `"end"`             |
+| `data-mounted` | `""`                                           |
+| `data-side`    | `"bottom"` \| `"left"` \| `"right"` \| `"top"` |
 
 ### OverlayPositionerProps
 
