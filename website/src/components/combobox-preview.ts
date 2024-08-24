@@ -33,14 +33,14 @@ render(
       <aui-popover-trigger>
         <button>Open</button>
       </aui-popover-trigger>
-      <aui-popover-content .placement=${"bottom"} .fitViewport=${true}>
+      <aui-popover-content placement="bottom" fitViewport="true">
         <aui-combobox-root>
           <input type="text" />
           <aui-combobox-list>
             ${Array.from({ length: 100 }, (_, index) => index).map((index) => {
               const text = `Option ${index + 1}`
               const value = `option_${index + 1}`
-              return html`<aui-combobox-item .value=${value}>${text}</aui-combobox-item>`
+              return html`<aui-combobox-item value=${value}>${text}</aui-combobox-item>`
             })}
             <aui-combobox-empty>No option found</aui-combobox-empty>
           </aui-combobox-list>
