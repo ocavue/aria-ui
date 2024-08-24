@@ -179,8 +179,20 @@ export const overlayPositionerProps = defineProps<OverlayPositionerProps>({
   autoUpdate: { default: true },
   hoist: { default: false },
   transform: { default: false },
-
-  offset: { default: null },
+  offset: {
+    default: null,
+    fromAttribute: (value) => {
+      if (value == null) {
+        return null
+      }
+      try {
+        return JSON.parse(value) as number | OffsetOptions
+      } catch {
+        return null
+      }
+    },
+    toAttribute: JSON.stringify,
+  },
   flip: { default: false },
   shift: { default: false },
   overlap: { default: false },

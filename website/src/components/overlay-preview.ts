@@ -46,8 +46,8 @@ render(
         return html`
           <aui-overlay-positioner
             style="display: block; margin: 0;"
-            .placement=${placement}
-            .offset=${4}
+            placement=${placement}
+            offset=4
           >
             <button>${placement}</button>
           </aui-overlay-positioner>
