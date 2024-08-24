@@ -16,6 +16,13 @@ export interface TooltipContentProps
    * @default "true"
    */
   hoist: OverlayPositionerProps["hoist"]
+
+  /**
+   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.flip}
+   *
+   * @default "true"
+   */
+  flip: OverlayPositionerProps["flip"]
 }
 
 /**
@@ -24,6 +31,7 @@ export interface TooltipContentProps
 export const tooltipContentProps = defineProps<TooltipContentProps>({
   ...overlayPositionerProps,
   hoist: { default: true },
+  flip: { default: true },
 })
 
 /**

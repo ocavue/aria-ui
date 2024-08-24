@@ -1,6 +1,68 @@
----
-import "./tooltip-preview.css"
----
-
-<div class="example-tooltip-preview"></div>
 <script src="./tooltip-preview.ts"></script>
+
+<style>
+  aui-tooltip-root {
+    display: inline-block;
+    width: min-content;
+    margin: 32px 8px;
+  }
+
+  aui-tooltip-trigger {
+    display: block;
+    width: max-content;
+  }
+
+  aui-tooltip-content[data-state="open"] {
+    animation: fadeIn 0.1s ease-in forwards;
+  }
+
+  aui-tooltip-content[data-state="closed"] {
+    animation: fadeOut 0.1s ease-out forwards;
+  }
+
+  aui-tooltip-content:not([data-mounted]) {
+    display: none;
+  }
+
+  aui-tooltip-content {
+    margin: 0;
+    border: 1px solid red;
+    padding: 4px 8px;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+</style>
+
+<aui-tooltip-root>
+  <aui-tooltip-trigger>
+    <button>Hover me</button>
+  </aui-tooltip-trigger>
+  <aui-tooltip-content offset="4">
+    <div>I come up after a delay.</div>
+  </aui-tooltip-content>
+</aui-tooltip-root>
+
+<aui-tooltip-root>
+  <aui-tooltip-trigger>
+    <button>Then Hover me</button>
+  </aui-tooltip-trigger>
+  <aui-tooltip-content offset="8">
+    <div>If you did it quickly, I appear immediately.</div>
+  </aui-tooltip-content>
+</aui-tooltip-root>
