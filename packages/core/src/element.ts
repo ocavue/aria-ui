@@ -1,8 +1,14 @@
+import mapValues from "just-map-values"
 import { HTMLElement } from "server-dom-shim"
 
 import type { ConnectableElement } from "./connectable-element"
-import { type SignalState, mapSignals } from "./signal-state"
-import type { Signal } from "./signals"
+import {
+  setupProperties,
+  type PropDeclaration,
+  type PropDeclarations,
+} from "./prop"
+import type { SignalState } from "./signal-state"
+import { createSignal, type Signal } from "./signals"
 
 /**
  * Base class for all custom elements in Aria UI. It implements the
@@ -62,6 +68,14 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
   }
 }
 
+function getSignalFromProp(prop: PropDeclaration<unknown>): Signal<unknown> {
+  return createSignal(prop.default)
+}
+
+function getSignalsFromProps(props: PropDeclarations<any>): SignalState<any> {
+  return mapValues(props, getSignalFromProp)
+}
+
 /**
  * Create a custom element class.
  *
@@ -69,32 +83,42 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
  */
 export function ElementBuilder<Props extends object>(
   useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
-  defaultProps: Props,
+  props: PropDeclarations<Props>,
 ): {
   new (): BaseElement & Props
   prototype: HTMLElement
 } {
+  const [observedAttributes, attributeChangedCallback, useProperties] =
+    setupProperties(props)
+
   class CustomElement extends BaseElement {
     readonly _s: SignalState<Props>
 
+    static observedAttributes = observedAttributes
+
     constructor() {
       super()
-      this._s = mapSignals(defaultProps)
+      this._s = getSignalsFromProps(props)
       useElement(this, this._s)
+      useProperties(this, this._s)
+    }
+
+    attributeChangedCallback(name: string, oldValue: string, newValue: string) {
+      attributeChangedCallback(this._s, name, newValue)
     }
   }
 
-  defineProperties(CustomElement, defaultProps)
+  defineGetterSetter(CustomElement, props)
 
   // @ts-expect-error: ignore return type
   return CustomElement
 }
 
-function defineProperties<Props extends object>(
+function defineGetterSetter<Props extends object>(
   ElementConstructor: new () => { _s: SignalState<Props> },
-  defaultProps: Props,
+  props: PropDeclarations<Props>,
 ) {
-  for (const prop of Object.keys(defaultProps)) {
+  for (const prop of Object.keys(props)) {
     Object.defineProperty(ElementConstructor.prototype, prop, {
       get() {
         return (this._s[prop] as Signal<unknown>).get()

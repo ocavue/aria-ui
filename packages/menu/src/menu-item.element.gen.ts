@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultMenuItemProps, type MenuItemProps } from "./menu-item.props"
+import { menuItemProps, type MenuItemProps } from "./menu-item.props"
 import { useMenuItem } from "./menu-item.state"
 
 /**
@@ -10,5 +10,5 @@ import { useMenuItem } from "./menu-item.state"
  */
 export class MenuItemElement extends ElementBuilder<MenuItemProps>(
   useMenuItem,
-  defaultMenuItemProps,
+  menuItemProps,
 ) {}

@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultPopoverContentProps, type PopoverContentProps } from "./popover-content.props"
+import { popoverContentProps, type PopoverContentProps } from "./popover-content.props"
 import { usePopoverContent } from "./popover-content.state"
 
 /**
@@ -10,5 +10,5 @@ import { usePopoverContent } from "./popover-content.state"
  */
 export class PopoverContentElement extends ElementBuilder<PopoverContentProps>(
   usePopoverContent,
-  defaultPopoverContentProps,
+  popoverContentProps,
 ) {}

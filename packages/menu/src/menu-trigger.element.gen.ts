@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultMenuTriggerProps, type MenuTriggerProps } from "./menu-trigger.props"
+import { menuTriggerProps, type MenuTriggerProps } from "./menu-trigger.props"
 import { useMenuTrigger } from "./menu-trigger.state"
 
 /**
@@ -10,5 +10,5 @@ import { useMenuTrigger } from "./menu-trigger.state"
  */
 export class MenuTriggerElement extends ElementBuilder<MenuTriggerProps>(
   useMenuTrigger,
-  defaultMenuTriggerProps,
+  menuTriggerProps,
 ) {}

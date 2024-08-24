@@ -88,6 +88,62 @@ set(value: T): void
 
 Set the value of the signal.
 
+## Type Aliases
+
+### PropDeclaration\<T\>
+
+```ts
+type PropDeclaration<T>: object;
+```
+
+Defines options for a property.
+
+#### Type Parameters
+
+#### Type declaration
+
+##### attribute?
+
+```ts
+optional attribute: boolean | string;
+```
+
+Indicates how and whether the property becomes an observed attribute. If the value is `false`, the property is not added to `observedAttributes`. If true or absent, the kebab-case version of the property name is observed (e.g. `fooBar` becomes `foo-bar`). If a string, the string value is observed (e.g `attribute: 'custom-foo-bar'`).
+
+##### default
+
+```ts
+default: T;
+```
+
+The default value of the property.
+
+##### fromAttribute()?
+
+```ts
+optional fromAttribute: (value: string | null) => T;
+```
+
+Called to convert an attribute value to a property value.
+
+##### toAttribute()?
+
+```ts
+optional toAttribute: (value: T) => string | null;
+```
+
+Called to convert a property value to an attribute value.
+
+### PropDeclarations\<T\>
+
+```ts
+type PropDeclarations<T>: { [K in keyof T]: PropDeclaration<T[K]> };
+```
+
+Map of props to PropDeclaration options.
+
+#### Type Parameters
+
 ## Functions
 
 ### ElementBuilder()
@@ -95,11 +151,19 @@ Set the value of the signal.
 ```ts
 function ElementBuilder<Props>(
   useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
-  defaultProps: Props,
+  props: PropDeclarations<Props>,
 ): () => BaseElement & Props;
 ```
 
 Create a custom element class.
+
+### defineProps()
+
+```ts
+function defineProps<Props>(
+  props: PropDeclarations<Props>,
+): PropDeclarations<Props>;
+```
 
 ## Contexts
 
@@ -181,7 +245,7 @@ You can pass a string or a compute function that returns a string.
 function useAttribute(
   element: ConnectableElement,
   key: string,
-  compute: () => undefined | string | number,
+  compute: () => undefined | null | string | number,
 ): VoidFunction;
 ```
 
@@ -281,7 +345,7 @@ function assignProps<T>(
 
 Merges two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
 
-### mapSignals()
+### ~~mapSignals()~~
 
 ```ts
 function mapSignals<T>(values: T): SignalState<T>;
@@ -289,13 +353,17 @@ function mapSignals<T>(values: T): SignalState<T>;
 
 Maps every value in the given object to a signal.
 
-### mapValues()
+#### Deprecated
+
+### ~~mapValues()~~
 
 ```ts
 function mapValues<T>(signals: SignalState<T>): T;
 ```
 
 Maps every signal in the given object to its current value.
+
+#### Deprecated
 
 ## Signals
 

@@ -106,6 +106,7 @@ export function updatePlacement(
     const attributes = {
       "data-side": side,
       "data-align": align,
+      "data-mounted": "",
     } satisfies OverlayPositionerDataAttributes
     for (const [key, value] of Object.entries(attributes)) {
       floating.setAttribute(key, value)

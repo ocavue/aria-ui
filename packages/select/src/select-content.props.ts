@@ -1,7 +1,5 @@
-import {
-  type PopoverContentProps,
-  defaultPopoverContentProps,
-} from "@aria-ui/popover"
+import { defineProps } from "@aria-ui/core"
+import { type PopoverContentProps, popoverContentProps } from "@aria-ui/popover"
 
 /**
  * @group SelectContent
@@ -20,7 +18,7 @@ export interface SelectContentProps
 /**
  * @hidden
  */
-export const defaultSelectContentProps = Object.freeze({
-  ...defaultPopoverContentProps,
-  placement: "bottom",
-}) satisfies SelectContentProps
+export const selectContentProps = defineProps<SelectContentProps>({
+  ...popoverContentProps,
+  placement: { default: "bottom" },
+})

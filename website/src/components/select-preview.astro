@@ -1,5 +1,60 @@
----
-import "./select-preview.css"
----
 <div class="example-select-preview"></div>
 <script src="./select-preview.ts"></script>
+
+<aui-select-root>
+  <aui-select-trigger>
+    <button>
+      <aui-select-value placeholder="Select an option..."></aui-select-value>
+    </button>
+  </aui-select-trigger>
+  <aui-select-content>
+    <aui-select-list>
+      <aui-select-item value="option1">Option 1</aui-select-item>
+      <aui-select-item value="option2">Option 2</aui-select-item>
+      <aui-select-item value="option3">Option 3</aui-select-item>
+      <aui-select-item value="option11">Option 11</aui-select-item>
+      <aui-select-item value="option12">Option 12</aui-select-item>
+      <aui-select-item value="option13">Option 13</aui-select-item>
+    </aui-select-list>
+  </aui-select-content>
+</aui-select-root>
+
+<style>
+  aui-select-content {
+    display: block;
+  }
+
+  aui-select-content:not([data-mounted]) {
+    display: none;
+  }
+
+  aui-select-root {
+    display: block;
+  }
+
+  aui-select-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  aui-select-item {
+    display: block;
+    position: relative;
+    padding-left: 28px;
+    padding-right: 28px;
+
+    &[data-focused] {
+      background-color: Highlight;
+    }
+
+    &[data-selected] {
+      font-weight: bold;
+
+      &::before {
+        content: "✓";
+        position: absolute;
+        left: 4px;
+      }
+    }
+  }
+</style>

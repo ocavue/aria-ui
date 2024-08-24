@@ -12,7 +12,8 @@
   "dependencies": {
     "@aria-ui/core": "workspace:^",
     "@aria-ui/listbox": "workspace:^",
-    "@aria-ui/popover": "workspace:^"
+    "@aria-ui/popover": "workspace:^",
+    "just-omit": "^2.2.0"
   },
   "devDependencies": {
     "tsup": "^8.2.4",

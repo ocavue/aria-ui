@@ -51,7 +51,7 @@ export function useStyle<K extends keyof CSSStyleDeclaration>(
 export function useAttribute(
   element: ConnectableElement,
   key: string,
-  compute: () => string | number | undefined,
+  compute: () => string | number | undefined | null,
 ): VoidFunction {
   return useEffect(element, () => {
     const value = compute()

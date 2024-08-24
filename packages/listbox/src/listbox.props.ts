@@ -1,4 +1,5 @@
 import { defaultItemFilter, type ItemFilter } from "@aria-ui/collection"
+import { defineProps } from "@aria-ui/core"
 
 /**
  * @group Listbox
@@ -71,12 +72,12 @@ export interface ListboxProps {
 /**
  * @hidden
  */
-export const defaultListboxProps = Object.freeze({
-  value: "",
-  onValueChange: null,
-  selectionMode: "single",
-  autoFocus: false,
-  query: "",
-  filter: defaultItemFilter,
-  onKeydownHandlerAdd: null,
-}) satisfies ListboxProps
+export const listboxProps = defineProps<ListboxProps>({
+  value: { default: "" },
+  onValueChange: { default: null },
+  selectionMode: { default: "single" },
+  autoFocus: { default: false },
+  query: { default: "" },
+  filter: { default: defaultItemFilter },
+  onKeydownHandlerAdd: { default: null },
+})

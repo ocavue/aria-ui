@@ -1,15 +1,17 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps } from "@aria-ui/core"
+import { listboxProps, type ListboxProps } from "@aria-ui/listbox"
+import omit from "just-omit"
 
 /**
  * @group SelectList
  * @internal
  */
-export interface SelectListProps extends EmptyObject {}
+export interface SelectListProps extends Omit<ListboxProps, "onValueChange"> {}
 
 /**
  * @group SelectList
  * @internal
  */
-export const defaultSelectListProps = Object.freeze(
-  {},
-) satisfies SelectListProps
+export const selectListProps = defineProps<SelectListProps>(
+  omit(listboxProps, "onValueChange"),
+)

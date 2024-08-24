@@ -14,6 +14,8 @@ export type SignalState<T extends object> = {
  * Maps every signal in the given object to its current value.
  *
  * @group Props and States
+ *
+ * @deprecated
  */
 export function mapValues<T extends object>(signals: SignalState<T>): T {
   const values = {} as T
@@ -27,6 +29,8 @@ export function mapValues<T extends object>(signals: SignalState<T>): T {
  * Maps every value in the given object to a signal.
  *
  * @group Props and States
+ *
+ * @deprecated
  */
 export function mapSignals<T extends object>(values: T): SignalState<T> {
   const signals = {} as SignalState<T>

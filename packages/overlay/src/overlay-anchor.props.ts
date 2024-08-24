@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps, type EmptyObject } from "@aria-ui/core"
 
 /**
  * @group OverlayAnchor
@@ -10,6 +10,4 @@ export interface OverlayAnchorProps extends EmptyObject {}
  * @group OverlayAnchor
  * @internal
  */
-export const defaultOverlayAnchorProps = Object.freeze(
-  {},
-) satisfies OverlayAnchorProps
+export const overlayAnchorProps = defineProps<OverlayAnchorProps>({})

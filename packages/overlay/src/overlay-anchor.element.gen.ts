@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultOverlayAnchorProps, type OverlayAnchorProps } from "./overlay-anchor.props"
+import { overlayAnchorProps, type OverlayAnchorProps } from "./overlay-anchor.props"
 import { useOverlayAnchor } from "./overlay-anchor.state"
 
 /**
@@ -10,5 +10,5 @@ import { useOverlayAnchor } from "./overlay-anchor.state"
  */
 export class OverlayAnchorElement extends ElementBuilder<OverlayAnchorProps>(
   useOverlayAnchor,
-  defaultOverlayAnchorProps,
+  overlayAnchorProps,
 ) {}

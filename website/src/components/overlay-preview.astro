@@ -1,2 +1,74 @@
-<div class="example-overlay-preview"></div>
 <script src="./overlay-preview.ts"></script>
+
+<aui-overlay-root>
+  <aui-overlay-anchor>
+    <button class="anchor">Anchor</button>
+  </aui-overlay-anchor>
+  <aui-overlay-positioner placement="top-start" offset="4">
+    <button>top-start</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="top" offset="4">
+    <button>top</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="top-end" offset="4">
+    <button>top-end</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="bottom-start" offset="4">
+    <button>bottom-start</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="bottom" offset="4">
+    <button>bottom</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="bottom-end" offset="4">
+    <button>bottom-end</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="left-start" offset="4">
+    <button>left-start</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="left" offset="4">
+    <button>left</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="left-end" offset="4">
+    <button>left-end</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="right-start" offset="4">
+    <button>right-start</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="right" offset="4">
+    <button>right</button>
+  </aui-overlay-positioner>
+  <aui-overlay-positioner placement="right-end" offset="4">
+    <button>right-end</button>
+  </aui-overlay-positioner>
+</aui-overlay-root>
+
+<style>
+  aui-overlay-root {
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 80px;
+    justify-content: center;
+    width: 100%;
+    padding: 80px;
+  }
+
+  aui-overlay-anchor {
+    display: block;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .anchor {
+    width: 100%;
+    height: 160px;
+  }
+
+  aui-overlay-positioner {
+    display: block;
+    margin: 0;
+  }
+
+  aui-overlay-positioner:not([data-mounted]) {
+    display: none;
+  }
+</style>

@@ -1,3 +1,4 @@
+import { defineProps } from "@aria-ui/core"
 import type {
   AutoUpdateOptions,
   Boundary,
@@ -172,29 +173,41 @@ export interface OverlayPositionerProps {
 /**
  * @hidden
  */
-export const defaultOverlayPositionerProps = Object.freeze({
-  strategy: "absolute",
-  placement: "top",
-  autoUpdate: true,
-  hoist: false,
-  transform: false,
+export const overlayPositionerProps = defineProps<OverlayPositionerProps>({
+  strategy: { default: "absolute" },
+  placement: { default: "top" },
+  autoUpdate: { default: true },
+  hoist: { default: false },
+  transform: { default: false },
+  offset: {
+    default: null,
+    fromAttribute: (value) => {
+      if (value == null) {
+        return null
+      }
+      try {
+        return JSON.parse(value) as number | OffsetOptions
+      } catch {
+        return null
+      }
+    },
+    toAttribute: JSON.stringify,
+  },
+  flip: { default: false },
+  shift: { default: false },
+  overlap: { default: false },
+  fitViewport: { default: false },
+  sameWidth: { default: false },
+  sameHeight: { default: false },
+  inline: { default: false },
+  hide: { default: false },
 
-  offset: null,
-  flip: false,
-  shift: false,
-  overlap: false,
-  fitViewport: false,
-  sameWidth: false,
-  sameHeight: false,
-  inline: false,
-  hide: false,
-
-  boundary: "clippingAncestors",
-  rootBoundary: "viewport",
-  overflowPadding: 0,
-  elementContext: "floating",
-  altBoundary: true,
-}) satisfies OverlayPositionerProps
+  boundary: { default: "clippingAncestors" },
+  rootBoundary: { default: "viewport" },
+  overflowPadding: { default: 0 },
+  elementContext: { default: "floating" },
+  altBoundary: { default: true },
+})
 
 /**
  * @group OverlayPositioner
@@ -202,4 +215,5 @@ export const defaultOverlayPositionerProps = Object.freeze({
 export interface OverlayPositionerDataAttributes {
   "data-side": "top" | "right" | "bottom" | "left"
   "data-align": "start" | "center" | "end"
+  "data-mounted": ""
 }

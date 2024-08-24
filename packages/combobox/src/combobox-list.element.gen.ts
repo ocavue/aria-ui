@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultComboboxListProps, type ComboboxListProps } from "./combobox-list.props"
+import { comboboxListProps, type ComboboxListProps } from "./combobox-list.props"
 import { useComboboxList } from "./combobox-list.state"
 
 /**
@@ -10,5 +10,5 @@ import { useComboboxList } from "./combobox-list.state"
  */
 export class ComboboxListElement extends ElementBuilder<ComboboxListProps>(
   useComboboxList,
-  defaultComboboxListProps,
+  comboboxListProps,
 ) {}

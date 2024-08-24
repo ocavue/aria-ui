@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultSelectContentProps, type SelectContentProps } from "./select-content.props"
+import { selectContentProps, type SelectContentProps } from "./select-content.props"
 import { useSelectContent } from "./select-content.state"
 
 /**
@@ -10,5 +10,5 @@ import { useSelectContent } from "./select-content.state"
  */
 export class SelectContentElement extends ElementBuilder<SelectContentProps>(
   useSelectContent,
-  defaultSelectContentProps,
+  selectContentProps,
 ) {}

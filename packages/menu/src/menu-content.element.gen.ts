@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultMenuContentProps, type MenuContentProps } from "./menu-content.props"
+import { menuContentProps, type MenuContentProps } from "./menu-content.props"
 import { useMenuContent } from "./menu-content.state"
 
 /**
@@ -10,5 +10,5 @@ import { useMenuContent } from "./menu-content.state"
  */
 export class MenuContentElement extends ElementBuilder<MenuContentProps>(
   useMenuContent,
-  defaultMenuContentProps,
+  menuContentProps,
 ) {}

@@ -1,5 +1,26 @@
 # @aria-ui/menu
 
+## Interfaces
+
+### MenuItemProps
+
+#### Properties
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox. **Default** `defaultItemFilter` |
+| `onSelect` | `null` \| `VoidFunction` | Callback function that is called when the item is selected. **Default** `null` |
+| `query` | `string` | The query string to filter the listbox items. **Default** `""` |
+| `value` | `string` | The value of the item. Every item must have a unique value in the parent list. By default, a random value is generated. **Default** `""` |
+
+## Variables
+
+### menuItemProps
+
+```ts
+const menuItemProps: PropDeclarations<MenuItemProps>;
+```
+
 ## Functions
 
 ### useMenuTrigger()

@@ -1,3 +1,4 @@
+import { defineProps } from "@aria-ui/core"
 import type { ListboxEmptyProps } from "@aria-ui/listbox"
 
 /**
@@ -10,6 +11,4 @@ export interface ComboboxEmptyProps extends ListboxEmptyProps {}
  * @group ComboboxEmpty
  * @internal
  */
-export const defaultComboboxEmptyProps = Object.freeze(
-  {},
-) satisfies ComboboxEmptyProps
+export const comboboxEmptyProps = defineProps<ComboboxEmptyProps>({})

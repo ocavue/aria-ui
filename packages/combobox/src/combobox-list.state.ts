@@ -1,34 +1,38 @@
-import { mapSignals, useEffect, type ConnectableElement } from "@aria-ui/core"
 import {
-  defaultListboxProps,
-  useListbox,
-  type ListboxProps,
-} from "@aria-ui/listbox"
+  createSignal,
+  useEffect,
+  type ConnectableElement,
+  type SignalState,
+} from "@aria-ui/core"
+import { useListbox } from "@aria-ui/listbox"
 
 import { inputValueContext } from "./combobox-item.context"
 import { keydownHandlerContext } from "./combobox-list.context"
+import type { ComboboxListProps } from "./combobox-list.props"
 
 /**
  * @group ComboboxList
  * @hidden
  */
-export function useComboboxList(element: ConnectableElement): void {
+export function useComboboxList(
+  element: ConnectableElement,
+  state: SignalState<ComboboxListProps>,
+): void {
   const keydownHandler = keydownHandlerContext.consume(element)
 
   const inputValue = inputValueContext.consume(element)
 
-  const listboxState = mapSignals<ListboxProps>(defaultListboxProps)
-
-  listboxState.onKeydownHandlerAdd.set((handler) => {
-    keydownHandler.set(handler)
-    return () => {
-      keydownHandler.set(null)
-    }
+  useListbox(element, {
+    ...state,
+    onKeydownHandlerAdd: createSignal((handler) => {
+      keydownHandler.set(handler)
+      return () => {
+        keydownHandler.set(null)
+      }
+    }),
   })
 
-  useListbox(element, listboxState)
-
   useEffect(element, () => {
-    listboxState.query.set(inputValue.get())
+    state.query.set(inputValue.get())
   })
 }

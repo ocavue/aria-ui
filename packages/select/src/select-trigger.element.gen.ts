@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultSelectTriggerProps, type SelectTriggerProps } from "./select-trigger.props"
+import { selectTriggerProps, type SelectTriggerProps } from "./select-trigger.props"
 import { useSelectTrigger } from "./select-trigger.state"
 
 /**
@@ -10,5 +10,5 @@ import { useSelectTrigger } from "./select-trigger.state"
  */
 export class SelectTriggerElement extends ElementBuilder<SelectTriggerProps>(
   useSelectTrigger,
-  defaultSelectTriggerProps,
+  selectTriggerProps,
 ) {}

@@ -1,7 +1,5 @@
-import {
-  defaultPopoverRootProps,
-  type PopoverRootProps,
-} from "@aria-ui/popover"
+import { defineProps } from "@aria-ui/core"
+import { popoverRootProps, type PopoverRootProps } from "@aria-ui/popover"
 
 /**
  * @group SelectRoot
@@ -13,6 +11,6 @@ export interface SelectRootProps extends PopoverRootProps {}
  * @group SelectRoot
  * @internal
  */
-export const defaultSelectRootProps = Object.freeze({
-  ...defaultPopoverRootProps,
-}) satisfies SelectRootProps
+export const selectRootProps = defineProps<SelectRootProps>({
+  ...popoverRootProps,
+})

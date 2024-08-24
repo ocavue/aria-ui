@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps, type EmptyObject } from "@aria-ui/core"
 
 /**
  * @group SelectTrigger
@@ -10,6 +10,4 @@ export interface SelectTriggerProps extends EmptyObject {}
  * @group SelectTrigger
  * @internal
  */
-export const defaultSelectTriggerProps = Object.freeze(
-  {},
-) satisfies SelectTriggerProps
+export const selectTriggerProps = defineProps<SelectTriggerProps>({})

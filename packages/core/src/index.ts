@@ -53,3 +53,8 @@ export {
   type SignalValue,
 } from "./signals"
 export type { EmptyObject } from "./types"
+export {
+  type PropDeclarations,
+  type PropDeclaration,
+  defineProps,
+} from "./prop"

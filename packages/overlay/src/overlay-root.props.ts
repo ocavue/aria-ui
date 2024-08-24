@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps, type EmptyObject } from "@aria-ui/core"
 
 /**
  * @group OverlayRoot
@@ -10,6 +10,4 @@ export interface OverlayRootProps extends EmptyObject {}
  * @group OverlayRoot
  * @internal
  */
-export const defaultOverlayRootProps = Object.freeze(
-  {},
-) satisfies OverlayRootProps
+export const overlayRootProps = defineProps<OverlayRootProps>({})

@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultListboxEmptyProps, type ListboxEmptyProps } from "./listbox-empty.props"
+import { listboxEmptyProps, type ListboxEmptyProps } from "./listbox-empty.props"
 import { useListboxEmpty } from "./listbox-empty.state"
 
 /**
@@ -10,5 +10,5 @@ import { useListboxEmpty } from "./listbox-empty.state"
  */
 export class ListboxEmptyElement extends ElementBuilder<ListboxEmptyProps>(
   useListboxEmpty,
-  defaultListboxEmptyProps,
+  listboxEmptyProps,
 ) {}

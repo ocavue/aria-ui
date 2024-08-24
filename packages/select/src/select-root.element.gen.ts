@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultSelectRootProps, type SelectRootProps } from "./select-root.props"
+import { selectRootProps, type SelectRootProps } from "./select-root.props"
 import { useSelectRoot } from "./select-root.state"
 
 /**
@@ -10,5 +10,5 @@ import { useSelectRoot } from "./select-root.state"
  */
 export class SelectRootElement extends ElementBuilder<SelectRootProps>(
   useSelectRoot,
-  defaultSelectRootProps,
+  selectRootProps,
 ) {}

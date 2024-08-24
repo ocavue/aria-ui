@@ -1,7 +1,7 @@
 import "./root"
 import path from "node:path"
 
-import { kebabCase, pascalCase } from "change-case"
+import { camelCase, kebabCase, pascalCase } from "change-case"
 
 import { listGitFiles } from "./list-git-files"
 
@@ -37,11 +37,12 @@ async function main() {
 function updateElementCode(name: string) {
   const kebab = kebabCase(name)
   const pascal = pascalCase(name)
+  const camel = camelCase(name)
 
   const code = `
 import { ElementBuilder } from "@aria-ui/core"
 
-import { default${pascal}Props, type ${pascal}Props } from "./${kebab}.props"
+import { ${camel}Props, type ${pascal}Props } from "./${kebab}.props"
 import { use${pascal} } from "./${kebab}.state"
 
 /**
@@ -51,7 +52,7 @@ import { use${pascal} } from "./${kebab}.state"
  */
 export class ${pascal}Element extends ElementBuilder<${pascal}Props>(
   use${pascal},
-  default${pascal}Props,
+  ${camel}Props,
 ) {}
 `.trim()
 
