@@ -1,3 +1,5 @@
+import { defineProps } from "@aria-ui/core"
+
 /**
  * @group TooltipRoot
  * @hidden
@@ -35,9 +37,9 @@ export interface TooltipRootProps {
 /**
  * @hidden
  */
-export const defaultTooltipRootProps = Object.freeze({
-  openDelay: 700,
-  closeDelay: 300,
-  open: false,
-  onOpenChange: null,
-}) satisfies TooltipRootProps
+export const tooltipRootProps = defineProps<TooltipRootProps>({
+  openDelay: { default: 700 },
+  closeDelay: { default: 300 },
+  open: { default: false },
+  onOpenChange: { default: null },
+})

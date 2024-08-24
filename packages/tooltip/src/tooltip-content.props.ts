@@ -1,6 +1,7 @@
+import { defineProps } from "@aria-ui/core"
 import {
   type OverlayPositionerProps,
-  defaultOverlayPositionerProps,
+  overlayPositionerProps,
 } from "@aria-ui/overlay"
 
 /**
@@ -20,10 +21,10 @@ export interface TooltipContentProps
 /**
  * @hidden
  */
-export const defaultTooltipContentProps = Object.freeze({
-  ...defaultOverlayPositionerProps,
-  hoist: true,
-}) satisfies TooltipContentProps
+export const tooltipContentProps = defineProps<TooltipContentProps>({
+  ...overlayPositionerProps,
+  hoist: { default: true },
+})
 
 /**
  * @group TooltipContent

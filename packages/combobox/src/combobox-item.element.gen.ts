@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultComboboxItemProps, type ComboboxItemProps } from "./combobox-item.props"
+import { comboboxItemProps, type ComboboxItemProps } from "./combobox-item.props"
 import { useComboboxItem } from "./combobox-item.state"
 
 /**
@@ -10,5 +10,5 @@ import { useComboboxItem } from "./combobox-item.state"
  */
 export class ComboboxItemElement extends ElementBuilder<ComboboxItemProps>(
   useComboboxItem,
-  defaultComboboxItemProps,
+  comboboxItemProps,
 ) {}

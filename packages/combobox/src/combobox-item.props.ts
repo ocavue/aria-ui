@@ -1,7 +1,5 @@
-import {
-  defaultListboxItemProps,
-  type ListboxItemProps,
-} from "@aria-ui/listbox"
+import { defineProps } from "@aria-ui/core"
+import { listboxItemProps, type ListboxItemProps } from "@aria-ui/listbox"
 
 /**
  * @group ComboboxItem
@@ -13,6 +11,5 @@ export interface ComboboxItemProps extends ListboxItemProps {}
  * @group ComboboxItem
  * @internal
  */
-export const defaultComboboxItemProps = Object.freeze({
-  ...defaultListboxItemProps,
-}) satisfies ComboboxItemProps
+export const comboboxItemProps =
+  defineProps<ComboboxItemProps>(listboxItemProps)

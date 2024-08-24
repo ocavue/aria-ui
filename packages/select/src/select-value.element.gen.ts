@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultSelectValueProps, type SelectValueProps } from "./select-value.props"
+import { selectValueProps, type SelectValueProps } from "./select-value.props"
 import { useSelectValue } from "./select-value.state"
 
 /**
@@ -10,5 +10,5 @@ import { useSelectValue } from "./select-value.state"
  */
 export class SelectValueElement extends ElementBuilder<SelectValueProps>(
   useSelectValue,
-  defaultSelectValueProps,
+  selectValueProps,
 ) {}

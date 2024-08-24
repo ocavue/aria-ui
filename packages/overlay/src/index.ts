@@ -11,7 +11,7 @@ export { OverlayAnchorElement } from "./overlay-anchor.element.gen"
 export { useOverlayAnchor } from "./overlay-anchor.state"
 export { OverlayPositionerElement } from "./overlay-positioner.element.gen"
 export {
-  defaultOverlayPositionerProps,
+  overlayPositionerProps,
   type OverlayPositionerDataAttributes,
   type OverlayPositionerProps,
 } from "./overlay-positioner.props"

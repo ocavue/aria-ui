@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultOverlayRootProps, type OverlayRootProps } from "./overlay-root.props"
+import { overlayRootProps, type OverlayRootProps } from "./overlay-root.props"
 import { useOverlayRoot } from "./overlay-root.state"
 
 /**
@@ -10,5 +10,5 @@ import { useOverlayRoot } from "./overlay-root.state"
  */
 export class OverlayRootElement extends ElementBuilder<OverlayRootProps>(
   useOverlayRoot,
-  defaultOverlayRootProps,
+  overlayRootProps,
 ) {}

@@ -1,12 +1,12 @@
 export { ComboboxEmptyElement } from "./combobox-empty.element.gen"
 export {
-  defaultComboboxEmptyProps,
+  comboboxEmptyProps,
   type ComboboxEmptyProps,
 } from "./combobox-empty.props"
 export { useComboboxEmpty } from "./combobox-empty.state"
 export { ComboboxItemElement } from "./combobox-item.element.gen"
 export {
-  defaultComboboxItemProps,
+  comboboxItemProps,
   type ComboboxItemProps,
 } from "./combobox-item.props"
 export { useComboboxItem } from "./combobox-item.state"

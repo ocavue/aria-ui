@@ -1,3 +1,5 @@
+import { defineProps } from "@aria-ui/core"
+
 /**
  * @group ListboxItem
  */
@@ -21,7 +23,7 @@ export interface ListboxItemProps {
 /**
  * @hidden
  */
-export const defaultListboxItemProps = Object.freeze({
-  value: "",
-  onSelect: null,
-}) satisfies ListboxItemProps
+export const listboxItemProps = defineProps<ListboxItemProps>({
+  value: { default: "" },
+  onSelect: { default: null },
+})

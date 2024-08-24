@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultOverlayPositionerProps, type OverlayPositionerProps } from "./overlay-positioner.props"
+import { overlayPositionerProps, type OverlayPositionerProps } from "./overlay-positioner.props"
 import { useOverlayPositioner } from "./overlay-positioner.state"
 
 /**
@@ -10,5 +10,5 @@ import { useOverlayPositioner } from "./overlay-positioner.state"
  */
 export class OverlayPositionerElement extends ElementBuilder<OverlayPositionerProps>(
   useOverlayPositioner,
-  defaultOverlayPositionerProps,
+  overlayPositionerProps,
 ) {}

@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultTooltipContentProps, type TooltipContentProps } from "./tooltip-content.props"
+import { tooltipContentProps, type TooltipContentProps } from "./tooltip-content.props"
 import { useTooltipContent } from "./tooltip-content.state"
 
 /**
@@ -10,5 +10,5 @@ import { useTooltipContent } from "./tooltip-content.state"
  */
 export class TooltipContentElement extends ElementBuilder<TooltipContentProps>(
   useTooltipContent,
-  defaultTooltipContentProps,
+  tooltipContentProps,
 ) {}

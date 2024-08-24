@@ -1,3 +1,5 @@
+import { defineProps } from "@aria-ui/core"
+
 /**
  * @group SelectValue
  * @hidden
@@ -16,6 +18,6 @@ export interface SelectValueProps {
  *
  * @internal
  */
-export const defaultSelectValueProps = Object.freeze({
-  placeholder: "" as string,
-}) satisfies SelectValueProps
+export const selectValueProps = defineProps<SelectValueProps>({
+  placeholder: { default: "" },
+})

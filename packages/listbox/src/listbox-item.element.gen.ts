@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultListboxItemProps, type ListboxItemProps } from "./listbox-item.props"
+import { listboxItemProps, type ListboxItemProps } from "./listbox-item.props"
 import { useListboxItem } from "./listbox-item.state"
 
 /**
@@ -10,5 +10,5 @@ import { useListboxItem } from "./listbox-item.state"
  */
 export class ListboxItemElement extends ElementBuilder<ListboxItemProps>(
   useListboxItem,
-  defaultListboxItemProps,
+  listboxItemProps,
 ) {}

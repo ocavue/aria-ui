@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultPopoverTriggerProps, type PopoverTriggerProps } from "./popover-trigger.props"
+import { popoverTriggerProps, type PopoverTriggerProps } from "./popover-trigger.props"
 import { usePopoverTrigger } from "./popover-trigger.state"
 
 /**
@@ -10,5 +10,5 @@ import { usePopoverTrigger } from "./popover-trigger.state"
  */
 export class PopoverTriggerElement extends ElementBuilder<PopoverTriggerProps>(
   usePopoverTrigger,
-  defaultPopoverTriggerProps,
+  popoverTriggerProps,
 ) {}

@@ -1,9 +1,6 @@
-import { type ItemFilter, defaultItemFilter } from "@aria-ui/collection"
+import { defaultItemFilter, type ItemFilter } from "@aria-ui/collection"
+import { defineProps } from "@aria-ui/core"
 
-/**
- * @group MenuItem
- * @hidden
- */
 export interface MenuItemProps {
   /**
    * The value of the item. Every item must have a unique value in the parent
@@ -35,12 +32,20 @@ export interface MenuItemProps {
   onSelect: VoidFunction | null
 }
 
-/**
- * @hidden
- */
-export const defaultMenuItemProps = Object.freeze({
-  value: "",
-  query: "",
-  filter: defaultItemFilter,
-  onSelect: null,
-}) satisfies MenuItemProps
+export const menuItemProps = defineProps<MenuItemProps>({
+  value: {
+    default: "",
+  },
+
+  query: {
+    default: "",
+  },
+
+  filter: {
+    default: defaultItemFilter,
+  },
+
+  onSelect: {
+    default: null,
+  },
+})

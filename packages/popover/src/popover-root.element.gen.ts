@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultPopoverRootProps, type PopoverRootProps } from "./popover-root.props"
+import { popoverRootProps, type PopoverRootProps } from "./popover-root.props"
 import { usePopoverRoot } from "./popover-root.state"
 
 /**
@@ -10,5 +10,5 @@ import { usePopoverRoot } from "./popover-root.state"
  */
 export class PopoverRootElement extends ElementBuilder<PopoverRootProps>(
   usePopoverRoot,
-  defaultPopoverRootProps,
+  popoverRootProps,
 ) {}

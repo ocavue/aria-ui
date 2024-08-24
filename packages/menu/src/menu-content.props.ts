@@ -1,7 +1,5 @@
-import {
-  defaultPopoverContentProps,
-  type PopoverContentProps,
-} from "@aria-ui/popover"
+import { defineProps } from "@aria-ui/core"
+import { popoverContentProps, type PopoverContentProps } from "@aria-ui/popover"
 
 /**
  * @group MenuContent
@@ -25,7 +23,7 @@ export interface MenuContentProps extends PopoverContentProps {
 /**
  * @hidden
  */
-export const defaultMenuContentProps = Object.freeze({
-  ...defaultPopoverContentProps,
-  onKeydownHandlerAdd: null,
-}) satisfies MenuContentProps
+export const menuContentProps = defineProps<MenuContentProps>({
+  ...popoverContentProps,
+  onKeydownHandlerAdd: { default: null },
+})

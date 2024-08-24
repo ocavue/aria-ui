@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps, type EmptyObject } from "@aria-ui/core"
 
 /**
  * @group TooltipTrigger
@@ -10,6 +10,4 @@ export interface TooltipTriggerProps extends EmptyObject {}
  * @group TooltipTrigger
  * @internal
  */
-export const defaultTooltipTriggerProps = Object.freeze(
-  {},
-) satisfies TooltipTriggerProps
+export const tooltipTriggerProps = defineProps<TooltipTriggerProps>({})

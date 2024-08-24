@@ -1,3 +1,5 @@
+import { defineProps } from "@aria-ui/core"
+
 /**
  * @group PopoverRoot
  * @hidden
@@ -28,8 +30,8 @@ export interface PopoverRootProps {
 /**
  * @hidden
  */
-export const defaultPopoverRootProps = Object.freeze({
-  defaultOpen: false,
-  open: false,
-  onOpenChange: null,
-}) satisfies PopoverRootProps
+export const popoverRootProps = defineProps<PopoverRootProps>({
+  defaultOpen: { default: false },
+  open: { default: false },
+  onOpenChange: { default: null },
+})

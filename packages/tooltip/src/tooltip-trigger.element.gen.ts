@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultTooltipTriggerProps, type TooltipTriggerProps } from "./tooltip-trigger.props"
+import { tooltipTriggerProps, type TooltipTriggerProps } from "./tooltip-trigger.props"
 import { useTooltipTrigger } from "./tooltip-trigger.state"
 
 /**
@@ -10,5 +10,5 @@ import { useTooltipTrigger } from "./tooltip-trigger.state"
  */
 export class TooltipTriggerElement extends ElementBuilder<TooltipTriggerProps>(
   useTooltipTrigger,
-  defaultTooltipTriggerProps,
+  tooltipTriggerProps,
 ) {}

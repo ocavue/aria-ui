@@ -1,6 +1,6 @@
 import { ElementBuilder } from "@aria-ui/core"
 
-import { defaultSelectListProps, type SelectListProps } from "./select-list.props"
+import { selectListProps, type SelectListProps } from "./select-list.props"
 import { useSelectList } from "./select-list.state"
 
 /**
@@ -10,5 +10,5 @@ import { useSelectList } from "./select-list.state"
  */
 export class SelectListElement extends ElementBuilder<SelectListProps>(
   useSelectList,
-  defaultSelectListProps,
+  selectListProps,
 ) {}

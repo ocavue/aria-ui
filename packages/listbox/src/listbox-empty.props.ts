@@ -1,4 +1,4 @@
-import type { EmptyObject } from "@aria-ui/core"
+import { defineProps, type EmptyObject } from "@aria-ui/core"
 
 /**
  * @group ListboxItem
@@ -10,6 +10,4 @@ export interface ListboxEmptyProps extends EmptyObject {}
  * @hidden
  * @internal
  */
-export const defaultListboxEmptyProps = Object.freeze(
-  {},
-) satisfies ListboxEmptyProps
+export const listboxEmptyProps = defineProps<ListboxEmptyProps>({})

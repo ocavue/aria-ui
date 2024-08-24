@@ -10,7 +10,6 @@ async function genRootTypedoc() {
   const rootTypedocPath = path.join(root, "typedoc.json")
   const rootTypedocConfig = CommentJSON.parse(
     await Bun.file(rootTypedocPath).text(),
-    // biome-ignore lint/suspicious/noExplicitAny: allow any
   ) as any
   rootTypedocConfig.entryPoints = files
     .map((filePath) => path.relative(root, filePath))
@@ -29,7 +28,6 @@ async function genRootTsconfig() {
   const rootTsconfigPath = path.join(root, "tsconfig.json")
   const rootTsconfigConfig = CommentJSON.parse(
     await Bun.file(rootTsconfigPath).text(),
-    // biome-ignore lint/suspicious/noExplicitAny: allow any
   ) as any
   rootTsconfigConfig.references = files
     .map((filePath) => path.relative(root, filePath))

@@ -1,7 +1,8 @@
+import { defineProps } from "@aria-ui/core"
 import {
   type OverlayPositionerDataAttributes,
   type OverlayPositionerProps,
-  defaultOverlayPositionerProps,
+  overlayPositionerProps,
 } from "@aria-ui/overlay"
 import type {
   FocusOutsideEvent,
@@ -89,18 +90,18 @@ export interface PopoverContentProps
 /**
  * @hidden
  */
-export const defaultPopoverContentProps = Object.freeze({
-  ...defaultOverlayPositionerProps,
-  hoist: true,
-  flip: true,
-  shift: true,
-  offset: 4,
-  overflowPadding: 4,
-  onEscapeKeyDown: null,
-  onPointerDownOutside: null,
-  onFocusOutside: null,
-  onInteractOutside: null,
-}) satisfies PopoverContentProps
+export const popoverContentProps = defineProps<PopoverContentProps>({
+  ...overlayPositionerProps,
+  hoist: { default: true },
+  flip: { default: true },
+  shift: { default: true },
+  offset: { default: 4 },
+  overflowPadding: { default: 4 },
+  onEscapeKeyDown: { default: null },
+  onPointerDownOutside: { default: null },
+  onFocusOutside: { default: null },
+  onInteractOutside: { default: null },
+})
 
 /**
  * @group PopoverContent
