@@ -173,7 +173,13 @@ export function setupProperties(props: PropDeclarations) {
         continue
       }
 
-      useAttribute(element, attribute, () => toAttribute(signal.get()))
+      useAttribute(element, attribute, () => {
+        const value = signal.get()
+        if (value !== props[property]?.default) {
+          return toAttribute(value)
+        }
+        return null
+      })
     }
   }
 
