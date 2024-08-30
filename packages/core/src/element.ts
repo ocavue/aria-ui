@@ -18,18 +18,20 @@ import { createSignal, type Signal } from "./signals"
  */
 export class BaseElement extends HTMLElement implements ConnectableElement {
   private _connectedCallbacks: Array<() => VoidFunction | void> = []
-  private _disconnectedCallback: VoidFunction[] = []
+  private _disconnectedCallbacks: VoidFunction[] = []
   private _connected = false
 
   /**
    * @hidden
    */
   connectedCallback() {
+    if (this._connected) return
+
     this._connected = true
     for (const callback of this._connectedCallbacks) {
       const dispose = callback()
       if (dispose) {
-        this._disconnectedCallback.push(dispose)
+        this._disconnectedCallbacks.push(dispose)
       }
     }
   }
@@ -38,19 +40,13 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
    * @hidden
    */
   disconnectedCallback() {
+    if (!this._connected) return
+
     this._connected = false
-    for (const callback of this._disconnectedCallback) {
+    for (const callback of this._disconnectedCallbacks) {
       callback()
     }
-    this._disconnectedCallback = []
-  }
-
-  /**
-   * @hidden
-   */
-  adoptedCallback() {
-    this.disconnectedCallback()
-    this.connectedCallback()
+    this._disconnectedCallbacks = []
   }
 
   /**
@@ -63,7 +59,7 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
     }
     const dispose = callback()
     if (dispose) {
-      this._disconnectedCallback.push(dispose)
+      this._disconnectedCallbacks.push(dispose)
     }
   }
 }
