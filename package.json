@@ -22,7 +22,8 @@
     "change": "changeset",
     "website": "pnpm run --filter aria-ui-website dev",
     "ci:version": "changeset version && pnpm install --no-frozen-lockfile && pnpm run fix:biome",
-    "ci:publish": "pnpm run build && changeset publish"
+    "ci:publish": "pnpm run build && changeset publish",
+    "ci:publish:pr": "pnpm run build && pkg-pr-new publish --pnpm ./packages/*"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
@@ -37,6 +38,7 @@
     "comment-json": "4.2.5",
     "eslint": "^9.9.1",
     "lefthook": "1.7.15",
+    "pkg-pr-new": "^0.0.24",
     "playwright": "^1.46.1",
     "prettier": "3.3.3",
     "prettier-plugin-astro": "^0.14.1",
