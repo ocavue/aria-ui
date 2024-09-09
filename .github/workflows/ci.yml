@@ -35,6 +35,10 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      - name: Publish snapshot packages
+        if: ${{ github.event_name == 'pull_request' }}
+        run: pnpm run ci:publish:pr
+
   test:
     runs-on: ubuntu-latest
 
