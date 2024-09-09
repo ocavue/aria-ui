@@ -26,7 +26,6 @@
     "ci:publish:pr": "pnpm run build && pkg-pr-new publish --pnpm ./packages/*"
   },
   "devDependencies": {
-    "pkg-pr-new": "^0.0.24",
     "@biomejs/biome": "1.8.3",
     "@changesets/cli": "2.27.7",
     "@manypkg/get-packages": "2.2.2",
@@ -37,6 +36,7 @@
     "aria-ui-typedoc-plugin": "workspace:*",
     "change-case": "5.4.4",
     "comment-json": "4.2.5",
+    "pkg-pr-new": "^0.0.24",
     "eslint": "^9.9.1",
     "lefthook": "1.7.15",
     "playwright": "^1.46.1",
