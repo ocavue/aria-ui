@@ -35,7 +35,24 @@ export {
   useQuerySelectorAll,
   useStyle,
 } from "./dom"
-export { BaseElement } from "./element"
+export {
+  BaseElement,
+  defineCustomElement,
+  registerCustomElement,
+  type BaseElementConstructor,
+  type CustomElementOptions,
+  type EventEmitter,
+  type SetupOptions,
+} from "./element"
+export { defineEmit } from "./event"
+export type {
+  EventDeclaration,
+  EventDeclarations,
+} from "./event"
+export {
+  type PropDeclaration,
+  type PropDeclarations,
+} from "./prop"
 export { assignProps } from "./props"
 export {
   mapSignals,
@@ -53,20 +70,3 @@ export {
   type SignalValue,
 } from "./signals"
 export type { EmptyObject, KeyDownEventTarget } from "./types"
-export {
-  type PropDeclarations,
-  type PropDeclaration,
-} from "./prop"
-export {
-  type CustomElementOptions,
-  defineEmit,
-  type SetupOptions,
-  type EventEmitter,
-  type BaseElementConstructor,
-  defineCustomElement,
-  registerCustomElement,
-} from "./element-v2"
-export type {
-  EventDeclaration,
-  EventDeclarations,
-} from "./event"
