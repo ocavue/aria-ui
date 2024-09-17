@@ -5,6 +5,9 @@
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "files": ["dist"],
   "scripts": {
     "build": "tsup"

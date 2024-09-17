@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { menuRootProps, type MenuRootProps } from "./menu-root.props"
-import { useMenuRoot } from "./menu-root.state"
+import { useMenuRoot } from "./menu-root.setup"
+import { menuRootEvents, menuRootProps, type MenuRootEvents, type MenuRootProps } from "./menu-root.types"
 
 /**
  * A custom MenuRoot element.
  *
  * @group MenuRoot
  */
-export class MenuRootElement extends ElementBuilder<MenuRootProps>(
-  useMenuRoot,
-  menuRootProps,
-) {}
+export class MenuRootElement extends defineCustomElement<
+  MenuRootProps,
+  MenuRootEvents
+>({
+  props: menuRootProps,
+  events: menuRootEvents,
+  setup: useMenuRoot,
+}) {}

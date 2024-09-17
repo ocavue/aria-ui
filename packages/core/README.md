@@ -18,11 +18,34 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 ## Interfaces
 
+### CustomElementOptions\<Props, Events\>
+
+#### Type Parameters
+
+#### Properties
+
+| Property | Type |
+| --- | --- |
+| `events` | [`EventDeclarations`](README.md#eventdeclarationsevents)\<`Events`\> |
+| `props` | [`PropDeclarations`](README.md#propdeclarationst)\<`Props`\> |
+| `setup` | (`element`: [`BaseElement`](README.md#baseelement), `options`: [`SetupOptions`](README.md#setupoptionsprops-events)\<`Props`, `Events`\>) => `void` |
+
 ### EmptyObject
 
 Represents a strictly empty plain object, the `{}` value.
 
 When you annotate something as the type `{}`, it can be anything except `null` and `undefined`. This means that you cannot use `{}` to represent an empty plain object ([read more](https://stackoverflow.com/questions/47339869/typescript-empty-object-and-any-difference/52193484#52193484)).
+
+### KeyDownEventTarget
+
+An interface thats can be used to register keydown event listeners.
+
+#### Properties
+
+| Property | Type |
+| --- | --- |
+| `addEventListener` | (`type`: `"keydown"`, `listener`: (`event`: `KeyboardEvent`) => `void`) => `void` |
+| `removeEventListener` | (`type`: `"keydown"`, `listener`: (`event`: `KeyboardEvent`) => `void`) => `void` |
 
 ### ReadonlySignal\<T\>
 
@@ -51,6 +74,17 @@ peek(): T
 ```
 
 Get the signal's current value without subscribing.
+
+### SetupOptions\<Props, Events\>
+
+#### Type Parameters
+
+#### Properties
+
+| Property | Type |
+| --- | --- |
+| `emit` | [`EventEmitter`](README.md#eventemitterevents-eventtype)\<`Events`, keyof `Events`\> |
+| `state` | [`SignalState`](README.md#signalstatet)\<`Props`\> |
 
 ### Signal\<T\>
 
@@ -89,6 +123,84 @@ set(value: T): void
 Set the value of the signal.
 
 ## Type Aliases
+
+### BaseElementConstructor()\<Props\>
+
+```ts
+type BaseElementConstructor<Props>: () => BaseElement & Props;
+```
+
+#### Type Parameters
+
+### EventDeclaration
+
+```ts
+type EventDeclaration: object;
+```
+
+Defines options for an event.
+
+#### Type declaration
+
+##### bubbles?
+
+```ts
+optional bubbles: boolean;
+```
+
+Whether the event bubbles.
+
+###### Default
+
+```ts
+false;
+```
+
+##### cancelable?
+
+```ts
+optional cancelable: boolean;
+```
+
+Whether the event is cancelable.
+
+###### Default
+
+```ts
+true;
+```
+
+##### composed?
+
+```ts
+optional composed: boolean;
+```
+
+Whether the event is composed.
+
+###### Default
+
+```ts
+false;
+```
+
+### EventDeclarations\<Events\>
+
+```ts
+type EventDeclarations<Events>: { [EventType in keyof Events]: EventDeclaration };
+```
+
+Map of event types to EventDeclaration options.
+
+#### Type Parameters
+
+### EventEmitter()\<Events, EventType\>
+
+```ts
+type EventEmitter<Events, EventType>: (type: EventType, detail: Events[EventType]["detail"]) => void;
+```
+
+#### Type Parameters
 
 ### PropDeclaration\<T\>
 
@@ -146,23 +258,32 @@ Map of props to PropDeclaration options.
 
 ## Functions
 
-### ElementBuilder()
+### defineCustomElement()
 
 ```ts
-function ElementBuilder<Props>(
-  useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
-  props: PropDeclarations<Props>,
-): () => BaseElement & Props;
+function defineCustomElement<Props, Events>(
+  options: CustomElementOptions<Props, Events>,
+): BaseElementConstructor<Props>;
 ```
 
-Create a custom element class.
+Defines a custom element constructor.
 
-### defineProps()
+### defineEmit()
 
 ```ts
-function defineProps<Props>(
-  props: PropDeclarations<Props>,
-): PropDeclarations<Props>;
+function defineEmit<Events>(
+  element: HTMLElement,
+  events: EventDeclarations<Events>,
+): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void;
+```
+
+### registerCustomElement()
+
+```ts
+function registerCustomElement(
+  name: string,
+  element: CustomElementConstructor,
+): void;
 ```
 
 ## Contexts

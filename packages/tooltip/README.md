@@ -2,15 +2,15 @@
 
 ## TooltipContent
 
-### TooltipContentElement
+### TooltipContentDataAttributes
 
-A custom TooltipContent element.
+#### Properties
 
-#### Constructors
+| Property     | Type                   |
+| ------------ | ---------------------- |
+| `data-state` | `"open"` \| `"closed"` |
 
-```ts
-new TooltipContentElement(): TooltipContentElement
-```
+### TooltipContentProps
 
 #### Properties
 
@@ -33,46 +33,25 @@ new TooltipContentElement(): TooltipContentElement
 | `sameHeight` | `boolean` | Whether to constrain the floating element's height so that it matches the reference element. **Default** `false` |
 | `sameWidth` | `boolean` | Whether to constrain the floating element's width so that it matches the reference element. **Default** `false` |
 | `shift` | `boolean` | Whether the floating element should shift to keep it in view. **Default** `false` |
-| `strategy` | `"absolute"` \| `"fixed"` | The strategy to use for positioning **Default** `"absolute"` |
+| `strategy` | `"fixed"` \| `"absolute"` | The strategy to use for positioning **Default** `"absolute"` |
 | `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top` and `left` (layout) to place the floating element. **Default** `false` |
-
-### TooltipContentDataAttributes
-
-#### Properties
-
-| Property     | Type                   |
-| ------------ | ---------------------- |
-| `data-state` | `"open"` \| `"closed"` |
 
 ## TooltipRoot
 
-### TooltipRootElement
+### TooltipRootEvents
 
-A custom TooltipRoot element.
+#### Properties
 
-#### Constructors
+| Property | Type | Description |
+| --- | --- | --- |
+| `update:open` | `CustomEvent`\<`boolean`\> | Fired when the open state changes. |
 
-```ts
-new TooltipRootElement(): TooltipRootElement
-```
+### TooltipRootProps
 
 #### Properties
 
 | Property | Type | Description |
 | --- | --- | --- |
 | `closeDelay` | `number` | The delay in milliseconds before the tooltip closes. **Default** `300` |
-| `onOpenChange` | `null` \| (`open`: `boolean`) => `void` | Event handler called then the open state changes because of a user interaction. **Default** `null` |
 | `open` | `boolean` | Whether the popover is open. **Default** `false` |
 | `openDelay` | `number` | The delay in milliseconds before the tooltip opens. **Default** `700` |
-
-## TooltipTrigger
-
-### TooltipTriggerElement
-
-A custom TooltipTrigger element.
-
-#### Constructors
-
-```ts
-new TooltipTriggerElement(): TooltipTriggerElement
-```

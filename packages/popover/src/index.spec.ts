@@ -3,21 +3,19 @@ import userEvent from "@testing-library/user-event"
 import { html, render, type TemplateResult } from "lit-html"
 import { describe, expect, it, vi } from "vitest"
 
-import {
-  PopoverContentElement,
-  PopoverRootElement,
-  PopoverTriggerElement,
-} from "./index"
+import type { PopoverRootElement } from "./elements"
+
+import "./index"
 
 describe("Popover", () => {
   it("should render popover", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-popover-root data-testid="root">
-        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
-        <aria-popover-content data-testid="content">Content</aria-popover-content>
-      </aria-popover-root>
+      <aria-ui-popover-root data-testid="root">
+        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+      </aria-ui-popover-root>
     `)
 
     expect(screen.getByTestId("root")).toBeVisible()
@@ -29,10 +27,10 @@ describe("Popover", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-popover-root data-testid="root">
-        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
-        <aria-popover-content data-testid="content">Content</aria-popover-content>
-      </aria-popover-root>
+      <aria-ui-popover-root data-testid="root">
+        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+      </aria-ui-popover-root>
     `)
 
     const trigger = screen.getByTestId("trigger")
@@ -51,10 +49,10 @@ describe("Popover", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-popover-root data-testid="root">
-        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
-        <aria-popover-content data-testid="content">Content</aria-popover-content>
-      </aria-popover-root>
+      <aria-ui-popover-root data-testid="root">
+        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+      </aria-ui-popover-root>
     `)
 
     const root = screen.getByTestId<PopoverRootElement>("root")
@@ -73,16 +71,20 @@ describe("Popover", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-popover-root data-testid="root">
-        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
-        <aria-popover-content data-testid="content">Content</aria-popover-content>
-      </aria-popover-root>
+      <aria-ui-popover-root data-testid="root">
+        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+      </aria-ui-popover-root>
     `)
 
     const root = screen.getByTestId<PopoverRootElement>("root")
 
     const onOpenChange = vi.fn()
-    root.onOpenChange = onOpenChange
+    root.addEventListener("update:open", (e) => {
+      const event = e as CustomEvent<boolean>
+      onOpenChange(event.detail)
+    })
+
     expect(root.open).toBe(false)
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
@@ -101,16 +103,20 @@ describe("Popover", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-popover-root data-testid="root">
-        <aria-popover-trigger data-testid="trigger">Trigger</aria-popover-trigger>
-        <aria-popover-content data-testid="content">Content</aria-popover-content>
-      </aria-popover-root>
+      <aria-ui-popover-root data-testid="root">
+        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+      </aria-ui-popover-root>
     `)
 
     const root = screen.getByTestId<PopoverRootElement>("root")
 
     const onOpenChange = vi.fn()
-    root.onOpenChange = onOpenChange
+    root.addEventListener("update:open", (e) => {
+      const event = e as CustomEvent<boolean>
+      onOpenChange(event.detail)
+    })
+
     expect(root.open).toBe(false)
     expect(onOpenChange).toHaveBeenCalledTimes(0)
 
@@ -125,10 +131,6 @@ describe("Popover", () => {
 })
 
 function setup() {
-  defineCustomElement("aria-popover-root", PopoverRootElement)
-  defineCustomElement("aria-popover-trigger", PopoverTriggerElement)
-  defineCustomElement("aria-popover-content", PopoverContentElement)
-
   const container = document.createElement("div")
   document.body.appendChild(container)
 
@@ -137,9 +139,4 @@ function setup() {
   }
 
   return { render: renderHTML, container, screen: within(container) }
-}
-
-function defineCustomElement(name: string, element: CustomElementConstructor) {
-  if (customElements.get(name)) return
-  customElements.define(name, element)
 }

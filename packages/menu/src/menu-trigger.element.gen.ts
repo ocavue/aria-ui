@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { menuTriggerProps, type MenuTriggerProps } from "./menu-trigger.props"
-import { useMenuTrigger } from "./menu-trigger.state"
+import { useMenuTrigger } from "./menu-trigger.setup"
+import { menuTriggerEvents, menuTriggerProps, type MenuTriggerEvents, type MenuTriggerProps } from "./menu-trigger.types"
 
 /**
  * A custom MenuTrigger element.
  *
  * @group MenuTrigger
  */
-export class MenuTriggerElement extends ElementBuilder<MenuTriggerProps>(
-  useMenuTrigger,
-  menuTriggerProps,
-) {}
+export class MenuTriggerElement extends defineCustomElement<
+  MenuTriggerProps,
+  MenuTriggerEvents
+>({
+  props: menuTriggerProps,
+  events: menuTriggerEvents,
+  setup: useMenuTrigger,
+}) {}

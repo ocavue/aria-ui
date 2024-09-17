@@ -18,9 +18,9 @@ import {
 import { getWindow } from "@zag-js/dom-query"
 
 import type {
-  OverlayPositionerDataAttributes,
   OverlayPositionerProps,
-} from "./overlay-positioner.props"
+  OverlayPositionerDataAttributes,
+} from "./overlay-positioner.types"
 
 export function updatePlacement(
   floating: FloatingElement | null,

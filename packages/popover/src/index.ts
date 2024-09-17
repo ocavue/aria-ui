@@ -1,19 +1,12 @@
-export { PopoverContentElement } from "./popover-content.element.gen"
-export {
-  popoverContentProps,
-  type PopoverContentDataAttributes,
-  type PopoverContentProps,
-} from "./popover-content.props"
-export { usePopoverContent } from "./popover-content.state"
-export { PopoverRootElement } from "./popover-root.element.gen"
-export {
-  popoverRootProps,
-  type PopoverRootProps,
-} from "./popover-root.props"
-export { usePopoverRoot } from "./popover-root.state"
-export { PopoverTriggerElement } from "./popover-trigger.element.gen"
-export {
-  popoverTriggerProps,
-  type PopoverTriggerProps,
-} from "./popover-trigger.props"
-export { usePopoverTrigger } from "./popover-trigger.state"
+import { registerCustomElement } from "@aria-ui/core"
+
+import { PopoverContentElement } from "./popover-content.element.gen"
+import { PopoverRootElement } from "./popover-root.element.gen"
+import { PopoverTriggerElement } from "./popover-trigger.element.gen"
+
+export * from "./popover-content.types"
+export * from "./popover-root.types"
+export * from "./popover-trigger.types"
+registerCustomElement("aria-ui-popover-content", PopoverContentElement)
+registerCustomElement("aria-ui-popover-root", PopoverRootElement)
+registerCustomElement("aria-ui-popover-trigger", PopoverTriggerElement)

@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { overlayAnchorProps, type OverlayAnchorProps } from "./overlay-anchor.props"
-import { useOverlayAnchor } from "./overlay-anchor.state"
+import { useOverlayAnchor } from "./overlay-anchor.setup"
+import { overlayAnchorEvents, overlayAnchorProps, type OverlayAnchorEvents, type OverlayAnchorProps } from "./overlay-anchor.types"
 
 /**
  * A custom OverlayAnchor element.
  *
  * @group OverlayAnchor
  */
-export class OverlayAnchorElement extends ElementBuilder<OverlayAnchorProps>(
-  useOverlayAnchor,
-  overlayAnchorProps,
-) {}
+export class OverlayAnchorElement extends defineCustomElement<
+  OverlayAnchorProps,
+  OverlayAnchorEvents
+>({
+  props: overlayAnchorProps,
+  events: overlayAnchorEvents,
+  setup: useOverlayAnchor,
+}) {}

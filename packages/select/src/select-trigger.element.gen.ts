@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { selectTriggerProps, type SelectTriggerProps } from "./select-trigger.props"
-import { useSelectTrigger } from "./select-trigger.state"
+import { useSelectTrigger } from "./select-trigger.setup"
+import { selectTriggerEvents, selectTriggerProps, type SelectTriggerEvents, type SelectTriggerProps } from "./select-trigger.types"
 
 /**
  * A custom SelectTrigger element.
  *
  * @group SelectTrigger
  */
-export class SelectTriggerElement extends ElementBuilder<SelectTriggerProps>(
-  useSelectTrigger,
-  selectTriggerProps,
-) {}
+export class SelectTriggerElement extends defineCustomElement<
+  SelectTriggerProps,
+  SelectTriggerEvents
+>({
+  props: selectTriggerProps,
+  events: selectTriggerEvents,
+  setup: useSelectTrigger,
+}) {}

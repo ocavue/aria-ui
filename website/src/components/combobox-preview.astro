@@ -1,42 +1,49 @@
-<script src="./combobox-preview.ts"></script>
+<script>
+  import "@aria-ui/popover";
+  import "@aria-ui/combobox";
+</script>
 
-<aui-popover-root>
-  <aui-popover-trigger>
+<aria-ui-popover-root>
+  <aria-ui-popover-trigger>
     <button>Open</button>
-  </aui-popover-trigger>
-  <aui-popover-content placement="bottom" fitViewport="true">
-    <aui-combobox-root>
+  </aria-ui-popover-trigger>
+  <aria-ui-popover-content placement="bottom" fitViewport="true">
+    <aria-ui-combobox-root>
       <input type="text" />
-      <aui-combobox-list>
+      <aria-ui-combobox-list>
         {
           Array.from({ length: 100 }, (_, index) => index).map((index) => {
             const text = `Option ${index + 1}`;
             const value = `option_${index + 1}`;
-            return <aui-combobox-item value={value}>{text}</aui-combobox-item>;
+            return (
+              <aria-ui-combobox-item value={value}>
+                {text}
+              </aria-ui-combobox-item>
+            );
           })
         }
-        <aui-combobox-empty>No option found</aui-combobox-empty>
-      </aui-combobox-list>
-    </aui-combobox-root>
-  </aui-popover-content>
-</aui-popover-root>
+        <aria-ui-combobox-empty>No option found</aria-ui-combobox-empty>
+      </aria-ui-combobox-list>
+    </aria-ui-combobox-root>
+  </aria-ui-popover-content>
+</aria-ui-popover-root>
 
 <style>
-  aui-popover-content {
+  aria-ui-popover-content {
     display: block;
   }
 
-  aui-popover-root {
+  aria-ui-popover-root {
     display: block;
   }
 
-  aui-combobox-content {
+  aria-ui-combobox-content {
     display: flex;
     flex-direction: column;
   }
 
-  aui-combobox-item,
-  aui-combobox-empty {
+  aria-ui-combobox-item,
+  aria-ui-combobox-empty {
     margin: 8px 0px 0px 0px !important;
     display: block;
     position: relative;
@@ -58,7 +65,7 @@
     }
   }
 
-  aui-popover-content:not([data-mounted]) {
+  aria-ui-popover-content:not([data-mounted]) {
     display: none;
   }
 </style>

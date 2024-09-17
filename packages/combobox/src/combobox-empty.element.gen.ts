@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { comboboxEmptyProps, type ComboboxEmptyProps } from "./combobox-empty.props"
-import { useComboboxEmpty } from "./combobox-empty.state"
+import { useComboboxEmpty } from "./combobox-empty.setup"
+import { comboboxEmptyEvents, comboboxEmptyProps, type ComboboxEmptyEvents, type ComboboxEmptyProps } from "./combobox-empty.types"
 
 /**
  * A custom ComboboxEmpty element.
  *
  * @group ComboboxEmpty
  */
-export class ComboboxEmptyElement extends ElementBuilder<ComboboxEmptyProps>(
-  useComboboxEmpty,
-  comboboxEmptyProps,
-) {}
+export class ComboboxEmptyElement extends defineCustomElement<
+  ComboboxEmptyProps,
+  ComboboxEmptyEvents
+>({
+  props: comboboxEmptyProps,
+  events: comboboxEmptyEvents,
+  setup: useComboboxEmpty,
+}) {}

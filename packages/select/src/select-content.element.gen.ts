@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { selectContentProps, type SelectContentProps } from "./select-content.props"
-import { useSelectContent } from "./select-content.state"
+import { useSelectContent } from "./select-content.setup"
+import { selectContentEvents, selectContentProps, type SelectContentEvents, type SelectContentProps } from "./select-content.types"
 
 /**
  * A custom SelectContent element.
  *
  * @group SelectContent
  */
-export class SelectContentElement extends ElementBuilder<SelectContentProps>(
-  useSelectContent,
-  selectContentProps,
-) {}
+export class SelectContentElement extends defineCustomElement<
+  SelectContentProps,
+  SelectContentEvents
+>({
+  props: selectContentProps,
+  events: selectContentEvents,
+  setup: useSelectContent,
+}) {}

@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { selectRootProps, type SelectRootProps } from "./select-root.props"
-import { useSelectRoot } from "./select-root.state"
+import { useSelectRoot } from "./select-root.setup"
+import { selectRootEvents, selectRootProps, type SelectRootEvents, type SelectRootProps } from "./select-root.types"
 
 /**
  * A custom SelectRoot element.
  *
  * @group SelectRoot
  */
-export class SelectRootElement extends ElementBuilder<SelectRootProps>(
-  useSelectRoot,
-  selectRootProps,
-) {}
+export class SelectRootElement extends defineCustomElement<
+  SelectRootProps,
+  SelectRootEvents
+>({
+  props: selectRootProps,
+  events: selectRootEvents,
+  setup: useSelectRoot,
+}) {}

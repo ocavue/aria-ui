@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { listboxItemProps, type ListboxItemProps } from "./listbox-item.props"
-import { useListboxItem } from "./listbox-item.state"
+import { useListboxItem } from "./listbox-item.setup"
+import { listboxItemEvents, listboxItemProps, type ListboxItemEvents, type ListboxItemProps } from "./listbox-item.types"
 
 /**
  * A custom ListboxItem element.
  *
  * @group ListboxItem
  */
-export class ListboxItemElement extends ElementBuilder<ListboxItemProps>(
-  useListboxItem,
-  listboxItemProps,
-) {}
+export class ListboxItemElement extends defineCustomElement<
+  ListboxItemProps,
+  ListboxItemEvents
+>({
+  props: listboxItemProps,
+  events: listboxItemEvents,
+  setup: useListboxItem,
+}) {}

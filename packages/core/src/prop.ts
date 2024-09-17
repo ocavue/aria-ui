@@ -97,12 +97,6 @@ function getToAttribute<T = unknown>(
   }
 }
 
-export function defineProps<Props extends Record<string, any>>(
-  props: PropDeclarations<Props>,
-): PropDeclarations<Props> {
-  return props
-}
-
 export function getAttributeMappings<T extends Record<string, unknown>>(
   declarations: PropDeclarations<T>,
 ) {

@@ -1,21 +1,33 @@
-<div class="example-menu-preview"></div>
-<script src="./menu-preview.ts"></script>
+<script>
+  import "@aria-ui/menu";
+</script>
+
+<aria-ui-menu-root>
+  <aria-ui-menu-trigger>
+    <button>Click me</button>
+  </aria-ui-menu-trigger>
+  <aria-ui-menu-content>
+    <aria-ui-menu-item class="item1">Item 1</aria-ui-menu-item>
+    <aria-ui-menu-item class="item2">Item 2</aria-ui-menu-item>
+    <aria-ui-menu-item class="item3">Item 3</aria-ui-menu-item>
+  </aria-ui-menu-content>
+</aria-ui-menu-root>
 
 <style>
-  aui-menu-content {
+  aria-ui-menu-content {
     display: block;
   }
 
-  aui-menu-root {
+  aria-ui-menu-root {
     display: block;
   }
 
-  aui-menu-trigger {
+  aria-ui-menu-trigger {
     display: flex;
     flex-direction: column;
   }
 
-  aui-menu-item {
+  aria-ui-menu-item {
     display: block;
     position: relative;
     padding-left: 28px;
@@ -26,3 +38,15 @@
     }
   }
 </style>
+
+<script>
+  document.querySelector(".item1")?.addEventListener("select", () => {
+    alert("Item 1 selected");
+  });
+  document.querySelector(".item2")?.addEventListener("select", () => {
+    alert("Item 2 selected");
+  });
+  document.querySelector(".item3")?.addEventListener("select", () => {
+    console.log("Item 3 selected");
+  });
+</script>

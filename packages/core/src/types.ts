@@ -49,3 +49,17 @@ export interface EmptyObject {
   /** @internal */
   [emptyObjectSymbol]?: never
 }
+
+/**
+ * An interface thats can be used to register keydown event listeners.
+ */
+export interface KeyDownEventTarget {
+  addEventListener: (
+    type: "keydown",
+    listener: (event: KeyboardEvent) => void,
+  ) => void
+  removeEventListener: (
+    type: "keydown",
+    listener: (event: KeyboardEvent) => void,
+  ) => void
+}

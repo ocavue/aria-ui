@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { tooltipTriggerProps, type TooltipTriggerProps } from "./tooltip-trigger.props"
-import { useTooltipTrigger } from "./tooltip-trigger.state"
+import { useTooltipTrigger } from "./tooltip-trigger.setup"
+import { tooltipTriggerEvents, tooltipTriggerProps, type TooltipTriggerEvents, type TooltipTriggerProps } from "./tooltip-trigger.types"
 
 /**
  * A custom TooltipTrigger element.
  *
  * @group TooltipTrigger
  */
-export class TooltipTriggerElement extends ElementBuilder<TooltipTriggerProps>(
-  useTooltipTrigger,
-  tooltipTriggerProps,
-) {}
+export class TooltipTriggerElement extends defineCustomElement<
+  TooltipTriggerProps,
+  TooltipTriggerEvents
+>({
+  props: tooltipTriggerProps,
+  events: tooltipTriggerEvents,
+  setup: useTooltipTrigger,
+}) {}

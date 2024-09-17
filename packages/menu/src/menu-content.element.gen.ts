@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { menuContentProps, type MenuContentProps } from "./menu-content.props"
-import { useMenuContent } from "./menu-content.state"
+import { useMenuContent } from "./menu-content.setup"
+import { menuContentEvents, menuContentProps, type MenuContentEvents, type MenuContentProps } from "./menu-content.types"
 
 /**
  * A custom MenuContent element.
  *
  * @group MenuContent
  */
-export class MenuContentElement extends ElementBuilder<MenuContentProps>(
-  useMenuContent,
-  menuContentProps,
-) {}
+export class MenuContentElement extends defineCustomElement<
+  MenuContentProps,
+  MenuContentEvents
+>({
+  props: menuContentProps,
+  events: menuContentEvents,
+  setup: useMenuContent,
+}) {}

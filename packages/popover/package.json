@@ -5,6 +5,10 @@
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./elements": "./src/elements.ts"
+  },
   "files": ["dist"],
   "scripts": {
     "test": "vitest",

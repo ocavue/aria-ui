@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { overlayPositionerProps, type OverlayPositionerProps } from "./overlay-positioner.props"
-import { useOverlayPositioner } from "./overlay-positioner.state"
+import { useOverlayPositioner } from "./overlay-positioner.setup"
+import { overlayPositionerEvents, overlayPositionerProps, type OverlayPositionerEvents, type OverlayPositionerProps } from "./overlay-positioner.types"
 
 /**
  * A custom OverlayPositioner element.
  *
  * @group OverlayPositioner
  */
-export class OverlayPositionerElement extends ElementBuilder<OverlayPositionerProps>(
-  useOverlayPositioner,
-  overlayPositionerProps,
-) {}
+export class OverlayPositionerElement extends defineCustomElement<
+  OverlayPositionerProps,
+  OverlayPositionerEvents
+>({
+  props: overlayPositionerProps,
+  events: overlayPositionerEvents,
+  setup: useOverlayPositioner,
+}) {}

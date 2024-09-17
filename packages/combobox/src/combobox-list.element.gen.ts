@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { comboboxListProps, type ComboboxListProps } from "./combobox-list.props"
-import { useComboboxList } from "./combobox-list.state"
+import { useComboboxList } from "./combobox-list.setup"
+import { comboboxListEvents, comboboxListProps, type ComboboxListEvents, type ComboboxListProps } from "./combobox-list.types"
 
 /**
  * A custom ComboboxList element.
  *
  * @group ComboboxList
  */
-export class ComboboxListElement extends ElementBuilder<ComboboxListProps>(
-  useComboboxList,
-  comboboxListProps,
-) {}
+export class ComboboxListElement extends defineCustomElement<
+  ComboboxListProps,
+  ComboboxListEvents
+>({
+  props: comboboxListProps,
+  events: comboboxListEvents,
+  setup: useComboboxList,
+}) {}

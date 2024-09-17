@@ -1,14 +1,18 @@
-import { ElementBuilder } from "@aria-ui/core"
+import { defineCustomElement } from "@aria-ui/core"
 
-import { tooltipContentProps, type TooltipContentProps } from "./tooltip-content.props"
-import { useTooltipContent } from "./tooltip-content.state"
+import { useTooltipContent } from "./tooltip-content.setup"
+import { tooltipContentEvents, tooltipContentProps, type TooltipContentEvents, type TooltipContentProps } from "./tooltip-content.types"
 
 /**
  * A custom TooltipContent element.
  *
  * @group TooltipContent
  */
-export class TooltipContentElement extends ElementBuilder<TooltipContentProps>(
-  useTooltipContent,
-  tooltipContentProps,
-) {}
+export class TooltipContentElement extends defineCustomElement<
+  TooltipContentProps,
+  TooltipContentEvents
+>({
+  props: tooltipContentProps,
+  events: tooltipContentEvents,
+  setup: useTooltipContent,
+}) {}
