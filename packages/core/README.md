@@ -286,6 +286,8 @@ function registerCustomElement(
 ): void;
 ```
 
+Adds the given custom element to the custom element registry.
+
 ## Contexts
 
 ### Context\<T\>
