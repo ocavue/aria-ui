@@ -69,4 +69,4 @@ export {
   type Signal,
   type SignalValue,
 } from "./signals"
-export type { EmptyObject, KeyDownEventTarget } from "./types"
+export type { EmptyObject, TypedEventTarget } from "./types"

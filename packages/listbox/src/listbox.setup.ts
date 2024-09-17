@@ -7,10 +7,10 @@ import {
   useEventListener,
   useQuerySelectorAll,
   type ConnectableElement,
-  type KeyDownEventTarget,
   type ReadonlySignal,
   type SetupOptions,
   type Signal,
+  type TypedEventTarget,
 } from "@aria-ui/core"
 
 import {
@@ -140,7 +140,7 @@ export function useCollectionKeydownHandler(
   }
 
   useEffect(element, () => {
-    const target: KeyDownEventTarget = eventTarget.get() || element
+    const target: TypedEventTarget<"keydown"> = eventTarget.get() || element
     target.addEventListener("keydown", keydownHandler)
     return () => target.removeEventListener("keydown", keydownHandler)
   })

@@ -1,7 +1,7 @@
 import type {
   EventDeclarations,
-  KeyDownEventTarget,
   PropDeclarations,
+  TypedEventTarget,
 } from "@aria-ui/core"
 import {
   popoverContentEvents,
@@ -19,7 +19,7 @@ export interface MenuContentProps extends PopoverContentProps {
    *
    * @default null
    */
-  eventTarget: HTMLElement | KeyDownEventTarget | null
+  eventTarget: HTMLElement | TypedEventTarget<"keydown"> | null
 }
 
 /**

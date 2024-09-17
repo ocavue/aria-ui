@@ -12,7 +12,7 @@
 | `autoUpdate` | `boolean` \| `AutoUpdateOptions` | Options to activate auto-update listeners **See** https://floating-ui.com/docs/autoUpdate **Default** `true` |
 | `boundary` | `Boundary` | **See** https://floating-ui.com/docs/detectoverflow **Default** `'clippingAncestors'` |
 | `elementContext` | `ElementContext` | **See** https://floating-ui.com/docs/detectoverflow **Default** `'floating'` |
-| `eventTarget` | `null` \| `HTMLElement` \| [`KeyDownEventTarget`](../core/README.md#keydowneventtarget) | By default, the menu element will listen for keydown events. You can pass a different element to listen for keydown events. **Default** `null` |
+| `eventTarget` | `null` \| `HTMLElement` \| [`TypedEventTarget`](../core/README.md#typedeventtargeteventtype)\<`"keydown"`\> | By default, the menu element will listen for keydown events. You can pass a different element to listen for keydown events. **Default** `null` |
 | `fitViewport` | `boolean` | Whether to constrain the floating element's width and height to not exceed the viewport. **Default** `false` |
 | `flip` | `boolean` \| `Placement`[] | Whether to flip the `placement` in order to keep it in view when the preferred placement(s) will overflow the clipping boundary. You can also provide an array of placements to try sequentially if the preferred `placement` does not fit. **Default** `true` |
 | `hide` | `boolean` | Whether to hide the floating element when the reference element or the floating element is fully clipped. **Default** `false` |

@@ -1,8 +1,8 @@
 import { defaultItemFilter, type ItemFilter } from "@aria-ui/collection"
 import type {
   EventDeclarations,
-  KeyDownEventTarget,
   PropDeclarations,
+  TypedEventTarget,
 } from "@aria-ui/core"
 
 /**
@@ -56,7 +56,7 @@ export interface ListboxProps {
    *
    * @default null
    */
-  eventTarget: HTMLElement | KeyDownEventTarget | null
+  eventTarget: HTMLElement | TypedEventTarget<"keydown"> | null
 }
 
 /**

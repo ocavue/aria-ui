@@ -51,15 +51,15 @@ export interface EmptyObject {
 }
 
 /**
- * An interface thats can be used to register keydown event listeners.
+ * An interface thats can be used to register event listeners.
  */
-export interface KeyDownEventTarget {
+export interface TypedEventTarget<EventType extends keyof DocumentEventMap> {
   addEventListener: (
-    type: "keydown",
-    listener: (event: KeyboardEvent) => void,
+    type: EventType,
+    listener: (event: DocumentEventMap[EventType]) => void,
   ) => void
   removeEventListener: (
-    type: "keydown",
-    listener: (event: KeyboardEvent) => void,
+    type: EventType,
+    listener: (event: DocumentEventMap[EventType]) => void,
   ) => void
 }

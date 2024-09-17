@@ -36,17 +36,6 @@ Represents a strictly empty plain object, the `{}` value.
 
 When you annotate something as the type `{}`, it can be anything except `null` and `undefined`. This means that you cannot use `{}` to represent an empty plain object ([read more](https://stackoverflow.com/questions/47339869/typescript-empty-object-and-any-difference/52193484#52193484)).
 
-### KeyDownEventTarget
-
-An interface thats can be used to register keydown event listeners.
-
-#### Properties
-
-| Property | Type |
-| --- | --- |
-| `addEventListener` | (`type`: `"keydown"`, `listener`: (`event`: `KeyboardEvent`) => `void`) => `void` |
-| `removeEventListener` | (`type`: `"keydown"`, `listener`: (`event`: `KeyboardEvent`) => `void`) => `void` |
-
 ### ReadonlySignal\<T\>
 
 A read-only signal that holds a reactive value.
@@ -121,6 +110,19 @@ set(value: T): void
 ```
 
 Set the value of the signal.
+
+### TypedEventTarget\<EventType\>
+
+An interface thats can be used to register event listeners.
+
+#### Type Parameters
+
+#### Properties
+
+| Property | Type |
+| --- | --- |
+| `addEventListener` | (`type`: `EventType`, `listener`: (`event`: `DocumentEventMap`\[`EventType`\]) => `void`) => `void` |
+| `removeEventListener` | (`type`: `EventType`, `listener`: (`event`: `DocumentEventMap`\[`EventType`\]) => `void`) => `void` |
 
 ## Type Aliases
 

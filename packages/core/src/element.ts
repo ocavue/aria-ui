@@ -1,9 +1,7 @@
+import mapValues from "just-map-values"
 import { HTMLElement } from "server-dom-shim"
 
 import type { ConnectableElement } from "./connectable-element"
-
-import mapValues from "just-map-values"
-
 import { defineEmit, type EventDeclarations } from "./event"
 import {
   type PropDeclaration,
