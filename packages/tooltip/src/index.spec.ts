@@ -2,6 +2,7 @@ import { within } from "@testing-library/dom"
 import userEvent from "@testing-library/user-event"
 import { html, render, type TemplateResult } from "lit-html"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+
 import type { TooltipRootElement, TooltipTriggerElement } from "./elements"
 import "./index"
 

@@ -8,17 +8,21 @@ import {
 
 /**
  * @group SelectList
- * @internal
  */
 export interface SelectListProps extends ListboxProps {}
 
 /**
- * @group SelectList
  * @internal
  */
 export const selectListProps: PropDeclarations<SelectListProps> = listboxProps
 
+/**
+ * @group SelectList
+ */
 export interface SelectListEvents extends ListboxEvents {}
 
+/**
+ * @internal
+ */
 export const selectListEvents: EventDeclarations<SelectListEvents> =
   listboxEvents

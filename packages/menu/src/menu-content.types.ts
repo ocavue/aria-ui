@@ -12,7 +12,6 @@ import {
 
 /**
  * @group MenuContent
- * @hidden
  */
 export interface MenuContentProps extends PopoverContentProps {
   /**
@@ -31,7 +30,13 @@ export const menuContentProps: PropDeclarations<MenuContentProps> = {
   eventTarget: { default: null },
 }
 
+/**
+ * @group MenuContent
+ */
 export type MenuContentEvents = PopoverContentEvents
 
+/**
+ * @hidden
+ */
 export const menuContentEvents: EventDeclarations<MenuContentEvents> =
   popoverContentEvents

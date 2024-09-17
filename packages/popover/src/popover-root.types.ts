@@ -2,7 +2,6 @@ import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group PopoverRoot
- * @hidden
  */
 export interface PopoverRootProps {
   /**
@@ -28,10 +27,16 @@ export const popoverRootProps: PropDeclarations<PopoverRootProps> = {
   open: { default: false },
 }
 
+/**
+ * @group PopoverRoot
+ */
 export interface PopoverRootEvents {
   "update:open": CustomEvent<boolean>
 }
 
+/**
+ * @group PopoverContent
+ */
 export const popoverRootEvents: EventDeclarations<PopoverRootEvents> = {
   "update:open": {},
 }

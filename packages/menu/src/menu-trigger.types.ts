@@ -17,7 +17,13 @@ export type MenuTriggerProps = PopoverTriggerProps
 export const menuTriggerProps: PropDeclarations<MenuTriggerProps> =
   popoverTriggerProps
 
+/**
+ * @internal
+ */
 export interface MenuTriggerEvents extends PopoverTriggerEvents {}
 
+/**
+ * @internal
+ */
 export const menuTriggerEvents: EventDeclarations<MenuTriggerEvents> =
   popoverTriggerEvents

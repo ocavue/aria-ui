@@ -8,19 +8,22 @@ import {
 
 /**
  * @group SelectItem
- * @hidden
  */
 export interface SelectItemProps extends ListboxItemProps {}
 
 /**
- * @group SelectList
- *
  * @internal
  */
 export const selectItemProps: PropDeclarations<SelectItemProps> =
   listboxItemProps
 
+/**
+ * @internal
+ */
 export interface SelectItemEvents extends ListboxItemEvents {}
 
+/**
+ * @internal
+ */
 export const selectItemEvents: EventDeclarations<SelectItemEvents> =
   listboxItemEvents

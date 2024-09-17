@@ -54,6 +54,9 @@ export interface PopoverContentProps
   overflowPadding: OverlayPositionerProps["overflowPadding"]
 }
 
+/**
+ * @hidden
+ */
 export const popoverContentProps: PropDeclarations<PopoverContentProps> = {
   ...overlayPositionerProps,
   hoist: { default: true },
@@ -65,6 +68,9 @@ export const popoverContentProps: PropDeclarations<PopoverContentProps> = {
 
 export type EscapeKeyDownEvent = CustomEvent<{ originalEvent: KeyboardEvent }>
 
+/**
+ * @group PopoverContent
+ */
 export interface PopoverContentEvents {
   /**
    * An event fired when the escape key is pressed.
@@ -100,6 +106,9 @@ export interface PopoverContentEvents {
   interactOutside: InteractOutsideEvent
 }
 
+/**
+ * @hidden
+ */
 export const popoverContentEvents: EventDeclarations<PopoverContentEvents> = {
   escapeKeyDown: {},
   pointerDownOutside: {},
