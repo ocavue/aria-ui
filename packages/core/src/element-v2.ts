@@ -99,11 +99,16 @@ function getSignalsFromProps(props: PropDeclarations<any>): SignalState<any> {
   return mapValues(props, getSignalFromProp)
 }
 
+/**
+ * Adds the given custom element to the custom element registry.
+ */
 export function registerCustomElement(
   name: string,
   element: CustomElementConstructor,
 ) {
-  if (customElements.get(name)) return
+  if (typeof customElements === "undefined" || customElements.get(name)) {
+    return
+  }
   customElements.define(name, element)
 }
 
