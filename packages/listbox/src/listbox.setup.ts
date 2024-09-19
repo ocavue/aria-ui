@@ -16,6 +16,8 @@ import {
 import {
   availableValueSetContext,
   focusedValueContext,
+  listboxEmitterContext,
+  listboxItemEmitterContext,
   pointerMovingContext,
   selectedValueContext,
 } from "./context"
@@ -37,6 +39,14 @@ export function useListbox(
   focusedValueContext.provide(element, focusedValue)
   pointerMovingContext.provide(element, useMouseMoving(element))
 
+  const listboxEmitter = createSignal(() => {
+    emit("update:value", state.value.get())
+  })
+  listboxEmitterContext.provide(element, listboxEmitter)
+
+  const listboxItemEmitter = createSignal<VoidFunction | null>(null)
+  listboxItemEmitterContext.provide(element, listboxItemEmitter)
+
   const items = useQuerySelectorAll<HTMLElement>(element, '[role="option"]')
   const collection = createComputed(() => {
     return new Collection(Array.from(items.get()))
@@ -54,11 +64,6 @@ export function useListbox(
       state.query.get()
       focusedValue.set(firstValue.get() || "")
     }
-  })
-
-  useEffect(element, () => {
-    const selected: string = state.value.get()
-    emit("update:value", selected)
   })
 
   useEffect(element, () => {
@@ -83,9 +88,9 @@ export function useListbox(
     element,
     collection,
     focusedValue,
-    state.value,
     state.eventTarget,
     available,
+    listboxItemEmitter,
   )
 }
 
@@ -96,9 +101,9 @@ export function useCollectionKeydownHandler(
   element: ConnectableElement,
   collection: ReadonlySignal<Collection>,
   focusedValue: Signal<string>,
-  selectedValue: Signal<string>,
   eventTarget: Signal<ListboxProps["eventTarget"]>,
   available: ReadonlySignal<boolean>,
+  listboxItemEmitter: Signal<VoidFunction | null>,
 ) {
   const scrollFocusedItemIntoView = () => {
     const target = collection.peek().getElement(focusedValue.get())
@@ -128,9 +133,13 @@ export function useCollectionKeydownHandler(
         scrollFocusedItemIntoView()
         break
       case "Enter":
-        if (focusedValue.get()) {
-          selectedValue.set(focusedValue.get())
+        {
+          const value = focusedValue.get()
+          if (value) {
+            listboxItemEmitter.get()?.()
+          }
         }
+
         break
       default:
         return

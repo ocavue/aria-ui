@@ -16,3 +16,13 @@ export const pointerMovingContext = createContext(
   "Listbox/pointerMoving",
   false,
 )
+
+export const listboxEmitterContext = createContext<VoidFunction | null>(
+  "Listbox/listboxEmitter",
+  null,
+)
+
+export const listboxItemEmitterContext = createContext<VoidFunction | null>(
+  "Listbox/listboxItemEmitter",
+  null,
+)
