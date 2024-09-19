@@ -27,9 +27,16 @@ export const listboxItemProps: PropDeclarations<ListboxItemProps> = {
 /**
  * @hidden
  */
-export interface ListboxItemEvents extends EmptyObject {}
+export interface ListboxItemEvents extends EmptyObject {
+  /**
+   * Emitted when the item is selected.
+   */
+  select: CustomEvent<void>
+}
 
 /**
  * @hidden
  */
-export const listboxItemEvents: EventDeclarations<ListboxItemEvents> = {}
+export const listboxItemEvents: EventDeclarations<ListboxItemEvents> = {
+  select: {},
+}
