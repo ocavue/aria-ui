@@ -164,6 +164,11 @@ export function useMouseMoving(element: ConnectableElement) {
     pointerMoving.set(true)
   })
 
+  useEventListener(element, "pointerenter", () => {
+    lastMoveMoveTime = Date.now()
+    pointerMoving.set(true)
+  })
+
   // A simple debouncing implementation
   useEffect(element, () => {
     if (!pointerMoving.get()) {
