@@ -6,7 +6,7 @@ import {
   useEffect,
   useEventListener,
   type ConnectableElement,
-  type SetupOptions,
+  type SignalState,
 } from "@aria-ui/core"
 import { usePresence } from "@aria-ui/presence"
 
@@ -16,7 +16,7 @@ import {
   pointerMovingContext,
   selectedValueContext,
 } from "./context"
-import type { ListboxItemEvents, ListboxItemProps } from "./listbox-item.types"
+import type { ListboxItemProps } from "./listbox-item.types"
 
 /**
  * @group ListboxItem
@@ -24,7 +24,7 @@ import type { ListboxItemEvents, ListboxItemProps } from "./listbox-item.types"
  */
 export function useListboxItem(
   element: ConnectableElement,
-  { state }: SetupOptions<ListboxItemProps, ListboxItemEvents>,
+  { state }: { state: SignalState<ListboxItemProps> },
 ): void {
   const selectedValue = selectedValueContext.consume(element)
   const focusedValue = focusedValueContext.consume(element)
