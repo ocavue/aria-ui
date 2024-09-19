@@ -1,15 +1,10 @@
-import mapValues from "just-map-values"
 import { HTMLElement } from "server-dom-shim"
 
 import type { ConnectableElement } from "./connectable-element"
 import { defineEmit, type EventDeclarations } from "./event"
-import {
-  type PropDeclaration,
-  type PropDeclarations,
-  setupProperties,
-} from "./prop"
-import type { SignalState } from "./signal-state"
-import { createSignal, type Signal } from "./signals"
+import { type PropDeclarations, setupProperties } from "./prop"
+import { getStateFromProps, type SignalState } from "./signal-state"
+import type { Signal } from "./signals"
 
 /**
  * Base class for all custom elements in Aria UI. It implements the
@@ -114,7 +109,7 @@ export function defineCustomElement<
 
     constructor() {
       super()
-      this._s = getSignalsFromProps(props)
+      this._s = getStateFromProps(props)
       const emit = defineEmit(this, events)
       setup(this, { state: this._s, emit })
       useProperties(this, this._s)
@@ -144,14 +139,6 @@ function defineGetterSetter<Props extends object>(
       },
     })
   }
-}
-
-function getSignalFromProp(prop: PropDeclaration<unknown>): Signal<unknown> {
-  return createSignal(prop.default)
-}
-
-function getSignalsFromProps(props: PropDeclarations<any>): SignalState<any> {
-  return mapValues(props, getSignalFromProp)
 }
 
 /**

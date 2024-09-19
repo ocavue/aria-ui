@@ -55,6 +55,7 @@ export {
 } from "./prop"
 export { assignProps } from "./props"
 export {
+  getStateFromProps,
   mapSignals,
   mapValues,
   type SignalState,

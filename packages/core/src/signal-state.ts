@@ -1,3 +1,4 @@
+import type { PropDeclarations } from "./prop"
 import { createSignal, type Signal } from "./signals"
 import { getObjectEntries } from "./types"
 
@@ -38,4 +39,14 @@ export function mapSignals<T extends object>(values: T): SignalState<T> {
     signals[key] = createSignal(value)
   }
   return signals
+}
+
+export function getStateFromProps<Props extends object>(
+  props: PropDeclarations<Props>,
+): SignalState<Props> {
+  const state = {} as SignalState<Props>
+  for (const [key, prop] of getObjectEntries(props)) {
+    state[key] = createSignal(prop.default)
+  }
+  return state
 }
