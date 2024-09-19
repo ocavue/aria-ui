@@ -39,8 +39,8 @@
         "import": "./dist/index.js"
       },
       "./elements": {
-        "types": "./dist/elements/index.d.ts",
-        "import": "./dist/elements/index.js"
+        "types": "./dist/elements.d.ts",
+        "import": "./dist/elements.js"
       }
     }
   }
