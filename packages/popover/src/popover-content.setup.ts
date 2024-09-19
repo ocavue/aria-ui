@@ -38,7 +38,7 @@ export function usePopoverContent(
   element: ConnectableElement,
   { state, emit }: SetupOptions<PopoverContentProps, PopoverContentEvents>,
 ): void {
-  useOverlayPositioner(element, { state })
+  useOverlayPositioner(element, { state, emit: () => void 0 })
 
   const open = openContext.consume(element)
   const onOpenChange = onOpenChangeContext.consume(element)

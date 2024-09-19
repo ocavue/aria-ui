@@ -80,7 +80,10 @@ export interface SetupOptions<
 export type EventEmitter<
   Events extends { [EventType in keyof Events]: CustomEvent },
   EventType extends keyof Events = keyof Events,
-> = (type: EventType, detail: Events[EventType]["detail"]) => void
+> = (
+  type: EventType extends string ? EventType : never,
+  detail: EventType extends string ? Events[EventType]["detail"] : never,
+) => void
 
 export type BaseElementConstructor<
   Props extends { [PropName in keyof Props]: unknown },
