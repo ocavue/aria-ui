@@ -3,12 +3,16 @@ import {
   useAnimationFrame,
   type ConnectableElement,
   type ReadonlySignal,
+  type SetupOptions,
   type SignalState,
 } from "@aria-ui/core"
 import type { ReferenceElement } from "@floating-ui/dom"
 
 import { referenceContext } from "./contexts"
-import type { OverlayPositionerProps } from "./overlay-positioner.types"
+import type {
+  OverlayPositionerEvents,
+  OverlayPositionerProps,
+} from "./overlay-positioner.types"
 import { updatePlacement } from "./positioning"
 
 /**
@@ -17,7 +21,7 @@ import { updatePlacement } from "./positioning"
  */
 export function useOverlayPositioner(
   element: ConnectableElement,
-  { state }: { state: SignalState<OverlayPositionerProps> },
+  { state }: SetupOptions<OverlayPositionerProps, OverlayPositionerEvents>,
 ): void {
   const reference = referenceContext.consume(element)
   useOverlayPositionerState(element, state, { reference })

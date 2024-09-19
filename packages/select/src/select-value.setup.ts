@@ -1,11 +1,11 @@
 import {
   useEffect,
   type ConnectableElement,
-  type SignalState,
+  type SetupOptions,
 } from "@aria-ui/core"
 
 import { selectedValueContext } from "./select-root.context"
-import type { SelectValueProps } from "./select-value.types"
+import type { SelectValueEvents, SelectValueProps } from "./select-value.types"
 
 /**
  * @group SelectValue
@@ -13,7 +13,7 @@ import type { SelectValueProps } from "./select-value.types"
  */
 export function useSelectValue(
   element: ConnectableElement,
-  { state }: { state: SignalState<SelectValueProps> },
+  { state }: SetupOptions<SelectValueProps, SelectValueEvents>,
 ): void {
   const selectedValue = selectedValueContext.consume(element)
 

@@ -25,7 +25,7 @@ import { idContext, openContext } from "./tooltip.context"
  */
 export function useTooltipContent(
   element: ConnectableElement,
-  { state }: SetupOptions<TooltipContentProps, TooltipContentEvents>,
+  { state, emit }: SetupOptions<TooltipContentProps, TooltipContentEvents>,
 ): void {
   const open = openContext.consume(element)
 
@@ -40,7 +40,7 @@ export function useTooltipContent(
     hoist.set(visible.get() ? state.hoist.get() : false)
   })
 
-  useOverlayPositioner(element, { state: { ...state, hoist } })
+  useOverlayPositioner(element, { state: { ...state, hoist }, emit })
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
   useAttribute(element, "id", () => id.get() || undefined)
