@@ -1,8 +1,8 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import { PopoverContentElement } from "./popover-content.element.gen"
-import { PopoverRootElement } from "./popover-root.element.gen"
-import { PopoverTriggerElement } from "./popover-trigger.element.gen"
+import { PopoverContentElement } from "./elements"
+import { PopoverRootElement } from "./elements"
+import { PopoverTriggerElement } from "./elements"
 
 export * from "./popover-content.types"
 export * from "./popover-root.types"

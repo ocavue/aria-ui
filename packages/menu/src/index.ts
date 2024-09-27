@@ -1,9 +1,9 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import { MenuContentElement } from "./menu-content.element.gen"
-import { MenuItemElement } from "./menu-item.element.gen"
-import { MenuRootElement } from "./menu-root.element.gen"
-import { MenuTriggerElement } from "./menu-trigger.element.gen"
+import { MenuContentElement } from "./elements"
+import { MenuItemElement } from "./elements"
+import { MenuRootElement } from "./elements"
+import { MenuTriggerElement } from "./elements"
 
 export * from "./menu-content.types"
 export * from "./menu-item.types"

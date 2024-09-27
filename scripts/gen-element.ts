@@ -34,7 +34,6 @@ async function main() {
     assert(components)
     const lines = [
       `import { registerCustomElement } from "@aria-ui/core"`,
-      `import { defineCustomElement } from "@aria-ui/core"`,
       "",
       ...components.map(
         (c) => `import { ${c.pascal}Element } from "./elements"`,
@@ -54,6 +53,8 @@ async function main() {
   for (const [dirPath, components] of Object.entries(groupedComponents)) {
     assert(components)
     const lines = [
+      `import { defineCustomElement } from "@aria-ui/core"`,
+      "",
       ...components.flatMap((c) => [
         `import { use${c.pascal} } from "./${c.kebab}.setup"`,
         `import { ${c.camel}Events, ${c.camel}Props, type ${c.pascal}Events, type ${c.pascal}Props } from "./${c.kebab}.types"`,
@@ -71,7 +72,7 @@ async function main() {
   }
 
   for (const c of components) {
-    const code = formatElementCode(c.componentName)
+    const code = "/* TODO: REMOVE THIS FILE */ export {};"
     await Bun.write(path.join(c.dirPath, `${c.kebab}.element.gen.ts`), code)
   }
 }

@@ -1,8 +1,8 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import { OverlayAnchorElement } from "./overlay-anchor.element.gen"
-import { OverlayPositionerElement } from "./overlay-positioner.element.gen"
-import { OverlayRootElement } from "./overlay-root.element.gen"
+import { OverlayAnchorElement } from "./elements"
+import { OverlayPositionerElement } from "./elements"
+import { OverlayRootElement } from "./elements"
 
 export * from "./overlay-anchor.types"
 export * from "./overlay-positioner.types"
