@@ -1,5 +1,6 @@
 import "./root"
 import path from "node:path"
+import assert from "node:assert"
 
 import { camelCase, kebabCase, pascalCase } from "change-case"
 
@@ -7,50 +8,69 @@ import { listGitFiles } from "./list-git-files"
 
 async function main() {
   const filePaths = await listGitFiles()
-  const exportMap: Record<string, Array<[number, string]>> = {}
 
-  for (const filePath of filePaths) {
-    const suffix = ".setup.ts"
+  const components = filePaths
+    .filter((filePath) => filePath.endsWith(".setup.ts"))
+    .map((filePath) => {
+      const suffix = ".setup.ts"
+      const componentName = filePath.slice(0, -suffix.length).split("/").pop()
+      assert(componentName)
 
-    if (!filePath.endsWith(suffix)) {
-      continue
-    }
+      const kebab = kebabCase(componentName)
+      const pascal = pascalCase(componentName)
+      const camel = camelCase(componentName)
 
-    const name = filePath.slice(0, -suffix.length).split("/").pop()
+      const dirPath = path.dirname(filePath)
 
-    if (!name) {
-      continue
-    }
+      return { dirPath, componentName, kebab, pascal, camel }
+    })
 
-    const dirPath = path.dirname(filePath)
-    const elementFilePath = path.join(dirPath, `${name}.element.gen.ts`)
+  const groupedComponents = Object.groupBy(
+    components,
+    (component) => component.dirPath,
+  )
 
-    const elementCode = updateElementCode(name)
-    await Bun.write(elementFilePath, elementCode)
-
-    const indexPath = path.join(dirPath, "index.ts")
-    const indexLines = updateIndexCode(name)
-    exportMap[indexPath] = (
-      exportMap[indexPath] || [
-        [0, "import { registerCustomElement } from '@aria-ui/core';"],
-      ]
-    ).concat(indexLines)
-
-    const elementsPath = path.join(dirPath, "elements.ts")
-    const elementsCode = updateElementsCode(name)
-    exportMap[elementsPath] = (exportMap[elementsPath] || []).concat(
-      elementsCode,
-    )
+  for (const [dirPath, components] of Object.entries(groupedComponents)) {
+    assert(components)
+    const lines = [
+      `import { registerCustomElement } from "@aria-ui/core"`,
+      "",
+      ...components.map(
+        (c) => `import { ${c.pascal}Element } from "./${c.kebab}.element.gen"`,
+      ),
+      "",
+      ...components.map((c) => `export * from "./${c.kebab}.types"`),
+      "",
+      ...components.map(
+        (c) =>
+          `registerCustomElement("aria-ui-${c.kebab}", ${c.pascal}Element)`,
+      ),
+      "",
+    ]
+    await Bun.write(path.join(dirPath, "index.ts"), lines.join("\n"))
   }
 
-  for (const [filePath, lines] of Object.entries(exportMap)) {
-    const sortedLines = lines.sort((a, b) => a[0] - b[0])
-    const code = sortedLines.map((line) => line[1]).join("\n")
-    await Bun.write(filePath, code)
+  for (const [dirPath, components] of Object.entries(groupedComponents)) {
+    assert(components)
+    const lines = [
+      ...components.flatMap((c) => [
+        `export * from "./${c.kebab}.types"`,
+        `export * from "./${c.kebab}.setup"`,
+        `export { ${c.pascal}Element } from "./${c.kebab}.element.gen"`,
+        "",
+      ]),
+      "",
+    ]
+    await Bun.write(path.join(dirPath, "elements.ts"), lines.join("\n"))
+  }
+
+  for (const c of components) {
+    const code = formatElementCode(c.componentName)
+    await Bun.write(path.join(c.dirPath, `${c.kebab}.element.gen.ts`), code)
   }
 }
 
-function updateElementCode(name: string) {
+function formatElementCode(name: string) {
   const kebab = kebabCase(name)
   const pascal = pascalCase(name)
   const camel = camelCase(name)
@@ -77,28 +97,6 @@ export class ${pascal}Element extends defineCustomElement<
 `.trim()
 
   return `${code}\n`
-}
-
-function updateIndexCode(name: string): Array<[number, string]> {
-  const kebab = kebabCase(name)
-  const pascal = pascalCase(name)
-
-  return [
-    [1, `import { ${pascal}Element } from "./${kebab}.element.gen";`],
-    [2, `export * from "./${kebab}.types";`],
-    [3, `registerCustomElement("aria-ui-${kebab}", ${pascal}Element);`],
-  ]
-}
-
-function updateElementsCode(name: string): Array<[number, string]> {
-  const kebab = kebabCase(name)
-  const pascal = pascalCase(name)
-
-  return [
-    [1, `export * from "./${kebab}.types";`],
-    [1, `export * from "./${kebab}.setup";`],
-    [1, `export { ${pascal}Element } from "./${kebab}.element.gen";`],
-  ]
 }
 
 await main()
