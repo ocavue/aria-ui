@@ -34,9 +34,10 @@ async function main() {
     assert(components)
     const lines = [
       `import { registerCustomElement } from "@aria-ui/core"`,
+      `import { defineCustomElement } from "@aria-ui/core"`,
       "",
       ...components.map(
-        (c) => `import { ${c.pascal}Element } from "./${c.kebab}.element.gen"`,
+        (c) => `import { ${c.pascal}Element } from "./elements"`,
       ),
       "",
       ...components.map((c) => `export * from "./${c.kebab}.types"`),
@@ -54,10 +55,15 @@ async function main() {
     assert(components)
     const lines = [
       ...components.flatMap((c) => [
+        `import { use${c.pascal} } from "./${c.kebab}.setup"`,
+        `import { ${c.camel}Events, ${c.camel}Props, type ${c.pascal}Events, type ${c.pascal}Props } from "./${c.kebab}.types"`,
+      ]),
+      "",
+      ...components.map((c) => formatElementCode(c.componentName)),
+      "",
+      ...components.flatMap((c) => [
         `export * from "./${c.kebab}.types"`,
         `export * from "./${c.kebab}.setup"`,
-        `export { ${c.pascal}Element } from "./${c.kebab}.element.gen"`,
-        "",
       ]),
       "",
     ]
@@ -71,16 +77,10 @@ async function main() {
 }
 
 function formatElementCode(name: string) {
-  const kebab = kebabCase(name)
   const pascal = pascalCase(name)
   const camel = camelCase(name)
 
   const code = `
-import { defineCustomElement } from "@aria-ui/core"
-
-import { use${pascal} } from "./${kebab}.setup"
-import { ${camel}Events, ${camel}Props, type ${pascal}Events, type ${pascal}Props } from "./${kebab}.types"
-
 /**
  * A custom ${pascal} element.
  *
