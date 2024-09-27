@@ -199,7 +199,7 @@ Map of event types to EventDeclaration options.
 ### EventEmitter()\<Events, EventType\>
 
 ```ts
-type EventEmitter<Events, EventType>: (type: EventType, detail: Events[EventType]["detail"]) => void;
+type EventEmitter<Events, EventType>: (type: EventType extends string ? EventType : never, detail: EventType extends string ? Events[EventType]["detail"] : never) => void;
 ```
 
 #### Type Parameters
@@ -277,6 +277,14 @@ function defineEmit<Events>(
   element: HTMLElement,
   events: EventDeclarations<Events>,
 ): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void;
+```
+
+### getStateFromProps()
+
+```ts
+function getStateFromProps<Props>(
+  props: PropDeclarations<Props>,
+): SignalState<Props>;
 ```
 
 ### registerCustomElement()

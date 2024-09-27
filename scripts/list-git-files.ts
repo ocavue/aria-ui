@@ -12,4 +12,5 @@ export async function listGitFiles() {
     .split("\n")
     .filter((line) => line.trim())
     .map((file) => path.join(root, file))
+    .sort()
 }
