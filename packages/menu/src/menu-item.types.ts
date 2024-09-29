@@ -50,7 +50,7 @@ export const menuItemProps: PropDeclarations<MenuItemProps> = {
  */
 export interface MenuItemEvents {
   /**
-   * Emitted when the item is selected.
+   * Fired when the item is selected.
    */
   select: CustomEvent<void>
 }

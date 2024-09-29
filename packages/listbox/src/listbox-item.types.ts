@@ -29,7 +29,7 @@ export const listboxItemProps: PropDeclarations<ListboxItemProps> = {
  */
 export interface ListboxItemEvents extends EmptyObject {
   /**
-   * Emitted when the item is selected.
+   * Fired when the item is selected.
    */
   select: CustomEvent<void>
 }
