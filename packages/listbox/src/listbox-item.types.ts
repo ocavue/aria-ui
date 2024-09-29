@@ -31,7 +31,7 @@ export interface ListboxItemEvents extends EmptyObject {
   /**
    * Fired when the item is selected.
    */
-  select: SelectEvent
+  select: CustomEvent<void>
 }
 
 /**
@@ -40,8 +40,3 @@ export interface ListboxItemEvents extends EmptyObject {
 export const listboxItemEvents: EventDeclarations<ListboxItemEvents> = {
   select: {},
 }
-
-/**
- * @hidden
- */
-export type SelectEvent = CustomEvent<void>
