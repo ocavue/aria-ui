@@ -90,6 +90,7 @@ export function useListbox(
     focusedValue,
     state.eventTarget,
     available,
+    listboxEmitter,
     listboxItemEmitter,
   )
 }
@@ -103,6 +104,7 @@ export function useCollectionKeydownHandler(
   focusedValue: Signal<string>,
   eventTarget: Signal<ListboxProps["eventTarget"]>,
   available: ReadonlySignal<boolean>,
+  listboxEmitter: Signal<VoidFunction | null>,
   listboxItemEmitter: Signal<VoidFunction | null>,
 ) {
   const scrollFocusedItemIntoView = () => {
@@ -137,6 +139,7 @@ export function useCollectionKeydownHandler(
           const value = focusedValue.get()
           if (value) {
             listboxItemEmitter.get()?.()
+            listboxEmitter.get()?.()
           }
         }
 
