@@ -138,36 +138,42 @@ export interface OverlayPositionerProps {
   // ------------------------------------------------------------------
 
   /**
-   * @see https://floating-ui.com/docs/detectoverflow
+   * Describes the clipping element(s) or area that overflow will be checked relative to.
+   * Please see https://floating-ui.com/docs/detectoverflow#boundary for more information.
    *
    * @default 'clippingAncestors'
    */
   boundary: Boundary
 
   /**
-   * @see https://floating-ui.com/docs/detectoverflow
+   * Describes the root boundary that the element will be checked for overflow relative to.
+   * Please see https://floating-ui.com/docs/detectoverflow#rootboundary for more information.
    *
    * @default 'viewport'
    */
   rootBoundary: RootBoundary
 
   /**
-   * @see https://floating-ui.com/docs/detectoverflow
+   * Describes the virtual padding around the boundary to check for overflow.
+   * Please see https://floating-ui.com/docs/detectoverflow#padding for more information.
    *
    * @default 0
    */
   overflowPadding: number
 
   /**
-   *
-   * @see https://floating-ui.com/docs/detectoverflow
+   * The element that will be used to check for overflow. Please see
+   * https://floating-ui.com/docs/detectoverflow#elementcontext for more
+   * information.
    *
    * @default 'floating'
    */
   elementContext: ElementContext
 
   /**
-   * @see https://floating-ui.com/docs/detectoverflow
+   * Whether to check the alternate elementContext’s boundary. Please see
+   * https://floating-ui.com/docs/detectoverflow#altboundary for more
+   * information.
    *
    * @default true
    */
