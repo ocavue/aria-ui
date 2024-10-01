@@ -1,6 +1,6 @@
 import "./root"
-import path from "node:path"
 import assert from "node:assert"
+import path from "node:path"
 
 import { camelCase, kebabCase, pascalCase } from "change-case"
 
@@ -69,11 +69,6 @@ async function main() {
       "",
     ]
     await Bun.write(path.join(dirPath, "elements.ts"), lines.join("\n"))
-  }
-
-  for (const c of components) {
-    const code = "/* TODO: REMOVE THIS FILE */ export {};"
-    await Bun.write(path.join(c.dirPath, `${c.kebab}.element.gen.ts`), code)
   }
 }
 

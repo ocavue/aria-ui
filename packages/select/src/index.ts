@@ -1,11 +1,13 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import { SelectContentElement } from "./elements"
-import { SelectItemElement } from "./elements"
-import { SelectListElement } from "./elements"
-import { SelectRootElement } from "./elements"
-import { SelectTriggerElement } from "./elements"
-import { SelectValueElement } from "./elements"
+import {
+  SelectContentElement,
+  SelectItemElement,
+  SelectListElement,
+  SelectRootElement,
+  SelectTriggerElement,
+  SelectValueElement,
+} from "./elements"
 
 export * from "./select-content.types"
 export * from "./select-item.types"
