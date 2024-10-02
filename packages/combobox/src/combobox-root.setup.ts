@@ -48,10 +48,10 @@ export function useComboboxRoot(element: ConnectableElement): void {
   const inputValue = useInputValue(element)
   inputValueContext.provide(element, inputValue)
 
-  const eventTarget = createSignal<HTMLElement | null>(null)
+  const eventTarget = createSignal<HTMLElement | undefined>(undefined)
   useEffect(element, () => {
     eventTarget.set(element)
-    return () => eventTarget.set(null)
+    return () => eventTarget.set(undefined)
   })
 
   eventTargetContext.provide(element, eventTarget)
