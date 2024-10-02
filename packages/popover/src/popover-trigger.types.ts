@@ -1,13 +1,9 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @internal
  */
-export interface PopoverTriggerProps extends EmptyObject {}
+export interface PopoverTriggerProps {}
 
 /**
  * @internal
@@ -17,7 +13,7 @@ export const popoverTriggerProps: PropDeclarations<PopoverTriggerProps> = {}
 /**
  * @internal
  */
-export interface PopoverTriggerEvents extends EmptyObject {}
+export interface PopoverTriggerEvents {}
 
 /**
  * @internal

@@ -1,8 +1,4 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group ListboxItem

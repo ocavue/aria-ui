@@ -27,7 +27,7 @@ export type EventDeclaration = {
 export type EventDeclarations<
   Events extends { [EventType in keyof Events]: CustomEvent },
 > = {
-  [EventType in keyof Events]: EventDeclaration
+  [EventType in keyof Required<Events>]: EventDeclaration
 }
 
 export function defineEmit<

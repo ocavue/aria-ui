@@ -1,14 +1,10 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group ComboboxRoot
  * @internal
  */
-export interface ComboboxRootProps extends EmptyObject {}
+export interface ComboboxRootProps {}
 
 /**
  * @group ComboboxRoot
@@ -20,7 +16,7 @@ export const comboboxRootProps: PropDeclarations<ComboboxRootProps> = {}
  * @group ComboboxRoot
  * @internal
  */
-export interface ComboboxRootEvents extends EmptyObject {}
+export interface ComboboxRootEvents {}
 
 /**
  * @group ComboboxRoot

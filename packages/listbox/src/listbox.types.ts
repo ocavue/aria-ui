@@ -52,11 +52,10 @@ export interface ListboxProps {
   filter: ItemFilter | null
 
   /**
-   * By default, the Listbox element will listen for keydown events. You can pass a different element to listen for keydown events.
-   *
-   * @default null
+   * By default, the Listbox element will listen for keydown events. You can
+   * pass a different element to listen for keydown events.
    */
-  eventTarget: HTMLElement | TypedEventTarget<"keydown"> | null
+  eventTarget?: HTMLElement | TypedEventTarget<"keydown">
 }
 
 /**
@@ -68,7 +67,7 @@ export const listboxProps: PropDeclarations<ListboxProps> = {
   autoFocus: { default: false },
   query: { default: "" },
   filter: { default: defaultItemFilter },
-  eventTarget: { default: null },
+  eventTarget: { default: undefined },
 }
 
 /**

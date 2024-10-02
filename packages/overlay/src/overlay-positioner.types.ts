@@ -1,8 +1,4 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 import type {
   AutoUpdateOptions,
   Boundary,
@@ -64,9 +60,9 @@ export interface OverlayPositionerProps {
   /**
    * The distance between the reference and floating element.
    *
-   * @default null
+   * @default undefined
    */
-  offset: OffsetOptions | null
+  offset?: OffsetOptions
 
   /**
    * Whether to flip the `placement` in order to keep it in view when the
@@ -191,15 +187,15 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
     hoist: { default: false },
     transform: { default: false },
     offset: {
-      default: null,
+      default: undefined,
       fromAttribute: (value) => {
         if (value == null) {
-          return null
+          return undefined
         }
         try {
           return JSON.parse(value) as number | OffsetOptions
         } catch {
-          return null
+          return undefined
         }
       },
       toAttribute: JSON.stringify,
@@ -232,7 +228,7 @@ export interface OverlayPositionerDataAttributes {
 /**
  * @internal
  */
-export interface OverlayPositionerEvents extends EmptyObject {}
+export interface OverlayPositionerEvents {}
 
 /**
  * @internal

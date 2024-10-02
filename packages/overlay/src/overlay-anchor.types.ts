@@ -1,14 +1,10 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group OverlayAnchor
  * @internal
  */
-export interface OverlayAnchorProps extends EmptyObject {}
+export interface OverlayAnchorProps {}
 
 /**
  * @group OverlayAnchor
@@ -20,7 +16,7 @@ export const overlayAnchorProps: PropDeclarations<OverlayAnchorProps> = {}
  * @group OverlayAnchor
  * @internal
  */
-export interface OverlayAnchorEvents extends EmptyObject {}
+export interface OverlayAnchorEvents {}
 
 /**
  * @group OverlayAnchor

@@ -1,8 +1,4 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group SelectValue
@@ -26,7 +22,7 @@ export const selectValueProps: PropDeclarations<SelectValueProps> = {
 /**
  * @internal
  */
-export interface SelectValueEvents extends EmptyObject {}
+export interface SelectValueEvents {}
 
 /**
  * @internal

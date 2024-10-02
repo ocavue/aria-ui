@@ -8,7 +8,7 @@ import { getObjectEntries } from "./types"
  * @group Props and States
  */
 export type SignalState<T extends object> = {
-  [K in keyof T]: Signal<T[K]>
+  [K in keyof Required<T>]: Signal<T[K]>
 }
 
 /**

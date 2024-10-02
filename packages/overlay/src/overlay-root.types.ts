@@ -1,14 +1,10 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group OverlayRoot
  * @internal
  */
-export interface OverlayRootProps extends EmptyObject {}
+export interface OverlayRootProps {}
 
 /**
  * @group OverlayRoot
@@ -19,7 +15,7 @@ export const overlayRootProps: PropDeclarations<OverlayRootProps> = {}
 /**
  * @internal
  */
-export interface OverlayRootEvents extends EmptyObject {}
+export interface OverlayRootEvents {}
 
 /**
  * @internal

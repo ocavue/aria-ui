@@ -1,13 +1,9 @@
-import type {
-  EmptyObject,
-  PropDeclarations,
-  EventDeclarations,
-} from "@aria-ui/core"
+import type { PropDeclarations, EventDeclarations } from "@aria-ui/core"
 
 /**
  * @hidden
  */
-export interface ListboxEmptyProps extends EmptyObject {}
+export interface ListboxEmptyProps {}
 
 /**
  * @hidden
@@ -17,7 +13,7 @@ export const listboxEmptyProps: PropDeclarations<ListboxEmptyProps> = {}
 /**
  * @hidden
  */
-export interface ListboxEmptyEvents extends EmptyObject {}
+export interface ListboxEmptyEvents {}
 
 /**
  * @hidden

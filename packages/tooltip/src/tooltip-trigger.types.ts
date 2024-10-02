@@ -1,14 +1,10 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group TooltipTrigger
  * @internal
  */
-export interface TooltipTriggerProps extends EmptyObject {}
+export interface TooltipTriggerProps {}
 
 /**
  * @group TooltipTrigger
@@ -19,7 +15,7 @@ export const tooltipTriggerProps: PropDeclarations<TooltipTriggerProps> = {}
 /**
  * @internal
  */
-export interface TooltipTriggerEvents extends EmptyObject {}
+export interface TooltipTriggerEvents {}
 
 /**
  * @internal

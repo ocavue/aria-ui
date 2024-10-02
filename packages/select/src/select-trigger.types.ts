@@ -1,14 +1,10 @@
-import type {
-  EmptyObject,
-  EventDeclarations,
-  PropDeclarations,
-} from "@aria-ui/core"
+import type { EventDeclarations, PropDeclarations } from "@aria-ui/core"
 
 /**
  * @group SelectTrigger
  * @internal
  */
-export interface SelectTriggerProps extends EmptyObject {}
+export interface SelectTriggerProps {}
 
 /**
  * @group SelectTrigger
@@ -20,7 +16,7 @@ export const selectTriggerProps: PropDeclarations<SelectTriggerProps> = {}
  * @group SelectTrigger
  * @internal
  */
-export interface SelectTriggerEvents extends EmptyObject {}
+export interface SelectTriggerEvents {}
 
 /**
  * @group SelectTrigger

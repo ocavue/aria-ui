@@ -15,11 +15,10 @@ import {
  */
 export interface MenuContentProps extends PopoverContentProps {
   /**
-   * By default, the menu element will listen for keydown events. You can pass a different element to listen for keydown events.
-   *
-   * @default null
+   * By default, the menu element will listen for keydown events. You can pass a
+   * different element to listen for keydown events.
    */
-  eventTarget: HTMLElement | TypedEventTarget<"keydown"> | null
+  eventTarget?: HTMLElement | TypedEventTarget<"keydown">
 }
 
 /**
@@ -27,7 +26,7 @@ export interface MenuContentProps extends PopoverContentProps {
  */
 export const menuContentProps: PropDeclarations<MenuContentProps> = {
   ...popoverContentProps,
-  eventTarget: { default: null },
+  eventTarget: { default: undefined },
 }
 
 /**
