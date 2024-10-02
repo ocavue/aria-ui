@@ -35,7 +35,7 @@ export function usePopoverRoot(
     element,
     createSignal((value: boolean) => {
       state.open.set(value)
-      emit("update:open", value)
+      emit("openChange", value)
     }),
   )
 

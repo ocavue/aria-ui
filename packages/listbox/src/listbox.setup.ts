@@ -40,7 +40,7 @@ export function useListbox(
   pointerMovingContext.provide(element, useMouseMoving(element))
 
   const listboxEmitter = createSignal(() => {
-    emit("update:value", state.value.get())
+    emit("valueChange", state.value.get())
   })
   listboxEmitterContext.provide(element, listboxEmitter)
 

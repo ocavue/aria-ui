@@ -43,7 +43,7 @@ export function useTooltipRoot(
   const updateOpen = (value: boolean) => {
     if (open.peek() === value) return
     open.set(value)
-    emit("update:open", value)
+    emit("openChange", value)
   }
 
   const check = () => {

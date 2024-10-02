@@ -24,9 +24,9 @@ export function useSelectList(
       selectedValue.set(event.detail)
     }
 
-    element.addEventListener("update:value", eventHandler)
+    element.addEventListener("valueChange", eventHandler)
     return () => {
-      element.removeEventListener("update:value", eventHandler)
+      element.removeEventListener("valueChange", eventHandler)
     }
   })
 

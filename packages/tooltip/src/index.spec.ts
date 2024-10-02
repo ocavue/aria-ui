@@ -84,7 +84,7 @@ describe("Tooltip", () => {
     const trigger = screen.getByTestId("trigger") as TooltipTriggerElement
 
     const onOpenChange = vi.fn()
-    root.addEventListener("update:open", (e) => {
+    root.addEventListener("openChange", (e) => {
       const event = e as CustomEvent<boolean>
       onOpenChange(event.detail)
     })

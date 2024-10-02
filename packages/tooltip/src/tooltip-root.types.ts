@@ -42,12 +42,12 @@ export interface TooltipRootEvents {
   /**
    * Fired when the open state changes.
    */
-  "update:open": CustomEvent<boolean>
+  openChange: CustomEvent<boolean>
 }
 
 /**
  * @hidden
  */
 export const tooltipRootEvents: EventDeclarations<TooltipRootEvents> = {
-  "update:open": {},
+  openChange: {},
 }

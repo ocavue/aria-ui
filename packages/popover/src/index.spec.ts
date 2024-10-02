@@ -80,7 +80,7 @@ describe("Popover", () => {
     const root = screen.getByTestId<PopoverRootElement>("root")
 
     const onOpenChange = vi.fn()
-    root.addEventListener("update:open", (e) => {
+    root.addEventListener("openChange", (e) => {
       const event = e as CustomEvent<boolean>
       onOpenChange(event.detail)
     })
@@ -112,7 +112,7 @@ describe("Popover", () => {
     const root = screen.getByTestId<PopoverRootElement>("root")
 
     const onOpenChange = vi.fn()
-    root.addEventListener("update:open", (e) => {
+    root.addEventListener("openChange", (e) => {
       const event = e as CustomEvent<boolean>
       onOpenChange(event.detail)
     })

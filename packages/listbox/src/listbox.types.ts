@@ -75,12 +75,12 @@ export const listboxProps: PropDeclarations<ListboxProps> = {
  * @group Listbox
  */
 export interface ListboxEvents {
-  "update:value": CustomEvent<string>
+  valueChange: CustomEvent<string>
 }
 
 /**
  * @hidden
  */
 export const listboxEvents: EventDeclarations<ListboxEvents> = {
-  "update:value": {},
+  valueChange: {},
 }

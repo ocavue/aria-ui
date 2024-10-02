@@ -31,12 +31,12 @@ export const popoverRootProps: PropDeclarations<PopoverRootProps> = {
  * @group PopoverRoot
  */
 export interface PopoverRootEvents {
-  "update:open": CustomEvent<boolean>
+  openChange: CustomEvent<boolean>
 }
 
 /**
  * @group PopoverContent
  */
 export const popoverRootEvents: EventDeclarations<PopoverRootEvents> = {
-  "update:open": {},
+  openChange: {},
 }

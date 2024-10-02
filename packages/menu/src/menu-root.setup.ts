@@ -16,14 +16,14 @@ export function useMenuRoot(
   element: ConnectableElement,
   { state, emit }: SetupOptions<MenuRootProps, MenuRootEvents>,
 ): void {
-  emit("update:open", true)
+  emit("openChange", true)
   usePopoverRoot(element, { state, emit })
 
   onOpenChangeContext.provide(
     element,
     createSignal((value: boolean) => {
       state.open.set(value)
-      emit("update:open", value)
+      emit("openChange", value)
     }),
   )
 }
