@@ -16,9 +16,9 @@
 
 #### Properties
 
-| Property       | Type                      |
-| -------------- | ------------------------- |
-| `update:value` | `CustomEvent`\<`string`\> |
+| Property      | Type                      |
+| ------------- | ------------------------- |
+| `valueChange` | `CustomEvent`\<`string`\> |
 
 ### ComboboxListProps
 

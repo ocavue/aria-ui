@@ -27,7 +27,7 @@
 | `hide` | `boolean` | Whether to hide the floating element when the reference element or the floating element is fully clipped. **Default** `false` |
 | `hoist` | `boolean` | Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to place the floating element on top of other page content. When enabled, the floating element won't be clipped by an ancestor. This provides a similar result to React's `<Portals>` or Vue's `<Teleport>`. **Default** `false` |
 | `inline` | `boolean` | Whether to improve positioning for inline reference elements that span over multiple lines. **Default** `false` |
-| `offset` | `null` \| `OffsetOptions` | The distance between the reference and floating element. **Default** `null` |
+| `offset?` | `OffsetOptions` | The distance between the reference and floating element. **Default** `undefined` |
 | `overflowPadding` | `number` | Describes the virtual padding around the boundary to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#padding for more information. **Default** `0` |
 | `overlap` | `boolean` | Whether the floating element can overlap the reference element to keep it in view. **Default** `false` |
 | `placement` | `Placement` | The initial placement of the floating element **Default** `"top"` |

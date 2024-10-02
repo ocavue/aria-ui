@@ -30,12 +30,6 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 | `props` | [`PropDeclarations`](README.md#propdeclarationst)\<`Props`\> |
 | `setup` | (`element`: [`BaseElement`](README.md#baseelement), `options`: [`SetupOptions`](README.md#setupoptionsprops-events)\<`Props`, `Events`\>) => `void` |
 
-### EmptyObject
-
-Represents a strictly empty plain object, the `{}` value.
-
-When you annotate something as the type `{}`, it can be anything except `null` and `undefined`. This means that you cannot use `{}` to represent an empty plain object ([read more](https://stackoverflow.com/questions/47339869/typescript-empty-object-and-any-difference/52193484#52193484)).
-
 ### ReadonlySignal\<T\>
 
 A read-only signal that holds a reactive value.
@@ -189,7 +183,7 @@ false;
 ### EventDeclarations\<Events\>
 
 ```ts
-type EventDeclarations<Events>: { [EventType in keyof Events]: EventDeclaration };
+type EventDeclarations<Events>: { [EventType in keyof Required<Events>]: EventDeclaration };
 ```
 
 Map of event types to EventDeclaration options.
@@ -251,7 +245,7 @@ Called to convert a property value to an attribute value.
 ### PropDeclarations\<T\>
 
 ```ts
-type PropDeclarations<T>: { [K in keyof T]: PropDeclaration<T[K]> };
+type PropDeclarations<T>: { [K in keyof Required<T>]: PropDeclaration<T[K]> };
 ```
 
 Map of props to PropDeclaration options.
@@ -460,7 +454,7 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 ### SignalState\<T\>
 
 ```ts
-type SignalState<T>: { [K in keyof T]: Signal<T[K]> };
+type SignalState<T>: { [K in keyof Required<T>]: Signal<T[K]> };
 ```
 
 A plain object containing signals.
