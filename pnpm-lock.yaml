@@ -60,8 +60,8 @@ importers:
         specifier: 0.26.7
         version: 0.26.7(typescript@5.5.4)
       typedoc-plugin-md:
-        specifier: file:/tmp/typedoc-plugin-md-0.0.0-dev.1728141456.tgz
-        version: file:../../../../../tmp/typedoc-plugin-md-0.0.0-dev.1728141456.tgz(typedoc@0.26.7(typescript@5.5.4))
+        specifier: ^0.1.0
+        version: 0.1.0(typedoc@0.26.7(typescript@5.5.4))
       typescript:
         specifier: ^5.5.4
         version: 5.5.4
@@ -4341,9 +4341,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typedoc-plugin-md@file:../../../../../tmp/typedoc-plugin-md-0.0.0-dev.1728141456.tgz:
-    resolution: {integrity: sha512-gTYOq3fgqwpGd8DaO4yG4yntZ/SrF3DjJXxVw4Cwv3NYsWUUtJxC6JAVGvvBH8ZN8mN37jrSDXeF6+Up1Rf7pg==, tarball: file:../../../../../tmp/typedoc-plugin-md-0.0.0-dev.1728141456.tgz}
-    version: 0.0.0-dev.1728141456
+  typedoc-plugin-md@0.1.0:
+    resolution: {integrity: sha512-MMZIj0N/iRKvtOF1KmWq9biVxqmVTaKLgHvjztkH7B0/IqSuBlbhWSIkYT98Nl0cbLuw9Ois1lhhmosnpKgwwA==}
     peerDependencies:
       typedoc: ^0.26.7
 
@@ -9453,7 +9452,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typedoc-plugin-md@file:../../../../../tmp/typedoc-plugin-md-0.0.0-dev.1728141456.tgz(typedoc@0.26.7(typescript@5.5.4)):
+  typedoc-plugin-md@0.1.0(typedoc@0.26.7(typescript@5.5.4)):
     dependencies:
       '@sindresorhus/slugify': 2.2.1
       change-case: 5.4.4

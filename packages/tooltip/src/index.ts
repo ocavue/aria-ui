@@ -1,8 +1,10 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import { TooltipContentElement } from "./elements"
-import { TooltipRootElement } from "./elements"
-import { TooltipTriggerElement } from "./elements"
+import {
+  TooltipContentElement,
+  TooltipRootElement,
+  TooltipTriggerElement,
+} from "./elements"
 
 export * from "./tooltip-content.types"
 export * from "./tooltip-root.types"
