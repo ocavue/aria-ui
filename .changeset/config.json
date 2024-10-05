@@ -7,5 +7,5 @@
   "access": "public",
   "baseBranch": "master",
   "updateInternalDependencies": "patch",
-  "ignore": ["aria-ui-typedoc-plugin", "aria-ui-website"]
+  "ignore": ["aria-ui-website"]
 }

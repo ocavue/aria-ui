@@ -1,70 +1,417 @@
 # @aria-ui/menu
 
-## MenuContent
+## API
 
-### MenuContentProps
+### MenuContentProps <a id="menu-content-props" href="#menu-content-props">#</a>
 
-#### Properties
+<dl>
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `altBoundary` | `boolean` | Whether to check the alternate elementContext’s boundary. Please see https://floating-ui.com/docs/detectoverflow#altboundary for more information. **Default** `true` |
-| `autoUpdate` | `boolean` \| `AutoUpdateOptions` | Options to activate auto-update listeners **See** https://floating-ui.com/docs/autoUpdate **Default** `true` |
-| `boundary` | `Boundary` | Describes the clipping element(s) or area that overflow will be checked relative to. Please see https://floating-ui.com/docs/detectoverflow#boundary for more information. **Default** `'clippingAncestors'` |
-| `elementContext` | `ElementContext` | The element that will be used to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#elementcontext for more information. **Default** `'floating'` |
-| `eventTarget?` | `HTMLElement` \| [`TypedEventTarget`](../core/README.md#typedeventtargeteventtype)\<`"keydown"`\> | By default, the menu element will listen for keydown events. You can pass a different element to listen for keydown events. |
-| `fitViewport` | `boolean` | Whether to constrain the floating element's width and height to not exceed the viewport. **Default** `false` |
-| `flip` | `boolean` \| `Placement`[] | Whether to flip the `placement` in order to keep it in view when the preferred placement(s) will overflow the clipping boundary. You can also provide an array of placements to try sequentially if the preferred `placement` does not fit. **Default** `true` |
-| `hide` | `boolean` | Whether to hide the floating element when the reference element or the floating element is fully clipped. **Default** `false` |
-| `hoist` | `boolean` | Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to place the floating element on top of other page content. When enabled, the floating element won't be clipped by an ancestor. This provides a similar result to React's `<Portals>` or Vue's `<Teleport>`. **Default** `true` |
-| `inline` | `boolean` | Whether to improve positioning for inline reference elements that span over multiple lines. **Default** `false` |
-| `offset` | `undefined` \| `OffsetOptions` | The distance between the reference and floating element. **Default** `4` |
-| `overflowPadding` | `number` | Describes the virtual padding around the boundary to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#padding for more information. **Default** `4` |
-| `overlap` | `boolean` | Whether the floating element can overlap the reference element to keep it in view. **Default** `false` |
-| `placement` | `Placement` | The initial placement of the floating element **Default** `"top"` |
-| `rootBoundary` | `RootBoundary` | Describes the root boundary that the element will be checked for overflow relative to. Please see https://floating-ui.com/docs/detectoverflow#rootboundary for more information. **Default** `'viewport'` |
-| `sameHeight` | `boolean` | Whether to constrain the floating element's height so that it matches the reference element. **Default** `false` |
-| `sameWidth` | `boolean` | Whether to constrain the floating element's width so that it matches the reference element. **Default** `false` |
-| `shift` | `boolean` | Whether the floating element should shift to keep it in view. **Default** `true` |
-| `strategy` | `"fixed"` \| `"absolute"` | The strategy to use for positioning **Default** `"absolute"` |
-| `transform` | `boolean` | Whether to use `transform: translate3d()` for positioning instead of `top` and `left` (layout) to place the floating element. **Default** `false` |
+<dt>
 
-### MenuContentEvents
+`altBoundary`
 
-```ts
-type MenuContentEvents: PopoverContentEvents;
-```
+</dt>
 
-## MenuItem
+<dd>
 
-### MenuItemEvents
+Whether to check the alternate elementContext’s boundary. Please see https://floating-ui.com/docs/detectoverflow#altboundary for more information.
 
-#### Properties
+**Type**: `boolean`
 
-| Property | Type                    | Description                      |
-| -------- | ----------------------- | -------------------------------- |
-| `select` | `CustomEvent`\<`void`\> | Fired when the item is selected. |
+**Default**: `true`
 
-### MenuItemProps
+</dd>
 
-#### Properties
+<dt>
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `filter` | [`ItemFilter`](../collection/README.md#itemfilter) | The filter function to determine if an item should be shown in the listbox. **Default** `defaultItemFilter` |
-| `query` | `string` | The query string to filter the listbox items. **Default** `""` |
-| `value` | `string` | The value of the item. Every item must have a unique value in the parent list. By default, a random value is generated. **Default** `""` |
+`autoUpdate`
 
-## MenuRoot
+</dt>
 
-### MenuRootEvents
+<dd>
 
-```ts
-type MenuRootEvents: PopoverRootEvents;
-```
+Options to activate auto-update listeners
 
-### MenuRootProps
+**Type**: `boolean | AutoUpdateOptions`
 
-```ts
-type MenuRootProps: PopoverRootProps;
-```
+**See**
+
+https://floating-ui.com/docs/autoUpdate
+
+**Default**: `true`
+
+</dd>
+
+<dt>
+
+`boundary`
+
+</dt>
+
+<dd>
+
+Describes the clipping element(s) or area that overflow will be checked relative to. Please see https://floating-ui.com/docs/detectoverflow#boundary for more information.
+
+**Type**: `Boundary`
+
+**Default**: `'clippingAncestors'`
+
+</dd>
+
+<dt>
+
+`elementContext`
+
+</dt>
+
+<dd>
+
+The element that will be used to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#elementcontext for more information.
+
+**Type**: `ElementContext`
+
+**Default**: `'floating'`
+
+</dd>
+
+<dt>
+
+`eventTarget`
+
+</dt>
+
+<dd>
+
+By default, the menu element will listen for keydown events. You can pass a different element to listen for keydown events.
+
+**Type**: `HTMLElement | TypedEventTarget<"keydown">`
+
+</dd>
+
+<dt>
+
+`fitViewport`
+
+</dt>
+
+<dd>
+
+Whether to constrain the floating element's width and height to not exceed the viewport.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`flip`
+
+</dt>
+
+<dd>
+
+Whether to flip the `placement` in order to keep it in view when the preferred placement(s) will overflow the clipping boundary. You can also provide an array of placements to try sequentially if the preferred `placement` does not fit.
+
+**Type**: `boolean | Placement[]`
+
+**Default**: `true`
+
+</dd>
+
+<dt>
+
+`hide`
+
+</dt>
+
+<dd>
+
+Whether to hide the floating element when the reference element or the floating element is fully clipped.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`hoist`
+
+</dt>
+
+<dd>
+
+Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to place the floating element on top of other page content. When enabled, the floating element won't be clipped by an ancestor. This provides a similar result to React's `<Portals>` or Vue's `<Teleport>`.
+
+**Type**: `boolean`
+
+**Default**: `true`
+
+</dd>
+
+<dt>
+
+`inline`
+
+</dt>
+
+<dd>
+
+Whether to improve positioning for inline reference elements that span over multiple lines.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`offset`
+
+</dt>
+
+<dd>
+
+The distance between the reference and floating element.
+
+**Type**: `undefined | OffsetOptions`
+
+**Default**: `4`
+
+</dd>
+
+<dt>
+
+`overflowPadding`
+
+</dt>
+
+<dd>
+
+Describes the virtual padding around the boundary to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#padding for more information.
+
+**Type**: `number`
+
+**Default**: `4`
+
+</dd>
+
+<dt>
+
+`overlap`
+
+</dt>
+
+<dd>
+
+Whether the floating element can overlap the reference element to keep it in view.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`placement`
+
+</dt>
+
+<dd>
+
+The initial placement of the floating element
+
+**Type**: `Placement`
+
+**Default**: `"top"`
+
+</dd>
+
+<dt>
+
+`rootBoundary`
+
+</dt>
+
+<dd>
+
+Describes the root boundary that the element will be checked for overflow relative to. Please see https://floating-ui.com/docs/detectoverflow#rootboundary for more information.
+
+**Type**: `RootBoundary`
+
+**Default**: `'viewport'`
+
+</dd>
+
+<dt>
+
+`sameHeight`
+
+</dt>
+
+<dd>
+
+Whether to constrain the floating element's height so that it matches the reference element.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`sameWidth`
+
+</dt>
+
+<dd>
+
+Whether to constrain the floating element's width so that it matches the reference element.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+<dt>
+
+`shift`
+
+</dt>
+
+<dd>
+
+Whether the floating element should shift to keep it in view.
+
+**Type**: `boolean`
+
+**Default**: `true`
+
+</dd>
+
+<dt>
+
+`strategy`
+
+</dt>
+
+<dd>
+
+The strategy to use for positioning
+
+**Type**: `"fixed" | "absolute"`
+
+**Default**: `"absolute"`
+
+</dd>
+
+<dt>
+
+`transform`
+
+</dt>
+
+<dd>
+
+Whether to use `transform: translate3d()` for positioning instead of `top` and `left` (layout) to place the floating element.
+
+**Type**: `boolean`
+
+**Default**: `false`
+
+</dd>
+
+</dl>
+
+### MenuItemEvents <a id="menu-item-events" href="#menu-item-events">#</a>
+
+<dl>
+
+<dt>
+
+`select`
+
+</dt>
+
+<dd>
+
+Fired when the item is selected.
+
+**Type**: `CustomEvent<void>`
+
+</dd>
+
+</dl>
+
+### MenuItemProps <a id="menu-item-props" href="#menu-item-props">#</a>
+
+<dl>
+
+<dt>
+
+`filter`
+
+</dt>
+
+<dd>
+
+The filter function to determine if an item should be shown in the listbox.
+
+**Type**: `ItemFilter`
+
+**Default**: `defaultItemFilter`
+
+</dd>
+
+<dt>
+
+`query`
+
+</dt>
+
+<dd>
+
+The query string to filter the listbox items.
+
+**Type**: `string`
+
+**Default**: `""`
+
+</dd>
+
+<dt>
+
+`value`
+
+</dt>
+
+<dd>
+
+The value of the item. Every item must have a unique value in the parent list. By default, a random value is generated.
+
+**Type**: `string`
+
+**Default**: `""`
+
+</dd>
+
+</dl>
+
+### MenuContentEvents <a id="menu-content-events" href="#menu-content-events">#</a>
+
+**Type**: `PopoverContentEvents`
+
+### MenuRootEvents <a id="menu-root-events" href="#menu-root-events">#</a>
+
+**Type**: `PopoverRootEvents`
+
+### MenuRootProps <a id="menu-root-props" href="#menu-root-props">#</a>
+
+**Type**: `PopoverRootProps`
