@@ -43,7 +43,7 @@
     "prettier-plugin-astro": "^0.14.1",
     "turbo": "2.1.1",
     "typedoc": "0.26.7",
-    "typedoc-plugin-md": "https://pkg.pr.new/ocavue/tsdocs/typedoc-plugin-md@1",
+    "typedoc-plugin-md": "file:/tmp/typedoc-plugin-md-0.0.0-dev.1728139529.tgz",
     "typescript": "^5.5.4",
     "vitest": "^2.0.5"
   },
