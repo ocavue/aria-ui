@@ -1,93 +1,147 @@
 # @aria-ui/collection
 
-## Classes
+## API
 
-### Collection
+### Collection <a id="collection" href="#collection">#</a>
 
-#### Constructors
+<dl>
 
-```ts
-new Collection(items: Iterable<HTMLElement>, loop: boolean): Collection
-```
+<dt>
 
-#### Properties
+`constructor`
 
-| Property | Modifier   | Type      | Default value |
-| -------- | ---------- | --------- | ------------- |
-| `loop`   | `readonly` | `boolean` | `true`        |
+</dt>
 
-#### Methods
-
-##### first()
+<dd>
 
 ```ts
-first(): null | string
+new Collection(items: Iterable<HTMLElement>, loop: boolean)
 ```
 
-Returns the first enabled value.
+</dd>
 
-##### getElement()
+<dt>
+
+`loop`
+
+</dt>
+
+<dd>
+
+**Type**: `boolean`
+
+</dd>
+
+<dt>
+
+`first`
+
+</dt>
+
+<dd>
 
 ```ts
-getElement(value: string): null | HTMLElement
+const first: () => null | string;
 ```
 
-Finds an element from its value.
+</dd>
 
-##### getValues()
+<dt>
+
+`getElement`
+
+</dt>
+
+<dd>
 
 ```ts
-getValues(): string[]
+const getElement: (value: string) => null | HTMLElement;
 ```
 
-Returns all values.
+</dd>
 
-##### last()
+<dt>
+
+`getValues`
+
+</dt>
+
+<dd>
 
 ```ts
-last(): null | string
+const getValues: () => string[];
 ```
 
-Returns the last enabled value.
+</dd>
 
-##### next()
+<dt>
+
+`last`
+
+</dt>
+
+<dd>
 
 ```ts
-next(value: null | string): null | string
+const last: () => null | string;
 ```
 
-Returns the next enabled value.
+</dd>
 
-##### prev()
+<dt>
+
+`next`
+
+</dt>
+
+<dd>
 
 ```ts
-prev(value: null | string): null | string
+const next: (value: null | string) => null | string;
 ```
 
-Returns the previous enabled value.
+</dd>
 
-##### size()
+<dt>
+
+`prev`
+
+</dt>
+
+<dd>
 
 ```ts
-size(): number
+const prev: (value: null | string) => null | string;
 ```
 
-## Type Aliases
+</dd>
 
-### ItemFilter()
+<dt>
+
+`size`
+
+</dt>
+
+<dd>
 
 ```ts
-type ItemFilter: (options: object) => boolean;
+const size: () => number;
 ```
+
+</dd>
+
+</dl>
+
+### ItemFilter <a id="item-filter" href="#item-filter">#</a>
 
 The filter function to determine if an item should be shown in the collection.
 
-## Functions
+**Type**: `(options: Object) => boolean`
 
-### defaultItemFilter()
-
-```ts
-function defaultItemFilter(options: object): boolean;
-```
+### defaultItemFilter <a id="default-item-filter" href="#default-item-filter">#</a>
 
 A simple case-insensitive substring match filter.
+
+```ts
+function defaultItemFilter(options: Object): boolean;
+```

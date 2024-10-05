@@ -1,10 +1,8 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import {
-  ListboxEmptyElement,
-  ListboxItemElement,
-  ListboxElement,
-} from "./elements"
+import { ListboxEmptyElement } from "./elements"
+import { ListboxItemElement } from "./elements"
+import { ListboxElement } from "./elements"
 
 export * from "./listbox-empty.types"
 export * from "./listbox-item.types"

@@ -1,11 +1,9 @@
 import { registerCustomElement } from "@aria-ui/core"
 
-import {
-  ComboboxEmptyElement,
-  ComboboxItemElement,
-  ComboboxListElement,
-  ComboboxRootElement,
-} from "./elements"
+import { ComboboxEmptyElement } from "./elements"
+import { ComboboxItemElement } from "./elements"
+import { ComboboxListElement } from "./elements"
+import { ComboboxRootElement } from "./elements"
 
 export * from "./combobox-empty.types"
 export * from "./combobox-item.types"
