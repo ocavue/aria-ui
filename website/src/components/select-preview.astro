@@ -1,43 +1,45 @@
-<div class="example-select-preview"></div>
-<script src="./select-preview.ts"></script>
+<script>
+  import "@aria-ui/select";
+</script>
 
-<aui-select-root>
-  <aui-select-trigger>
+<aria-ui-select-root>
+  <aria-ui-select-trigger>
     <button>
-      <aui-select-value placeholder="Select an option..."></aui-select-value>
+      <aria-ui-select-value placeholder="Select an option..."
+      ></aria-ui-select-value>
     </button>
-  </aui-select-trigger>
-  <aui-select-content>
-    <aui-select-list>
-      <aui-select-item value="option1">Option 1</aui-select-item>
-      <aui-select-item value="option2">Option 2</aui-select-item>
-      <aui-select-item value="option3">Option 3</aui-select-item>
-      <aui-select-item value="option11">Option 11</aui-select-item>
-      <aui-select-item value="option12">Option 12</aui-select-item>
-      <aui-select-item value="option13">Option 13</aui-select-item>
-    </aui-select-list>
-  </aui-select-content>
-</aui-select-root>
+  </aria-ui-select-trigger>
+  <aria-ui-select-content>
+    <aria-ui-select-list>
+      <aria-ui-select-item value="option1">Option 1</aria-ui-select-item>
+      <aria-ui-select-item value="option2">Option 2</aria-ui-select-item>
+      <aria-ui-select-item value="option3">Option 3</aria-ui-select-item>
+      <aria-ui-select-item value="option11">Option 11</aria-ui-select-item>
+      <aria-ui-select-item value="option12">Option 12</aria-ui-select-item>
+      <aria-ui-select-item value="option13">Option 13</aria-ui-select-item>
+    </aria-ui-select-list>
+  </aria-ui-select-content>
+</aria-ui-select-root>
 
 <style>
-  aui-select-content {
+  aria-ui-select-content {
     display: block;
   }
 
-  aui-select-content:not([data-mounted]) {
+  aria-ui-select-content:not([data-mounted]) {
     display: none;
   }
 
-  aui-select-root {
+  aria-ui-select-root {
     display: block;
   }
 
-  aui-select-list {
+  aria-ui-select-list {
     display: flex;
     flex-direction: column;
   }
 
-  aui-select-item {
+  aria-ui-select-item {
     display: block;
     position: relative;
     padding-left: 28px;

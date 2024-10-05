@@ -10,7 +10,7 @@
  *
  */
 export type ObjectEntries<T extends object> = {
-  [K in keyof T]: [K, T[K]]
+  [K in keyof Required<T>]: [K, T[K]]
 }[keyof T]
 
 /**
@@ -34,18 +34,16 @@ export const getObjectValues = Object.values as <T extends object>(
   obj: T,
 ) => Array<T[keyof T]>
 
-declare const emptyObjectSymbol: unique symbol
-
 /**
- * Represents a strictly empty plain object, the `{}` value.
- *
- * When you annotate something as the type `{}`, it can be anything except
- * `null` and `undefined`. This means that you cannot use `{}` to represent an
- * empty plain object ([read more](https://stackoverflow.com/questions/47339869/typescript-empty-object-and-any-difference/52193484#52193484)).
- *
- * @public
+ * An interface thats can be used to register event listeners.
  */
-export interface EmptyObject {
-  /** @internal */
-  [emptyObjectSymbol]?: never
+export interface TypedEventTarget<EventType extends keyof DocumentEventMap> {
+  addEventListener: (
+    type: EventType,
+    listener: (event: DocumentEventMap[EventType]) => void,
+  ) => void
+  removeEventListener: (
+    type: EventType,
+    listener: (event: DocumentEventMap[EventType]) => void,
+  ) => void
 }

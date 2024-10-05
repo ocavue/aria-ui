@@ -1,14 +1,10 @@
-import mapValues from "just-map-values"
 import { HTMLElement } from "server-dom-shim"
 
 import type { ConnectableElement } from "./connectable-element"
-import {
-  setupProperties,
-  type PropDeclaration,
-  type PropDeclarations,
-} from "./prop"
-import type { SignalState } from "./signal-state"
-import { createSignal, type Signal } from "./signals"
+import { defineEmit, type EventDeclarations } from "./event"
+import { type PropDeclarations, setupProperties } from "./prop"
+import { getStateFromProps, type SignalState } from "./signal-state"
+import type { Signal } from "./signals"
 
 /**
  * Base class for all custom elements in Aria UI. It implements the
@@ -64,26 +60,48 @@ export class BaseElement extends HTMLElement implements ConnectableElement {
   }
 }
 
-function getSignalFromProp(prop: PropDeclaration<unknown>): Signal<unknown> {
-  return createSignal(prop.default)
+export interface CustomElementOptions<
+  Props extends { [PropName in keyof Props]: unknown },
+  Events extends { [EventType in keyof Events]: CustomEvent },
+> {
+  props: PropDeclarations<Props>
+  events: EventDeclarations<Events>
+  setup: (element: BaseElement, options: SetupOptions<Props, Events>) => void
 }
 
-function getSignalsFromProps(props: PropDeclarations<any>): SignalState<any> {
-  return mapValues(props, getSignalFromProp)
+export interface SetupOptions<
+  Props extends { [PropName in keyof Props]: unknown },
+  Events extends { [EventType in keyof Events]: CustomEvent },
+> {
+  state: SignalState<Props>
+  emit: EventEmitter<Events>
 }
+
+export type EventEmitter<
+  Events extends { [EventType in keyof Events]: CustomEvent },
+  EventType extends keyof Events = keyof Events,
+> = (
+  type: EventType extends string ? EventType : never,
+  detail: EventType extends string ? Events[EventType]["detail"] : never,
+) => void
+
+export type BaseElementConstructor<
+  Props extends { [PropName in keyof Props]: unknown },
+> = new () => BaseElement & Props
 
 /**
- * Create a custom element class.
+ * Defines a custom element constructor.
  *
- * @public
+ * @param options
  */
-export function ElementBuilder<Props extends object>(
-  useElement: (host: ConnectableElement, state: SignalState<Props>) => void,
-  props: PropDeclarations<Props>,
-): {
-  new (): BaseElement & Props
-  prototype: HTMLElement
-} {
+export function defineCustomElement<
+  Props extends { [PropName in keyof Props]: unknown },
+  Events extends { [EventType in keyof Events]: CustomEvent },
+>({
+  props,
+  events,
+  setup,
+}: CustomElementOptions<Props, Events>): BaseElementConstructor<Props> {
   const [observedAttributes, attributeChangedCallback, useProperties] =
     setupProperties(props)
 
@@ -94,8 +112,9 @@ export function ElementBuilder<Props extends object>(
 
     constructor() {
       super()
-      this._s = getSignalsFromProps(props)
-      useElement(this, this._s)
+      this._s = getStateFromProps(props)
+      const emit = defineEmit(this, events)
+      setup(this, { state: this._s, emit })
       useProperties(this, this._s)
     }
 
@@ -106,8 +125,7 @@ export function ElementBuilder<Props extends object>(
 
   defineGetterSetter(CustomElement, props)
 
-  // @ts-expect-error: ignore return type
-  return CustomElement
+  return CustomElement as BaseElementConstructor<any> as BaseElementConstructor<Props>
 }
 
 function defineGetterSetter<Props extends object>(
@@ -124,4 +142,17 @@ function defineGetterSetter<Props extends object>(
       },
     })
   }
+}
+
+/**
+ * Adds the given custom element to the custom element registry.
+ */
+export function registerCustomElement(
+  name: string,
+  element: CustomElementConstructor,
+) {
+  if (typeof customElements === "undefined" || customElements.get(name)) {
+    return
+  }
+  customElements.define(name, element)
 }

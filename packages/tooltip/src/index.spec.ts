@@ -3,11 +3,8 @@ import userEvent from "@testing-library/user-event"
 import { html, render, type TemplateResult } from "lit-html"
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
 
-import {
-  TooltipContentElement,
-  TooltipRootElement,
-  TooltipTriggerElement,
-} from "./index"
+import type { TooltipRootElement, TooltipTriggerElement } from "./elements"
+import "./index"
 
 describe("Tooltip", () => {
   beforeEach(() => {
@@ -22,10 +19,10 @@ describe("Tooltip", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-tooltip-root data-testid="root">
-        <aria-tooltip-trigger data-testid="trigger">Trigger</aria-tooltip-trigger>
-        <aria-tooltip-content data-testid="content">Content</aria-tooltip-content>
-      </aria-tooltip-root>
+      <aria-ui-tooltip-root data-testid="root">
+        <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content">Content</aria-ui-tooltip-content>
+      </aria-ui-tooltip-root>
     `)
 
     expect(screen.getByTestId("root")).toBeVisible()
@@ -45,14 +42,14 @@ describe("Tooltip", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-tooltip-root data-testid="root1">
-        <aria-tooltip-trigger data-testid="trigger1">Trigger1</aria-tooltip-trigger>
-        <aria-tooltip-content data-testid="content1">Content1</aria-tooltip-content>
-      </aria-tooltip-root>
-      <aria-tooltip-root data-testid="root2">
-        <aria-tooltip-trigger data-testid="trigger2">Trigger2</aria-tooltip-trigger>
-        <aria-tooltip-content data-testid="content2">Content2</aria-tooltip-content>
-      </aria-tooltip-root>
+      <aria-ui-tooltip-root data-testid="root1">
+        <aria-ui-tooltip-trigger data-testid="trigger1">Trigger1</aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content1">Content1</aria-ui-tooltip-content>
+      </aria-ui-tooltip-root>
+      <aria-ui-tooltip-root data-testid="root2">
+        <aria-ui-tooltip-trigger data-testid="trigger2">Trigger2</aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content2">Content2</aria-ui-tooltip-content>
+      </aria-ui-tooltip-root>
     `)
 
     expect(screen.getByTestId("content1")).not.toBeVisible()
@@ -77,17 +74,20 @@ describe("Tooltip", () => {
     const { render, screen } = setup()
 
     render(html`
-      <aria-tooltip-root data-testid="root">
-        <aria-tooltip-trigger data-testid="trigger">Trigger</aria-tooltip-trigger>
-        <aria-tooltip-content data-testid="content">Content</aria-tooltip-content>
-      </aria-tooltip-root>
+      <aria-ui-tooltip-root data-testid="root">
+        <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content">Content</aria-ui-tooltip-content>
+      </aria-ui-tooltip-root>
     `)
 
     const root = screen.getByTestId("root") as TooltipRootElement
     const trigger = screen.getByTestId("trigger") as TooltipTriggerElement
 
     const onOpenChange = vi.fn()
-    root.onOpenChange = onOpenChange
+    root.addEventListener("openChange", (e) => {
+      const event = e as CustomEvent<boolean>
+      onOpenChange(event.detail)
+    })
 
     expect(onOpenChange).not.toHaveBeenCalled()
 
@@ -110,10 +110,6 @@ describe("Tooltip", () => {
 })
 
 function setup() {
-  defineCustomElement("aria-tooltip-root", TooltipRootElement)
-  defineCustomElement("aria-tooltip-trigger", TooltipTriggerElement)
-  defineCustomElement("aria-tooltip-content", TooltipContentElement)
-
   const container = document.createElement("div")
   document.body.appendChild(container)
 
@@ -122,9 +118,4 @@ function setup() {
   }
 
   return { render: renderHTML, container, screen: within(container) }
-}
-
-function defineCustomElement(name: string, element: CustomElementConstructor) {
-  if (customElements.get(name)) return
-  customElements.define(name, element)
 }

@@ -41,7 +41,7 @@ export type PropDeclaration<T = unknown> = {
 export type PropDeclarations<
   T extends Record<string, any> = Record<string, any>,
 > = {
-  [K in keyof T]: PropDeclaration<T[K]>
+  [K in keyof Required<T>]: PropDeclaration<T[K]>
 }
 
 export type GetProperties<T extends object> = T extends PropDeclarations<
@@ -95,12 +95,6 @@ function getToAttribute<T = unknown>(
     case "boolean":
       return String
   }
-}
-
-export function defineProps<Props extends Record<string, any>>(
-  props: PropDeclarations<Props>,
-): PropDeclarations<Props> {
-  return props
 }
 
 export function getAttributeMappings<T extends Record<string, unknown>>(

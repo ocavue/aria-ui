@@ -1,18 +1,18 @@
-export { MenuContentElement } from "./menu-content.element.gen"
-export {
-  menuContentProps,
-  type MenuContentProps,
-} from "./menu-content.props"
-export { useMenuContent } from "./menu-content.state"
-export { MenuItemElement } from "./menu-item.element.gen"
-export { menuItemProps, type MenuItemProps } from "./menu-item.props"
-export { useMenuItem } from "./menu-item.state"
-export { MenuRootElement } from "./menu-root.element.gen"
-export { menuRootProps, type MenuRootProps } from "./menu-root.props"
-export { useMenuRoot } from "./menu-root.state"
-export { MenuTriggerElement } from "./menu-trigger.element.gen"
-export {
-  menuTriggerProps,
-  type MenuTriggerProps,
-} from "./menu-trigger.props"
-export { useMenuTrigger } from "./menu-trigger.state"
+import { registerCustomElement } from "@aria-ui/core"
+
+import {
+  MenuContentElement,
+  MenuItemElement,
+  MenuRootElement,
+  MenuTriggerElement,
+} from "./elements"
+
+export * from "./menu-content.types"
+export * from "./menu-item.types"
+export * from "./menu-root.types"
+export * from "./menu-trigger.types"
+
+registerCustomElement("aria-ui-menu-content", MenuContentElement)
+registerCustomElement("aria-ui-menu-item", MenuItemElement)
+registerCustomElement("aria-ui-menu-root", MenuRootElement)
+registerCustomElement("aria-ui-menu-trigger", MenuTriggerElement)

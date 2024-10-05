@@ -5,6 +5,10 @@
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts",
+    "./elements": "./src/elements.ts"
+  },
   "files": ["dist"],
   "scripts": {
     "build": "tsup"
@@ -28,6 +32,16 @@
     "access": "public",
     "main": "dist/index.js",
     "module": "dist/index.js",
-    "types": "dist/index.d.ts"
+    "types": "dist/index.d.ts",
+    "exports": {
+      ".": {
+        "types": "./dist/index.d.ts",
+        "import": "./dist/index.js"
+      },
+      "./elements": {
+        "types": "./dist/elements.d.ts",
+        "import": "./dist/elements.js"
+      }
+    }
   }
 }

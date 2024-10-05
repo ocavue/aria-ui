@@ -1,5 +1,6 @@
 import { createContext } from "@aria-ui/core"
 
-export const keydownHandlerContext = createContext<
-  ((event: KeyboardEvent) => void) | null
->("ComboboxList/keydownHandler", null)
+export const eventTargetContext = createContext<HTMLElement | undefined>(
+  "ComboboxList/eventTarget",
+  undefined,
+)
