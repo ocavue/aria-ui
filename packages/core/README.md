@@ -382,7 +382,9 @@ Batches can be nested and changes are only flushed once the outermost batch call
 
 Accessing a signal that has been modified within a batch will reflect its updated value.
 
-**Returns**: The value returned by the callback.
+**Returns**
+
+The value returned by the callback.
 
 ### createComputed <a id="create-computed" href="#create-computed">#</a>
 
@@ -478,7 +480,9 @@ function untracked<T>(fn: () => T): T;
 
 Run a callback function that can access signal values without subscribing to the signal updates.
 
-**Returns**: The value returned by the callback.
+**Returns**
+
+The value returned by the callback.
 
 ### useAnimationFrame <a id="use-animation-frame" href="#use-animation-frame">#</a>
 

@@ -142,11 +142,7 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-true;
-```
+**Default**: `true`
 
 </dd>
 
@@ -162,13 +158,11 @@ Options to activate auto-update listeners
 
 **Type**: `boolean | AutoUpdateOptions`
 
-**See**: https://floating-ui.com/docs/autoUpdate
+**See**
 
-**Default**
+https://floating-ui.com/docs/autoUpdate
 
-```ts
-true;
-```
+**Default**: `true`
 
 </dd>
 
@@ -184,11 +178,7 @@ Describes the clipping element(s) or area that overflow will be checked relative
 
 **Type**: `Boundary`
 
-**Default**
-
-```ts
-"clippingAncestors";
-```
+**Default**: `'clippingAncestors'`
 
 </dd>
 
@@ -204,11 +194,7 @@ The element that will be used to check for overflow. Please see https://floating
 
 **Type**: `ElementContext`
 
-**Default**
-
-```ts
-"floating";
-```
+**Default**: `'floating'`
 
 </dd>
 
@@ -224,11 +210,7 @@ Whether to constrain the floating element's width and height to not exceed the v
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -244,11 +226,7 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 **Type**: `boolean | Placement[]`
 
-**Default**
-
-```ts
-true;
-```
+**Default**: `true`
 
 </dd>
 
@@ -264,11 +242,7 @@ Whether to hide the floating element when the reference element or the floating 
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -284,11 +258,7 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-true;
-```
+**Default**: `true`
 
 </dd>
 
@@ -304,11 +274,7 @@ Whether to improve positioning for inline reference elements that span over mult
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -324,11 +290,7 @@ The distance between the reference and floating element.
 
 **Type**: `undefined | OffsetOptions`
 
-**Default**
-
-```ts
-4;
-```
+**Default**: `4`
 
 </dd>
 
@@ -344,11 +306,7 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 **Type**: `number`
 
-**Default**
-
-```ts
-4;
-```
+**Default**: `4`
 
 </dd>
 
@@ -364,11 +322,7 @@ Whether the floating element can overlap the reference element to keep it in vie
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -384,11 +338,7 @@ The initial placement of the floating element
 
 **Type**: `Placement`
 
-**Default**
-
-```ts
-"top";
-```
+**Default**: `"top"`
 
 </dd>
 
@@ -404,11 +354,7 @@ Describes the root boundary that the element will be checked for overflow relati
 
 **Type**: `RootBoundary`
 
-**Default**
-
-```ts
-"viewport";
-```
+**Default**: `'viewport'`
 
 </dd>
 
@@ -424,11 +370,7 @@ Whether to constrain the floating element's height so that it matches the refere
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -444,11 +386,7 @@ Whether to constrain the floating element's width so that it matches the referen
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -464,11 +402,7 @@ Whether the floating element should shift to keep it in view.
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-true;
-```
+**Default**: `true`
 
 </dd>
 
@@ -484,11 +418,7 @@ The strategy to use for positioning
 
 **Type**: `"fixed" | "absolute"`
 
-**Default**
-
-```ts
-"absolute";
-```
+**Default**: `"absolute"`
 
 </dd>
 
@@ -504,11 +434,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -548,11 +474,7 @@ Whether the popover is open by default.
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -568,11 +490,7 @@ Whether the popover is open.
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 

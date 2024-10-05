@@ -36,11 +36,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 **Type**: `string`
 
-**Default**
-
-```ts
-("");
-```
+**Default**: `""`
 
 </dd>
 
@@ -62,11 +58,7 @@ Whether the listbox should automatically set the focus to the first item when th
 
 **Type**: `boolean`
 
-**Default**
-
-```ts
-false;
-```
+**Default**: `false`
 
 </dd>
 
@@ -96,11 +88,7 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 **Type**: `null | ItemFilter`
 
-**Default**
-
-```ts
-defaultItemFilter;
-```
+**Default**: `defaultItemFilter`
 
 </dd>
 
@@ -116,11 +104,7 @@ The query string to filter the listbox items.
 
 **Type**: `string`
 
-**Default**
-
-```ts
-("");
-```
+**Default**: `""`
 
 </dd>
 
@@ -138,11 +122,7 @@ Listbox selection mode
 
 **Type**: `"multiple" | "single"`
 
-**Default**
-
-```ts
-"single";
-```
+**Default**: `"single"`
 
 </dd>
 
@@ -158,11 +138,7 @@ The selected value.
 
 **Type**: `string`
 
-**Default**
-
-```ts
-("");
-```
+**Default**: `""`
 
 </dd>
 
