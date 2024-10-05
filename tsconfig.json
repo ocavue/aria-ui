@@ -62,9 +62,6 @@
       "path": "packages/tooltip"
     },
     {
-      "path": "packages/typedoc-plugin"
-    },
-    {
       "path": "website"
     }
   ]
