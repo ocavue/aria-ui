@@ -1,8 +1,6 @@
 # @aria-ui/listbox
 
-## API
-
-### ListboxEvents <a id="listbox-events" href="#listbox-events">#</a>
+## ListboxEvents <a id="listbox-events" href="#listbox-events">#</a>
 
 <dl>
 
@@ -20,7 +18,7 @@
 
 </dl>
 
-### ListboxItemProps <a id="listbox-item-props" href="#listbox-item-props">#</a>
+## ListboxItemProps <a id="listbox-item-props" href="#listbox-item-props">#</a>
 
 <dl>
 
@@ -42,7 +40,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 </dl>
 
-### ListboxProps <a id="listbox-props" href="#listbox-props">#</a>
+## ListboxProps <a id="listbox-props" href="#listbox-props">#</a>
 
 <dl>
 
