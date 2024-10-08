@@ -7,9 +7,7 @@
 <dl>
 
 <dt>
-
 `escapeKeyDown`
-
 </dt>
 
 <dd>
