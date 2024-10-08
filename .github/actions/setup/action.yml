@@ -20,6 +20,11 @@ runs:
       run: corepack enable
       shell: bash
 
+    - name: Setup bun
+      uses: oven-sh/setup-bun@v2
+      with:
+        bun-version: latest
+
     - name: Install
       run: pnpm install --frozen-lockfile
       shell: bash
