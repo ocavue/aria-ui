@@ -288,7 +288,7 @@ function attachRoot(element: HTMLElement) {
   }
 
   const onContextRequest = (event: ContextRequestEvent<unknown>) => {
-    const element = getEventTarget(event) as HTMLElement | null
+    const element = getEventTarget<HTMLElement>(event)
     if (!element) {
       return
     }

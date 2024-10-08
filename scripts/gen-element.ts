@@ -35,9 +35,7 @@ async function main() {
     const lines = [
       `import { registerCustomElement } from "@aria-ui/core"`,
       "",
-      ...components.map(
-        (c) => `import { ${c.pascal}Element } from "./elements"`,
-      ),
+      `import { ${components.map((c) => `${c.pascal}Element`).join(", ")} } from './elements'`,
       "",
       ...components.map((c) => `export * from "./${c.kebab}.types"`),
       "",

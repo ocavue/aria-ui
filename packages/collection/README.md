@@ -15,7 +15,7 @@
 <dd>
 
 ```ts
-new Collection(items: Iterable<HTMLElement>, loop: boolean)
+new Collection(items: Iterable<HTMLElement, any, any>, loop: boolean)
 ```
 
 </dd>

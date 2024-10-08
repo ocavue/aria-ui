@@ -80,8 +80,8 @@ describe("Tooltip", () => {
       </aria-ui-tooltip-root>
     `)
 
-    const root = screen.getByTestId("root") as TooltipRootElement
-    const trigger = screen.getByTestId("trigger") as TooltipTriggerElement
+    const root = screen.getByTestId<TooltipRootElement>("root")
+    const trigger = screen.getByTestId<TooltipTriggerElement>("trigger")
 
     const onOpenChange = vi.fn()
     root.addEventListener("openChange", (e) => {
