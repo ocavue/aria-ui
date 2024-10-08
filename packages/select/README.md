@@ -1,8 +1,6 @@
 # @aria-ui/select
 
-## API
-
-### SelectContentEvents <a id="select-content-events" href="#select-content-events">#</a>
+## SelectContentEvents <a id="select-content-events" href="#select-content-events">#</a>
 
 <dl>
 
@@ -72,7 +70,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dl>
 
-### SelectItemProps <a id="select-item-props" href="#select-item-props">#</a>
+## SelectItemProps <a id="select-item-props" href="#select-item-props">#</a>
 
 <dl>
 
@@ -94,7 +92,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 </dl>
 
-### SelectListEvents <a id="select-list-events" href="#select-list-events">#</a>
+## SelectListEvents <a id="select-list-events" href="#select-list-events">#</a>
 
 <dl>
 
@@ -112,7 +110,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 </dl>
 
-### SelectListProps <a id="select-list-props" href="#select-list-props">#</a>
+## SelectListProps <a id="select-list-props" href="#select-list-props">#</a>
 
 <dl>
 
@@ -214,7 +212,7 @@ The selected value.
 
 </dl>
 
-### SelectRootEvents <a id="select-root-events" href="#select-root-events">#</a>
+## SelectRootEvents <a id="select-root-events" href="#select-root-events">#</a>
 
 <dl>
 
@@ -232,7 +230,7 @@ The selected value.
 
 </dl>
 
-### SelectRootProps <a id="select-root-props" href="#select-root-props">#</a>
+## SelectRootProps <a id="select-root-props" href="#select-root-props">#</a>
 
 <dl>
 
@@ -270,7 +268,7 @@ Whether the popover is open.
 
 </dl>
 
-### SelectValueProps <a id="select-value-props" href="#select-value-props">#</a>
+## SelectValueProps <a id="select-value-props" href="#select-value-props">#</a>
 
 <dl>
 
@@ -292,6 +290,6 @@ The value to show when no item is selected
 
 </dl>
 
-### selectContentEvents <a id="select-content-events-1" href="#select-content-events-1">#</a>
+## selectContentEvents <a id="select-content-events-1" href="#select-content-events-1">#</a>
 
 **Type**: `EventDeclarations<PopoverContentEvents>`

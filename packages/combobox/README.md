@@ -1,8 +1,6 @@
 # @aria-ui/combobox
 
-## API
-
-### ComboboxItemProps <a id="combobox-item-props" href="#combobox-item-props">#</a>
+## ComboboxItemProps <a id="combobox-item-props" href="#combobox-item-props">#</a>
 
 <dl>
 
@@ -24,7 +22,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 </dl>
 
-### ComboboxListEvents <a id="combobox-list-events" href="#combobox-list-events">#</a>
+## ComboboxListEvents <a id="combobox-list-events" href="#combobox-list-events">#</a>
 
 <dl>
 
@@ -42,7 +40,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 </dl>
 
-### ComboboxListProps <a id="combobox-list-props" href="#combobox-list-props">#</a>
+## ComboboxListProps <a id="combobox-list-props" href="#combobox-list-props">#</a>
 
 <dl>
 

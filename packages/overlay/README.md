@@ -1,8 +1,6 @@
 # @aria-ui/overlay
 
-## API
-
-### OverlayPositionerDataAttributes <a id="overlay-positioner-data-attributes" href="#overlay-positioner-data-attributes">#</a>
+## OverlayPositionerDataAttributes <a id="overlay-positioner-data-attributes" href="#overlay-positioner-data-attributes">#</a>
 
 <dl>
 
@@ -44,7 +42,7 @@
 
 </dl>
 
-### OverlayPositionerProps <a id="overlay-positioner-props" href="#overlay-positioner-props">#</a>
+## OverlayPositionerProps <a id="overlay-positioner-props" href="#overlay-positioner-props">#</a>
 
 <dl>
 

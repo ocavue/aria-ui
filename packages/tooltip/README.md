@@ -1,8 +1,6 @@
 # @aria-ui/tooltip
 
-## API
-
-### TooltipContentDataAttributes <a id="tooltip-content-data-attributes" href="#tooltip-content-data-attributes">#</a>
+## TooltipContentDataAttributes <a id="tooltip-content-data-attributes" href="#tooltip-content-data-attributes">#</a>
 
 <dl>
 
@@ -20,7 +18,7 @@
 
 </dl>
 
-### TooltipContentProps <a id="tooltip-content-props" href="#tooltip-content-props">#</a>
+## TooltipContentProps <a id="tooltip-content-props" href="#tooltip-content-props">#</a>
 
 <dl>
 
@@ -334,7 +332,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 </dl>
 
-### TooltipRootEvents <a id="tooltip-root-events" href="#tooltip-root-events">#</a>
+## TooltipRootEvents <a id="tooltip-root-events" href="#tooltip-root-events">#</a>
 
 <dl>
 
@@ -354,7 +352,7 @@ Fired when the open state changes.
 
 </dl>
 
-### TooltipRootProps <a id="tooltip-root-props" href="#tooltip-root-props">#</a>
+## TooltipRootProps <a id="tooltip-root-props" href="#tooltip-root-props">#</a>
 
 <dl>
 

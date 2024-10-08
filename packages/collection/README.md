@@ -1,8 +1,6 @@
 # @aria-ui/collection
 
-## API
-
-### Collection <a id="collection" href="#collection">#</a>
+## Collection <a id="collection" href="#collection">#</a>
 
 <dl>
 
@@ -132,13 +130,13 @@ const size: () => number;
 
 </dl>
 
-### ItemFilter <a id="item-filter" href="#item-filter">#</a>
+## ItemFilter <a id="item-filter" href="#item-filter">#</a>
 
 The filter function to determine if an item should be shown in the collection.
 
 **Type**: `(options: Object) => boolean`
 
-### defaultItemFilter <a id="default-item-filter" href="#default-item-filter">#</a>
+## defaultItemFilter <a id="default-item-filter" href="#default-item-filter">#</a>
 
 A simple case-insensitive substring match filter.
 

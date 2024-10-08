@@ -1,8 +1,6 @@
 # @aria-ui/menu
 
-## API
-
-### MenuContentProps <a id="menu-content-props" href="#menu-content-props">#</a>
+## MenuContentProps <a id="menu-content-props" href="#menu-content-props">#</a>
 
 <dl>
 
@@ -330,7 +328,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 </dl>
 
-### MenuItemEvents <a id="menu-item-events" href="#menu-item-events">#</a>
+## MenuItemEvents <a id="menu-item-events" href="#menu-item-events">#</a>
 
 <dl>
 
@@ -350,7 +348,7 @@ Fired when the item is selected.
 
 </dl>
 
-### MenuItemProps <a id="menu-item-props" href="#menu-item-props">#</a>
+## MenuItemProps <a id="menu-item-props" href="#menu-item-props">#</a>
 
 <dl>
 
@@ -404,14 +402,14 @@ The value of the item. Every item must have a unique value in the parent list. B
 
 </dl>
 
-### MenuContentEvents <a id="menu-content-events" href="#menu-content-events">#</a>
+## MenuContentEvents <a id="menu-content-events" href="#menu-content-events">#</a>
 
 **Type**: `PopoverContentEvents`
 
-### MenuRootEvents <a id="menu-root-events" href="#menu-root-events">#</a>
+## MenuRootEvents <a id="menu-root-events" href="#menu-root-events">#</a>
 
 **Type**: `PopoverRootEvents`
 
-### MenuRootProps <a id="menu-root-props" href="#menu-root-props">#</a>
+## MenuRootProps <a id="menu-root-props" href="#menu-root-props">#</a>
 
 **Type**: `PopoverRootProps`

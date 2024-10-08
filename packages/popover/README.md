@@ -1,8 +1,6 @@
 # @aria-ui/popover
 
-## API
-
-### PopoverContentDataAttributes <a id="popover-content-data-attributes" href="#popover-content-data-attributes">#</a>
+## PopoverContentDataAttributes <a id="popover-content-data-attributes" href="#popover-content-data-attributes">#</a>
 
 <dl>
 
@@ -56,7 +54,7 @@
 
 </dl>
 
-### PopoverContentEvents <a id="popover-content-events" href="#popover-content-events">#</a>
+## PopoverContentEvents <a id="popover-content-events" href="#popover-content-events">#</a>
 
 <dl>
 
@@ -126,7 +124,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dl>
 
-### PopoverContentProps <a id="popover-content-props" href="#popover-content-props">#</a>
+## PopoverContentProps <a id="popover-content-props" href="#popover-content-props">#</a>
 
 <dl>
 
@@ -440,7 +438,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 </dl>
 
-### PopoverRootEvents <a id="popover-root-events" href="#popover-root-events">#</a>
+## PopoverRootEvents <a id="popover-root-events" href="#popover-root-events">#</a>
 
 <dl>
 
@@ -458,7 +456,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 </dl>
 
-### PopoverRootProps <a id="popover-root-props" href="#popover-root-props">#</a>
+## PopoverRootProps <a id="popover-root-props" href="#popover-root-props">#</a>
 
 <dl>
 
@@ -496,10 +494,10 @@ Whether the popover is open.
 
 </dl>
 
-### EscapeKeyDownEvent <a id="escape-key-down-event" href="#escape-key-down-event">#</a>
+## EscapeKeyDownEvent <a id="escape-key-down-event" href="#escape-key-down-event">#</a>
 
 **Type**: `CustomEvent<Object>`
 
-### popoverRootEvents <a id="popover-root-events-1" href="#popover-root-events-1">#</a>
+## popoverRootEvents <a id="popover-root-events-1" href="#popover-root-events-1">#</a>
 
 **Type**: `EventDeclarations<PopoverRootEvents>`

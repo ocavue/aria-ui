@@ -60,8 +60,8 @@ importers:
         specifier: 0.26.8
         version: 0.26.8(typescript@5.6.2)
       typedoc-plugin-md:
-        specifier: ^0.1.0
-        version: 0.1.0(typedoc@0.26.8(typescript@5.6.2))
+        specifier: ^0.2.1
+        version: 0.2.1(typedoc@0.26.8(typescript@5.6.2))
       typescript:
         specifier: ^5.6.2
         version: 5.6.2
@@ -4341,8 +4341,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typedoc-plugin-md@0.1.0:
-    resolution: {integrity: sha512-MMZIj0N/iRKvtOF1KmWq9biVxqmVTaKLgHvjztkH7B0/IqSuBlbhWSIkYT98Nl0cbLuw9Ois1lhhmosnpKgwwA==}
+  typedoc-plugin-md@0.2.1:
+    resolution: {integrity: sha512-/yCFmUrMIT3H5gSikQfjLsYZuDHm2l8E7CNruxYzeIaumIaoOxpWhwc0sFcTD5iBsqf59Pz0yhHwhsLQO+JCYg==}
     peerDependencies:
       typedoc: ^0.26.7
 
@@ -9447,7 +9447,7 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typedoc-plugin-md@0.1.0(typedoc@0.26.8(typescript@5.6.2)):
+  typedoc-plugin-md@0.2.1(typedoc@0.26.8(typescript@5.6.2)):
     dependencies:
       '@sindresorhus/slugify': 2.2.1
       change-case: 5.4.4
