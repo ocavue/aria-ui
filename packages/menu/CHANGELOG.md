@@ -1,5 +1,20 @@
 # @aria-ui/menu
 
+## 0.0.13
+
+### Patch Changes
+
+- 9953a23: Add the ability to set and reflect attribute values.
+- 3d8c36d: Add event emitters.
+- Updated dependencies [9953a23]
+- Updated dependencies [3d8c36d]
+- Updated dependencies [e595094]
+  - @aria-ui/core@0.0.19
+  - @aria-ui/overlay@0.0.20
+  - @aria-ui/popover@0.0.21
+  - @aria-ui/collection@0.0.4
+  - @aria-ui/presence@0.0.15
+
 ## 0.0.12
 
 ### Patch Changes
