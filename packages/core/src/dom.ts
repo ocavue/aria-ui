@@ -1,5 +1,5 @@
-import type { AriaAttributes } from "@dddstack/ariatype-aria-attributes"
-import type { AriaRole } from "@dddstack/ariatype-aria-roles"
+import type { AriaAttributes } from "@ariatype/aria-attributes"
+import type { AriaRole } from "@ariatype/aria-roles"
 
 import type { ConnectableElement } from "./connectable-element"
 import {
