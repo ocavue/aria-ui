@@ -120,12 +120,12 @@ importers:
 
   packages/core:
     dependencies:
-      '@dddstack/ariatype-aria-attributes':
-        specifier: ^2.0.0
-        version: 2.0.0
-      '@dddstack/ariatype-aria-roles':
-        specifier: ^2.0.0
-        version: 2.0.0
+      '@ariatype/aria-attributes':
+        specifier: ^1.0.1
+        version: 1.0.1
+      '@ariatype/aria-roles':
+        specifier: ^1.0.1
+        version: 1.0.1
       '@preact/signals-core':
         specifier: ^1.8.0
         version: 1.8.0
@@ -400,6 +400,48 @@ packages:
   '@antfu/utils@0.7.10':
     resolution: {integrity: sha512-+562v9k4aI80m1+VuMHehNJWLOFjBnXn3tdOitzD0il5b7smkSBal4+a3oKiQTbrwMmN/TBUMDvbdoWDehgOww==}
 
+  '@ariatype/aria-attributes-drag-and-drop@1.0.1':
+    resolution: {integrity: sha512-C1cZHJuL2e0dhFv0tgyHNPd+WC5oMlzqRxiKQlluyQakWoOoxRIHJbRNd7EajXdu6rwTKgfxZE9ag8gSKnFiKQ==}
+
+  '@ariatype/aria-attributes-global@1.0.1':
+    resolution: {integrity: sha512-f0lqlhAJdAjC/RswZ1nK39GZyi60U4pBIItLVwiN28n1q0Pi3nGEVCu5iSN3TvwMtasgsWMB8cuQ96jd2GDe+Q==}
+
+  '@ariatype/aria-attributes-live-region@1.0.1':
+    resolution: {integrity: sha512-P7K9EOh/qyh+7p7SZQ/2MiZwwHDWkTStlbql3ZpI6i+4FwS23PvwCXjhPIIiHn6lrw1tNV5zXBTWOzEBWmHgVw==}
+
+  '@ariatype/aria-attributes-relationship@1.0.1':
+    resolution: {integrity: sha512-vg3TgzCFQvhIUJiKV+k086KKa+yJ7g472nJLEYpTTeyh5qp3UY/llxORWAgMVYjBRgHp7RDDtr2KBUS/yNzfqw==}
+
+  '@ariatype/aria-attributes-widget@1.0.1':
+    resolution: {integrity: sha512-ualglvS5d/55Y+tUAcymx2xslSiBMCBJJwkzZ9fq60d7At7Rf2m5lr1KFxBGAdWEo00qj2DgAXXbbKH0927Dzg==}
+
+  '@ariatype/aria-attributes@1.0.1':
+    resolution: {integrity: sha512-pnwf/p4gciKU0SCzAmZWMpL8ZubyKGcKa1ruhzpTVuRXT8VYtqcajtWXrHKAK7071YLS1v0tAKpCHB2tZmVfUg==}
+
+  '@ariatype/aria-roles-composite@1.0.1':
+    resolution: {integrity: sha512-Snhi7xDDoQKDu+57GrN/JC9dWmnBIAPBYzKqFr+1eIJjsieiHTSIL8NyZcTqTIJVAm2J4zNPkT4UvIJPW9lEvw==}
+
+  '@ariatype/aria-roles-document-structure@1.0.1':
+    resolution: {integrity: sha512-+BMQ8DmVINg0erDSwf6RxrV68Ry3ou2IZnnVJba23KZVM+PNw6UwL055N1N68fNgizX2nrd3ectDtsq6DazCzQ==}
+
+  '@ariatype/aria-roles-generic@1.0.1':
+    resolution: {integrity: sha512-797pOcQndj3VSAW4/M+Fb4sh8SjyB9NrWWB/Q2DCBsrFxRzjlPf+jCL78knKOkllp0UJErtKSjWyz8KrDr9edQ==}
+
+  '@ariatype/aria-roles-landmark@1.0.1':
+    resolution: {integrity: sha512-oVlgz1d30aGbkonCe08nyM2xMkaqANsfYO3c8cWM/Gqbow7FCtdejOYjXjhz2q99MGltd7Gla9htAhGYK7vROw==}
+
+  '@ariatype/aria-roles-live-region@1.0.1':
+    resolution: {integrity: sha512-VTIchI0cg2a1HTPB5JcmzboS5YA6MXFNnvEx0K+gRDzLL0AJgwQS2yxHyDcPt6GUyE/N8/Ul1fg4njl+Qp0jiA==}
+
+  '@ariatype/aria-roles-widget@1.0.1':
+    resolution: {integrity: sha512-7TYRjcmRV7m+7XJ4619jGb72qX4GrmCU/AHFN58ro1yYXwSb6THd4xHMc0fDjO2yXTFy0HNIyZ/d3ZpJsoAIpw==}
+
+  '@ariatype/aria-roles-window@1.0.1':
+    resolution: {integrity: sha512-laLPFW9UUcNvCyBiv+dSa+tzIUODZMLOPoNkjFpbCBYSlW65QhvvA8o7sah4TS+L7v6qr7jFrGlVq2LPadBLJQ==}
+
+  '@ariatype/aria-roles@1.0.1':
+    resolution: {integrity: sha512-5XhX1IKcMWIqbQonV20C8lcAzg+pErGLWRK2Itam01F1I6YPxj1zC+52bE5M0seoK9UmJc2qHs6777a8cY9atw==}
+
   '@astrobook/core@0.4.4':
     resolution: {integrity: sha512-Ws0yeDLKwef44hJmyZh4TTEO8/jpykB37beSwldOYDmPie87rEOrpxavr3jmaQoNPpCfTQ5kQNyqtB+Naj4ylw==}
 
@@ -663,48 +705,6 @@ packages:
 
   '@changesets/write@0.3.2':
     resolution: {integrity: sha512-kDxDrPNpUgsjDbWBvUo27PzKX4gqeKOlhibaOXDJA6kuBisGqNHv/HwGJrAu8U/dSf8ZEFIeHIPtvSlZI1kULw==}
-
-  '@dddstack/ariatype-aria-attributes-drag-and-drop@2.0.0':
-    resolution: {integrity: sha512-sPtyhpHfnxWhzuK6oIWddX32Sirfi74LOaMdQ2x/LkphQe1STvEe7jnSD+k3SWQ8gv/DzFhacS/OwyMXlc6lnA==}
-
-  '@dddstack/ariatype-aria-attributes-global@2.0.0':
-    resolution: {integrity: sha512-4pNlL89Gj7IgLBnDJAw8EhCTPSefV3zcejXCwikRob6WlDlKI2zQRbKynzmKqK1V3VFkyCX662FBpUWm3p1gEg==}
-
-  '@dddstack/ariatype-aria-attributes-live-region@2.0.0':
-    resolution: {integrity: sha512-sTMnDbgDFcY/WB8sQdqH6vurd2dt+SnoV1rgzqZh8QlOAbaVtzJuPpXV39SnhUBKlBOV2hC23XLelki5jOplWA==}
-
-  '@dddstack/ariatype-aria-attributes-relationship@2.0.0':
-    resolution: {integrity: sha512-4G5EI9iJ6KJnR038kYiyj5veunXx0zDo/6mlZnkZ4lI2qafVTAmoyUEYRuvMQEkaUBGb2CeDRK4UX036DV/Xwg==}
-
-  '@dddstack/ariatype-aria-attributes-widget@2.0.0':
-    resolution: {integrity: sha512-ILeZ94JgQ0nzpaVsc0iyTdGf8bjqF2UAJ0W+So2lRl9iLmtmt2HGnNJMysj+s4YCempun5NN8xvjpyI21lhvoQ==}
-
-  '@dddstack/ariatype-aria-attributes@2.0.0':
-    resolution: {integrity: sha512-LaTn6dfD3wBQB39lbBA7zc7eAX6e10yFPnvH/I0CkX72JqfXaybme/mn6t0vwNwNtGOpWxoD9JISuAwtX/uFhA==}
-
-  '@dddstack/ariatype-aria-roles-composite@2.0.0':
-    resolution: {integrity: sha512-NKb3ZtoZXQvwH7YbpoW/OW0oLNFlynOYiNSd+o4LIfKydBNPy1qHVc6XPerAocSGwWR3gef/NqGg+F1Pb89/Ig==}
-
-  '@dddstack/ariatype-aria-roles-document-structure@2.0.0':
-    resolution: {integrity: sha512-Bcx30ymR40Ry8QvxL1au4OKggDesE2NcQ070teLdFNy44GFrNRjsZEbuLBklRxny8rmusoaDPRdaeX7FvXBUyg==}
-
-  '@dddstack/ariatype-aria-roles-generic@2.0.0':
-    resolution: {integrity: sha512-FmPtcV5bYdYRgQAEMoWDJb7yJVQtt2XxDVPWjEllb3ClEMzo/WTSztFaEBZyU60JxhDDqmdcRAwpV8aZVRBBNQ==}
-
-  '@dddstack/ariatype-aria-roles-landmark@2.0.0':
-    resolution: {integrity: sha512-jMulAkMBoxpkcaax7jp22tUOSLWPX+27fRZ40VlI2J5BM7/su9rVEqaAlZY7A7l+p3qq90Xc1XC3yMusxKmtsQ==}
-
-  '@dddstack/ariatype-aria-roles-live-region@2.0.0':
-    resolution: {integrity: sha512-9lFnJeHu0c+U5Fz7S2qhzp1dvRbRAqQFi+9Gxx3ENvWOGYYAvDOa9zXyyVDMSj5G9MmLFulRCf6Awe90ISy+Jg==}
-
-  '@dddstack/ariatype-aria-roles-widget@2.0.0':
-    resolution: {integrity: sha512-Alxl7cvfOLi1fpfk5PENjzeyY6hbSsr44+xIPpd7+VHdee0qpDI0x92sLiXcCTCsOR5KpGBCkOHQxOqUCUoWIQ==}
-
-  '@dddstack/ariatype-aria-roles-window@2.0.0':
-    resolution: {integrity: sha512-PHyVqw32xnXsxGp4DSHiii0L6HxLblmCkRrnvI/LykzZtQ0EeCYE3VAMzx1XG/BGl/oKQJP/my0K2D6ZknMFpg==}
-
-  '@dddstack/ariatype-aria-roles@2.0.0':
-    resolution: {integrity: sha512-/TOgMxehpTq3+kBoYvnG53iAeJH3y9TWlMO8Aroc19P4zqq8OHYlJzIQxMtKa9LhvdK7Z8Kcr1f4WDhW7Rd4dw==}
 
   '@emmetio/abbreviation@2.3.3':
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
@@ -4808,6 +4808,60 @@ snapshots:
 
   '@antfu/utils@0.7.10': {}
 
+  '@ariatype/aria-attributes-drag-and-drop@1.0.1': {}
+
+  '@ariatype/aria-attributes-global@1.0.1': {}
+
+  '@ariatype/aria-attributes-live-region@1.0.1': {}
+
+  '@ariatype/aria-attributes-relationship@1.0.1': {}
+
+  '@ariatype/aria-attributes-widget@1.0.1': {}
+
+  '@ariatype/aria-attributes@1.0.1':
+    dependencies:
+      '@ariatype/aria-attributes-drag-and-drop': 1.0.1
+      '@ariatype/aria-attributes-global': 1.0.1
+      '@ariatype/aria-attributes-live-region': 1.0.1
+      '@ariatype/aria-attributes-relationship': 1.0.1
+      '@ariatype/aria-attributes-widget': 1.0.1
+
+  '@ariatype/aria-roles-composite@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles-document-structure@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles-generic@1.0.1': {}
+
+  '@ariatype/aria-roles-landmark@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles-live-region@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles-widget@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles-window@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-generic': 1.0.1
+
+  '@ariatype/aria-roles@1.0.1':
+    dependencies:
+      '@ariatype/aria-roles-composite': 1.0.1
+      '@ariatype/aria-roles-document-structure': 1.0.1
+      '@ariatype/aria-roles-generic': 1.0.1
+      '@ariatype/aria-roles-landmark': 1.0.1
+      '@ariatype/aria-roles-live-region': 1.0.1
+      '@ariatype/aria-roles-widget': 1.0.1
+      '@ariatype/aria-roles-window': 1.0.1
+
   '@astrobook/core@0.4.4':
     dependencies:
       '@astrobook/types': 0.4.4
@@ -5238,60 +5292,6 @@ snapshots:
       fs-extra: 7.0.1
       human-id: 1.0.2
       prettier: 2.8.8
-
-  '@dddstack/ariatype-aria-attributes-drag-and-drop@2.0.0': {}
-
-  '@dddstack/ariatype-aria-attributes-global@2.0.0': {}
-
-  '@dddstack/ariatype-aria-attributes-live-region@2.0.0': {}
-
-  '@dddstack/ariatype-aria-attributes-relationship@2.0.0': {}
-
-  '@dddstack/ariatype-aria-attributes-widget@2.0.0': {}
-
-  '@dddstack/ariatype-aria-attributes@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-attributes-drag-and-drop': 2.0.0
-      '@dddstack/ariatype-aria-attributes-global': 2.0.0
-      '@dddstack/ariatype-aria-attributes-live-region': 2.0.0
-      '@dddstack/ariatype-aria-attributes-relationship': 2.0.0
-      '@dddstack/ariatype-aria-attributes-widget': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-composite@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-document-structure@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-generic@2.0.0': {}
-
-  '@dddstack/ariatype-aria-roles-landmark@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-live-region@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-widget@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles-window@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-
-  '@dddstack/ariatype-aria-roles@2.0.0':
-    dependencies:
-      '@dddstack/ariatype-aria-roles-composite': 2.0.0
-      '@dddstack/ariatype-aria-roles-document-structure': 2.0.0
-      '@dddstack/ariatype-aria-roles-generic': 2.0.0
-      '@dddstack/ariatype-aria-roles-landmark': 2.0.0
-      '@dddstack/ariatype-aria-roles-live-region': 2.0.0
-      '@dddstack/ariatype-aria-roles-widget': 2.0.0
-      '@dddstack/ariatype-aria-roles-window': 2.0.0
 
   '@emmetio/abbreviation@2.3.3':
     dependencies:
