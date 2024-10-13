@@ -496,7 +496,7 @@ Whether the popover is open.
 
 ## EscapeKeyDownEvent <a id="escape-key-down-event" href="#escape-key-down-event">#</a>
 
-**Type**: `CustomEvent<Object>`
+**Type**: `CustomEvent<{ originalEvent: KeyboardEvent }>`
 
 ## popoverRootEvents <a id="popover-root-events-1" href="#popover-root-events-1">#</a>
 
