@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/presence",
   "type": "module",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",

@@ -1,5 +1,11 @@
 # @aria-ui/collection
 
+## 0.0.4
+
+### Patch Changes
+
+- 3d8c36d: Add event emitters.
+
 ## 0.0.3
 
 ### Patch Changes
