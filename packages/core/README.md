@@ -30,8 +30,8 @@ Base class for all custom elements in Aria UI. It implements the [ConnectableEle
 
 <dd>
 
-```ts
-new BaseElement();
+```
+new BaseElement(): BaseElement
 ```
 
 </dd>
@@ -149,13 +149,13 @@ A read-only signal that holds a reactive value.
 
 <dt>
 
-`value`
+`get value(): T`
 
 </dt>
 
 <dd>
 
-**Type**: `T`
+**Deprecated**
 
 </dd>
 
@@ -227,13 +227,13 @@ A mutable signal that can be used to manage reactive state changes.
 
 <dt>
 
-`value`
+`set value(value: T)`
 
 </dt>
 
 <dd>
 
-**Type**: `void`
+**Deprecated**
 
 </dd>
 
@@ -315,19 +315,19 @@ An interface thats can be used to register event listeners.
 
 ## BaseElementConstructor <a id="base-element-constructor" href="#base-element-constructor">#</a>
 
-**Type**: `() => BaseElement & Props`
+**Type**: `new () => BaseElement & Props`
 
 ## EventDeclaration <a id="event-declaration" href="#event-declaration">#</a>
 
 Defines options for an event.
 
-**Type**: `Object`
+**Type**: `{ bubbles?: boolean; cancelable?: boolean; composed?: boolean }`
 
 ## EventDeclarations <a id="event-declarations" href="#event-declarations">#</a>
 
 Map of event types to EventDeclaration options.
 
-**Type**: `{ [EventType in keyof Required<Events>]: EventDeclaration }`
+**Type**: `{[EventType in keyof Required<Events>]: EventDeclaration}`
 
 ## EventEmitter <a id="event-emitter" href="#event-emitter">#</a>
 
@@ -337,19 +337,19 @@ Map of event types to EventDeclaration options.
 
 Defines options for a property.
 
-**Type**: `Object`
+**Type**: `{ attribute?: boolean | string; default: T; fromAttribute?: (value: string | null) => T; toAttribute?: (value: T) => string | null }`
 
 ## PropDeclarations <a id="prop-declarations" href="#prop-declarations">#</a>
 
 Map of props to PropDeclaration options.
 
-**Type**: `{ [K in keyof Required<T>]: PropDeclaration<T[K]> }`
+**Type**: `{[K in keyof Required<T>]: PropDeclaration<T[K]>}`
 
 ## SignalState <a id="signal-state" href="#signal-state">#</a>
 
 A plain object containing signals.
 
-**Type**: `{ [K in keyof Required<T>]: Signal<T[K]> }`
+**Type**: `{[K in keyof Required<T>]: Signal<T[K]>}`
 
 ## SignalValue <a id="signal-value" href="#signal-value">#</a>
 
@@ -360,7 +360,7 @@ Extracts the value type from a signal type.
 ## assignProps <a id="assign-props" href="#assign-props">#</a>
 
 ```ts
-function assignProps<T>(
+function assignProps<T extends object>(
   defaultProps: Readonly<T>,
   props?: Partial<T>,
 ): Readonly<T>;
@@ -415,9 +415,10 @@ Creates and returns a new signal with the given initial value. Signals are react
 ## defineCustomElement <a id="define-custom-element" href="#define-custom-element">#</a>
 
 ```ts
-function defineCustomElement<Props, Events>(
-  options: CustomElementOptions<Props, Events>,
-): BaseElementConstructor<Props>;
+function defineCustomElement<
+  Props extends { [PropName in string | number | symbol]: unknown },
+  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
+>(options: CustomElementOptions<Props, Events>): BaseElementConstructor<Props>;
 ```
 
 Defines a custom element constructor.
@@ -425,16 +426,18 @@ Defines a custom element constructor.
 ## defineEmit <a id="define-emit" href="#define-emit">#</a>
 
 ```ts
-function defineEmit<Events>(
+function defineEmit<
+  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
+>(
   element: HTMLElement,
   events: EventDeclarations<Events>,
-): Function;
+): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void;
 ```
 
 ## getStateFromProps <a id="get-state-from-props" href="#get-state-from-props">#</a>
 
 ```ts
-function getStateFromProps<Props>(
+function getStateFromProps<Props extends object>(
   props: PropDeclarations<Props>,
 ): SignalState<Props>;
 ```
@@ -442,7 +445,7 @@ function getStateFromProps<Props>(
 ## mapSignals <a id="map-signals" href="#map-signals">#</a>
 
 ```ts
-function mapSignals<T>(values: T): SignalState<T>;
+function mapSignals<T extends object>(values: T): SignalState<T>;
 ```
 
 Maps every value in the given object to a signal.
@@ -452,7 +455,7 @@ Maps every value in the given object to a signal.
 ## mapValues <a id="map-values" href="#map-values">#</a>
 
 ```ts
-function mapValues<T>(signals: SignalState<T>): T;
+function mapValues<T extends object>(signals: SignalState<T>): T;
 ```
 
 Maps every signal in the given object to its current value.
@@ -491,8 +494,8 @@ The value returned by the callback.
 ```ts
 function useAnimationFrame(
   element: ConnectableElement,
-  effect: () => void | Function,
-): Function;
+  effect: () => void | (() => void | VoidFunction),
+): () => void;
 ```
 
 Executes an effect in the next animation frame.
@@ -506,7 +509,58 @@ The given `effect` function will be called when the element is connected, and wh
 ## useAriaAttribute <a id="use-aria-attribute" href="#use-aria-attribute">#</a>
 
 ```ts
-function useAriaAttribute<K>(
+function useAriaAttribute<
+  K extends
+    | "aria-dropeffect"
+    | "aria-grabbed"
+    | "aria-atomic"
+    | "aria-busy"
+    | "aria-controls"
+    | "aria-current"
+    | "aria-describedby"
+    | "aria-details"
+    | "aria-disabled"
+    | "aria-errormessage"
+    | "aria-flowto"
+    | "aria-haspopup"
+    | "aria-hidden"
+    | "aria-invalid"
+    | "aria-keyshortcuts"
+    | "aria-label"
+    | "aria-labelledby"
+    | "aria-live"
+    | "aria-owns"
+    | "aria-relevant"
+    | "aria-roledescription"
+    | "aria-activedescendant"
+    | "aria-colcount"
+    | "aria-colindex"
+    | "aria-colspan"
+    | "aria-description"
+    | "aria-posinset"
+    | "aria-rowcount"
+    | "aria-rowindex"
+    | "aria-rowspan"
+    | "aria-setsize"
+    | "aria-autocomplete"
+    | "aria-checked"
+    | "aria-expanded"
+    | "aria-level"
+    | "aria-modal"
+    | "aria-multiline"
+    | "aria-multiselectable"
+    | "aria-orientation"
+    | "aria-placeholder"
+    | "aria-pressed"
+    | "aria-readonly"
+    | "aria-required"
+    | "aria-selected"
+    | "aria-sort"
+    | "aria-valuemax"
+    | "aria-valuemin"
+    | "aria-valuenow"
+    | "aria-valuetext",
+>(
   element: ConnectableElement,
   key: K,
   compute: () => AriaAttributes[K],
@@ -522,7 +576,7 @@ This is a TypeScript type-safe version of [useAttribute](README.md#use-attribute
 ```ts
 function useAriaRole(
   element: ConnectableElement,
-  role: AriaRole | Function,
+  role: AriaRole | (() => AriaRole | undefined),
 ): VoidFunction;
 ```
 
@@ -548,7 +602,7 @@ Sets the computed attribute of the element when it's connected.
 function useEffect(
   element: ConnectableElement,
   callback: () => void | VoidFunction,
-): Function;
+): () => void;
 ```
 
 Registers a callback to be called when the given element is connected to the DOM. It will track which signals are accessed and re-run their callback when those signals change. The callback can return a cleanup function that will be called when the effect is destroyed.
@@ -558,7 +612,7 @@ The effect will be destroyed and all signals it was subscribed to will be unsubs
 ## useEventListener <a id="use-event-listener" href="#use-event-listener">#</a>
 
 ```ts
-function useEventListener<K>(
+function useEventListener<K extends keyof HTMLElementEventMap>(
   element: ConnectableElement,
   type: K,
   listener: (event: HTMLElementEventMap[K]) => void,
@@ -571,10 +625,10 @@ Registers an event listener on the element.
 ## useQuerySelector <a id="use-query-selector" href="#use-query-selector">#</a>
 
 ```ts
-function useQuerySelector<E>(
+function useQuerySelector<E extends Element>(
   element: ConnectableElement,
   selector: string,
-  options: MutationObserverInit,
+  options?: MutationObserverInit,
 ): ReadonlySignal<E | null>;
 ```
 
@@ -583,10 +637,10 @@ Returns the first element matching the given selector.
 ## useQuerySelectorAll <a id="use-query-selector-all" href="#use-query-selector-all">#</a>
 
 ```ts
-function useQuerySelectorAll<E>(
+function useQuerySelectorAll<E extends Element>(
   element: ConnectableElement,
   selector: string,
-  options: MutationObserverInit,
+  options?: MutationObserverInit,
 ): ReadonlySignal<NodeListOf<E>>;
 ```
 
@@ -595,7 +649,7 @@ Returns all elements matching the given selector.
 ## useStyle <a id="use-style" href="#use-style">#</a>
 
 ```ts
-function useStyle<K>(
+function useStyle<K extends keyof CSSStyleDeclaration>(
   element: ConnectableElement,
   key: K,
   compute: () => CSSStyleDeclaration[K],

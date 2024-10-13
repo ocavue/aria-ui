@@ -12,8 +12,8 @@
 
 <dd>
 
-```ts
-new Collection(items: Iterable<HTMLElement, any, any>, loop: boolean)
+```
+new Collection(items: Iterable<HTMLElement, any, any>, loop?: boolean): Collection
 ```
 
 </dd>
@@ -134,12 +134,12 @@ const size: () => number;
 
 The filter function to determine if an item should be shown in the collection.
 
-**Type**: `(options: Object) => boolean`
+**Type**: `(options: { query: string; value: string }) => boolean`
 
 ## defaultItemFilter <a id="default-item-filter" href="#default-item-filter">#</a>
 
 A simple case-insensitive substring match filter.
 
 ```ts
-function defaultItemFilter(options: Object): boolean;
+function defaultItemFilter(options: { query: string; value: string }): boolean;
 ```
