@@ -1,5 +1,13 @@
 # @aria-ui/core
 
+## 0.0.19
+
+### Patch Changes
+
+- 9953a23: Add the ability to set and reflect attribute values.
+- 3d8c36d: Add event emitters.
+- e595094: Remove `adoptedCallback` method from `BaseElement`.
+
 ## 0.0.18
 
 ### Patch Changes
