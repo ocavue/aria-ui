@@ -13,57 +13,13 @@ import type {
 /**
  * @group PopoverContent
  */
-export interface PopoverContentProps
-  extends Omit<
-    OverlayPositionerProps,
-    "hoist" | "flip" | "shift" | "offset" | "overflowPadding"
-  > {
-  /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.hoist}
-   *
-   * @default true
-   */
-  hoist: OverlayPositionerProps["hoist"]
-
-  /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.flip}
-   *
-   * @default true
-   */
-  flip: OverlayPositionerProps["flip"]
-
-  /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.shift}
-   *
-   * @default true
-   */
-  shift: OverlayPositionerProps["shift"]
-
-  /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.offset}
-   *
-   * @default 4
-   */
-  offset: OverlayPositionerProps["offset"]
-
-  /**
-   * {@inheritDoc @aria-ui/overlay!OverlayPositionerProps.overflowPadding}
-   *
-   * @default 4
-   */
-  overflowPadding: OverlayPositionerProps["overflowPadding"]
-}
+export interface PopoverContentProps extends OverlayPositionerProps {}
 
 /**
  * @hidden
  */
 export const popoverContentProps: PropDeclarations<PopoverContentProps> = {
   ...overlayPositionerProps,
-  hoist: { default: true },
-  flip: { default: true },
-  shift: { default: true },
-  offset: { default: 4 },
-  overflowPadding: { default: 4 },
 }
 
 export type EscapeKeyDownEvent = CustomEvent<{ originalEvent: KeyboardEvent }>

@@ -286,9 +286,9 @@ Whether to improve positioning for inline reference elements that span over mult
 
 The distance between the reference and floating element.
 
-**Type**: `undefined | OffsetOptions`
+**Type**: `OffsetOptions`
 
-**Default**: `4`
+**Default**: `6`
 
 </dd>
 
@@ -432,7 +432,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 **Type**: `boolean`
 
-**Default**: `false`
+**Default**: `true`
 
 </dd>
 

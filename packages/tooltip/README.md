@@ -118,7 +118,7 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 **Type**: `boolean | Placement[]`
 
-**Default**: `"true"`
+**Default**: `true`
 
 </dd>
 
@@ -150,7 +150,7 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 **Type**: `boolean`
 
-**Default**: `"true"`
+**Default**: `true`
 
 </dd>
 
@@ -182,7 +182,7 @@ The distance between the reference and floating element.
 
 **Type**: `OffsetOptions`
 
-**Default**: `undefined`
+**Default**: `6`
 
 </dd>
 
@@ -198,7 +198,7 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 **Type**: `number`
 
-**Default**: `0`
+**Default**: `4`
 
 </dd>
 
@@ -294,7 +294,7 @@ Whether the floating element should shift to keep it in view.
 
 **Type**: `boolean`
 
-**Default**: `false`
+**Default**: `true`
 
 </dd>
 
@@ -326,7 +326,7 @@ Whether to use `transform: translate3d()` for positioning instead of `top` and `
 
 **Type**: `boolean`
 
-**Default**: `false`
+**Default**: `true`
 
 </dd>
 
