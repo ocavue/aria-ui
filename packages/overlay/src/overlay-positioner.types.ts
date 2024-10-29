@@ -46,10 +46,12 @@ export interface OverlayPositionerProps {
   hoist: boolean
 
   /**
-   * Whether to use `transform: translate3d()` for positioning instead of `top`
-   * and `left` (layout) to place the floating element.
+   * Whether to use CSS transforms (`transform: translate3d()`) to position the
+   * floating element instead of layout (`top` and `left` CSS properties). CSS
+   * transforms are more performant, but can cause conflicts with transform
+   * animations.
    *
-   * @default true
+   * @default false
    */
   transform: boolean
 
@@ -185,7 +187,7 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
     placement: { default: "top" },
     autoUpdate: { default: true },
     hoist: { default: true },
-    transform: { default: true },
+    transform: { default: false },
     offset: {
       default: 6,
       fromAttribute: (value) => {
