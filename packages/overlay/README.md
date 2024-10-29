@@ -346,11 +346,11 @@ The strategy to use for positioning
 
 <dd>
 
-Whether to use `transform: translate3d()` for positioning instead of `top` and `left` (layout) to place the floating element.
+Whether to use CSS transforms (`transform: translate3d()`) to position the floating element instead of layout (`top` and `left` CSS properties). CSS transforms are more performant, but can cause conflicts with transform animations.
 
 **Type**: `boolean`
 
-**Default**: `true`
+**Default**: `false`
 
 </dd>
 
