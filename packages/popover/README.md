@@ -140,7 +140,7 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 **Type**: `boolean`
 
-**Default**: `true`
+**Default**: `false`
 
 </dd>
 
