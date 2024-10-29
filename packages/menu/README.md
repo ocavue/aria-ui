@@ -16,7 +16,7 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 **Type**: `boolean`
 
-**Default**: `true`
+**Default**: `false`
 
 </dd>
 
@@ -176,9 +176,9 @@ Whether to improve positioning for inline reference elements that span over mult
 
 The distance between the reference and floating element.
 
-**Type**: `undefined | OffsetOptions`
+**Type**: `OffsetOptions`
 
-**Default**: `4`
+**Default**: `6`
 
 </dd>
 
@@ -318,7 +318,7 @@ The strategy to use for positioning
 
 <dd>
 
-Whether to use `transform: translate3d()` for positioning instead of `top` and `left` (layout) to place the floating element.
+Whether to use CSS transforms to position the floating element instead of layout (`top` and `left` CSS properties). CSS transforms are more performant, but can cause conflicts with transform animations.
 
 **Type**: `boolean`
 

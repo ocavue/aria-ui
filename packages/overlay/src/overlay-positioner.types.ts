@@ -41,13 +41,14 @@ export interface OverlayPositionerProps {
    * the floating element won't be clipped by an ancestor. This provides a
    * similar result to React's `<Portals>` or Vue's `<Teleport>`.
    *
-   * @default false
+   * @default true
    */
   hoist: boolean
 
   /**
-   * Whether to use `transform: translate3d()` for positioning instead of `top`
-   * and `left` (layout) to place the floating element.
+   * Whether to use CSS transforms to position the floating element instead of
+   * layout (`top` and `left` CSS properties). CSS transforms are more
+   * performant, but can cause conflicts with transform animations.
    *
    * @default false
    */
@@ -60,7 +61,7 @@ export interface OverlayPositionerProps {
   /**
    * The distance between the reference and floating element.
    *
-   * @default undefined
+   * @default 6
    */
   offset?: OffsetOptions
 
@@ -70,14 +71,14 @@ export interface OverlayPositionerProps {
    * provide an array of placements to try sequentially if the preferred
    * `placement` does not fit.
    *
-   * @default false
+   * @default true
    */
   flip: boolean | Placement[]
 
   /**
    * Whether the floating element should shift to keep it in view.
    *
-   * @default false
+   * @default true
    */
   shift: boolean
 
@@ -153,7 +154,7 @@ export interface OverlayPositionerProps {
    * Describes the virtual padding around the boundary to check for overflow.
    * Please see https://floating-ui.com/docs/detectoverflow#padding for more information.
    *
-   * @default 0
+   * @default 4
    */
   overflowPadding: number
 
@@ -171,7 +172,7 @@ export interface OverlayPositionerProps {
    * https://floating-ui.com/docs/detectoverflow#altboundary for more
    * information.
    *
-   * @default true
+   * @default false
    */
   altBoundary: boolean
 }
@@ -184,10 +185,10 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
     strategy: { default: "absolute" },
     placement: { default: "top" },
     autoUpdate: { default: true },
-    hoist: { default: false },
+    hoist: { default: true },
     transform: { default: false },
     offset: {
-      default: undefined,
+      default: 6,
       fromAttribute: (value) => {
         if (value == null) {
           return undefined
@@ -200,8 +201,8 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
       },
       toAttribute: JSON.stringify,
     },
-    flip: { default: false },
-    shift: { default: false },
+    flip: { default: true },
+    shift: { default: true },
     overlap: { default: false },
     fitViewport: { default: false },
     sameWidth: { default: false },
@@ -211,9 +212,9 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
 
     boundary: { default: "clippingAncestors" },
     rootBoundary: { default: "viewport" },
-    overflowPadding: { default: 0 },
+    overflowPadding: { default: 4 },
     elementContext: { default: "floating" },
-    altBoundary: { default: true },
+    altBoundary: { default: false },
   }
 
 /**
