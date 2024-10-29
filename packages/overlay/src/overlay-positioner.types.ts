@@ -172,7 +172,7 @@ export interface OverlayPositionerProps {
    * https://floating-ui.com/docs/detectoverflow#altboundary for more
    * information.
    *
-   * @default true
+   * @default false
    */
   altBoundary: boolean
 }
@@ -214,7 +214,7 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
     rootBoundary: { default: "viewport" },
     overflowPadding: { default: 4 },
     elementContext: { default: "floating" },
-    altBoundary: { default: true },
+    altBoundary: { default: false },
   }
 
 /**
