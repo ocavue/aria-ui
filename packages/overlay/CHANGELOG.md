@@ -1,5 +1,11 @@
 # @aria-ui/overlay
 
+## 0.0.21
+
+### Patch Changes
+
+- c46ffcf: Update the default properties for OverlayPositioner.
+
 ## 0.0.20
 
 ### Patch Changes
