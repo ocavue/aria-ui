@@ -1,5 +1,12 @@
 # @aria-ui/tooltip
 
+## 0.0.25
+
+### Patch Changes
+
+- Updated dependencies [5213889]
+  - @aria-ui/presence@0.0.16
+
 ## 0.0.24
 
 ### Patch Changes
