@@ -39,7 +39,7 @@ export function defineEmit<
   ) {
     const declaration = events[type]
     if (!declaration) {
-      throw new Error(`Event type "${String(type)}" is not defined`)
+      throw new Error(`[aria-ui] Event type "${String(type)}" is not defined`)
     }
 
     const bubbles = declaration.bubbles ?? false

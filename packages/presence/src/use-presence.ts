@@ -1,11 +1,9 @@
 import {
   createSignal,
   useEffect,
-  useEventListener,
   type ConnectableElement,
   type ReadonlySignal,
 } from "@aria-ui/core"
-import { getEventTarget } from "@zag-js/dom-query"
 
 /**
  * @internal
@@ -27,26 +25,34 @@ export function usePresence(
   useEffect(element, () => {
     if (open.get()) {
       visible.set(true)
-    } else if (getAnimationName(element) === "none") {
-      visible.set(false)
+      return
     }
-  })
 
-  useEventListener(element, "animationend", (event: AnimationEvent) => {
-    if (
-      getAnimationName(element).includes(event.animationName) &&
-      getEventTarget(event) === element &&
-      !open.peek()
-    ) {
+    const animations = element.getAnimations()
+    if (animations.length === 0) {
       visible.set(false)
+      return
+    }
+
+    let canceled = false
+    Promise.all(animations.map((animation) => animation.finished))
+      .then(() => {
+        if (!canceled) {
+          visible.set(false)
+        }
+      })
+      .catch((error) => {
+        throw new Error("[aria-ui] Failed to wait for animation to finish", {
+          cause: error,
+        })
+      })
+
+    return () => {
+      canceled = true
     }
   })
 
   return visible
-}
-
-function getAnimationName(element: HTMLElement) {
-  return getComputedStyle(element).animationName || "none"
 }
 
 function show(element: HTMLElement) {
