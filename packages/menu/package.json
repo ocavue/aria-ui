@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/menu",
   "type": "module",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
