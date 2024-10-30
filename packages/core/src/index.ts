@@ -49,9 +49,9 @@ export type {
   EventDeclaration,
   EventDeclarations,
 } from "./event"
-export {
-  type PropDeclaration,
-  type PropDeclarations,
+export type {
+  PropDeclaration,
+  PropDeclarations,
 } from "./prop"
 export { assignProps } from "./props"
 export {
