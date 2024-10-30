@@ -1,5 +1,11 @@
 # @aria-ui/presence
 
+## 0.0.16
+
+### Patch Changes
+
+- 5213889: Fix an issue where the element won't be hidden after an animation with zero duration.
+
 ## 0.0.15
 
 ### Patch Changes
