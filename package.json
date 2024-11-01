@@ -31,7 +31,7 @@
     "@manypkg/get-packages": "2.2.2",
     "@ocavue/eslint-config": "^2.10.3",
     "@testing-library/dom": "^10.4.0",
-    "@testing-library/jest-dom": "^6.6.2",
+    "@testing-library/jest-dom": "^6.6.3",
     "@types/bun": "^1.1.12",
     "change-case": "5.4.4",
     "comment-json": "4.2.5",
