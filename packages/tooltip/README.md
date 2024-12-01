@@ -2,17 +2,19 @@
 
 ## TooltipContentDataAttributes <a id="tooltip-content-data-attributes" href="#tooltip-content-data-attributes">#</a>
 
+### Group
+
+TooltipContent
+
 <dl>
 
 <dt>
 
-`data-state`
+`data-state: "open" | "closed"`
 
 </dt>
 
 <dd>
-
-**Type**: `"open" | "closed"`
 
 </dd>
 
@@ -20,11 +22,15 @@
 
 ## TooltipContentProps <a id="tooltip-content-props" href="#tooltip-content-props">#</a>
 
+### Group
+
+TooltipContent
+
 <dl>
 
 <dt>
 
-`altBoundary`
+`altBoundary: boolean`
 
 </dt>
 
@@ -32,23 +38,19 @@
 
 Whether to check the alternate elementContext’s boundary. Please see https://floating-ui.com/docs/detectoverflow#altboundary for more information.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`autoUpdate`
+`autoUpdate: boolean | AutoUpdateOptions`
 
 </dt>
 
 <dd>
 
 Options to activate auto-update listeners
-
-**Type**: `boolean | AutoUpdateOptions`
 
 **See**
 
@@ -60,7 +62,7 @@ https://floating-ui.com/docs/autoUpdate
 
 <dt>
 
-`boundary`
+`boundary: Boundary`
 
 </dt>
 
@@ -68,15 +70,13 @@ https://floating-ui.com/docs/autoUpdate
 
 Describes the clipping element(s) or area that overflow will be checked relative to. Please see https://floating-ui.com/docs/detectoverflow#boundary for more information.
 
-**Type**: `Boundary`
-
 **Default**: `'clippingAncestors'`
 
 </dd>
 
 <dt>
 
-`elementContext`
+`elementContext: ElementContext`
 
 </dt>
 
@@ -84,15 +84,13 @@ Describes the clipping element(s) or area that overflow will be checked relative
 
 The element that will be used to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#elementcontext for more information.
 
-**Type**: `ElementContext`
-
 **Default**: `'floating'`
 
 </dd>
 
 <dt>
 
-`fitViewport`
+`fitViewport: boolean`
 
 </dt>
 
@@ -100,15 +98,13 @@ The element that will be used to check for overflow. Please see https://floating
 
 Whether to constrain the floating element's width and height to not exceed the viewport.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`flip`
+`flip: boolean | Placement[]`
 
 </dt>
 
@@ -116,15 +112,13 @@ Whether to constrain the floating element's width and height to not exceed the v
 
 Whether to flip the `placement` in order to keep it in view when the preferred placement(s) will overflow the clipping boundary. You can also provide an array of placements to try sequentially if the preferred `placement` does not fit.
 
-**Type**: `boolean | Placement[]`
-
 **Default**: `true`
 
 </dd>
 
 <dt>
 
-`hide`
+`hide: boolean`
 
 </dt>
 
@@ -132,15 +126,13 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 Whether to hide the floating element when the reference element or the floating element is fully clipped.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`hoist`
+`hoist: boolean`
 
 </dt>
 
@@ -148,15 +140,13 @@ Whether to hide the floating element when the reference element or the floating 
 
 Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to place the floating element on top of other page content. When enabled, the floating element won't be clipped by an ancestor. This provides a similar result to React's `<Portals>` or Vue's `<Teleport>`.
 
-**Type**: `boolean`
-
 **Default**: `true`
 
 </dd>
 
 <dt>
 
-`inline`
+`inline: boolean`
 
 </dt>
 
@@ -164,15 +154,13 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 Whether to improve positioning for inline reference elements that span over multiple lines.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`offset`
+`offset?: OffsetOptions`
 
 </dt>
 
@@ -180,15 +168,13 @@ Whether to improve positioning for inline reference elements that span over mult
 
 The distance between the reference and floating element.
 
-**Type**: `OffsetOptions`
-
 **Default**: `6`
 
 </dd>
 
 <dt>
 
-`overflowPadding`
+`overflowPadding: number`
 
 </dt>
 
@@ -196,15 +182,13 @@ The distance between the reference and floating element.
 
 Describes the virtual padding around the boundary to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#padding for more information.
 
-**Type**: `number`
-
 **Default**: `4`
 
 </dd>
 
 <dt>
 
-`overlap`
+`overlap: boolean`
 
 </dt>
 
@@ -212,15 +196,13 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 Whether the floating element can overlap the reference element to keep it in view.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`placement`
+`placement: Placement`
 
 </dt>
 
@@ -228,15 +210,13 @@ Whether the floating element can overlap the reference element to keep it in vie
 
 The initial placement of the floating element
 
-**Type**: `Placement`
-
 **Default**: `"top"`
 
 </dd>
 
 <dt>
 
-`rootBoundary`
+`rootBoundary: RootBoundary`
 
 </dt>
 
@@ -244,15 +224,13 @@ The initial placement of the floating element
 
 Describes the root boundary that the element will be checked for overflow relative to. Please see https://floating-ui.com/docs/detectoverflow#rootboundary for more information.
 
-**Type**: `RootBoundary`
-
 **Default**: `'viewport'`
 
 </dd>
 
 <dt>
 
-`sameHeight`
+`sameHeight: boolean`
 
 </dt>
 
@@ -260,15 +238,13 @@ Describes the root boundary that the element will be checked for overflow relati
 
 Whether to constrain the floating element's height so that it matches the reference element.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`sameWidth`
+`sameWidth: boolean`
 
 </dt>
 
@@ -276,15 +252,13 @@ Whether to constrain the floating element's height so that it matches the refere
 
 Whether to constrain the floating element's width so that it matches the reference element.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`shift`
+`shift: boolean`
 
 </dt>
 
@@ -292,15 +266,13 @@ Whether to constrain the floating element's width so that it matches the referen
 
 Whether the floating element should shift to keep it in view.
 
-**Type**: `boolean`
-
 **Default**: `true`
 
 </dd>
 
 <dt>
 
-`strategy`
+`strategy: "fixed" | "absolute"`
 
 </dt>
 
@@ -308,23 +280,19 @@ Whether the floating element should shift to keep it in view.
 
 The strategy to use for positioning
 
-**Type**: `"fixed" | "absolute"`
-
 **Default**: `"absolute"`
 
 </dd>
 
 <dt>
 
-`transform`
+`transform: boolean`
 
 </dt>
 
 <dd>
 
 Whether to use CSS transforms to position the floating element instead of layout (`top` and `left` CSS properties). CSS transforms are more performant, but can cause conflicts with transform animations.
-
-**Type**: `boolean`
 
 **Default**: `false`
 
@@ -334,11 +302,15 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ## TooltipRootEvents <a id="tooltip-root-events" href="#tooltip-root-events">#</a>
 
+### Group
+
+TooltipRoot
+
 <dl>
 
 <dt>
 
-`openChange`
+`openChange: CustomEvent<boolean>`
 
 </dt>
 
@@ -346,19 +318,21 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 Fired when the open state changes.
 
-**Type**: `CustomEvent<boolean>`
-
 </dd>
 
 </dl>
 
 ## TooltipRootProps <a id="tooltip-root-props" href="#tooltip-root-props">#</a>
 
+### Group
+
+TooltipRoot
+
 <dl>
 
 <dt>
 
-`closeDelay`
+`closeDelay: number`
 
 </dt>
 
@@ -366,15 +340,13 @@ Fired when the open state changes.
 
 The delay in milliseconds before the tooltip closes.
 
-**Type**: `number`
-
 **Default**: `300`
 
 </dd>
 
 <dt>
 
-`open`
+`open: boolean`
 
 </dt>
 
@@ -382,23 +354,19 @@ The delay in milliseconds before the tooltip closes.
 
 Whether the popover is open.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`openDelay`
+`openDelay: number`
 
 </dt>
 
 <dd>
 
 The delay in milliseconds before the tooltip opens.
-
-**Type**: `number`
 
 **Default**: `700`
 
