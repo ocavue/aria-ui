@@ -2,17 +2,19 @@
 
 ## ListboxEvents <a id="listbox-events" href="#listbox-events">#</a>
 
+### Group
+
+Listbox
+
 <dl>
 
 <dt>
 
-`valueChange`
+`valueChange: CustomEvent<string>`
 
 </dt>
 
 <dd>
-
-**Type**: `CustomEvent<string>`
 
 </dd>
 
@@ -20,19 +22,21 @@
 
 ## ListboxItemProps <a id="listbox-item-props" href="#listbox-item-props">#</a>
 
+### Group
+
+ListboxItem
+
 <dl>
 
 <dt>
 
-`value`
+`value: string`
 
 </dt>
 
 <dd>
 
 The value of the item. Every item must have a unique value in the parent list.
-
-**Type**: `string`
 
 **Default**: `""`
 
@@ -42,11 +46,15 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ## ListboxProps <a id="listbox-props" href="#listbox-props">#</a>
 
+### Group
+
+Listbox
+
 <dl>
 
 <dt>
 
-`autoFocus`
+`autoFocus: boolean`
 
 </dt>
 
@@ -54,15 +62,13 @@ The value of the item. Every item must have a unique value in the parent list.
 
 Whether the listbox should automatically set the focus to the first item when the listbox is mounted or when the query changes.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`eventTarget`
+`eventTarget?: HTMLElement | TypedEventTarget<"keydown">`
 
 </dt>
 
@@ -70,13 +76,11 @@ Whether the listbox should automatically set the focus to the first item when th
 
 By default, the Listbox element will listen for keydown events. You can pass a different element to listen for keydown events.
 
-**Type**: `HTMLElement | TypedEventTarget<"keydown">`
-
 </dd>
 
 <dt>
 
-`filter`
+`filter: null | ItemFilter`
 
 </dt>
 
@@ -84,15 +88,13 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 The filter function to determine if an item should be shown in the listbox. By default, a simple case-insensitive substring match is used. You can provide a custom filter function to match against a more complex pattern. You can also pass `null` to disable filtering and allow all items to be shown.
 
-**Type**: `null | ItemFilter`
-
 **Default**: `defaultItemFilter`
 
 </dd>
 
 <dt>
 
-`query`
+`query: string`
 
 </dt>
 
@@ -100,15 +102,13 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 The query string to filter the listbox items.
 
-**Type**: `string`
-
 **Default**: `""`
 
 </dd>
 
 <dt>
 
-`selectionMode`
+`selectionMode: "multiple" | "single"`
 
 </dt>
 
@@ -118,23 +118,19 @@ Listbox selection mode
 
 (Currently only single selection mode is implemented)
 
-**Type**: `"multiple" | "single"`
-
 **Default**: `"single"`
 
 </dd>
 
 <dt>
 
-`value`
+`value: string`
 
 </dt>
 
 <dd>
 
 The selected value.
-
-**Type**: `string`
 
 **Default**: `""`
 

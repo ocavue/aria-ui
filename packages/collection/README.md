@@ -20,13 +20,11 @@ new Collection(items: Iterable<HTMLElement, any, any>, loop?: boolean): Collecti
 
 <dt>
 
-`loop`
+`loop: boolean`
 
 </dt>
 
 <dd>
-
-**Type**: `boolean`
 
 </dd>
 

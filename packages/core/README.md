@@ -20,6 +20,10 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectable-element) interface.
 
+### Group
+
+Elements
+
 <dl>
 
 <dt>
@@ -42,19 +46,21 @@ new BaseElement(): BaseElement
 
 Any HTML element that has implemented the `addConnectedCallback` method.
 
+### Group
+
+Elements
+
 <dl>
 
 <dt>
 
-`addConnectedCallback`
+`addConnectedCallback: (callback: () => void | VoidFunction) => void`
 
 </dt>
 
 <dd>
 
 Registers a callback to be called when the element is connected to the DOM. This callback can return a cleanup function that will be called when the element is disconnected from the DOM.
-
-**Type**: `(callback: () => void | VoidFunction) => void`
 
 </dd>
 
@@ -63,6 +69,10 @@ Registers a callback to be called when the element is connected to the DOM. This
 ## Context <a id="context" href="#context">#</a>
 
 A context is a way to provide and consume signals in a HTML tree.
+
+### Group
+
+Contexts
 
 <dl>
 
@@ -105,37 +115,31 @@ const provide: (
 
 <dt>
 
-`events`
+`events: EventDeclarations<Events>`
 
 </dt>
 
 <dd>
-
-**Type**: `EventDeclarations<Events>`
 
 </dd>
 
 <dt>
 
-`props`
+`props: PropDeclarations<Props>`
 
 </dt>
 
 <dd>
-
-**Type**: `PropDeclarations<Props>`
 
 </dd>
 
 <dt>
 
-`setup`
+`setup: (element: BaseElement, options: SetupOptions<Props, Events>) => void`
 
 </dt>
 
 <dd>
-
-**Type**: `(element: BaseElement, options: SetupOptions<Props, Events>) => void`
 
 </dd>
 
@@ -195,25 +199,21 @@ const peek: () => T;
 
 <dt>
 
-`emit`
+`emit: EventEmitter<Events, keyof Events>`
 
 </dt>
 
 <dd>
-
-**Type**: `EventEmitter<Events, keyof Events>`
 
 </dd>
 
 <dt>
 
-`state`
+`state: SignalState<Props>`
 
 </dt>
 
 <dd>
-
-**Type**: `SignalState<Props>`
 
 </dd>
 
@@ -289,25 +289,21 @@ An interface thats can be used to register event listeners.
 
 <dt>
 
-`addEventListener`
+`addEventListener: (type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dt>
 
 <dd>
-
-**Type**: `(type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dd>
 
 <dt>
 
-`removeEventListener`
+`removeEventListener: (type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dt>
 
 <dd>
-
-**Type**: `(type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dd>
 
@@ -349,11 +345,19 @@ Map of props to PropDeclaration options.
 
 A plain object containing signals.
 
+### Group
+
+Props and States
+
 **Type**: `{[K in keyof Required<T>]: Signal<T[K]>}`
 
 ## SignalValue <a id="signal-value" href="#signal-value">#</a>
 
 Extracts the value type from a signal type.
+
+### Group
+
+Signals
 
 **Type**: `S extends Signal<infer T> ? T : never`
 
@@ -368,11 +372,19 @@ function assignProps<T extends object>(
 
 Merges two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
 
+**Group**
+
+Props and States
+
 ## batch <a id="batch" href="#batch">#</a>
 
 Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
 
 This is a re-export of `batch` from `@preact/signals-core`.
+
+**Group**
+
+Signals
 
 ```ts
 function batch<T>(fn: () => T): T;
@@ -396,6 +408,10 @@ function createComputed<T>(fn: () => T): ReadonlySignal<T>;
 
 Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
 
+**Group**
+
+Signals
+
 ## createContext <a id="create-context" href="#create-context">#</a>
 
 ```ts
@@ -404,6 +420,10 @@ function createContext<T>(key: string | symbol, defaultValue: T): Context<T>;
 
 Creates a new context.
 
+**Group**
+
+Contexts
+
 ## createSignal <a id="create-signal" href="#create-signal">#</a>
 
 ```ts
@@ -411,6 +431,10 @@ function createSignal<T>(value: T): Signal<T>;
 ```
 
 Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
+
+**Group**
+
+Signals
 
 ## defineCustomElement <a id="define-custom-element" href="#define-custom-element">#</a>
 
@@ -450,6 +474,10 @@ function mapSignals<T extends object>(values: T): SignalState<T>;
 
 Maps every value in the given object to a signal.
 
+**Group**
+
+Props and States
+
 **Deprecated**
 
 ## mapValues <a id="map-values" href="#map-values">#</a>
@@ -459,6 +487,10 @@ function mapValues<T extends object>(signals: SignalState<T>): T;
 ```
 
 Maps every signal in the given object to its current value.
+
+**Group**
+
+Props and States
 
 **Deprecated**
 
@@ -478,6 +510,10 @@ Adds the given custom element to the custom element registry.
 Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
 
 This is a re-export of `untracked` from `@preact/signals-core`.
+
+**Group**
+
+Signals
 
 ```ts
 function untracked<T>(fn: () => T): T;
@@ -505,6 +541,10 @@ The given `effect` function will be called when the element is connected, and wh
 `effect` could return a function `callback`. `callback` will be called in the next animation frame.
 
 `callback` could return a function `dispose`. `dispose` will be called when the effect is disposed.
+
+**Group**
+
+DOM
 
 ## useAriaAttribute <a id="use-aria-attribute" href="#use-aria-attribute">#</a>
 
@@ -571,6 +611,10 @@ Sets the computed attribute of the element when it's connected.
 
 This is a TypeScript type-safe version of [useAttribute](README.md#use-attribute).
 
+**Group**
+
+DOM
+
 ## useAriaRole <a id="use-aria-role" href="#use-aria-role">#</a>
 
 ```ts
@@ -584,6 +628,10 @@ Sets the `role` attribute of the element when it's connected.
 
 You can pass a string or a compute function that returns a string.
 
+**Group**
+
+DOM
+
 ## useAttribute <a id="use-attribute" href="#use-attribute">#</a>
 
 ```ts
@@ -595,6 +643,10 @@ function useAttribute(
 ```
 
 Sets the computed attribute of the element when it's connected.
+
+**Group**
+
+DOM
 
 ## useEffect <a id="use-effect" href="#use-effect">#</a>
 
@@ -609,6 +661,10 @@ Registers a callback to be called when the given element is connected to the DOM
 
 The effect will be destroyed and all signals it was subscribed to will be unsubscribed from, when the element is disconnected from the DOM. You can also manually destroy the effect by calling the returned function.
 
+**Group**
+
+Signals
+
 ## useEventListener <a id="use-event-listener" href="#use-event-listener">#</a>
 
 ```ts
@@ -622,6 +678,10 @@ function useEventListener<K extends keyof HTMLElementEventMap>(
 
 Registers an event listener on the element.
 
+**Group**
+
+DOM
+
 ## useQuerySelector <a id="use-query-selector" href="#use-query-selector">#</a>
 
 ```ts
@@ -633,6 +693,10 @@ function useQuerySelector<E extends Element>(
 ```
 
 Returns the first element matching the given selector.
+
+**Group**
+
+DOM
 
 ## useQuerySelectorAll <a id="use-query-selector-all" href="#use-query-selector-all">#</a>
 
@@ -646,6 +710,10 @@ function useQuerySelectorAll<E extends Element>(
 
 Returns all elements matching the given selector.
 
+**Group**
+
+DOM
+
 ## useStyle <a id="use-style" href="#use-style">#</a>
 
 ```ts
@@ -657,3 +725,7 @@ function useStyle<K extends keyof CSSStyleDeclaration>(
 ```
 
 Sets the computed style of the element when it's connected.
+
+**Group**
+
+DOM
