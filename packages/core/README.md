@@ -16,9 +16,15 @@ Shares signals easily across widely nested HTML elements through context.
 
 A comprehensive collection of utilities for DOM interactions, enabling declarative management of attributes, styles, and event listeners.
 
-## BaseElement <a id="base-element" href="#base-element">#</a>
+## API Reference
+
+### BaseElement <a id="base-element" href="#base-element">#</a>
 
 Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectable-element) interface.
+
+#### Group
+
+Elements
 
 <dl>
 
@@ -38,15 +44,19 @@ new BaseElement(): BaseElement
 
 </dl>
 
-## ConnectableElement <a id="connectable-element" href="#connectable-element">#</a>
+### ConnectableElement <a id="connectable-element" href="#connectable-element">#</a>
 
 Any HTML element that has implemented the `addConnectedCallback` method.
+
+#### Group
+
+Elements
 
 <dl>
 
 <dt>
 
-`addConnectedCallback`
+`addConnectedCallback: (callback: () => void | VoidFunction) => void`
 
 </dt>
 
@@ -54,15 +64,17 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 
 Registers a callback to be called when the element is connected to the DOM. This callback can return a cleanup function that will be called when the element is disconnected from the DOM.
 
-**Type**: `(callback: () => void | VoidFunction) => void`
-
 </dd>
 
 </dl>
 
-## Context <a id="context" href="#context">#</a>
+### Context <a id="context" href="#context">#</a>
 
 A context is a way to provide and consume signals in a HTML tree.
+
+#### Group
+
+Contexts
 
 <dl>
 
@@ -73,6 +85,12 @@ A context is a way to provide and consume signals in a HTML tree.
 </dt>
 
 <dd>
+
+Receives the signal from a parent element.
+
+**Returns**
+
+A signal that is double-bound to the provided signal.
 
 ```ts
 const consume: (element: ConnectableElement) => Signal<T>;
@@ -88,6 +106,8 @@ const consume: (element: ConnectableElement) => Signal<T>;
 
 <dd>
 
+Provides a signal to all children of the element.
+
 ```ts
 const provide: (
   element: ConnectableElement,
@@ -99,49 +119,43 @@ const provide: (
 
 </dl>
 
-## CustomElementOptions <a id="custom-element-options" href="#custom-element-options">#</a>
+### CustomElementOptions <a id="custom-element-options" href="#custom-element-options">#</a>
 
 <dl>
 
 <dt>
 
-`events`
+`events: EventDeclarations<Events>`
 
 </dt>
 
 <dd>
-
-**Type**: `EventDeclarations<Events>`
 
 </dd>
 
 <dt>
 
-`props`
+`props: PropDeclarations<Props>`
 
 </dt>
 
 <dd>
-
-**Type**: `PropDeclarations<Props>`
 
 </dd>
 
 <dt>
 
-`setup`
+`setup: (element: BaseElement, options: SetupOptions<Props, Events>) => void`
 
 </dt>
 
 <dd>
-
-**Type**: `(element: BaseElement, options: SetupOptions<Props, Events>) => void`
 
 </dd>
 
 </dl>
 
-## ReadonlySignal <a id="readonly-signal" href="#readonly-signal">#</a>
+### ReadonlySignal <a id="readonly-signal" href="#readonly-signal">#</a>
 
 A read-only signal that holds a reactive value.
 
@@ -167,6 +181,8 @@ A read-only signal that holds a reactive value.
 
 <dd>
 
+Get the signal's current value.
+
 ```ts
 const get: () => T;
 ```
@@ -181,6 +197,8 @@ const get: () => T;
 
 <dd>
 
+Get the signal's current value without subscribing.
+
 ```ts
 const peek: () => T;
 ```
@@ -189,37 +207,33 @@ const peek: () => T;
 
 </dl>
 
-## SetupOptions <a id="setup-options" href="#setup-options">#</a>
+### SetupOptions <a id="setup-options" href="#setup-options">#</a>
 
 <dl>
 
 <dt>
 
-`emit`
+`emit: EventEmitter<Events, keyof Events>`
 
 </dt>
 
 <dd>
-
-**Type**: `EventEmitter<Events, keyof Events>`
 
 </dd>
 
 <dt>
 
-`state`
+`state: SignalState<Props>`
 
 </dt>
 
 <dd>
 
-**Type**: `SignalState<Props>`
-
 </dd>
 
 </dl>
 
-## Signal <a id="signal" href="#signal">#</a>
+### Signal <a id="signal" href="#signal">#</a>
 
 A mutable signal that can be used to manage reactive state changes.
 
@@ -245,6 +259,8 @@ A mutable signal that can be used to manage reactive state changes.
 
 <dd>
 
+Get the signal's current value.
+
 ```ts
 const get: () => T;
 ```
@@ -258,6 +274,8 @@ const get: () => T;
 </dt>
 
 <dd>
+
+Get the signal's current value without subscribing.
 
 ```ts
 const peek: () => T;
@@ -273,6 +291,8 @@ const peek: () => T;
 
 <dd>
 
+Set the value of the signal.
+
 ```ts
 const set: (value: T) => void;
 ```
@@ -281,7 +301,7 @@ const set: (value: T) => void;
 
 </dl>
 
-## TypedEventTarget <a id="typed-event-target" href="#typed-event-target">#</a>
+### TypedEventTarget <a id="typed-event-target" href="#typed-event-target">#</a>
 
 An interface thats can be used to register event listeners.
 
@@ -289,75 +309,79 @@ An interface thats can be used to register event listeners.
 
 <dt>
 
-`addEventListener`
+`addEventListener: (type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dt>
 
 <dd>
-
-**Type**: `(type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dd>
 
 <dt>
 
-`removeEventListener`
+`removeEventListener: (type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
 
 </dt>
 
 <dd>
 
-**Type**: `(type: EventType, listener: (event: DocumentEventMap[EventType]) => void) => void`
-
 </dd>
 
 </dl>
 
-## BaseElementConstructor <a id="base-element-constructor" href="#base-element-constructor">#</a>
+### BaseElementConstructor <a id="base-element-constructor" href="#base-element-constructor">#</a>
 
 **Type**: `new () => BaseElement & Props`
 
-## EventDeclaration <a id="event-declaration" href="#event-declaration">#</a>
+### EventDeclaration <a id="event-declaration" href="#event-declaration">#</a>
 
 Defines options for an event.
 
 **Type**: `{ bubbles?: boolean; cancelable?: boolean; composed?: boolean }`
 
-## EventDeclarations <a id="event-declarations" href="#event-declarations">#</a>
+### EventDeclarations <a id="event-declarations" href="#event-declarations">#</a>
 
 Map of event types to EventDeclaration options.
 
 **Type**: `{[EventType in keyof Required<Events>]: EventDeclaration}`
 
-## EventEmitter <a id="event-emitter" href="#event-emitter">#</a>
+### EventEmitter <a id="event-emitter" href="#event-emitter">#</a>
 
 **Type**: `(type: EventType extends string ? EventType : never, detail: EventType extends string ? Events[EventType]["detail"] : never) => void`
 
-## PropDeclaration <a id="prop-declaration" href="#prop-declaration">#</a>
+### PropDeclaration <a id="prop-declaration" href="#prop-declaration">#</a>
 
 Defines options for a property.
 
 **Type**: `{ attribute?: boolean | string; default: T; fromAttribute?: (value: string | null) => T; toAttribute?: (value: T) => string | null }`
 
-## PropDeclarations <a id="prop-declarations" href="#prop-declarations">#</a>
+### PropDeclarations <a id="prop-declarations" href="#prop-declarations">#</a>
 
 Map of props to PropDeclaration options.
 
 **Type**: `{[K in keyof Required<T>]: PropDeclaration<T[K]>}`
 
-## SignalState <a id="signal-state" href="#signal-state">#</a>
+### SignalState <a id="signal-state" href="#signal-state">#</a>
 
 A plain object containing signals.
 
+#### Group
+
+Props and States
+
 **Type**: `{[K in keyof Required<T>]: Signal<T[K]>}`
 
-## SignalValue <a id="signal-value" href="#signal-value">#</a>
+### SignalValue <a id="signal-value" href="#signal-value">#</a>
 
 Extracts the value type from a signal type.
 
+#### Group
+
+Signals
+
 **Type**: `S extends Signal<infer T> ? T : never`
 
-## assignProps <a id="assign-props" href="#assign-props">#</a>
+### assignProps <a id="assign-props" href="#assign-props">#</a>
 
 ```ts
 function assignProps<T extends object>(
@@ -368,11 +392,19 @@ function assignProps<T extends object>(
 
 Merges two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
 
-## batch <a id="batch" href="#batch">#</a>
+**Group**
+
+Props and States
+
+### batch <a id="batch" href="#batch">#</a>
 
 Groups multiple signal updates into a single batch, optimizing performance by reducing the number of updates.
 
 This is a re-export of `batch` from `@preact/signals-core`.
+
+**Group**
+
+Signals
 
 ```ts
 function batch<T>(fn: () => T): T;
@@ -388,7 +420,7 @@ Accessing a signal that has been modified within a batch will reflect its update
 
 The value returned by the callback.
 
-## createComputed <a id="create-computed" href="#create-computed">#</a>
+### createComputed <a id="create-computed" href="#create-computed">#</a>
 
 ```ts
 function createComputed<T>(fn: () => T): ReadonlySignal<T>;
@@ -396,7 +428,11 @@ function createComputed<T>(fn: () => T): ReadonlySignal<T>;
 
 Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
 
-## createContext <a id="create-context" href="#create-context">#</a>
+**Group**
+
+Signals
+
+### createContext <a id="create-context" href="#create-context">#</a>
 
 ```ts
 function createContext<T>(key: string | symbol, defaultValue: T): Context<T>;
@@ -404,7 +440,11 @@ function createContext<T>(key: string | symbol, defaultValue: T): Context<T>;
 
 Creates a new context.
 
-## createSignal <a id="create-signal" href="#create-signal">#</a>
+**Group**
+
+Contexts
+
+### createSignal <a id="create-signal" href="#create-signal">#</a>
 
 ```ts
 function createSignal<T>(value: T): Signal<T>;
@@ -412,29 +452,33 @@ function createSignal<T>(value: T): Signal<T>;
 
 Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
 
-## defineCustomElement <a id="define-custom-element" href="#define-custom-element">#</a>
+**Group**
+
+Signals
+
+### defineCustomElement <a id="define-custom-element" href="#define-custom-element">#</a>
 
 ```ts
 function defineCustomElement<
   Props extends { [PropName in string | number | symbol]: unknown },
-  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
+  Events extends { [EventType in string | number | symbol]: CustomEvent },
 >(options: CustomElementOptions<Props, Events>): BaseElementConstructor<Props>;
 ```
 
 Defines a custom element constructor.
 
-## defineEmit <a id="define-emit" href="#define-emit">#</a>
+### defineEmit <a id="define-emit" href="#define-emit">#</a>
 
 ```ts
 function defineEmit<
-  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
+  Events extends { [EventType in string | number | symbol]: CustomEvent },
 >(
   element: HTMLElement,
   events: EventDeclarations<Events>,
 ): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void;
 ```
 
-## getStateFromProps <a id="get-state-from-props" href="#get-state-from-props">#</a>
+### getStateFromProps <a id="get-state-from-props" href="#get-state-from-props">#</a>
 
 ```ts
 function getStateFromProps<Props extends object>(
@@ -442,7 +486,7 @@ function getStateFromProps<Props extends object>(
 ): SignalState<Props>;
 ```
 
-## mapSignals <a id="map-signals" href="#map-signals">#</a>
+### mapSignals <a id="map-signals" href="#map-signals">#</a>
 
 ```ts
 function mapSignals<T extends object>(values: T): SignalState<T>;
@@ -450,9 +494,13 @@ function mapSignals<T extends object>(values: T): SignalState<T>;
 
 Maps every value in the given object to a signal.
 
+**Group**
+
+Props and States
+
 **Deprecated**
 
-## mapValues <a id="map-values" href="#map-values">#</a>
+### mapValues <a id="map-values" href="#map-values">#</a>
 
 ```ts
 function mapValues<T extends object>(signals: SignalState<T>): T;
@@ -460,9 +508,13 @@ function mapValues<T extends object>(signals: SignalState<T>): T;
 
 Maps every signal in the given object to its current value.
 
+**Group**
+
+Props and States
+
 **Deprecated**
 
-## registerCustomElement <a id="register-custom-element" href="#register-custom-element">#</a>
+### registerCustomElement <a id="register-custom-element" href="#register-custom-element">#</a>
 
 ```ts
 function registerCustomElement(
@@ -473,11 +525,15 @@ function registerCustomElement(
 
 Adds the given custom element to the custom element registry.
 
-## untracked <a id="untracked" href="#untracked">#</a>
+### untracked <a id="untracked" href="#untracked">#</a>
 
 Executes a given computation without automatically tracking its dependencies, useful for avoiding unnecessary re-computations.
 
 This is a re-export of `untracked` from `@preact/signals-core`.
+
+**Group**
+
+Signals
 
 ```ts
 function untracked<T>(fn: () => T): T;
@@ -489,7 +545,7 @@ Run a callback function that can access signal values without subscribing to the
 
 The value returned by the callback.
 
-## useAnimationFrame <a id="use-animation-frame" href="#use-animation-frame">#</a>
+### useAnimationFrame <a id="use-animation-frame" href="#use-animation-frame">#</a>
 
 ```ts
 function useAnimationFrame(
@@ -506,7 +562,11 @@ The given `effect` function will be called when the element is connected, and wh
 
 `callback` could return a function `dispose`. `dispose` will be called when the effect is disposed.
 
-## useAriaAttribute <a id="use-aria-attribute" href="#use-aria-attribute">#</a>
+**Group**
+
+DOM
+
+### useAriaAttribute <a id="use-aria-attribute" href="#use-aria-attribute">#</a>
 
 ```ts
 function useAriaAttribute<
@@ -571,7 +631,11 @@ Sets the computed attribute of the element when it's connected.
 
 This is a TypeScript type-safe version of [useAttribute](README.md#use-attribute).
 
-## useAriaRole <a id="use-aria-role" href="#use-aria-role">#</a>
+**Group**
+
+DOM
+
+### useAriaRole <a id="use-aria-role" href="#use-aria-role">#</a>
 
 ```ts
 function useAriaRole(
@@ -584,7 +648,11 @@ Sets the `role` attribute of the element when it's connected.
 
 You can pass a string or a compute function that returns a string.
 
-## useAttribute <a id="use-attribute" href="#use-attribute">#</a>
+**Group**
+
+DOM
+
+### useAttribute <a id="use-attribute" href="#use-attribute">#</a>
 
 ```ts
 function useAttribute(
@@ -596,7 +664,11 @@ function useAttribute(
 
 Sets the computed attribute of the element when it's connected.
 
-## useEffect <a id="use-effect" href="#use-effect">#</a>
+**Group**
+
+DOM
+
+### useEffect <a id="use-effect" href="#use-effect">#</a>
 
 ```ts
 function useEffect(
@@ -609,7 +681,11 @@ Registers a callback to be called when the given element is connected to the DOM
 
 The effect will be destroyed and all signals it was subscribed to will be unsubscribed from, when the element is disconnected from the DOM. You can also manually destroy the effect by calling the returned function.
 
-## useEventListener <a id="use-event-listener" href="#use-event-listener">#</a>
+**Group**
+
+Signals
+
+### useEventListener <a id="use-event-listener" href="#use-event-listener">#</a>
 
 ```ts
 function useEventListener<K extends keyof HTMLElementEventMap>(
@@ -622,7 +698,11 @@ function useEventListener<K extends keyof HTMLElementEventMap>(
 
 Registers an event listener on the element.
 
-## useQuerySelector <a id="use-query-selector" href="#use-query-selector">#</a>
+**Group**
+
+DOM
+
+### useQuerySelector <a id="use-query-selector" href="#use-query-selector">#</a>
 
 ```ts
 function useQuerySelector<E extends Element>(
@@ -634,7 +714,11 @@ function useQuerySelector<E extends Element>(
 
 Returns the first element matching the given selector.
 
-## useQuerySelectorAll <a id="use-query-selector-all" href="#use-query-selector-all">#</a>
+**Group**
+
+DOM
+
+### useQuerySelectorAll <a id="use-query-selector-all" href="#use-query-selector-all">#</a>
 
 ```ts
 function useQuerySelectorAll<E extends Element>(
@@ -646,7 +730,11 @@ function useQuerySelectorAll<E extends Element>(
 
 Returns all elements matching the given selector.
 
-## useStyle <a id="use-style" href="#use-style">#</a>
+**Group**
+
+DOM
+
+### useStyle <a id="use-style" href="#use-style">#</a>
 
 ```ts
 function useStyle<K extends keyof CSSStyleDeclaration>(
@@ -657,3 +745,7 @@ function useStyle<K extends keyof CSSStyleDeclaration>(
 ```
 
 Sets the computed style of the element when it's connected.
+
+**Group**
+
+DOM

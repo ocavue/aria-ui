@@ -13,20 +13,18 @@
 <dd>
 
 ```
-new Collection(items: Iterable<HTMLElement, any, any>, loop?: boolean): Collection
+new Collection(items: Iterable<HTMLElement>, loop?: boolean): Collection
 ```
 
 </dd>
 
 <dt>
 
-`loop`
+`loop: boolean`
 
 </dt>
 
 <dd>
-
-**Type**: `boolean`
 
 </dd>
 
@@ -37,6 +35,8 @@ new Collection(items: Iterable<HTMLElement, any, any>, loop?: boolean): Collecti
 </dt>
 
 <dd>
+
+Returns the first enabled value.
 
 ```ts
 const first: () => null | string;
@@ -52,6 +52,8 @@ const first: () => null | string;
 
 <dd>
 
+Finds an element from its value.
+
 ```ts
 const getElement: (value: string) => null | HTMLElement;
 ```
@@ -65,6 +67,8 @@ const getElement: (value: string) => null | HTMLElement;
 </dt>
 
 <dd>
+
+Returns all values.
 
 ```ts
 const getValues: () => string[];
@@ -80,6 +84,8 @@ const getValues: () => string[];
 
 <dd>
 
+Returns the last enabled value.
+
 ```ts
 const last: () => null | string;
 ```
@@ -94,6 +100,8 @@ const last: () => null | string;
 
 <dd>
 
+Returns the next enabled value.
+
 ```ts
 const next: (value: null | string) => null | string;
 ```
@@ -107,6 +115,8 @@ const next: (value: null | string) => null | string;
 </dt>
 
 <dd>
+
+Returns the previous enabled value.
 
 ```ts
 const prev: (value: null | string) => null | string;

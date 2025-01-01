@@ -2,19 +2,21 @@
 
 ## ComboboxItemProps <a id="combobox-item-props" href="#combobox-item-props">#</a>
 
+### Group
+
+ComboboxItem
+
 <dl>
 
 <dt>
 
-`value`
+`value: string`
 
 </dt>
 
 <dd>
 
 The value of the item. Every item must have a unique value in the parent list.
-
-**Type**: `string`
 
 **Default**: `""`
 
@@ -24,17 +26,19 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ## ComboboxListEvents <a id="combobox-list-events" href="#combobox-list-events">#</a>
 
+### Group
+
+ComboboxList
+
 <dl>
 
 <dt>
 
-`valueChange`
+`valueChange: CustomEvent<string>`
 
 </dt>
 
 <dd>
-
-**Type**: `CustomEvent<string>`
 
 </dd>
 
@@ -42,11 +46,15 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ## ComboboxListProps <a id="combobox-list-props" href="#combobox-list-props">#</a>
 
+### Group
+
+ComboboxList
+
 <dl>
 
 <dt>
 
-`autoFocus`
+`autoFocus: boolean`
 
 </dt>
 
@@ -54,15 +62,13 @@ The value of the item. Every item must have a unique value in the parent list.
 
 Whether the listbox should automatically set the focus to the first item when the listbox is mounted or when the query changes.
 
-**Type**: `boolean`
-
 **Default**: `false`
 
 </dd>
 
 <dt>
 
-`filter`
+`filter: null | ItemFilter`
 
 </dt>
 
@@ -70,15 +76,13 @@ Whether the listbox should automatically set the focus to the first item when th
 
 The filter function to determine if an item should be shown in the listbox. By default, a simple case-insensitive substring match is used. You can provide a custom filter function to match against a more complex pattern. You can also pass `null` to disable filtering and allow all items to be shown.
 
-**Type**: `null | ItemFilter`
-
 **Default**: `defaultItemFilter`
 
 </dd>
 
 <dt>
 
-`query`
+`query: string`
 
 </dt>
 
@@ -86,15 +90,13 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 The query string to filter the listbox items.
 
-**Type**: `string`
-
 **Default**: `""`
 
 </dd>
 
 <dt>
 
-`selectionMode`
+`selectionMode: "multiple" | "single"`
 
 </dt>
 
@@ -104,23 +106,19 @@ Listbox selection mode
 
 (Currently only single selection mode is implemented)
 
-**Type**: `"multiple" | "single"`
-
 **Default**: `"single"`
 
 </dd>
 
 <dt>
 
-`value`
+`value: string`
 
 </dt>
 
 <dd>
 
 The selected value.
-
-**Type**: `string`
 
 **Default**: `""`
 
