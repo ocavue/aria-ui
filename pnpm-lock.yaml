@@ -207,6 +207,9 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.6.12
         version: 1.6.12
+      '@floating-ui/utils':
+        specifier: ^0.2.8
+        version: 0.2.8
       '@zag-js/dom-query':
         specifier: ^0.77.0
         version: 0.77.0

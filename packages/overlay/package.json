@@ -16,6 +16,7 @@
   "dependencies": {
     "@aria-ui/core": "workspace:^",
     "@floating-ui/dom": "^1.6.12",
+    "@floating-ui/utils": "^0.2.8",
     "@zag-js/dom-query": "^0.77.0"
   },
   "devDependencies": {

@@ -6,6 +6,7 @@ import {
   type Placement,
   type ReferenceElement,
   type Side,
+  type VirtualElement,
   autoUpdate,
   computePosition,
   flip,
@@ -15,6 +16,7 @@ import {
   shift,
   size,
 } from "@floating-ui/dom"
+import { isElement } from "@floating-ui/utils/dom"
 import { getWindow } from "@zag-js/dom-query"
 
 import type {
@@ -52,6 +54,11 @@ export function updatePlacement(
 
   const update = async () => {
     if (!reference || !floating || canceled) {
+      return
+    }
+
+    const referenceElement = unwrapElement(reference)
+    if (referenceElement && !referenceElement.isConnected) {
       return
     }
 
@@ -228,3 +235,16 @@ function getSideAndAlignFromPlacement(placement: Placement) {
 export const popoverAvailable: boolean =
   typeof HTMLElement !== "undefined" &&
   Object.hasOwn(HTMLElement.prototype, "popover")
+
+/**
+ * Unwraps a virtual element to its underlying DOM element.
+ *
+ * Copied from https://github.com/floating-ui/floating-ui/blob/b80ccaf9cfd7f80f28546906c60284c8385940f0/packages/dom/src/utils/unwrapElement.ts
+ *
+ * @internal
+ */
+export function unwrapElement(
+  element: Element | VirtualElement,
+): Element | undefined {
+  return !isElement(element) ? element.contextElement : element
+}
