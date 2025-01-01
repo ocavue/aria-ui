@@ -1,5 +1,13 @@
 # @aria-ui/presence
 
+## 0.0.17
+
+### Patch Changes
+
+- 27704ee: Update dependencies.
+- Updated dependencies [27704ee]
+  - @aria-ui/core@0.0.20
+
 ## 0.0.16
 
 ### Patch Changes

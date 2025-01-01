@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.20
+
+### Patch Changes
+
+- 27704ee: Update dependencies.
+
 ## 0.0.19
 
 ### Patch Changes

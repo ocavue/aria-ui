@@ -1,5 +1,16 @@
 # @aria-ui/menu
 
+## 0.0.16
+
+### Patch Changes
+
+- Updated dependencies [27704ee]
+- Updated dependencies [143bde7]
+  - @aria-ui/presence@0.0.17
+  - @aria-ui/overlay@0.0.22
+  - @aria-ui/popover@0.0.24
+  - @aria-ui/core@0.0.20
+
 ## 0.0.15
 
 ### Patch Changes
