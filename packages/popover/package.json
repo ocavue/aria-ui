@@ -3,7 +3,18 @@
   "type": "module",
   "version": "0.0.24",
   "private": false,
-  "sideEffects": false,
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ocavue",
+  "homepage": "https://github.com/ocavue/aria-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocavue/aria-ui.git",
+    "directory": "packages/popover"
+  },
+  "bugs": {
+    "url": "https://github.com/ocavue/aria-ui/issues"
+  },
+  "sideEffects": ["./dist/index.js", "./src/index.ts"],
   "main": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
@@ -11,8 +22,8 @@
   },
   "files": ["dist"],
   "scripts": {
-    "test": "vitest",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest"
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",

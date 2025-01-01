@@ -5,12 +5,12 @@
   "private": true,
   "sideEffects": false,
   "exports": {
+    "./vitest-setup": {
+      "default": "./src/vitest-setup.js"
+    },
     "./vitest-workspace": {
       "types": "./src/vitest-workspace.d.ts",
       "default": "./src/vitest-workspace.js"
-    },
-    "./vitest-setup": {
-      "default": "./src/vitest-setup.js"
     }
   },
   "devDependencies": {

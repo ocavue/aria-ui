@@ -3,6 +3,17 @@
   "type": "module",
   "version": "0.0.17",
   "private": false,
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ocavue",
+  "homepage": "https://github.com/ocavue/aria-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocavue/aria-ui.git",
+    "directory": "packages/presence"
+  },
+  "bugs": {
+    "url": "https://github.com/ocavue/aria-ui/issues"
+  },
   "sideEffects": false,
   "main": "src/index.ts",
   "exports": {
