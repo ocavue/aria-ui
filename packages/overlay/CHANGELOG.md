@@ -1,5 +1,14 @@
 # @aria-ui/overlay
 
+## 0.0.22
+
+### Patch Changes
+
+- 27704ee: Update dependencies.
+- 143bde7: Skip position computation when the reference element isn't connected to the DOM.
+- Updated dependencies [27704ee]
+  - @aria-ui/core@0.0.20
+
 ## 0.0.21
 
 ### Patch Changes

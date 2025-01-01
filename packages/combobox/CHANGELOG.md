@@ -1,5 +1,14 @@
 # @aria-ui/combobox
 
+## 0.0.21
+
+### Patch Changes
+
+- 27704ee: Update dependencies.
+- Updated dependencies [27704ee]
+  - @aria-ui/core@0.0.20
+  - @aria-ui/listbox@0.0.21
+
 ## 0.0.20
 
 ### Patch Changes
