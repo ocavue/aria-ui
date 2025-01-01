@@ -2,4 +2,4 @@
 "@aria-ui/overlay": patch
 ---
 
-Skip positioning updates when the reference element is not connected to the DOM.
+Skip position computation when the reference element isn't connected to the DOM.
