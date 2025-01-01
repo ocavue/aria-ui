@@ -165,7 +165,6 @@ export function useQuerySelectorAll<E extends Element = Element>(
 }
 
 /**
- *
  * Executes an effect in the next animation frame.
  *
  * The given `effect` function will be called when the element is connected, and
