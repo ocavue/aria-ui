@@ -57,11 +57,11 @@ importers:
         specifier: 2.2.3
         version: 2.2.3
       typedoc:
-        specifier: 0.26.11
-        version: 0.26.11(typescript@5.6.3)
+        specifier: 0.27.6
+        version: 0.27.6(typescript@5.6.3)
       typedoc-plugin-md:
-        specifier: ^0.3.1
-        version: 0.3.1(typedoc@0.26.11(typescript@5.6.3))
+        specifier: ^0.5.0
+        version: 0.5.0(typedoc@0.27.6(typescript@5.6.3))
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -73,7 +73,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -95,7 +95,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -144,7 +144,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -166,7 +166,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -194,7 +194,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -216,7 +216,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -262,7 +262,7 @@ importers:
         version: 1.48.2
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -281,7 +281,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -303,7 +303,7 @@ importers:
     devDependencies:
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -340,7 +340,7 @@ importers:
         version: 3.2.1
       tsup:
         specifier: ^8.3.5
-        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1)
+        version: 8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0)
       typescript:
         specifier: ^5.6.3
         version: 5.6.3
@@ -1061,6 +1061,9 @@ packages:
   '@floating-ui/utils@0.2.8':
     resolution: {integrity: sha512-kym7SodPp8/wloecOpcmSnWJsK7M0E5Wg8UcFA+uO4B9s5d0ywXOEro/8HM9x0rW+TljRzul/14UYz3TleT3ig==}
 
+  '@gerrit0/mini-shiki@1.24.4':
+    resolution: {integrity: sha512-YEHW1QeAg6UmxEmswiQbOVEg1CW22b1XUD/lNTliOsu0LD0wqoyleFMnmbTp697QE0pcadQiR5cVtbbAPncvpw==}
+
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
     engines: {node: '>=18.18.0'}
@@ -1462,11 +1465,20 @@ packages:
   '@shikijs/engine-oniguruma@1.22.2':
     resolution: {integrity: sha512-GIZPAGzQOy56mGvWMoZRPggn0dTlBf1gutV5TdceLCZlFNqWmuc7u+CzD0Gd9vQUTgLbrt0KLzz6FNprqYAxlA==}
 
+  '@shikijs/engine-oniguruma@1.24.4':
+    resolution: {integrity: sha512-Do2ry6flp2HWdvpj2XOwwa0ljZBRy15HKZITzPcNIBOGSeprnA8gOooA/bLsSPuy8aJBa+Q/r34dMmC3KNL/zw==}
+
   '@shikijs/types@1.22.2':
     resolution: {integrity: sha512-NCWDa6LGZqTuzjsGfXOBWfjS/fDIbDdmVDug+7ykVe1IKT4c1gakrvlfFYp5NhAXH/lyqLM8wsAPo5wNy73Feg==}
 
+  '@shikijs/types@1.24.4':
+    resolution: {integrity: sha512-0r0XU7Eaow0PuDxuWC1bVqmWCgm3XqizIaT7SM42K03vc69LGooT0U8ccSR44xP/hGlNx4FKhtYpV+BU6aaKAA==}
+
   '@shikijs/vscode-textmate@9.3.0':
     resolution: {integrity: sha512-jn7/7ky30idSkd/O5yDBfAnVt+JJpepofP/POZ1iMOxK59cOfqIgg/Dj0eFsjOTMw+4ycJN0uhZH/Eb0bs/EUA==}
+
+  '@shikijs/vscode-textmate@9.3.1':
+    resolution: {integrity: sha512-79QfK1393x9Ho60QFyLti+QfdJzRQCVLFb97kOIV7Eo9vQU/roINgk7m24uv0a7AUvN//RDH36FLjjK48v0s9g==}
 
   '@sindresorhus/slugify@2.2.1':
     resolution: {integrity: sha512-MkngSCRZ8JdSOCHRaYd+D01XhvU3Hjy6MGl06zhOk614hp9EOAp5gIkBeQg7wtmxpitU6eAL4kdiRMcJa2dlrw==}
@@ -4259,17 +4271,17 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typedoc-plugin-md@0.3.1:
-    resolution: {integrity: sha512-1CgX9m+EVCPmlunS95xUvZXW1m6gBrGp7CsR7K6xllwrLUMeWHz0k+90awDadoer4MjBb5dJAxJJtQcdLvUJLw==}
+  typedoc-plugin-md@0.5.0:
+    resolution: {integrity: sha512-/9R60Fl9/JWPk7mwywOhbFEdzxf8REyliIxMLzsEsawaQbe2AYOLExoPf3DaPM9O2Uo5txnAOLNoShNZw09wOQ==}
     peerDependencies:
-      typedoc: ^0.26.7
+      typedoc: ^0.27.1
 
-  typedoc@0.26.11:
-    resolution: {integrity: sha512-sFEgRRtrcDl2FxVP58Ze++ZK2UQAEvtvvH8rRlig1Ja3o7dDaMHmaBfvJmdGnNEFaLTpQsN8dpvZaTqJSu/Ugw==}
+  typedoc@0.27.6:
+    resolution: {integrity: sha512-oBFRoh2Px6jFx366db0lLlihcalq/JzyCVp7Vaq1yphL/tbgx2e+bkpkCgJPunaPvPwoTOXSwasfklWHm7GfAw==}
     engines: {node: '>= 18'}
     hasBin: true
     peerDependencies:
-      typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x || 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x
+      typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x
 
   typesafe-path@0.2.2:
     resolution: {integrity: sha512-OJabfkAg1WLZSqJAJ0Z6Sdt3utnbzr/jh+NAHoyWHJe8CMSy79Gm085094M9nvTPy22KzTVn5Zq5mbapCI/hPA==}
@@ -4674,6 +4686,11 @@ packages:
 
   yaml@2.5.1:
     resolution: {integrity: sha512-bLQOjaX/ADgQ20isPJRvF0iRUHIxVhYvr53Of7wGcWlO2jvtUlH5m87DsmulFVxRpNLOnI4tB6p/oh8D7kpn9Q==}
+    engines: {node: '>= 14'}
+    hasBin: true
+
+  yaml@2.7.0:
+    resolution: {integrity: sha512-+hSoy/QHluxmC9kCIJyL/uyFmLmc+e5CFR5Wa+bpIhIj85LVb9ZH2nVnqrHoSvKogwODv0ClqZkmiSSaIH5LTA==}
     engines: {node: '>= 14'}
     hasBin: true
 
@@ -5435,6 +5452,12 @@ snapshots:
 
   '@floating-ui/utils@0.2.8': {}
 
+  '@gerrit0/mini-shiki@1.24.4':
+    dependencies:
+      '@shikijs/engine-oniguruma': 1.24.4
+      '@shikijs/types': 1.24.4
+      '@shikijs/vscode-textmate': 9.3.1
+
   '@humanfs/core@0.19.1': {}
 
   '@humanfs/node@0.16.6':
@@ -5840,12 +5863,24 @@ snapshots:
       '@shikijs/types': 1.22.2
       '@shikijs/vscode-textmate': 9.3.0
 
+  '@shikijs/engine-oniguruma@1.24.4':
+    dependencies:
+      '@shikijs/types': 1.24.4
+      '@shikijs/vscode-textmate': 9.3.1
+
   '@shikijs/types@1.22.2':
     dependencies:
       '@shikijs/vscode-textmate': 9.3.0
       '@types/hast': 3.0.4
 
+  '@shikijs/types@1.24.4':
+    dependencies:
+      '@shikijs/vscode-textmate': 9.3.1
+      '@types/hast': 3.0.4
+
   '@shikijs/vscode-textmate@9.3.0': {}
+
+  '@shikijs/vscode-textmate@9.3.1': {}
 
   '@sindresorhus/slugify@2.2.1':
     dependencies:
@@ -8506,12 +8541,12 @@ snapshots:
 
   possible-typed-array-names@1.0.0: {}
 
-  postcss-load-config@6.0.1(postcss@8.4.47)(yaml@2.5.1):
+  postcss-load-config@6.0.1(postcss@8.4.47)(yaml@2.7.0):
     dependencies:
       lilconfig: 3.1.1
     optionalDependencies:
       postcss: 8.4.47
-      yaml: 2.5.1
+      yaml: 2.7.0
 
   postcss-selector-parser@6.0.15:
     dependencies:
@@ -9164,7 +9199,7 @@ snapshots:
 
   tslib@2.7.0: {}
 
-  tsup@8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.5.1):
+  tsup@8.3.5(postcss@8.4.47)(typescript@5.6.3)(yaml@2.7.0):
     dependencies:
       bundle-require: 5.0.0(esbuild@0.24.0)
       cac: 6.7.14
@@ -9174,7 +9209,7 @@ snapshots:
       esbuild: 0.24.0
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.4.47)(yaml@2.5.1)
+      postcss-load-config: 6.0.1(postcss@8.4.47)(yaml@2.7.0)
       resolve-from: 5.0.0
       rollup: 4.24.3
       source-map: 0.8.0-beta.0
@@ -9266,25 +9301,26 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typedoc-plugin-md@0.3.1(typedoc@0.26.11(typescript@5.6.3)):
+  typedoc-plugin-md@0.5.0(typedoc@0.27.6(typescript@5.6.3)):
     dependencies:
       '@sindresorhus/slugify': 2.2.1
       change-case: 5.4.4
       remark-parse: 11.0.0
       remark-stringify: 11.0.0
-      typedoc: 0.26.11(typescript@5.6.3)
+      typedoc: 0.27.6(typescript@5.6.3)
       unified: 11.0.5
+      unist-util-visit: 5.0.0
     transitivePeerDependencies:
       - supports-color
 
-  typedoc@0.26.11(typescript@5.6.3):
+  typedoc@0.27.6(typescript@5.6.3):
     dependencies:
+      '@gerrit0/mini-shiki': 1.24.4
       lunr: 2.3.9
       markdown-it: 14.1.0
       minimatch: 9.0.5
-      shiki: 1.22.2
       typescript: 5.6.3
-      yaml: 2.5.1
+      yaml: 2.7.0
 
   typesafe-path@0.2.2: {}
 
@@ -9737,6 +9773,8 @@ snapshots:
   yaml@2.2.2: {}
 
   yaml@2.5.1: {}
+
+  yaml@2.7.0: {}
 
   yargs-parser@21.1.1: {}
 
