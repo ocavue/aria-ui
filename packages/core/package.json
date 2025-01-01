@@ -16,7 +16,7 @@
     "@ariatype/aria-attributes": "^1.0.1",
     "@ariatype/aria-roles": "^1.0.1",
     "@preact/signals-core": "^1.8.0",
-    "@zag-js/dom-query": "^0.77.0",
+    "@zag-js/dom-query": "^0.79.3",
     "just-kebab-case": "^4.2.0",
     "just-map-values": "^3.2.0",
     "server-dom-shim": "^1.0.2"
