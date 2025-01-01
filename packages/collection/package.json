@@ -1,4 +1,8 @@
 {
+  "name": "@aria-ui/collection",
+  "type": "module",
+  "version": "0.0.4",
+  "private": false,
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/aria-ui#readme",
@@ -10,10 +14,6 @@
   "bugs": {
     "url": "https://github.com/ocavue/aria-ui/issues"
   },
-  "name": "@aria-ui/collection",
-  "type": "module",
-  "version": "0.0.4",
-  "private": false,
   "sideEffects": false,
   "main": "src/index.ts",
   "files": ["dist"],

@@ -1,4 +1,8 @@
 {
+  "name": "@aria-ui/listbox",
+  "type": "module",
+  "version": "0.0.21",
+  "private": false,
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/aria-ui#readme",
@@ -10,10 +14,6 @@
   "bugs": {
     "url": "https://github.com/ocavue/aria-ui/issues"
   },
-  "name": "@aria-ui/listbox",
-  "type": "module",
-  "version": "0.0.21",
-  "private": false,
   "sideEffects": ["./dist/index.js"],
   "main": "src/index.ts",
   "exports": {
