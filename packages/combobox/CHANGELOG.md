@@ -1,5 +1,13 @@
 # @aria-ui/combobox
 
+## 0.0.22
+
+### Patch Changes
+
+- 3e3de57: Set `"sideEffects"` property.
+- Updated dependencies [3e3de57]
+  - @aria-ui/listbox@0.0.22
+
 ## 0.0.21
 
 ### Patch Changes

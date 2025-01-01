@@ -1,5 +1,14 @@
 # @aria-ui/select
 
+## 0.0.28
+
+### Patch Changes
+
+- 3e3de57: Set `"sideEffects"` property.
+- Updated dependencies [3e3de57]
+  - @aria-ui/listbox@0.0.22
+  - @aria-ui/popover@0.0.25
+
 ## 0.0.27
 
 ### Patch Changes

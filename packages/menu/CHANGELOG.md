@@ -1,5 +1,14 @@
 # @aria-ui/menu
 
+## 0.0.17
+
+### Patch Changes
+
+- 3e3de57: Set `"sideEffects"` property.
+- Updated dependencies [3e3de57]
+  - @aria-ui/overlay@0.0.23
+  - @aria-ui/popover@0.0.25
+
 ## 0.0.16
 
 ### Patch Changes

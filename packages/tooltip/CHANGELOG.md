@@ -1,5 +1,13 @@
 # @aria-ui/tooltip
 
+## 0.0.27
+
+### Patch Changes
+
+- 3e3de57: Set `"sideEffects"` property.
+- Updated dependencies [3e3de57]
+  - @aria-ui/overlay@0.0.23
+
 ## 0.0.26
 
 ### Patch Changes

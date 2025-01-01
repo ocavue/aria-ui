@@ -1,5 +1,11 @@
 # @aria-ui/listbox
 
+## 0.0.22
+
+### Patch Changes
+
+- 3e3de57: Set `"sideEffects"` property.
+
 ## 0.0.21
 
 ### Patch Changes
