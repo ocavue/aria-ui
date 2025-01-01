@@ -11,8 +11,8 @@
   },
   "files": ["dist"],
   "scripts": {
-    "test": "vitest",
-    "build": "tsup"
+    "build": "tsup",
+    "test": "vitest"
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
