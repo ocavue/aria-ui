@@ -13,7 +13,7 @@ import {
   trackDismissableElement,
   type DismissableElementOptions,
 } from "@zag-js/dismissable"
-import { getFirstTabbable } from "@zag-js/tabbable"
+import { getFirstTabbable } from "@zag-js/dom-query"
 
 import type {
   PopoverContentDataAttributes,
