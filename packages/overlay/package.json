@@ -14,7 +14,7 @@
   "bugs": {
     "url": "https://github.com/ocavue/aria-ui/issues"
   },
-  "sideEffects": ["./dist/index.js"],
+  "sideEffects": ["./dist/index.js", "./src/index.ts"],
   "main": "src/index.ts",
   "exports": {
     ".": "./src/index.ts",
