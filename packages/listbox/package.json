@@ -1,4 +1,15 @@
 {
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/ocavue",
+  "homepage": "https://github.com/ocavue/aria-ui#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ocavue/aria-ui.git",
+    "directory": "packages/listbox"
+  },
+  "bugs": {
+    "url": "https://github.com/ocavue/aria-ui/issues"
+  },
   "name": "@aria-ui/listbox",
   "type": "module",
   "version": "0.0.21",
