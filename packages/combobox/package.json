@@ -16,7 +16,7 @@
   "dependencies": {
     "@aria-ui/core": "workspace:^",
     "@aria-ui/listbox": "workspace:^",
-    "@zag-js/dom-query": "^0.77.0",
+    "@zag-js/dom-query": "^0.79.3",
     "just-omit": "^2.2.0"
   },
   "devDependencies": {
