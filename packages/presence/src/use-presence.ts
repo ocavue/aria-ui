@@ -35,17 +35,13 @@ export function usePresence(
     }
 
     let canceled = false
-    Promise.all(animations.map((animation) => animation.finished))
-      .then(() => {
+    Promise.allSettled(animations.map((animation) => animation.finished)).then(
+      () => {
         if (!canceled) {
           visible.set(false)
         }
-      })
-      .catch((error) => {
-        throw new Error("[aria-ui] Failed to wait for animation to finish", {
-          cause: error,
-        })
-      })
+      },
+    )
 
     return () => {
       canceled = true
