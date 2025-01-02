@@ -1,5 +1,11 @@
 # @aria-ui/combobox
 
+## 0.0.23
+
+### Patch Changes
+
+- @aria-ui/listbox@0.0.23
+
 ## 0.0.22
 
 ### Patch Changes

@@ -1,5 +1,12 @@
 # @aria-ui/listbox
 
+## 0.0.23
+
+### Patch Changes
+
+- Updated dependencies [0861558]
+  - @aria-ui/presence@0.0.18
+
 ## 0.0.22
 
 ### Patch Changes
