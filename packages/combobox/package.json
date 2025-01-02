@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/combobox",
   "type": "module",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "private": false,
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",

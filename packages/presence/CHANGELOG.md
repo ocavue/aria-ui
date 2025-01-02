@@ -1,5 +1,11 @@
 # @aria-ui/presence
 
+## 0.0.18
+
+### Patch Changes
+
+- 0861558: Set the presence state correctly when the animation is canceled.
+
 ## 0.0.17
 
 ### Patch Changes
