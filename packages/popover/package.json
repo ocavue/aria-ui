@@ -29,20 +29,20 @@
     "@aria-ui/core": "workspace:^",
     "@aria-ui/overlay": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "@zag-js/dismissable": "^0.79.3",
-    "@zag-js/dom-query": "^0.79.3"
+    "@zag-js/dismissable": "^0.80.0",
+    "@zag-js/dom-query": "^0.80.0"
   },
   "devDependencies": {
     "@aria-ui/config": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/user-event": "^14.5.2",
-    "@vitest/browser": "^2.1.4",
+    "@vitest/browser": "^2.1.8",
     "lit-html": "^3.2.1",
-    "playwright": "^1.48.2",
+    "playwright": "^1.49.1",
     "tsup": "^8.3.5",
-    "typescript": "^5.6.3",
-    "vitest": "^2.1.4"
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
   },
   "publishConfig": {
     "access": "public",
