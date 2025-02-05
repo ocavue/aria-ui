@@ -45,7 +45,6 @@ export function usePopoverContent(
   const triggerElement = triggerElementContext.consume(element)
 
   useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
-  usePresence(element, open)
   useAttribute(
     element,
     "data-state",
@@ -86,6 +85,8 @@ export function usePopoverContent(
 
     return trackDismissableElement(element, options)
   })
+
+  usePresence(element, open)
 }
 
 function useAutoFocus(

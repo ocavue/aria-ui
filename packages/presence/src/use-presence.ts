@@ -7,6 +7,9 @@ import {
 
 /**
  * @internal
+ *
+ * Try to put this function near the end of the setup function, after other
+ * functions that trigger animations.
  */
 export function usePresence(
   element: ConnectableElement,
