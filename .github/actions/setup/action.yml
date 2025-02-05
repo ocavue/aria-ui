@@ -17,8 +17,7 @@ runs:
         registry-url: "https://registry.npmjs.org"
 
     - name: Setup pnpm
-      run: corepack enable
-      shell: bash
+      uses: pnpm/action-setup@v4
 
     - name: Setup bun
       uses: oven-sh/setup-bun@v2

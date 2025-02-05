@@ -34,13 +34,14 @@ export function useListbox(
   useAriaRole(element, "listbox")
 
   const focusedValue = createSignal("")
+  const selectedValue = state.value
 
-  selectedValueContext.provide(element, state.value)
+  selectedValueContext.provide(element, selectedValue)
   focusedValueContext.provide(element, focusedValue)
   pointerMovingContext.provide(element, useMouseMoving(element))
 
   const listboxEmitter = createSignal(() => {
-    emit("valueChange", state.value.get())
+    emit("valueChange", selectedValue.get())
   })
   listboxEmitterContext.provide(element, listboxEmitter)
 
@@ -88,6 +89,7 @@ export function useListbox(
     element,
     collection,
     focusedValue,
+    selectedValue,
     state.eventTarget,
     available,
     listboxEmitter,
@@ -102,6 +104,7 @@ export function useCollectionKeydownHandler(
   element: ConnectableElement,
   collection: ReadonlySignal<Collection>,
   focusedValue: Signal<string>,
+  selectedValue: Signal<string>,
   eventTarget: Signal<ListboxProps["eventTarget"]>,
   available: ReadonlySignal<boolean>,
   listboxEmitter: Signal<VoidFunction | null>,
@@ -138,6 +141,7 @@ export function useCollectionKeydownHandler(
         {
           const value = focusedValue.get()
           if (value) {
+            selectedValue.set(value)
             listboxItemEmitter.get()?.()
             listboxEmitter.get()?.()
           }
