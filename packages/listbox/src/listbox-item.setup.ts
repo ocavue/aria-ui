@@ -78,8 +78,14 @@ export function useListboxItem(
 
   const availableValueSet = availableValueSetContext.consume(element)
 
+  // Whether if the item is visible after filtering
   const presence = createComputed((): boolean => {
-    return availableValueSet.get().has(state.value.get() || "")
+    // If the availableValueSet is not set yet, we should consider the item is visible
+    const availableValueSetValue = availableValueSet.get()
+    if (!availableValueSetValue) {
+      return true
+    }
+    return availableValueSetValue.has(state.value.get() || "")
   })
 
   useAriaAttribute(element, "aria-disabled", () => {
