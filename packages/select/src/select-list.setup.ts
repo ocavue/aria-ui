@@ -19,15 +19,7 @@ export function useSelectList(
   const selectedValue = selectedValueContext.consume(element)
 
   useEffect(element, () => {
-    const eventHandler = (e: Event) => {
-      const event = e as CustomEvent<string>
-      selectedValue.set(event.detail)
-    }
-
-    element.addEventListener("valueChange", eventHandler)
-    return () => {
-      element.removeEventListener("valueChange", eventHandler)
-    }
+    selectedValue.set(options.state.value.get())
   })
 
   useListbox(element, options)

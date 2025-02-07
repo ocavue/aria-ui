@@ -15,7 +15,7 @@ export function useListboxEmpty(element: ConnectableElement): void {
   const availableValueSet = availableValueSetContext.consume(element)
 
   const presence = createComputed((): boolean => {
-    return availableValueSet.get().size === 0
+    return !availableValueSet.get()?.size
   })
 
   useAriaAttribute(element, "aria-disabled", () => {

@@ -7,9 +7,9 @@ export const selectedValueContext = createContext(
 
 export const focusedValueContext = createContext("ListboxItem/focusedValue", "")
 
-export const availableValueSetContext = createContext<Set<string>>(
+export const availableValueSetContext = createContext<Set<string> | null>(
   "Listbox/availableValueSet",
-  new Set(),
+  null,
 )
 
 export const pointerMovingContext = createContext(
