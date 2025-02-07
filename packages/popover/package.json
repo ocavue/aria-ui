@@ -29,18 +29,18 @@
     "@aria-ui/core": "workspace:^",
     "@aria-ui/overlay": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "@zag-js/dismissable": "^0.80.0",
-    "@zag-js/dom-query": "^0.80.0"
+    "@zag-js/dismissable": "^0.82.1",
+    "@zag-js/dom-query": "^0.82.1"
   },
   "devDependencies": {
     "@aria-ui/config": "workspace:*",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@testing-library/user-event": "^14.5.2",
+    "@testing-library/user-event": "^14.6.1",
     "@vitest/browser": "^3.0.5",
     "lit-html": "^3.2.1",
-    "playwright": "^1.49.1",
-    "tsup": "^8.3.5",
+    "playwright": "^1.50.1",
+    "tsup": "^8.3.6",
     "typescript": "^5.7.2",
     "vitest": "^3.0.5"
   },
