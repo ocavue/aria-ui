@@ -31,6 +31,10 @@ export function useTooltipContent(
 
   const id = idContext.consume(element)
 
+  useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
+  useAttribute(element, "id", () => id.get() || undefined)
+  useAttribute(element, "data-state", () => (open.get() ? "open" : "closed"))
+
   const hoist = createSignal<boolean>(state.hoist.peek())
   const visible = usePresence(element, open)
   // Only set hoist to true if the tooltip is visible. By doing that, we can
@@ -41,8 +45,4 @@ export function useTooltipContent(
   })
 
   useOverlayPositioner(element, { state: { ...state, hoist }, emit })
-
-  useAriaAttribute(element, "aria-hidden", () => `${!open.get()}`)
-  useAttribute(element, "id", () => id.get() || undefined)
-  useAttribute(element, "data-state", () => (open.get() ? "open" : "closed"))
 }
