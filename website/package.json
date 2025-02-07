@@ -20,7 +20,7 @@
     "@aria-ui/select": "workspace:^",
     "@aria-ui/tooltip": "workspace:^",
     "@astrojs/check": "^0.9.4",
-    "astro": "^5.1.1",
+    "astro": "^5.2.5",
     "astrobook": "^0.7.0",
     "lit-html": "^3.2.1",
     "typescript": "^5.7.2"
