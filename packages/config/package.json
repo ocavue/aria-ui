@@ -16,8 +16,8 @@
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@vitest/browser": "^2.1.8",
+    "@vitest/browser": "^3.0.5",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^3.0.5"
   }
 }
