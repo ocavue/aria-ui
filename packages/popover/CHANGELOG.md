@@ -1,5 +1,11 @@
 # @aria-ui/popover
 
+## 0.0.27
+
+### Patch Changes
+
+- 91eaaf0: Wait for the animation to finish before hiding the popover.
+
 ## 0.0.26
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @aria-ui/tooltip
 
+## 0.0.29
+
+### Patch Changes
+
+- 91eaaf0: Wait for the animation to finish before hiding the popover.
+
 ## 0.0.28
 
 ### Patch Changes

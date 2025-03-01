@@ -1,5 +1,15 @@
 # @aria-ui/select
 
+## 0.0.30
+
+### Patch Changes
+
+- Updated dependencies [adbff59]
+- Updated dependencies [91eaaf0]
+- Updated dependencies [dffd905]
+  - @aria-ui/listbox@0.0.24
+  - @aria-ui/popover@0.0.27
+
 ## 0.0.29
 
 ### Patch Changes

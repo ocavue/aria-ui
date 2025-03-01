@@ -1,5 +1,12 @@
 # @aria-ui/listbox
 
+## 0.0.24
+
+### Patch Changes
+
+- adbff59: Fix an issue where default listbox value doesn't work.
+- dffd905: Fix a bug where the `valueChange` event doesn't have the correct value when the `Enter` key is pressed.
+
 ## 0.0.23
 
 ### Patch Changes
