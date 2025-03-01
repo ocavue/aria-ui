@@ -1,5 +1,12 @@
 # @aria-ui/menu
 
+## 0.0.19
+
+### Patch Changes
+
+- Updated dependencies [91eaaf0]
+  - @aria-ui/popover@0.0.27
+
 ## 0.0.18
 
 ### Patch Changes

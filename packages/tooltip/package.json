@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/tooltip",
   "type": "module",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "private": false,
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
