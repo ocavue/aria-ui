@@ -20,6 +20,8 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 ### BaseElement <a id="base-element" href="#base-element">#</a>
 
+**Extends** `HTMLElement`
+
 Base class for all custom elements in Aria UI. It implements the [ConnectableElement](README.md#connectable-element) interface.
 
 #### Group
@@ -27,20 +29,6 @@ Base class for all custom elements in Aria UI. It implements the [ConnectableEle
 Elements
 
 <dl>
-
-<dt>
-
-`constructor`
-
-</dt>
-
-<dd>
-
-```
-new BaseElement(): BaseElement
-```
-
-</dd>
 
 </dl>
 
@@ -213,7 +201,7 @@ const peek: () => T;
 
 <dt>
 
-`emit: EventEmitter<Events, keyof Events>`
+`emit: EventEmitter<Events>`
 
 </dt>
 
@@ -461,7 +449,7 @@ Signals
 ```ts
 function defineCustomElement<
   Props extends { [PropName in string | number | symbol]: unknown },
-  Events extends { [EventType in string | number | symbol]: CustomEvent },
+  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
 >(options: CustomElementOptions<Props, Events>): BaseElementConstructor<Props>;
 ```
 
@@ -471,7 +459,7 @@ Defines a custom element constructor.
 
 ```ts
 function defineEmit<
-  Events extends { [EventType in string | number | symbol]: CustomEvent },
+  Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
 >(
   element: HTMLElement,
   events: EventDeclarations<Events>,
@@ -709,7 +697,7 @@ function useQuerySelector<E extends Element>(
   element: ConnectableElement,
   selector: string,
   options?: MutationObserverInit,
-): ReadonlySignal<E | null>;
+): ReadonlySignal<null | E>;
 ```
 
 Returns the first element matching the given selector.
