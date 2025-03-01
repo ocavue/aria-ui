@@ -30,11 +30,11 @@
     "@aria-ui/overlay": "workspace:^",
     "@aria-ui/popover": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "nanoid": "^5.0.9"
+    "nanoid": "^5.1.2"
   },
   "devDependencies": {
-    "tsup": "^8.3.6",
-    "typescript": "^5.7.2"
+    "tsup": "^8.4.0",
+    "typescript": "^5.7.3"
   },
   "publishConfig": {
     "access": "public",
