@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.21
+
+### Patch Changes
+
+- 4b43df9: Update dependencies.
+
 ## 0.0.20
 
 ### Patch Changes

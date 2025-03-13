@@ -1,5 +1,11 @@
 # @aria-ui/collection
 
+## 0.0.5
+
+### Patch Changes
+
+- 4b43df9: Update dependencies.
+
 ## 0.0.4
 
 ### Patch Changes
