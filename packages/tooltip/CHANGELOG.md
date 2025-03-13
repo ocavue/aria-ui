@@ -1,5 +1,16 @@
 # @aria-ui/tooltip
 
+## 0.0.29
+
+### Patch Changes
+
+- 4b43df9: Update dependencies.
+- 91eaaf0: Wait for the animation to finish before hiding the popover.
+- Updated dependencies [4b43df9]
+  - @aria-ui/presence@0.0.19
+  - @aria-ui/overlay@0.0.24
+  - @aria-ui/core@0.0.21
+
 ## 0.0.28
 
 ### Patch Changes
