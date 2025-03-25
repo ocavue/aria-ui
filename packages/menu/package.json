@@ -30,7 +30,7 @@
     "@aria-ui/overlay": "workspace:^",
     "@aria-ui/popover": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "nanoid": "^5.1.3"
+    "nanoid": "^5.1.5"
   },
   "devDependencies": {
     "tsup": "^8.4.0",
