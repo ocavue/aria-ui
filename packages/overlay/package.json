@@ -28,7 +28,7 @@
     "@aria-ui/core": "workspace:^",
     "@floating-ui/dom": "^1.6.13",
     "@floating-ui/utils": "^0.2.9",
-    "@zag-js/dom-query": "^1.3.3"
+    "@zag-js/dom-query": "^1.6.0"
   },
   "devDependencies": {
     "tsup": "^8.4.0",
