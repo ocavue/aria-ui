@@ -1,7 +1,6 @@
-import { basic } from "@ocavue/eslint-config"
+import { defineESLintConfig } from "@ocavue/eslint-config"
 
-export default [
-  ...basic(),
+export default defineESLintConfig({}, [
   {
     rules: {
       "@typescript-eslint/no-empty-object-type": "off",
@@ -16,4 +15,4 @@ export default [
   {
     ignores: ["**/.astro"],
   },
-]
+])
