@@ -341,6 +341,9 @@ importers:
       typescript:
         specifier: ^5.7.3
         version: 5.8.2
+      vitest:
+        specifier: ^3.1.4
+        version: 3.1.4(@types/debug@4.1.12)(@types/node@20.12.14)(@vitest/browser@3.1.4)(jiti@2.4.2)(msw@2.7.3(@types/node@20.12.14)(typescript@5.8.2))(yaml@2.7.0)
 
   website:
     devDependencies:
