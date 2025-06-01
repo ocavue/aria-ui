@@ -38,13 +38,13 @@ export function usePresence(
     }
 
     let canceled = false
-    Promise.allSettled(animations.map((animation) => animation.finished)).then(
-      () => {
-        if (!canceled) {
-          visible.set(false)
-        }
-      },
-    )
+    void Promise.allSettled(
+      animations.map((animation) => animation.finished),
+    ).then(() => {
+      if (!canceled) {
+        visible.set(false)
+      }
+    })
 
     return () => {
       canceled = true
