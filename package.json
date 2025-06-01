@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@9.15.9",
+  "description": "Monorepo for Aria UI",
   "scripts": {
     "build": "turbo run build && pnpm run build:tsc",
     "build:packages": "turbo run build --filter './packages/*'",

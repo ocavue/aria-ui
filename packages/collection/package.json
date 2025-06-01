@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.5",
   "private": false,
+  "description": "Utilities for building accessible collections for Aria UI",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/aria-ui#readme",

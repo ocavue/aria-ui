@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "description": "Internal package for Aria UI",
   "sideEffects": false,
   "exports": {
     "./vitest-setup": {
