@@ -28,7 +28,6 @@
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
     "@changesets/cli": "2.28.1",
-    "@manypkg/get-packages": "2.2.2",
     "@ocavue/eslint-config": "^2.13.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
