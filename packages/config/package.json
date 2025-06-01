@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "private": true,
+  "description": "Internal package for Aria UI",
   "sideEffects": false,
   "exports": {
     "./vitest-setup": {
@@ -16,8 +17,8 @@
   "devDependencies": {
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.6.3",
-    "@vitest/browser": "^3.0.9",
+    "@vitest/browser": "^3.1.4",
     "typescript": "^5.7.3",
-    "vitest": "^3.0.9"
+    "vitest": "^3.1.4"
   }
 }

@@ -3,6 +3,7 @@
   "type": "module",
   "version": "0.0.19",
   "private": false,
+  "description": "A collection of web components for menu",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
   "homepage": "https://github.com/ocavue/aria-ui#readme",
