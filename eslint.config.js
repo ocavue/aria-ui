@@ -12,7 +12,4 @@ export default defineESLintConfig({}, [
       "import/no-extraneous-dependencies": "off",
     },
   },
-  {
-    ignores: ["**/.astro"],
-  },
 ])
