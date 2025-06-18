@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
-    "@zag-js/dom-query": "^1.6.0"
+    "@zag-js/dom-query": "^1.15.5"
   },
   "devDependencies": {
     "tsup": "^8.4.0",

@@ -30,8 +30,8 @@
     "@aria-ui/core": "workspace:^",
     "@aria-ui/overlay": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "@zag-js/dismissable": "^1.6.0",
-    "@zag-js/dom-query": "^1.6.0"
+    "@zag-js/dismissable": "^1.15.5",
+    "@zag-js/dom-query": "^1.15.5"
   },
   "devDependencies": {
     "@aria-ui/config": "workspace:*",
