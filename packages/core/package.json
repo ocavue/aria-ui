@@ -27,7 +27,7 @@
   "dependencies": {
     "@ariatype/aria-attributes": "^1.0.1",
     "@ariatype/aria-roles": "^1.0.1",
-    "@preact/signals-core": "^1.8.0",
+    "@preact/signals-core": "^1.10.0",
     "@zag-js/dom-query": "^1.15.5",
     "just-kebab-case": "^4.2.0",
     "just-map-values": "^3.2.0",
