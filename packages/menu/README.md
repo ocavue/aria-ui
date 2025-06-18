@@ -72,9 +72,7 @@ The element that will be used to check for overflow. Please see https://floating
 
 `eventTarget?: HTMLElement | TypedEventTarget<"keydown">`
 
-<code>
-eventTarget?: <a href="https://example.com">HTMLElement</a> | <a href="https://example.com">TypedEventTarget</a><"keydown">
-</code>
+<code>eventTarget?: <a href="https://example.com">HTMLElement</a> | <a href="https://example.com">TypedEventTarget</a><"keydown"></code>
 
 </dt>
 
