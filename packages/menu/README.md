@@ -90,7 +90,7 @@ By default, the menu element will listen for keydown events. You can pass a diff
 
 Whether to constrain the floating element's width and height to not exceed the viewport.
 
-**Default**: `false`
+**Default**: `true`
 
 </dd>
 

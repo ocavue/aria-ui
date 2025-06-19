@@ -94,7 +94,7 @@ export interface OverlayPositionerProps {
    * Whether to constrain the floating element's width and height to not exceed
    * the viewport.
    *
-   * @default false
+   * @default true
    */
   fitViewport: boolean
 
@@ -204,7 +204,7 @@ export const overlayPositionerProps: PropDeclarations<OverlayPositionerProps> =
     flip: { default: true },
     shift: { default: true },
     overlap: { default: false },
-    fitViewport: { default: false },
+    fitViewport: { default: true },
     sameWidth: { default: false },
     sameHeight: { default: false },
     inline: { default: false },
