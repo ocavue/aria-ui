@@ -108,7 +108,7 @@ export function useCollectionKeydownHandler(
 function useSelect(
   element: ConnectableElement,
   onOpenChange: ReadonlySignal<((open: boolean) => void) | null>,
-  selectedValue: ReadonlySignal<string>,
+  selectedValue: Signal<string>,
   collection: ReadonlySignal<Collection>,
 ) {
   useEffect(element, () => {
@@ -123,5 +123,10 @@ function useSelect(
     const emit = defineEmit<MenuItemEvents>(target, { select: {} })
     emit("select")
     onOpenChange.peek()?.(false)
+
+    // Reset the selected value after the menu is closed
+    setTimeout(() => {
+      selectedValue.set("")
+    }, 0)
   })
 }
