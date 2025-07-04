@@ -1,5 +1,11 @@
 # @aria-ui/menu
 
+## 0.0.20
+
+### Patch Changes
+
+- 9fffa27: Fix an issue where the `select` event was not fired when the menu item was selected again.
+
 ## 0.0.19
 
 ### Patch Changes
