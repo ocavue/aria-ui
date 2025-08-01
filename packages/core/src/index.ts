@@ -45,14 +45,8 @@ export {
   type SetupOptions,
 } from "./element"
 export { defineEmit } from "./event"
-export type {
-  EventDeclaration,
-  EventDeclarations,
-} from "./event"
-export type {
-  PropDeclaration,
-  PropDeclarations,
-} from "./prop"
+export type { EventDeclaration, EventDeclarations } from "./event"
+export type { PropDeclaration, PropDeclarations } from "./prop"
 export { assignProps } from "./props"
 export {
   getStateFromProps,

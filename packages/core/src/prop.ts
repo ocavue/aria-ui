@@ -44,11 +44,8 @@ export type PropDeclarations<
   [K in keyof Required<T>]: PropDeclaration<T[K]>
 }
 
-export type GetProperties<T extends object> = T extends PropDeclarations<
-  infer U
->
-  ? U
-  : never
+export type GetProperties<T extends object> =
+  T extends PropDeclarations<infer U> ? U : never
 
 function getFromAttribute<T = unknown>(
   prop: PropDeclaration<T>,

@@ -141,7 +141,4 @@ export const defaultItemFilter: ItemFilter = ({ value, query }) => {
 /**
  * The filter function to determine if an item should be shown in the collection.
  */
-export type ItemFilter = (options: {
-  value: string
-  query: string
-}) => boolean
+export type ItemFilter = (options: { value: string; query: string }) => boolean
