@@ -81,7 +81,7 @@ Receives the signal from a parent element.
 A signal that is double-bound to the provided signal.
 
 ```ts
-const consume: (element: ConnectableElement) => Signal<T>;
+const consume: (element: ConnectableElement) => Signal<T>
 ```
 
 </dd>
@@ -100,7 +100,7 @@ Provides a signal to all children of the element.
 const provide: (
   element: ConnectableElement,
   signal: Signal<T> | ReadonlySignal<T>,
-) => void;
+) => void
 ```
 
 </dd>
@@ -172,7 +172,7 @@ A read-only signal that holds a reactive value.
 Get the signal's current value.
 
 ```ts
-const get: () => T;
+const get: () => T
 ```
 
 </dd>
@@ -188,7 +188,7 @@ const get: () => T;
 Get the signal's current value without subscribing.
 
 ```ts
-const peek: () => T;
+const peek: () => T
 ```
 
 </dd>
@@ -250,7 +250,7 @@ A mutable signal that can be used to manage reactive state changes.
 Get the signal's current value.
 
 ```ts
-const get: () => T;
+const get: () => T
 ```
 
 </dd>
@@ -266,7 +266,7 @@ const get: () => T;
 Get the signal's current value without subscribing.
 
 ```ts
-const peek: () => T;
+const peek: () => T
 ```
 
 </dd>
@@ -282,7 +282,7 @@ const peek: () => T;
 Set the value of the signal.
 
 ```ts
-const set: (value: T) => void;
+const set: (value: T) => void
 ```
 
 </dd>
@@ -375,7 +375,7 @@ Signals
 function assignProps<T extends object>(
   defaultProps: Readonly<T>,
   props?: Partial<T>,
-): Readonly<T>;
+): Readonly<T>
 ```
 
 Merges two objects, with the second object taking precedence. Only keys present in the first object will be included in the result.
@@ -395,7 +395,7 @@ This is a re-export of `batch` from `@preact/signals-core`.
 Signals
 
 ```ts
-function batch<T>(fn: () => T): T;
+function batch<T>(fn: () => T): T
 ```
 
 Combine multiple value updates into one "commit" at the end of the provided callback.
@@ -411,7 +411,7 @@ The value returned by the callback.
 ### createComputed <a id="create-computed" href="#create-computed">#</a>
 
 ```ts
-function createComputed<T>(fn: () => T): ReadonlySignal<T>;
+function createComputed<T>(fn: () => T): ReadonlySignal<T>
 ```
 
 Creates a computed signal that automatically updates its value based on the reactive dependencies it uses. Computed signals are read-only and are used to derive state from other signals, recalculating their value when dependencies change.
@@ -423,7 +423,7 @@ Signals
 ### createContext <a id="create-context" href="#create-context">#</a>
 
 ```ts
-function createContext<T>(key: string | symbol, defaultValue: T): Context<T>;
+function createContext<T>(key: string | symbol, defaultValue: T): Context<T>
 ```
 
 Creates a new context.
@@ -435,7 +435,7 @@ Contexts
 ### createSignal <a id="create-signal" href="#create-signal">#</a>
 
 ```ts
-function createSignal<T>(value: T): Signal<T>;
+function createSignal<T>(value: T): Signal<T>
 ```
 
 Creates and returns a new signal with the given initial value. Signals are reactive data sources that can be read and written to, allowing components to reactively update when their values change.
@@ -450,7 +450,7 @@ Signals
 function defineCustomElement<
   Props extends { [PropName in string | number | symbol]: unknown },
   Events extends { [EventType in string | number | symbol]: CustomEvent<any> },
->(options: CustomElementOptions<Props, Events>): BaseElementConstructor<Props>;
+>(options: CustomElementOptions<Props, Events>): BaseElementConstructor<Props>
 ```
 
 Defines a custom element constructor.
@@ -463,7 +463,7 @@ function defineEmit<
 >(
   element: HTMLElement,
   events: EventDeclarations<Events>,
-): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void;
+): (type: keyof Events, detail: Events[keyof Events]["detail"]) => void
 ```
 
 ### getStateFromProps <a id="get-state-from-props" href="#get-state-from-props">#</a>
@@ -471,13 +471,13 @@ function defineEmit<
 ```ts
 function getStateFromProps<Props extends object>(
   props: PropDeclarations<Props>,
-): SignalState<Props>;
+): SignalState<Props>
 ```
 
 ### mapSignals <a id="map-signals" href="#map-signals">#</a>
 
 ```ts
-function mapSignals<T extends object>(values: T): SignalState<T>;
+function mapSignals<T extends object>(values: T): SignalState<T>
 ```
 
 Maps every value in the given object to a signal.
@@ -491,7 +491,7 @@ Props and States
 ### mapValues <a id="map-values" href="#map-values">#</a>
 
 ```ts
-function mapValues<T extends object>(signals: SignalState<T>): T;
+function mapValues<T extends object>(signals: SignalState<T>): T
 ```
 
 Maps every signal in the given object to its current value.
@@ -508,7 +508,7 @@ Props and States
 function registerCustomElement(
   name: string,
   element: CustomElementConstructor,
-): void;
+): void
 ```
 
 Adds the given custom element to the custom element registry.
@@ -524,7 +524,7 @@ This is a re-export of `untracked` from `@preact/signals-core`.
 Signals
 
 ```ts
-function untracked<T>(fn: () => T): T;
+function untracked<T>(fn: () => T): T
 ```
 
 Run a callback function that can access signal values without subscribing to the signal updates.
@@ -539,7 +539,7 @@ The value returned by the callback.
 function useAnimationFrame(
   element: ConnectableElement,
   effect: () => void | (() => void | VoidFunction),
-): () => void;
+): () => void
 ```
 
 Executes an effect in the next animation frame.
@@ -612,7 +612,7 @@ function useAriaAttribute<
   element: ConnectableElement,
   key: K,
   compute: () => AriaAttributes[K],
-): VoidFunction;
+): VoidFunction
 ```
 
 Sets the computed attribute of the element when it's connected.
@@ -629,7 +629,7 @@ DOM
 function useAriaRole(
   element: ConnectableElement,
   role: AriaRole | (() => AriaRole | undefined),
-): VoidFunction;
+): VoidFunction
 ```
 
 Sets the `role` attribute of the element when it's connected.
@@ -647,7 +647,7 @@ function useAttribute(
   element: ConnectableElement,
   key: string,
   compute: () => undefined | null | string | number,
-): VoidFunction;
+): VoidFunction
 ```
 
 Sets the computed attribute of the element when it's connected.
@@ -662,7 +662,7 @@ DOM
 function useEffect(
   element: ConnectableElement,
   callback: () => void | VoidFunction,
-): () => void;
+): () => void
 ```
 
 Registers a callback to be called when the given element is connected to the DOM. It will track which signals are accessed and re-run their callback when those signals change. The callback can return a cleanup function that will be called when the effect is destroyed.
@@ -681,7 +681,7 @@ function useEventListener<K extends keyof HTMLElementEventMap>(
   type: K,
   listener: (event: HTMLElementEventMap[K]) => void,
   options?: boolean | AddEventListenerOptions,
-): VoidFunction;
+): VoidFunction
 ```
 
 Registers an event listener on the element.
@@ -697,7 +697,7 @@ function useQuerySelector<E extends Element>(
   element: ConnectableElement,
   selector: string,
   options?: MutationObserverInit,
-): ReadonlySignal<null | E>;
+): ReadonlySignal<null | E>
 ```
 
 Returns the first element matching the given selector.
@@ -713,7 +713,7 @@ function useQuerySelectorAll<E extends Element>(
   element: ConnectableElement,
   selector: string,
   options?: MutationObserverInit,
-): ReadonlySignal<NodeListOf<E>>;
+): ReadonlySignal<NodeListOf<E>>
 ```
 
 Returns all elements matching the given selector.
@@ -729,7 +729,7 @@ function useStyle<K extends keyof CSSStyleDeclaration>(
   element: ConnectableElement,
   key: K,
   compute: () => CSSStyleDeclaration[K],
-): VoidFunction;
+): VoidFunction
 ```
 
 Sets the computed style of the element when it's connected.

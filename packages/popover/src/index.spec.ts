@@ -13,8 +13,12 @@ describe("Popover", () => {
 
     render(html`
       <aria-ui-popover-root data-testid="root">
-        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
-        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+        <aria-ui-popover-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">
+          Content
+        </aria-ui-popover-content>
       </aria-ui-popover-root>
     `)
 
@@ -28,8 +32,12 @@ describe("Popover", () => {
 
     render(html`
       <aria-ui-popover-root data-testid="root">
-        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
-        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+        <aria-ui-popover-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">
+          Content
+        </aria-ui-popover-content>
       </aria-ui-popover-root>
     `)
 
@@ -50,8 +58,12 @@ describe("Popover", () => {
 
     render(html`
       <aria-ui-popover-root data-testid="root">
-        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
-        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+        <aria-ui-popover-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">
+          Content
+        </aria-ui-popover-content>
       </aria-ui-popover-root>
     `)
 
@@ -72,8 +84,12 @@ describe("Popover", () => {
 
     render(html`
       <aria-ui-popover-root data-testid="root">
-        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
-        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+        <aria-ui-popover-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">
+          Content
+        </aria-ui-popover-content>
       </aria-ui-popover-root>
     `)
 
@@ -104,8 +120,12 @@ describe("Popover", () => {
 
     render(html`
       <aria-ui-popover-root data-testid="root">
-        <aria-ui-popover-trigger data-testid="trigger">Trigger</aria-ui-popover-trigger>
-        <aria-ui-popover-content data-testid="content">Content</aria-ui-popover-content>
+        <aria-ui-popover-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-popover-trigger>
+        <aria-ui-popover-content data-testid="content">
+          Content
+        </aria-ui-popover-content>
       </aria-ui-popover-root>
     `)
 

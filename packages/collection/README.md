@@ -39,7 +39,7 @@ new Collection(items: Iterable<HTMLElement>, loop?: boolean): Collection
 Returns the first enabled value.
 
 ```ts
-const first: () => null | string;
+const first: () => null | string
 ```
 
 </dd>
@@ -55,7 +55,7 @@ const first: () => null | string;
 Finds an element from its value.
 
 ```ts
-const getElement: (value: string) => null | HTMLElement;
+const getElement: (value: string) => null | HTMLElement
 ```
 
 </dd>
@@ -71,7 +71,7 @@ const getElement: (value: string) => null | HTMLElement;
 Returns all values.
 
 ```ts
-const getValues: () => string[];
+const getValues: () => string[]
 ```
 
 </dd>
@@ -87,7 +87,7 @@ const getValues: () => string[];
 Returns the last enabled value.
 
 ```ts
-const last: () => null | string;
+const last: () => null | string
 ```
 
 </dd>
@@ -103,7 +103,7 @@ const last: () => null | string;
 Returns the next enabled value.
 
 ```ts
-const next: (value: null | string) => null | string;
+const next: (value: null | string) => null | string
 ```
 
 </dd>
@@ -119,7 +119,7 @@ const next: (value: null | string) => null | string;
 Returns the previous enabled value.
 
 ```ts
-const prev: (value: null | string) => null | string;
+const prev: (value: null | string) => null | string
 ```
 
 </dd>
@@ -133,7 +133,7 @@ const prev: (value: null | string) => null | string;
 <dd>
 
 ```ts
-const size: () => number;
+const size: () => number
 ```
 
 </dd>
@@ -151,5 +151,5 @@ The filter function to determine if an item should be shown in the collection.
 A simple case-insensitive substring match filter.
 
 ```ts
-function defaultItemFilter(options: { query: string; value: string }): boolean;
+function defaultItemFilter(options: { query: string; value: string }): boolean
 ```

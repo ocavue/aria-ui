@@ -20,8 +20,12 @@ describe("Tooltip", () => {
 
     render(html`
       <aria-ui-tooltip-root data-testid="root">
-        <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
-        <aria-ui-tooltip-content data-testid="content">Content</aria-ui-tooltip-content>
+        <aria-ui-tooltip-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content">
+          Content
+        </aria-ui-tooltip-content>
       </aria-ui-tooltip-root>
     `)
 
@@ -43,12 +47,20 @@ describe("Tooltip", () => {
 
     render(html`
       <aria-ui-tooltip-root data-testid="root1">
-        <aria-ui-tooltip-trigger data-testid="trigger1">Trigger1</aria-ui-tooltip-trigger>
-        <aria-ui-tooltip-content data-testid="content1">Content1</aria-ui-tooltip-content>
+        <aria-ui-tooltip-trigger data-testid="trigger1">
+          Trigger1
+        </aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content1">
+          Content1
+        </aria-ui-tooltip-content>
       </aria-ui-tooltip-root>
       <aria-ui-tooltip-root data-testid="root2">
-        <aria-ui-tooltip-trigger data-testid="trigger2">Trigger2</aria-ui-tooltip-trigger>
-        <aria-ui-tooltip-content data-testid="content2">Content2</aria-ui-tooltip-content>
+        <aria-ui-tooltip-trigger data-testid="trigger2">
+          Trigger2
+        </aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content2">
+          Content2
+        </aria-ui-tooltip-content>
       </aria-ui-tooltip-root>
     `)
 
@@ -75,8 +87,12 @@ describe("Tooltip", () => {
 
     render(html`
       <aria-ui-tooltip-root data-testid="root">
-        <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
-        <aria-ui-tooltip-content data-testid="content">Content</aria-ui-tooltip-content>
+        <aria-ui-tooltip-trigger data-testid="trigger">
+          Trigger
+        </aria-ui-tooltip-trigger>
+        <aria-ui-tooltip-content data-testid="content">
+          Content
+        </aria-ui-tooltip-content>
       </aria-ui-tooltip-root>
     `)
 
