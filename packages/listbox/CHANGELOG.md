@@ -1,5 +1,15 @@
 # @aria-ui/listbox
 
+## 0.0.25
+
+### Patch Changes
+
+- fad6484: Update dependencies.
+- Updated dependencies [fad6484]
+  - @aria-ui/collection@0.0.6
+  - @aria-ui/core@0.0.22
+  - @aria-ui/presence@0.0.20
+
 ## 0.0.24
 
 ### Patch Changes

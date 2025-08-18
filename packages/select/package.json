@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/select",
   "type": "module",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "private": false,
   "description": "A collection of web components for building accessible select menus",
   "license": "MIT",

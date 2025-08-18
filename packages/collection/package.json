@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/collection",
   "type": "module",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": false,
   "description": "Utilities for building accessible collections for Aria UI",
   "license": "MIT",

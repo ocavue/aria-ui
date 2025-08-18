@@ -1,5 +1,13 @@
 # @aria-ui/presence
 
+## 0.0.20
+
+### Patch Changes
+
+- fad6484: Update dependencies.
+- Updated dependencies [fad6484]
+  - @aria-ui/core@0.0.22
+
 ## 0.0.19
 
 ### Patch Changes
