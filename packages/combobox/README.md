@@ -2,7 +2,9 @@
 
 ## ComboboxItem
 
-### ComboboxItemProps {#comboboxitemprops}
+<a id="comboboxitemprops"></a>
+
+### ComboboxItemProps
 
 #### Properties
 
@@ -28,7 +30,9 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ## ComboboxList
 
-### ComboboxListEvents {#comboboxlistevents}
+<a id="comboboxlistevents"></a>
+
+### ComboboxListEvents
 
 #### Properties
 
@@ -44,7 +48,9 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ---
 
-### ComboboxListProps {#comboboxlistprops}
+<a id="comboboxlistprops"></a>
+
+### ComboboxListProps
 
 #### Properties
 

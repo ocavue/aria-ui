@@ -2,7 +2,9 @@
 
 ## TooltipContent
 
-### TooltipContentDataAttributes {#tooltipcontentdataattributes}
+<a id="tooltipcontentdataattributes"></a>
+
+### TooltipContentDataAttributes
 
 #### Properties
 
@@ -18,7 +20,9 @@
 
 ---
 
-### TooltipContentProps {#tooltipcontentprops}
+<a id="tooltipcontentprops"></a>
+
+### TooltipContentProps
 
 #### Properties
 
@@ -408,7 +412,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ## TooltipRoot
 
-### TooltipRootEvents {#tooltiprootevents}
+<a id="tooltiprootevents"></a>
+
+### TooltipRootEvents
 
 #### Properties
 
@@ -430,7 +436,9 @@ Fired when the open state changes.
 
 ---
 
-### TooltipRootProps {#tooltiprootprops}
+<a id="tooltiprootprops"></a>
+
+### TooltipRootProps
 
 #### Properties
 

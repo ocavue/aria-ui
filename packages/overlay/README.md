@@ -2,7 +2,9 @@
 
 ## OverlayPositioner
 
-### OverlayPositionerDataAttributes {#overlaypositionerdataattributes}
+<a id="overlaypositionerdataattributes"></a>
+
+### OverlayPositionerDataAttributes
 
 #### Properties
 
@@ -38,7 +40,9 @@
 
 ---
 
-### OverlayPositionerProps {#overlaypositionerprops}
+<a id="overlaypositionerprops"></a>
+
+### OverlayPositionerProps
 
 #### Properties
 

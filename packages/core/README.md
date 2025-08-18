@@ -18,7 +18,9 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 ## Interfaces
 
-### CustomElementOptions\<Props, Events\> {#customelementoptions}
+<a id="customelementoptions"></a>
+
+### CustomElementOptions\<Props, Events\>
 
 #### Properties
 
@@ -54,7 +56,9 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 ---
 
-### ReadonlySignal\<T\> {#readonlysignal}
+<a id="readonlysignal"></a>
+
+### ReadonlySignal\<T\>
 
 A read-only signal that holds a reactive value.
 
@@ -112,7 +116,9 @@ Get the signal's current value without subscribing.
 
 ---
 
-### SetupOptions\<Props, Events\> {#setupoptions}
+<a id="setupoptions"></a>
+
+### SetupOptions\<Props, Events\>
 
 #### Properties
 
@@ -138,7 +144,9 @@ Get the signal's current value without subscribing.
 
 ---
 
-### Signal\<T\> {#signal}
+<a id="signal"></a>
+
+### Signal\<T\>
 
 A mutable signal that can be used to manage reactive state changes.
 
@@ -212,7 +220,9 @@ Set the value of the signal.
 
 ---
 
-### TypedEventTarget\<EventType\> {#typedeventtarget}
+<a id="typedeventtarget"></a>
+
+### TypedEventTarget\<EventType\>
 
 An interface thats can be used to register event listeners.
 
@@ -240,7 +250,9 @@ An interface thats can be used to register event listeners.
 
 ## Type Aliases
 
-### BaseElementConstructor()\<Props\> {#baseelementconstructor-1}
+<a id="baseelementconstructor-1"></a>
+
+### BaseElementConstructor()\<Props\>
 
 <dl>
 
@@ -254,7 +266,9 @@ An interface thats can be used to register event listeners.
 
 ---
 
-### EventDeclaration {#eventdeclaration}
+<a id="eventdeclaration"></a>
+
+### EventDeclaration
 
 <code data-typedoc-code><i></i> type <a id="eventdeclaration" href="#eventdeclaration">EventDeclaration</a> = \{ `bubbles?`: `boolean`; `cancelable?`: `boolean`; `composed?`: `boolean`; \}</code>
 
@@ -324,7 +338,9 @@ Whether the event is composed.
 
 ---
 
-### EventDeclarations\<Events\> {#eventdeclarations}
+<a id="eventdeclarations"></a>
+
+### EventDeclarations\<Events\>
 
 <dl>
 
@@ -344,7 +360,9 @@ Map of event types to EventDeclaration options.
 
 ---
 
-### EventEmitter()\<Events, EventType\> {#eventemitter}
+<a id="eventemitter"></a>
+
+### EventEmitter()\<Events, EventType\>
 
 <dl>
 
@@ -358,7 +376,9 @@ Map of event types to EventDeclaration options.
 
 ---
 
-### PropDeclaration\<T\> {#propdeclaration}
+<a id="propdeclaration"></a>
+
+### PropDeclaration\<T\>
 
 <code data-typedoc-code><i></i> type <a id="propdeclaration" href="#propdeclaration">PropDeclaration</a>\<T\> = \{ `attribute?`: `boolean` \| `string`; `default`: `T`; `fromAttribute?`: (`value`) => `T`; `toAttribute?`: (`value`) => `string` \| `null`; \}</code>
 
@@ -432,7 +452,9 @@ Called to convert a property value to an attribute value.
 
 ---
 
-### PropDeclarations\<T\> {#propdeclarations}
+<a id="propdeclarations"></a>
+
+### PropDeclarations\<T\>
 
 <dl>
 
@@ -452,7 +474,9 @@ Map of props to PropDeclaration options.
 
 ## Functions
 
-### defineCustomElement() {#definecustomelement}
+<a id="definecustomelement"></a>
+
+### defineCustomElement()
 
 <dl>
 
@@ -472,7 +496,9 @@ Defines a custom element constructor.
 
 ---
 
-### defineEmit() {#defineemit}
+<a id="defineemit"></a>
+
+### defineEmit()
 
 <dl>
 
@@ -486,7 +512,9 @@ Defines a custom element constructor.
 
 ---
 
-### getStateFromProps() {#getstatefromprops}
+<a id="getstatefromprops"></a>
+
+### getStateFromProps()
 
 <dl>
 
@@ -500,7 +528,9 @@ Defines a custom element constructor.
 
 ---
 
-### registerCustomElement() {#registercustomelement}
+<a id="registercustomelement"></a>
+
+### registerCustomElement()
 
 <dl>
 
@@ -520,7 +550,9 @@ Adds the given custom element to the custom element registry.
 
 ## Contexts
 
-### Context\<T\> {#context}
+<a id="context"></a>
+
+### Context\<T\>
 
 A context is a way to provide and consume signals in a HTML tree.
 
@@ -560,7 +592,9 @@ Provides a signal to all children of the element.
 
 ---
 
-### createContext() {#createcontext}
+<a id="createcontext"></a>
+
+### createContext()
 
 <dl>
 
@@ -580,7 +614,9 @@ Creates a new context.
 
 ## DOM
 
-### useAnimationFrame() {#useanimationframe}
+<a id="useanimationframe"></a>
+
+### useAnimationFrame()
 
 <dl>
 
@@ -606,7 +642,9 @@ The given `effect` function will be called when the element is connected, and wh
 
 ---
 
-### useAriaAttribute() {#useariaattribute}
+<a id="useariaattribute"></a>
+
+### useAriaAttribute()
 
 <dl>
 
@@ -628,7 +666,9 @@ This is a TypeScript type-safe version of [useAttribute](#useattribute).
 
 ---
 
-### useAriaRole() {#useariarole}
+<a id="useariarole"></a>
+
+### useAriaRole()
 
 <dl>
 
@@ -650,7 +690,9 @@ You can pass a string or a compute function that returns a string.
 
 ---
 
-### useAttribute() {#useattribute}
+<a id="useattribute"></a>
+
+### useAttribute()
 
 <dl>
 
@@ -670,7 +712,9 @@ Sets the computed attribute of the element when it's connected.
 
 ---
 
-### useEventListener() {#useeventlistener}
+<a id="useeventlistener"></a>
+
+### useEventListener()
 
 <dl>
 
@@ -690,7 +734,9 @@ Registers an event listener on the element.
 
 ---
 
-### useQuerySelector() {#usequeryselector}
+<a id="usequeryselector"></a>
+
+### useQuerySelector()
 
 <dl>
 
@@ -710,7 +756,9 @@ Returns the first element matching the given selector.
 
 ---
 
-### useQuerySelectorAll() {#usequeryselectorall}
+<a id="usequeryselectorall"></a>
+
+### useQuerySelectorAll()
 
 <dl>
 
@@ -730,7 +778,9 @@ Returns all elements matching the given selector.
 
 ---
 
-### useStyle() {#usestyle}
+<a id="usestyle"></a>
+
+### useStyle()
 
 <dl>
 
@@ -750,11 +800,15 @@ Sets the computed style of the element when it's connected.
 
 ## Elements
 
-### BaseElement {#baseelement}
+<a id="baseelement"></a>
+
+### BaseElement
 
 Base class for all custom elements in Aria UI. It implements the [ConnectableElement](#connectableelement) interface.
 
 #### Constructors
+
+<a id="constructor"></a>
 
 ##### Constructor
 
@@ -770,7 +824,9 @@ Base class for all custom elements in Aria UI. It implements the [ConnectableEle
 
 ---
 
-### ConnectableElement {#connectableelement}
+<a id="connectableelement"></a>
+
+### ConnectableElement
 
 Any HTML element that has implemented the `addConnectedCallback` method.
 
@@ -794,7 +850,9 @@ Registers a callback to be called when the element is connected to the DOM. This
 
 ## Props and States
 
-### SignalState\<T\> {#signalstate}
+<a id="signalstate"></a>
+
+### SignalState\<T\>
 
 <dl>
 
@@ -814,7 +872,9 @@ A plain object containing signals.
 
 ---
 
-### assignProps() {#assignprops}
+<a id="assignprops"></a>
+
+### assignProps()
 
 <dl>
 
@@ -834,7 +894,9 @@ Merges two objects, with the second object taking precedence. Only keys present 
 
 ---
 
-### ~~mapSignals()~~ {#mapsignals}
+<a id="mapsignals"></a>
+
+### ~~mapSignals()~~
 
 <dl>
 
@@ -856,7 +918,9 @@ Maps every value in the given object to a signal.
 
 ---
 
-### ~~mapValues()~~ {#mapvalues}
+<a id="mapvalues"></a>
+
+### ~~mapValues()~~
 
 <dl>
 
@@ -878,7 +942,9 @@ Maps every signal in the given object to its current value.
 
 ## Signals
 
-### SignalValue\<S\> {#signalvalue-1}
+<a id="signalvalue-1"></a>
+
+### SignalValue\<S\>
 
 <dl>
 
@@ -898,7 +964,9 @@ Extracts the value type from a signal type.
 
 ---
 
-### batch() {#batch}
+<a id="batch"></a>
+
+### batch()
 
 <dl>
 
@@ -920,7 +988,9 @@ This is a re-export of `batch` from `@preact/signals-core`.
 
 ---
 
-### untracked() {#untracked}
+<a id="untracked"></a>
+
+### untracked()
 
 <dl>
 
@@ -942,7 +1012,9 @@ This is a re-export of `untracked` from `@preact/signals-core`.
 
 ---
 
-### createComputed() {#createcomputed}
+<a id="createcomputed"></a>
+
+### createComputed()
 
 <dl>
 
@@ -962,7 +1034,9 @@ Creates a computed signal that automatically updates its value based on the reac
 
 ---
 
-### createSignal() {#createsignal}
+<a id="createsignal"></a>
+
+### createSignal()
 
 <dl>
 
@@ -982,7 +1056,9 @@ Creates and returns a new signal with the given initial value. Signals are react
 
 ---
 
-### useEffect() {#useeffect}
+<a id="useeffect"></a>
+
+### useEffect()
 
 <dl>
 

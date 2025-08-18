@@ -2,9 +2,13 @@
 
 ## Classes
 
-### Collection {#collection}
+<a id="collection"></a>
+
+### Collection
 
 #### Constructors
+
+<a id="constructor"></a>
 
 ##### Constructor
 
@@ -140,7 +144,9 @@ Returns the previous enabled value.
 
 ## Type Aliases
 
-### ItemFilter() {#itemfilter}
+<a id="itemfilter"></a>
+
+### ItemFilter()
 
 <dl>
 
@@ -160,7 +166,9 @@ The filter function to determine if an item should be shown in the collection.
 
 ## Variables
 
-### defaultItemFilter {#defaultitemfilter}
+<a id="defaultitemfilter"></a>
+
+### defaultItemFilter
 
 <dl>
 

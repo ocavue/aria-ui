@@ -2,7 +2,9 @@
 
 ## Listbox
 
-### ListboxEvents {#listboxevents}
+<a id="listboxevents"></a>
+
+### ListboxEvents
 
 #### Properties
 
@@ -18,7 +20,9 @@
 
 ---
 
-### ListboxProps {#listboxprops}
+<a id="listboxprops"></a>
+
+### ListboxProps
 
 #### Properties
 
@@ -142,7 +146,9 @@ The selected value.
 
 ## ListboxItem
 
-### ListboxItemProps {#listboxitemprops}
+<a id="listboxitemprops"></a>
+
+### ListboxItemProps
 
 #### Properties
 

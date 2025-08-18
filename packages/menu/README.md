@@ -2,7 +2,9 @@
 
 ## MenuContent
 
-### MenuContentProps {#menucontentprops}
+<a id="menucontentprops"></a>
+
+### MenuContentProps
 
 #### Properties
 
@@ -408,7 +410,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ---
 
-### MenuContentEvents {#menucontentevents}
+<a id="menucontentevents"></a>
+
+### MenuContentEvents
 
 <dl>
 
@@ -426,7 +430,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ## MenuItem
 
-### MenuItemEvents {#menuitemevents}
+<a id="menuitemevents"></a>
+
+### MenuItemEvents
 
 #### Properties
 
@@ -448,7 +454,9 @@ Fired when the item is selected.
 
 ---
 
-### MenuItemProps {#menuitemprops}
+<a id="menuitemprops"></a>
+
+### MenuItemProps
 
 #### Properties
 
@@ -514,7 +522,9 @@ The value of the item. Every item must have a unique value in the parent list. B
 
 ## MenuRoot
 
-### MenuRootEvents {#menurootevents}
+<a id="menurootevents"></a>
+
+### MenuRootEvents
 
 <dl>
 
@@ -532,7 +542,9 @@ The value of the item. Every item must have a unique value in the parent list. B
 
 ---
 
-### MenuRootProps {#menurootprops}
+<a id="menurootprops"></a>
+
+### MenuRootProps
 
 <dl>
 

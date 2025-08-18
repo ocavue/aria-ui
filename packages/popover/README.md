@@ -2,7 +2,9 @@
 
 ## Type Aliases
 
-### EscapeKeyDownEvent {#escapekeydownevent}
+<a id="escapekeydownevent"></a>
+
+### EscapeKeyDownEvent
 
 <dl>
 
@@ -16,7 +18,9 @@
 
 ## PopoverContent
 
-### PopoverContentDataAttributes {#popovercontentdataattributes}
+<a id="popovercontentdataattributes"></a>
+
+### PopoverContentDataAttributes
 
 #### Properties
 
@@ -62,7 +66,9 @@
 
 ---
 
-### PopoverContentEvents {#popovercontentevents}
+<a id="popovercontentevents"></a>
+
+### PopoverContentEvents
 
 #### Properties
 
@@ -140,7 +146,9 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 ---
 
-### PopoverContentProps {#popovercontentprops}
+<a id="popovercontentprops"></a>
+
+### PopoverContentProps
 
 #### Properties
 
@@ -530,7 +538,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ---
 
-### popoverRootEvents {#popoverrootevents-1}
+<a id="popoverrootevents-1"></a>
+
+### popoverRootEvents
 
 <dl>
 
@@ -548,7 +558,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ## PopoverRoot
 
-### PopoverRootEvents {#popoverrootevents}
+<a id="popoverrootevents"></a>
+
+### PopoverRootEvents
 
 #### Properties
 
@@ -564,7 +576,9 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 ---
 
-### PopoverRootProps {#popoverrootprops}
+<a id="popoverrootprops"></a>
+
+### PopoverRootProps
 
 #### Properties
 

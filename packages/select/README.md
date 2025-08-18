@@ -2,7 +2,9 @@
 
 ## Interfaces
 
-### SelectContentEvents {#selectcontentevents}
+<a id="selectcontentevents"></a>
+
+### SelectContentEvents
 
 #### Properties
 
@@ -80,7 +82,9 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 ## Variables
 
-### selectContentEvents {#selectcontentevents-1}
+<a id="selectcontentevents-1"></a>
+
+### selectContentEvents
 
 <dl>
 
@@ -94,7 +98,9 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 ## SelectItem
 
-### SelectItemProps {#selectitemprops}
+<a id="selectitemprops"></a>
+
+### SelectItemProps
 
 #### Properties
 
@@ -120,7 +126,9 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ## SelectList
 
-### SelectListEvents {#selectlistevents}
+<a id="selectlistevents"></a>
+
+### SelectListEvents
 
 #### Properties
 
@@ -136,7 +144,9 @@ The value of the item. Every item must have a unique value in the parent list.
 
 ---
 
-### SelectListProps {#selectlistprops}
+<a id="selectlistprops"></a>
+
+### SelectListProps
 
 #### Properties
 
@@ -260,7 +270,9 @@ The selected value.
 
 ## SelectRoot
 
-### SelectRootEvents {#selectrootevents}
+<a id="selectrootevents"></a>
+
+### SelectRootEvents
 
 #### Properties
 
@@ -276,7 +288,9 @@ The selected value.
 
 ---
 
-### SelectRootProps {#selectrootprops}
+<a id="selectrootprops"></a>
+
+### SelectRootProps
 
 #### Properties
 
@@ -322,7 +336,9 @@ Whether the popover is open.
 
 ## SelectValue
 
-### SelectValueProps {#selectvalueprops}
+<a id="selectvalueprops"></a>
+
+### SelectValueProps
 
 #### Properties
 
