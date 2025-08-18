@@ -1,16 +1,18 @@
 # @aria-ui/select
 
-## SelectContentEvents <a id="select-content-events" href="#select-content-events">#</a>
+## Interfaces
 
-### Group
+<a id="selectcontentevents"></a>
 
-PopoverContent
+### SelectContentEvents
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`escapeKeyDown: EscapeKeyDownEvent`
+<code data-typedoc-code><a id="escapekeydown" href="#escapekeydown">escapeKeyDown</a>: [`EscapeKeyDownEvent`](popover.md#escapekeydownevent)</code>
 
 </dt>
 
@@ -22,9 +24,13 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`focusOutside: FocusOutsideEvent`
+<code data-typedoc-code><a id="focusoutside" href="#focusoutside">focusOutside</a>: `FocusOutsideEvent`</code>
 
 </dt>
 
@@ -36,9 +42,13 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`interactOutside: InteractOutsideEvent`
+<code data-typedoc-code><a id="interactoutside" href="#interactoutside">interactOutside</a>: `InteractOutsideEvent`</code>
 
 </dt>
 
@@ -50,9 +60,13 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`pointerDownOutside: PointerDownOutsideEvent`
+<code data-typedoc-code><a id="pointerdownoutside" href="#pointerdownoutside">pointerDownOutside</a>: `PointerDownOutsideEvent`</code>
 
 </dt>
 
@@ -66,17 +80,35 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 </dl>
 
-## SelectItemProps <a id="select-item-props" href="#select-item-props">#</a>
+## Variables
 
-### Group
+<a id="selectcontentevents-1"></a>
 
-SelectItem
+### selectContentEvents
 
 <dl>
 
 <dt>
 
-`value: string`
+<code data-typedoc-code><i>const</i> <a id="selectcontentevents-1" href="#selectcontentevents-1">selectContentEvents</a>: [`EventDeclarations`](core.md#eventdeclarations)\<[`PopoverContentEvents`](popover.md#popovercontentevents)\> = `popoverContentEvents`</code>
+
+</dt>
+
+</dl>
+
+## SelectItem
+
+<a id="selectitemprops"></a>
+
+### SelectItemProps
+
+#### Properties
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code><a id="value" href="#value">value</a>: `string`</code>
 
 </dt>
 
@@ -84,43 +116,45 @@ SelectItem
 
 The value of the item. Every item must have a unique value in the parent list.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
 </dl>
 
-## SelectListEvents <a id="select-list-events" href="#select-list-events">#</a>
+## SelectList
 
-### Group
+<a id="selectlistevents"></a>
 
-SelectList
+### SelectListEvents
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`valueChange: CustomEvent<string>`
+<code data-typedoc-code><a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
 
 </dt>
 
-<dd>
-
-</dd>
-
 </dl>
 
-## SelectListProps <a id="select-list-props" href="#select-list-props">#</a>
+---
 
-### Group
+<a id="selectlistprops"></a>
 
-SelectList
+### SelectListProps
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`autoFocus: boolean`
+<code data-typedoc-code><a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
 
 </dt>
 
@@ -128,13 +162,19 @@ SelectList
 
 Whether the listbox should automatically set the focus to the first item when the listbox is mounted or when the query changes.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`eventTarget?: HTMLElement | TypedEventTarget<"keydown">`
+<code data-typedoc-code><a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
 
 </dt>
 
@@ -144,9 +184,13 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`filter: null | ItemFilter`
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -154,13 +198,19 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 The filter function to determine if an item should be shown in the listbox. By default, a simple case-insensitive substring match is used. You can provide a custom filter function to match against a more complex pattern. You can also pass `null` to disable filtering and allow all items to be shown.
 
-**Default**: `defaultItemFilter`
+###### Default
+
+`defaultItemFilter`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`query: string`
+<code data-typedoc-code><a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -168,13 +218,19 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 The query string to filter the listbox items.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`selectionMode: "multiple" | "single"`
+<code data-typedoc-code><a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
 
 </dt>
 
@@ -184,13 +240,19 @@ Listbox selection mode
 
 (Currently only single selection mode is implemented)
 
-**Default**: `"single"`
+###### Default
+
+`"single"`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`value: string`
+<code data-typedoc-code><a id="value-1" href="#value-1">value</a>: `string`</code>
 
 </dt>
 
@@ -198,43 +260,45 @@ Listbox selection mode
 
 The selected value.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
 </dl>
 
-## SelectRootEvents <a id="select-root-events" href="#select-root-events">#</a>
+## SelectRoot
 
-### Group
+<a id="selectrootevents"></a>
 
-SelectRoot
+### SelectRootEvents
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`openChange: CustomEvent<boolean>`
+<code data-typedoc-code><a id="openchange" href="#openchange">openChange</a>: `CustomEvent`\<`boolean`\></code>
 
 </dt>
 
-<dd>
-
-</dd>
-
 </dl>
 
-## SelectRootProps <a id="select-root-props" href="#select-root-props">#</a>
+---
 
-### Group
+<a id="selectrootprops"></a>
 
-SelectRoot
+### SelectRootProps
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`defaultOpen: boolean`
+<code data-typedoc-code><a id="defaultopen" href="#defaultopen">defaultOpen</a>: `boolean`</code>
 
 </dt>
 
@@ -242,13 +306,19 @@ SelectRoot
 
 Whether the popover is open by default.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`open: boolean`
+<code data-typedoc-code><a id="open" href="#open">open</a>: `boolean`</code>
 
 </dt>
 
@@ -256,23 +326,27 @@ Whether the popover is open by default.
 
 Whether the popover is open.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
 </dl>
 
-## SelectValueProps <a id="select-value-props" href="#select-value-props">#</a>
+## SelectValue
 
-### Group
+<a id="selectvalueprops"></a>
 
-SelectValue
+### SelectValueProps
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`placeholder: string`
+<code data-typedoc-code><a id="placeholder" href="#placeholder">placeholder</a>: `string`</code>
 
 </dt>
 
@@ -280,12 +354,10 @@ SelectValue
 
 The value to show when no item is selected
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
 </dl>
-
-## selectContentEvents <a id="select-content-events-1" href="#select-content-events-1">#</a>
-
-**Type**: `EventDeclarations<PopoverContentEvents>`

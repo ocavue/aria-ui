@@ -1,16 +1,18 @@
 # @aria-ui/menu
 
-## MenuContentProps <a id="menu-content-props" href="#menu-content-props">#</a>
+## MenuContent
 
-### Group
+<a id="menucontentprops"></a>
 
-MenuContent
+### MenuContentProps
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`altBoundary: boolean`
+<code data-typedoc-code><a id="altboundary" href="#altboundary">altBoundary</a>: `boolean`</code>
 
 </dt>
 
@@ -18,13 +20,19 @@ MenuContent
 
 Whether to check the alternate elementContext’s boundary. Please see https://floating-ui.com/docs/detectoverflow#altboundary for more information.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`autoUpdate: boolean | AutoUpdateOptions`
+<code data-typedoc-code><a id="autoupdate" href="#autoupdate">autoUpdate</a>: `boolean` \| `AutoUpdateOptions`</code>
 
 </dt>
 
@@ -32,17 +40,23 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 Options to activate auto-update listeners
 
-**See**
+###### See
 
 https://floating-ui.com/docs/autoUpdate
 
-**Default**: `true`
+###### Default
+
+`true`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`boundary: Boundary`
+<code data-typedoc-code><a id="boundary" href="#boundary">boundary</a>: `Boundary`</code>
 
 </dt>
 
@@ -50,13 +64,19 @@ https://floating-ui.com/docs/autoUpdate
 
 Describes the clipping element(s) or area that overflow will be checked relative to. Please see https://floating-ui.com/docs/detectoverflow#boundary for more information.
 
-**Default**: `'clippingAncestors'`
+###### Default
+
+`'clippingAncestors'`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`elementContext: ElementContext`
+<code data-typedoc-code><a id="elementcontext" href="#elementcontext">elementContext</a>: `ElementContext`</code>
 
 </dt>
 
@@ -64,13 +84,19 @@ Describes the clipping element(s) or area that overflow will be checked relative
 
 The element that will be used to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#elementcontext for more information.
 
-**Default**: `'floating'`
+###### Default
+
+`'floating'`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`eventTarget?: HTMLElement | TypedEventTarget<"keydown">`
+<code data-typedoc-code><a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
 
 </dt>
 
@@ -80,9 +106,13 @@ By default, the menu element will listen for keydown events. You can pass a diff
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`fitViewport: boolean`
+<code data-typedoc-code><a id="fitviewport" href="#fitviewport">fitViewport</a>: `boolean`</code>
 
 </dt>
 
@@ -90,13 +120,19 @@ By default, the menu element will listen for keydown events. You can pass a diff
 
 Whether to constrain the floating element's width and height to not exceed the viewport.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`flip: boolean | Placement[]`
+<code data-typedoc-code><a id="flip" href="#flip">flip</a>: `boolean` \| `Placement`[]</code>
 
 </dt>
 
@@ -104,13 +140,19 @@ Whether to constrain the floating element's width and height to not exceed the v
 
 Whether to flip the `placement` in order to keep it in view when the preferred placement(s) will overflow the clipping boundary. You can also provide an array of placements to try sequentially if the preferred `placement` does not fit.
 
-**Default**: `true`
+###### Default
+
+`true`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`hide: boolean`
+<code data-typedoc-code><a id="hide" href="#hide">hide</a>: `boolean`</code>
 
 </dt>
 
@@ -118,13 +160,19 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 Whether to hide the floating element when the reference element or the floating element is fully clipped.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`hoist: boolean`
+<code data-typedoc-code><a id="hoist" href="#hoist">hoist</a>: `boolean`</code>
 
 </dt>
 
@@ -132,13 +180,19 @@ Whether to hide the floating element when the reference element or the floating 
 
 Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) to place the floating element on top of other page content. When enabled, the floating element won't be clipped by an ancestor. This provides a similar result to React's `<Portals>` or Vue's `<Teleport>`.
 
-**Default**: `true`
+###### Default
+
+`true`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`inline: boolean`
+<code data-typedoc-code><a id="inline" href="#inline">inline</a>: `boolean`</code>
 
 </dt>
 
@@ -146,13 +200,19 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 Whether to improve positioning for inline reference elements that span over multiple lines.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`offset?: OffsetOptions`
+<code data-typedoc-code><a id="offset" href="#offset">offset</a><i>?</i>: `OffsetOptions`</code>
 
 </dt>
 
@@ -160,13 +220,19 @@ Whether to improve positioning for inline reference elements that span over mult
 
 The distance between the reference and floating element.
 
-**Default**: `6`
+###### Default
+
+`6`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`overflowPadding: number`
+<code data-typedoc-code><a id="overflowpadding" href="#overflowpadding">overflowPadding</a>: `number`</code>
 
 </dt>
 
@@ -174,13 +240,19 @@ The distance between the reference and floating element.
 
 Describes the virtual padding around the boundary to check for overflow. Please see https://floating-ui.com/docs/detectoverflow#padding for more information.
 
-**Default**: `4`
+###### Default
+
+`4`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`overlap: boolean`
+<code data-typedoc-code><a id="overlap" href="#overlap">overlap</a>: `boolean`</code>
 
 </dt>
 
@@ -188,13 +260,19 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 Whether the floating element can overlap the reference element to keep it in view.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`placement: Placement`
+<code data-typedoc-code><a id="placement" href="#placement">placement</a>: `Placement`</code>
 
 </dt>
 
@@ -202,13 +280,19 @@ Whether the floating element can overlap the reference element to keep it in vie
 
 The initial placement of the floating element
 
-**Default**: `"top"`
+###### Default
+
+`"top"`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`rootBoundary: RootBoundary`
+<code data-typedoc-code><a id="rootboundary" href="#rootboundary">rootBoundary</a>: `RootBoundary`</code>
 
 </dt>
 
@@ -216,13 +300,19 @@ The initial placement of the floating element
 
 Describes the root boundary that the element will be checked for overflow relative to. Please see https://floating-ui.com/docs/detectoverflow#rootboundary for more information.
 
-**Default**: `'viewport'`
+###### Default
+
+`'viewport'`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`sameHeight: boolean`
+<code data-typedoc-code><a id="sameheight" href="#sameheight">sameHeight</a>: `boolean`</code>
 
 </dt>
 
@@ -230,13 +320,19 @@ Describes the root boundary that the element will be checked for overflow relati
 
 Whether to constrain the floating element's height so that it matches the reference element.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`sameWidth: boolean`
+<code data-typedoc-code><a id="samewidth" href="#samewidth">sameWidth</a>: `boolean`</code>
 
 </dt>
 
@@ -244,13 +340,19 @@ Whether to constrain the floating element's height so that it matches the refere
 
 Whether to constrain the floating element's width so that it matches the reference element.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`shift: boolean`
+<code data-typedoc-code><a id="shift" href="#shift">shift</a>: `boolean`</code>
 
 </dt>
 
@@ -258,13 +360,19 @@ Whether to constrain the floating element's width so that it matches the referen
 
 Whether the floating element should shift to keep it in view.
 
-**Default**: `true`
+###### Default
+
+`true`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`strategy: "fixed" | "absolute"`
+<code data-typedoc-code><a id="strategy" href="#strategy">strategy</a>: `"fixed"` \| `"absolute"`</code>
 
 </dt>
 
@@ -272,13 +380,19 @@ Whether the floating element should shift to keep it in view.
 
 The strategy to use for positioning
 
-**Default**: `"absolute"`
+###### Default
+
+`"absolute"`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`transform: boolean`
+<code data-typedoc-code><a id="transform" href="#transform">transform</a>: `boolean`</code>
 
 </dt>
 
@@ -286,23 +400,47 @@ The strategy to use for positioning
 
 Whether to use CSS transforms to position the floating element instead of layout (`top` and `left` CSS properties). CSS transforms are more performant, but can cause conflicts with transform animations.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
 </dl>
 
-## MenuItemEvents <a id="menu-item-events" href="#menu-item-events">#</a>
+---
 
-### Group
+<a id="menucontentevents"></a>
 
-MenuItem
+### MenuContentEvents
 
 <dl>
 
 <dt>
 
-`select: CustomEvent<void>`
+<code data-typedoc-code>type <a id="menucontentevents" href="#menucontentevents">MenuContentEvents</a> = [`PopoverContentEvents`](popover.md#popovercontentevents)</code>
+
+</dt>
+
+<dd>
+
+</dd>
+
+</dl>
+
+## MenuItem
+
+<a id="menuitemevents"></a>
+
+### MenuItemEvents
+
+#### Properties
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code><a id="select" href="#select">select</a>: `CustomEvent`\<`void`\></code>
 
 </dt>
 
@@ -314,17 +452,19 @@ Fired when the item is selected.
 
 </dl>
 
-## MenuItemProps <a id="menu-item-props" href="#menu-item-props">#</a>
+---
 
-### Group
+<a id="menuitemprops"></a>
 
-MenuItem
+### MenuItemProps
+
+#### Properties
 
 <dl>
 
 <dt>
 
-`filter: ItemFilter`
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -332,13 +472,19 @@ MenuItem
 
 The filter function to determine if an item should be shown in the listbox.
 
-**Default**: `defaultItemFilter`
+###### Default
+
+`defaultItemFilter`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`query: string`
+<code data-typedoc-code><a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -346,13 +492,19 @@ The filter function to determine if an item should be shown in the listbox.
 
 The query string to filter the listbox items.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`value: string`
+<code data-typedoc-code><a id="value" href="#value">value</a>: `string`</code>
 
 </dt>
 
@@ -360,32 +512,50 @@ The query string to filter the listbox items.
 
 The value of the item. Every item must have a unique value in the parent list. By default, a random value is generated.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
 </dl>
 
-## MenuContentEvents <a id="menu-content-events" href="#menu-content-events">#</a>
+## MenuRoot
 
-### Group
+<a id="menurootevents"></a>
 
-MenuContent
+### MenuRootEvents
 
-**Type**: `PopoverContentEvents`
+<dl>
 
-## MenuRootEvents <a id="menu-root-events" href="#menu-root-events">#</a>
+<dt>
 
-### Group
+<code data-typedoc-code>type <a id="menurootevents" href="#menurootevents">MenuRootEvents</a> = [`PopoverRootEvents`](popover.md#popoverrootevents)</code>
 
-MenuRoot
+</dt>
 
-**Type**: `PopoverRootEvents`
+<dd>
 
-## MenuRootProps <a id="menu-root-props" href="#menu-root-props">#</a>
+</dd>
 
-### Group
+</dl>
 
-MenuRoot
+---
 
-**Type**: `PopoverRootProps`
+<a id="menurootprops"></a>
+
+### MenuRootProps
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code>type <a id="menurootprops" href="#menurootprops">MenuRootProps</a> = [`PopoverRootProps`](popover.md#popoverrootprops)</code>
+
+</dt>
+
+<dd>
+
+</dd>
+
+</dl>

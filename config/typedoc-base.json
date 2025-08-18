@@ -1,7 +1,7 @@
 // https://typedoc.org/options/
 {
   "$schema": "https://typedoc.org/schema.json",
-  "plugin": ["typedoc-plugin-md"],
+  "plugin": ["typedoc-plugin-md", "typedoc-plugin-markdown"],
   "githubPages": false,
   "treatWarningsAsErrors": true,
   "cleanOutputDir": true,
@@ -34,5 +34,7 @@
     "@beta": false
   },
 
-  "readme": "none"
+  "readme": "none",
+  "useHTMLAnchors": true,
+  "useCustomAnchors": false
 }
