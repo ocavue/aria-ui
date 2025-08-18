@@ -32,13 +32,13 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
-    "@floating-ui/dom": "^1.7.1",
-    "@floating-ui/utils": "^0.2.9",
-    "@zag-js/dom-query": "^1.15.5"
+    "@floating-ui/dom": "^1.7.3",
+    "@floating-ui/utils": "^0.2.10",
+    "@zag-js/dom-query": "^1.21.6"
   },
   "devDependencies": {
-    "tsup": "^8.4.0",
-    "typescript": "^5.7.3"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public",

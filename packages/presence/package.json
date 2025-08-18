@@ -28,11 +28,11 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
-    "@zag-js/dom-query": "^1.15.5"
+    "@zag-js/dom-query": "^1.21.6"
   },
   "devDependencies": {
-    "tsup": "^8.4.0",
-    "typescript": "^5.7.3"
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3"
   },
   "publishConfig": {
     "access": "public",
