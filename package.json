@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@9.15.9",
+  "packageManager": "pnpm@10.14.0",
   "description": "Monorepo for Aria UI",
   "scripts": {
     "build": "turbo run build && pnpm run build:tsc",
