@@ -34,5 +34,7 @@
     "@beta": false
   },
 
-  "readme": "none"
+  "readme": "none",
+  "useHTMLAnchors": true,
+  "useCustomAnchors": false
 }

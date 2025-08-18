@@ -1,60 +1,32 @@
 # @aria-ui/listbox
 
-## ListboxEvents <a id="listbox-events" href="#listbox-events">#</a>
+## Listbox
 
-### Group
+### ListboxEvents {#listboxevents}
 
-Listbox
+#### Properties
 
 <dl>
 
 <dt>
 
-`valueChange: CustomEvent<string>`
+<code data-typedoc-code><i></i> <a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
 
 </dt>
 
-<dd>
-
-</dd>
-
 </dl>
 
-## ListboxItemProps <a id="listbox-item-props" href="#listbox-item-props">#</a>
+---
 
-### Group
+### ListboxProps {#listboxprops}
 
-ListboxItem
+#### Properties
 
 <dl>
 
 <dt>
 
-`value: string`
-
-</dt>
-
-<dd>
-
-The value of the item. Every item must have a unique value in the parent list.
-
-**Default**: `""`
-
-</dd>
-
-</dl>
-
-## ListboxProps <a id="listbox-props" href="#listbox-props">#</a>
-
-### Group
-
-Listbox
-
-<dl>
-
-<dt>
-
-`autoFocus: boolean`
+<code data-typedoc-code><i></i> <a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
 
 </dt>
 
@@ -62,13 +34,19 @@ Listbox
 
 Whether the listbox should automatically set the focus to the first item when the listbox is mounted or when the query changes.
 
-**Default**: `false`
+###### Default
+
+`false`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`eventTarget?: HTMLElement | TypedEventTarget<"keydown">`
+<code data-typedoc-code><i></i> <a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
 
 </dt>
 
@@ -78,9 +56,13 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`filter: null | ItemFilter`
+<code data-typedoc-code><i></i> <a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -88,13 +70,19 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 The filter function to determine if an item should be shown in the listbox. By default, a simple case-insensitive substring match is used. You can provide a custom filter function to match against a more complex pattern. You can also pass `null` to disable filtering and allow all items to be shown.
 
-**Default**: `defaultItemFilter`
+###### Default
+
+`defaultItemFilter`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`query: string`
+<code data-typedoc-code><i></i> <a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -102,13 +90,19 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 The query string to filter the listbox items.
 
-**Default**: `""`
+###### Default
+
+`""`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`selectionMode: "multiple" | "single"`
+<code data-typedoc-code><i></i> <a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
 
 </dt>
 
@@ -118,13 +112,19 @@ Listbox selection mode
 
 (Currently only single selection mode is implemented)
 
-**Default**: `"single"`
+###### Default
+
+`"single"`
 
 </dd>
 
+</dl>
+
+<dl>
+
 <dt>
 
-`value: string`
+<code data-typedoc-code><i></i> <a id="value-1" href="#value-1">value</a>: `string`</code>
 
 </dt>
 
@@ -132,7 +132,35 @@ Listbox selection mode
 
 The selected value.
 
-**Default**: `""`
+###### Default
+
+`""`
+
+</dd>
+
+</dl>
+
+## ListboxItem
+
+### ListboxItemProps {#listboxitemprops}
+
+#### Properties
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code><i></i> <a id="value" href="#value">value</a>: `string`</code>
+
+</dt>
+
+<dd>
+
+The value of the item. Every item must have a unique value in the parent list.
+
+###### Default
+
+`""`
 
 </dd>
 

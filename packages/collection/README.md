@@ -1,36 +1,42 @@
 # @aria-ui/collection
 
-## Collection <a id="collection" href="#collection">#</a>
+## Classes
+
+### Collection {#collection}
+
+#### Constructors
+
+##### Constructor
 
 <dl>
 
 <dt>
 
-`constructor`
+<code data-typedoc-code><i></i> new <a id="constructor" href="#constructor">Collection</a>(`items`, `loop`): [`Collection`](#collection)</code>
 
 </dt>
 
-<dd>
+</dl>
 
-```
-new Collection(items: Iterable<HTMLElement>, loop?: boolean): Collection
-```
+#### Properties
 
-</dd>
+<dl>
 
 <dt>
 
-`loop: boolean`
+<code data-typedoc-code><i>readonly</i> <a id="loop" href="#loop">loop</a>: `boolean` = `true`</code>
 
 </dt>
 
-<dd>
+</dl>
 
-</dd>
+#### Methods
+
+<dl>
 
 <dt>
 
-`first`
+<code data-typedoc-code><i></i> <a id="first" href="#first">first</a>(): `null` \| `string`</code>
 
 </dt>
 
@@ -38,15 +44,15 @@ new Collection(items: Iterable<HTMLElement>, loop?: boolean): Collection
 
 Returns the first enabled value.
 
-```ts
-const first: () => null | string
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`getElement`
+<code data-typedoc-code><i></i> <a id="getelement" href="#getelement">getElement</a>(`value`): `null` \| `HTMLElement`</code>
 
 </dt>
 
@@ -54,15 +60,15 @@ const first: () => null | string
 
 Finds an element from its value.
 
-```ts
-const getElement: (value: string) => null | HTMLElement
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`getValues`
+<code data-typedoc-code><i></i> <a id="getvalues" href="#getvalues">getValues</a>(): `string`[]</code>
 
 </dt>
 
@@ -70,15 +76,15 @@ const getElement: (value: string) => null | HTMLElement
 
 Returns all values.
 
-```ts
-const getValues: () => string[]
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`last`
+<code data-typedoc-code><i></i> <a id="last" href="#last">last</a>(): `null` \| `string`</code>
 
 </dt>
 
@@ -86,15 +92,15 @@ const getValues: () => string[]
 
 Returns the last enabled value.
 
-```ts
-const last: () => null | string
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`next`
+<code data-typedoc-code><i></i> <a id="next" href="#next">next</a>(`value`): `null` \| `string`</code>
 
 </dt>
 
@@ -102,15 +108,15 @@ const last: () => null | string
 
 Returns the next enabled value.
 
-```ts
-const next: (value: null | string) => null | string
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`prev`
+<code data-typedoc-code><i></i> <a id="prev" href="#prev">prev</a>(`value`): `null` \| `string`</code>
 
 </dt>
 
@@ -118,38 +124,56 @@ const next: (value: null | string) => null | string
 
 Returns the previous enabled value.
 
-```ts
-const prev: (value: null | string) => null | string
-```
-
 </dd>
+
+</dl>
+
+<dl>
 
 <dt>
 
-`size`
+<code data-typedoc-code><i></i> <a id="size" href="#size">size</a>(): `number`</code>
+
+</dt>
+
+</dl>
+
+## Type Aliases
+
+### ItemFilter() {#itemfilter}
+
+<dl>
+
+<dt>
+
+<code data-typedoc-code><i></i> type <a id="itemfilter" href="#itemfilter">ItemFilter</a> = (`options`) => `boolean`</code>
 
 </dt>
 
 <dd>
 
-```ts
-const size: () => number
-```
+The filter function to determine if an item should be shown in the collection.
 
 </dd>
 
 </dl>
 
-## ItemFilter <a id="item-filter" href="#item-filter">#</a>
+## Variables
 
-The filter function to determine if an item should be shown in the collection.
+### defaultItemFilter {#defaultitemfilter}
 
-**Type**: `(options: { query: string; value: string }) => boolean`
+<dl>
 
-## defaultItemFilter <a id="default-item-filter" href="#default-item-filter">#</a>
+<dt>
+
+<code data-typedoc-code><i>const</i> <a id="defaultitemfilter" href="#defaultitemfilter">defaultItemFilter</a>: [`ItemFilter`](#itemfilter)</code>
+
+</dt>
+
+<dd>
 
 A simple case-insensitive substring match filter.
 
-```ts
-function defaultItemFilter(options: { query: string; value: string }): boolean
-```
+</dd>
+
+</dl>
