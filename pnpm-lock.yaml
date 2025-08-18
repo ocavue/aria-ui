@@ -60,7 +60,7 @@ importers:
         specifier: ^0.7.1
         version: 0.7.1(typedoc@0.28.10(typescript@5.9.2))
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
       vitest:
         specifier: ^3.2.4
@@ -72,7 +72,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/combobox:
@@ -94,7 +94,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/config:
@@ -109,7 +109,7 @@ importers:
         specifier: ^3.2.4
         version: 3.2.4(msw@2.7.3(@types/node@20.12.14)(typescript@5.9.2))(playwright@1.54.2)(vite@6.3.5(@types/node@20.12.14)(jiti@2.4.2)(yaml@2.8.1))(vitest@3.2.4)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
       vitest:
         specifier: ^3.2.4
@@ -143,7 +143,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/listbox:
@@ -165,7 +165,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/menu:
@@ -193,7 +193,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/overlay:
@@ -215,7 +215,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/popover:
@@ -261,7 +261,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
       vitest:
         specifier: ^3.2.4
@@ -280,7 +280,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/select:
@@ -302,7 +302,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
   packages/tooltip:
@@ -339,7 +339,7 @@ importers:
         specifier: ^8.5.0
         version: 8.5.0(jiti@2.4.2)(postcss@8.5.3)(typescript@5.9.2)(yaml@2.8.1)
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
       vitest:
         specifier: ^3.2.4
@@ -384,7 +384,7 @@ importers:
         specifier: ^3.3.1
         version: 3.3.1
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5.9.2
         version: 5.9.2
 
 packages:

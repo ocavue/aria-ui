@@ -24,6 +24,6 @@
     "astro": "^5.13.2",
     "astrobook": "^0.8.10",
     "lit-html": "^3.3.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   }
 }
