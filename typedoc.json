@@ -1,6 +1,7 @@
 {
   "$schema": "https://typedoc.org/schema.json",
   "extends": ["./config/typedoc-base.json"],
+  "router": "module",
   "entryPointStrategy": "packages",
   "entryPoints": [
     "packages/collection",
@@ -14,5 +15,6 @@
     "packages/select",
     "packages/tooltip"
   ],
+  // "alwaysCreateEntryPointModule": true,
   "out": "temp/typedoc"
 }
