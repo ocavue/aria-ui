@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.22
+
+### Patch Changes
+
+- fad6484: Update dependencies.
+
 ## 0.0.21
 
 ### Patch Changes
