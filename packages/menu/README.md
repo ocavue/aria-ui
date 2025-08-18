@@ -12,7 +12,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="altboundary" href="#altboundary">altBoundary</a>: `boolean`</code>
+<code data-typedoc-code><a id="altboundary" href="#altboundary">altBoundary</a>: `boolean`</code>
 
 </dt>
 
@@ -32,7 +32,7 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="autoupdate" href="#autoupdate">autoUpdate</a>: `boolean` \| `AutoUpdateOptions`</code>
+<code data-typedoc-code><a id="autoupdate" href="#autoupdate">autoUpdate</a>: `boolean` \| `AutoUpdateOptions`</code>
 
 </dt>
 
@@ -56,7 +56,7 @@ https://floating-ui.com/docs/autoUpdate
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="boundary" href="#boundary">boundary</a>: `Boundary`</code>
+<code data-typedoc-code><a id="boundary" href="#boundary">boundary</a>: `Boundary`</code>
 
 </dt>
 
@@ -76,7 +76,7 @@ Describes the clipping element(s) or area that overflow will be checked relative
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="elementcontext" href="#elementcontext">elementContext</a>: `ElementContext`</code>
+<code data-typedoc-code><a id="elementcontext" href="#elementcontext">elementContext</a>: `ElementContext`</code>
 
 </dt>
 
@@ -96,7 +96,7 @@ The element that will be used to check for overflow. Please see https://floating
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
+<code data-typedoc-code><a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
 
 </dt>
 
@@ -112,7 +112,7 @@ By default, the menu element will listen for keydown events. You can pass a diff
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="fitviewport" href="#fitviewport">fitViewport</a>: `boolean`</code>
+<code data-typedoc-code><a id="fitviewport" href="#fitviewport">fitViewport</a>: `boolean`</code>
 
 </dt>
 
@@ -132,7 +132,7 @@ Whether to constrain the floating element's width and height to not exceed the v
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="flip" href="#flip">flip</a>: `boolean` \| `Placement`[]</code>
+<code data-typedoc-code><a id="flip" href="#flip">flip</a>: `boolean` \| `Placement`[]</code>
 
 </dt>
 
@@ -152,7 +152,7 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="hide" href="#hide">hide</a>: `boolean`</code>
+<code data-typedoc-code><a id="hide" href="#hide">hide</a>: `boolean`</code>
 
 </dt>
 
@@ -172,7 +172,7 @@ Whether to hide the floating element when the reference element or the floating 
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="hoist" href="#hoist">hoist</a>: `boolean`</code>
+<code data-typedoc-code><a id="hoist" href="#hoist">hoist</a>: `boolean`</code>
 
 </dt>
 
@@ -192,7 +192,7 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="inline" href="#inline">inline</a>: `boolean`</code>
+<code data-typedoc-code><a id="inline" href="#inline">inline</a>: `boolean`</code>
 
 </dt>
 
@@ -212,7 +212,7 @@ Whether to improve positioning for inline reference elements that span over mult
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="offset" href="#offset">offset</a><i>?</i>: `OffsetOptions`</code>
+<code data-typedoc-code><a id="offset" href="#offset">offset</a><i>?</i>: `OffsetOptions`</code>
 
 </dt>
 
@@ -232,7 +232,7 @@ The distance between the reference and floating element.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="overflowpadding" href="#overflowpadding">overflowPadding</a>: `number`</code>
+<code data-typedoc-code><a id="overflowpadding" href="#overflowpadding">overflowPadding</a>: `number`</code>
 
 </dt>
 
@@ -252,7 +252,7 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="overlap" href="#overlap">overlap</a>: `boolean`</code>
+<code data-typedoc-code><a id="overlap" href="#overlap">overlap</a>: `boolean`</code>
 
 </dt>
 
@@ -272,7 +272,7 @@ Whether the floating element can overlap the reference element to keep it in vie
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="placement" href="#placement">placement</a>: `Placement`</code>
+<code data-typedoc-code><a id="placement" href="#placement">placement</a>: `Placement`</code>
 
 </dt>
 
@@ -292,7 +292,7 @@ The initial placement of the floating element
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="rootboundary" href="#rootboundary">rootBoundary</a>: `RootBoundary`</code>
+<code data-typedoc-code><a id="rootboundary" href="#rootboundary">rootBoundary</a>: `RootBoundary`</code>
 
 </dt>
 
@@ -312,7 +312,7 @@ Describes the root boundary that the element will be checked for overflow relati
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="sameheight" href="#sameheight">sameHeight</a>: `boolean`</code>
+<code data-typedoc-code><a id="sameheight" href="#sameheight">sameHeight</a>: `boolean`</code>
 
 </dt>
 
@@ -332,7 +332,7 @@ Whether to constrain the floating element's height so that it matches the refere
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="samewidth" href="#samewidth">sameWidth</a>: `boolean`</code>
+<code data-typedoc-code><a id="samewidth" href="#samewidth">sameWidth</a>: `boolean`</code>
 
 </dt>
 
@@ -352,7 +352,7 @@ Whether to constrain the floating element's width so that it matches the referen
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="shift" href="#shift">shift</a>: `boolean`</code>
+<code data-typedoc-code><a id="shift" href="#shift">shift</a>: `boolean`</code>
 
 </dt>
 
@@ -372,7 +372,7 @@ Whether the floating element should shift to keep it in view.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="strategy" href="#strategy">strategy</a>: `"fixed"` \| `"absolute"`</code>
+<code data-typedoc-code><a id="strategy" href="#strategy">strategy</a>: `"fixed"` \| `"absolute"`</code>
 
 </dt>
 
@@ -392,7 +392,7 @@ The strategy to use for positioning
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="transform" href="#transform">transform</a>: `boolean`</code>
+<code data-typedoc-code><a id="transform" href="#transform">transform</a>: `boolean`</code>
 
 </dt>
 
@@ -418,7 +418,7 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="menucontentevents" href="#menucontentevents">MenuContentEvents</a> = [`PopoverContentEvents`](popover.md#popovercontentevents)</code>
+<code data-typedoc-code>type <a id="menucontentevents" href="#menucontentevents">MenuContentEvents</a> = [`PopoverContentEvents`](popover.md#popovercontentevents)</code>
 
 </dt>
 
@@ -440,7 +440,7 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="select" href="#select">select</a>: `CustomEvent`\<`void`\></code>
+<code data-typedoc-code><a id="select" href="#select">select</a>: `CustomEvent`\<`void`\></code>
 
 </dt>
 
@@ -464,7 +464,7 @@ Fired when the item is selected.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="filter" href="#filter">filter</a>: [`ItemFilter`](collection.md#itemfilter)</code>
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -484,7 +484,7 @@ The filter function to determine if an item should be shown in the listbox.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="query" href="#query">query</a>: `string`</code>
+<code data-typedoc-code><a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -504,7 +504,7 @@ The query string to filter the listbox items.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="value" href="#value">value</a>: `string`</code>
+<code data-typedoc-code><a id="value" href="#value">value</a>: `string`</code>
 
 </dt>
 
@@ -530,7 +530,7 @@ The value of the item. Every item must have a unique value in the parent list. B
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="menurootevents" href="#menurootevents">MenuRootEvents</a> = [`PopoverRootEvents`](popover.md#popoverrootevents)</code>
+<code data-typedoc-code>type <a id="menurootevents" href="#menurootevents">MenuRootEvents</a> = [`PopoverRootEvents`](popover.md#popoverrootevents)</code>
 
 </dt>
 
@@ -550,7 +550,7 @@ The value of the item. Every item must have a unique value in the parent list. B
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="menurootprops" href="#menurootprops">MenuRootProps</a> = [`PopoverRootProps`](popover.md#popoverrootprops)</code>
+<code data-typedoc-code>type <a id="menurootprops" href="#menurootprops">MenuRootProps</a> = [`PopoverRootProps`](popover.md#popoverrootprops)</code>
 
 </dt>
 

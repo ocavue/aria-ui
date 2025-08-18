@@ -16,7 +16,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> new <a id="constructor" href="#constructor">Collection</a>(`items`, `loop`): [`Collection`](#collection)</code>
+<code data-typedoc-code>new <a id="constructor" href="#constructor">Collection</a>(`items`, `loop`): [`Collection`](#collection)</code>
 
 </dt>
 
@@ -40,7 +40,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="first" href="#first">first</a>(): `null` \| `string`</code>
+<code data-typedoc-code><a id="first" href="#first">first</a>(): `null` \| `string`</code>
 
 </dt>
 
@@ -56,7 +56,7 @@ Returns the first enabled value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="getelement" href="#getelement">getElement</a>(`value`): `null` \| `HTMLElement`</code>
+<code data-typedoc-code><a id="getelement" href="#getelement">getElement</a>(`value`): `null` \| `HTMLElement`</code>
 
 </dt>
 
@@ -72,7 +72,7 @@ Finds an element from its value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="getvalues" href="#getvalues">getValues</a>(): `string`[]</code>
+<code data-typedoc-code><a id="getvalues" href="#getvalues">getValues</a>(): `string`[]</code>
 
 </dt>
 
@@ -88,7 +88,7 @@ Returns all values.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="last" href="#last">last</a>(): `null` \| `string`</code>
+<code data-typedoc-code><a id="last" href="#last">last</a>(): `null` \| `string`</code>
 
 </dt>
 
@@ -104,7 +104,7 @@ Returns the last enabled value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="next" href="#next">next</a>(`value`): `null` \| `string`</code>
+<code data-typedoc-code><a id="next" href="#next">next</a>(`value`): `null` \| `string`</code>
 
 </dt>
 
@@ -120,7 +120,7 @@ Returns the next enabled value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="prev" href="#prev">prev</a>(`value`): `null` \| `string`</code>
+<code data-typedoc-code><a id="prev" href="#prev">prev</a>(`value`): `null` \| `string`</code>
 
 </dt>
 
@@ -136,7 +136,7 @@ Returns the previous enabled value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="size" href="#size">size</a>(): `number`</code>
+<code data-typedoc-code><a id="size" href="#size">size</a>(): `number`</code>
 
 </dt>
 
@@ -152,7 +152,7 @@ Returns the previous enabled value.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="itemfilter" href="#itemfilter">ItemFilter</a> = (`options`) => `boolean`</code>
+<code data-typedoc-code>type <a id="itemfilter" href="#itemfilter">ItemFilter</a> = (`options`) => `boolean`</code>
 
 </dt>
 

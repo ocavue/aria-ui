@@ -12,7 +12,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="value" href="#value">value</a>: `string`</code>
+<code data-typedoc-code><a id="value" href="#value">value</a>: `string`</code>
 
 </dt>
 
@@ -40,7 +40,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
+<code data-typedoc-code><a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
 
 </dt>
 
@@ -58,7 +58,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
+<code data-typedoc-code><a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
 
 </dt>
 
@@ -78,7 +78,7 @@ Whether the listbox should automatically set the focus to the first item when th
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -98,7 +98,7 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="query" href="#query">query</a>: `string`</code>
+<code data-typedoc-code><a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -118,7 +118,7 @@ The query string to filter the listbox items.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
+<code data-typedoc-code><a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
 
 </dt>
 
@@ -140,7 +140,7 @@ Listbox selection mode
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="value-1" href="#value-1">value</a>: `string`</code>
+<code data-typedoc-code><a id="value-1" href="#value-1">value</a>: `string`</code>
 
 </dt>
 

@@ -12,7 +12,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="data-state" href="#data-state">data-state</a>: `"open"` \| `"closed"`</code>
+<code data-typedoc-code><a id="data-state" href="#data-state">data-state</a>: `"open"` \| `"closed"`</code>
 
 </dt>
 
@@ -30,7 +30,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="altboundary" href="#altboundary">altBoundary</a>: `boolean`</code>
+<code data-typedoc-code><a id="altboundary" href="#altboundary">altBoundary</a>: `boolean`</code>
 
 </dt>
 
@@ -50,7 +50,7 @@ Whether to check the alternate elementContext’s boundary. Please see https://f
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="autoupdate" href="#autoupdate">autoUpdate</a>: `boolean` \| `AutoUpdateOptions`</code>
+<code data-typedoc-code><a id="autoupdate" href="#autoupdate">autoUpdate</a>: `boolean` \| `AutoUpdateOptions`</code>
 
 </dt>
 
@@ -74,7 +74,7 @@ https://floating-ui.com/docs/autoUpdate
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="boundary" href="#boundary">boundary</a>: `Boundary`</code>
+<code data-typedoc-code><a id="boundary" href="#boundary">boundary</a>: `Boundary`</code>
 
 </dt>
 
@@ -94,7 +94,7 @@ Describes the clipping element(s) or area that overflow will be checked relative
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="elementcontext" href="#elementcontext">elementContext</a>: `ElementContext`</code>
+<code data-typedoc-code><a id="elementcontext" href="#elementcontext">elementContext</a>: `ElementContext`</code>
 
 </dt>
 
@@ -114,7 +114,7 @@ The element that will be used to check for overflow. Please see https://floating
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="fitviewport" href="#fitviewport">fitViewport</a>: `boolean`</code>
+<code data-typedoc-code><a id="fitviewport" href="#fitviewport">fitViewport</a>: `boolean`</code>
 
 </dt>
 
@@ -134,7 +134,7 @@ Whether to constrain the floating element's width and height to not exceed the v
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="flip" href="#flip">flip</a>: `boolean` \| `Placement`[]</code>
+<code data-typedoc-code><a id="flip" href="#flip">flip</a>: `boolean` \| `Placement`[]</code>
 
 </dt>
 
@@ -154,7 +154,7 @@ Whether to flip the `placement` in order to keep it in view when the preferred p
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="hide" href="#hide">hide</a>: `boolean`</code>
+<code data-typedoc-code><a id="hide" href="#hide">hide</a>: `boolean`</code>
 
 </dt>
 
@@ -174,7 +174,7 @@ Whether to hide the floating element when the reference element or the floating 
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="hoist" href="#hoist">hoist</a>: `boolean`</code>
+<code data-typedoc-code><a id="hoist" href="#hoist">hoist</a>: `boolean`</code>
 
 </dt>
 
@@ -194,7 +194,7 @@ Whether to use the browser [Popover API](https://developer.mozilla.org/en-US/doc
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="inline" href="#inline">inline</a>: `boolean`</code>
+<code data-typedoc-code><a id="inline" href="#inline">inline</a>: `boolean`</code>
 
 </dt>
 
@@ -214,7 +214,7 @@ Whether to improve positioning for inline reference elements that span over mult
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="offset" href="#offset">offset</a><i>?</i>: `OffsetOptions`</code>
+<code data-typedoc-code><a id="offset" href="#offset">offset</a><i>?</i>: `OffsetOptions`</code>
 
 </dt>
 
@@ -234,7 +234,7 @@ The distance between the reference and floating element.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="overflowpadding" href="#overflowpadding">overflowPadding</a>: `number`</code>
+<code data-typedoc-code><a id="overflowpadding" href="#overflowpadding">overflowPadding</a>: `number`</code>
 
 </dt>
 
@@ -254,7 +254,7 @@ Describes the virtual padding around the boundary to check for overflow. Please 
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="overlap" href="#overlap">overlap</a>: `boolean`</code>
+<code data-typedoc-code><a id="overlap" href="#overlap">overlap</a>: `boolean`</code>
 
 </dt>
 
@@ -274,7 +274,7 @@ Whether the floating element can overlap the reference element to keep it in vie
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="placement" href="#placement">placement</a>: `Placement`</code>
+<code data-typedoc-code><a id="placement" href="#placement">placement</a>: `Placement`</code>
 
 </dt>
 
@@ -294,7 +294,7 @@ The initial placement of the floating element
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="rootboundary" href="#rootboundary">rootBoundary</a>: `RootBoundary`</code>
+<code data-typedoc-code><a id="rootboundary" href="#rootboundary">rootBoundary</a>: `RootBoundary`</code>
 
 </dt>
 
@@ -314,7 +314,7 @@ Describes the root boundary that the element will be checked for overflow relati
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="sameheight" href="#sameheight">sameHeight</a>: `boolean`</code>
+<code data-typedoc-code><a id="sameheight" href="#sameheight">sameHeight</a>: `boolean`</code>
 
 </dt>
 
@@ -334,7 +334,7 @@ Whether to constrain the floating element's height so that it matches the refere
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="samewidth" href="#samewidth">sameWidth</a>: `boolean`</code>
+<code data-typedoc-code><a id="samewidth" href="#samewidth">sameWidth</a>: `boolean`</code>
 
 </dt>
 
@@ -354,7 +354,7 @@ Whether to constrain the floating element's width so that it matches the referen
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="shift" href="#shift">shift</a>: `boolean`</code>
+<code data-typedoc-code><a id="shift" href="#shift">shift</a>: `boolean`</code>
 
 </dt>
 
@@ -374,7 +374,7 @@ Whether the floating element should shift to keep it in view.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="strategy" href="#strategy">strategy</a>: `"fixed"` \| `"absolute"`</code>
+<code data-typedoc-code><a id="strategy" href="#strategy">strategy</a>: `"fixed"` \| `"absolute"`</code>
 
 </dt>
 
@@ -394,7 +394,7 @@ The strategy to use for positioning
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="transform" href="#transform">transform</a>: `boolean`</code>
+<code data-typedoc-code><a id="transform" href="#transform">transform</a>: `boolean`</code>
 
 </dt>
 
@@ -422,7 +422,7 @@ Whether to use CSS transforms to position the floating element instead of layout
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="openchange" href="#openchange">openChange</a>: `CustomEvent`\<`boolean`\></code>
+<code data-typedoc-code><a id="openchange" href="#openchange">openChange</a>: `CustomEvent`\<`boolean`\></code>
 
 </dt>
 
@@ -446,7 +446,7 @@ Fired when the open state changes.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="closedelay" href="#closedelay">closeDelay</a>: `number`</code>
+<code data-typedoc-code><a id="closedelay" href="#closedelay">closeDelay</a>: `number`</code>
 
 </dt>
 
@@ -466,7 +466,7 @@ The delay in milliseconds before the tooltip closes.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="open" href="#open">open</a>: `boolean`</code>
+<code data-typedoc-code><a id="open" href="#open">open</a>: `boolean`</code>
 
 </dt>
 
@@ -486,7 +486,7 @@ Whether the popover is open.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="opendelay" href="#opendelay">openDelay</a>: `number`</code>
+<code data-typedoc-code><a id="opendelay" href="#opendelay">openDelay</a>: `number`</code>
 
 </dt>
 

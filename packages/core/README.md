@@ -28,7 +28,7 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="events-1" href="#events-1">events</a>: [`EventDeclarations`](#eventdeclarations)\<`Events`\></code>
+<code data-typedoc-code><a id="events-1" href="#events-1">events</a>: [`EventDeclarations`](#eventdeclarations)\<`Events`\></code>
 
 </dt>
 
@@ -38,7 +38,7 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="props-1" href="#props-1">props</a>: [`PropDeclarations`](#propdeclarations)\<`Props`\></code>
+<code data-typedoc-code><a id="props-1" href="#props-1">props</a>: [`PropDeclarations`](#propdeclarations)\<`Props`\></code>
 
 </dt>
 
@@ -48,7 +48,7 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="setup" href="#setup">setup</a>: (`element`, `options`) => `void`</code>
+<code data-typedoc-code><a id="setup" href="#setup">setup</a>: (`element`, `options`) => `void`</code>
 
 </dt>
 
@@ -68,7 +68,7 @@ A read-only signal that holds a reactive value.
 
 <dt>
 
-<code data-typedoc-code>get <i></i> <a id="value" href="#value">value</a>(): `T`</code>
+<code data-typedoc-code>get <a id="value" href="#value">value</a>(): `T`</code>
 
 </dt>
 
@@ -86,7 +86,7 @@ A read-only signal that holds a reactive value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="get" href="#get">get</a>(): `T`</code>
+<code data-typedoc-code><a id="get" href="#get">get</a>(): `T`</code>
 
 </dt>
 
@@ -102,7 +102,7 @@ Get the signal's current value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="peek" href="#peek">peek</a>(): `T`</code>
+<code data-typedoc-code><a id="peek" href="#peek">peek</a>(): `T`</code>
 
 </dt>
 
@@ -126,7 +126,7 @@ Get the signal's current value without subscribing.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="emit" href="#emit">emit</a>: [`EventEmitter`](#eventemitter)\<`Events`\></code>
+<code data-typedoc-code><a id="emit" href="#emit">emit</a>: [`EventEmitter`](#eventemitter)\<`Events`\></code>
 
 </dt>
 
@@ -136,7 +136,7 @@ Get the signal's current value without subscribing.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="state" href="#state">state</a>: [`SignalState`](#signalstate)\<`Props`\></code>
+<code data-typedoc-code><a id="state" href="#state">state</a>: [`SignalState`](#signalstate)\<`Props`\></code>
 
 </dt>
 
@@ -156,7 +156,7 @@ A mutable signal that can be used to manage reactive state changes.
 
 <dt>
 
-<code data-typedoc-code>set <i></i> <a id="value-1" href="#value-1">value</a>(`value`): `void`</code>
+<code data-typedoc-code>set <a id="value-1" href="#value-1">value</a>(`value`): `void`</code>
 
 </dt>
 
@@ -174,7 +174,7 @@ A mutable signal that can be used to manage reactive state changes.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="get-2" href="#get-2">get</a>(): `T`</code>
+<code data-typedoc-code><a id="get-2" href="#get-2">get</a>(): `T`</code>
 
 </dt>
 
@@ -190,7 +190,7 @@ Get the signal's current value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="peek-2" href="#peek-2">peek</a>(): `T`</code>
+<code data-typedoc-code><a id="peek-2" href="#peek-2">peek</a>(): `T`</code>
 
 </dt>
 
@@ -206,7 +206,7 @@ Get the signal's current value without subscribing.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="set" href="#set">set</a>(`value`): `void`</code>
+<code data-typedoc-code><a id="set" href="#set">set</a>(`value`): `void`</code>
 
 </dt>
 
@@ -232,7 +232,7 @@ An interface thats can be used to register event listeners.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="addeventlistener" href="#addeventlistener">addEventListener</a>: (`type`, `listener`) => `void`</code>
+<code data-typedoc-code><a id="addeventlistener" href="#addeventlistener">addEventListener</a>: (`type`, `listener`) => `void`</code>
 
 </dt>
 
@@ -242,7 +242,7 @@ An interface thats can be used to register event listeners.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="removeeventlistener" href="#removeeventlistener">removeEventListener</a>: (`type`, `listener`) => `void`</code>
+<code data-typedoc-code><a id="removeeventlistener" href="#removeeventlistener">removeEventListener</a>: (`type`, `listener`) => `void`</code>
 
 </dt>
 
@@ -258,7 +258,7 @@ An interface thats can be used to register event listeners.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="baseelementconstructor-1" href="#baseelementconstructor-1">BaseElementConstructor</a>\<Props\> = () => [`BaseElement`](#baseelement) & `Props`</code>
+<code data-typedoc-code>type <a id="baseelementconstructor-1" href="#baseelementconstructor-1">BaseElementConstructor</a>\<Props\> = () => [`BaseElement`](#baseelement) & `Props`</code>
 
 </dt>
 
@@ -270,7 +270,7 @@ An interface thats can be used to register event listeners.
 
 ### EventDeclaration
 
-<code data-typedoc-code><i></i> type <a id="eventdeclaration" href="#eventdeclaration">EventDeclaration</a> = \{ `bubbles?`: `boolean`; `cancelable?`: `boolean`; `composed?`: `boolean`; \}</code>
+<code data-typedoc-code>type <a id="eventdeclaration" href="#eventdeclaration">EventDeclaration</a> = \{ `bubbles?`: `boolean`; `cancelable?`: `boolean`; `composed?`: `boolean`; \}</code>
 
 Defines options for an event.
 
@@ -280,7 +280,7 @@ Defines options for an event.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="bubbles" href="#bubbles">bubbles</a><i>?</i>: `boolean`</code>
+<code data-typedoc-code><a id="bubbles" href="#bubbles">bubbles</a><i>?</i>: `boolean`</code>
 
 </dt>
 
@@ -300,7 +300,7 @@ Whether the event bubbles.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="cancelable" href="#cancelable">cancelable</a><i>?</i>: `boolean`</code>
+<code data-typedoc-code><a id="cancelable" href="#cancelable">cancelable</a><i>?</i>: `boolean`</code>
 
 </dt>
 
@@ -320,7 +320,7 @@ Whether the event is cancelable.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="composed" href="#composed">composed</a><i>?</i>: `boolean`</code>
+<code data-typedoc-code><a id="composed" href="#composed">composed</a><i>?</i>: `boolean`</code>
 
 </dt>
 
@@ -346,7 +346,7 @@ Whether the event is composed.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="eventdeclarations" href="#eventdeclarations">EventDeclarations</a>\<Events\> = `{ [EventType in keyof Required<Events>]: EventDeclaration }`</code>
+<code data-typedoc-code>type <a id="eventdeclarations" href="#eventdeclarations">EventDeclarations</a>\<Events\> = `{ [EventType in keyof Required<Events>]: EventDeclaration }`</code>
 
 </dt>
 
@@ -368,7 +368,7 @@ Map of event types to EventDeclaration options.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="eventemitter" href="#eventemitter">EventEmitter</a>\<Events, EventType\> = (`type`, `detail`) => `void`</code>
+<code data-typedoc-code>type <a id="eventemitter" href="#eventemitter">EventEmitter</a>\<Events, EventType\> = (`type`, `detail`) => `void`</code>
 
 </dt>
 
@@ -380,7 +380,7 @@ Map of event types to EventDeclaration options.
 
 ### PropDeclaration\<T\>
 
-<code data-typedoc-code><i></i> type <a id="propdeclaration" href="#propdeclaration">PropDeclaration</a>\<T\> = \{ `attribute?`: `boolean` \| `string`; `default`: `T`; `fromAttribute?`: (`value`) => `T`; `toAttribute?`: (`value`) => `string` \| `null`; \}</code>
+<code data-typedoc-code>type <a id="propdeclaration" href="#propdeclaration">PropDeclaration</a>\<T\> = \{ `attribute?`: `boolean` \| `string`; `default`: `T`; `fromAttribute?`: (`value`) => `T`; `toAttribute?`: (`value`) => `string` \| `null`; \}</code>
 
 Defines options for a property.
 
@@ -390,7 +390,7 @@ Defines options for a property.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="attribute" href="#attribute">attribute</a><i>?</i>: `boolean` \| `string`</code>
+<code data-typedoc-code><a id="attribute" href="#attribute">attribute</a><i>?</i>: `boolean` \| `string`</code>
 
 </dt>
 
@@ -406,7 +406,7 @@ Indicates how and whether the property becomes an observed attribute. If the val
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="default" href="#default">default</a>: `T`</code>
+<code data-typedoc-code><a id="default" href="#default">default</a>: `T`</code>
 
 </dt>
 
@@ -422,7 +422,7 @@ The default value of the property.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="fromattribute" href="#fromattribute">fromAttribute</a><i>?</i>: (`value`) => `T`</code>
+<code data-typedoc-code><a id="fromattribute" href="#fromattribute">fromAttribute</a><i>?</i>: (`value`) => `T`</code>
 
 </dt>
 
@@ -438,7 +438,7 @@ Called to convert an attribute value to a property value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="toattribute" href="#toattribute">toAttribute</a><i>?</i>: (`value`) => `string` \| `null`</code>
+<code data-typedoc-code><a id="toattribute" href="#toattribute">toAttribute</a><i>?</i>: (`value`) => `string` \| `null`</code>
 
 </dt>
 
@@ -460,7 +460,7 @@ Called to convert a property value to an attribute value.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="propdeclarations" href="#propdeclarations">PropDeclarations</a>\<T\> = `{ [K in keyof Required<T>]: PropDeclaration<T[K]> }`</code>
+<code data-typedoc-code>type <a id="propdeclarations" href="#propdeclarations">PropDeclarations</a>\<T\> = `{ [K in keyof Required<T>]: PropDeclaration<T[K]> }`</code>
 
 </dt>
 
@@ -482,7 +482,7 @@ Map of props to PropDeclaration options.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="definecustomelement" href="#definecustomelement">defineCustomElement</a>\<Props, Events\>(`options`): [`BaseElementConstructor`](#baseelementconstructor-1)\<`Props`\></code>
+<code data-typedoc-code><i>function</i> <a id="definecustomelement" href="#definecustomelement">defineCustomElement</a>\<Props, Events\>(`options`): [`BaseElementConstructor`](#baseelementconstructor-1)\<`Props`\></code>
 
 </dt>
 
@@ -504,7 +504,7 @@ Defines a custom element constructor.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="defineemit" href="#defineemit">defineEmit</a>\<Events\>(`element`, `events`): (`type`, `detail`) => `void`</code>
+<code data-typedoc-code><i>function</i> <a id="defineemit" href="#defineemit">defineEmit</a>\<Events\>(`element`, `events`): (`type`, `detail`) => `void`</code>
 
 </dt>
 
@@ -520,7 +520,7 @@ Defines a custom element constructor.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="getstatefromprops" href="#getstatefromprops">getStateFromProps</a>\<Props\>(`props`): [`SignalState`](#signalstate)\<`Props`\></code>
+<code data-typedoc-code><i>function</i> <a id="getstatefromprops" href="#getstatefromprops">getStateFromProps</a>\<Props\>(`props`): [`SignalState`](#signalstate)\<`Props`\></code>
 
 </dt>
 
@@ -536,7 +536,7 @@ Defines a custom element constructor.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="registercustomelement" href="#registercustomelement">registerCustomElement</a>(`name`, `element`): `void`</code>
+<code data-typedoc-code><i>function</i> <a id="registercustomelement" href="#registercustomelement">registerCustomElement</a>(`name`, `element`): `void`</code>
 
 </dt>
 
@@ -562,7 +562,7 @@ A context is a way to provide and consume signals in a HTML tree.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="consume" href="#consume">consume</a>(`element`): [`Signal`](#signal)\<`T`\></code>
+<code data-typedoc-code><a id="consume" href="#consume">consume</a>(`element`): [`Signal`](#signal)\<`T`\></code>
 
 </dt>
 
@@ -578,7 +578,7 @@ Receives the signal from a parent element.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="provide" href="#provide">provide</a>(`element`, `signal`): `void`</code>
+<code data-typedoc-code><a id="provide" href="#provide">provide</a>(`element`, `signal`): `void`</code>
 
 </dt>
 
@@ -600,7 +600,7 @@ Provides a signal to all children of the element.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="createcontext" href="#createcontext">createContext</a>\<T\>(`key`, `defaultValue`): [`Context`](#context)\<`T`\></code>
+<code data-typedoc-code><i>function</i> <a id="createcontext" href="#createcontext">createContext</a>\<T\>(`key`, `defaultValue`): [`Context`](#context)\<`T`\></code>
 
 </dt>
 
@@ -622,7 +622,7 @@ Creates a new context.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useanimationframe" href="#useanimationframe">useAnimationFrame</a>(`element`, `effect`): () => `void`</code>
+<code data-typedoc-code><i>function</i> <a id="useanimationframe" href="#useanimationframe">useAnimationFrame</a>(`element`, `effect`): () => `void`</code>
 
 </dt>
 
@@ -650,7 +650,7 @@ The given `effect` function will be called when the element is connected, and wh
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useariaattribute" href="#useariaattribute">useAriaAttribute</a>\<K\>(`element`, `key`, `compute`): `VoidFunction`</code>
+<code data-typedoc-code><i>function</i> <a id="useariaattribute" href="#useariaattribute">useAriaAttribute</a>\<K\>(`element`, `key`, `compute`): `VoidFunction`</code>
 
 </dt>
 
@@ -674,7 +674,7 @@ This is a TypeScript type-safe version of [useAttribute](#useattribute).
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useariarole" href="#useariarole">useAriaRole</a>(`element`, `role`): `VoidFunction`</code>
+<code data-typedoc-code><i>function</i> <a id="useariarole" href="#useariarole">useAriaRole</a>(`element`, `role`): `VoidFunction`</code>
 
 </dt>
 
@@ -698,7 +698,7 @@ You can pass a string or a compute function that returns a string.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useattribute" href="#useattribute">useAttribute</a>(`element`, `key`, `compute`): `VoidFunction`</code>
+<code data-typedoc-code><i>function</i> <a id="useattribute" href="#useattribute">useAttribute</a>(`element`, `key`, `compute`): `VoidFunction`</code>
 
 </dt>
 
@@ -720,7 +720,7 @@ Sets the computed attribute of the element when it's connected.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useeventlistener" href="#useeventlistener">useEventListener</a>\<K\>(`element`, `type`, `listener`, `options?`): `VoidFunction`</code>
+<code data-typedoc-code><i>function</i> <a id="useeventlistener" href="#useeventlistener">useEventListener</a>\<K\>(`element`, `type`, `listener`, `options?`): `VoidFunction`</code>
 
 </dt>
 
@@ -742,7 +742,7 @@ Registers an event listener on the element.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="usequeryselector" href="#usequeryselector">useQuerySelector</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`null` \| `E`\></code>
+<code data-typedoc-code><i>function</i> <a id="usequeryselector" href="#usequeryselector">useQuerySelector</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`null` \| `E`\></code>
 
 </dt>
 
@@ -764,7 +764,7 @@ Returns the first element matching the given selector.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="usequeryselectorall" href="#usequeryselectorall">useQuerySelectorAll</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`NodeListOf`\<`E`\>\></code>
+<code data-typedoc-code><i>function</i> <a id="usequeryselectorall" href="#usequeryselectorall">useQuerySelectorAll</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`NodeListOf`\<`E`\>\></code>
 
 </dt>
 
@@ -786,7 +786,7 @@ Returns all elements matching the given selector.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="usestyle" href="#usestyle">useStyle</a>\<K\>(`element`, `key`, `compute`): `VoidFunction`</code>
+<code data-typedoc-code><i>function</i> <a id="usestyle" href="#usestyle">useStyle</a>\<K\>(`element`, `key`, `compute`): `VoidFunction`</code>
 
 </dt>
 
@@ -816,7 +816,7 @@ Base class for all custom elements in Aria UI. It implements the [ConnectableEle
 
 <dt>
 
-<code data-typedoc-code><i></i> new <a id="constructor" href="#constructor">BaseElement</a>(): [`BaseElement`](#baseelement)</code>
+<code data-typedoc-code>new <a id="constructor" href="#constructor">BaseElement</a>(): [`BaseElement`](#baseelement)</code>
 
 </dt>
 
@@ -836,7 +836,7 @@ Any HTML element that has implemented the `addConnectedCallback` method.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="addconnectedcallback" href="#addconnectedcallback">addConnectedCallback</a>: (`callback`) => `void`</code>
+<code data-typedoc-code><a id="addconnectedcallback" href="#addconnectedcallback">addConnectedCallback</a>: (`callback`) => `void`</code>
 
 </dt>
 
@@ -858,7 +858,7 @@ Registers a callback to be called when the element is connected to the DOM. This
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="signalstate" href="#signalstate">SignalState</a>\<T\> = `{ [K in keyof Required<T>]: Signal<T[K]> }`</code>
+<code data-typedoc-code>type <a id="signalstate" href="#signalstate">SignalState</a>\<T\> = `{ [K in keyof Required<T>]: Signal<T[K]> }`</code>
 
 </dt>
 
@@ -880,7 +880,7 @@ A plain object containing signals.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="assignprops" href="#assignprops">assignProps</a>\<T\>(`defaultProps`, `props?`): `Readonly`\<`T`\></code>
+<code data-typedoc-code><i>function</i> <a id="assignprops" href="#assignprops">assignProps</a>\<T\>(`defaultProps`, `props?`): `Readonly`\<`T`\></code>
 
 </dt>
 
@@ -902,7 +902,7 @@ Merges two objects, with the second object taking precedence. Only keys present 
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="mapsignals" href="#mapsignals">mapSignals</a>\<T\>(`values`): [`SignalState`](#signalstate)\<`T`\></code>
+<code data-typedoc-code><i>function</i> <a id="mapsignals" href="#mapsignals">mapSignals</a>\<T\>(`values`): [`SignalState`](#signalstate)\<`T`\></code>
 
 </dt>
 
@@ -926,7 +926,7 @@ Maps every value in the given object to a signal.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="mapvalues" href="#mapvalues">mapValues</a>\<T\>(`signals`): `T`</code>
+<code data-typedoc-code><i>function</i> <a id="mapvalues" href="#mapvalues">mapValues</a>\<T\>(`signals`): `T`</code>
 
 </dt>
 
@@ -950,7 +950,7 @@ Maps every signal in the given object to its current value.
 
 <dt>
 
-<code data-typedoc-code><i></i> type <a id="signalvalue-1" href="#signalvalue-1">SignalValue</a>\<S\> = `S` _extends_ [`Signal`](#signal)\<infer T\> ? `T` : `never`</code>
+<code data-typedoc-code>type <a id="signalvalue-1" href="#signalvalue-1">SignalValue</a>\<S\> = `S` _extends_ [`Signal`](#signal)\<infer T\> ? `T` : `never`</code>
 
 </dt>
 
@@ -1020,7 +1020,7 @@ This is a re-export of `untracked` from `@preact/signals-core`.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="createcomputed" href="#createcomputed">createComputed</a>\<T\>(`fn`): [`ReadonlySignal`](#readonlysignal)\<`T`\></code>
+<code data-typedoc-code><i>function</i> <a id="createcomputed" href="#createcomputed">createComputed</a>\<T\>(`fn`): [`ReadonlySignal`](#readonlysignal)\<`T`\></code>
 
 </dt>
 
@@ -1042,7 +1042,7 @@ Creates a computed signal that automatically updates its value based on the reac
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="createsignal" href="#createsignal">createSignal</a>\<T\>(`value`): [`Signal`](#signal)\<`T`\></code>
+<code data-typedoc-code><i>function</i> <a id="createsignal" href="#createsignal">createSignal</a>\<T\>(`value`): [`Signal`](#signal)\<`T`\></code>
 
 </dt>
 
@@ -1064,7 +1064,7 @@ Creates and returns a new signal with the given initial value. Signals are react
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <i></i> <a id="useeffect" href="#useeffect">useEffect</a>(`element`, `callback`): () => `void`</code>
+<code data-typedoc-code><i>function</i> <a id="useeffect" href="#useeffect">useEffect</a>(`element`, `callback`): () => `void`</code>
 
 </dt>
 

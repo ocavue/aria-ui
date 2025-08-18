@@ -12,7 +12,7 @@
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="escapekeydown" href="#escapekeydown">escapeKeyDown</a>: [`EscapeKeyDownEvent`](popover.md#escapekeydownevent)</code>
+<code data-typedoc-code><a id="escapekeydown" href="#escapekeydown">escapeKeyDown</a>: [`EscapeKeyDownEvent`](popover.md#escapekeydownevent)</code>
 
 </dt>
 
@@ -30,7 +30,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="focusoutside" href="#focusoutside">focusOutside</a>: `FocusOutsideEvent`</code>
+<code data-typedoc-code><a id="focusoutside" href="#focusoutside">focusOutside</a>: `FocusOutsideEvent`</code>
 
 </dt>
 
@@ -48,7 +48,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="interactoutside" href="#interactoutside">interactOutside</a>: `InteractOutsideEvent`</code>
+<code data-typedoc-code><a id="interactoutside" href="#interactoutside">interactOutside</a>: `InteractOutsideEvent`</code>
 
 </dt>
 
@@ -66,7 +66,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="pointerdownoutside" href="#pointerdownoutside">pointerDownOutside</a>: `PointerDownOutsideEvent`</code>
+<code data-typedoc-code><a id="pointerdownoutside" href="#pointerdownoutside">pointerDownOutside</a>: `PointerDownOutsideEvent`</code>
 
 </dt>
 
@@ -108,7 +108,7 @@ By default, the popover will be closed. It can be prevented by calling `preventD
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="value" href="#value">value</a>: `string`</code>
+<code data-typedoc-code><a id="value" href="#value">value</a>: `string`</code>
 
 </dt>
 
@@ -136,7 +136,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
+<code data-typedoc-code><a id="valuechange" href="#valuechange">valueChange</a>: `CustomEvent`\<`string`\></code>
 
 </dt>
 
@@ -154,7 +154,7 @@ The value of the item. Every item must have a unique value in the parent list.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
+<code data-typedoc-code><a id="autofocus" href="#autofocus">autoFocus</a>: `boolean`</code>
 
 </dt>
 
@@ -174,7 +174,7 @@ Whether the listbox should automatically set the focus to the first item when th
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
+<code data-typedoc-code><a id="eventtarget" href="#eventtarget">eventTarget</a><i>?</i>: `HTMLElement` \| [`TypedEventTarget`](core.md#typedeventtarget)\<`"keydown"`\></code>
 
 </dt>
 
@@ -190,7 +190,7 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
 
 </dt>
 
@@ -210,7 +210,7 @@ The filter function to determine if an item should be shown in the listbox. By d
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="query" href="#query">query</a>: `string`</code>
+<code data-typedoc-code><a id="query" href="#query">query</a>: `string`</code>
 
 </dt>
 
@@ -230,7 +230,7 @@ The query string to filter the listbox items.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
+<code data-typedoc-code><a id="selectionmode" href="#selectionmode">selectionMode</a>: `"multiple"` \| `"single"`</code>
 
 </dt>
 
@@ -252,7 +252,7 @@ Listbox selection mode
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="value-1" href="#value-1">value</a>: `string`</code>
+<code data-typedoc-code><a id="value-1" href="#value-1">value</a>: `string`</code>
 
 </dt>
 
@@ -280,7 +280,7 @@ The selected value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="openchange" href="#openchange">openChange</a>: `CustomEvent`\<`boolean`\></code>
+<code data-typedoc-code><a id="openchange" href="#openchange">openChange</a>: `CustomEvent`\<`boolean`\></code>
 
 </dt>
 
@@ -298,7 +298,7 @@ The selected value.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="defaultopen" href="#defaultopen">defaultOpen</a>: `boolean`</code>
+<code data-typedoc-code><a id="defaultopen" href="#defaultopen">defaultOpen</a>: `boolean`</code>
 
 </dt>
 
@@ -318,7 +318,7 @@ Whether the popover is open by default.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="open" href="#open">open</a>: `boolean`</code>
+<code data-typedoc-code><a id="open" href="#open">open</a>: `boolean`</code>
 
 </dt>
 
@@ -346,7 +346,7 @@ Whether the popover is open.
 
 <dt>
 
-<code data-typedoc-code><i></i> <a id="placeholder" href="#placeholder">placeholder</a>: `string`</code>
+<code data-typedoc-code><a id="placeholder" href="#placeholder">placeholder</a>: `string`</code>
 
 </dt>
 
