@@ -32,9 +32,9 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:^",
-    "@floating-ui/dom": "^1.7.3",
+    "@floating-ui/dom": "^1.7.4",
     "@floating-ui/utils": "^0.2.10",
-    "@zag-js/dom-query": "^1.21.6"
+    "@zag-js/dom-query": "^1.22.1"
   },
   "devDependencies": {
     "tsup": "^8.5.0",
