@@ -1,5 +1,5 @@
 import type { UserWorkspaceConfig } from "vitest"
 
-declare const config: UserWorkspaceConfig
+declare function defineProjectConfig(): UserWorkspaceConfig
 
-export { config }
+export { defineProjectConfig }

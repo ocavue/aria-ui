@@ -1,1 +1,3 @@
-export { config as default } from "@aria-ui/config/vitest-workspace"
+import { defineProjectConfig } from "@aria-ui/config/vitest-workspace"
+
+export default defineProjectConfig()
