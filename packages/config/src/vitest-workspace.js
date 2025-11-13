@@ -1,16 +1,24 @@
+import { playwright } from "@vitest/browser-playwright"
 import { defineProject } from "vitest/config"
 
-/** @type {import('vitest').UserWorkspaceConfig} */
-const config = defineProject({
-  test: {
-    setupFiles: ["@aria-ui/config/vitest-setup"],
-    browser: {
-      enabled: true,
-      provider: "playwright",
-      name: "chromium",
-      headless: !!process.env.CI,
-    },
-  },
-})
+const debug = !process.env.CI && !!process.env.debug
 
-export { config }
+/**
+ * @returns {import('vitest').UserWorkspaceConfig}
+ */
+function defineProjectConfig() {
+  return defineProject({
+    test: {
+      setupFiles: ["@aria-ui/config/vitest-setup"],
+      browser: {
+        provider: playwright(),
+        enabled: true,
+        instances: [{ browser: "chromium" }],
+        headless: !debug,
+        ui: debug,
+      },
+    },
+  })
+}
+
+export { defineProjectConfig }
