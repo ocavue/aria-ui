@@ -190,7 +190,7 @@ By default, the Listbox element will listen for keydown events. You can pass a d
 
 <dt>
 
-<code data-typedoc-code><a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: [`ItemFilter`](collection.md#itemfilter) \| `null`</code>
 
 </dt>
 

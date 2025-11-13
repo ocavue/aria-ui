@@ -40,7 +40,7 @@
 
 <dt>
 
-<code data-typedoc-code><a id="first" href="#first">first</a>(): `null` \| `string`</code>
+<code data-typedoc-code><a id="first" href="#first">first</a>(): `string` \| `null`</code>
 
 </dt>
 
@@ -56,7 +56,7 @@ Returns the first enabled value.
 
 <dt>
 
-<code data-typedoc-code><a id="getelement" href="#getelement">getElement</a>(`value`): `null` \| `HTMLElement`</code>
+<code data-typedoc-code><a id="getelement" href="#getelement">getElement</a>(`value`): `HTMLElement` \| `null`</code>
 
 </dt>
 
@@ -88,7 +88,7 @@ Returns all values.
 
 <dt>
 
-<code data-typedoc-code><a id="last" href="#last">last</a>(): `null` \| `string`</code>
+<code data-typedoc-code><a id="last" href="#last">last</a>(): `string` \| `null`</code>
 
 </dt>
 
@@ -104,7 +104,7 @@ Returns the last enabled value.
 
 <dt>
 
-<code data-typedoc-code><a id="next" href="#next">next</a>(`value`): `null` \| `string`</code>
+<code data-typedoc-code><a id="next" href="#next">next</a>(`value`): `string` \| `null`</code>
 
 </dt>
 
@@ -120,7 +120,7 @@ Returns the next enabled value.
 
 <dt>
 
-<code data-typedoc-code><a id="prev" href="#prev">prev</a>(`value`): `null` \| `string`</code>
+<code data-typedoc-code><a id="prev" href="#prev">prev</a>(`value`): `string` \| `null`</code>
 
 </dt>
 
