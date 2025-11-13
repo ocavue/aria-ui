@@ -1,3 +1,1 @@
-import { config } from "@aria-ui/config/vitest-workspace"
-
-export default config
+export { config as default } from "@aria-ui/config/vitest-workspace"
