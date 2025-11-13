@@ -78,7 +78,7 @@ Whether the listbox should automatically set the focus to the first item when th
 
 <dt>
 
-<code data-typedoc-code><a id="filter" href="#filter">filter</a>: `null` \| [`ItemFilter`](collection.md#itemfilter)</code>
+<code data-typedoc-code><a id="filter" href="#filter">filter</a>: [`ItemFilter`](collection.md#itemfilter) \| `null`</code>
 
 </dt>
 

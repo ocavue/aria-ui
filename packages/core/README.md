@@ -20,7 +20,7 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 <a id="customelementoptions"></a>
 
-### CustomElementOptions\<Props, Events\>
+### CustomElementOptions
 
 #### Properties
 
@@ -58,7 +58,7 @@ A comprehensive collection of utilities for DOM interactions, enabling declarati
 
 <a id="readonlysignal"></a>
 
-### ReadonlySignal\<T\>
+### ReadonlySignal
 
 A read-only signal that holds a reactive value.
 
@@ -118,7 +118,7 @@ Get the signal's current value without subscribing.
 
 <a id="setupoptions"></a>
 
-### SetupOptions\<Props, Events\>
+### SetupOptions
 
 #### Properties
 
@@ -146,7 +146,7 @@ Get the signal's current value without subscribing.
 
 <a id="signal"></a>
 
-### Signal\<T\>
+### Signal
 
 A mutable signal that can be used to manage reactive state changes.
 
@@ -222,7 +222,7 @@ Set the value of the signal.
 
 <a id="typedeventtarget"></a>
 
-### TypedEventTarget\<EventType\>
+### TypedEventTarget
 
 An interface thats can be used to register event listeners.
 
@@ -252,7 +252,7 @@ An interface thats can be used to register event listeners.
 
 <a id="baseelementconstructor-1"></a>
 
-### BaseElementConstructor()\<Props\>
+### BaseElementConstructor()
 
 <dl>
 
@@ -340,7 +340,7 @@ Whether the event is composed.
 
 <a id="eventdeclarations"></a>
 
-### EventDeclarations\<Events\>
+### EventDeclarations
 
 <dl>
 
@@ -362,7 +362,7 @@ Map of event types to EventDeclaration options.
 
 <a id="eventemitter"></a>
 
-### EventEmitter()\<Events, EventType\>
+### EventEmitter()
 
 <dl>
 
@@ -378,7 +378,7 @@ Map of event types to EventDeclaration options.
 
 <a id="propdeclaration"></a>
 
-### PropDeclaration\<T\>
+### PropDeclaration
 
 <code data-typedoc-code>type <a id="propdeclaration" href="#propdeclaration">PropDeclaration</a>\<T\> = \{ `attribute?`: `boolean` \| `string`; `default`: `T`; `fromAttribute?`: (`value`) => `T`; `toAttribute?`: (`value`) => `string` \| `null`; \}</code>
 
@@ -454,7 +454,7 @@ Called to convert a property value to an attribute value.
 
 <a id="propdeclarations"></a>
 
-### PropDeclarations\<T\>
+### PropDeclarations
 
 <dl>
 
@@ -552,7 +552,7 @@ Adds the given custom element to the custom element registry.
 
 <a id="context"></a>
 
-### Context\<T\>
+### Context
 
 A context is a way to provide and consume signals in a HTML tree.
 
@@ -742,7 +742,7 @@ Registers an event listener on the element.
 
 <dt>
 
-<code data-typedoc-code><i>function</i> <a id="usequeryselector" href="#usequeryselector">useQuerySelector</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`null` \| `E`\></code>
+<code data-typedoc-code><i>function</i> <a id="usequeryselector" href="#usequeryselector">useQuerySelector</a>\<E\>(`element`, `selector`, `options`): [`ReadonlySignal`](#readonlysignal)\<`E` \| `null`\></code>
 
 </dt>
 
@@ -852,7 +852,7 @@ Registers a callback to be called when the element is connected to the DOM. This
 
 <a id="signalstate"></a>
 
-### SignalState\<T\>
+### SignalState
 
 <dl>
 
@@ -944,7 +944,7 @@ Maps every signal in the given object to its current value.
 
 <a id="signalvalue-1"></a>
 
-### SignalValue\<S\>
+### SignalValue
 
 <dl>
 
