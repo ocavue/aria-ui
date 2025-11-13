@@ -1,5 +1,5 @@
-import { defineProject } from "vitest/config"
 import { playwright } from "@vitest/browser-playwright"
+import { defineProject } from "vitest/config"
 
 const debug = !process.env.CI && !!process.env.debug
 
