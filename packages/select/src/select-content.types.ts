@@ -10,8 +10,10 @@ import {
  * @group SelectContent
  * @hidden
  */
-export interface SelectContentProps
-  extends Omit<PopoverContentProps, "placement"> {
+export interface SelectContentProps extends Omit<
+  PopoverContentProps,
+  "placement"
+> {
   /**
    * {@inheritDoc @aria-ui/popover!PopoverContentProps.placement}
    *
