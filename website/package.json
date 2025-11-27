@@ -20,10 +20,10 @@
     "@aria-ui/popover": "workspace:^",
     "@aria-ui/select": "workspace:^",
     "@aria-ui/tooltip": "workspace:^",
-    "@astrojs/check": "^0.9.4",
-    "astro": "^5.13.5",
-    "astrobook": "^0.8.10",
+    "@astrojs/check": "^0.9.6",
+    "astro": "^5.16.1",
+    "astrobook": "^0.11.2",
     "lit-html": "^3.3.1",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.3"
   }
 }
