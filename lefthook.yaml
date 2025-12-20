@@ -1,6 +1,4 @@
 pre-commit:
-  commands:
-    check:
-      run: |
-        bun run fix:prettier
-        git update-index --again
+  jobs:
+    - run: pnpm run fix:prettier
+      stage_fixed: true

@@ -2,3 +2,7 @@ packages:
   - website
   - scripts
   - packages/*
+ignoreWorkspaceRootCheck: true
+minimumReleaseAge: 1440 # 24 hours
+minimumReleaseAgeExclude:
+  - "@ocavue/*"
