@@ -75,7 +75,6 @@ export const popoverContentEvents: EventDeclarations<PopoverContentEvents> = {
 /**
  * @group PopoverContent
  */
-export interface PopoverContentDataAttributes
-  extends OverlayPositionerDataAttributes {
+export interface PopoverContentDataAttributes extends OverlayPositionerDataAttributes {
   "data-state": "open" | "closed"
 }
