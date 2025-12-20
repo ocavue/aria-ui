@@ -24,16 +24,16 @@ importers:
         specifier: ^1.2.21
         version: 1.2.21(@types/react@19.1.10)
       change-case:
-        specifier: 5.4.4
+        specifier: ^5.4.4
         version: 5.4.4
       comment-json:
-        specifier: 4.2.5
+        specifier: ^4.2.5
         version: 4.2.5
       eslint:
         specifier: ^9.39.2
         version: 9.39.2(jiti@2.6.1)
       lefthook:
-        specifier: 1.12.3
+        specifier: ^1.12.3
         version: 1.12.3
       pkg-pr-new:
         specifier: ^0.0.58
@@ -42,13 +42,13 @@ importers:
         specifier: ^1.56.1
         version: 1.56.1
       prettier:
-        specifier: 3.6.2
+        specifier: ^3.6.2
         version: 3.6.2
       prettier-plugin-astro:
         specifier: ^0.14.1
         version: 0.14.1
       turbo:
-        specifier: 2.5.6
+        specifier: ^2.5.6
         version: 2.5.6
       typedoc:
         specifier: ^0.28.14
