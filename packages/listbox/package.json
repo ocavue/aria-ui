@@ -34,7 +34,7 @@
     "@aria-ui/collection": "workspace:^",
     "@aria-ui/core": "workspace:^",
     "@aria-ui/presence": "workspace:^",
-    "immer": "^10.2.0"
+    "immer": "^11.1.4"
   },
   "devDependencies": {
     "tsup": "^8.5.1",
