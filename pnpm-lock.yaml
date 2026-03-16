@@ -157,9 +157,6 @@ importers:
       '@aria-ui/presence':
         specifier: workspace:^
         version: link:../presence
-      immer:
-        specifier: ^10.2.0
-        version: 10.2.0
     devDependencies:
       tsup:
         specifier: ^8.5.1
@@ -176,9 +173,6 @@ importers:
       '@aria-ui/core':
         specifier: workspace:^
         version: link:../core
-      '@aria-ui/overlay':
-        specifier: workspace:^
-        version: link:../overlay
       '@aria-ui/popover':
         specifier: workspace:^
         version: link:../popover
@@ -272,9 +266,6 @@ importers:
       '@aria-ui/core':
         specifier: workspace:^
         version: link:../core
-      '@zag-js/dom-query':
-        specifier: ^1.31.1
-        version: 1.31.1
     devDependencies:
       tsup:
         specifier: ^8.5.1
@@ -2800,6 +2791,7 @@ packages:
 
   glob@10.4.5:
     resolution: {integrity: sha512-7Bv8RF0k6xjo7d4A/PxYLbUCfb6c+Vpd2/mB2yRDlew7Jb5hEXiCD9ibfO7wpk8i4sevK6DFny9h7EYbM3/sHg==}
+    deprecated: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
     hasBin: true
 
   globals@11.12.0:
@@ -2899,9 +2891,6 @@ packages:
   ignore@7.0.5:
     resolution: {integrity: sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg==}
     engines: {node: '>= 4'}
-
-  immer@10.2.0:
-    resolution: {integrity: sha512-d/+XTN3zfODyjr89gM3mPq1WNX2B8pYsu7eORitdwyA2sBubnTl3laYlBk4sXY5FUa5qTZGBDPJICVbvqzjlbw==}
 
   import-fresh@3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
@@ -7640,8 +7629,6 @@ snapshots:
   ignore@5.3.2: {}
 
   ignore@7.0.5: {}
-
-  immer@10.2.0: {}
 
   import-fresh@3.3.0:
     dependencies:

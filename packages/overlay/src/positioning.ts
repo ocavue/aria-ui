@@ -16,7 +16,7 @@ import {
   shift,
   size,
 } from "@floating-ui/dom"
-import { isElement, isHTMLElement } from "@floating-ui/utils/dom"
+import { isElement } from "@floating-ui/utils/dom"
 import { getWindow } from "@zag-js/dom-query"
 
 import type {
@@ -58,7 +58,7 @@ export function updatePlacement(
     }
 
     const referenceElement = unwrapElement(reference)
-    if (referenceElement && !isHiddenQuick(referenceElement)) {
+    if (referenceElement && !referenceElement.isConnected) {
       return
     }
 
@@ -79,9 +79,7 @@ export function updatePlacement(
       return
     }
 
-    if (referenceElement && !isHiddenQuick(referenceElement)) {
-      return
-    }
+    const skipUpdatePosition = isHiddenQuick(floating)
 
     if (options.hide) {
       const hidden =
@@ -99,8 +97,10 @@ export function updatePlacement(
     floating.style.position = pos.strategy
 
     if (options.transform) {
-      floating.style.left = "0"
-      floating.style.top = "0"
+      if (!skipUpdatePosition) {
+        floating.style.left = "0"
+        floating.style.top = "0"
+      }
       // translate3d() has better performance than translate() and top/left.
       floating.style.transform = `translate3d(${x}px,${y}px,0)`
       if (getDPR(floating) >= 1.5) {
@@ -108,8 +108,10 @@ export function updatePlacement(
         floating.style.willChange = "transform"
       }
     } else {
-      floating.style.left = `${x}px`
-      floating.style.top = `${y}px`
+      if (!skipUpdatePosition) {
+        floating.style.left = `${x}px`
+        floating.style.top = `${y}px`
+      }
       floating.style.removeProperty("transform")
     }
 
@@ -253,12 +255,8 @@ export function unwrapElement(
   return !isElement(element) ? element.contextElement : element
 }
 
-function isHiddenQuick(element: Element): boolean {
-  if (!element.isConnected) {
-    return true
-  }
+function isHiddenQuick(element: HTMLElement): boolean {
   return (
-    isHTMLElement(element) &&
-    (element.style.visibility === "hidden" || element.style.display === "none")
+    element.style.visibility === "hidden" || element.style.display === "none"
   )
 }

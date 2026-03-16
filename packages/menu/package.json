@@ -33,7 +33,6 @@
   "dependencies": {
     "@aria-ui/collection": "workspace:^",
     "@aria-ui/core": "workspace:^",
-    "@aria-ui/overlay": "workspace:^",
     "@aria-ui/popover": "workspace:^",
     "@aria-ui/presence": "workspace:^",
     "nanoid": "^5.1.6"
