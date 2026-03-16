@@ -16,7 +16,7 @@ import {
   shift,
   size,
 } from "@floating-ui/dom"
-import { isElement } from "@floating-ui/utils/dom"
+import { isElement, isHTMLElement } from "@floating-ui/utils/dom"
 import { getWindow } from "@zag-js/dom-query"
 
 import type {
@@ -58,7 +58,7 @@ export function updatePlacement(
     }
 
     const referenceElement = unwrapElement(reference)
-    if (referenceElement && !referenceElement.isConnected) {
+    if (referenceElement && !isHiddenQuick(referenceElement)) {
       return
     }
 
@@ -76,6 +76,10 @@ export function updatePlacement(
     })
 
     if (canceled) {
+      return
+    }
+
+    if (referenceElement && !isHiddenQuick(referenceElement)) {
       return
     }
 
@@ -247,4 +251,14 @@ export function unwrapElement(
   element: Element | VirtualElement,
 ): Element | undefined {
   return !isElement(element) ? element.contextElement : element
+}
+
+function isHiddenQuick(element: Element): boolean {
+  if (!element.isConnected) {
+    return true
+  }
+  return (
+    isHTMLElement(element) &&
+    (element.style.visibility === "hidden" || element.style.display === "none")
+  )
 }
