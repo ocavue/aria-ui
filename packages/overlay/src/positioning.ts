@@ -256,7 +256,5 @@ export function unwrapElement(
 }
 
 function isHiddenQuick(element: HTMLElement): boolean {
-  return (
-    element.style.visibility === "hidden" || element.style.display === "none"
-  )
+  return element.style.display === "none"
 }
