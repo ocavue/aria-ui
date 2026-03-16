@@ -1,6 +1,6 @@
 import {
   mapValues,
-  useAnimationFrame,
+  useEffect,
   type ConnectableElement,
   type ReadonlySignal,
   type SetupOptions,
@@ -37,12 +37,9 @@ export function useOverlayPositionerState(
   state: SignalState<OverlayPositionerProps>,
   context: { reference: ReadonlySignal<ReferenceElement | null> },
 ): void {
-  // Use animation frame because we only want to calculate the position at
-  // most once per frame.
-  useAnimationFrame(element, () => {
+  useEffect(element, () => {
     const stateValues = mapValues(state)
     const referenceValue = context.reference.get()
-
-    return () => updatePlacement(element, referenceValue, stateValues)
+    return updatePlacement(element, referenceValue, stateValues)
   })
 }

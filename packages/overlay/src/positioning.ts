@@ -79,8 +79,6 @@ export function updatePlacement(
       return
     }
 
-    const skipUpdatePosition = isHiddenQuick(floating)
-
     if (options.hide) {
       const hidden =
         // Whether the floating element is fully clipped
@@ -91,16 +89,18 @@ export function updatePlacement(
       floating.style.visibility = hidden ? "hidden" : "visible"
     }
 
+    if (!isHiddenQuick(floating)) {
+      return
+    }
+
     const x = roundByDPR(floating, pos.x)
     const y = roundByDPR(floating, pos.y)
 
     floating.style.position = pos.strategy
 
     if (options.transform) {
-      if (!skipUpdatePosition) {
-        floating.style.left = "0"
-        floating.style.top = "0"
-      }
+      floating.style.left = "0"
+      floating.style.top = "0"
       // translate3d() has better performance than translate() and top/left.
       floating.style.transform = `translate3d(${x}px,${y}px,0)`
       if (getDPR(floating) >= 1.5) {
@@ -108,10 +108,8 @@ export function updatePlacement(
         floating.style.willChange = "transform"
       }
     } else {
-      if (!skipUpdatePosition) {
-        floating.style.left = `${x}px`
-        floating.style.top = `${y}px`
-      }
+      floating.style.left = `${x}px`
+      floating.style.top = `${y}px`
       floating.style.removeProperty("transform")
     }
 
