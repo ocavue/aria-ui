@@ -6,21 +6,12 @@ import { listGitFiles } from "./list-git-files"
 import { root } from "./root"
 
 async function genRootTypedoc() {
-  const files = await listGitFiles()
-  const rootTypedocPath = path.join(root, "typedoc.json")
-  const rootTypedocConfig = CommentJSON.parse(
-    await Bun.file(rootTypedocPath).text(),
-  ) as any
-  rootTypedocConfig.entryPoints = files
-    .map((filePath) => path.relative(root, filePath))
-    .filter((filePath) => filePath.endsWith("typedoc.json"))
-    .filter((filePath) => filePath !== "typedoc.json")
-    .map((filePath) => path.dirname(filePath))
-    .sort()
-  await Bun.write(
-    rootTypedocPath,
-    CommentJSON.stringify(rootTypedocConfig, null, 2),
-  )
+  // TODO: remove this script
+  await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(undefined)
+    }, 0)
+  })
 }
 
 async function genRootTsconfig() {
