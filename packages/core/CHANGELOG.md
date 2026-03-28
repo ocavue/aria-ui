@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.23
+
+### Patch Changes
+
+- 0e155b4: Update README.
+
 ## 0.0.22
 
 ### Patch Changes

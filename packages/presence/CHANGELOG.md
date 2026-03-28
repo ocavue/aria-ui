@@ -1,5 +1,13 @@
 # @aria-ui/presence
 
+## 0.0.21
+
+### Patch Changes
+
+- 0e155b4: Update README.
+- Updated dependencies [0e155b4]
+  - @aria-ui/core@0.0.23
+
 ## 0.0.20
 
 ### Patch Changes

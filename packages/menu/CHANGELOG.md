@@ -1,5 +1,17 @@
 # @aria-ui/menu
 
+## 0.0.22
+
+### Patch Changes
+
+- 0e155b4: Update README.
+- Updated dependencies [0e155b4]
+  - @aria-ui/collection@0.0.7
+  - @aria-ui/overlay@0.0.26
+  - @aria-ui/popover@0.0.29
+  - @aria-ui/core@0.0.23
+  - @aria-ui/presence@0.0.21
+
 ## 0.0.21
 
 ### Patch Changes

@@ -1,5 +1,15 @@
 # @aria-ui/select
 
+## 0.0.32
+
+### Patch Changes
+
+- 0e155b4: Update README.
+- Updated dependencies [0e155b4]
+  - @aria-ui/listbox@0.0.26
+  - @aria-ui/popover@0.0.29
+  - @aria-ui/core@0.0.23
+
 ## 0.0.31
 
 ### Patch Changes

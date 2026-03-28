@@ -1,5 +1,14 @@
 # @aria-ui/combobox
 
+## 0.0.26
+
+### Patch Changes
+
+- 0e155b4: Update README.
+- Updated dependencies [0e155b4]
+  - @aria-ui/listbox@0.0.26
+  - @aria-ui/core@0.0.23
+
 ## 0.0.25
 
 ### Patch Changes
