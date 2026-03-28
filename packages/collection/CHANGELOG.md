@@ -1,5 +1,11 @@
 # @aria-ui/collection
 
+## 0.0.7
+
+### Patch Changes
+
+- 0e155b4: Update README.
+
 ## 0.0.6
 
 ### Patch Changes

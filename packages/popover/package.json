@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/popover",
   "type": "module",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "private": false,
   "description": "A collection of web components for building accessible popovers",
   "license": "MIT",
