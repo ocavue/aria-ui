@@ -4,6 +4,7 @@ import { page } from 'vitest/browser'
 
 import type { MenuPopupElement } from '../index.ts'
 import { registerElements } from '../index.ts'
+import   { sleep } from '@ocavue/utils'
 
 const MENU_TEMPLATE = html`
   <aria-ui-menu-root>
@@ -627,6 +628,60 @@ describe('Menu', () => {
           container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
         )
         .not.toBe('open')
+    })
+
+    test('hovering item1 keeps submenu closed, hovering submenu trigger opens it, hovering back to item1 closes submenu but keeps menu open', async () => {
+      const container = renderMenu(SUBMENU_TEMPLATE)
+      await openMenu(container)
+
+      // Hover over item1 (cut) — submenu should NOT open
+      container
+        .querySelector('[data-testid="cut"]')!
+        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
+      await expect
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .toBe('')
+      await expect
+        .poll(() =>
+          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
+        )
+        .not.toBe('open')
+
+      // Hover over submenu trigger (share) — submenu should open after delay
+      container
+        .querySelector('[data-testid="share-trigger"]')!
+        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
+      await expect
+        .poll(() =>
+          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
+        )
+        .toBe('open')
+
+      // Hover back to item1 (cut) — submenu should close, but parent menu stays open
+      container
+        .querySelector('[data-testid="share-trigger"]')!
+        .dispatchEvent(
+          new MouseEvent('mouseleave', {
+            bubbles: true,
+            relatedTarget: container.querySelector('[data-testid="cut"]'),
+          }),
+        )
+      container
+        .querySelector('[data-testid="cut"]')!
+        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
+      await expect
+        .poll(() =>
+          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
+        )
+        .toBe('closed')
+
+      await sleep(1);
+      await sleep(1);
+      await sleep(1);
+  
+      await expect
+        .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
+        .toBe('open')
     })
 
     test('ArrowLeft in root menu does nothing', async () => {
