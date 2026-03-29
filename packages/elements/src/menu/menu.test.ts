@@ -669,16 +669,19 @@ describe('Menu', () => {
       container
         .querySelector('[data-testid="cut"]')!
         .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
+
+        await sleep(1);
+      await sleep(1);
+      await sleep(1);
+  
+
       await expect
         .poll(() =>
           container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
         )
         .toBe('closed')
 
-      await sleep(1);
-      await sleep(1);
-      await sleep(1);
-  
+
       await expect
         .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
         .toBe('open')
