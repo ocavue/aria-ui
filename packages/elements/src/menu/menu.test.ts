@@ -258,7 +258,9 @@ describe('Menu', () => {
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
           <aria-ui-menu-positioner>
             <aria-ui-menu-popup data-testid="popup">
-              <aria-ui-menu-item value="a" .closeOnClick=${false} data-testid="a">A</aria-ui-menu-item>
+              <aria-ui-menu-item value="a" .closeOnClick=${false} data-testid="a"
+                >A</aria-ui-menu-item
+              >
             </aria-ui-menu-popup>
           </aria-ui-menu-positioner>
         </aria-ui-menu-root>
@@ -281,14 +283,11 @@ describe('Menu', () => {
         </aria-ui-menu-root>
       `)
       await openMenu(container)
-      let clicked = false
       const item = container.querySelector('[data-testid="a"]')!
-      item.addEventListener('click', () => {
-        clicked = true
-      })
       item.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-      // The click fires but the disabled item should not close the menu
-      await expect.poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state')).toBe('open')
+      await expect
+        .poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state'))
+        .toBe('open')
     })
   })
 
