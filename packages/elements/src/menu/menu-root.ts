@@ -3,6 +3,7 @@ import {
   computed,
   defineCustomElement,
   defineProps,
+  onMount,
   registerCustomElement,
   type Store,
 } from '@aria-ui/core'
@@ -53,7 +54,9 @@ export function setupMenuRoot(host: HostElement, props: Store<MenuRootProps>) {
   )
   const menuStore = createMenuStore(overlayStore)
 
-  host.dataset.menuRoot = ''
+  onMount(host, () => {
+    host.dataset.menuRoot = ''
+  })
   useAriaDisabled(host, getDisabled)
   MenuStoreContext.provide(host, menuStore)
 }

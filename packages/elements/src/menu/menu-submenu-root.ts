@@ -2,6 +2,7 @@ import type { HostElement } from '@aria-ui/core'
 import {
   defineCustomElement,
   defineProps,
+  onMount,
   registerCustomElement,
   useEffect,
   type Store,
@@ -51,7 +52,9 @@ export function setupMenuSubmenuRoot(host: HostElement, props: Store<MenuSubmenu
       host.dispatchEvent(event)
     },
   )
-  host.dataset.menuSubmenuRoot = ''
+  onMount(host, () => {
+    host.dataset.menuSubmenuRoot = ''
+  })
   const menuStore = createMenuStore(overlayStore, getParentStore)
   MenuStoreContext.provide(host, menuStore)
 
