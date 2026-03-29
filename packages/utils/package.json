@@ -35,9 +35,9 @@
     "@ocavue/utils": "^1.6.0",
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.344",
-    "tsdown": "^0.21.0",
+    "tsdown": "^0.21.6",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.0"
+    "vitest": "^4.1.2"
   },
   "publishConfig": {
     "access": "public"
