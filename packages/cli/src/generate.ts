@@ -934,7 +934,7 @@ function generateVueComponentFile(
 
     if (hasEvents) {
       bodyLines.push('')
-      bodyLines.push('  const handlers: (Function | undefined)[] = []')
+      bodyLines.push('  const handlers: Array<((event: any) => void) | undefined> = []')
     }
 
     // First watchEffect: props + handlers
