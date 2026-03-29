@@ -1,10 +1,8 @@
 export {
   MenuItemElement,
-  MenuItemSelectEvent,
   registerMenuItemElement,
   MenuItemPropsDeclaration,
   setupMenuItem,
-  type MenuItemEvents,
   type MenuItemProps,
 } from './menu-item.ts'
 export {

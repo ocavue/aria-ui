@@ -11,7 +11,6 @@ import {
 } from '@aria-ui/core'
 import { getAriaHasPopup, useElementId } from '@aria-ui/utils'
 
-import { MenuItemSelectEvent } from './menu-item.ts'
 import { closeMenuTree, MenuStoreContext, type MenuStore } from './menu-store.ts'
 
 /**
@@ -244,12 +243,7 @@ function activateItem(menuStore: MenuStore, value: string) {
   const element = menuStore.getCollection().getElement(value)
   if (!element) return
 
-  const selectEvent = new MenuItemSelectEvent()
-  element.dispatchEvent(selectEvent)
-
-  if (!selectEvent.defaultPrevented) {
-    closeMenuTree(menuStore)
-  }
+  element.click()
 }
 
 /**
