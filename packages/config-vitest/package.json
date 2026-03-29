@@ -1,0 +1,22 @@
+{
+  "name": "@aria-ui/config-vitest",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Internal package for aria-ui",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./src/config-vitest-types.d.ts",
+      "default": "./src/config-vitest.js"
+    }
+  },
+  "dependencies": {
+    "@vitest/browser-playwright": "^4.0.0",
+    "vitest": "^4.0.0"
+  },
+  "devDependencies": {
+    "defu": "^6.1.4",
+    "typescript": "^5.9.3"
+  }
+}

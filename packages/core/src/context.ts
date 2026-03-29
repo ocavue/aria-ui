@@ -1,30 +1,30 @@
-import { effect } from "@preact/signals-core"
-import { getDocumentElement, getEventTarget } from "@zag-js/dom-query"
+import { getDocumentElement, getEventTarget } from '@zag-js/dom-query'
 
-import type { ConnectableElement } from "./connectable-element"
-import { createSignal, type ReadonlySignal, type Signal } from "./signals"
+import type { HostElement } from './host-element.ts'
+import type { ReactiveController } from './reactive-controller.ts'
+import { createSignal, type Signal } from './signal.ts'
 
-type ContextCallback<T> = (signal: Signal<T>) => void
+type ContextCallback<T> = (value: T) => void
 
 class ContextRequestEvent<T> extends Event {
   public constructor(
     public readonly key: string | symbol,
     public readonly callback: ContextCallback<T>,
   ) {
-    super("aria-ui/context-request", { bubbles: true, composed: true })
+    super('aria-ui:context-request', { bubbles: true, composed: true })
   }
 }
 
-export class ContextProviderEvent extends Event {
+class ContextProviderEvent extends Event {
   constructor(public readonly key: string | symbol) {
-    super("aria-ui/context-provider", { bubbles: true, composed: true })
+    super('aria-ui:context-provider', { bubbles: true, composed: true })
   }
 }
 
 declare global {
   interface HTMLElementEventMap {
-    "aria-ui/context-request": ContextRequestEvent<unknown>
-    "aria-ui/context-provider": ContextProviderEvent
+    'aria-ui:context-request': ContextRequestEvent<unknown>
+    'aria-ui:context-provider': ContextProviderEvent
   }
 }
 
@@ -36,41 +36,32 @@ declare global {
 export interface Context<T> {
   /**
    * Provides a signal to all children of the element.
-   * @param element The element to provide the signal to.
-   * @param signal The signal to provide.
    */
-  provide(
-    element: ConnectableElement,
-    signal: Signal<T> | ReadonlySignal<T>,
-  ): void
+  provide(element: HTMLElement, value: T): void
 
   /**
    * Receives the signal from a parent element.
-   * @param element The element to consume the signal from.
-   * @returns A signal that is double-bound to the provided signal.
    */
-  consume(element: ConnectableElement): Signal<T>
+  consume(element: HTMLElement): () => T | undefined
 }
 
 class ContextImpl<T> implements Context<T> {
-  public constructor(
-    private readonly key: string | symbol,
-    private readonly defaultValue: T,
-  ) {
+  public constructor(private readonly key: string | symbol) {
     this.provide = this.provide.bind(this)
     this.consume = this.consume.bind(this)
   }
 
-  public provide(element: ConnectableElement, signal: Signal<T>): void {
-    const consumers = new Map<(signal: Signal<unknown>) => void, EventTarget>()
+  public provide(element: HostElement, value: T): void {
+    const consumers = new Map<ContextCallback<unknown>, EventTarget>()
 
     const handleRequest = (event: ContextRequestEvent<unknown>) => {
+      if (event.key !== this.key) return
+
       const consumer = getEventTarget(event)
 
       if (
         // Don't consume the event if it's dispatched from the same element.
         element === consumer ||
-        event.key !== this.key ||
         consumers.has(event.callback) ||
         !consumer
       ) {
@@ -78,7 +69,7 @@ class ContextImpl<T> implements Context<T> {
       }
 
       event.stopPropagation()
-      event.callback(signal)
+      event.callback(value)
       consumers.set(event.callback, consumer)
     }
 
@@ -89,13 +80,17 @@ class ContextImpl<T> implements Context<T> {
      * for its subtree.
      */
     const handleProvider = (event: ContextProviderEvent) => {
+      if (event.key !== this.key) return
+
       const provider = getEventTarget(event)
+
+      if (!provider) {
+        return
+      }
 
       if (
         // Don't consume the event if it's dispatched from the same element.
-        element === provider ||
-        event.key !== this.key ||
-        !provider
+        element === provider
       ) {
         return
       }
@@ -112,88 +107,50 @@ class ContextImpl<T> implements Context<T> {
       }
     }
 
-    element.addConnectedCallback(() => {
-      ensureAttachRoot(getDocumentElement(element))
+    const controller: ReactiveController = {
+      hostConnected: () => {
+        ensureAttachRoot(getDocumentElement(element))
+        element.addEventListener('aria-ui:context-request', handleRequest)
+        element.addEventListener('aria-ui:context-provider', handleProvider)
+        element.dispatchEvent(new ContextProviderEvent(this.key))
+      },
+      hostDisconnected: () => {
+        element.removeEventListener('aria-ui:context-request', handleRequest)
+        element.removeEventListener('aria-ui:context-provider', handleProvider)
+      },
+    }
 
-      element.addEventListener("aria-ui/context-request", handleRequest)
-      element.addEventListener("aria-ui/context-provider", handleProvider)
-      element.dispatchEvent(new ContextProviderEvent(this.key))
-
-      return () => {
-        element.removeEventListener("aria-ui/context-request", handleRequest)
-        element.removeEventListener("aria-ui/context-provider", handleProvider)
-      }
-    })
+    element.addController(controller)
   }
 
-  public consume(element: ConnectableElement): Signal<T> {
-    const consumer = createSignal(this.defaultValue)
-    let dispose: VoidFunction | undefined
-    let provider: Signal<T> | undefined
-    let pending: T | undefined
+  public consume(element: HostElement): () => T | undefined {
+    const controller = new ConsumerController<T>(this.key, element)
+    element.addController(controller)
+    return () => controller.signal.get()
+  }
+}
 
-    element.addConnectedCallback(() => {
-      ensureAttachRoot(getDocumentElement(element))
+class ConsumerController<T> implements ReactiveController {
+  readonly signal: Signal<T | undefined>
 
-      const onRequest: ContextCallback<T> = (contextProvider: Signal<T>) => {
-        dispose?.()
-        dispose = effect(() => {
-          consumer.set(contextProvider.get())
-        })
-        provider = contextProvider
+  // `onRequest` is a class property. This ensures that this callback won't be
+  // garbage collected before the controller is garbage collected.
+  private readonly onRequest: (value: T) => void = (value: T) => {
+    this.signal.set(value)
+  }
 
-        if (pending !== undefined) {
-          contextProvider.set(pending)
-          pending = undefined
-        }
-      }
+  public constructor(
+    private readonly key: string | symbol,
+    private host: HostElement,
+  ) {
+    this.signal = createSignal<T | undefined>(undefined)
+    this.onRequest = (value: T) => this.signal.set(value)
+  }
 
-      element.dispatchEvent(new ContextRequestEvent(this.key, onRequest))
+  hostConnected() {
+    ensureAttachRoot(getDocumentElement(this.host))
 
-      return () => {
-        dispose?.()
-        dispose = undefined
-        provider = undefined
-      }
-    })
-
-    const peek = () => {
-      return consumer.peek()
-    }
-
-    const get = () => {
-      return consumer.get()
-    }
-
-    const set = (value: T) => {
-      if (provider) {
-        provider.set(value)
-      } else {
-        pending = value
-      }
-    }
-
-    return {
-      get,
-
-      /**
-       * @deprecated
-       */
-      get value() {
-        return get()
-      },
-
-      set,
-
-      /**
-       * @deprecated
-       */
-      set value(value: T) {
-        set(value)
-      },
-
-      peek,
-    }
+    this.host.dispatchEvent(new ContextRequestEvent(this.key, this.onRequest))
   }
 }
 
@@ -205,14 +162,8 @@ class ContextImpl<T> implements Context<T> {
  *
  * @group Contexts
  */
-export function createContext<T>(
-  key: string | symbol,
-  defaultValue: T,
-): Context<T> {
-  return new ContextImpl<T>(
-    typeof key === "string" ? `aria-ui/context/${key}` : key,
-    defaultValue,
-  )
+export function createContext<T>(key: string | symbol): Context<T> {
+  return new ContextImpl<T>(typeof key === 'string' ? `aria-ui:context:${key}` : key)
 }
 
 const attachedRoots = new WeakSet<HTMLElement>()
@@ -269,6 +220,7 @@ function attachRoot(element: HTMLElement) {
     const pendingRequestData = popPendingRequests(event.key)
     if (pendingRequestData === undefined) {
       // No pending requests for this context at this time
+
       return
     }
 
@@ -278,12 +230,16 @@ function attachRoot(element: HTMLElement) {
       const element = elementRef.deref()
       const callback = callbackRef.deref()
 
-      if (element === undefined || callback === undefined) {
-        // The element was GC'ed. Do nothing.
-      } else {
-        // Re-dispatch if we still have the element and callback
-        element.dispatchEvent(new ContextRequestEvent(event.key, callback))
+      if (element === undefined) {
+        continue
       }
+      if (callback === undefined) {
+        continue
+      }
+
+      // Re-dispatch if we still have the element and callback
+
+      element.dispatchEvent(new ContextRequestEvent(event.key, callback))
     }
   }
 
@@ -315,6 +271,6 @@ function attachRoot(element: HTMLElement) {
     })
   }
 
-  element.addEventListener("aria-ui/context-request", onContextRequest)
-  element.addEventListener("aria-ui/context-provider", onContextProvider)
+  element.addEventListener('aria-ui:context-request', onContextRequest)
+  element.addEventListener('aria-ui:context-provider', onContextProvider)
 }

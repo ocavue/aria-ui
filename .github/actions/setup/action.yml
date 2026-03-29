@@ -5,7 +5,7 @@ inputs:
   node-version:
     description: The version of node.js
     required: false
-    default: "24"
+    default: '24'
 
 runs:
   using: composite
@@ -14,15 +14,10 @@ runs:
       uses: actions/setup-node@v6
       with:
         node-version: ${{ inputs.node-version }}
-        registry-url: "https://registry.npmjs.org"
+        registry-url: 'https://registry.npmjs.org'
 
     - name: Setup pnpm
       uses: pnpm/action-setup@v4
-
-    - name: Setup bun
-      uses: oven-sh/setup-bun@v2
-      with:
-        bun-version: latest
 
     - name: Install
       run: pnpm install --frozen-lockfile

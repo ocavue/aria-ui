@@ -16,9 +16,6 @@ jobs:
 
       - uses: ./.github/actions/setup
 
-      - name: Gen
-        run: pnpm run gen
-
       - name: Fix
         run: pnpm run fix
 

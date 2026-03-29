@@ -1,6 +1,0 @@
-{
-  "plugins": ["prettier-plugin-astro"],
-  "proseWrap": "never",
-  "semi": false,
-  "trailingComma": "all"
-}

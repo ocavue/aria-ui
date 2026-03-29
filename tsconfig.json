@@ -1,68 +1,25 @@
 {
-  "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "lib": ["DOM", "ESNext"],
-    "composite": true,
-    "allowJs": true,
-    "moduleResolution": "bundler",
-    "useDefineForClassFields": false,
-    "resolveJsonModule": true,
-    "verbatimModuleSyntax": true,
-    "esModuleInterop": true,
-    "outDir": "${configDir}/node_modules/.cache/tsc",
-    "jsx": "preserve",
-    "declaration": true,
-    "declarationMap": true,
-    "emitDeclarationOnly": true,
-    "strict": true,
-    "strictNullChecks": true,
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": false,
-    "noFallthroughCasesInSwitch": true,
-    "types": ["@testing-library/jest-dom/vitest"]
-  },
-  "include": ["./*.js", "./*.ts", "./scripts/"],
-  "exclude": ["**/node_modules", "**/dist", "**/temp"],
+  "extends": "@ocavue/tsconfig/es/root.json",
+  "include": ["./*.js", "./*.ts", ".changeset/*.mjs"],
+  "files": [],
   "references": [
     {
-      "path": "packages/collection"
+      "path": "./packages/cli/tsconfig.json"
     },
     {
-      "path": "packages/combobox"
+      "path": "./packages/config-vitest/tsconfig.json"
     },
     {
-      "path": "packages/config"
+      "path": "./packages/core/tsconfig.json"
     },
     {
-      "path": "packages/core"
+      "path": "./packages/elements/tsconfig.json"
     },
     {
-      "path": "packages/listbox"
+      "path": "./packages/utils/tsconfig.json"
     },
     {
-      "path": "packages/menu"
-    },
-    {
-      "path": "packages/overlay"
-    },
-    {
-      "path": "packages/popover"
-    },
-    {
-      "path": "packages/presence"
-    },
-    {
-      "path": "packages/select"
-    },
-    {
-      "path": "packages/tooltip"
-    },
-    {
-      "path": "website"
+      "path": "./website/tsconfig.json"
     }
   ]
 }
