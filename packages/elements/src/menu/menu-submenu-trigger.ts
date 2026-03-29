@@ -92,12 +92,10 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
   const rebuildCollection = () => {
     const parentStore = getParentStore()
     if (!parentStore) return
-    const popup = host.closest('aria-ui-menu-popup')
+    const popup = host.closest('[role="menu"]')
     if (!popup) return
-    const allItems = popup.querySelectorAll<HTMLElement>(
-      'aria-ui-menu-item, aria-ui-menu-submenu-trigger',
-    )
-    const levelItems = [...allItems].filter((el) => el.closest('aria-ui-menu-popup') === popup)
+    const allItems = popup.querySelectorAll<HTMLElement>('[role="menuitem"]')
+    const levelItems = [...allItems].filter((el) => el.closest('[role="menu"]') === popup)
     parentStore.setCollection(new Collection(levelItems))
   }
 
@@ -150,7 +148,7 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
     if (!store || !store.getIsOpen()) return
 
     const relatedTarget = event.relatedTarget as HTMLElement | null
-    const submenuRoot = host.closest('aria-ui-menu-submenu-root')
+    const submenuRoot = host.closest('[data-menu-submenu-root]')
     if (submenuRoot && relatedTarget && submenuRoot.contains(relatedTarget)) return
 
     closeTimer = setTimeout(() => {

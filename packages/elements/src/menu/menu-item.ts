@@ -92,12 +92,10 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
   const rebuildCollection = () => {
     const store = getStore()
     if (!store) return
-    const popup = host.closest('aria-ui-menu-popup')
+    const popup = host.closest('[role="menu"]')
     if (!popup) return
-    const allItems = popup.querySelectorAll<HTMLElement>(
-      'aria-ui-menu-item, aria-ui-menu-submenu-trigger',
-    )
-    const levelItems = [...allItems].filter((el) => el.closest('aria-ui-menu-popup') === popup)
+    const allItems = popup.querySelectorAll<HTMLElement>('[role="menuitem"]')
+    const levelItems = [...allItems].filter((el) => el.closest('[role="menu"]') === popup)
     store.setCollection(new Collection(levelItems))
   }
 

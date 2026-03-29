@@ -202,7 +202,7 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     if (!overlayStore.getIsOpen()) return
 
     const relatedTarget = event.relatedTarget as Node | null
-    const menuRoot = host.closest('aria-ui-menu-root')
+    const menuRoot = host.closest('[data-menu-root]')
     if (menuRoot && relatedTarget && menuRoot.contains(relatedTarget)) return
 
     closeMenuTree(menuStore)

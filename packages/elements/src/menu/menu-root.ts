@@ -53,6 +53,7 @@ export function setupMenuRoot(host: HostElement, props: Store<MenuRootProps>) {
   )
   const menuStore = createMenuStore(overlayStore)
 
+  host.dataset.menuRoot = ''
   useAriaDisabled(host, getDisabled)
   MenuStoreContext.provide(host, menuStore)
 }

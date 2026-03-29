@@ -51,6 +51,7 @@ export function setupMenuSubmenuRoot(host: HostElement, props: Store<MenuSubmenu
       host.dispatchEvent(event)
     },
   )
+  host.dataset.menuSubmenuRoot = ''
   const menuStore = createMenuStore(overlayStore, getParentStore)
   MenuStoreContext.provide(host, menuStore)
 
