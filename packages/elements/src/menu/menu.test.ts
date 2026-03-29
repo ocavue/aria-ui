@@ -215,51 +215,57 @@ describe('Menu', () => {
     test('Enter activates highlighted item and closes menu', async () => {
       const container = renderMenu()
       await openMenu(container)
-      let selectFired = false
-      container.querySelector('[data-testid="cut"]')!.addEventListener('select', () => {
-        selectFired = true
+      let clicked = false
+      container.querySelector('[data-testid="cut"]')!.addEventListener('click', () => {
+        clicked = true
       })
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
-      await expect.poll(() => selectFired).toBe(true)
+      await expect.poll(() => clicked).toBe(true)
       await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
     })
 
     test('Space activates highlighted item and closes menu', async () => {
       const container = renderMenu()
       await openMenu(container)
-      let selectFired = false
-      container.querySelector('[data-testid="cut"]')!.addEventListener('select', () => {
-        selectFired = true
+      let clicked = false
+      container.querySelector('[data-testid="cut"]')!.addEventListener('click', () => {
+        clicked = true
       })
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }))
-      await expect.poll(() => selectFired).toBe(true)
+      await expect.poll(() => clicked).toBe(true)
       await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
     })
 
     test('clicking item activates it and closes menu', async () => {
       const container = renderMenu()
       await openMenu(container)
-      let selectFired = false
-      container.querySelector('[data-testid="copy"]')!.addEventListener('select', () => {
-        selectFired = true
+      let clicked = false
+      container.querySelector('[data-testid="copy"]')!.addEventListener('click', () => {
+        clicked = true
       })
       await page.getByTestId('copy').click()
-      await expect.poll(() => selectFired).toBe(true)
+      await expect.poll(() => clicked).toBe(true)
       await expect
         .poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state'))
         .toBe('closed')
     })
 
-    test('select event can be prevented to keep menu open', async () => {
-      const container = renderMenu()
+    test('closeOnClick=false keeps menu open after click', async () => {
+      const container = renderMenu(html`
+        <aria-ui-menu-root>
+          <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
+          <aria-ui-menu-positioner>
+            <aria-ui-menu-popup data-testid="popup">
+              <aria-ui-menu-item value="a" .closeOnClick=${false} data-testid="a">A</aria-ui-menu-item>
+            </aria-ui-menu-popup>
+          </aria-ui-menu-positioner>
+        </aria-ui-menu-root>
+      `)
       await openMenu(container)
-      container.querySelector('[data-testid="cut"]')!.addEventListener('select', (e) => {
-        e.preventDefault()
-      })
       const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
+      await page.getByTestId('a').click()
       await expect.poll(() => popup.getAttribute('data-state')).toBe('open')
     })
 
@@ -275,13 +281,14 @@ describe('Menu', () => {
         </aria-ui-menu-root>
       `)
       await openMenu(container)
-      let selectFired = false
+      let clicked = false
       const item = container.querySelector('[data-testid="a"]')!
-      item.addEventListener('select', () => {
-        selectFired = true
+      item.addEventListener('click', () => {
+        clicked = true
       })
       item.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-      await expect.poll(() => selectFired).toBe(false)
+      // The click fires but the disabled item should not close the menu
+      await expect.poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state')).toBe('open')
     })
   })
 
