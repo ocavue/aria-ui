@@ -15,10 +15,10 @@ export type HostElementConstructor<Props extends AnyProps> = new () => HostEleme
 
 type SetupFunction<Props extends AnyProps> = (host: HostElement, props: Store<Props>) => void
 
-export function defineCustomElement<
-  // TODO: We can remove the `__noProps__` hack and replace it with `object`
-  Props extends AnyProps = { __noProps__: never },
->(setup: SetupFunction<Props>, props: PropsDeclaration<Props>): HostElementConstructor<Props> {
+export function defineCustomElement<Props extends AnyProps = object>(
+  setup: SetupFunction<Props>,
+  props: PropsDeclaration<Props>,
+): HostElementConstructor<Props> {
   const attributeNameToPropertyName = createAttributePropertyNameMap(props)
   const observedAttributes = Array.from(attributeNameToPropertyName.keys())
   const hasAttributes = observedAttributes.length > 0
