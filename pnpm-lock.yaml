@@ -131,6 +131,12 @@ importers:
 
   packages/elements:
     dependencies:
+      '@aria-ui/core':
+        specifier: workspace:*
+        version: link:../core
+      '@aria-ui/utils':
+        specifier: workspace:*
+        version: link:../utils
       '@floating-ui/dom':
         specifier: ^1.7.6
         version: 1.7.6
@@ -138,12 +144,6 @@ importers:
       '@aria-ui/config-vitest':
         specifier: workspace:*
         version: link:../config-vitest
-      '@aria-ui/core':
-        specifier: workspace:*
-        version: link:../core
-      '@aria-ui/utils':
-        specifier: workspace:*
-        version: link:../utils
       '@ocavue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0
