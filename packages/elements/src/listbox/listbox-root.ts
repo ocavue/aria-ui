@@ -154,9 +154,9 @@ export class ValueChangeEvent extends Event {
  * @public
  */
 export class ValuesChangeEvent extends Event {
-  readonly values: string[] 
+  readonly values: string[]
 
-  constructor( values: string[]) {
+  constructor(values: string[]) {
     super('valuesChange', { bubbles: true, cancelable: true })
     this.values = values
   }
