@@ -977,9 +977,11 @@ function generateVueComponentFile(
       bodyLines.push('')
       bodyLines.push('    const ac = new AbortController()')
       bodyLines.push(`    for (const [index, eventName] of [${eventNames.join(', ')}].entries()) {`)
-      bodyLines.push(
-        '      element.addEventListener(eventName, (event: Event) => { handlers[index]?.(event) }, { signal: ac.signal })',
-      )
+      bodyLines.push('      element.addEventListener(')
+      bodyLines.push('        eventName, ')
+      bodyLines.push('        (event: Event) => { handlers[index]?.(event) }, ')
+      bodyLines.push('        { signal: ac.signal },')
+      bodyLines.push('      )')
       bodyLines.push('    }')
       bodyLines.push('    return () => ac.abort()')
       bodyLines.push('  })')
@@ -997,8 +999,7 @@ function generateVueComponentFile(
     // No props or events: simple passthrough
     bodyLines.push('')
     bodyLines.push('  return () => {')
-    bodyLines.push(`    const _props = { ...props }`)
-    bodyLines.push(`    return h('${tagName}', _props, slots.default?.())`)
+    bodyLines.push(`    return h('${tagName}', props, slots.default?.())`)
     bodyLines.push('  }')
   }
 
