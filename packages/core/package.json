@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@ocavue/utils": "^1.6.0",
-    "@zag-js/dom-query": "^1.36.0",
+    "@zag-js/dom-query": "^1.38.2",
     "alien-signals": "^3.1.2",
     "server-dom-shim": "^1.1.0"
   },
@@ -40,7 +40,7 @@
     "@typescript/lib-dom": "npm:@types/web@^0.0.344",
     "tsdown": "^0.21.6",
     "typescript": "^5.9.3",
-    "vitest": "^4.0.0"
+    "vitest": "^4.1.2"
   },
   "publishConfig": {
     "access": "public"
