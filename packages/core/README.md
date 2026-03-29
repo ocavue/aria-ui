@@ -1,3 +1,3 @@
 # @aria-ui/core
 
-Warning: This version has been deprecated.
+`@aria-ui/core` is a framework for building light-DOM-based web components.

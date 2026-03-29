@@ -1,0 +1,73 @@
+{
+  "name": "@aria-ui/elements",
+  "type": "module",
+  "version": "0.0.100",
+  "description": "A set of web components for building accessible user interfaces",
+  "author": "ocavue <ocavue@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ocavue/aria-ui.git"
+  },
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "aria-ui-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./listbox": {
+      "aria-ui-source": "./src/listbox/index.ts",
+      "types": "./dist/listbox/index.d.ts",
+      "default": "./dist/listbox/index.js"
+    },
+    "./menu": {
+      "aria-ui-source": "./src/menu/index.ts",
+      "types": "./dist/menu/index.d.ts",
+      "default": "./dist/menu/index.js"
+    },
+    "./overlay": {
+      "aria-ui-source": "./src/overlay/index.ts",
+      "types": "./dist/overlay/index.d.ts",
+      "default": "./dist/overlay/index.js"
+    },
+    "./popover": {
+      "aria-ui-source": "./src/popover/index.ts",
+      "types": "./dist/popover/index.d.ts",
+      "default": "./dist/popover/index.js"
+    },
+    "./tooltip": {
+      "aria-ui-source": "./src/tooltip/index.ts",
+      "types": "./dist/tooltip/index.d.ts",
+      "default": "./dist/tooltip/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "scripts": {
+    "test": "vitest run ./src",
+    "build": "tsdown"
+  },
+  "dependencies": {
+    "@floating-ui/dom": "^1.7.6"
+  },
+  "devDependencies": {
+    "@aria-ui/config-vitest": "workspace:*",
+    "@aria-ui/core": "workspace:*",
+    "@aria-ui/utils": "workspace:*",
+    "@ocavue/tsconfig": "^0.7.0",
+    "@ocavue/utils": "^1.6.0",
+    "@types/node": "^24.0.0",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.344",
+    "lit-html": "^3.3.2",
+    "tsdown": "^0.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

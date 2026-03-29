@@ -1,9 +1,11 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "@ocavue/tsconfig/dom/app.json",
   "compilerOptions": {
-    "allowJs": true,
-    "noUncheckedIndexedAccess": true,
-    "composite": true
+    "customConditions": ["aria-ui-source"]
   },
-  "include": ["."]
+  "references": [
+    {
+      "path": "../packages/elements/tsconfig.json"
+    }
+  ]
 }

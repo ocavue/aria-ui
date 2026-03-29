@@ -1,54 +1,48 @@
 {
   "name": "@aria-ui/core",
   "type": "module",
-  "version": "0.0.23",
-  "private": false,
-  "description": "Core utilities for Aria UI",
+  "version": "0.0.100",
+  "description": "A framework for building light-DOM-based web components",
+  "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/ocavue",
-  "homepage": "https://github.com/ocavue/aria-ui#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ocavue/aria-ui.git",
-    "directory": "packages/core"
+    "url": "https://github.com/ocavue/aria-ui.git"
   },
-  "bugs": {
-    "url": "https://github.com/ocavue/aria-ui/issues"
-  },
+  "keywords": [],
   "sideEffects": false,
-  "main": "src/index.ts",
   "exports": {
-    ".": "./src/index.ts"
+    ".": {
+      "aria-ui-source": "./src/index.ts",
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "src"
   ],
   "scripts": {
-    "build": "tsup"
+    "test": "vitest run src",
+    "build": "tsdown"
   },
   "dependencies": {
-    "@ariatype/aria-attributes": "^1.0.2",
-    "@ariatype/aria-roles": "^1.0.2",
-    "@preact/signals-core": "^1.12.1",
-    "@zag-js/dom-query": "^1.31.1",
-    "just-kebab-case": "^4.2.0",
-    "just-map-values": "^3.2.0",
-    "server-dom-shim": "^1.0.2"
+    "@ocavue/utils": "^1.6.0",
+    "@zag-js/dom-query": "^1.36.0",
+    "alien-signals": "^3.1.2",
+    "server-dom-shim": "^1.1.0"
   },
   "devDependencies": {
-    "tsup": "^8.5.1",
-    "typescript": "^5.9.3"
+    "@aria-ui/config-vitest": "workspace:*",
+    "@ocavue/tsconfig": "^0.7.0",
+    "@types/node": "^24.0.0",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.344",
+    "tsdown": "^0.21.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
   },
   "publishConfig": {
-    "access": "public",
-    "main": "dist/index.js",
-    "module": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "exports": {
-      ".": {
-        "types": "./dist/index.d.ts",
-        "import": "./dist/index.js"
-      }
-    }
+    "access": "public"
   }
 }

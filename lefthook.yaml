@@ -1,4 +1,0 @@
-pre-commit:
-  jobs:
-    - run: pnpm run fix:prettier
-      stage_fixed: true

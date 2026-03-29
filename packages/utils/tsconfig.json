@@ -1,0 +1,14 @@
+{
+  "extends": "@ocavue/tsconfig/dom/app.json",
+  "compilerOptions": {
+    "customConditions": ["aria-ui-source"]
+  },
+  "references": [
+    {
+      "path": "../config-vitest/tsconfig.json"
+    },
+    {
+      "path": "../core/tsconfig.json"
+    }
+  ]
+}

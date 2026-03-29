@@ -1,12 +1,19 @@
-import { defineESLintConfig } from "@ocavue/eslint-config"
+// @ts-check
 
-export default defineESLintConfig({}, [
+import { defineESLintConfig } from '@ocavue/eslint-config'
+
+export default defineESLintConfig(
+  {
+    markdown: true,
+    command: true,
+  },
   {
     rules: {
-      "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-unsafe-argument": "off",
-      "@typescript-eslint/no-unsafe-member-access": "off",
-      "@typescript-eslint/no-unsafe-assignment": "off",
+      'no-console': ['warn', { allow: ['warn', 'error', 'assert'] }],
     },
+    ignores: ['**/*.md', '**/*.md/**/*'],
   },
-])
+  {
+    ignores: ['packages/cli/bin/aria-ui.mjs'],
+  },
+)

@@ -1,0 +1,5 @@
+{
+  "extends": "@ocavue/tsconfig/es/app.json",
+  "include": ["src/**/*.ts", "./*.ts", "./package.json"],
+  "references": []
+}
