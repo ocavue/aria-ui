@@ -14,8 +14,6 @@ export type Store<Props extends AnyProps> = {
  * @internal
  */
 export function createStore<Props extends AnyProps>(
-  // TODO: remove this host parameter
-  host: HTMLElement,
   propsDeclaration: PropsDeclaration<Props>,
 ): Store<Props> {
   const store: Record<string, Signal<any>> = {}
@@ -24,13 +22,6 @@ export function createStore<Props extends AnyProps>(
     const declaration = propsDeclaration[key]
     const signal = createSignal(declaration.default)
     store[key] = signal
-
-    // Object.defineProperty(host, key, {
-    //   get: signal.get,
-    //   set: signal.set,
-    //   enumerable: true,
-    //   configurable: false,
-    // })
   }
 
   return store as Store<Props>

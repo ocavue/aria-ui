@@ -30,7 +30,7 @@ export function defineCustomElement<
 
     constructor() {
       super()
-      this._store = createStore(this, props)
+      this._store = createStore(props)
       setup(this, this._store)
       if (hasAttributes) {
         usePropertiesToAttributes(this, this._store, props)
