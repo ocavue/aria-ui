@@ -4,7 +4,7 @@ import { page } from 'vitest/browser'
 
 import type { MenuPopupElement } from '../index.ts'
 import { registerElements } from '../index.ts'
-import   { sleep } from '@ocavue/utils'
+import { sleep } from '@ocavue/utils'
 
 const MENU_TEMPLATE = html`
   <aria-ui-menu-root>
@@ -297,7 +297,9 @@ describe('Menu', () => {
       const container = renderMenu()
       await openMenu(container)
       const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+      popup.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
+      )
       await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
     })
   })
@@ -554,7 +556,9 @@ describe('Menu', () => {
         )
         .toBe('open')
       const subPopup = container.querySelector('[data-testid="sub-popup"]')!
-      subPopup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+      subPopup.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
+      )
       await expect.poll(() => subPopup.getAttribute('data-state')).toBe('closed')
       expect(popup.getAttribute('data-state')).toBe('open')
     })
@@ -585,7 +589,9 @@ describe('Menu', () => {
           container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
         )
         .toBe('open')
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape', bubbles: true }))
+      popup.dispatchEvent(
+        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
+      )
       await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
       await expect
         .poll(() =>
@@ -658,29 +664,25 @@ describe('Menu', () => {
         .toBe('open')
 
       // Hover back to item1 (cut) — submenu should close, but parent menu stays open
-      container
-        .querySelector('[data-testid="share-trigger"]')!
-        .dispatchEvent(
-          new MouseEvent('mouseleave', {
-            bubbles: true,
-            relatedTarget: container.querySelector('[data-testid="cut"]'),
-          }),
-        )
+      container.querySelector('[data-testid="share-trigger"]')!.dispatchEvent(
+        new MouseEvent('mouseleave', {
+          bubbles: true,
+          relatedTarget: container.querySelector('[data-testid="cut"]'),
+        }),
+      )
       container
         .querySelector('[data-testid="cut"]')!
         .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
 
-        await sleep(1);
-      await sleep(1);
-      await sleep(1);
-  
+      await sleep(1)
+      await sleep(1)
+      await sleep(1)
 
       await expect
         .poll(() =>
           container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
         )
         .toBe('closed')
-
 
       await expect
         .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
