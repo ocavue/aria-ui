@@ -1165,19 +1165,21 @@ function generateSvelteComponentSvelteFile(
 
   // Build script block
   const scriptLines: string[] = [
-    `<script lang="js">`,
+    `<script lang="ts">`,
     `  import { register${componentName}Element } from '${options.importSource}'`,
-    ...extensionImports,
-    `  register${componentName}Element()`,
-    '',
-    destructureProps,
   ]
 
   if (needsElement) {
-    scriptLines.push('  let element')
+    scriptLines.push(`  import type { ${componentName}Element } from '${options.importSource}'`)
+  }
+
+  scriptLines.push(...extensionImports, `  register${componentName}Element()`, '', destructureProps)
+
+  if (needsElement) {
+    scriptLines.push(`  let element: ${componentName}Element | undefined`)
   }
   if (hasEvents) {
-    scriptLines.push('  const handlers = []')
+    scriptLines.push('  const handlers: EventListener[] = []')
   }
 
   if (scriptStatements.length > 0) {
