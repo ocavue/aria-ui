@@ -467,7 +467,7 @@ ${propsEffect}${mountEffect}
     elementRef.current = element
     if (typeof forwardedRef === 'function') { forwardedRef(element) }
     else if (forwardedRef) { forwardedRef.current = element }
-  }, [])
+  }, [forwardedRef])
 
   return createElement('${tagName}', { ...restProps, ref: mergedRef, suppressHydrationWarning: true })
 `
@@ -625,7 +625,7 @@ ${propsEffect}${mountEffect}
     elementRef.current = element
     if (typeof forwardedRef === 'function') { forwardedRef(element) }
     else if (forwardedRef) { forwardedRef.current = element }
-  }, [])
+  }, [forwardedRef])
 
   return createElement('${tagName}', { ...restProps, ref: mergedRef, suppressHydrationWarning: true })
 `
