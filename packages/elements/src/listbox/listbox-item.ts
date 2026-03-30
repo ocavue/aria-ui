@@ -99,14 +99,13 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     rebuildCollection()
   })
 
-  const getIsHighlighted = (): boolean => {
+  const getIsHighlighted = computed((): boolean => {
     const store = getStore()
     if (!store) return false
     const value = props.value.get()
     return store.highlightedValue.get() === value
-  }
-  const getDataHighlighted = computed(() => (getIsHighlighted() ? '' : undefined))
-  useAttribute(host, 'data-highlighted', getDataHighlighted)
+  })
+  useAttribute(host, 'data-highlighted', () => (getIsHighlighted() ? '' : undefined))
 
   useEventListener(host, 'click', () => {
     if (props.disabled.get()) return
