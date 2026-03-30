@@ -174,14 +174,14 @@ describe('Listbox', () => {
 
       await page.getByTestId('root').click()
       await expect
-        .poll(() => page.getByTestId('apple').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
 
       const root = container.querySelector('aria-ui-listbox-root')!
       root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
 
       await expect
-        .poll(() => page.getByTestId('banana').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('banana').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -206,7 +206,7 @@ describe('Listbox', () => {
       root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
 
       await expect
-        .poll(() => page.getByTestId('cherry').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cherry').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -231,7 +231,7 @@ describe('Listbox', () => {
       root.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }))
 
       await expect
-        .poll(() => page.getByTestId('apple').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -282,7 +282,7 @@ describe('Listbox', () => {
       root.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
 
       await expect
-        .poll(() => page.getByTestId('cherry').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cherry').element().getAttribute('data-highlighted'))
         .toBe('')
     })
   })
@@ -417,7 +417,7 @@ describe('Listbox', () => {
       )
 
       await expect
-        .poll(() => page.getByTestId('apple').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
     })
   })
