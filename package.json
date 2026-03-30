@@ -9,6 +9,7 @@
     "build": "turbo run build && pnpm run build:tsc",
     "build:packages": "turbo run build --filter './packages/*'",
     "build:tsc": "tsc -b .",
+    "watch": "turbo watch build --filter './packages/*'",
     "change": "changeset",
     "dev": "pnpm --filter aria-ui-website dev",
     "ci:publish": "pnpm run build && changeset publish",

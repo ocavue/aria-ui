@@ -114,9 +114,9 @@ export interface ListboxRootProps {
    * By default, the Listbox element will listen for keydown events. You can
    * pass a different element to listen for keydown events.
    *
-   * @default undefined
+   * @default null
    */
-  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | undefined
+  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | null
 }
 
 /**
@@ -136,7 +136,7 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
   autoFocus: { default: false, attribute: 'auto-focus', type: 'boolean' },
   query: { default: '', attribute: 'query', type: 'string' },
   filter: { default: defaultItemFilter, attribute: false, type: 'json' },
-  eventTarget: { default: undefined, attribute: false, type: 'json' },
+  eventTarget: { default: null, attribute: false, type: 'json' },
 })
 
 /**
@@ -233,9 +233,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   useAriaOrientation(host, () => props.orientation.get())
   useAriaDisabled(host, () => props.disabled.get())
   useAriaActivedescendant(host, () => {
-    const activeVal = store.activeValue.get()
-    if (activeVal == null) return undefined
-    const element = store.collection.get().getElement(activeVal)
+    const highlightedValue = store.highlightedValue.get()
+    if (highlightedValue == null) return undefined
+    const element = store.collection.get().getElement(highlightedValue)
     return element?.id
   })
 
@@ -249,7 +249,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     const nextKey = orientation === 'vertical' ? 'ArrowDown' : 'ArrowRight'
     const prevKey = orientation === 'vertical' ? 'ArrowUp' : 'ArrowLeft'
 
-    const currentValue = store.activeValue.get()
+    const currentValue = store.highlightedValue.get()
     let nextValue: string | null = null
 
     switch (event.key) {
@@ -279,10 +279,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     }
 
     if (nextValue != null) {
-      store.activeValue.set(nextValue)
-      if (!store.multiple.get()) {
-        store.emitSelectionChange([nextValue])
-      }
+      store.highlightedValue.set(nextValue)
     }
   }
 
@@ -296,18 +293,18 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   })
 
   useEventListener(host, 'focus', () => {
-    if (store.activeValue.get() != null) return
+    if (store.highlightedValue.get() != null) return
     const collection = store.collection.get()
     if (collection.size() === 0) return
     const selectedValues = store.selectedValues.get()
     const firstSelected = selectedValues.find((v) => collection.getElement(v) != null)
-    store.activeValue.set(firstSelected ?? collection.first())
+    store.highlightedValue.set(firstSelected ?? collection.first())
   })
 
   onMount(host, () => {
     if (props.autoFocus.get()) {
       const collection = store.collection.get()
-      store.activeValue.set(collection.first())
+      store.highlightedValue.set(collection.first())
     }
   })
 
@@ -315,18 +312,16 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     props.query.get()
     if (!props.autoFocus.get()) return
     const collection = store.collection.get()
-    store.activeValue.set(collection.first())
+    store.highlightedValue.set(collection.first())
   })
 }
 
 function toggleSelection(store: ListboxStore, value: string) {
-  const current = store.selectedValues.get()
-  if (store.multiple.get()) {
-    const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
-    store.emitSelectionChange(next)
-  } else {
-    store.emitSelectionChange(current.includes(value) ? [] : [value])
-  }
+  const current: string[] = store.selectedValues.get()
+  const next: string[] = current.includes(value)
+    ? current.filter((v) => v !== value)
+    : [...current, value]
+  store.emitSelectionChange(next)
 }
 
 /**

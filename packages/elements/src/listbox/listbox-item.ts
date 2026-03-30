@@ -1,5 +1,6 @@
 import type { HostElement } from '@aria-ui/core'
 import {
+  computed,
   defineCustomElement,
   defineProps,
   onMount,
@@ -8,7 +9,7 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import { Collection, useAriaDisabled, useAriaSelected } from '@aria-ui/utils'
+import { Collection, useAriaDisabled, useAriaSelected, useAttribute } from '@aria-ui/utils'
 
 import { ListboxStoreContext } from './listbox-store.ts'
 
@@ -98,17 +99,13 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     rebuildCollection()
   })
 
-  useEffect(host, () => {
+  const getIsHighlighted = computed((): boolean => {
     const store = getStore()
-    if (!store) return
+    if (!store) return false
     const value = props.value.get()
-    const isActive = store.activeValue.get() === value
-    if (isActive) {
-      host.setAttribute('data-active', '')
-    } else {
-      host.removeAttribute('data-active')
-    }
+    return store.highlightedValue.get() === value
   })
+  useAttribute(host, 'data-highlighted', () => (getIsHighlighted() ? '' : undefined))
 
   useEventListener(host, 'click', () => {
     if (props.disabled.get()) return
@@ -116,7 +113,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     if (!store) return
 
     const value = props.value.get()
-    store.activeValue.set(value)
+    store.highlightedValue.set(value)
 
     if (store.multiple.get()) {
       const current = store.selectedValues.get()
@@ -133,7 +130,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     if (props.disabled.get()) return
     const store = getStore()
     if (!store) return
-    store.activeValue.set(props.value.get())
+    store.highlightedValue.set(props.value.get())
   })
 }
 
