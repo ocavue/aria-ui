@@ -3,18 +3,21 @@ export {
   registerMenuItemElement,
   MenuItemPropsDeclaration,
   setupMenuItem,
+  type MenuItemProps,
 } from './menu-item.ts'
 export {
   MenuPopupElement,
   registerMenuPopupElement,
   MenuPopupPropsDeclaration,
   setupMenuPopup,
+  type MenuPopupProps,
 } from './menu-popup.ts'
 export {
   MenuPositionerElement,
   registerMenuPositionerElement,
   MenuPositionerPropsDeclaration,
   setupMenuPositioner,
+  type MenuPositionerProps,
 } from './menu-positioner.ts'
 export {
   MenuRootElement,
@@ -22,6 +25,8 @@ export {
   OpenChangeEvent,
   MenuRootPropsDeclaration,
   setupMenuRoot,
+  type MenuRootEvents,
+  type MenuRootProps,
 } from './menu-root.ts'
 export {
   MenuSubmenuRootElement,
@@ -40,6 +45,8 @@ export {
   registerMenuTriggerElement,
   MenuTriggerPropsDeclaration,
   setupMenuTrigger,
+  type MenuTriggerEvents,
+  type MenuTriggerProps,
 } from './menu-trigger.ts'
 
 export { closeMenuTree, createMenuStore, MenuStoreContext, type MenuStore } from './menu-store.ts'

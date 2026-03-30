@@ -140,6 +140,12 @@ importers:
       '@floating-ui/dom':
         specifier: ^1.7.6
         version: 1.7.6
+      '@zag-js/dismissable':
+        specifier: ^1.38.2
+        version: 1.38.2
+      '@zag-js/dom-query':
+        specifier: ^1.38.2
+        version: 1.38.2
     devDependencies:
       '@aria-ui/config-vitest':
         specifier: workspace:*
@@ -1958,11 +1964,20 @@ packages:
   '@vitest/utils@4.1.2':
     resolution: {integrity: sha512-xw2/TiX82lQHA06cgbqRKFb5lCAy3axQ4H4SoUFhUsg+wztiet+co86IAMDtF6Vm1hc7J6j09oh/rgDn+JdKIQ==}
 
+  '@zag-js/dismissable@1.38.2':
+    resolution: {integrity: sha512-4B83ZGD8YKnwiXwL4J49txeXSPdS29bPt6p00v99u6nJPlQRRubzPUQo4OJr6NxUuT9cIn2kDqt5oj8ZCwhmng==}
+
   '@zag-js/dom-query@1.38.2':
     resolution: {integrity: sha512-E2plmm/bDjMQhi4fmyhw2uhoQv2cgNYaG+fzLrJgepLqovCOTU85lwzaLFiB7ldG2a9DVmjbAnFX4nVVWvaxGA==}
 
+  '@zag-js/interact-outside@1.38.2':
+    resolution: {integrity: sha512-jszzVoozqcO3vn1iiZ726xYXpy/mR+fLnx1tBs4Dvkg/n52Mm3Uv+pFDBfHgswqS/kRJ/U8P0fItFJjOH0yvlA==}
+
   '@zag-js/types@1.38.2':
     resolution: {integrity: sha512-fvUf3J4QOFAliuo5wHTO/awO0GKFAn5AHNOXbGH5IuoxIwa0oK5tSXVwdF8JE7ISOkQh4oB2fq3g4QjxmAXDyA==}
+
+  '@zag-js/utils@1.38.2':
+    resolution: {integrity: sha512-8UuWDomJ5JLX/KSDjEA4poX9rzqkGL47RiSCuVod+qZpWD0jpyXP7Lf600GUFtirRAiuN3x1+7KE6Elt/0rxtw==}
 
   acorn-jsx@5.3.2:
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
@@ -5812,13 +5827,26 @@ snapshots:
       convert-source-map: 2.0.0
       tinyrainbow: 3.1.0
 
+  '@zag-js/dismissable@1.38.2':
+    dependencies:
+      '@zag-js/dom-query': 1.38.2
+      '@zag-js/interact-outside': 1.38.2
+      '@zag-js/utils': 1.38.2
+
   '@zag-js/dom-query@1.38.2':
     dependencies:
       '@zag-js/types': 1.38.2
 
+  '@zag-js/interact-outside@1.38.2':
+    dependencies:
+      '@zag-js/dom-query': 1.38.2
+      '@zag-js/utils': 1.38.2
+
   '@zag-js/types@1.38.2':
     dependencies:
       csstype: 3.2.3
+
+  '@zag-js/utils@1.38.2': {}
 
   acorn-jsx@5.3.2(acorn@8.16.0):
     dependencies:

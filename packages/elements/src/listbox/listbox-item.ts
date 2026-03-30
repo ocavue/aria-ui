@@ -78,9 +78,9 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
   const rebuildCollection = () => {
     const store = getStore()
     if (!store) return
-    const root = host.closest('aria-ui-listbox-root')
+    const root = host.closest('[role="listbox"]')
     if (!root) return
-    const itemElements = root.querySelectorAll<HTMLElement>('aria-ui-listbox-item:not([hidden])')
+    const itemElements = root.querySelectorAll<HTMLElement>('[role="option"]:not([hidden])')
     store.collection.set(new Collection(itemElements))
   }
 

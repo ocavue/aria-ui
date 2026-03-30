@@ -6,12 +6,12 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  useEventListener,
   type Store,
 } from '@aria-ui/core'
 import { getAriaHasPopup, useElementId } from '@aria-ui/utils'
+import { trackDismissableElement } from '@zag-js/dismissable'
+import { isHTMLElement } from '@zag-js/dom-query'
 
-import { MenuItemSelectEvent } from './menu-item.ts'
 import { closeMenuTree, MenuStoreContext, type MenuStore } from './menu-store.ts'
 
 /**
@@ -93,6 +93,19 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
   })
 
   const handleKeydown = (event: KeyboardEvent) => {
+    // Handle Escape before defaultPrevented check, because
+    // trackDismissableElement's capture-phase handler may have
+    // already called preventDefault().
+    if (event.key === 'Escape' && !event.isComposing) {
+      const overlayStore = getOverlayStore()
+      if (overlayStore?.getIsOpen()) {
+        event.preventDefault()
+        event.stopPropagation()
+        overlayStore.requestOpenChange(false)
+        return
+      }
+    }
+
     if (event.isComposing || event.defaultPrevented) return
 
     const menuStore = getMenuStore()
@@ -167,12 +180,6 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
         return
       }
 
-      case 'Escape':
-        event.preventDefault()
-        event.stopPropagation()
-        overlayStore.requestOpenChange(false)
-        return
-
       default:
         if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
           event.stopPropagation()
@@ -195,17 +202,31 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     }
   })
 
-  useEventListener(host, 'focusout', (event: FocusEvent) => {
-    const overlayStore = getOverlayStore()
-    const menuStore = getMenuStore()
-    if (!overlayStore || !menuStore) return
-    if (!overlayStore.getIsOpen()) return
+  // TODO: revisit this
+  onMount(host, () => {
+    const exclude = () => {
+      const anchorElement = getOverlayStore()?.getAnchorElement()
+      return anchorElement && isHTMLElement(anchorElement) ? [anchorElement] : []
+    }
 
-    const relatedTarget = event.relatedTarget as Node | null
-    const menuRoot = host.closest('aria-ui-menu-root')
-    if (menuRoot && relatedTarget && menuRoot.contains(relatedTarget)) return
-
-    closeMenuTree(menuStore)
+    return trackDismissableElement(host, {
+      type: 'menu',
+      exclude,
+      onEscapeKeyDown(event) {
+        // Escape is handled by the keydown handler, not by dismissable.
+        event.preventDefault()
+      },
+      onPointerDownOutside(event) {
+        if (!getOverlayStore()?.getIsOpen()) event.preventDefault()
+      },
+      onFocusOutside(event) {
+        if (!getOverlayStore()?.getIsOpen()) event.preventDefault()
+      },
+      onDismiss() {
+        const menuStore = getMenuStore()
+        if (menuStore) closeMenuTree(menuStore)
+      },
+    })
   })
 }
 
@@ -244,12 +265,7 @@ function activateItem(menuStore: MenuStore, value: string) {
   const element = menuStore.getCollection().getElement(value)
   if (!element) return
 
-  const selectEvent = new MenuItemSelectEvent()
-  element.dispatchEvent(selectEvent)
-
-  if (!selectEvent.defaultPrevented) {
-    closeMenuTree(menuStore)
-  }
+  element.click()
 }
 
 /**

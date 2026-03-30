@@ -15,15 +15,6 @@ import { closeMenuTree, MenuStoreContext } from './menu-store.ts'
 /**
  * @public
  */
-export class MenuItemSelectEvent extends Event {
-  constructor() {
-    super('select', { bubbles: true, cancelable: true })
-  }
-}
-
-/**
- * @public
- */
 export interface MenuItemProps {
   /**
    * The unique value for this menu item.
@@ -38,6 +29,13 @@ export interface MenuItemProps {
    * @default false
    */
   disabled: boolean
+
+  /**
+   * Whether to close the menu when the item is clicked.
+   *
+   * @default true
+   */
+  closeOnClick: boolean
 }
 
 /**
@@ -47,17 +45,8 @@ export const MenuItemPropsDeclaration =
   /* @__PURE__ */ defineProps<MenuItemProps>({
     value: { default: '', attribute: 'value', type: 'string' },
     disabled: { default: false, attribute: 'disabled', type: 'boolean' },
+    closeOnClick: { default: true, attribute: 'close-on-click', type: 'boolean' },
   })
-
-/**
- * @public
- */
-export interface MenuItemEvents {
-  /**
-   * Fired when the item is selected.
-   */
-  select: MenuItemSelectEvent
-}
 
 /**
  * @internal
@@ -92,12 +81,10 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
   const rebuildCollection = () => {
     const store = getStore()
     if (!store) return
-    const popup = host.closest('aria-ui-menu-popup')
+    const popup = host.closest('[role="menu"]')
     if (!popup) return
-    const allItems = popup.querySelectorAll<HTMLElement>(
-      'aria-ui-menu-item, aria-ui-menu-submenu-trigger',
-    )
-    const levelItems = [...allItems].filter((el) => el.closest('aria-ui-menu-popup') === popup)
+    const allItems = popup.querySelectorAll<HTMLElement>('[role="menuitem"]')
+    const levelItems = [...allItems].filter((el) => el.closest('[role="menu"]') === popup)
     store.setCollection(new Collection(levelItems))
   }
 
@@ -126,10 +113,7 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
 
     store.setActiveValue(props.value.get())
 
-    const selectEvent = new MenuItemSelectEvent()
-    host.dispatchEvent(selectEvent)
-
-    if (!selectEvent.defaultPrevented) {
+    if (props.closeOnClick.get()) {
       closeMenuTree(store)
     }
   })
