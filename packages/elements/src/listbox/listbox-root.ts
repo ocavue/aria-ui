@@ -318,7 +318,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 
 function toggleSelection(store: ListboxStore, value: string) {
   const current: string[] = store.selectedValues.get()
-  const next: string[] = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
+  const next: string[] = current.includes(value)
+    ? current.filter((v) => v !== value)
+    : [...current, value]
   store.emitSelectionChange(next)
 }
 
