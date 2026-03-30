@@ -1,5 +1,6 @@
 import type { HostElement } from '@aria-ui/core'
 import {
+  computed,
   defineCustomElement,
   defineProps,
   onMount,
@@ -98,15 +99,20 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     rebuildCollection()
   })
 
-  useEffect(host, () => {
+  const getIsActive = computed((): boolean => {
     const store = getStore()
-    if (!store) return
+    if (!store) return false
     const value = props.value.get()
-    const isActive = store.activeValue.get() === value
-    if (isActive) {
-      host.setAttribute('data-active', '')
+    return store.activeValue.get() === value
+  })
+
+  useEffect(host, () => {
+    if (getIsActive()) {
+      host.setAttribute('data-highlighted', '')
+      host.setAttribute('data-focused', '')
     } else {
-      host.removeAttribute('data-active')
+      host.removeAttribute('data-highlighted')
+      host.removeAttribute('data-focused')
     }
   })
 

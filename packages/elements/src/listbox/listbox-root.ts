@@ -114,9 +114,9 @@ export interface ListboxRootProps {
    * By default, the Listbox element will listen for keydown events. You can
    * pass a different element to listen for keydown events.
    *
-   * @default undefined
+   * @default null
    */
-  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | undefined
+  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | null
 }
 
 /**
@@ -136,7 +136,7 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
   autoFocus: { default: false, attribute: 'auto-focus', type: 'boolean' },
   query: { default: '', attribute: 'query', type: 'string' },
   filter: { default: defaultItemFilter, attribute: false, type: 'json' },
-  eventTarget: { default: undefined, attribute: false, type: 'json' },
+  eventTarget: { default: null, attribute: false, type: 'json' },
 })
 
 /**
@@ -280,9 +280,6 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 
     if (nextValue != null) {
       store.activeValue.set(nextValue)
-      if (!store.multiple.get()) {
-        store.emitSelectionChange([nextValue])
-      }
     }
   }
 
@@ -320,13 +317,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 }
 
 function toggleSelection(store: ListboxStore, value: string) {
-  const current = store.selectedValues.get()
-  if (store.multiple.get()) {
-    const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
-    store.emitSelectionChange(next)
-  } else {
-    store.emitSelectionChange(current.includes(value) ? [] : [value])
-  }
+  const current: string[] = store.selectedValues.get()
+  const next: string[] = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
+  store.emitSelectionChange(next)
 }
 
 /**
