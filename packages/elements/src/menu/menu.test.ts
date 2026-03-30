@@ -1,10 +1,10 @@
+import { sleep } from '@ocavue/utils'
 import { html, render } from 'lit-html'
 import { beforeEach, describe, expect, test } from 'vitest'
 import { page } from 'vitest/browser'
 
 import type { MenuPopupElement } from '../index.ts'
 import { registerElements } from '../index.ts'
-import { sleep } from '@ocavue/utils'
 
 const MENU_TEMPLATE = html`
   <aria-ui-menu-root>
