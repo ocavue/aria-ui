@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.0.103
+
+### Patch Changes
+
+- c77958f: Fixed missing `forwardedRef` dependency in `useCallback` for generated React and Preact components
+
 ## 0.0.102
 
 ### Patch Changes
