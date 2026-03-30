@@ -1170,17 +1170,10 @@ function generateSvelteComponentSvelteFile(
   ]
 
   if (needsElement) {
-    scriptLines.push(
-      `  import type { ${componentName}Element } from '${options.importSource}'`,
-    )
+    scriptLines.push(`  import type { ${componentName}Element } from '${options.importSource}'`)
   }
 
-  scriptLines.push(
-    ...extensionImports,
-    `  register${componentName}Element()`,
-    '',
-    destructureProps,
-  )
+  scriptLines.push(...extensionImports, `  register${componentName}Element()`, '', destructureProps)
 
   if (needsElement) {
     scriptLines.push(`  let element: ${componentName}Element | undefined`)
