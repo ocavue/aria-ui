@@ -109,6 +109,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
   useEffect(host, () => {
     if (getIsActive()) {
       host.setAttribute('data-highlighted', '')
+      // data-focused is for backwards compatibility, it has the same meaning as data-highlighted
       host.setAttribute('data-focused', '')
     } else {
       host.removeAttribute('data-highlighted')
