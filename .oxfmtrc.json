@@ -3,5 +3,6 @@
   "semi": false,
   "singleQuote": true,
   "sortPackageJson": false,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "ignorePatterns": [".changeset/**"]
 }
