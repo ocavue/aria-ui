@@ -1,5 +1,13 @@
 # @aria-ui/utils
 
+## 0.0.102
+
+### Patch Changes
+
+- 549b2db: Fix a submenu focus issue.
+- Updated dependencies [549b2db]
+  - @aria-ui/core@0.0.102
+
 ## 0.0.101
 
 ### Patch Changes
