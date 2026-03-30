@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.0.104
+
+### Patch Changes
+
+- a905147: Improve Svelte code generation.
+
 ## 0.0.103
 
 ### Patch Changes
