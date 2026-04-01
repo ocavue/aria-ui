@@ -251,7 +251,8 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
         (v) => store.highlightedValue.set(v),
         props.orientation.get(),
       )
-    ) return
+    )
+      return
 
     switch (event.key) {
       case ' ':

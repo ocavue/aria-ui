@@ -120,7 +120,8 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
         'vertical',
         true,
       )
-    ) return
+    )
+      return
 
     const currentValue = menuStore.getHighlightedValue()
     const collection = menuStore.getCollection()

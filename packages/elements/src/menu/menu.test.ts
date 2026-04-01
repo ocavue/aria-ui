@@ -208,7 +208,9 @@ describe('Menu', () => {
       await openMenu(container)
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect.poll(() => page.getByTestId('c').element().getAttribute('data-highlighted')).toBe('')
+      await expect
+        .poll(() => page.getByTestId('c').element().getAttribute('data-highlighted'))
+        .toBe('')
     })
   })
 
