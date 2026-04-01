@@ -8,7 +8,7 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import { Collection, useAriaDisabled, useElementId } from '@aria-ui/utils'
+import { Collection, useAriaDisabled, useAttribute, useElementId } from '@aria-ui/utils'
 
 import { setAriaHasPopup } from '../../../utils/src/aria.ts'
 
@@ -77,16 +77,10 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
     host.dataset.value = props.value.get()
   })
 
-  useEffect(host, () => {
+  useAttribute(host, 'data-highlighted', () => {
     const parentStore = getParentStore()
-    if (!parentStore) return
-    const value = props.value.get()
-    const isActive = parentStore.getActiveValue() === value
-    if (isActive) {
-      host.setAttribute('data-active', '')
-    } else {
-      host.removeAttribute('data-active')
-    }
+    if (!parentStore) return undefined
+    return parentStore.getHighlightedValue() === props.value.get() ? '' : undefined
   })
 
   const rebuildCollection = () => {
@@ -130,7 +124,7 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
 
     const parentStore = getParentStore()
     if (parentStore) {
-      parentStore.setActiveValue(props.value.get())
+      parentStore.setHighlightedValue(props.value.get())
     }
 
     const store = getOverlayStore()
@@ -162,7 +156,7 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
     const store = getOverlayStore()
     if (!store) return
 
-    const parentActive = parentStore.getActiveValue()
+    const parentActive = parentStore.getHighlightedValue()
     const myValue = props.value.get()
 
     if (parentActive !== myValue && store.getIsOpen()) {
