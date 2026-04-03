@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@aria-ui/elements": "workspace:*",
-    "@ocavue/tsconfig": "^0.7.0",
+    "@ocavue/tsconfig": "^0.7.1",
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.344",
