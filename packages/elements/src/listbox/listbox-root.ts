@@ -247,8 +247,8 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
       handleCollectionNavigation(
         event,
         store.collection.get(),
-        store.highlightedValue.get(),
-        (v) => store.highlightedValue.set(v),
+        store.highlightedValue.get,
+        store.highlightedValue.set,
         props.orientation.get(),
       )
     )

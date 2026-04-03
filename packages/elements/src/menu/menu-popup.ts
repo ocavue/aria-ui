@@ -115,7 +115,7 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
       handleCollectionNavigation(
         event,
         menuStore.getCollection(),
-        menuStore.getHighlightedValue(),
+        () => menuStore.getHighlightedValue(),
         (v) => menuStore.setHighlightedValue(v),
         'vertical',
         true,

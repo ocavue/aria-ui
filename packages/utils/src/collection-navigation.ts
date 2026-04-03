@@ -6,7 +6,7 @@ import type { Collection } from './collection.ts'
 export function handleCollectionNavigation(
   event: KeyboardEvent,
   collection: Collection,
-  highlightedValue: string | null,
+  getHighlightedValue: () => string | null,
   setHighlightedValue: (value: string | null) => void,
   orientation: 'vertical' | 'horizontal' = 'vertical',
   stopPropagation = false,
@@ -20,10 +20,10 @@ export function handleCollectionNavigation(
 
   switch (event.key) {
     case nextKey:
-      nextValue = collection.next(highlightedValue)
+      nextValue = collection.next(getHighlightedValue())
       break
     case prevKey:
-      nextValue = collection.prev(highlightedValue)
+      nextValue = collection.prev(getHighlightedValue())
       break
     case 'Home':
       nextValue = collection.first()
