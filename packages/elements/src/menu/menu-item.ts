@@ -8,7 +8,7 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import { Collection, useAriaDisabled, useElementId } from '@aria-ui/utils'
+import { Collection, useAriaDisabled, useAttribute, useElementId } from '@aria-ui/utils'
 
 import { closeMenuTree, MenuStoreContext } from './menu-store.ts'
 
@@ -66,16 +66,10 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
 
   useAriaDisabled(host, () => props.disabled.get())
 
-  useEffect(host, () => {
+  useAttribute(host, 'data-highlighted', () => {
     const store = getStore()
-    if (!store) return
-    const value = props.value.get()
-    const isActive = store.getActiveValue() === value
-    if (isActive) {
-      host.setAttribute('data-active', '')
-    } else {
-      host.removeAttribute('data-active')
-    }
+    if (!store) return undefined
+    return store.getHighlightedValue() === props.value.get() ? '' : undefined
   })
 
   const rebuildCollection = () => {
@@ -103,7 +97,7 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
     if (props.disabled.get()) return
     const store = getStore()
     if (!store) return
-    store.setActiveValue(props.value.get())
+    store.setHighlightedValue(props.value.get())
   })
 
   useEventListener(host, 'click', () => {
@@ -111,7 +105,7 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
     const store = getStore()
     if (!store) return
 
-    store.setActiveValue(props.value.get())
+    store.setHighlightedValue(props.value.get())
 
     if (props.closeOnClick.get()) {
       closeMenuTree(store)

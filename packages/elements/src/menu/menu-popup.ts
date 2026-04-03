@@ -8,7 +8,12 @@ import {
   useEffect,
   type Store,
 } from '@aria-ui/core'
-import { getAriaHasPopup, useElementId } from '@aria-ui/utils'
+import {
+  getAriaHasPopup,
+  handleCollectionNavigation,
+  useAriaActivedescendant,
+  useElementId,
+} from '@aria-ui/utils'
 import { trackDismissableElement } from '@zag-js/dismissable'
 import { isHTMLElement } from '@zag-js/dom-query'
 
@@ -58,20 +63,12 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     host.dataset.state = overlayStore.getIsOpen() ? 'open' : 'closed'
   })
 
-  useEffect(host, () => {
+  useAriaActivedescendant(host, () => {
     const menuStore = getMenuStore()
-    if (!menuStore) return
-    const activeValue = menuStore.getActiveValue()
-    if (activeValue == null) {
-      host.removeAttribute('aria-activedescendant')
-      return
-    }
-    const element = menuStore.getCollection().getElement(activeValue)
-    if (element?.id) {
-      host.setAttribute('aria-activedescendant', element.id)
-    } else {
-      host.removeAttribute('aria-activedescendant')
-    }
+    if (!menuStore) return undefined
+    const highlightedValue = menuStore.getHighlightedValue()
+    if (highlightedValue == null) return undefined
+    return menuStore.getCollection().getElement(highlightedValue)?.id
   })
 
   useEffect(host, () => {
@@ -85,10 +82,10 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
       requestAnimationFrame(() => {
         host.focus()
         const collection = menuStore.getCollection()
-        menuStore.setActiveValue(collection.first())
+        menuStore.setHighlightedValue(collection.first())
       })
     } else {
-      menuStore.setActiveValue(null)
+      menuStore.setHighlightedValue(null)
     }
   })
 
@@ -114,37 +111,22 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     if (!menuStore || !overlayStore) return
     if (!overlayStore.getIsOpen()) return
 
-    const collection = menuStore.getCollection()
-    if (collection.size() === 0) return
+    if (
+      handleCollectionNavigation(
+        event,
+        menuStore.getCollection(),
+        () => menuStore.getHighlightedValue(),
+        (v) => menuStore.setHighlightedValue(v),
+        'vertical',
+        true,
+      )
+    )
+      return
 
-    const currentValue = menuStore.getActiveValue()
-    let nextValue: string | null = null
+    const currentValue = menuStore.getHighlightedValue()
+    const collection = menuStore.getCollection()
 
     switch (event.key) {
-      case 'ArrowDown':
-        event.preventDefault()
-        event.stopPropagation()
-        nextValue = collection.next(currentValue)
-        break
-
-      case 'ArrowUp':
-        event.preventDefault()
-        event.stopPropagation()
-        nextValue = collection.prev(currentValue)
-        break
-
-      case 'Home':
-        event.preventDefault()
-        event.stopPropagation()
-        nextValue = collection.first()
-        break
-
-      case 'End':
-        event.preventDefault()
-        event.stopPropagation()
-        nextValue = collection.last()
-        break
-
       case 'Enter':
       case ' ':
         event.preventDefault()
@@ -186,10 +168,6 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
           handleTypeahead(event.key, menuStore)
         }
         return
-    }
-
-    if (nextValue != null) {
-      menuStore.setActiveValue(nextValue)
     }
   }
 
@@ -255,7 +233,7 @@ function handleTypeahead(char: string, menuStore: MenuStore) {
 
   for (const value of values) {
     if (value.toLowerCase().startsWith(typeaheadBuffer)) {
-      menuStore.setActiveValue(value)
+      menuStore.setHighlightedValue(value)
       break
     }
   }

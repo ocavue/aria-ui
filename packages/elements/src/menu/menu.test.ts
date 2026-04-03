@@ -136,7 +136,7 @@ describe('Menu', () => {
       const container = renderMenu()
       await openMenu(container)
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -146,7 +146,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -157,7 +157,7 @@ describe('Menu', () => {
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -168,7 +168,7 @@ describe('Menu', () => {
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', bubbles: true }))
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -178,7 +178,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -188,7 +188,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -208,7 +208,9 @@ describe('Menu', () => {
       await openMenu(container)
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect.poll(() => page.getByTestId('c').element().getAttribute('data-active')).toBe('')
+      await expect
+        .poll(() => page.getByTestId('c').element().getAttribute('data-highlighted'))
+        .toBe('')
     })
   })
 
@@ -311,7 +313,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'p', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -321,11 +323,11 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'c', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'o', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
         .toBe('')
     })
   })
@@ -345,13 +347,13 @@ describe('Menu', () => {
       expect(page.getByTestId('a')).toHaveAttribute('aria-disabled', 'true')
     })
 
-    test('active item has data-active attribute', async () => {
+    test('active item has data-highlighted attribute', async () => {
       const container = renderMenu()
       await openMenu(container)
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
-      expect(page.getByTestId('copy').element().getAttribute('data-active')).toBeNull()
+      expect(page.getByTestId('copy').element().getAttribute('data-highlighted')).toBeNull()
     })
   })
 
@@ -401,12 +403,12 @@ describe('Menu', () => {
         .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
         .toBe('open')
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
 
       customTarget.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
         .toBe('')
     })
   })
@@ -463,7 +465,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
         .toBe('')
     })
   })
@@ -475,7 +477,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
         .toBe('')
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
       await expect
@@ -491,7 +493,7 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
         .toBe('')
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
       await expect
@@ -507,11 +509,11 @@ describe('Menu', () => {
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
         .toBe('')
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('email').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('email').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -609,12 +611,12 @@ describe('Menu', () => {
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('email').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('email').element().getAttribute('data-highlighted'))
         .toBe('')
       const subPopup = container.querySelector('[data-testid="sub-popup"]')!
       subPopup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('slack').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('slack').element().getAttribute('data-highlighted'))
         .toBe('')
     })
 
@@ -622,12 +624,12 @@ describe('Menu', () => {
       const container = renderMenu(SUBMENU_TEMPLATE)
       await openMenu(container)
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
       const popup = container.querySelector('[data-testid="popup"]')!
       popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
       await expect
         .poll(() =>
@@ -645,7 +647,7 @@ describe('Menu', () => {
         .querySelector('[data-testid="cut"]')!
         .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
       await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-active'))
+        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
         .toBe('')
       await expect
         .poll(() =>

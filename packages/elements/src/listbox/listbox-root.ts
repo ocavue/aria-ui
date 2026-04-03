@@ -9,6 +9,7 @@ import {
   type Store,
 } from '@aria-ui/core'
 import {
+  handleCollectionNavigation,
   useAriaActivedescendant,
   useAriaDisabled,
   useAriaMultiselectable,
@@ -242,44 +243,26 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   const handleKeydown = (event: KeyboardEvent) => {
     if (props.disabled.get()) return
 
-    const orientation = props.orientation.get()
-    const collection = store.collection.get()
-    if (collection.size() === 0) return
-
-    const nextKey = orientation === 'vertical' ? 'ArrowDown' : 'ArrowRight'
-    const prevKey = orientation === 'vertical' ? 'ArrowUp' : 'ArrowLeft'
-
-    const currentValue = store.highlightedValue.get()
-    let nextValue: string | null = null
+    if (
+      handleCollectionNavigation(
+        event,
+        store.collection.get(),
+        store.highlightedValue.get,
+        store.highlightedValue.set,
+        props.orientation.get(),
+      )
+    )
+      return
 
     switch (event.key) {
-      case nextKey:
-        event.preventDefault()
-        nextValue = collection.next(currentValue)
-        break
-      case prevKey:
-        event.preventDefault()
-        nextValue = collection.prev(currentValue)
-        break
-      case 'Home':
-        event.preventDefault()
-        nextValue = collection.first()
-        break
-      case 'End':
-        event.preventDefault()
-        nextValue = collection.last()
-        break
       case ' ':
-      case 'Enter':
+      case 'Enter': {
         event.preventDefault()
+        const currentValue = store.highlightedValue.get()
         if (currentValue != null) {
           toggleSelection(store, currentValue)
         }
-        return
-    }
-
-    if (nextValue != null) {
-      store.highlightedValue.set(nextValue)
+      }
     }
   }
 
