@@ -16,7 +16,7 @@
     "vitest": "^4.1.2"
   },
   "devDependencies": {
-    "defu": "^6.1.4",
+    "defu": "^6.1.6",
     "typescript": "^5.9.3"
   }
 }
