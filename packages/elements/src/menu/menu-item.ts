@@ -92,9 +92,7 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
     }
   })
 
-  useEffect(host, () => {
-    host.dataset.value = props.value.get()
-  })
+ 
 
   useAriaDisabled(host, () => props.disabled.get())
 

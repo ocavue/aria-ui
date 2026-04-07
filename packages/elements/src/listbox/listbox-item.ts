@@ -82,9 +82,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     }
   })
 
-  useEffect(host, () => {
-    host.dataset.value = props.value.get()
-  })
+ 
 
   useAriaDisabled(host, () => props.disabled.get())
   useAriaSelected(host, () => {
