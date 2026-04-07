@@ -82,8 +82,6 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     }
   })
 
- 
-
   useAriaDisabled(host, () => props.disabled.get())
   useAriaSelected(host, () => {
     const store = getStore()

@@ -92,8 +92,6 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
     }
   })
 
- 
-
   useAriaDisabled(host, () => props.disabled.get())
 
   useAttribute(host, 'data-highlighted', () => {
