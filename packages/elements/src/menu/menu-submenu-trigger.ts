@@ -73,10 +73,6 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
 
   useAriaDisabled(host, () => props.disabled.get())
 
-  useEffect(host, () => {
-    host.dataset.value = props.value.get()
-  })
-
   useAttribute(host, 'data-highlighted', () => {
     const parentStore = getParentStore()
     if (!parentStore) return undefined
