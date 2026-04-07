@@ -132,7 +132,7 @@ async function writeFormattedFile(filePath: string, contents: string): Promise<v
   const header = filePath.endsWith('.svelte') ? GENERATED_HEADER_SVELTE : GENERATED_HEADER_TS
   contents = header + contents
   if (/\.[cm]?[jt]sx?$/i.test(filePath)) {
-    contents =  await formatFile(filePath, contents)
+    contents = await formatFile(filePath, contents)
   }
   await fs.writeFile(filePath, contents)
   logger.info(`Generated ${filePath}`)
