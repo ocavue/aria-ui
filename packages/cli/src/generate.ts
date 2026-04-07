@@ -872,7 +872,7 @@ function generateSolidComponentFile(
     // Return h() with ref
     bodyLines.push('')
     bodyLines.push('')
-    bodyLines.push(`return h(`)
+    bodyLines.push(`return () => h(`)
     bodyLines.push(`  '${tagName}',`)
     bodyLines.push(`  mergeProps(restProps, {`)
     bodyLines.push(`    ref: (el: ${componentName}Element | null  ) => {`)
@@ -885,7 +885,7 @@ function generateSolidComponentFile(
     bodyLines.push('')
     bodyLines.push('const restProps = props')
     bodyLines.push('')
-    bodyLines.push(`return h('${tagName}', restProps)`)
+    bodyLines.push(`return () => h('${tagName}', restProps)`)
   }
 
   const componentInitializer = `(props): any => {
