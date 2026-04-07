@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.0.107
+
+### Patch Changes
+
+- 717bed9: Use `oxfmt` for formatting.
+
 ## 0.0.106
 
 ### Patch Changes
