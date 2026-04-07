@@ -7,14 +7,12 @@ import { registerElements } from '../index.ts'
 
 interface Environment {
   popover: boolean
-  togglePopoverSource: boolean
 }
 
 function collectEnvironments() {
   let environments: Environment[] = [
     {
       popover: false,
-      togglePopoverSource: false,
     },
   ]
 
@@ -25,40 +23,29 @@ function collectEnvironments() {
     ]
   }
 
-  if (FeatureDetectionInternals.TogglePopoverSource.detect()) {
-    environments = [
-      ...environments.map((env) => ({ ...env, togglePopoverSource: true })),
-      ...environments.map((env) => ({ ...env, togglePopoverSource: false })),
-    ]
-  }
-
   return environments
 }
 
 function setupEnvironment(environment: Environment) {
   FeatureDetectionInternals.Popover.override(environment.popover)
-  FeatureDetectionInternals.TogglePopoverSource.override(environment.togglePopoverSource)
 }
 
 function teardownEnvironment() {
   FeatureDetectionInternals.Popover.reset()
-  FeatureDetectionInternals.TogglePopoverSource.reset()
 }
 
 function forEachEnvironment(environments: Environment[], callback: () => void) {
   for (const environment of environments) {
     describe(`Environment popover ${environment.popover}`, () => {
-      describe(`Environment togglePopoverSource ${environment.togglePopoverSource}`, () => {
-        beforeEach(() => {
-          setupEnvironment(environment)
-        })
-
-        afterEach(() => {
-          teardownEnvironment()
-        })
-
-        callback()
+      beforeEach(() => {
+        setupEnvironment(environment)
       })
+
+      afterEach(() => {
+        teardownEnvironment()
+      })
+
+      callback()
     })
   }
 }
