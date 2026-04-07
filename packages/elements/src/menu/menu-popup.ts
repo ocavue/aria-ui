@@ -114,28 +114,29 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
 
     switch (event.key) {
       case 'Enter':
-      case ' ':
+      case ' ': {
+        if (highlightedValue == null) return
+        const highlightedElement = collection.getElement(highlightedValue)
+        if (!highlightedElement) return
+
         event.preventDefault()
         event.stopPropagation()
-        if (highlightedValue != null) {
-          const highlightedElement = collection.getElement(highlightedValue)
-          if (highlightedElement && getAriaHasPopup(highlightedElement) === 'menu') {
-            highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
-          } else if (highlightedElement) {
-            highlightedElement.click()
-          }
+        if (getAriaHasPopup(highlightedElement) === 'menu') {
+          highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
+        } else {
+          highlightedElement.click()
         }
         return
+      }
 
       case 'ArrowRight': {
-        if (highlightedValue != null) {
-          const highlightedElement = collection.getElement(highlightedValue)
-          if (highlightedElement) {
-            event.preventDefault()
-            event.stopPropagation()
-            highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
-          }
-        }
+        if (highlightedValue == null) return
+        const highlightedElement = collection.getElement(highlightedValue)
+        if (!highlightedElement) return
+
+        event.preventDefault()
+        event.stopPropagation()
+        highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
         return
       }
 
@@ -148,12 +149,13 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
         return
       }
 
-      default:
+      default: {
         if (event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey) {
           event.stopPropagation()
           handleTypeahead(event.key, menuStore)
         }
         return
+      }
     }
   }
 
