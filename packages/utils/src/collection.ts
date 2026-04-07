@@ -1,13 +1,14 @@
 /**
  * Get the value of an HTMLElement.
- * 
+ *
  * @internal
  */
 export function getCollectionItemValue(element: HTMLElement): string {
   return (
     (element as HTMLOptionElement).value ||
     element.textContent?.trim() ||
-    element.innerText?.trim() || "" 
+    element.innerText?.trim() ||
+    ''
   )
 }
 
@@ -63,7 +64,7 @@ export class Collection {
 
       const item = this._items[index]
       if (item && !isDisabled(item)) {
-        return getValue(item)
+        return getCollectionItemValue(item)
       }
 
       index += dir
@@ -112,6 +113,6 @@ export class Collection {
   }
 
   getValues(): string[] {
-    return this._items.map(getValue)
+    return this._items.map(getCollectionItemValue)
   }
 }

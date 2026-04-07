@@ -8,7 +8,13 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import { Collection, getCollectionItemValue, useAriaDisabled, useAttribute, useElementId } from '@aria-ui/utils'
+import {
+  Collection,
+  getCollectionItemValue,
+  useAriaDisabled,
+  useAttribute,
+  useElementId,
+} from '@aria-ui/utils'
 
 import { SelectEvent } from '../events/index.ts'
 
