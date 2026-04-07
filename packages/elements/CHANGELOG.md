@@ -1,5 +1,14 @@
 # @aria-ui/elements
 
+## 0.0.107
+
+### Patch Changes
+
+- 6b436dd: Update dependencies.
+- Updated dependencies [6b436dd]
+  - @aria-ui/utils@0.0.107
+  - @aria-ui/core@0.0.104
+
 ## 0.0.106
 
 ### Patch Changes
