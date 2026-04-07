@@ -1357,9 +1357,13 @@ function addSourceFileImports(options: SourceImportOptions): {
   }
 
   if (namedImports.length > 0) {
+    const allTypeOnly = namedImports.every((i) => i.isTypeOnly)
     sourceFile.addImportDeclaration({
       moduleSpecifier: importSource,
-      namedImports,
+      isTypeOnly: allTypeOnly,
+      namedImports: allTypeOnly
+        ? namedImports.map(({ isTypeOnly, ...rest }) => rest)
+        : namedImports,
     })
   }
 
