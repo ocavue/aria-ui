@@ -1,5 +1,13 @@
 # @aria-ui/elements
 
+## 0.0.106
+
+### Patch Changes
+
+- 186aa4d: Remove `data-value` attribute.
+- Updated dependencies [0170737]
+  - @aria-ui/utils@0.0.106
+
 ## 0.0.105
 
 ### Patch Changes
