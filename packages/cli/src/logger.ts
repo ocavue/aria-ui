@@ -1,7 +1,5 @@
 import { createDebug } from 'obug'
 
-
-
 export const logger = {
   debug: createDebug('aria-ui:debug'),
   info: (message: string) => {

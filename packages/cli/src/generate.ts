@@ -212,7 +212,7 @@ export async function generateFiles(
     },
   })
 
-  let  counter = 0 
+  let counter = 0
 
   for (const component of components) {
     const fileName = getComponentFileName(component)
@@ -223,7 +223,7 @@ export async function generateFiles(
         await writeSourceFile(project, filePath, (sourceFile) =>
           generateReactComponentFile(sourceFile, component, options),
         )
-        counter++ 
+        counter++
         break
       case 'preact':
         await writeSourceFile(project, filePath, (sourceFile) =>
