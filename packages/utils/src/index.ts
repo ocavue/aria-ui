@@ -12,7 +12,7 @@ export {
   useAriaSelected,
 } from './aria.ts'
 export { handleCollectionNavigation } from './collection-navigation.ts'
-export { Collection } from './collection.ts'
+export { Collection, getCollectionItemValue } from './collection.ts'
 export { createDelayedToggle, type DelayedToggle } from './delayed-toggle.ts'
 export * as FeatureDetectionInternals from './feature-detection/feature-detection-internals.ts'
 export * as FeatureDetection from './feature-detection/feature-detection.ts'

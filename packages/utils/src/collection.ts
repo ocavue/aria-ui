@@ -1,9 +1,14 @@
-function getValue(element: HTMLElement): string {
+/**
+ * Get the value of an HTMLElement.
+ *
+ * @internal
+ */
+export function getCollectionItemValue(element: HTMLElement): string {
   return (
     (element as HTMLOptionElement).value ||
-    element.textContent ||
-    element.innerText ||
-    element.innerHTML
+    element.textContent?.trim() ||
+    element.innerText?.trim() ||
+    ''
   )
 }
 
@@ -30,7 +35,7 @@ export class Collection {
     readonly loop = true,
   ) {
     for (const item of items) {
-      const value = getValue(item)
+      const value = getCollectionItemValue(item)
       if (!value || this._indexes.has(value)) {
         continue
       }
@@ -59,7 +64,7 @@ export class Collection {
 
       const item = this._items[index]
       if (item && !isDisabled(item)) {
-        return getValue(item)
+        return getCollectionItemValue(item)
       }
 
       index += dir
@@ -108,6 +113,6 @@ export class Collection {
   }
 
   getValues(): string[] {
-    return this._items.map(getValue)
+    return this._items.map(getCollectionItemValue)
   }
 }
