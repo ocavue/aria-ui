@@ -1,5 +1,11 @@
 # @aria-ui/utils
 
+## 0.0.106
+
+### Patch Changes
+
+- 0170737: Add `getNearestOverflowAncestor`.
+
 ## 0.0.105
 
 ### Patch Changes
