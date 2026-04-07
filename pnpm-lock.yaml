@@ -183,6 +183,9 @@ importers:
       '@aria-ui/core':
         specifier: workspace:*
         version: link:../core
+      '@zag-js/dom-query':
+        specifier: ^1.38.2
+        version: 1.38.2
     devDependencies:
       '@aria-ui/config-vitest':
         specifier: workspace:*
