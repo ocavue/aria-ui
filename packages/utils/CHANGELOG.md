@@ -1,5 +1,11 @@
 # @aria-ui/utils
 
+## 0.0.105
+
+### Patch Changes
+
+- e772226: Add `getCollectionItemValue`.
+
 ## 0.0.104
 
 ### Patch Changes
