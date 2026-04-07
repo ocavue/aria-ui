@@ -63,13 +63,9 @@ export class PopoverRootElement extends defineCustomElement(
   PopoverRootPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerPopoverRootElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-popover-root', PopoverRootElement)
 }

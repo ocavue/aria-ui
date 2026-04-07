@@ -1,4 +1,4 @@
-import type { HostElement, TypedEventTarget } from '@aria-ui/core'
+import type { HostElement } from '@aria-ui/core'
 import {
   computed,
   defineCustomElement,
@@ -17,6 +17,8 @@ import {
 import { trackDismissableElement } from '@zag-js/dismissable'
 import { isHTMLElement } from '@zag-js/dom-query'
 
+import { setupOverlayPopup } from '../overlay/index.ts'
+
 import { closeMenuTree, MenuStoreContext, type MenuStore } from './menu-store.ts'
 
 /**
@@ -29,7 +31,7 @@ export interface MenuPopupProps {
    *
    * @default null
    */
-  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | null
+  eventTarget: HTMLElement | EventTarget | null
 }
 
 /**
@@ -57,11 +59,7 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     host.tabIndex = 0
   })
 
-  useEffect(host, () => {
-    const overlayStore = getOverlayStore()
-    if (!overlayStore) return
-    host.dataset.state = overlayStore.getIsOpen() ? 'open' : 'closed'
-  })
+  setupOverlayPopup(host, getOverlayStore)
 
   useAriaActivedescendant(host, () => {
     const menuStore = getMenuStore()
@@ -79,30 +77,18 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
 
     if (open) {
       resetTypeahead()
-      requestAnimationFrame(() => {
+      const id = requestAnimationFrame(() => {
         host.focus()
         const collection = menuStore.getCollection()
         menuStore.setHighlightedValue(collection.first())
       })
+      return () => cancelAnimationFrame(id)
     } else {
       menuStore.setHighlightedValue(null)
     }
   })
 
   const handleKeydown = (event: KeyboardEvent) => {
-    // Handle Escape before defaultPrevented check, because
-    // trackDismissableElement's capture-phase handler may have
-    // already called preventDefault().
-    if (event.key === 'Escape' && !event.isComposing) {
-      const overlayStore = getOverlayStore()
-      if (overlayStore?.getIsOpen()) {
-        event.preventDefault()
-        event.stopPropagation()
-        overlayStore.requestOpenChange(false)
-        return
-      }
-    }
-
     if (event.isComposing || event.defaultPrevented) return
 
     const menuStore = getMenuStore()
@@ -123,7 +109,7 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
     )
       return
 
-    const currentValue = menuStore.getHighlightedValue()
+    const highlightedValue = menuStore.getHighlightedValue()
     const collection = menuStore.getCollection()
 
     switch (event.key) {
@@ -131,23 +117,23 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
       case ' ':
         event.preventDefault()
         event.stopPropagation()
-        if (currentValue != null) {
-          const activeEl = collection.getElement(currentValue)
-          if (activeEl && getAriaHasPopup(activeEl) === 'menu') {
-            activeEl.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
-          } else {
-            activateItem(menuStore, currentValue)
+        if (highlightedValue != null) {
+          const highlightedElement = collection.getElement(highlightedValue)
+          if (highlightedElement && getAriaHasPopup(highlightedElement) === 'menu') {
+            highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
+          } else if (highlightedElement) {
+            highlightedElement.click()
           }
         }
         return
 
       case 'ArrowRight': {
-        if (currentValue != null) {
-          const activeEl = collection.getElement(currentValue)
-          if (activeEl) {
+        if (highlightedValue != null) {
+          const highlightedElement = collection.getElement(highlightedValue)
+          if (highlightedElement) {
             event.preventDefault()
             event.stopPropagation()
-            activeEl.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
+            highlightedElement.dispatchEvent(new Event('aria-ui:open-submenu', { bubbles: false }))
           }
         }
         return
@@ -172,37 +158,55 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
   }
 
   useEffect(host, () => {
-    const target: HTMLElement | TypedEventTarget<'keydown'> = props.eventTarget.get() || host
+    const abortController = new AbortController()
+    const target: HTMLElement | EventTarget = props.eventTarget.get() || host
 
-    target.addEventListener('keydown', handleKeydown as EventListener)
+    target.addEventListener('keydown', handleKeydown as EventListener, {
+      signal: abortController.signal,
+    })
     return () => {
-      target.removeEventListener('keydown', handleKeydown as EventListener)
+      abortController.abort()
     }
   })
 
+  const getIsOpen = () => {
+    const store = getOverlayStore()
+    if (!store) return false
+    return store.getIsOpen()
+  }
+
   // TODO: revisit this
-  onMount(host, () => {
+  useEffect(host, () => {
+    if (!getIsOpen()) return
+
     const exclude = () => {
       const anchorElement = getOverlayStore()?.getAnchorElement()
       return anchorElement && isHTMLElement(anchorElement) ? [anchorElement] : []
     }
 
+    let shouldCloseMenuTree = false
+
     return trackDismissableElement(host, {
       type: 'menu',
       exclude,
-      onEscapeKeyDown(event) {
-        // Escape is handled by the keydown handler, not by dismissable.
-        event.preventDefault()
+      onEscapeKeyDown() {
+        shouldCloseMenuTree = false
       },
-      onPointerDownOutside(event) {
-        if (!getOverlayStore()?.getIsOpen()) event.preventDefault()
+      onPointerDownOutside() {
+        shouldCloseMenuTree = true
       },
-      onFocusOutside(event) {
-        if (!getOverlayStore()?.getIsOpen()) event.preventDefault()
+      onFocusOutside() {
+        shouldCloseMenuTree = true
       },
       onDismiss() {
         const menuStore = getMenuStore()
-        if (menuStore) closeMenuTree(menuStore)
+        if (menuStore && shouldCloseMenuTree) {
+          closeMenuTree(menuStore)
+        }
+        const overlayStore = getOverlayStore()
+        if (overlayStore?.getIsOpen()) {
+          overlayStore.requestOpenChange(false)
+        }
       },
     })
   })
@@ -239,13 +243,6 @@ function handleTypeahead(char: string, menuStore: MenuStore) {
   }
 }
 
-function activateItem(menuStore: MenuStore, value: string) {
-  const element = menuStore.getCollection().getElement(value)
-  if (!element) return
-
-  element.click()
-}
-
 /**
  * @public
  */
@@ -254,13 +251,9 @@ export class MenuPopupElement extends defineCustomElement(
   MenuPopupPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuPopupElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-popup', MenuPopupElement)
 }

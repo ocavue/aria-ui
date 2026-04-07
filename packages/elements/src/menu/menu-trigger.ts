@@ -92,13 +92,9 @@ export class MenuTriggerElement extends defineCustomElement(
   MenuTriggerPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuTriggerElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-trigger', MenuTriggerElement)
 }

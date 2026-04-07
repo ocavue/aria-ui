@@ -184,13 +184,9 @@ export class MenuSubmenuTriggerElement extends defineCustomElement(
   MenuSubmenuTriggerPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuSubmenuTriggerElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-submenu-trigger', MenuSubmenuTriggerElement)
 }

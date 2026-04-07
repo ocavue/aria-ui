@@ -16,6 +16,8 @@ export {
   ListboxItemPropsDeclaration,
   registerListboxItemElement,
   setupListboxItem,
+  type ListboxItemEvents,
+  SelectEvent,
   type ListboxItemProps,
 } from './listbox-item.ts'
 

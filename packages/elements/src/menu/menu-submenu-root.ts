@@ -76,13 +76,9 @@ export class MenuSubmenuRootElement extends defineCustomElement(
   MenuSubmenuRootPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuSubmenuRootElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-submenu-root', MenuSubmenuRootElement)
 }

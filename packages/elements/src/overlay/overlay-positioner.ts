@@ -1,6 +1,11 @@
 import type { HostElement } from '@aria-ui/core'
 import { computed, defineProps, useEffect, type Store } from '@aria-ui/core'
-import { FeatureDetection, useElementId } from '@aria-ui/utils'
+import {
+  FeatureDetection,
+  useDisabledMountTransitionStyle,
+  useElementId,
+  useTransitionStatus,
+} from '@aria-ui/utils'
 import type {
   AutoUpdateOptions,
   Boundary,
@@ -9,7 +14,6 @@ import type {
   Placement,
   RootBoundary,
 } from '@floating-ui/dom'
-import { isHTMLElement, isNodeLike } from '@ocavue/utils'
 
 import type { OverlayStore } from './overlay-store.ts'
 import { updatePlacement } from './positioning.ts'
@@ -209,60 +213,37 @@ export function setupOverlayPositioner(
   props: Store<OverlayPositionerProps>,
   getStore: () => OverlayStore | undefined,
 ): void {
-  const getOpen = computed(() => getStore()?.getIsOpen())
+  const getOpen = computed(() => getStore()?.getIsOpen() ?? false)
   const getAnchorElement = computed(() => getStore()?.getAnchorElement())
+
+  const transitionStatus = useTransitionStatus(host, getOpen)
+  useDisabledMountTransitionStyle(host, transitionStatus)
 
   useEffect(host, () => {
     const id = useElementId(host)
     getStore()?.setPositionerId(id)
   })
 
+  let popoverDirty = false
+
   if (FeatureDetection.supportsPopover()) {
-    useEffect(host, () => {
-      host.popover = 'manual'
-    })
+    const getHoist = props.hoist.get
 
     useEffect(host, () => {
-      const store = getStore()
-      if (!store) return
-
-      const expectedOpen = getOpen()
-      const currentOpen = host.matches(':popover-open')
-
-      if (currentOpen === expectedOpen) return
-
-      if (FeatureDetection.supportsTogglePopoverSource()) {
-        const anchorElement = getAnchorElement()
-        host.togglePopover(
-          isNodeLike(anchorElement) && isHTMLElement(anchorElement)
-            ? { force: expectedOpen, source: anchorElement }
-            : { force: expectedOpen },
-        )
-      } else {
-        if (expectedOpen) {
-          host.showPopover()
-        } else {
-          host.hidePopover()
-        }
-      }
-    })
-  } else {
-    useEffect(host, () => {
-      const open = getOpen()
-      if (open) {
-        host.style.display = ''
-      } else {
-        host.style.display = 'none'
+      if (getHoist()) {
+        popoverDirty = true
+        host.popover = 'manual'
+        host.showPopover()
+      } else if (popoverDirty) {
+        host.popover = null
       }
     })
   }
 
   useEffect(host, () => {
     const open = getOpen()
-    if (!open) return
-
     const anchorElement = getAnchorElement()
-    if (!anchorElement) return
+    if (!open || !anchorElement) return
 
     return updatePlacement(host, anchorElement, {
       strategy: props.strategy.get(),
