@@ -9,7 +9,7 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import { Collection, useAriaDisabled, useAriaSelected, useAttribute } from '@aria-ui/utils'
+import { Collection, useAriaDisabled, useAriaSelected, useAttribute, getCollectionItemValue } from '@aria-ui/utils'
 
 import { SelectEvent } from '../events/index.ts'
 
@@ -65,12 +65,14 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
   const getStore = ListboxStoreContext.consume(host)
 
   useEffect(host, () => {
-    const currentValue = props.value.get()
-    if (currentValue) return
+    const propValue = props.value.get()
+    if (propValue) {
+      return
+    }
 
-    const innerText = host.innerText.trim()
-    if (innerText) {
-      props.value.set(innerText)
+    const itemValue = getCollectionItemValue(host)
+    if (itemValue) {
+      props.value.set(itemValue)
     }
   })
 
