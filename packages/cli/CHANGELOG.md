@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.0.105
+
+### Patch Changes
+
+- d6b8152: Clean existing generated files
+
 ## 0.0.104
 
 ### Patch Changes

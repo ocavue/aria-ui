@@ -1,5 +1,14 @@
 # @aria-ui/elements
 
+## 0.0.104
+
+### Patch Changes
+
+- d6b8152: Add `select` event to menu items.
+- Updated dependencies [d6b8152]
+  - @aria-ui/core@0.0.103
+  - @aria-ui/utils@0.0.104
+
 ## 0.0.103
 
 ### Patch Changes

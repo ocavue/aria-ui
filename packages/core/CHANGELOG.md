@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.103
+
+### Patch Changes
+
+- d6b8152: Remove TypedEventTarget.
+
 ## 0.0.102
 
 ### Patch Changes
