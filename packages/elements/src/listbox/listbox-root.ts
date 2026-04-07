@@ -264,11 +264,11 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     switch (event.key) {
       case ' ':
       case 'Enter': {
-        event.preventDefault()
         const currentValue = store.highlightedValue.get()
         if (currentValue == null) return
         const currentItem = store.collection.get().getElement(currentValue)
         if (currentItem == null) return
+        event.preventDefault()
         currentItem.click()
       }
     }

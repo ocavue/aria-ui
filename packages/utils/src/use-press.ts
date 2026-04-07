@@ -13,9 +13,9 @@ import { useEventListener, type HostElement } from '@aria-ui/core'
  * https://www.w3.org/WAI/ARIA/apg/patterns/button/
  */
 export function usePress(host: HostElement, handler: () => void): VoidFunction {
-  const dispose1 = useEventListener(host, 'click', handler)
+  const disposeClick = useEventListener(host, 'click', handler)
 
-  const dispose2 = useEventListener(host, 'keydown', (event) => {
+  const disposeKeyDown = useEventListener(host, 'keydown', (event) => {
     if (event.isComposing) return
 
     if (event.key === 'Enter' || event.key === ' ') {
@@ -25,7 +25,7 @@ export function usePress(host: HostElement, handler: () => void): VoidFunction {
   })
 
   return () => {
-    dispose1()
-    dispose2()
+    disposeClick()
+    disposeKeyDown()
   }
 }
