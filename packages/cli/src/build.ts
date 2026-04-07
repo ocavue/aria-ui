@@ -33,7 +33,7 @@ export async function build(options: BuildOptions) {
     framework: options.framework,
     wrapperExtensions: options.wrapperExtensions,
   })
-  logger.debug(`Generated files`)
+  logger.debug(`Generated ${count} files`)
   logger.info(`Generated ${count} files to ${outputDir}`)
 
   logger.debug(`Done building`)
