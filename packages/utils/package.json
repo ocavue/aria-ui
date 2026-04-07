@@ -27,7 +27,8 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@aria-ui/core": "workspace:*"
+    "@aria-ui/core": "workspace:*",
+    "@zag-js/dom-query": "^1.38.2"
   },
   "devDependencies": {
     "@aria-ui/config-vitest": "workspace:*",
