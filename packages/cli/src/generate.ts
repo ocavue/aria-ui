@@ -105,7 +105,7 @@ type WrapperExtensionSlots = {
 async function formatFile(filePath: string, contents: string): Promise<string> {
   const result = await oxfmt.format(filePath, contents, {
     objectWrap: 'collapse',
-    printWidth: 1 << 15,
+    printWidth: 320,
     singleQuote: true,
     sortImports: true,
   })
