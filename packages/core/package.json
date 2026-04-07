@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@ocavue/utils": "^1.6.0",
-    "@zag-js/dom-query": "^1.38.2",
+    "@zag-js/dom-query": "^1.39.1",
     "alien-signals": "^3.1.2",
     "server-dom-shim": "^1.1.0"
   },
