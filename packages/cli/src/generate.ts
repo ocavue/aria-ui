@@ -1453,10 +1453,7 @@ function generateIndexFile(components: ComponentInfo[], importSource: string): s
   return lines.join('\n\n') + '\n'
 }
 
-function addEventTypeReExports(
-  sourceFile: SourceFile,
-  component: ComponentInfo,
-): void {
+function addEventTypeReExports(sourceFile: SourceFile, component: ComponentInfo): void {
   if (component.events.length === 0) return
 
   // Re-export the events interface type (e.g., PopoverRootEvents)
