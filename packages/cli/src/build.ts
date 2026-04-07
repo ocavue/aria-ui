@@ -24,6 +24,7 @@ export async function build(options: BuildOptions) {
   logger.info(`Loading ${tsconfigFilePath}`)
   logger.info(`Parsing ${entryFilePath}`)
   const parsed = parse(tsconfigFilePath, entryFilePath)
+  logger.info(`Parsed`)
 
   logger.info(`Generating files to ${outputDir}`)
   await generateFiles(parsed, outputDir, {
