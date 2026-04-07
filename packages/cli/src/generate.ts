@@ -105,12 +105,12 @@ type WrapperExtensionSlots = {
 async function formatFile(filePath: string, contents: string): Promise<string> {
   const result = await oxfmt.format(filePath, contents, {
     objectWrap: 'collapse',
-    printWidth: Number.MAX_SAFE_INTEGER,
+    printWidth: 1 << 15,
     singleQuote: true,
     sortImports: true,
   })
   for (const error of result.errors) {
-    const message = `Prettier error in ${filePath}: ${error.message}`
+    const message = `Unable to format ${filePath}: ${error.message}`
     logger.error(message)
     throw new Error(message)
   }
