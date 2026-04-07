@@ -10,7 +10,11 @@ import {
 } from '@aria-ui/core'
 import { Collection, useAriaDisabled, useAttribute, useElementId } from '@aria-ui/utils'
 
+import { SelectEvent } from '../events/index.ts'
+
 import { closeMenuTree, MenuStoreContext } from './menu-store.ts'
+
+export { SelectEvent }
 
 /**
  * @public
@@ -31,11 +35,11 @@ export interface MenuItemProps {
   disabled: boolean
 
   /**
-   * Whether to close the menu when the item is clicked.
+   * Whether to close the menu when the item is pressed.
    *
    * @default true
    */
-  closeOnClick: boolean
+  closeOnSelect: boolean
 }
 
 /**
@@ -45,8 +49,18 @@ export const MenuItemPropsDeclaration =
   /* @__PURE__ */ defineProps<MenuItemProps>({
     value: { default: '', attribute: 'value', type: 'string' },
     disabled: { default: false, attribute: 'disabled', type: 'boolean' },
-    closeOnClick: { default: true, attribute: 'close-on-click', type: 'boolean' },
+    closeOnSelect: { default: true, attribute: 'close-on-select', type: 'boolean' },
   })
+
+/**
+ * @public
+ */
+export interface MenuItemEvents {
+  /**
+   * Emitted when the the item is selected.
+   */
+  select: SelectEvent
+}
 
 /**
  * @internal
@@ -59,6 +73,16 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
   useElementId(host)
 
   const getStore = MenuStoreContext.consume(host)
+
+  useEffect(host, () => {
+    const currentValue = props.value.get()
+    if (currentValue) return
+
+    const innerText = host.innerText.trim()
+    if (innerText) {
+      props.value.set(innerText)
+    }
+  })
 
   useEffect(host, () => {
     host.dataset.value = props.value.get()
@@ -105,9 +129,12 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
     const store = getStore()
     if (!store) return
 
-    store.setHighlightedValue(props.value.get())
+    const value = props.value.get()
+    store.setHighlightedValue(value)
 
-    if (props.closeOnClick.get()) {
+    host.dispatchEvent(new SelectEvent())
+
+    if (props.closeOnSelect.get()) {
       closeMenuTree(store)
     }
   })
@@ -118,13 +145,9 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
  */
 export class MenuItemElement extends defineCustomElement(setupMenuItem, MenuItemPropsDeclaration) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuItemElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-item', MenuItemElement)
 }

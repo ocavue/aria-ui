@@ -1,4 +1,4 @@
-import type { HostElement, TypedEventTarget } from '@aria-ui/core'
+import type { HostElement } from '@aria-ui/core'
 import {
   defineCustomElement,
   defineProps,
@@ -117,7 +117,7 @@ export interface ListboxRootProps {
    *
    * @default null
    */
-  eventTarget: HTMLElement | TypedEventTarget<'keydown'> | null
+  eventTarget: HTMLElement | EventTarget | null
 }
 
 /**
@@ -160,6 +160,13 @@ export class ValuesChangeEvent extends Event {
   constructor(values: string[]) {
     super('valuesChange', { bubbles: true, cancelable: true })
     this.values = values
+  }
+}
+
+declare global {
+  interface HTMLElementEventMap {
+    valuesChange: ValuesChangeEvent
+    valueChange: ValueChangeEvent
   }
 }
 
@@ -259,19 +266,23 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
       case 'Enter': {
         event.preventDefault()
         const currentValue = store.highlightedValue.get()
-        if (currentValue != null) {
-          toggleSelection(store, currentValue)
-        }
+        if (currentValue == null) return
+        const currentItem = store.collection.get().getElement(currentValue)
+        if (currentItem == null) return
+        currentItem.click()
       }
     }
   }
 
   useEffect(host, () => {
-    const target: HTMLElement | TypedEventTarget<'keydown'> = props.eventTarget.get() || host
+    const abortController = new AbortController()
+    const target: HTMLElement | EventTarget = props.eventTarget.get() || host
 
-    target.addEventListener('keydown', handleKeydown as EventListener)
+    target.addEventListener('keydown', handleKeydown as EventListener, {
+      signal: abortController.signal,
+    })
     return () => {
-      target.removeEventListener('keydown', handleKeydown as EventListener)
+      abortController.abort()
     }
   })
 
@@ -299,14 +310,6 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   })
 }
 
-function toggleSelection(store: ListboxStore, value: string) {
-  const current: string[] = store.selectedValues.get()
-  const next: string[] = current.includes(value)
-    ? current.filter((v) => v !== value)
-    : [...current, value]
-  store.emitSelectionChange(next)
-}
-
 /**
  * @public
  */
@@ -315,13 +318,9 @@ export class ListboxRootElement extends defineCustomElement(
   ListboxRootPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerListboxRootElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-listbox-root', ListboxRootElement)
 }

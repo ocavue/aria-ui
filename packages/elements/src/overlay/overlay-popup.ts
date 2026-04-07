@@ -1,6 +1,6 @@
 import type { HostElement } from '@aria-ui/core'
-import { defineProps, useEffect } from '@aria-ui/core'
-import { useElementId } from '@aria-ui/utils'
+import { computed, defineProps, useEffect } from '@aria-ui/core'
+import { useDataState, useElementId, usePresence } from '@aria-ui/utils'
 
 import type { OverlayStore } from './overlay-store.ts'
 
@@ -29,10 +29,8 @@ export function setupOverlayPopup(
     store.setPopupId(id)
   })
 
-  useEffect(host, () => {
-    const store = getOverlayStore()
-    if (!store) return
-    const open = store.getIsOpen()
-    host.dataset.state = open ? 'open' : 'closed'
-  })
+  const getOpen = computed(() => getOverlayStore()?.getIsOpen() ?? false)
+
+  usePresence(host, getOpen)
+  useDataState(host, getOpen)
 }

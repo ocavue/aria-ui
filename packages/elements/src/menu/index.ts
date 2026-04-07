@@ -4,6 +4,8 @@ export {
   MenuItemPropsDeclaration,
   setupMenuItem,
   type MenuItemProps,
+  type MenuItemEvents,
+  SelectEvent,
 } from './menu-item.ts'
 export {
   MenuPopupElement,

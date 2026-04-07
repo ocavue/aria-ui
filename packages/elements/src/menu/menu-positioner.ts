@@ -51,13 +51,9 @@ export class MenuPositionerElement extends defineCustomElement(
   MenuPositionerPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuPositionerElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-positioner', MenuPositionerElement)
 }

@@ -66,13 +66,9 @@ export function setupMenuRoot(host: HostElement, props: Store<MenuRootProps>) {
  */
 export class MenuRootElement extends defineCustomElement(setupMenuRoot, MenuRootPropsDeclaration) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerMenuRootElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-menu-root', MenuRootElement)
 }

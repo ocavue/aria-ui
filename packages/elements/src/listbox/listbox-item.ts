@@ -11,7 +11,11 @@ import {
 } from '@aria-ui/core'
 import { Collection, useAriaDisabled, useAriaSelected, useAttribute } from '@aria-ui/utils'
 
+import { SelectEvent } from '../events/index.ts'
+
 import { ListboxStoreContext } from './listbox-store.ts'
+
+export { SelectEvent }
 
 /**
  * @public
@@ -33,6 +37,16 @@ export interface ListboxItemProps {
 }
 
 /**
+ * @public
+ */
+export interface ListboxItemEvents {
+  /**
+   * Emitted when the the item is selected.
+   */
+  select: SelectEvent
+}
+
+/**
  * @internal
  */
 export const ListboxItemPropsDeclaration = defineProps<ListboxItemProps>({
@@ -49,6 +63,16 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
   })
 
   const getStore = ListboxStoreContext.consume(host)
+
+  useEffect(host, () => {
+    const currentValue = props.value.get()
+    if (currentValue) return
+
+    const innerText = host.innerText.trim()
+    if (innerText) {
+      props.value.set(innerText)
+    }
+  })
 
   useEffect(host, () => {
     host.dataset.value = props.value.get()
@@ -115,15 +139,10 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     const value = props.value.get()
     store.highlightedValue.set(value)
 
-    if (store.multiple.get()) {
-      const current = store.selectedValues.get()
-      const next = current.includes(value)
-        ? current.filter((v) => v !== value)
-        : [...current, value]
-      store.emitSelectionChange(next)
-    } else {
-      store.emitSelectionChange([value])
-    }
+    const current = store.selectedValues.get()
+    const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
+    store.emitSelectionChange(next)
+    host.dispatchEvent(new SelectEvent())
   })
 
   useEventListener(host, 'mouseenter', () => {
@@ -142,13 +161,9 @@ export class ListboxItemElement extends defineCustomElement(
   ListboxItemPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerListboxItemElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-listbox-item', ListboxItemElement)
 }

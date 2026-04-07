@@ -189,6 +189,14 @@ export async function generateFiles(
 ): Promise<void> {
   await fs.mkdir(outputDir, { recursive: true })
 
+  // Remove all existing generated files before writing new ones
+  const existingFiles = await fs.readdir(outputDir)
+  await Promise.all(
+    existingFiles
+      .filter((file) => file.includes('.gen.'))
+      .map((file) => fs.rm(path.join(outputDir, file))),
+  )
+
   const project = new Project({
     manipulationSettings: {
       indentationText: IndentationText.TwoSpaces,
@@ -335,6 +343,68 @@ function addWrapperImports(sourceFile: SourceFile, imports: WrapperImport[]): vo
   }
 }
 
+// Known property names from React's HTMLAttributes (including inherited from
+// DOMAttributes and AriaAttributes). Used to avoid omitting keys that don't
+// actually exist in HTMLAttributes.
+// prettier-ignore
+const HTML_ATTRIBUTES_KEYS: ReadonlySet<string> = new Set([
+  // HTMLAttributes own properties
+  'about', 'accessKey', 'autoCapitalize', 'autoCorrect', 'autoFocus', 'autoSave',
+  'className', 'color', 'content', 'contentEditable', 'contextMenu',
+  'datatype', 'defaultChecked', 'defaultValue', 'dir', 'draggable',
+  'enterKeyHint', 'hidden', 'id', 'inert', 'inlist', 'inputMode', 'is',
+  'itemID', 'itemProp', 'itemRef', 'itemScope', 'itemType',
+  'lang', 'nonce',
+  'popover', 'popoverTarget', 'popoverTargetAction', 'prefix', 'property',
+  'radioGroup', 'rel', 'resource', 'results', 'rev', 'role',
+  'security', 'slot', 'spellCheck', 'style',
+  'suppressContentEditableWarning', 'suppressHydrationWarning',
+  'tabIndex', 'title', 'translate', 'typeof', 'unselectable', 'vocab',
+
+  // DOMAttributes
+  'children', 'dangerouslySetInnerHTML',
+
+  // DOMAttributes event handlers
+  'onAbort', 'onAnimationEnd', 'onAnimationIteration', 'onAnimationStart',
+  'onAuxClick', 'onBeforeInput', 'onBeforeToggle', 'onBlur',
+  'onCanPlay', 'onCanPlayThrough', 'onChange', 'onClick',
+  'onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate',
+  'onContextMenu', 'onCopy', 'onCut',
+  'onDoubleClick', 'onDrag', 'onDragEnd', 'onDragEnter', 'onDragExit',
+  'onDragLeave', 'onDragOver', 'onDragStart', 'onDrop',
+  'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError',
+  'onFocus', 'onGotPointerCapture',
+  'onInput', 'onInvalid',
+  'onKeyDown', 'onKeyPress', 'onKeyUp',
+  'onLoad', 'onLoadStart', 'onLoadedData', 'onLoadedMetadata',
+  'onLostPointerCapture',
+  'onMouseDown', 'onMouseEnter', 'onMouseLeave', 'onMouseMove',
+  'onMouseOut', 'onMouseOver', 'onMouseUp',
+  'onPaste', 'onPause', 'onPlay', 'onPlaying',
+  'onPointerCancel', 'onPointerDown', 'onPointerEnter', 'onPointerLeave',
+  'onPointerMove', 'onPointerOut', 'onPointerOver', 'onPointerUp',
+  'onProgress', 'onRateChange', 'onReset', 'onResize',
+  'onScroll', 'onScrollEnd', 'onSeeked', 'onSeeking', 'onSelect',
+  'onStalled', 'onSubmit', 'onSuspend',
+  'onTimeUpdate', 'onToggle', 'onTouchCancel', 'onTouchEnd',
+  'onTouchMove', 'onTouchStart',
+  'onTransitionCancel', 'onTransitionEnd', 'onTransitionRun', 'onTransitionStart',
+  'onVolumeChange', 'onWaiting', 'onWheel',
+])
+
+function buildHtmlAttributesType(
+  baseType: string,
+  props: ComponentMeta['props'],
+  eventHandlers: ComponentMeta['eventHandlers'],
+): string {
+  const keys = [...props.map((p) => p.name), ...eventHandlers.map((h) => h.handlerName)]
+  const filteredKeys = keys.filter((key) => HTML_ATTRIBUTES_KEYS.has(key))
+  if (filteredKeys.length === 0) {
+    return baseType
+  }
+  return `Omit<${baseType}, ${filteredKeys.map((k) => `'${k}'`).join(' | ')}>`
+}
+
 function indentBlock(contents: string, size: number): string {
   const indentation = ' '.repeat(size)
   return contents
@@ -392,7 +462,9 @@ function generateReactComponentFile(
     component,
     name: `${componentName}Props`,
     docs: [`Props for the {@link ${componentName}} React component.\n\n@public`],
-    extendsTypes: [`HTMLAttributes<${componentName}Element>`],
+    extendsTypes: [
+      buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers),
+    ],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -551,7 +623,9 @@ function generatePreactComponentFile(
     component,
     name: `${componentName}Props`,
     docs: [`Props for the {@link ${componentName}} Preact component.\n\n@public`],
-    extendsTypes: [`HTMLAttributes<${componentName}Element>`],
+    extendsTypes: [
+      buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers),
+    ],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })

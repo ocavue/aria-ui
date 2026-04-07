@@ -41,13 +41,9 @@ export class ListboxEmptyElement extends defineCustomElement(
   ListboxEmptyPropsDeclaration,
 ) {}
 
-let isRegistered = false
-
 /**
  * @internal
  */
 export function registerListboxEmptyElement(): void {
-  if (isRegistered) return
-  isRegistered = true
   registerCustomElement('aria-ui-listbox-empty', ListboxEmptyElement)
 }
