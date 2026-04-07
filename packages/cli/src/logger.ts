@@ -1,11 +1,12 @@
-import { createDebug, enable } from 'obug'
-
-// TODO: remove me
-enable('aria-ui:*')
+import { createDebug } from 'obug'
 
 export const logger = {
-  info: createDebug('aria-ui:info'),
+  debug: createDebug('aria-ui:debug'),
+  info: (message: string) => {
+    // eslint-disable-next-line no-console
+    console.info(`[aria-ui] ${message}`)
+  },
   error: (message: string) => {
-    console.error(message)
+    console.error(`[aria-ui] ${message}`)
   },
 }
