@@ -244,7 +244,7 @@ export async function generateFiles(
 
   // Generate index.gen.ts barrel file
   const indexPath = path.join(outputDir, 'index.gen.ts')
-  const indexContents = generateIndexFile(components)
+  const indexContents = generateIndexFile(components, options.importSource)
   await writeFormattedFile(indexPath, indexContents)
 }
 
@@ -562,7 +562,7 @@ ${propsEffect}${mountEffect}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component, options.importSource)
+  addEventTypeReExports(sourceFile, component)
 }
 
 function generatePreactComponentFile(
@@ -722,7 +722,7 @@ ${propsEffect}${mountEffect}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component, options.importSource)
+  addEventTypeReExports(sourceFile, component)
 }
 
 function generateSolidComponentFile(
@@ -905,7 +905,7 @@ ${bodyLines.join('\n')}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component, options.importSource)
+  addEventTypeReExports(sourceFile, component)
 }
 
 function generateVueComponentFile(
@@ -1097,7 +1097,7 @@ ${bodyLines.join('\n')}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component, options.importSource)
+  addEventTypeReExports(sourceFile, component)
 }
 
 function generateSvelteComponentFile(
@@ -1153,7 +1153,7 @@ function generateSvelteComponentFile(
     ],
   })
 
-  addEventTypeReExports(sourceFile, component, options.importSource)
+  addEventTypeReExports(sourceFile, component)
 }
 
 function generateSvelteComponentSvelteFile(
@@ -1422,9 +1422,9 @@ function addPropsInterface(options: PropsInterfaceOptions): void {
   }
 }
 
-function generateIndexFile(components: ComponentInfo[]): string {
+function generateIndexFile(components: ComponentInfo[], importSource: string): string {
   const lines: string[] = []
-  const exportedEventTypes = new Set<string>()
+  const allEventTypeNames = new Set<string>()
 
   for (const component of components) {
     const fileName = getComponentFileName(component)
@@ -1435,23 +1435,25 @@ function generateIndexFile(components: ComponentInfo[]): string {
       exports.push(`type ${componentName}Events`)
     }
 
+    lines.push(`export { ${exports.join(', ')} } from './${fileName}'`)
+
     for (const event of component.events) {
-      if (event.typeName && !exportedEventTypes.has(event.typeName)) {
-        exportedEventTypes.add(event.typeName)
-        exports.push(event.typeName)
+      if (event.typeName) {
+        allEventTypeNames.add(event.typeName)
       }
     }
-
-    lines.push(`export { ${exports.join(', ')} } from './${fileName}'`)
   }
+
+  // Export event classes directly from the source package
+  if (allEventTypeNames.size > 0) {
+    const sorted = [...allEventTypeNames].sort()
+    lines.push(`export { ${sorted.join(', ')} } from '${importSource}'`)
+  }
+
   return lines.join('\n\n') + '\n'
 }
 
-function addEventTypeReExports(
-  sourceFile: SourceFile,
-  component: ComponentInfo,
-  importSource: string,
-): void {
+function addEventTypeReExports(sourceFile: SourceFile, component: ComponentInfo): void {
   if (component.events.length === 0) return
 
   // Re-export the events interface type (e.g., PopoverRootEvents)
@@ -1460,25 +1462,6 @@ function addEventTypeReExports(
     isTypeOnly: true,
     namedExports: [eventsTypeName],
   })
-
-  // Re-export event classes (e.g., OpenChangeEvent)
-  const eventTypeNames = getUniqueEventTypeNames(component)
-  if (eventTypeNames.length > 0) {
-    sourceFile.addExportDeclaration({
-      moduleSpecifier: importSource,
-      namedExports: eventTypeNames,
-    })
-  }
-}
-
-function getUniqueEventTypeNames(component: ComponentInfo): string[] {
-  const seen = new Set<string>()
-  for (const event of component.events) {
-    if (event.typeName) {
-      seen.add(event.typeName)
-    }
-  }
-  return [...seen].sort()
 }
 
 function getComponentFileName(component: ComponentInfo): string {
