@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.0.106
+
+### Patch Changes
+
+- 04aa802: Fix solid components with dynamic children.
+
 ## 0.0.105
 
 ### Patch Changes
