@@ -15,24 +15,26 @@ export interface BuildOptions {
 }
 
 export async function build(options: BuildOptions) {
-  logger.info(`Start building`)
+  logger.debug(`Start building`)
 
   const tsconfigFilePath = path.resolve(options.tsconfig)
   const entryFilePath = path.resolve(options.entry)
   const outputDir = path.resolve(options.output)
 
-  logger.info(`Loading ${tsconfigFilePath}`)
-  logger.info(`Parsing ${entryFilePath}`)
+  logger.debug(`Loading ${tsconfigFilePath}`)
+  logger.debug(`Parsing ${entryFilePath}`)
   const parsed = parse(tsconfigFilePath, entryFilePath)
-  logger.info(`Parsed`)
+  logger.debug(`Parsed`)
 
-  logger.info(`Generating files to ${outputDir}`)
-  await generateFiles(parsed, outputDir, {
+  logger.debug(`Generating files to ${outputDir}`)
+  const count = await generateFiles(parsed, outputDir, {
     prefix: options.prefix,
     importSource: options.importSource,
     framework: options.framework,
     wrapperExtensions: options.wrapperExtensions,
   })
+  logger.debug(`Generated files`)
+  logger.info(`Generated ${count} files to ${outputDir}`)
 
-  logger.info(`Done building`)
+  logger.debug(`Done building`)
 }

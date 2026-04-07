@@ -135,7 +135,7 @@ async function writeFormattedFile(filePath: string, contents: string): Promise<v
     contents =  await formatFile(filePath, contents)
   }
   await fs.writeFile(filePath, contents)
-  logger.info(`Generated ${filePath}`)
+  logger.debug(`Generated ${filePath}`)
 }
 
 async function writeSourceFile(
@@ -194,7 +194,7 @@ export async function generateFiles(
   components: ComponentInfo[],
   outputDir: string,
   options: GenerateOptions,
-): Promise<void> {
+): Promise<number> {
   await fs.mkdir(outputDir, { recursive: true })
 
   // Remove all existing generated files before writing new ones
@@ -212,6 +212,8 @@ export async function generateFiles(
     },
   })
 
+  let  counter = 0 
+
   for (const component of components) {
     const fileName = getComponentFileName(component)
     const filePath = path.join(outputDir, fileName)
@@ -221,30 +223,36 @@ export async function generateFiles(
         await writeSourceFile(project, filePath, (sourceFile) =>
           generateReactComponentFile(sourceFile, component, options),
         )
+        counter++ 
         break
       case 'preact':
         await writeSourceFile(project, filePath, (sourceFile) =>
           generatePreactComponentFile(sourceFile, component, options),
         )
+        counter++
         break
       case 'solid':
         await writeSourceFile(project, filePath, (sourceFile) =>
           generateSolidComponentFile(sourceFile, component, options),
         )
+        counter++
         break
       case 'vue':
         await writeSourceFile(project, filePath, (sourceFile) =>
           generateVueComponentFile(sourceFile, component, options),
         )
+        counter++
         break
       case 'svelte': {
         await writeSourceFile(project, filePath, (sourceFile) =>
           generateSvelteComponentFile(sourceFile, component, options),
         )
+        counter++
         const svelteFileName = getSvelteComponentFileName(component)
         const svelteComponentPath = path.join(outputDir, svelteFileName)
         const svelteContents = generateSvelteComponentSvelteFile(component, options)
         await writeFormattedFile(svelteComponentPath, svelteContents)
+        counter++
         break
       }
     }
@@ -254,6 +262,9 @@ export async function generateFiles(
   const indexPath = path.join(outputDir, 'index.gen.ts')
   const indexContents = generateIndexFile(components, options.importSource)
   await writeFormattedFile(indexPath, indexContents)
+  counter++
+
+  return counter
 }
 
 function getWrapperExtensionSlots(
