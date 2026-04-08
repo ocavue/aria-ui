@@ -51,7 +51,7 @@ export const MenuSubmenuTriggerPropsDeclaration =
 export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubmenuTriggerProps>) {
   onMount(host, () => {
     host.role = 'menuitem'
-        setAriaHasPopup(host, 'menu')
+    setAriaHasPopup(host, 'menu')
   })
 
   useElementId(host)

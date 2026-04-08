@@ -65,11 +65,10 @@ export interface MenuItemEvents {
  * @internal
  */
 export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
-    onMount(host, () => {
+  onMount(host, () => {
     host.role = 'menuitem'
   })
 
-  
   useElementId(host)
 
   const getStore = MenuStoreContext.consume(host)

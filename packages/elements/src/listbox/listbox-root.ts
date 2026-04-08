@@ -191,7 +191,7 @@ export interface ListboxRootEvents {
  * @internal
  */
 export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProps>) {
-  const { disabled, multiple, query, filter, orientation, autoFocus , values, value } = props
+  const { disabled, multiple, query, filter, orientation, autoFocus, values, value } = props
 
   onMount(host, () => {
     host.role = 'listbox'
@@ -227,8 +227,6 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     }
   })
 
-
-
   useAriaMultiselectable(host, multiple.get)
   useAriaOrientation(host, orientation.get)
   useAriaDisabled(host, disabled.get)
@@ -241,7 +239,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.isComposing || event.defaultPrevented) return
-    if ( disabled.get()) return
+    if (disabled.get()) return
 
     if (
       handleCollectionNavigation(
@@ -249,7 +247,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
         store.getCollection(),
         store.getHighlightedValue,
         store.setHighlightedValue,
-         orientation.get(),
+        orientation.get(),
       )
     )
       return

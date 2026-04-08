@@ -57,11 +57,10 @@ export const ListboxItemPropsDeclaration = defineProps<ListboxItemProps>({
  * @internal
  */
 export function setupListboxItem(host: HostElement, props: Store<ListboxItemProps>) {
-    onMount(host, () => {
+  onMount(host, () => {
     host.role = 'option'
   })
 
-  
   const getStore = ListboxStoreContext.consume(host)
 
   const { rebuildCollection } = setupCollectionItem(host, props, {

@@ -18,14 +18,15 @@ export class ListboxStore {
   constructor(
     getQuery: () => string,
     getFilter: () => ItemFilter | null,
-    getMultiple: () => boolean, 
-    emitSelectionChange: (values: string[]) => void) {
+    getMultiple: () => boolean,
+    emitSelectionChange: (values: string[]) => void,
+  ) {
     this.selectedValues = createSignal<string[]>([])
     this.getQuery = getQuery
     this.getFilter = getFilter
     this.getMultiple = getMultiple
     this.emitSelectionChange = emitSelectionChange
-    
+
     const highlightedValue = createSignal<string | null>(null)
     const collection = createSignal<Collection>(new Collection([]))
 

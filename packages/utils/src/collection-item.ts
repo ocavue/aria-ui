@@ -39,9 +39,8 @@ export function setupCollectionItem(
   props: Store<{ value: string; disabled: boolean }>,
   config: CollectionItemConfig,
 ): { rebuildCollection: () => void } {
-
   useEffect(host, () => {
-    if ( props.value.get()) return
+    if (props.value.get()) return
     const itemValue = getCollectionItemValue(host)
     if (itemValue) props.value.set(itemValue)
   })
