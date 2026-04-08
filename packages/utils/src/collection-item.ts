@@ -26,18 +26,23 @@ export function setupCollectionItem(
   props: Store<{ value: string; disabled: boolean }>,
   config: CollectionItemConfig,
 ): { rebuildCollection: () => void } {
+  const {
+    value: { get: getValue, set: setValue },
+    disabled: { get: getDisabled },
+  } = props
+
   useEffect(host, () => {
-    if (props.value.get()) return
+    if (getValue()) return
     const itemValue = getCollectionItemValue(host)
-    if (itemValue) props.value.set(itemValue)
+    if (itemValue) setValue(itemValue)
   })
 
-  useAriaDisabled(host, () => props.disabled.get())
+  useAriaDisabled(host, getDisabled)
 
   const getIsHighlighted = computed((): boolean => {
     const store = config.getStore()
     if (!store) return false
-    return store.getHighlightedValue() === props.value.get()
+    return store.getHighlightedValue() === getValue()
   })
   useAttribute(host, 'data-highlighted', () => (getIsHighlighted() ? '' : undefined))
 
@@ -60,16 +65,16 @@ export function setupCollectionItem(
   })
 
   useEffect(host, () => {
-    props.value.get()
-    props.disabled.get()
+    getValue()
+    getDisabled()
     rebuildCollection()
   })
 
   useEventListener(host, 'mouseenter', () => {
-    if (props.disabled.get()) return
+    if (getDisabled()) return
     const store = config.getStore()
     if (!store) return
-    store.setHighlightedValue(props.value.get())
+    store.setHighlightedValue(getValue())
   })
 
   return { rebuildCollection }
