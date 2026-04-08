@@ -28,7 +28,7 @@ export function setupListboxEmpty(host: HostElement, _props: Store<ListboxEmptyP
   useEffect(host, () => {
     const store = getStore()
     if (!store) return
-    const hasItems = store.collection.get().size() > 0
+    const hasItems = store.getCollection().size() > 0
     host.style.display = hasItems ? 'none' : ''
   })
 }

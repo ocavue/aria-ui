@@ -1,25 +1,31 @@
 import { createContext, createSignal, type Context, type Signal } from '@aria-ui/core'
-import { Collection } from '@aria-ui/utils'
+import { createCollectionStore, type CollectionStore } from '@aria-ui/utils'
 
 export type ItemFilter = (options: { value: string; query: string }) => boolean
 
-export class ListboxStore {
-  readonly selectedValues: Signal<string[]>
-  readonly highlightedValue: Signal<string | null>
-  readonly multiple: Signal<boolean>
-  readonly query: Signal<string>
-  readonly filter: Signal<ItemFilter | null>
-  readonly emitSelectionChange: (values: string[]) => void
-  readonly collection: Signal<Collection>
+interface ListboxStore extends CollectionStore {
+  selectedValues: Signal<string[]>
+  getQuery: () => string
+  getFilter: () => ItemFilter | null
+  getMultiple: () => boolean
+  emitSelectionChange: (values: string[]) => void
+}
 
-  constructor(emitSelectionChange: (values: string[]) => void) {
-    this.selectedValues = createSignal<string[]>([])
-    this.highlightedValue = createSignal<string | null>(null)
-    this.multiple = createSignal(false)
-    this.query = createSignal('')
-    this.filter = createSignal<ItemFilter | null>(null)
-    this.collection = createSignal(new Collection([]))
-    this.emitSelectionChange = emitSelectionChange
+export function createListboxStore(
+  getQuery: () => string,
+  getFilter: () => ItemFilter | null,
+  getMultiple: () => boolean,
+  emitSelectionChange: (values: string[]) => void,
+): ListboxStore {
+  const selectedValues = createSignal<string[]>([])
+
+  return {
+    ...createCollectionStore(),
+    selectedValues,
+    getQuery,
+    getFilter,
+    getMultiple,
+    emitSelectionChange,
   }
 }
 
