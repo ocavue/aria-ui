@@ -7,14 +7,6 @@ import { getCollectionItemValue } from './collection.ts'
 import { useAttribute } from './use-attribute.ts'
 
 /**
- * @internal
- */
-export interface CollectionItemConfig {
-  // TODO: split it out
-  getStore(): CollectionStore | undefined
-}
-
-/**
  * Shared setup logic for collection items (listbox options, menu items, etc.).
  *
  * Handles: value derivation, aria-disabled, data-highlighted,
