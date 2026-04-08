@@ -10,10 +10,11 @@ export {
   useAriaHasPopup,
   useAriaMultiselectable,
   useAriaOrientation,
-  useAriaSelected,
+  useAriaSelected
 } from './aria.ts'
 export { setupCollectionItem, type CollectionItemStore } from './collection-item.ts'
 export { handleCollectionNavigation } from './collection-navigation.ts'
+export { createCollectionStore, type CollectionStore } from './collection-store.ts'
 export { Collection, getCollectionItemValue } from './collection.ts'
 export { createDelayedToggle, type DelayedToggle } from './delayed-toggle.ts'
 export * as FeatureDetectionInternals from './feature-detection/feature-detection-internals.ts'
