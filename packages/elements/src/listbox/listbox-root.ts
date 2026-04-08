@@ -248,6 +248,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   })
 
   const handleKeydown = (event: KeyboardEvent) => {
+    if (event.isComposing || event.defaultPrevented) return
     if (props.disabled.get()) return
 
     if (
