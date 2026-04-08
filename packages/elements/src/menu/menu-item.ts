@@ -4,17 +4,10 @@ import {
   defineProps,
   onMount,
   registerCustomElement,
-  useEffect,
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import {
-  Collection,
-  getCollectionItemValue,
-  useAriaDisabled,
-  useAttribute,
-  useElementId,
-} from '@aria-ui/utils'
+import { setupCollectionItem, useElementId } from '@aria-ui/utils'
 
 import { SelectEvent } from '../events/index.ts'
 
@@ -72,60 +65,20 @@ export interface MenuItemEvents {
  * @internal
  */
 export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
-  onMount(host, () => {
+    onMount(host, () => {
     host.role = 'menuitem'
   })
 
+  
   useElementId(host)
 
   const getStore = MenuStoreContext.consume(host)
 
-  useEffect(host, () => {
-    const propValue = props.value.get()
-    if (propValue) {
-      return
-    }
-
-    const itemValue = getCollectionItemValue(host)
-    if (itemValue) {
-      props.value.set(itemValue)
-    }
-  })
-
-  useAriaDisabled(host, () => props.disabled.get())
-
-  useAttribute(host, 'data-highlighted', () => {
-    const store = getStore()
-    if (!store) return undefined
-    return store.getHighlightedValue() === props.value.get() ? '' : undefined
-  })
-
-  const rebuildCollection = () => {
-    const store = getStore()
-    if (!store) return
-    const popup = host.closest('[role="menu"]')
-    if (!popup) return
-    const allItems = popup.querySelectorAll<HTMLElement>('[role="menuitem"]')
-    const levelItems = [...allItems].filter((el) => el.closest('[role="menu"]') === popup)
-    store.setCollection(new Collection(levelItems))
-  }
-
-  onMount(host, () => {
-    rebuildCollection()
-    return () => rebuildCollection()
-  })
-
-  useEffect(host, () => {
-    props.value.get()
-    props.disabled.get()
-    rebuildCollection()
-  })
-
-  useEventListener(host, 'mouseenter', () => {
-    if (props.disabled.get()) return
-    const store = getStore()
-    if (!store) return
-    store.setHighlightedValue(props.value.get())
+  setupCollectionItem(host, props, {
+    getStore,
+    containerSelector: '[role="menu"]',
+    itemSelector: '[role="menuitem"]',
+    filterToLevel: true,
   })
 
   useEventListener(host, 'click', () => {

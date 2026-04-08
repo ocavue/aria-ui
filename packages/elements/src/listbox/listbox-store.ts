@@ -30,8 +30,6 @@ export class ListboxStore {
     this.getCollection = collection.get
     this.setCollection = collection.set
   }
-
-  
 }
 
 export const ListboxStoreContext: Context<ListboxStore> =

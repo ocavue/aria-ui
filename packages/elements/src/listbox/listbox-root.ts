@@ -191,25 +191,27 @@ export interface ListboxRootEvents {
  * @internal
  */
 export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProps>) {
+  const { disabled, multiple, query, filter, orientation, autoFocus , values, value } = props
+
   onMount(host, () => {
     host.role = 'listbox'
     host.tabIndex = 0
   })
 
-  const emitSelectionChange = (values: string[]) => {
-    if (props.disabled.get()) return
+  const emitSelectionChange = (selectionValues: string[]) => {
+    if (disabled.get()) return
 
-    if (props.multiple.get()) {
-      const event = new ValuesChangeEvent(values)
+    if (multiple.get()) {
+      const event = new ValuesChangeEvent(selectionValues)
       host.dispatchEvent(event)
       if (event.defaultPrevented) return
-      props.values.set(values)
+      values.set(selectionValues)
     } else {
-      const singleValue = values[0] ?? ''
+      const singleValue = selectionValues[0] ?? ''
       const event = new ValueChangeEvent(singleValue)
       host.dispatchEvent(event)
       if (event.defaultPrevented) return
-      props.value.set(singleValue)
+      value.set(singleValue)
     }
   }
 
@@ -217,29 +219,29 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   ListboxStoreContext.provide(host, store)
 
   useEffect(host, () => {
-    if (props.multiple.get()) {
-      store.selectedValues.set(props.values.get())
+    if (multiple.get()) {
+      store.selectedValues.set(values.get())
     } else {
-      const v = props.value.get()
+      const v = value.get()
       store.selectedValues.set(v ? [v] : [])
     }
   })
 
   useEffect(host, () => {
-    store.multiple.set(props.multiple.get())
+    store.multiple.set(multiple.get())
   })
 
   useEffect(host, () => {
-    store.query.set(props.query.get())
+    store.query.set(query.get())
   })
 
   useEffect(host, () => {
-    store.filter.set(props.filter.get())
+    store.filter.set(filter.get())
   })
 
-  useAriaMultiselectable(host, () => props.multiple.get())
-  useAriaOrientation(host, () => props.orientation.get())
-  useAriaDisabled(host, () => props.disabled.get())
+  useAriaMultiselectable(host, multiple.get)
+  useAriaOrientation(host, orientation.get)
+  useAriaDisabled(host, disabled.get)
   useAriaActivedescendant(host, () => {
     const highlightedValue = store.getHighlightedValue()
     if (highlightedValue == null) return undefined
@@ -249,7 +251,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 
   const handleKeydown = (event: KeyboardEvent) => {
     if (event.isComposing || event.defaultPrevented) return
-    if (props.disabled.get()) return
+    if ( disabled.get()) return
 
     if (
       handleCollectionNavigation(
@@ -257,7 +259,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
         store.getCollection(),
         store.getHighlightedValue,
         store.setHighlightedValue,
-        props.orientation.get(),
+         orientation.get(),
       )
     )
       return
@@ -297,15 +299,15 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   })
 
   onMount(host, () => {
-    if (props.autoFocus.get()) {
+    if (autoFocus.get()) {
       const collection = store.getCollection()
       store.setHighlightedValue(collection.first())
     }
   })
 
   useEffect(host, () => {
-    props.query.get()
-    if (!props.autoFocus.get()) return
+    query.get()
+    if (!autoFocus.get()) return
     const collection = store.getCollection()
     store.setHighlightedValue(collection.first())
   })

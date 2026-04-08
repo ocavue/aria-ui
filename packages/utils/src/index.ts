@@ -12,6 +12,7 @@ export {
   useAriaOrientation,
   useAriaSelected,
 } from './aria.ts'
+export { setupCollectionItem, type CollectionItemStore } from './collection-item.ts'
 export { handleCollectionNavigation } from './collection-navigation.ts'
 export { Collection, getCollectionItemValue } from './collection.ts'
 export { createDelayedToggle, type DelayedToggle } from './delayed-toggle.ts'

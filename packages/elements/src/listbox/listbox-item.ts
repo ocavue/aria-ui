@@ -1,6 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
 import {
-  computed,
   defineCustomElement,
   defineProps,
   onMount,
@@ -9,13 +8,7 @@ import {
   useEventListener,
   type Store,
 } from '@aria-ui/core'
-import {
-  Collection,
-  useAriaDisabled,
-  useAriaSelected,
-  useAttribute,
-  getCollectionItemValue,
-} from '@aria-ui/utils'
+import { setupCollectionItem, useAriaSelected } from '@aria-ui/utils'
 
 import { SelectEvent } from '../events/index.ts'
 
@@ -64,25 +57,20 @@ export const ListboxItemPropsDeclaration = defineProps<ListboxItemProps>({
  * @internal
  */
 export function setupListboxItem(host: HostElement, props: Store<ListboxItemProps>) {
-  onMount(host, () => {
+    onMount(host, () => {
     host.role = 'option'
   })
 
+  
   const getStore = ListboxStoreContext.consume(host)
 
-  useEffect(host, () => {
-    const propValue = props.value.get()
-    if (propValue) {
-      return
-    }
-
-    const itemValue = getCollectionItemValue(host)
-    if (itemValue) {
-      props.value.set(itemValue)
-    }
+  const { rebuildCollection } = setupCollectionItem(host, props, {
+    getStore,
+    containerSelector: '[role="listbox"]',
+    itemSelector: '[role="option"]:not([hidden])',
+    filterToLevel: false,
   })
 
-  useAriaDisabled(host, () => props.disabled.get())
   useAriaSelected(host, () => {
     const store = getStore()
     if (!store) return false
@@ -104,36 +92,12 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     }
   })
 
-  const rebuildCollection = () => {
-    const store = getStore()
-    if (!store) return
-    const root = host.closest('[role="listbox"]')
-    if (!root) return
-    const itemElements = root.querySelectorAll<HTMLElement>('[role="option"]:not([hidden])')
-    store.setCollection(new Collection(itemElements))
-  }
-
-  onMount(host, () => {
-    rebuildCollection()
-    return () => rebuildCollection()
-  })
-
   useEffect(host, () => {
-    props.value.get()
-    props.disabled.get()
     const store = getStore()
     store?.query.get()
     store?.filter.get()
     rebuildCollection()
   })
-
-  const getIsHighlighted = computed((): boolean => {
-    const store = getStore()
-    if (!store) return false
-    const value = props.value.get()
-    return store.getHighlightedValue() === value
-  })
-  useAttribute(host, 'data-highlighted', () => (getIsHighlighted() ? '' : undefined))
 
   useEventListener(host, 'click', () => {
     if (props.disabled.get()) return
@@ -147,13 +111,6 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
     store.emitSelectionChange(next)
     host.dispatchEvent(new SelectEvent())
-  })
-
-  useEventListener(host, 'mouseenter', () => {
-    if (props.disabled.get()) return
-    const store = getStore()
-    if (!store) return
-    store.setHighlightedValue(props.value.get())
   })
 }
 
