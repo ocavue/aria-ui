@@ -16,7 +16,7 @@ import {
   useAriaOrientation,
 } from '@aria-ui/utils'
 
-import { ListboxStore, ListboxStoreContext, type ItemFilter } from './listbox-store.ts'
+import { createListboxStore, ListboxStoreContext, type ItemFilter } from './listbox-store.ts'
 
 export type { ItemFilter }
 
@@ -215,7 +215,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     }
   }
 
-  const store = new ListboxStore(query.get, filter.get, multiple.get, emitSelectionChange)
+  const store = createListboxStore(query.get, filter.get, multiple.get, emitSelectionChange)
   ListboxStoreContext.provide(host, store)
 
   useEffect(host, () => {
