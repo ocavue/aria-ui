@@ -73,12 +73,7 @@ export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
 
   const getStore = MenuStoreContext.consume(host)
 
-  setupCollectionItem(host, props, {
-    getStore,
-    containerSelector: '[role="menu"]',
-    itemSelector: '[role="menuitem"]',
-    filterToLevel: true,
-  })
+  setupCollectionItem(host, props, getStore)
 
   useEventListener(host, 'click', () => {
     if (props.disabled.get()) return

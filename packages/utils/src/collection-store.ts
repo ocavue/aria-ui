@@ -1,6 +1,8 @@
 import { createSignal } from '@aria-ui/core'
+import { getId } from '@ocavue/utils'
 
 import { Collection } from './collection.ts'
+import { sortElements } from './sort-elements.ts'
 
 /**
  * @internal
@@ -9,7 +11,9 @@ export interface CollectionStore {
   getHighlightedValue: () => string | null
   setHighlightedValue: (value: string | null) => void
   getCollection: () => Collection
-  setCollection: (value: Collection) => void
+  registerItem: (element: HTMLElement) => void
+  unregisterItem: (element: HTMLElement) => void
+  markDirty: () => void
 }
 
 /**
@@ -17,17 +21,47 @@ export interface CollectionStore {
  */
 export function createCollectionStore(): CollectionStore {
   const highlightedValue = createSignal<string | null>(null)
-  const collection = createSignal<Collection>(new Collection([]))
+  const version = createSignal(0)
+  const items = new Set<HTMLElement>()
+  let dirty = true
+  let cached = new Collection([])
+  let pendingNotify = false
 
-  const getHighlightedValue = highlightedValue.get
-  const setHighlightedValue = highlightedValue.set
-  const getCollection = collection.get
-  const setCollection = collection.set
+  const notify = () => {
+    dirty = true
+    if (!pendingNotify) {
+      pendingNotify = true
+      queueMicrotask(() => {
+        pendingNotify = false
+        version.set(getId())
+      })
+    }
+  }
+
+  const getCollection = (): Collection => {
+    version.get() // track reactive dependency
+    if (dirty) {
+      dirty = false
+      const sorted = sortElements(items)
+      cached = new Collection(sorted)
+    }
+    return cached
+  }
 
   return {
-    getHighlightedValue,
-    setHighlightedValue,
+    getHighlightedValue: highlightedValue.get,
+    setHighlightedValue: highlightedValue.set,
     getCollection,
-    setCollection,
+    registerItem: (element) => {
+      if (items.has(element)) return
+      items.add(element)
+      notify()
+    },
+    unregisterItem: (element) => {
+      if (!items.has(element)) return
+      items.delete(element)
+      notify()
+    },
+    markDirty: notify,
   }
 }

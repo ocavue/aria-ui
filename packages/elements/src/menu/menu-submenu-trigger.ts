@@ -60,12 +60,7 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubm
   const getParentStore = () => getMenuStore()?.getParentStore()
   const getOverlayStore = () => getMenuStore()?.overlayStore
 
-  setupCollectionItem(host, props, {
-    getStore: getParentStore,
-    containerSelector: '[role="menu"]',
-    itemSelector: '[role="menuitem"]',
-    filterToLevel: true,
-  })
+  setupCollectionItem(host, props, getParentStore)
 
   useEffect(host, () => {
     getMenuStore()?.overlayStore.setAnchorElement(host)
