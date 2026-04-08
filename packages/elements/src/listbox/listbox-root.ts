@@ -241,9 +241,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   useAriaOrientation(host, () => props.orientation.get())
   useAriaDisabled(host, () => props.disabled.get())
   useAriaActivedescendant(host, () => {
-    const highlightedValue = store.highlightedValue.get()
+    const highlightedValue = store.getHighlightedValue()
     if (highlightedValue == null) return undefined
-    const element = store.collection.get().getElement(highlightedValue)
+    const element = store.getCollection().getElement(highlightedValue)
     return element?.id
   })
 
@@ -254,9 +254,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     if (
       handleCollectionNavigation(
         event,
-        store.collection.get(),
-        store.highlightedValue.get,
-        store.highlightedValue.set,
+        store.getCollection(),
+        store.getHighlightedValue,
+        store.setHighlightedValue,
         props.orientation.get(),
       )
     )
@@ -265,9 +265,9 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     switch (event.key) {
       case ' ':
       case 'Enter': {
-        const currentValue = store.highlightedValue.get()
+        const currentValue = store.getHighlightedValue()
         if (currentValue == null) return
-        const currentItem = store.collection.get().getElement(currentValue)
+        const currentItem = store.getCollection().getElement(currentValue)
         if (currentItem == null) return
         event.preventDefault()
         currentItem.click()
@@ -288,26 +288,26 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
   })
 
   useEventListener(host, 'focus', () => {
-    if (store.highlightedValue.get() != null) return
-    const collection = store.collection.get()
+    if (store.getHighlightedValue() != null) return
+    const collection = store.getCollection()
     if (collection.size() === 0) return
     const selectedValues = store.selectedValues.get()
     const firstSelected = selectedValues.find((v) => collection.getElement(v) != null)
-    store.highlightedValue.set(firstSelected ?? collection.first())
+    store.setHighlightedValue(firstSelected ?? collection.first())
   })
 
   onMount(host, () => {
     if (props.autoFocus.get()) {
-      const collection = store.collection.get()
-      store.highlightedValue.set(collection.first())
+      const collection = store.getCollection()
+      store.setHighlightedValue(collection.first())
     }
   })
 
   useEffect(host, () => {
     props.query.get()
     if (!props.autoFocus.get()) return
-    const collection = store.collection.get()
-    store.highlightedValue.set(collection.first())
+    const collection = store.getCollection()
+    store.setHighlightedValue(collection.first())
   })
 }
 

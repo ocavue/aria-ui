@@ -110,7 +110,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     const root = host.closest('[role="listbox"]')
     if (!root) return
     const itemElements = root.querySelectorAll<HTMLElement>('[role="option"]:not([hidden])')
-    store.collection.set(new Collection(itemElements))
+    store.setCollection(new Collection(itemElements))
   }
 
   onMount(host, () => {
@@ -131,7 +131,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     const store = getStore()
     if (!store) return false
     const value = props.value.get()
-    return store.highlightedValue.get() === value
+    return store.getHighlightedValue() === value
   })
   useAttribute(host, 'data-highlighted', () => (getIsHighlighted() ? '' : undefined))
 
@@ -141,7 +141,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     if (!store) return
 
     const value = props.value.get()
-    store.highlightedValue.set(value)
+    store.setHighlightedValue(value)
 
     const current = store.selectedValues.get()
     const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
@@ -153,7 +153,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     if (props.disabled.get()) return
     const store = getStore()
     if (!store) return
-    store.highlightedValue.set(props.value.get())
+    store.setHighlightedValue(props.value.get())
   })
 }
 

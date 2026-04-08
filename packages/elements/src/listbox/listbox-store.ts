@@ -5,22 +5,33 @@ export type ItemFilter = (options: { value: string; query: string }) => boolean
 
 export class ListboxStore {
   readonly selectedValues: Signal<string[]>
-  readonly highlightedValue: Signal<string | null>
   readonly multiple: Signal<boolean>
   readonly query: Signal<string>
   readonly filter: Signal<ItemFilter | null>
   readonly emitSelectionChange: (values: string[]) => void
-  readonly collection: Signal<Collection>
+
+  getHighlightedValue: () => string | null
+  setHighlightedValue: (value: string | null) => void
+  getCollection: () => Collection
+  setCollection: (collection: Collection) => void
 
   constructor(emitSelectionChange: (values: string[]) => void) {
     this.selectedValues = createSignal<string[]>([])
-    this.highlightedValue = createSignal<string | null>(null)
     this.multiple = createSignal(false)
     this.query = createSignal('')
     this.filter = createSignal<ItemFilter | null>(null)
-    this.collection = createSignal(new Collection([]))
     this.emitSelectionChange = emitSelectionChange
+    
+    const highlightedValue = createSignal<string | null>(null)
+    const collection = createSignal<Collection>(new Collection([]))
+
+    this.getHighlightedValue = highlightedValue.get
+    this.setHighlightedValue = highlightedValue.set
+    this.getCollection = collection.get
+    this.setCollection = collection.set
   }
+
+  
 }
 
 export const ListboxStoreContext: Context<ListboxStore> =
