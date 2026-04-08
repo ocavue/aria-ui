@@ -81,8 +81,8 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
     const store = getStore()
     if (!store) return
 
-    const query = store.query.get()
-    const filter = store.filter.get()
+    const query = store.getQuery()
+    const filter = store.getFilter()
 
     if (filter == null) {
       host.hidden = false
@@ -94,8 +94,9 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
 
   useEffect(host, () => {
     const store = getStore()
-    store?.query.get()
-    store?.filter.get()
+    if (!store) return
+    store.getQuery()
+    store.getFilter()
     rebuildCollection()
   })
 

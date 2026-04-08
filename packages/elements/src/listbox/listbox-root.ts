@@ -215,7 +215,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     }
   }
 
-  const store = new ListboxStore(emitSelectionChange)
+  const store = new ListboxStore(query.get, filter.get, multiple.get, emitSelectionChange)
   ListboxStoreContext.provide(host, store)
 
   useEffect(host, () => {
@@ -227,17 +227,7 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
     }
   })
 
-  useEffect(host, () => {
-    store.multiple.set(multiple.get())
-  })
 
-  useEffect(host, () => {
-    store.query.set(query.get())
-  })
-
-  useEffect(host, () => {
-    store.filter.set(filter.get())
-  })
 
   useAriaMultiselectable(host, multiple.get)
   useAriaOrientation(host, orientation.get)
