@@ -6,10 +6,7 @@ import type { CollectionStore } from './collection-store.ts'
 import { Collection, getCollectionItemValue } from './collection.ts'
 import { useAttribute } from './use-attribute.ts'
 
-/**
- * @internal
- */
-export interface CollectionItemConfig {
+interface CollectionItemConfig {
   getStore(): CollectionStore | undefined
   containerSelector: string
   itemSelector: string

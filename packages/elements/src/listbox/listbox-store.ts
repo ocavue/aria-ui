@@ -3,7 +3,7 @@ import { createCollectionStore, type CollectionStore } from '@aria-ui/utils'
 
 export type ItemFilter = (options: { value: string; query: string }) => boolean
 
-export interface ListboxStore extends CollectionStore {
+interface ListboxStore extends CollectionStore {
   selectedValues: Signal<string[]>
   getQuery: () => string
   getFilter: () => ItemFilter | null
