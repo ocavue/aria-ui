@@ -21,7 +21,7 @@ export interface CollectionStore {
  */
 export function createCollectionStore(): CollectionStore {
   const highlightedValue = createSignal<string | null>(null)
-  const version = createSignal(0)
+  const version = createSignal(getId())
   const items = new Set<HTMLElement>()
   let dirty = true
   let cached = new Collection([])
