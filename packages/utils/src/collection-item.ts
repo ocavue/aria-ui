@@ -18,6 +18,7 @@ export function setupCollectionItem(
   host: HostElement,
   props: Store<{ value: string; disabled: boolean }>,
   getStore: () => CollectionStore | undefined,
+  shouldRegisterItem?: (element: HTMLElement) => boolean,
 ): void {
   const {
     value: { get: getValue, set: setValue },
@@ -42,6 +43,7 @@ export function setupCollectionItem(
   useEffect(host, () => {
     const store = getStore()
     if (!store) return
+    if (shouldRegisterItem && shouldRegisterItem(host) === false) return 
     store.registerItem(host)
     return () => store.unregisterItem(host)
   })

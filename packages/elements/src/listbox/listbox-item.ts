@@ -1,5 +1,6 @@
 import type { HostElement } from '@aria-ui/core'
 import {
+  computed,
   defineCustomElement,
   defineProps,
   onMount,
@@ -63,7 +64,18 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
 
   const getStore = ListboxStoreContext.consume(host)
 
-  setupCollectionItem(host, props, getStore)
+  const getVisible = computed(() => {
+    const store = getStore()
+    if (!store) return true
+
+    const query = store.getQuery()
+    const filter = store.getFilter()
+
+    const value = props.value.get()
+    return filter ? filter({ value, query }) : true
+  })
+
+  setupCollectionItem(host, props, getStore, getVisible)
 
   useAriaSelected(host, () => {
     const store = getStore()
@@ -72,20 +84,7 @@ export function setupListboxItem(host: HostElement, props: Store<ListboxItemProp
   })
 
   useEffect(host, () => {
-    const store = getStore()
-    if (!store) return
-
-    const query = store.getQuery()
-    const filter = store.getFilter()
-
-    const value = props.value.get()
-    const visible = filter ? filter({ value, query }) : true
-    host.hidden = !visible
-    if (visible) {
-      store.registerItem(host)
-    } else {
-      store.unregisterItem(host)
-    }
+    host.hidden = !getVisible()
   })
 
   useEventListener(host, 'click', () => {
