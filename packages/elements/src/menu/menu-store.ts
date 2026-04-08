@@ -1,5 +1,5 @@
 import { createContext, type Context } from '@aria-ui/core'
-import {  createCollectionStore, type CollectionStore } from '@aria-ui/utils'
+import { createCollectionStore, type CollectionStore } from '@aria-ui/utils'
 
 import type { OverlayStore } from '../overlay/overlay-store.ts'
 
@@ -9,7 +9,6 @@ import type { OverlayStore } from '../overlay/overlay-store.ts'
 export interface MenuStore extends CollectionStore {
   overlayStore: OverlayStore
   getParentStore(): MenuStore | undefined
-  
 }
 
 /**
@@ -23,7 +22,6 @@ export function createMenuStore(
     ...createCollectionStore(),
     overlayStore,
     getParentStore: getParentStore || (() => undefined),
-    
   }
 }
 

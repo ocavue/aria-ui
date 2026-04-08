@@ -2,25 +2,15 @@ import type { HostElement, Store } from '@aria-ui/core'
 import { computed, onMount, useEffect, useEventListener } from '@aria-ui/core'
 
 import { useAriaDisabled } from './aria.ts'
+import type { CollectionStore } from './collection-store.ts'
 import { Collection, getCollectionItemValue } from './collection.ts'
 import { useAttribute } from './use-attribute.ts'
-
-/**
- * The minimal store interface required by {@link setupCollectionItem}.
- *
- * @internal
- */
-export interface CollectionItemStore {
-  getHighlightedValue(): string | null
-  setHighlightedValue(value: string | null): void
-  setCollection(collection: Collection): void
-}
 
 /**
  * @internal
  */
 export interface CollectionItemConfig {
-  getStore(): CollectionItemStore | undefined
+  getStore(): CollectionStore | undefined
   containerSelector: string
   itemSelector: string
   filterToLevel: boolean

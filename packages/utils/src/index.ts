@@ -10,9 +10,9 @@ export {
   useAriaHasPopup,
   useAriaMultiselectable,
   useAriaOrientation,
-  useAriaSelected
+  useAriaSelected,
 } from './aria.ts'
-export { setupCollectionItem, type CollectionItemStore } from './collection-item.ts'
+export { setupCollectionItem } from './collection-item.ts'
 export { handleCollectionNavigation } from './collection-navigation.ts'
 export { createCollectionStore, type CollectionStore } from './collection-store.ts'
 export { Collection, getCollectionItemValue } from './collection.ts'

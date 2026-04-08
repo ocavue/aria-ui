@@ -1,5 +1,5 @@
-import { createContext, createSignal, type Context, type Signal } from '@aria-ui/core';
-import { createCollectionStore, type CollectionStore } from '@aria-ui/utils';
+import { createContext, createSignal, type Context, type Signal } from '@aria-ui/core'
+import { createCollectionStore, type CollectionStore } from '@aria-ui/utils'
 
 export type ItemFilter = (options: { value: string; query: string }) => boolean
 
@@ -9,7 +9,6 @@ export interface ListboxStore extends CollectionStore {
   getFilter: () => ItemFilter | null
   getMultiple: () => boolean
   emitSelectionChange: (values: string[]) => void
-
 }
 
 export function createListboxStore(
@@ -20,7 +19,6 @@ export function createListboxStore(
 ): ListboxStore {
   const selectedValues = createSignal<string[]>([])
 
- 
   return {
     ...createCollectionStore(),
     selectedValues,
@@ -28,7 +26,6 @@ export function createListboxStore(
     getFilter,
     getMultiple,
     emitSelectionChange,
-    
   }
 }
 
