@@ -43,7 +43,7 @@ export function setupCollectionItem(
   useEffect(host, () => {
     const store = getStore()
     if (!store) return
-    if (shouldRegisterItem && shouldRegisterItem(host) === false) return 
+    if (shouldRegisterItem && shouldRegisterItem(host) === false) return
     store.registerItem(host)
     return () => store.unregisterItem(host)
   })
