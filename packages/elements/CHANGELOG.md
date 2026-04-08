@@ -1,5 +1,13 @@
 # @aria-ui/elements
 
+## 0.0.108
+
+### Patch Changes
+
+- b93997e: Reuse shared collection logic.
+- Updated dependencies [b93997e]
+  - @aria-ui/utils@0.0.108
+
 ## 0.0.107
 
 ### Patch Changes
