@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.0.110
+
+### Patch Changes
+
+- 7856c9c: Listbox now clears the highlighted value when disabled.
+
 ## 0.0.109
 
 ### Patch Changes
