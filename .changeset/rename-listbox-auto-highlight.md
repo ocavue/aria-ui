@@ -1,5 +1,5 @@
 ---
-"@aria-ui/elements": minor
+"@aria-ui/elements": patch
 ---
 
 Rename listbox `autoFocus` prop to `autoHighlight`.
