@@ -295,20 +295,20 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
   })
 
   useEffect(host, () => {
-    if (!autoHighlight.get()) {
-      // When auto-highlight is turned off, clear any previously highlighted
-      // value so that consumers using `autoHighlight` as an "active" gate (e.g.
-      // hidden popups) don't leave a stale `aria-activedescendant` /
-      // `data-highlighted` behind.
-      //
-      // Reading `query` is intentionally skipped in this branch so the effect
-      // does not re-run on query changes while auto-highlight is off.
-      store.setHighlightedValue(undefined)
-      return
+    // TODO: add a comment about this logic 
+    if (disabled.get()) {
+        store.setHighlightedValue(undefined)
+        return
     }
-    query.get()
-    const collection = store.getCollection()
-    store.setHighlightedValue(collection.first())
+  })
+
+  useEffect(host, () => {
+    if (autoHighlight.get() || !disabled.get()) {
+      // TODO: add a comment about why we want to track `query` changes
+      query.get()
+      const collection = store.getCollection()
+      store.setHighlightedValue(collection.first())
+    }
   })
 }
 
