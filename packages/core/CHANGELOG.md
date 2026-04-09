@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.0.105
+
+### Patch Changes
+
+- 4747d43: Rename store to state.
+
 ## 0.0.104
 
 ### Patch Changes

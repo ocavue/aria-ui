@@ -1,5 +1,14 @@
 # @aria-ui/elements
 
+## 0.0.109
+
+### Patch Changes
+
+- 0d10882: Rename listbox `autoFocus` prop to `autoHighlight`.
+- Updated dependencies [4747d43]
+  - @aria-ui/core@0.0.105
+  - @aria-ui/utils@0.0.109
+
 ## 0.0.108
 
 ### Patch Changes
