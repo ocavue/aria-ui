@@ -6,8 +6,8 @@ import type { Collection } from './collection.ts'
 export function handleCollectionNavigation(
   event: KeyboardEvent,
   collection: Collection,
-  getHighlightedValue: () => string | null,
-  setHighlightedValue: (value: string | null) => void,
+  getHighlightedValue: () => string | undefined,
+  setHighlightedValue: (value: string | undefined) => void,
   orientation: 'vertical' | 'horizontal' = 'vertical',
   stopPropagation = false,
 ): boolean {
@@ -16,7 +16,7 @@ export function handleCollectionNavigation(
   const nextKey = orientation === 'vertical' ? 'ArrowDown' : 'ArrowRight'
   const prevKey = orientation === 'vertical' ? 'ArrowUp' : 'ArrowLeft'
 
-  let nextValue: string | null = null
+  let nextValue: string | undefined
 
   switch (event.key) {
     case nextKey:
