@@ -195,6 +195,14 @@ export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProp
 
   onMount(host, () => {
     host.role = 'listbox'
+    // Include the listbox in the page tab sequence. DOM focus stays on the
+    // listbox container while `aria-activedescendant` tracks the highlighted
+    // option (see `useAriaActivedescendant` below).
+    //
+    // Per WAI-ARIA APG Listbox pattern:
+    //   tabindex="0" — "Includes the listbox in the page tab sequence."
+    //   aria-activedescendant — "DOM focus remains on the listbox element."
+    // https://www.w3.org/WAI/ARIA/apg/patterns/listbox/examples/listbox-scrollable/
     host.tabIndex = 0
   })
 

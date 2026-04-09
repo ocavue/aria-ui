@@ -56,7 +56,17 @@ export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) 
 
   onMount(host, () => {
     host.role = 'menu'
-    host.tabIndex = 0
+    // Make the menu programmatically focusable (so `host.focus()` below works
+    // when the popup opens) but keep it OUT of the page tab sequence. A menu
+    // popup is a transient overlay opened from a trigger button; pressing Tab
+    // while focus is in the menu should close it and move focus to the next
+    // focusable element on the page, not land on the menu container itself.
+    //
+    // Per WAI-ARIA APG Menu Button pattern, focus moves to the menu when it
+    // opens and returns to the trigger when it closes — the menu is never a
+    // standalone tab stop.
+    // https://www.w3.org/WAI/ARIA/apg/patterns/menu-button/
+    host.tabIndex = -1
   })
 
   setupOverlayPopup(host, getOverlayStore)
