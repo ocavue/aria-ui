@@ -5,7 +5,7 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 
 import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
@@ -41,7 +41,7 @@ export interface MenuSubmenuRootEvents {
 /**
  * @internal
  */
-export function setupMenuSubmenuRoot(host: HostElement, props: Store<MenuSubmenuRootProps>) {
+export function setupMenuSubmenuRoot(host: HostElement, props: State<MenuSubmenuRootProps>) {
   const getParentStore = MenuStoreContext.consume(host)
   const overlayStore = createOverlayStore(
     props.open.get,

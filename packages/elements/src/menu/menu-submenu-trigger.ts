@@ -6,7 +6,7 @@ import {
   registerCustomElement,
   useEffect,
   useEventListener,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import { setupCollectionItem, useElementId } from '@aria-ui/utils'
 
@@ -48,7 +48,7 @@ export const MenuSubmenuTriggerPropsDeclaration =
 /**
  * @internal
  */
-export function setupMenuSubmenuTrigger(host: HostElement, props: Store<MenuSubmenuTriggerProps>) {
+export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubmenuTriggerProps>) {
   onMount(host, () => {
     host.role = 'menuitem'
     setAriaHasPopup(host, 'menu')

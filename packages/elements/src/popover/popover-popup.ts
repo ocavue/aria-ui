@@ -1,4 +1,4 @@
-import type { HostElement, Store } from '@aria-ui/core'
+import type { HostElement, State } from '@aria-ui/core'
 import { defineCustomElement, onMount, registerCustomElement } from '@aria-ui/core'
 
 import {
@@ -22,7 +22,7 @@ export const PopoverPopupPropsDeclaration = OverlayPopupPropsDeclaration
 /**
  * @internal
  */
-export function setupPopoverPopup(host: HostElement, _props: Store<PopoverPopupProps>) {
+export function setupPopoverPopup(host: HostElement, _props: State<PopoverPopupProps>) {
   const getStore: () => PopoverStore | undefined = PopoverStoreContext.consume(host)
   setupOverlayPopup(host, getStore)
 

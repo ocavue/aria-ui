@@ -6,7 +6,7 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import {
   getAriaHasPopup,
@@ -45,7 +45,7 @@ export const MenuPopupPropsDeclaration =
 /**
  * @internal
  */
-export function setupMenuPopup(host: HostElement, props: Store<MenuPopupProps>) {
+export function setupMenuPopup(host: HostElement, props: State<MenuPopupProps>) {
   const getMenuStore = MenuStoreContext.consume(host)
   const getOverlayStore = computed(() => getMenuStore()?.overlayStore)
   const id = useElementId(host)

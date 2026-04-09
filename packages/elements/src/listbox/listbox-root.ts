@@ -6,7 +6,7 @@ import {
   registerCustomElement,
   useEffect,
   useEventListener,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import {
   handleCollectionNavigation,
@@ -190,7 +190,7 @@ export interface ListboxRootEvents {
 /**
  * @internal
  */
-export function setupListboxRoot(host: HostElement, props: Store<ListboxRootProps>) {
+export function setupListboxRoot(host: HostElement, props: State<ListboxRootProps>) {
   const { disabled, multiple, query, filter, orientation, autoFocus, values, value } = props
 
   onMount(host, () => {

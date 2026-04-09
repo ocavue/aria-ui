@@ -5,7 +5,7 @@ import {
   defineProps,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import { createDelayedToggle, useAriaDescribedBy, useAriaDisabled } from '@aria-ui/utils'
 
@@ -60,7 +60,7 @@ export const TooltipTriggerPropsDeclaration =
 /**
  * @internal
  */
-export function setupTooltipTrigger(host: HostElement, props: Store<TooltipTriggerProps>) {
+export function setupTooltipTrigger(host: HostElement, props: State<TooltipTriggerProps>) {
   const getDisabled = props.disabled.get
   const getStore = TooltipStoreContext.consume(host)
   const getOpen = computed(() => getStore()?.getIsOpen())
