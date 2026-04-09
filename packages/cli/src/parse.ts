@@ -20,7 +20,7 @@ export interface EventInfo {
   /** JSDoc comment describing the event */
   comment: string
   /** The type name of the event (e.g., "OpenChangeEvent") */
-  typeName: string | null
+  typeName: string | undefined
 }
 
 /**
@@ -253,7 +253,7 @@ function extractInterfaceProperties(interfaceDecl: InterfaceDeclaration): Array<
 
     // Extract type name from the type node
     const typeNode = propSignature.getTypeNode()
-    const typeName = typeNode?.getText() || null
+    const typeName = typeNode?.getText()
 
     result.push({ name, comment, typeName })
   }

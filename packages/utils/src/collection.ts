@@ -49,7 +49,7 @@ export class Collection {
     return this._items.length
   }
 
-  private _find(startIndex: number, dir: 1 | -1): string | null {
+  private _find(startIndex: number, dir: 1 | -1): string | undefined {
     let index = startIndex
     const n = this._items.length
 
@@ -69,47 +69,47 @@ export class Collection {
 
       index += dir
     }
-    return null
+    return undefined
   }
 
-  first(): string | null {
+  first(): string | undefined {
     return this._find(0, +1)
   }
 
-  last(): string | null {
+  last(): string | undefined {
     return this._find(this.size() - 1, -1)
   }
 
-  next(value: string | null): string | null {
-    if (value == null) {
+  next(value: string | undefined): string | undefined {
+    if (value === undefined) {
       return this.first()
     }
 
     const index = this._indexes.get(value)
-    if (index == null) {
+    if (index === undefined) {
       return this.first()
     }
 
     return this._find(index + 1, +1)
   }
 
-  prev(value: string | null): string | null {
-    if (value == null) {
+  prev(value: string | undefined): string | undefined {
+    if (value === undefined) {
       return this.last()
     }
 
     const index = this._indexes.get(value)
-    if (index == null) {
+    if (index === undefined) {
       return this.last()
     }
 
     return this._find(index - 1, -1)
   }
 
-  getElement(value: string): HTMLElement | null {
+  getElement(value: string): HTMLElement | undefined {
     const index = this._indexes.get(value)
-    if (index == null) return null
-    return this._items[index] ?? null
+    if (index === undefined) return undefined
+    return this._items[index]
   }
 
   getValues(): string[] {

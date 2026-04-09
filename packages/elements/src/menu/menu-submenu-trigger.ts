@@ -73,17 +73,17 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubm
     host.setAttribute('aria-expanded', String(open))
   })
 
-  let openTimer: ReturnType<typeof setTimeout> | null = null
-  let closeTimer: ReturnType<typeof setTimeout> | null = null
+  let openTimer: ReturnType<typeof setTimeout> | undefined
+  let closeTimer: ReturnType<typeof setTimeout> | undefined
 
   const clearTimers = () => {
     if (openTimer) {
       clearTimeout(openTimer)
-      openTimer = null
+      openTimer = undefined
     }
     if (closeTimer) {
       clearTimeout(closeTimer)
-      closeTimer = null
+      closeTimer = undefined
     }
   }
 

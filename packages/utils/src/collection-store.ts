@@ -8,8 +8,8 @@ import { sortElements } from './sort-elements.ts'
  * @internal
  */
 export interface CollectionStore {
-  getHighlightedValue: () => string | null
-  setHighlightedValue: (value: string | null) => void
+  getHighlightedValue: () => string | undefined
+  setHighlightedValue: (value: string | undefined) => void
   getCollection: () => Collection
   registerItem: (element: HTMLElement) => void
   unregisterItem: (element: HTMLElement) => void
@@ -20,7 +20,7 @@ export interface CollectionStore {
  * @internal
  */
 export function createCollectionStore(): CollectionStore {
-  const highlightedValue = createSignal<string | null>(null)
+  const highlightedValue = createSignal<string | undefined>(undefined)
   const version = createSignal(getId())
   const items = new Set<HTMLElement>()
   let dirty = true

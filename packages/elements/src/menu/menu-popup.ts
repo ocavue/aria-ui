@@ -94,7 +94,7 @@ export function setupMenuPopup(host: HostElement, props: State<MenuPopupProps>) 
       })
       return () => cancelAnimationFrame(id)
     } else {
-      menuStore.setHighlightedValue(null)
+      menuStore.setHighlightedValue(undefined)
     }
   })
 
@@ -225,14 +225,14 @@ export function setupMenuPopup(host: HostElement, props: State<MenuPopupProps>) 
 }
 
 let typeaheadBuffer = ''
-let typeaheadTimer: ReturnType<typeof setTimeout> | null = null
+let typeaheadTimer: ReturnType<typeof setTimeout> | undefined
 const TYPEAHEAD_TIMEOUT = 500
 
 function resetTypeahead() {
   typeaheadBuffer = ''
   if (typeaheadTimer) {
     clearTimeout(typeaheadTimer)
-    typeaheadTimer = null
+    typeaheadTimer = undefined
   }
 }
 
