@@ -6,7 +6,7 @@ import {
 import type { AnyProps, PropDeclaration, PropsDeclaration } from './define-props.ts'
 import { HostElement } from './host-element.ts'
 import type { Signal } from './signal.ts'
-import { createStore, type State } from './store.ts'
+import { createState, type State } from './store.ts'
 
 /**
  * @internal
@@ -30,7 +30,7 @@ export function defineCustomElement<Props extends AnyProps = object>(
 
     constructor() {
       super()
-      this._store = createStore(props)
+      this._store = createState(props)
       setup(this, this._store)
       if (hasAttributes) {
         usePropertiesToAttributes(this, this._store, props)

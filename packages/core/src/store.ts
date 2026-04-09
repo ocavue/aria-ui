@@ -2,7 +2,7 @@ import type { AnyProps, PropsDeclaration } from './define-props.ts'
 import { createSignal, type Signal } from './signal.ts'
 
 /**
- * A collection of signals.
+ * A state is simply a collection of signals.
  *
  * @public
  */
@@ -13,7 +13,7 @@ export type State<Props extends AnyProps> = {
 /**
  * @internal
  */
-export function createStore<Props extends AnyProps>(
+export function createState<Props extends AnyProps>(
   propsDeclaration: PropsDeclaration<Props>,
 ): State<Props> {
   const store: Record<string, Signal<any>> = {}
