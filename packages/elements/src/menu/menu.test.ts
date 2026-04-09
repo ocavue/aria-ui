@@ -1,9 +1,7 @@
-import { sleep } from '@ocavue/utils'
 import { html, render } from 'lit-html'
-import { beforeEach, describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { page, type Locator } from 'vitest/browser'
 
-import type { MenuPopupElement } from '../index.ts'
 import { registerElements } from '../index.ts'
 
 const MENU_TEMPLATE = html`
@@ -26,11 +24,33 @@ function renderMenu(template = MENU_TEMPLATE) {
   return container
 }
 
+function getMenu() {
+  return {
+    trigger: page.getByTestId('trigger'),
+    popup: page.getByTestId('popup'),
+  }
+}
+
+function getSubmenu() {
+  return {
+    trigger: page.getByTestId('share-trigger'),
+    popup: page.getByTestId('sub-popup'),
+  }
+}
+
 async function openMenu() {
-  const trigger: Locator = page.getByTestId('trigger')
-  const popup: Locator = page.getByTestId('popup')
+  const { trigger, popup } = getMenu()
   await trigger.click()
   await expect.element(popup).toHaveAttribute('data-state', 'open')
+}
+
+// The menu's keydown listener is attached to the popup host (see menu-popup.ts),
+// not to document. Dispatching the event directly on the popup is the most
+// reliable way to drive keyboard navigation in tests.
+function pressKey(popup: Locator, key: string) {
+  popup
+    .element()
+    .dispatchEvent(new KeyboardEvent('keydown', { key, bubbles: true, cancelable: true }))
 }
 
 describe('Menu', () => {
@@ -40,19 +60,19 @@ describe('Menu', () => {
   })
 
   describe('Basic Functionality', () => {
-    test('renders menu elements', () => {
+    test('renders menu elements', async () => {
       renderMenu()
-      expect(page.getByTestId('trigger')).toBeInTheDocument()
-      expect(page.getByTestId('popup')).toBeInTheDocument()
-      expect(page.getByTestId('cut')).toBeInTheDocument()
+      await expect.element(page.getByTestId('trigger')).toBeInTheDocument()
+      await expect.element(page.getByTestId('popup')).toBeInTheDocument()
+      await expect.element(page.getByTestId('cut')).toBeInTheDocument()
     })
 
-    test('menu popup is hidden by default', () => {
+    test('menu popup is hidden by default', async () => {
       renderMenu()
-      expect(page.getByTestId('popup')).not.toBeVisible()
+      await expect.element(page.getByTestId('popup')).not.toBeVisible()
     })
 
-    test('menu popup shows with defaultOpen=true', () => {
+    test('menu popup shows with defaultOpen=true', async () => {
       renderMenu(html`
         <aria-ui-menu-root .defaultOpen=${true}>
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
@@ -63,52 +83,50 @@ describe('Menu', () => {
           </aria-ui-menu-positioner>
         </aria-ui-menu-root>
       `)
-      const popup = document.querySelector<MenuPopupElement>('[data-testid="popup"]')!
-      expect(popup.style.display).toBe('')
+      await expect.element(page.getByTestId('popup')).toBeVisible()
     })
 
-    test('menu popup has role="menu"', () => {
+    test('menu popup has role="menu"', async () => {
       renderMenu()
-      expect(page.getByTestId('popup')).toHaveAttribute('role', 'menu')
+      await expect.element(page.getByTestId('popup')).toHaveAttribute('role', 'menu')
     })
 
-    test('menu items have role="menuitem"', () => {
+    test('menu items have role="menuitem"', async () => {
       renderMenu()
-      expect(page.getByTestId('cut')).toHaveAttribute('role', 'menuitem')
-      expect(page.getByTestId('copy')).toHaveAttribute('role', 'menuitem')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('role', 'menuitem')
+      await expect.element(page.getByTestId('copy')).toHaveAttribute('role', 'menuitem')
     })
   })
 
   describe('Trigger Interactions', () => {
     test('clicking trigger opens menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      expect(page.getByTestId('popup')).toBeVisible()
+      renderMenu()
+      await openMenu()
+      await expect.element(page.getByTestId('popup')).toBeVisible()
     })
 
     test('clicking trigger again closes menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      await page.getByTestId('trigger').click()
-      await expect
-        .poll(() => page.getByTestId('popup').element().getAttribute('data-state'))
-        .toBe('closed')
+      renderMenu()
+      const { trigger, popup } = getMenu()
+      await openMenu()
+      await trigger.click()
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
     })
 
-    test('trigger has aria-haspopup="menu"', () => {
+    test('trigger has aria-haspopup="menu"', async () => {
       renderMenu()
-      expect(page.getByTestId('trigger')).toHaveAttribute('aria-haspopup', 'menu')
+      await expect.element(page.getByTestId('trigger')).toHaveAttribute('aria-haspopup', 'menu')
     })
 
-    test('trigger has aria-expanded="false" when closed', () => {
+    test('trigger has aria-expanded="false" when closed', async () => {
       renderMenu()
-      expect(page.getByTestId('trigger')).toHaveAttribute('aria-expanded', 'false')
+      await expect.element(page.getByTestId('trigger')).toHaveAttribute('aria-expanded', 'false')
     })
 
     test('trigger has aria-expanded="true" when open', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      expect(page.getByTestId('trigger')).toHaveAttribute('aria-expanded', 'true')
+      renderMenu()
+      await openMenu()
+      await expect.element(page.getByTestId('trigger')).toHaveAttribute('aria-expanded', 'true')
     })
 
     test('disabled trigger does not open menu', async () => {
@@ -125,73 +143,58 @@ describe('Menu', () => {
         </aria-ui-menu-root>
       `)
       await page.getByTestId('trigger').click()
-      expect(page.getByTestId('popup')).not.toBeVisible()
+      await expect.element(page.getByTestId('popup')).not.toBeVisible()
     })
   })
 
   describe('Keyboard Navigation', () => {
     test('opening menu highlights first item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
     })
 
     test('ArrowDown moves to next item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      pressKey(getMenu().popup, 'ArrowDown')
+      await expect.element(page.getByTestId('copy')).toHaveAttribute('data-highlighted', '')
     })
 
     test('ArrowUp moves to previous item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowUp')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
     })
 
     test('Home moves to first item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Home', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'End')
+      pressKey(popup, 'Home')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
     })
 
     test('End moves to last item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'End', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      pressKey(getMenu().popup, 'End')
+      await expect.element(page.getByTestId('paste')).toHaveAttribute('data-highlighted', '')
     })
 
     test('navigation wraps around (loop)', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowUp', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu()
+      await openMenu()
+      pressKey(getMenu().popup, 'ArrowUp')
+      await expect.element(page.getByTestId('paste')).toHaveAttribute('data-highlighted', '')
     })
 
     test('skips disabled items', async () => {
-      const container = renderMenu(html`
+      renderMenu(html`
         <aria-ui-menu-root>
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
           <aria-ui-menu-positioner>
@@ -203,58 +206,47 @@ describe('Menu', () => {
           </aria-ui-menu-positioner>
         </aria-ui-menu-root>
       `)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('c').element().getAttribute('data-highlighted'))
-        .toBe('')
+      await openMenu()
+      pressKey(getMenu().popup, 'ArrowDown')
+      await expect.element(page.getByTestId('c')).toHaveAttribute('data-highlighted', '')
     })
   })
 
   describe('Item Activation', () => {
     test('Enter activates highlighted item and closes menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      let clicked = false
-      container.querySelector('[data-testid="cut"]')!.addEventListener('select', () => {
-        clicked = true
-      })
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
-      await expect.poll(() => clicked).toBe(true)
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
+      renderMenu()
+      await openMenu()
+      const onSelect = vi.fn()
+      page.getByTestId('cut').element().addEventListener('select', onSelect)
+      const { popup } = getMenu()
+      pressKey(popup, 'Enter')
+      await vi.waitFor(() => expect(onSelect).toHaveBeenCalled())
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
     })
 
     test('Space activates highlighted item and closes menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      let clicked = false
-      container.querySelector('[data-testid="cut"]')!.addEventListener('select', () => {
-        clicked = true
-      })
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }))
-      await expect.poll(() => clicked).toBe(true)
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
+      renderMenu()
+      await openMenu()
+      const onSelect = vi.fn()
+      page.getByTestId('cut').element().addEventListener('select', onSelect)
+      const { popup } = getMenu()
+      pressKey(popup, ' ')
+      await vi.waitFor(() => expect(onSelect).toHaveBeenCalled())
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
     })
 
     test('clicking item activates it and closes menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      let clicked = false
-      container.querySelector('[data-testid="copy"]')!.addEventListener('select', () => {
-        clicked = true
-      })
+      renderMenu()
+      await openMenu()
+      const onSelect = vi.fn()
+      page.getByTestId('copy').element().addEventListener('select', onSelect)
       await page.getByTestId('copy').click()
-      await expect.poll(() => clicked).toBe(true)
-      await expect
-        .poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state'))
-        .toBe('closed')
+      await vi.waitFor(() => expect(onSelect).toHaveBeenCalled())
+      await expect.element(getMenu().popup).toHaveAttribute('data-state', 'closed')
     })
 
     test('closeOnSelect=false keeps menu open after click', async () => {
-      const container = renderMenu(html`
+      renderMenu(html`
         <aria-ui-menu-root>
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
           <aria-ui-menu-positioner>
@@ -266,72 +258,12 @@ describe('Menu', () => {
           </aria-ui-menu-positioner>
         </aria-ui-menu-root>
       `)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
+      await openMenu()
       await page.getByTestId('a').click()
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('open')
+      await expect.element(getMenu().popup).toHaveAttribute('data-state', 'open')
     })
 
     test('disabled item cannot be activated via click', async () => {
-      const container = renderMenu(html`
-        <aria-ui-menu-root>
-          <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
-          <aria-ui-menu-positioner>
-            <aria-ui-menu-popup data-testid="popup">
-              <aria-ui-menu-item value="a" .disabled=${true} data-testid="a">A</aria-ui-menu-item>
-            </aria-ui-menu-popup>
-          </aria-ui-menu-positioner>
-        </aria-ui-menu-root>
-      `)
-      await openMenu(container)
-      const item = container.querySelector('[data-testid="a"]')!
-      item.dispatchEvent(new MouseEvent('click', { bubbles: true }))
-      await expect
-        .poll(() => container.querySelector('[data-testid="popup"]')!.getAttribute('data-state'))
-        .toBe('open')
-    })
-  })
-
-  describe('Close Behaviors', () => {
-    test('Escape closes menu', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
-      )
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
-    })
-  })
-
-  describe('Typeahead', () => {
-    test('typing a character highlights matching item', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'p', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('paste').element().getAttribute('data-highlighted'))
-        .toBe('')
-    })
-
-    test('typing multiple characters narrows match', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'c', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'o', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
-        .toBe('')
-    })
-  })
-
-  describe('Accessibility', () => {
-    test('disabled items have aria-disabled', () => {
       renderMenu(html`
         <aria-ui-menu-root>
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
@@ -342,16 +274,68 @@ describe('Menu', () => {
           </aria-ui-menu-positioner>
         </aria-ui-menu-root>
       `)
-      expect(page.getByTestId('a')).toHaveAttribute('aria-disabled', 'true')
+      await openMenu()
+      // Playwright's locator.click() refuses to interact with disabled elements
+      // (it waits for actionability). Bypass via dispatchEvent because that is
+      // exactly what this test exercises: that a synthetic click on a disabled
+      // item is a no-op.
+      page
+        .getByTestId('a')
+        .element()
+        .dispatchEvent(new MouseEvent('click', { bubbles: true }))
+      await expect.element(getMenu().popup).toHaveAttribute('data-state', 'open')
+    })
+  })
+
+  describe('Close Behaviors', () => {
+    test('Escape closes menu', async () => {
+      renderMenu()
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'Escape')
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
+    })
+  })
+
+  describe('Typeahead', () => {
+    test('typing a character highlights matching item', async () => {
+      renderMenu()
+      await openMenu()
+      pressKey(getMenu().popup, 'p')
+      await expect.element(page.getByTestId('paste')).toHaveAttribute('data-highlighted', '')
+    })
+
+    test('typing multiple characters narrows match', async () => {
+      renderMenu()
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'c')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
+      pressKey(popup, 'o')
+      await expect.element(page.getByTestId('copy')).toHaveAttribute('data-highlighted', '')
+    })
+  })
+
+  describe('Accessibility', () => {
+    test('disabled items have aria-disabled', async () => {
+      renderMenu(html`
+        <aria-ui-menu-root>
+          <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
+          <aria-ui-menu-positioner>
+            <aria-ui-menu-popup data-testid="popup">
+              <aria-ui-menu-item value="a" .disabled=${true} data-testid="a">A</aria-ui-menu-item>
+            </aria-ui-menu-popup>
+          </aria-ui-menu-positioner>
+        </aria-ui-menu-root>
+      `)
+      await expect.element(page.getByTestId('a')).toHaveAttribute('aria-disabled', 'true')
     })
 
     test('active item has data-highlighted attribute', async () => {
-      const container = renderMenu()
-      await openMenu(container)
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
-      expect(page.getByTestId('copy').element().getAttribute('data-highlighted')).toBeNull()
+      renderMenu()
+      await openMenu()
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
+      await expect.element(page.getByTestId('copy')).not.toHaveAttribute('data-highlighted')
     })
   })
 
@@ -359,24 +343,20 @@ describe('Menu', () => {
     test('emits openChange event when opened', async () => {
       const container = renderMenu()
       const root = container.querySelector('aria-ui-menu-root')!
-      let eventFired = false
-      root.addEventListener('openChange', () => {
-        eventFired = true
-      })
+      const onOpenChange = vi.fn()
+      root.addEventListener('openChange', onOpenChange)
       await page.getByTestId('trigger').click()
-      expect(eventFired).toBe(true)
+      expect(onOpenChange).toHaveBeenCalled()
     })
 
     test('emits openChange event when closed', async () => {
       const container = renderMenu()
-      await openMenu(container)
+      await openMenu()
       const root = container.querySelector('aria-ui-menu-root')!
-      let eventFired = false
-      root.addEventListener('openChange', () => {
-        eventFired = true
-      })
+      const onOpenChange = vi.fn()
+      root.addEventListener('openChange', onOpenChange)
       await page.getByTestId('trigger').click()
-      expect(eventFired).toBe(true)
+      expect(onOpenChange).toHaveBeenCalled()
     })
   })
 
@@ -385,7 +365,7 @@ describe('Menu', () => {
       const customTarget = document.createElement('div')
       document.body.appendChild(customTarget)
 
-      const container = renderMenu(html`
+      renderMenu(html`
         <aria-ui-menu-root .defaultOpen=${true}>
           <aria-ui-menu-trigger tabindex="0" data-testid="trigger">Open</aria-ui-menu-trigger>
           <aria-ui-menu-positioner>
@@ -397,17 +377,13 @@ describe('Menu', () => {
         </aria-ui-menu-root>
       `)
 
-      await expect
-        .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
-        .toBe('open')
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
+      await expect.element(page.getByTestId('popup')).toHaveAttribute('data-state', 'open')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
 
+      // customTarget is not a locatable element — dispatch directly is the
+      // entire point of this test (it verifies the eventTarget forwarding).
       customTarget.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('copy').element().getAttribute('data-highlighted'))
-        .toBe('')
+      await expect.element(page.getByTestId('copy')).toHaveAttribute('data-highlighted', '')
     })
   })
 
@@ -437,274 +413,195 @@ describe('Menu', () => {
   `
 
   describe('Submenu: Basic', () => {
-    test('submenu trigger renders with role="menuitem"', () => {
+    test('submenu trigger renders with role="menuitem"', async () => {
       renderMenu(SUBMENU_TEMPLATE)
-      expect(page.getByTestId('share-trigger')).toHaveAttribute('role', 'menuitem')
+      await expect.element(page.getByTestId('share-trigger')).toHaveAttribute('role', 'menuitem')
     })
 
-    test('submenu trigger has aria-haspopup="menu"', () => {
+    test('submenu trigger has aria-haspopup="menu"', async () => {
       renderMenu(SUBMENU_TEMPLATE)
-      expect(page.getByTestId('share-trigger')).toHaveAttribute('aria-haspopup', 'menu')
+      await expect
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('aria-haspopup', 'menu')
     })
 
-    test('submenu trigger has aria-expanded="false" by default', () => {
+    test('submenu trigger has aria-expanded="false" by default', async () => {
       renderMenu(SUBMENU_TEMPLATE)
-      expect(page.getByTestId('share-trigger')).toHaveAttribute('aria-expanded', 'false')
+      await expect
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('aria-expanded', 'false')
     })
 
-    test('submenu popup is hidden by default', () => {
+    test('submenu popup is hidden by default', async () => {
       renderMenu(SUBMENU_TEMPLATE)
-      expect(page.getByTestId('sub-popup')).not.toBeVisible()
+      await expect.element(page.getByTestId('sub-popup')).not.toBeVisible()
     })
 
     test('submenu trigger participates in parent keyboard navigation', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      pressKey(getMenu().popup, 'ArrowDown')
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
-        .toBe('')
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('data-highlighted', '')
     })
   })
 
   describe('Submenu: Opening', () => {
     test('ArrowRight on highlighted submenu trigger opens submenu', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
-        .toBe('')
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('data-highlighted', '')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(getSubmenu().popup).toHaveAttribute('data-state', 'open')
     })
 
     test('Enter on highlighted submenu trigger opens submenu', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
-        .toBe('')
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('data-highlighted', '')
+      pressKey(popup, 'Enter')
+      await expect.element(getSubmenu().popup).toHaveAttribute('data-state', 'open')
     })
 
     test('opening submenu highlights first item in submenu', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('data-highlighted'))
-        .toBe('')
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('email').element().getAttribute('data-highlighted'))
-        .toBe('')
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('data-highlighted', '')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(page.getByTestId('email')).toHaveAttribute('data-highlighted', '')
     })
 
     test('submenu trigger aria-expanded becomes "true" when submenu opens', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
       await expect
-        .poll(() => page.getByTestId('share-trigger').element().getAttribute('aria-expanded'))
-        .toBe('true')
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('aria-expanded', 'true')
     })
   })
 
   describe('Submenu: Closing', () => {
     test('ArrowLeft inside submenu closes it', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
-      const subPopup = container.querySelector('[data-testid="sub-popup"]')!
-      subPopup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }))
-      await expect.poll(() => subPopup.getAttribute('data-state')).toBe('closed')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'open')
+      pressKey(subPopup, 'ArrowLeft')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'closed')
     })
 
     test('Escape inside submenu closes submenu only (parent stays open)', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
-      const subPopup = container.querySelector('[data-testid="sub-popup"]')!
-      subPopup.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
-      )
-      await expect.poll(() => subPopup.getAttribute('data-state')).toBe('closed')
-      expect(popup.getAttribute('data-state')).toBe('open')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'open')
+      pressKey(subPopup, 'Escape')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'closed')
+      await expect.element(popup).toHaveAttribute('data-state', 'open')
     })
 
     test('clicking a regular item in submenu closes entire menu tree', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'open')
       await page.getByTestId('email').click()
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
     })
 
     test('closing parent menu cascades to close submenu', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
-      popup.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
-      )
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('closed')
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('open')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'open')
+      pressKey(popup, 'Escape')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'closed')
+      await expect.element(popup).toHaveAttribute('data-state', 'open')
 
-      popup.dispatchEvent(
-        new KeyboardEvent('keydown', { key: 'Escape', bubbles: true, cancelable: true }),
-      )
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('closed')
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('closed')
+      pressKey(popup, 'Escape')
+      await expect.element(subPopup).toHaveAttribute('data-state', 'closed')
+      await expect.element(popup).toHaveAttribute('data-state', 'closed')
     })
   })
 
   describe('Submenu: Navigation', () => {
     test('ArrowDown/Up inside submenu navigates within submenu only', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('email').element().getAttribute('data-highlighted'))
-        .toBe('')
-      const subPopup = container.querySelector('[data-testid="sub-popup"]')!
-      subPopup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('slack').element().getAttribute('data-highlighted'))
-        .toBe('')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
+      pressKey(popup, 'ArrowDown')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(page.getByTestId('email')).toHaveAttribute('data-highlighted', '')
+      pressKey(subPopup, 'ArrowDown')
+      await expect.element(page.getByTestId('slack')).toHaveAttribute('data-highlighted', '')
     })
 
     test('ArrowRight on non-submenu-trigger item does nothing', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .not.toBe('open')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowRight')
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
+      await expect.element(getSubmenu().popup).not.toHaveAttribute('data-state', 'open')
     })
 
     test('hovering item1 keeps submenu closed, hovering submenu trigger opens it, hovering back to item1 closes submenu but keeps menu open', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      const { popup: subPopup } = getSubmenu()
 
       // Hover over item1 (cut) — submenu should NOT open
-      container
-        .querySelector('[data-testid="cut"]')!
-        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
-      await expect
-        .poll(() => page.getByTestId('cut').element().getAttribute('data-highlighted'))
-        .toBe('')
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .not.toBe('open')
+      await page.getByTestId('cut').hover()
+      await expect.element(page.getByTestId('cut')).toHaveAttribute('data-highlighted', '')
+      await expect.element(subPopup).not.toHaveAttribute('data-state', 'open')
 
       // Hover over submenu trigger (share) — submenu should open after delay
-      container
-        .querySelector('[data-testid="share-trigger"]')!
-        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('open')
+      await page.getByTestId('share-trigger').hover()
+      await expect.element(subPopup).toHaveAttribute('data-state', 'open')
 
       // Hover back to item1 (cut) — submenu should close, but parent menu stays open
-      container.querySelector('[data-testid="share-trigger"]')!.dispatchEvent(
-        new MouseEvent('mouseleave', {
-          bubbles: true,
-          relatedTarget: container.querySelector('[data-testid="cut"]'),
-        }),
-      )
-      container
-        .querySelector('[data-testid="cut"]')!
-        .dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }))
-
-      await sleep(1)
-      await sleep(1)
-      await sleep(1)
-
-      await expect
-        .poll(() =>
-          container.querySelector('[data-testid="sub-popup"]')?.getAttribute('data-state'),
-        )
-        .toBe('closed')
-
-      await expect
-        .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
-        .toBe('open')
+      await page.getByTestId('cut').hover()
+      await expect.element(subPopup).toHaveAttribute('data-state', 'closed')
+      await expect.element(popup).toHaveAttribute('data-state', 'open')
     })
 
     test('ArrowLeft in root menu does nothing', async () => {
-      const container = renderMenu(SUBMENU_TEMPLATE)
-      await openMenu(container)
-      const popup = container.querySelector('[data-testid="popup"]')!
-      popup.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }))
-      await expect.poll(() => popup.getAttribute('data-state')).toBe('open')
+      renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowLeft')
+      await expect.element(popup).toHaveAttribute('data-state', 'open')
     })
   })
 })
