@@ -6,14 +6,14 @@ import {
 import type { AnyProps, PropDeclaration, PropsDeclaration } from './define-props.ts'
 import { HostElement } from './host-element.ts'
 import type { Signal } from './signal.ts'
-import { createStore, type Store } from './store.ts'
+import { createStore, type State } from './store.ts'
 
 /**
  * @internal
  */
 export type HostElementConstructor<Props extends AnyProps> = new () => HostElement & Props
 
-type SetupFunction<Props extends AnyProps> = (host: HostElement, props: Store<Props>) => void
+type SetupFunction<Props extends AnyProps> = (host: HostElement, props: State<Props>) => void
 
 export function defineCustomElement<Props extends AnyProps = object>(
   setup: SetupFunction<Props>,
@@ -26,7 +26,7 @@ export function defineCustomElement<Props extends AnyProps = object>(
   class CustomElement extends HostElement {
     static observedAttributes = observedAttributes
 
-    readonly _store: Store<Props>
+    readonly _store: State<Props>
 
     constructor() {
       super()
@@ -50,7 +50,7 @@ export function defineCustomElement<Props extends AnyProps = object>(
 }
 
 function defineGetterSetter(
-  ElementConstructor: new () => { _store: Store<any> },
+  ElementConstructor: new () => { _store: State<any> },
   props: Record<string, PropDeclaration<unknown>>,
 ) {
   for (const prop of Object.keys(props)) {

@@ -6,7 +6,7 @@ import { createSignal, type Signal } from './signal.ts'
  *
  * @public
  */
-export type Store<Props extends AnyProps> = {
+export type State<Props extends AnyProps> = {
   [Key in keyof Props]: Signal<Props[Key]>
 }
 
@@ -15,7 +15,7 @@ export type Store<Props extends AnyProps> = {
  */
 export function createStore<Props extends AnyProps>(
   propsDeclaration: PropsDeclaration<Props>,
-): Store<Props> {
+): State<Props> {
   const store: Record<string, Signal<any>> = {}
 
   for (const key of Object.keys(propsDeclaration)) {
@@ -24,5 +24,5 @@ export function createStore<Props extends AnyProps>(
     store[key] = signal
   }
 
-  return store as Store<Props>
+  return store as State<Props>
 }
