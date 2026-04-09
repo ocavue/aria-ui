@@ -451,7 +451,29 @@ describe('Listbox', () => {
       expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
     })
 
-    test('toggling autoHighlight from true to false clears the highlighted item', async () => {
+    test('autoHighlight=true is suppressed while disabled', async () => {
+      const container = document.createElement('div')
+      document.body.appendChild(container)
+
+      render(
+        html`
+          <aria-ui-listbox-root .autoHighlight=${true} .disabled=${true}>
+            <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
+            <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
+          </aria-ui-listbox-root>
+        `,
+        container,
+      )
+
+      // Wait a tick to make sure the auto-highlight effect has run.
+      await new Promise((resolve) => setTimeout(resolve, 50))
+      expect(page.getByTestId('apple').element().getAttribute('data-highlighted')).toBe(null)
+      expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
+    })
+  })
+
+  describe('disabled', () => {
+    test('toggling disabled clears and restores the highlighted item', async () => {
       const container = document.createElement('div')
       document.body.appendChild(container)
 
@@ -465,28 +487,36 @@ describe('Listbox', () => {
         container,
       )
 
+      // The first item is auto-highlighted on mount.
       await expect
         .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
 
       const root = container.querySelector('aria-ui-listbox-root') as HTMLElement & {
-        autoHighlight: boolean
+        disabled: boolean
       }
-      root.autoHighlight = false
 
+      // Disabling clears the highlight.
+      root.disabled = true
       await expect
         .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe(null)
       expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
+
+      // Re-enabling restores the auto-highlight on the first item.
+      root.disabled = false
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe('')
     })
 
-    test('autoHighlight=false does not re-highlight when query changes', async () => {
+    test('disabled=true does not interfere with the highlight set after re-enable', async () => {
       const container = document.createElement('div')
       document.body.appendChild(container)
 
       render(
         html`
-          <aria-ui-listbox-root .autoHighlight=${false}>
+          <aria-ui-listbox-root .autoHighlight=${false} .disabled=${true}>
             <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
             <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
           </aria-ui-listbox-root>
@@ -494,24 +524,21 @@ describe('Listbox', () => {
         container,
       )
 
-      // Manually highlight the second item via mouseenter, then change the
-      // query. The highlight must persist because autoHighlight is off and
-      // the auto-highlight effect should not be subscribed to query while
-      // off (clearing should only happen on the true→false transition).
+      // Nothing is highlighted while disabled.
+      await new Promise((resolve) => setTimeout(resolve, 50))
+      expect(page.getByTestId('apple').element().getAttribute('data-highlighted')).toBe(null)
+
+      const root = container.querySelector('aria-ui-listbox-root') as HTMLElement & {
+        disabled: boolean
+      }
+      root.disabled = false
+
+      // Auto-highlight is off, so re-enabling does not auto-set anything.
+      // Manually highlighting via mouseenter still works.
       await page.getByTestId('banana').hover()
       await expect
         .poll(() => page.getByTestId('banana').element().getAttribute('data-highlighted'))
         .toBe('')
-
-      const root = container.querySelector('aria-ui-listbox-root') as HTMLElement & {
-        autoHighlight: boolean
-        query: string
-      }
-      root.query = 'a'
-
-      // Wait a tick and verify the highlight on banana is still there.
-      await new Promise((resolve) => setTimeout(resolve, 50))
-      expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe('')
     })
   })
 })

@@ -295,20 +295,32 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
   })
 
   useEffect(host, () => {
-    // TODO: add a comment about this logic 
+    // Clear the highlighted value whenever the listbox becomes `disabled`.
+    // This makes `disabled` a clean "active" gate: consumers that want to
+    // park a listbox without leaving stale `aria-activedescendant` /
+    // `data-highlighted` behind (e.g. a hidden popup) can flip `disabled`
+    // on, and the highlight is removed for free.
     if (disabled.get()) {
-        store.setHighlightedValue(undefined)
-        return
+      store.setHighlightedValue(undefined)
     }
   })
 
   useEffect(host, () => {
-    if (autoHighlight.get() || !disabled.get()) {
-      // TODO: add a comment about why we want to track `query` changes
-      query.get()
-      const collection = store.getCollection()
-      store.setHighlightedValue(collection.first())
-    }
+    // Auto-highlight the first item on mount and whenever the query changes,
+    // so the user can press Enter immediately to select it.
+    //
+    // Skipped while `disabled` is true (an inactive listbox should not claim
+    // a highlight) and while `autoHighlight` is false (consumer opted out).
+    //
+    // The early return intentionally does not read `query`, so the effect's
+    // dependency set stays minimal: query changes won't re-trigger this
+    // effect while we're not auto-highlighting, which means an unrelated
+    // highlight set via mouseenter / keyboard / `setHighlightedValue` is
+    // preserved.
+    if (!autoHighlight.get() || disabled.get()) return
+    query.get()
+    const collection = store.getCollection()
+    store.setHighlightedValue(collection.first())
   })
 }
 
