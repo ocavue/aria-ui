@@ -1,5 +1,5 @@
 import { createSignal, defineCustomElement, defineProps, type HostElement } from '@aria-ui/core'
-import { getId } from '@ocavue/utils'
+import { getId, sleep } from '@ocavue/utils'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { usePresence } from './use-presence.ts'
@@ -76,16 +76,19 @@ describe('usePresence', () => {
       { finished: finishedPromise } as unknown as Animation,
     ])
 
+    expect(element.style.display).not.toBe('none')
     open.set(false)
 
     // Should still be visible while animation is running
+    await sleep(0)
+    await sleep(0)
+    await sleep(0)
     expect(element.style.display).not.toBe('none')
 
     // Resolve the animation
     resolveAnimation!()
     await finishedPromise
-    // Wait for the microtask from Promise.allSettled().then()
-    await new Promise((resolve) => setTimeout(resolve, 0))
+    await sleep(0)
 
     expect(element.style.display).toBe('none')
   })
@@ -116,7 +119,7 @@ describe('usePresence', () => {
     // Now finish the animation
     resolveAnimation!()
     await finishedPromise
-    await new Promise((resolve) => setTimeout(resolve, 0))
+    await sleep(0)
 
     // Should still be visible because we reopened
     expect(element.style.display).not.toBe('none')
