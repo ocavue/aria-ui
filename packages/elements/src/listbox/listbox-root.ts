@@ -86,12 +86,12 @@ export interface ListboxRootProps {
   loop: boolean
 
   /**
-   * Whether the listbox should automatically set the focus to the first item
-   * when the listbox is mounted or when the query changes.
+   * Whether the listbox should automatically highlight the first item when
+   * the listbox is mounted or when the query changes.
    *
    * @default false
    */
-  autoFocus: boolean
+  autoHighlight: boolean
 
   /**
    * The query string to filter the listbox items.
@@ -134,7 +134,7 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
     type: 'string',
   },
   loop: { default: false, attribute: 'loop', type: 'boolean' },
-  autoFocus: { default: false, attribute: 'auto-focus', type: 'boolean' },
+  autoHighlight: { default: false, attribute: 'auto-highlight', type: 'boolean' },
   query: { default: '', attribute: 'query', type: 'string' },
   filter: { default: defaultItemFilter, attribute: false, type: 'json' },
   eventTarget: { default: null, attribute: false, type: 'json' },
@@ -191,7 +191,7 @@ export interface ListboxRootEvents {
  * @internal
  */
 export function setupListboxRoot(host: HostElement, props: State<ListboxRootProps>) {
-  const { disabled, multiple, query, filter, orientation, autoFocus, values, value } = props
+  const { disabled, multiple, query, filter, orientation, autoHighlight, values, value } = props
 
   onMount(host, () => {
     host.role = 'listbox'
@@ -287,7 +287,7 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
   })
 
   onMount(host, () => {
-    if (autoFocus.get()) {
+    if (autoHighlight.get()) {
       const collection = store.getCollection()
       store.setHighlightedValue(collection.first())
     }
@@ -295,7 +295,7 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
 
   useEffect(host, () => {
     query.get()
-    if (!autoFocus.get()) return
+    if (!autoHighlight.get()) return
     const collection = store.getCollection()
     store.setHighlightedValue(collection.first())
   })

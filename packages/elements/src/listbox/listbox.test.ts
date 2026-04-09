@@ -401,14 +401,14 @@ describe('Listbox', () => {
     })
   })
 
-  describe('autoFocus', () => {
-    test('autoFocus sets active to first item on mount', async () => {
+  describe('autoHighlight', () => {
+    test('autoHighlight sets active to first item on mount', async () => {
       const container = document.createElement('div')
       document.body.appendChild(container)
 
       render(
         html`
-          <aria-ui-listbox-root .autoFocus=${true}>
+          <aria-ui-listbox-root .autoHighlight=${true}>
             <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
             <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
           </aria-ui-listbox-root>
@@ -419,6 +419,36 @@ describe('Listbox', () => {
       await expect
         .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
+    })
+
+    test('no item is highlighted on mount when autoHighlight is false, and toggling it on highlights the first item', async () => {
+      const container = document.createElement('div')
+      document.body.appendChild(container)
+
+      render(
+        html`
+          <aria-ui-listbox-root .autoHighlight=${false}>
+            <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
+            <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
+          </aria-ui-listbox-root>
+        `,
+        container,
+      )
+
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe(null)
+      expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
+
+      const root = container.querySelector('aria-ui-listbox-root') as HTMLElement & {
+        autoHighlight: boolean
+      }
+      root.autoHighlight = true
+
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe('')
+      expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
     })
   })
 })
