@@ -294,16 +294,18 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
     store.setHighlightedValue(firstSelected ?? collection.first())
   })
 
-  onMount(host, () => {
-    if (autoHighlight.get()) {
-      const collection = store.getCollection()
-      store.setHighlightedValue(collection.first())
+  useEffect(host, () => {
+    // Clear the highlighted value whenever the listbox becomes `disabled`.
+    if (disabled.get()) {
+      store.setHighlightedValue(undefined)
     }
   })
 
   useEffect(host, () => {
+    // Auto-highlight the first item on mount and whenever the query changes,
+    // so the user can press Enter immediately to select it.
+    if (!autoHighlight.get() || disabled.get()) return
     query.get()
-    if (!autoHighlight.get()) return
     const collection = store.getCollection()
     store.setHighlightedValue(collection.first())
   })

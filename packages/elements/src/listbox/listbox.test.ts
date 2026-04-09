@@ -450,5 +450,66 @@ describe('Listbox', () => {
         .toBe('')
       expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
     })
+
+    test('autoHighlight=true is suppressed while disabled', async () => {
+      const container = document.createElement('div')
+      document.body.appendChild(container)
+
+      render(
+        html`
+          <aria-ui-listbox-root .autoHighlight=${true} .disabled=${true}>
+            <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
+            <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
+          </aria-ui-listbox-root>
+        `,
+        container,
+      )
+
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe(null)
+      await expect
+        .poll(() => page.getByTestId('banana').element().getAttribute('data-highlighted'))
+        .toBe(null)
+    })
+  })
+
+  describe('disabled', () => {
+    test('toggling disabled clears and restores the highlighted item', async () => {
+      const container = document.createElement('div')
+      document.body.appendChild(container)
+
+      render(
+        html`
+          <aria-ui-listbox-root .autoHighlight=${true}>
+            <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
+            <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
+          </aria-ui-listbox-root>
+        `,
+        container,
+      )
+
+      // The first item is auto-highlighted on mount.
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe('')
+
+      const root = container.querySelector('aria-ui-listbox-root') as HTMLElement & {
+        disabled: boolean
+      }
+
+      // Disabling clears the highlight.
+      root.disabled = true
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe(null)
+      expect(page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
+
+      // Re-enabling restores the auto-highlight on the first item.
+      root.disabled = false
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe('')
+    })
   })
 })
