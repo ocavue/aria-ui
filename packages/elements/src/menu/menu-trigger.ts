@@ -6,7 +6,7 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import {
   setAriaHasPopup,
@@ -57,7 +57,7 @@ export interface MenuTriggerEvents {
 /**
  * @internal
  */
-export function setupMenuTrigger(host: HostElement, props: Store<MenuTriggerProps>) {
+export function setupMenuTrigger(host: HostElement, props: State<MenuTriggerProps>) {
   const getDisabled = props.disabled.get
   const getMenuStore = MenuStoreContext.consume(host)
   const getOverlayStore = computed(() => getMenuStore()?.overlayStore)

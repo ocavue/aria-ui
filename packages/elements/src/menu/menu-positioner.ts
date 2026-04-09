@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { defineCustomElement, defineProps, registerCustomElement, type Store } from '@aria-ui/core'
+import { defineCustomElement, defineProps, registerCustomElement, type State } from '@aria-ui/core'
 import type { Placement } from '@floating-ui/dom'
 
 import {
@@ -37,7 +37,7 @@ export const MenuPositionerPropsDeclaration = defineProps<MenuPositionerProps>({
 /**
  * @internal
  */
-export function setupMenuPositioner(host: HostElement, props: Store<MenuPositionerProps>) {
+export function setupMenuPositioner(host: HostElement, props: State<MenuPositionerProps>) {
   const getMenuStore = MenuStoreContext.consume(host)
   const getOverlayStore = () => getMenuStore()?.overlayStore
   setupOverlayPositioner(host, props, getOverlayStore)

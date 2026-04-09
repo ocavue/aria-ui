@@ -6,7 +6,7 @@ import { defineCustomElement } from './define-custom-element.ts'
 import { defineProps } from './define-props.ts'
 import { HostElement } from './host-element.ts'
 import { registerCustomElement } from './register-custom-element.ts'
-import type { Store } from './store.ts'
+import type { State } from './store.ts'
 import { useEffect } from './use-effect.ts'
 
 describe('Context', () => {
@@ -67,7 +67,7 @@ describe('Context', () => {
       value: { default: 'default', attribute: 'value', type: 'string' },
     })
 
-    function setupRoot(host: HostElement, props: Store<RootProps>) {
+    function setupRoot(host: HostElement, props: State<RootProps>) {
       const store = {
         getValue: () => props.value.get(),
       }
@@ -79,7 +79,7 @@ describe('Context', () => {
     interface ChildProps {}
     const ChildPropsDeclaration = defineProps<ChildProps>({})
 
-    function setupChild(host: HostElement, _props: Store<ChildProps>) {
+    function setupChild(host: HostElement, _props: State<ChildProps>) {
       const getStore = ctx.consume(host)
       useEffect(host, () => {
         host.dataset.received = getStore()?.getValue() ?? ''
@@ -91,7 +91,7 @@ describe('Context', () => {
     interface LeafProps {}
     const LeafPropsDeclaration = defineProps<LeafProps>({})
 
-    function setupLeaf(host: HostElement, _props: Store<LeafProps>) {
+    function setupLeaf(host: HostElement, _props: State<LeafProps>) {
       const getStore = ctx.consume(host)
       useEffect(host, () => {
         host.dataset.received = getStore()?.getValue() ?? ''

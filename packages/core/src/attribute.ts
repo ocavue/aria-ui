@@ -1,7 +1,7 @@
 import type { AnyProps, PropDeclaration, PropsDeclaration } from './define-props.ts'
 import type { HostElement } from './host-element.ts'
 import type { Signal } from './signal.ts'
-import type { Store } from './store.ts'
+import type { State } from './store.ts'
 import { useEffect } from './use-effect.ts'
 
 /**
@@ -9,7 +9,7 @@ import { useEffect } from './use-effect.ts'
  */
 export function usePropertiesToAttributes(
   element: HostElement,
-  store: Store<AnyProps>,
+  store: State<AnyProps>,
   declarations: PropsDeclaration<AnyProps>,
 ): void {
   for (const [propertyName, declaration] of Object.entries(declarations)) {
@@ -37,7 +37,7 @@ export function usePropertiesToAttributes(
  * @internal
  */
 export function handleAttributeChanged(
-  store: Store<AnyProps>,
+  store: State<AnyProps>,
   declarations: PropsDeclaration<AnyProps>,
   attributeNameToPropertyName: Map<string, string>,
   attributeName: string,

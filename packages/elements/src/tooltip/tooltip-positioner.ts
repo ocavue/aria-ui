@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { defineCustomElement, registerCustomElement, type Store } from '@aria-ui/core'
+import { defineCustomElement, registerCustomElement, type State } from '@aria-ui/core'
 
 import {
   OverlayPositionerPropsDeclaration,
@@ -22,7 +22,7 @@ export const TooltipPositionerPropsDeclaration = OverlayPositionerPropsDeclarati
 /**
  * @internal
  */
-export function setupTooltipPositioner(host: HostElement, props: Store<TooltipPositionerProps>) {
+export function setupTooltipPositioner(host: HostElement, props: State<TooltipPositionerProps>) {
   setupOverlayPositioner(host, props, TooltipStoreContext.consume(host))
 }
 

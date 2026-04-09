@@ -1,4 +1,4 @@
-import type { HostElement, Store } from '@aria-ui/core'
+import type { HostElement, State } from '@aria-ui/core'
 import { computed, useEffect, useEventListener } from '@aria-ui/core'
 
 import { useAriaDisabled } from './aria.ts'
@@ -16,7 +16,7 @@ import { useAttribute } from './use-attribute.ts'
  */
 export function setupCollectionItem(
   host: HostElement,
-  props: Store<{ value: string; disabled: boolean }>,
+  props: State<{ value: string; disabled: boolean }>,
   getStore: () => CollectionStore | undefined,
   shouldRegisterItem?: (element: HTMLElement) => boolean,
 ): void {

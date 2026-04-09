@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { computed, defineProps, useEffect, type Store } from '@aria-ui/core'
+import { computed, defineProps, useEffect, type State } from '@aria-ui/core'
 import {
   FeatureDetection,
   useDisabledMountTransitionStyle,
@@ -210,7 +210,7 @@ export const OverlayPositionerPropsDeclaration =
  */
 export function setupOverlayPositioner(
   host: HostElement,
-  props: Store<OverlayPositionerProps>,
+  props: State<OverlayPositionerProps>,
   getStore: () => OverlayStore | undefined,
 ): void {
   const getOpen = computed(() => getStore()?.getIsOpen() ?? false)

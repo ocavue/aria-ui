@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { defineCustomElement, defineProps, registerCustomElement, type Store } from '@aria-ui/core'
+import { defineCustomElement, defineProps, registerCustomElement, type State } from '@aria-ui/core'
 
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import {
@@ -50,7 +50,7 @@ export interface PopoverRootEvents {
 /**
  * @internal
  */
-export function setupPopoverRoot(host: HostElement, props: Store<PopoverRootProps>) {
+export function setupPopoverRoot(host: HostElement, props: State<PopoverRootProps>) {
   const store = useOverlayStore(host, props)
   PopoverStoreContext.provide(host, store)
 }

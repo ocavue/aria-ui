@@ -7,7 +7,7 @@ import {
   registerCustomElement,
   useEffect,
   useEventListener,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import { setupCollectionItem, useAriaSelected } from '@aria-ui/utils'
 
@@ -57,7 +57,7 @@ export const ListboxItemPropsDeclaration = defineProps<ListboxItemProps>({
 /**
  * @internal
  */
-export function setupListboxItem(host: HostElement, props: Store<ListboxItemProps>) {
+export function setupListboxItem(host: HostElement, props: State<ListboxItemProps>) {
   onMount(host, () => {
     host.role = 'option'
   })

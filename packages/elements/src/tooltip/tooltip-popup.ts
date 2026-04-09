@@ -1,4 +1,4 @@
-import type { HostElement, Store } from '@aria-ui/core'
+import type { HostElement, State } from '@aria-ui/core'
 import { defineCustomElement, onMount, registerCustomElement } from '@aria-ui/core'
 
 import {
@@ -22,7 +22,7 @@ export const TooltipPopupPropsDeclaration = OverlayPopupPropsDeclaration
 /**
  * @internal
  */
-export function setupTooltipPopup(host: HostElement, _props: Store<TooltipPopupProps>) {
+export function setupTooltipPopup(host: HostElement, _props: State<TooltipPopupProps>) {
   const getStore = TooltipStoreContext.consume(host)
   setupOverlayPopup(host, getStore)
 

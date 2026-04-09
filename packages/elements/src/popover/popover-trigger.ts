@@ -5,7 +5,7 @@ import {
   defineProps,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import {
   useAriaControls,
@@ -89,7 +89,7 @@ export interface PopoverTriggerEvents {
 /**
  * @internal
  */
-export function setupPopoverTrigger(host: HostElement, props: Store<PopoverTriggerProps>) {
+export function setupPopoverTrigger(host: HostElement, props: State<PopoverTriggerProps>) {
   const getDisabled = props.disabled.get
   const getStore = PopoverStoreContext.consume(host)
   const getOpen = computed(() => getStore()?.getIsOpen())
