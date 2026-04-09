@@ -1,7 +1,7 @@
 import { sleep } from '@ocavue/utils'
 import { html, render } from 'lit-html'
 import { beforeEach, describe, expect, test } from 'vitest'
-import { page } from 'vitest/browser'
+import { page, type Locator } from 'vitest/browser'
 
 import type { MenuPopupElement } from '../index.ts'
 import { registerElements } from '../index.ts'
@@ -26,13 +26,11 @@ function renderMenu(template = MENU_TEMPLATE) {
   return container
 }
 
-async function openMenu(container: HTMLElement) {
-  const trigger = container.querySelector('[data-testid="trigger"]')!
-  await page.getByTestId('trigger').click()
-  await expect
-    .poll(() => container.querySelector('[data-testid="popup"]')?.getAttribute('data-state'))
-    .toBe('open')
-  return trigger
+async function openMenu() {
+  const trigger: Locator = page.getByTestId('trigger')
+  const popup: Locator = page.getByTestId('popup')
+  await trigger.click()
+  await expect.element(popup).toHaveAttribute('data-state', 'open')
 }
 
 describe('Menu', () => {
