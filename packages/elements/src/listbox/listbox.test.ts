@@ -465,8 +465,12 @@ describe('Listbox', () => {
         container,
       )
 
-     await expect.poll( () => page.getByTestId('apple').element().getAttribute('data-highlighted')).toBe(null)
-     await expect.poll( () => page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
+      await expect
+        .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
+        .toBe(null)
+      await expect
+        .poll(() => page.getByTestId('banana').element().getAttribute('data-highlighted'))
+        .toBe(null)
     })
   })
 
@@ -507,6 +511,5 @@ describe('Listbox', () => {
         .poll(() => page.getByTestId('apple').element().getAttribute('data-highlighted'))
         .toBe('')
     })
-
   })
 })
