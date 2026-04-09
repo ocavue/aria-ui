@@ -465,7 +465,6 @@ describe('Listbox', () => {
         container,
       )
 
-      // Wait a tick to make sure the auto-highlight effect has run.
      await expect.poll( () => page.getByTestId('apple').element().getAttribute('data-highlighted')).toBe(null)
      await expect.poll( () => page.getByTestId('banana').element().getAttribute('data-highlighted')).toBe(null)
     })
