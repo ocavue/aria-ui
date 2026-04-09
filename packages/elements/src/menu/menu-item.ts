@@ -5,7 +5,7 @@ import {
   onMount,
   registerCustomElement,
   useEventListener,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import { setupCollectionItem, useElementId } from '@aria-ui/utils'
 
@@ -64,7 +64,7 @@ export interface MenuItemEvents {
 /**
  * @internal
  */
-export function setupMenuItem(host: HostElement, props: Store<MenuItemProps>) {
+export function setupMenuItem(host: HostElement, props: State<MenuItemProps>) {
   onMount(host, () => {
     host.role = 'menuitem'
   })

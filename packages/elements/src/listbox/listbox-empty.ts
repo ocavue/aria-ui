@@ -4,7 +4,7 @@ import {
   defineProps,
   registerCustomElement,
   useEffect,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 
 import { ListboxStoreContext } from './listbox-store.ts'
@@ -22,7 +22,7 @@ export const ListboxEmptyPropsDeclaration = defineProps<ListboxEmptyProps>({})
 /**
  * @internal
  */
-export function setupListboxEmpty(host: HostElement, _props: Store<ListboxEmptyProps>) {
+export function setupListboxEmpty(host: HostElement, _props: State<ListboxEmptyProps>) {
   const getStore = ListboxStoreContext.consume(host)
 
   useEffect(host, () => {

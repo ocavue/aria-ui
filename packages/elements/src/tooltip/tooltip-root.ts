@@ -3,7 +3,7 @@ import {
   defineCustomElement,
   registerCustomElement,
   useEventListener,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
@@ -47,7 +47,7 @@ declare global {
 /**
  * @internal
  */
-export function setupTooltipRoot(host: HostElement, props: Store<TooltipRootProps>) {
+export function setupTooltipRoot(host: HostElement, props: State<TooltipRootProps>) {
   const store = useOverlayStore(host, props)
   TooltipStoreContext.provide(host, store)
   useEventListener(host, 'openChange', (event) => {

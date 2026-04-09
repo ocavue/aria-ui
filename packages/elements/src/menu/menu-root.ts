@@ -5,7 +5,7 @@ import {
   defineProps,
   onMount,
   registerCustomElement,
-  type Store,
+  type State,
 } from '@aria-ui/core'
 import { useAriaDisabled } from '@aria-ui/utils'
 
@@ -42,7 +42,7 @@ export interface MenuRootEvents {
 /**
  * @internal
  */
-export function setupMenuRoot(host: HostElement, props: Store<MenuRootProps>) {
+export function setupMenuRoot(host: HostElement, props: State<MenuRootProps>) {
   const getDisabled = computed(() => props.disabled.get())
 
   const overlayStore = createOverlayStore(

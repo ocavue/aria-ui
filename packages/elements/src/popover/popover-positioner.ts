@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { defineCustomElement, registerCustomElement, type Store } from '@aria-ui/core'
+import { defineCustomElement, registerCustomElement, type State } from '@aria-ui/core'
 
 import {
   OverlayPositionerPropsDeclaration,
@@ -22,7 +22,7 @@ export const PopoverPositionerPropsDeclaration = OverlayPositionerPropsDeclarati
 /**
  * @internal
  */
-export function setupPopoverPositioner(host: HostElement, props: Store<PopoverPositionerProps>) {
+export function setupPopoverPositioner(host: HostElement, props: State<PopoverPositionerProps>) {
   setupOverlayPositioner(host, props, PopoverStoreContext.consume(host))
 }
 
