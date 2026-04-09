@@ -1,8 +1,49 @@
-import { html, render } from 'lit-html'
-import { beforeEach, describe, expect, test } from 'vitest'
+import { html, render, type TemplateResult } from 'lit-html'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { page } from 'vitest/browser'
 
 import { registerElements } from '../index.ts'
+
+function renderTooltip(template: TemplateResult) {
+  const container = document.createElement('div')
+  document.body.appendChild(container)
+  render(template, container)
+  return container
+}
+
+function getTooltip() {
+  return {
+    trigger: page.getByTestId('trigger'),
+    popup: page.getByTestId('popup'),
+  }
+}
+
+const TOOLTIP_TEMPLATE = html`
+  <aria-ui-tooltip-root>
+    <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+    <aria-ui-tooltip-positioner>
+      <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+    </aria-ui-tooltip-positioner>
+  </aria-ui-tooltip-root>
+`
+
+const TOOLTIP_ZERO_DELAY = html`
+  <aria-ui-tooltip-root>
+    <aria-ui-tooltip-trigger .openDelay=${0} data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+    <aria-ui-tooltip-positioner>
+      <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+    </aria-ui-tooltip-positioner>
+  </aria-ui-tooltip-root>
+`
+
+const TOOLTIP_DEFAULT_OPEN = html`
+  <aria-ui-tooltip-root .defaultOpen=${true}>
+    <aria-ui-tooltip-trigger .openDelay=${0} data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+    <aria-ui-tooltip-positioner>
+      <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+    </aria-ui-tooltip-positioner>
+  </aria-ui-tooltip-root>
+`
 
 describe('Tooltip', () => {
   beforeEach(() => {
@@ -11,516 +52,285 @@ describe('Tooltip', () => {
   })
 
   describe('Basic Functionality', () => {
-    test('renders tooltip elements', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      expect(page.getByText('Trigger')).toBeInTheDocument()
-      expect(page.getByText('Tooltip content')).toBeInTheDocument()
+    test('renders tooltip elements', async () => {
+      renderTooltip(TOOLTIP_TEMPLATE)
+      await expect.element(page.getByText('Trigger')).toBeInTheDocument()
+      await expect.element(page.getByText('Tooltip content')).toBeInTheDocument()
     })
 
-    test('popup is hidden by default', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      expect(page.getByText('Tooltip content')).not.toBeVisible()
+    test('popup is hidden by default', async () => {
+      renderTooltip(TOOLTIP_TEMPLATE)
+      await expect.element(getTooltip().popup).not.toBeVisible()
     })
 
-    test('popup shows with defaultOpen=true', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .defaultOpen=${true}>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-      expect(popup.style.display).toBe('')
+    test('popup shows with defaultOpen=true', async () => {
+      renderTooltip(TOOLTIP_DEFAULT_OPEN)
+      await expect.element(getTooltip().popup).toBeVisible()
     })
   })
 
   describe('Hover Interactions', () => {
     test('hover opens tooltip (with zero delay)', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const trigger = page.getByText('Trigger')
-      const popup = page.getByText('Tooltip content')
-
-      expect(popup).not.toBeVisible()
+      renderTooltip(TOOLTIP_ZERO_DELAY)
+      const { trigger, popup } = getTooltip()
+      await expect.element(popup).not.toBeVisible()
       await trigger.hover()
-      expect(popup).toBeVisible()
+      await expect.element(popup).toBeVisible()
     })
 
-    test('mouse leave closes tooltip', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .defaultOpen=${true}>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerEl = container.querySelector('aria-ui-tooltip-trigger')!
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-
-      expect(popup.style.display).toBe('')
-      triggerEl.dispatchEvent(new MouseEvent('mouseleave'))
-      expect(popup).not.toBeVisible()
+    test('mouse leave closes tooltip', async () => {
+      renderTooltip(TOOLTIP_DEFAULT_OPEN)
+      const { trigger, popup } = getTooltip()
+      await expect.element(popup).toBeVisible()
+      // The hook listens for synthetic mouseleave; dispatch directly so the
+      // test does not depend on cursor position state from prior hovers.
+      trigger.element().dispatchEvent(new MouseEvent('mouseleave'))
+      await expect.element(popup).not.toBeVisible()
     })
 
     test('disabled trigger does not open tooltip', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .disabled=${true} .openDelay=${0}
-              >Trigger</aria-ui-tooltip-trigger
-            >
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      await page.getByText('Trigger').hover()
-      expect(page.getByText('Tooltip content')).not.toBeVisible()
+      renderTooltip(html`
+        <aria-ui-tooltip-root>
+          <aria-ui-tooltip-trigger .disabled=${true} .openDelay=${0} data-testid="trigger"
+            >Trigger</aria-ui-tooltip-trigger
+          >
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
+      await getTooltip().trigger.hover()
+      await expect.element(getTooltip().popup).not.toBeVisible()
     })
   })
 
   describe('Focus Interactions', () => {
-    test('focus opens tooltip', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerEl = container.querySelector('aria-ui-tooltip-trigger')!
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-
-      triggerEl.dispatchEvent(new FocusEvent('focusin'))
-      expect(popup).toBeVisible()
+    test('focus opens tooltip', async () => {
+      renderTooltip(TOOLTIP_ZERO_DELAY)
+      const { trigger, popup } = getTooltip()
+      // Direct dispatch is intentional: the hook listens for the synthetic
+      // focusin/focusout pair regardless of real focus traversal.
+      trigger.element().dispatchEvent(new FocusEvent('focusin'))
+      await expect.element(popup).toBeVisible()
     })
 
-    test('blur closes tooltip', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .defaultOpen=${true}>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerEl = container.querySelector('aria-ui-tooltip-trigger')!
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-
-      expect(popup.style.display).toBe('')
-      triggerEl.dispatchEvent(new FocusEvent('focusout'))
-      expect(popup).not.toBeVisible()
+    test('blur closes tooltip', async () => {
+      renderTooltip(TOOLTIP_DEFAULT_OPEN)
+      const { trigger, popup } = getTooltip()
+      await expect.element(popup).toBeVisible()
+      trigger.element().dispatchEvent(new FocusEvent('focusout'))
+      await expect.element(popup).not.toBeVisible()
     })
 
-    test('tooltip stays open when hover ends but focus remains', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerEl = container.querySelector('aria-ui-tooltip-trigger')!
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
+    test('tooltip stays open when hover ends but focus remains', async () => {
+      renderTooltip(TOOLTIP_ZERO_DELAY)
+      const { trigger, popup } = getTooltip()
+      const triggerEl = trigger.element()
 
       triggerEl.dispatchEvent(new MouseEvent('mouseenter'))
       triggerEl.dispatchEvent(new FocusEvent('focusin'))
-      expect(popup).toBeVisible()
+      await expect.element(popup).toBeVisible()
 
       triggerEl.dispatchEvent(new MouseEvent('mouseleave'))
-      expect(popup).toBeVisible()
+      await expect.element(popup).toBeVisible()
 
       triggerEl.dispatchEvent(new FocusEvent('focusout'))
-      expect(popup).not.toBeVisible()
+      await expect.element(popup).not.toBeVisible()
     })
   })
 
   describe('Keyboard Interactions', () => {
-    test('Escape key closes tooltip', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .defaultOpen=${true}>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerEl = container.querySelector('aria-ui-tooltip-trigger')!
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-
-      expect(popup.style.display).toBe('')
-      triggerEl.dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))
-      expect(popup).not.toBeVisible()
+    test('Escape key closes tooltip', async () => {
+      renderTooltip(TOOLTIP_DEFAULT_OPEN)
+      const { trigger, popup } = getTooltip()
+      await expect.element(popup).toBeVisible()
+      trigger.element().dispatchEvent(new KeyboardEvent('keydown', { key: 'Escape' }))
+      await expect.element(popup).not.toBeVisible()
     })
   })
 
   describe('Tooltip Group (Shared Delay)', () => {
-    test('second tooltip opens instantly after first closes within group timeout', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+    test('second tooltip opens instantly after first closes within group timeout', async () => {
+      const container = renderTooltip(html`
+        <aria-ui-tooltip-root>
+          <aria-ui-tooltip-trigger .openDelay=${600} data-testid="trigger-a"
+            >Trigger A</aria-ui-tooltip-trigger
+          >
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup>Tooltip A</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
 
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${600} data-testid="trigger-a"
-              >Trigger A</aria-ui-tooltip-trigger
-            >
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip A</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${600} data-testid="trigger-b"
-              >Trigger B</aria-ui-tooltip-trigger
-            >
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup data-testid="popup-b">Tooltip B</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const triggerB = container.querySelector('[data-testid="trigger-b"]')!
-      const popupB = container.querySelector('[data-testid="popup-b"]')!
+        <aria-ui-tooltip-root>
+          <aria-ui-tooltip-trigger .openDelay=${600} data-testid="trigger-b"
+            >Trigger B</aria-ui-tooltip-trigger
+          >
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup data-testid="popup-b">Tooltip B</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
 
       // Open tooltip A via controlled prop, then close it (triggers group notification)
       const rootA = container.querySelector('aria-ui-tooltip-root')!
       rootA.open = true
       rootA.open = false
 
-      // Hover trigger B — should open instantly (group delay skip)
-      triggerB.dispatchEvent(new MouseEvent('mouseenter'))
-      expect(popupB).toBeVisible()
+      // Hover trigger B — should open instantly (group delay skip).
+      // dispatchEvent here matches the test for trigger A's controlled-prop path.
+      page.getByTestId('trigger-b').element().dispatchEvent(new MouseEvent('mouseenter'))
+      await expect.element(page.getByTestId('popup-b')).toBeVisible()
     })
   })
 
   describe('Controlled Mode', () => {
-    test('controlled open prop overrides internal state', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .open=${true}>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
+    test('controlled open prop overrides internal state', async () => {
+      const container = renderTooltip(html`
+        <aria-ui-tooltip-root .open=${true}>
+          <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
 
       const popup = page.getByTestId('popup')
-      expect(popup).toBeVisible()
+      await expect.element(popup).toBeVisible()
 
       const rootElement = container.querySelector('aria-ui-tooltip-root')!
       rootElement.open = false
-      expect(popup).not.toBeVisible()
+      await expect.element(popup).not.toBeVisible()
     })
   })
 
   describe('Events', () => {
     test('emits openChange event when opened', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger .openDelay=${0}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
+      const container = renderTooltip(TOOLTIP_ZERO_DELAY)
       const root = container.querySelector('aria-ui-tooltip-root')!
-      let eventFired = false
-      root.addEventListener('openChange', () => {
-        eventFired = true
-      })
+      const onOpenChange = vi.fn()
+      root.addEventListener('openChange', onOpenChange)
 
-      await page.getByText('Trigger').hover()
-      expect(eventFired).toBe(true)
+      await getTooltip().trigger.hover()
+      expect(onOpenChange).toHaveBeenCalled()
     })
   })
 
   describe('Accessibility', () => {
-    test('popup has role tooltip', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      expect(page.getByTestId('popup')).toHaveAttribute('role', 'tooltip')
+    test('popup has role tooltip', async () => {
+      renderTooltip(TOOLTIP_TEMPLATE)
+      await expect.element(getTooltip().popup).toHaveAttribute('role', 'tooltip')
     })
 
     test('trigger has aria-describedby when tooltip is open', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root .open=${true}>
-            <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const trigger = page.getByTestId('trigger')
-      const popup = container.querySelector('aria-ui-tooltip-popup')!
-
-      await expect.poll(() => trigger.element().getAttribute('aria-describedby')).toBe(popup.id)
+      renderTooltip(html`
+        <aria-ui-tooltip-root .open=${true}>
+          <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup data-testid="popup">Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
+      const { trigger, popup } = getTooltip()
+      const popupId = popup.element().id
+      await expect.element(trigger).toHaveAttribute('aria-describedby', popupId)
     })
 
-    test('trigger does not have aria-describedby when tooltip is closed', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
-
-      render(
-        html`
-          <aria-ui-tooltip-root>
-            <aria-ui-tooltip-trigger data-testid="trigger">Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      expect(page.getByTestId('trigger')).not.toHaveAttribute('aria-describedby')
+    test('trigger does not have aria-describedby when tooltip is closed', async () => {
+      renderTooltip(TOOLTIP_TEMPLATE)
+      await expect.element(getTooltip().trigger).not.toHaveAttribute('aria-describedby')
     })
 
-    test('disabled elements have aria-disabled', () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+    test('disabled elements have aria-disabled', async () => {
+      renderTooltip(html`
+        <aria-ui-tooltip-root .disabled=${true} data-testid="root">
+          <aria-ui-tooltip-trigger .disabled=${true} data-testid="trigger"
+            >Trigger</aria-ui-tooltip-trigger
+          >
+          <aria-ui-tooltip-positioner>
+            <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
 
-      render(
-        html`
-          <aria-ui-tooltip-root .disabled=${true}>
-            <aria-ui-tooltip-trigger .disabled=${true}>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      expect(container.querySelector('aria-ui-tooltip-root')!.getAttribute('aria-disabled')).toBe(
-        'true',
-      )
-      expect(
-        container.querySelector('aria-ui-tooltip-trigger')!.getAttribute('aria-disabled'),
-      ).toBe('true')
+      await expect.element(page.getByTestId('root')).toHaveAttribute('aria-disabled', 'true')
+      await expect.element(page.getByTestId('trigger')).toHaveAttribute('aria-disabled', 'true')
     })
   })
 
   describe('Placement (multiple tooltips)', () => {
     test('multiple tooltips with open-delay attribute work independently', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <div style="display: flex; gap: 16px;">
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-top"
+              >Top</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="top">
+              <aria-ui-tooltip-popup data-testid="popup-top">Tooltip on top</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-      render(
-        html`
-          <div style="display: flex; gap: 16px;">
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-top"
-                >Top</aria-ui-tooltip-trigger
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-bottom"
+              >Bottom</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="bottom">
+              <aria-ui-tooltip-popup data-testid="popup-bottom"
+                >Tooltip on bottom</aria-ui-tooltip-popup
               >
-              <aria-ui-tooltip-positioner placement="top">
-                <aria-ui-tooltip-popup data-testid="popup-top"
-                  >Tooltip on top</aria-ui-tooltip-popup
-                >
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
+        </div>
+      `)
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-bottom"
-                >Bottom</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="bottom">
-                <aria-ui-tooltip-popup data-testid="popup-bottom"
-                  >Tooltip on bottom</aria-ui-tooltip-popup
-                >
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-          </div>
-        `,
-        container,
-      )
-
-      const triggerTop = page.getByTestId('trigger-top')
       const popupTop = page.getByTestId('popup-top')
       const popupBottom = page.getByTestId('popup-bottom')
 
       // Both hidden initially
-      expect(popupTop).not.toBeVisible()
-      expect(popupBottom).not.toBeVisible()
+      await expect.element(popupTop).not.toBeVisible()
+      await expect.element(popupBottom).not.toBeVisible()
 
       // Hover first trigger — should open
-      await triggerTop.hover()
-      expect(popupTop).toBeVisible()
-      expect(popupBottom).not.toBeVisible()
+      await page.getByTestId('trigger-top').hover()
+      await expect.element(popupTop).toBeVisible()
+      await expect.element(popupBottom).not.toBeVisible()
     })
 
     test('hovering between multiple tooltips works correctly', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <div style="display: flex; gap: 16px;">
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-a"
+              >A</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="top">
+              <aria-ui-tooltip-popup data-testid="popup-a">Tooltip A</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-      render(
-        html`
-          <div style="display: flex; gap: 16px;">
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-a"
-                >A</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="top">
-                <aria-ui-tooltip-popup data-testid="popup-a">Tooltip A</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-b"
+              >B</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="bottom">
+              <aria-ui-tooltip-popup data-testid="popup-b">Tooltip B</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
+        </div>
+      `)
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" data-testid="trigger-b"
-                >B</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="bottom">
-                <aria-ui-tooltip-popup data-testid="popup-b">Tooltip B</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-          </div>
-        `,
-        container,
-      )
-
-      const triggerA = page.getByTestId('trigger-a')
-      const triggerB = page.getByTestId('trigger-b')
       const popupA = page.getByTestId('popup-a')
       const popupB = page.getByTestId('popup-b')
 
       // Hover A -> open A
-      await triggerA.hover()
-      expect(popupA).toBeVisible()
-      expect(popupB).not.toBeVisible()
+      await page.getByTestId('trigger-a').hover()
+      await expect.element(popupA).toBeVisible()
+      await expect.element(popupB).not.toBeVisible()
 
       // Move to B -> close A, open B
-      await triggerB.hover()
-      await expect.poll(() => popupB.element().checkVisibility()).toBe(true)
-      await expect.poll(() => popupA.element().checkVisibility()).toBe(false)
+      await page.getByTestId('trigger-b').hover()
+      await expect.element(popupB).toBeVisible()
+      await expect.element(popupA).not.toBeVisible()
     })
   })
 
@@ -546,167 +356,136 @@ describe('Tooltip', () => {
         </div>
       `
 
-      const trigger2 = page.getByTestId('late-t2')
       const popup2 = page.getByTestId('late-p2')
-
-      expect(popup2).not.toBeVisible()
-      await trigger2.hover()
-      expect(popup2).toBeVisible()
+      await expect.element(popup2).not.toBeVisible()
+      await page.getByTestId('late-t2').hover()
+      await expect.element(popup2).toBeVisible()
     })
   })
 
   describe('Each tooltip opens independently', () => {
     test('second tooltip opens on hover without hovering first tooltip', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <div style="display: flex; gap: 16px; padding: 50px;">
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t1"
+              >Top</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="top">
+              <aria-ui-tooltip-popup data-testid="p1">Tooltip on top</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-      render(
-        html`
-          <div style="display: flex; gap: 16px; padding: 50px;">
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t1"
-                >Top</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="top">
-                <aria-ui-tooltip-popup data-testid="p1">Tooltip on top</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t2"
+              >Bottom</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="bottom">
+              <aria-ui-tooltip-popup data-testid="p2">Tooltip on bottom</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t2"
-                >Bottom</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="bottom">
-                <aria-ui-tooltip-popup data-testid="p2">Tooltip on bottom</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t3"
+              >Left</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="left">
+              <aria-ui-tooltip-popup data-testid="p3">Tooltip on left</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t3"
-                >Left</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="left">
-                <aria-ui-tooltip-popup data-testid="p3">Tooltip on left</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t4"
-                >Right</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="right">
-                <aria-ui-tooltip-popup data-testid="p4">Tooltip on right</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-          </div>
-        `,
-        container,
-      )
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t4"
+              >Right</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="right">
+              <aria-ui-tooltip-popup data-testid="p4">Tooltip on right</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
+        </div>
+      `)
 
       // Directly hover the second trigger without touching the first
       await page.getByTestId('t2').hover()
-      expect(page.getByTestId('p2')).toBeVisible()
+      await expect.element(page.getByTestId('p2')).toBeVisible()
     })
 
     test('third and fourth tooltips open on hover', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <div style="display: flex; gap: 16px; padding: 50px;">
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t1"
+              >Top</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="top">
+              <aria-ui-tooltip-popup data-testid="p1">Tooltip on top</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-      render(
-        html`
-          <div style="display: flex; gap: 16px; padding: 50px;">
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t1"
-                >Top</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="top">
-                <aria-ui-tooltip-popup data-testid="p1">Tooltip on top</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t2"
+              >Bottom</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="bottom">
+              <aria-ui-tooltip-popup data-testid="p2">Tooltip on bottom</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t2"
-                >Bottom</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="bottom">
-                <aria-ui-tooltip-popup data-testid="p2">Tooltip on bottom</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t3"
+              >Left</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="left">
+              <aria-ui-tooltip-popup data-testid="p3">Tooltip on left</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
 
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t3"
-                >Left</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="left">
-                <aria-ui-tooltip-popup data-testid="p3">Tooltip on left</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-
-            <aria-ui-tooltip-root>
-              <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t4"
-                >Right</aria-ui-tooltip-trigger
-              >
-              <aria-ui-tooltip-positioner placement="right">
-                <aria-ui-tooltip-popup data-testid="p4">Tooltip on right</aria-ui-tooltip-popup>
-              </aria-ui-tooltip-positioner>
-            </aria-ui-tooltip-root>
-          </div>
-        `,
-        container,
-      )
+          <aria-ui-tooltip-root>
+            <aria-ui-tooltip-trigger open-delay="0" tabindex="0" data-testid="t4"
+              >Right</aria-ui-tooltip-trigger
+            >
+            <aria-ui-tooltip-positioner placement="right">
+              <aria-ui-tooltip-popup data-testid="p4">Tooltip on right</aria-ui-tooltip-popup>
+            </aria-ui-tooltip-positioner>
+          </aria-ui-tooltip-root>
+        </div>
+      `)
 
       // Hover third trigger directly
       await page.getByTestId('t3').hover()
-      expect(page.getByTestId('p3')).toBeVisible()
+      await expect.element(page.getByTestId('p3')).toBeVisible()
 
-      // Move away then hover fourth
-      const t3El = container.querySelector('[data-testid="t3"]')!
-      t3El.dispatchEvent(new MouseEvent('mouseleave'))
-
+      // Move away then hover fourth (real Playwright hover handles mouseleave)
       await page.getByTestId('t4').hover()
-      expect(page.getByTestId('p4')).toBeVisible()
+      await expect.element(page.getByTestId('p4')).toBeVisible()
     })
   })
 
   describe('Positioning', () => {
     test('positioner is positioned absolutely by default', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <aria-ui-tooltip-root .open=${true}>
+          <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
+          <aria-ui-tooltip-positioner data-testid="positioner">
+            <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
 
-      render(
-        html`
-          <aria-ui-tooltip-root .open=${true}>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const positioner = container.querySelector('aria-ui-tooltip-positioner')!
-      await expect.poll(() => positioner.style.position).toBe('absolute')
+      await expect.element(page.getByTestId('positioner')).toHaveStyle({ position: 'absolute' })
     })
 
     test('positioner respects strategy prop', async () => {
-      const container = document.createElement('div')
-      document.body.appendChild(container)
+      renderTooltip(html`
+        <aria-ui-tooltip-root .open=${true}>
+          <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
+          <aria-ui-tooltip-positioner .strategy=${'fixed'} data-testid="positioner">
+            <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
+          </aria-ui-tooltip-positioner>
+        </aria-ui-tooltip-root>
+      `)
 
-      render(
-        html`
-          <aria-ui-tooltip-root .open=${true}>
-            <aria-ui-tooltip-trigger>Trigger</aria-ui-tooltip-trigger>
-            <aria-ui-tooltip-positioner .strategy=${'fixed'}>
-              <aria-ui-tooltip-popup>Tooltip content</aria-ui-tooltip-popup>
-            </aria-ui-tooltip-positioner>
-          </aria-ui-tooltip-root>
-        `,
-        container,
-      )
-
-      const positioner = container.querySelector('aria-ui-tooltip-positioner')!
-      await expect.poll(() => positioner.style.position).toBe('fixed')
+      await expect.element(page.getByTestId('positioner')).toHaveStyle({ position: 'fixed' })
     })
   })
 })

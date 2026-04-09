@@ -1,5 +1,6 @@
 import { getId } from '@ocavue/utils'
 import { beforeEach, describe, expect, it } from 'vitest'
+import { page } from 'vitest/browser'
 
 import { createContext } from './context.ts'
 import { defineCustomElement } from './define-custom-element.ts'
@@ -103,12 +104,12 @@ describe('Context', () => {
     const container = document.createElement('div')
     container.innerHTML = `
       <${rootTag} value="a">
-        <${childTag} id="child1"></${childTag}>
-        <${leafTag} id="leaf1"></${leafTag}>
+        <${childTag} data-testid="child1"></${childTag}>
+        <${leafTag} data-testid="leaf1"></${leafTag}>
       </${rootTag}>
       <${rootTag} value="b">
-        <${childTag} id="child2"></${childTag}>
-        <${leafTag} id="leaf2"></${leafTag}>
+        <${childTag} data-testid="child2"></${childTag}>
+        <${leafTag} data-testid="leaf2"></${leafTag}>
       </${rootTag}>
     `
     document.body.appendChild(container)
@@ -117,14 +118,9 @@ describe('Context', () => {
     registerCustomElement(childTag, ChildElement)
     registerCustomElement(leafTag, LeafElement)
 
-    const child1 = container.querySelector('#child1') as HTMLElement
-    const child2 = container.querySelector('#child2') as HTMLElement
-    const leaf1 = container.querySelector('#leaf1') as HTMLElement
-    const leaf2 = container.querySelector('#leaf2') as HTMLElement
-
-    await expect.poll(() => child1.dataset.received).toBe('a')
-    await expect.poll(() => leaf1.dataset.received).toBe('a')
-    await expect.poll(() => child2.dataset.received).toBe('b')
-    await expect.poll(() => leaf2.dataset.received).toBe('b')
+    await expect.element(page.getByTestId('child1')).toHaveAttribute('data-received', 'a')
+    await expect.element(page.getByTestId('leaf1')).toHaveAttribute('data-received', 'a')
+    await expect.element(page.getByTestId('child2')).toHaveAttribute('data-received', 'b')
+    await expect.element(page.getByTestId('leaf2')).toHaveAttribute('data-received', 'b')
   })
 })
