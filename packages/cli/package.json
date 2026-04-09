@@ -29,10 +29,10 @@
   },
   "dependencies": {
     "@stricli/core": "^1.2.6",
-    "devalue": "^5.6.4",
+    "devalue": "^5.7.0",
     "just-memoize": "^2.2.0",
     "obug": "^2.1.1",
-    "oxfmt": "^0.43.0",
+    "oxfmt": "^0.44.0",
     "ts-morph": "^27.0.2"
   },
   "peerDependencies": {
