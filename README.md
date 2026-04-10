@@ -8,12 +8,12 @@ An open-source collection of unstyled, accessible Web Components and tools for b
 
 Aria UI is a monorepo of focused, composable packages. Every component is a native **light-DOM custom element**, so it works in plain HTML, in any framework, and with any styling solution you already use.
 
-| Package | Description |
-| --- | --- |
-| [`@aria-ui/elements`](./packages/elements) | Unstyled, accessible Web Components: listbox, menu, popover, tooltip. |
-| [`@aria-ui/core`](./packages/core) | Tiny framework for authoring light-DOM Web Components with a signal-based reactive runtime. |
-| [`@aria-ui/utils`](./packages/utils) | Hooks and helpers for ARIA reflection, collection navigation, and pointer/keyboard interaction. |
-| [`@aria-ui/cli`](./packages/cli) | CLI that generates typed wrapper components for React, Vue, Solid, Preact, and Svelte. |
+| Package                                    | Description                                                                                     |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| [`@aria-ui/elements`](./packages/elements) | Unstyled, accessible Web Components: listbox, menu, popover, tooltip.                           |
+| [`@aria-ui/core`](./packages/core)         | Tiny framework for authoring light-DOM Web Components with a signal-based reactive runtime.     |
+| [`@aria-ui/utils`](./packages/utils)       | Hooks and helpers for ARIA reflection, collection navigation, and pointer/keyboard interaction. |
+| [`@aria-ui/cli`](./packages/cli)           | CLI that generates typed wrapper components for React, Vue, Solid, Preact, and Svelte.          |
 
 ## Highlights
 
