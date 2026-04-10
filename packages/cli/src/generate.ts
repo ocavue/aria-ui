@@ -476,7 +476,11 @@ function generateReactComponentFile(
   })
   addWrapperImports(sourceFile, slots.imports)
 
-  const htmlAttributesType = buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers)
+  const htmlAttributesType = buildHtmlAttributesType(
+    `HTMLAttributes<${componentName}Element>`,
+    props,
+    eventHandlers,
+  )
 
   addPropsInterface({
     sourceFile,
@@ -579,8 +583,6 @@ ${propsEffect}${mountEffect}
       },
     ],
   })
-
-
 }
 
 function generatePreactComponentFile(
@@ -636,7 +638,11 @@ function generatePreactComponentFile(
   })
   addWrapperImports(sourceFile, slots.imports)
 
-  const htmlAttributesType = buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers)
+  const htmlAttributesType = buildHtmlAttributesType(
+    `HTMLAttributes<${componentName}Element>`,
+    props,
+    eventHandlers,
+  )
 
   addPropsInterface({
     sourceFile,
@@ -738,8 +744,6 @@ ${propsEffect}${mountEffect}
       },
     ],
   })
-
-
 }
 
 function generateSolidComponentFile(
@@ -920,8 +924,6 @@ ${bodyLines.join('\n')}
       },
     ],
   })
-
-
 }
 
 function generateVueComponentFile(
@@ -1112,8 +1114,6 @@ ${bodyLines.join('\n')}
       },
     ],
   })
-
-
 }
 
 function generateSvelteComponentFile(
@@ -1176,8 +1176,6 @@ function generateSvelteComponentFile(
       },
     ],
   })
-
-
 }
 
 function generateSvelteComponentSvelteFile(
@@ -1470,7 +1468,6 @@ function generateIndexFile(components: ComponentInfo[], importSource: string): s
 
   return lines.join('\n\n') + '\n'
 }
-
 
 function getComponentFileName(component: ComponentInfo): string {
   return `${toKebabCase(component.name)}.gen.ts`
