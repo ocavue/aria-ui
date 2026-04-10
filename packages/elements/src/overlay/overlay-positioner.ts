@@ -2,6 +2,7 @@ import type { HostElement } from '@aria-ui/core'
 import { computed, defineProps, useEffect, type State } from '@aria-ui/core'
 import {
   FeatureDetection,
+  useDataState,
   useDisabledMountTransitionStyle,
   useElementId,
   useTransitionStatus,
@@ -215,6 +216,7 @@ export function setupOverlayPositioner(
 ): void {
   const getOpen = computed(() => getStore()?.getIsOpen() ?? false)
   const getAnchorElement = computed(() => getStore()?.getAnchorElement())
+  const getHoist = props.hoist.get
 
   const transitionStatus = useTransitionStatus(host, getOpen)
   useDisabledMountTransitionStyle(host, transitionStatus)
@@ -227,8 +229,6 @@ export function setupOverlayPositioner(
   let popoverDirty = false
 
   if (FeatureDetection.supportsPopover()) {
-    const getHoist = props.hoist.get
-
     useEffect(host, () => {
       if (getHoist()) {
         popoverDirty = true
@@ -239,6 +239,8 @@ export function setupOverlayPositioner(
       }
     })
   }
+
+  useDataState(host, getOpen)
 
   useEffect(host, () => {
     const open = getOpen()
