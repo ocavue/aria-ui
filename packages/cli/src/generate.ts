@@ -260,7 +260,7 @@ export async function generateFiles(
 
   // Generate index.gen.ts barrel file
   const indexPath = path.join(outputDir, 'index.gen.ts')
-  const indexContents = generateIndexFile(components, options.importSource)
+  const indexContents = generateIndexFile(components)
   await writeFormattedFile(indexPath, indexContents)
   counter++
 
@@ -1442,7 +1442,7 @@ function addPropsInterface(options: PropsInterfaceOptions): void {
   }
 }
 
-function generateIndexFile(components: ComponentInfo[], importSource: string): string {
+function generateIndexFile(components: ComponentInfo[]): string {
   const lines: string[] = []
   for (const component of components) {
     const fileName = getComponentFileName(component)
