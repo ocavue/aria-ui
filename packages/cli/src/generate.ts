@@ -1,4 +1,3 @@
-import fs from 'node:fs/promises'
 import path from 'node:path'
 
 import { uneval } from 'devalue'
@@ -7,6 +6,7 @@ import { IndentationText, Project, VariableDeclarationKind, type SourceFile } fr
 
 import { logger } from './logger'
 import type { ComponentInfo } from './parse'
+import { vfs } from './vfs'
 
 export type Framework = 'react' | 'preact' | 'solid' | 'vue' | 'svelte'
 
@@ -134,8 +134,7 @@ async function writeFormattedFile(filePath: string, contents: string): Promise<v
   if (/\.[cm]?[jt]sx?$/i.test(filePath)) {
     contents = await formatFile(filePath, contents)
   }
-  await fs.writeFile(filePath, contents)
-  logger.debug(`Generated ${filePath}`)
+  vfs.writeFile(filePath, contents)
 }
 
 async function writeSourceFile(
@@ -195,15 +194,13 @@ export async function generateFiles(
   outputDir: string,
   options: GenerateOptions,
 ): Promise<number> {
-  await fs.mkdir(outputDir, { recursive: true })
-
   // Remove all existing generated files before writing new ones
-  const existingFiles = await fs.readdir(outputDir)
-  await Promise.all(
-    existingFiles
-      .filter((file) => file.includes('.gen.'))
-      .map((file) => fs.rm(path.join(outputDir, file))),
-  )
+  const existingFiles = vfs.readdir(outputDir)
+  for (const file of existingFiles) {
+    if (file.includes('.gen.')) {
+      vfs.rm(path.join(outputDir, file))
+    }
+  }
 
   const project = new Project({
     manipulationSettings: {
@@ -263,6 +260,9 @@ export async function generateFiles(
   const indexContents = generateIndexFile(components)
   await writeFormattedFile(indexPath, indexContents)
   counter++
+
+  // Commit all changes to disk
+  vfs.commit()
 
   return counter
 }
