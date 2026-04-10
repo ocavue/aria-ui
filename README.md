@@ -1,6 +1,6 @@
 # Aria UI
 
-**Composable Light-DOM-Only Web Components**
+**Unstyled Light-DOM-Only Web Components**
 
 **Playground:** [https://aria-ui.pages.dev/](https://aria-ui.pages.dev/)
 
