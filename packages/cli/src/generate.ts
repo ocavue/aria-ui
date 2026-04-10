@@ -580,7 +580,7 @@ ${propsEffect}${mountEffect}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component)
+
 }
 
 function generatePreactComponentFile(
@@ -739,7 +739,7 @@ ${propsEffect}${mountEffect}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component)
+
 }
 
 function generateSolidComponentFile(
@@ -793,7 +793,6 @@ function generateSolidComponentFile(
     component,
     name: `${componentName}Props`,
     docs: [`Props for the {@link ${componentName}} Solid component.\n\n@public`],
-    extendsTypes: [`JSX.HTMLAttributes<${componentName}Element>`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -916,13 +915,13 @@ ${bodyLines.join('\n')}
     declarations: [
       {
         name: componentName,
-        type: `Component<${componentName}Props>`,
+        type: `Component<${componentName}Props & JSX.HTMLAttributes<${componentName}Element>>`,
         initializer: componentInitializer,
       },
     ],
   })
 
-  addEventTypeReExports(sourceFile, component)
+
 }
 
 function generateVueComponentFile(
@@ -1114,7 +1113,7 @@ ${bodyLines.join('\n')}
     ],
   })
 
-  addEventTypeReExports(sourceFile, component)
+
 }
 
 function generateSvelteComponentFile(
@@ -1138,13 +1137,19 @@ function generateSvelteComponentFile(
     importSource: options.importSource,
     order: 'events-first',
     includeRegister: false,
-    includeElementType: false,
+    includeElementType: true,
   })
 
   sourceFile.addImportDeclaration({
     moduleSpecifier: 'svelte',
     isTypeOnly: true,
     namedImports: ['Component', 'Snippet'],
+  })
+
+  sourceFile.addImportDeclaration({
+    moduleSpecifier: 'svelte/elements',
+    isTypeOnly: true,
+    namedImports: ['HTMLAttributes'],
   })
 
   addPropsInterface({
@@ -1157,6 +1162,8 @@ function generateSvelteComponentFile(
     includeChildren: true,
   })
 
+  const svelteComponentType = `Component<${componentName}Props & HTMLAttributes<${componentName}Element>>`
+
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
@@ -1164,13 +1171,13 @@ function generateSvelteComponentFile(
     declarations: [
       {
         name: componentName,
-        type: `Component<${componentName}Props>`,
-        initializer: `${componentName}Component as unknown as Component<${componentName}Props>`,
+        type: svelteComponentType,
+        initializer: `${componentName}Component as ${svelteComponentType}`,
       },
     ],
   })
 
-  addEventTypeReExports(sourceFile, component)
+
 }
 
 function generateSvelteComponentSvelteFile(
@@ -1434,12 +1441,6 @@ function addPropsInterface(options: PropsInterfaceOptions): void {
       type: 'Snippet',
       hasQuestionToken: true,
     })
-    // TODO: is there any way that we can add correct HTML element props without using "unknonwn"?
-    propsInterface.addIndexSignature({
-      keyName: 'key',
-      keyType: 'string',
-      returnType: 'unknown',
-    })
   }
 }
 
@@ -1451,10 +1452,6 @@ function generateIndexFile(components: ComponentInfo[], importSource: string): s
     const fileName = getComponentFileName(component)
     const componentName = component.name
     const exports = [componentName, `type ${componentName}Props`]
-
-    if (component.events.length > 0) {
-      exports.push(`type ${componentName}Events`)
-    }
 
     lines.push(`export { ${exports.join(', ')} } from './${fileName}'`)
 
@@ -1474,16 +1471,6 @@ function generateIndexFile(components: ComponentInfo[], importSource: string): s
   return lines.join('\n\n') + '\n'
 }
 
-function addEventTypeReExports(sourceFile: SourceFile, component: ComponentInfo): void {
-  if (component.events.length === 0) return
-
-  // Re-export the events interface type (e.g., PopoverRootEvents)
-  const eventsTypeName = `${component.name}Events`
-  sourceFile.addExportDeclaration({
-    isTypeOnly: true,
-    namedExports: [eventsTypeName],
-  })
-}
 
 function getComponentFileName(component: ComponentInfo): string {
   return `${toKebabCase(component.name)}.gen.ts`
