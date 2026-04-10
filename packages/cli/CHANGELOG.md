@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.3
+
+### Patch Changes
+
+- 9cee049: Improve fs performance.
+
 ## 0.1.2
 
 ### Patch Changes
