@@ -476,14 +476,13 @@ function generateReactComponentFile(
   })
   addWrapperImports(sourceFile, slots.imports)
 
+  const htmlAttributesType = buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers)
+
   addPropsInterface({
     sourceFile,
     component,
     name: `${componentName}Props`,
     docs: [`Props for the {@link ${componentName}} React component.\n\n@public`],
-    extendsTypes: [
-      buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers),
-    ],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -575,7 +574,7 @@ ${propsEffect}${mountEffect}
     declarations: [
       {
         name: componentName,
-        type: `ForwardRefExoticComponent<${componentName}Props & RefAttributes<${componentName}Element>>`,
+        type: `ForwardRefExoticComponent<${componentName}Props & ${htmlAttributesType} & RefAttributes<${componentName}Element>>`,
         initializer: `/* @__PURE__ */ forwardRef(${componentName}Component)`,
       },
     ],
@@ -637,14 +636,13 @@ function generatePreactComponentFile(
   })
   addWrapperImports(sourceFile, slots.imports)
 
+  const htmlAttributesType = buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers)
+
   addPropsInterface({
     sourceFile,
     component,
     name: `${componentName}Props`,
     docs: [`Props for the {@link ${componentName}} Preact component.\n\n@public`],
-    extendsTypes: [
-      buildHtmlAttributesType(`HTMLAttributes<${componentName}Element>`, props, eventHandlers),
-    ],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -735,7 +733,7 @@ ${propsEffect}${mountEffect}
     declarations: [
       {
         name: componentName,
-        type: `ForwardRefExoticComponent<${componentName}Props & RefAttributes<${componentName}Element>>`,
+        type: `ForwardRefExoticComponent<${componentName}Props & ${htmlAttributesType} & RefAttributes<${componentName}Element>>`,
         initializer: `/* @__PURE__ */ forwardRef(${componentName}Component)`,
       },
     ],
