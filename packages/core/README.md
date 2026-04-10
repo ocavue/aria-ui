@@ -73,28 +73,28 @@ console.log(el.count) // 10
 
 ### Defining custom elements
 
-| Export | Description |
-| --- | --- |
-| `defineProps<Props>(declaration)` | Declare a typed set of props. Each entry specifies `default`, `attribute` (string name or `false`), and `type` (`'boolean' \| 'string' \| 'number' \| 'json'`). |
-| `defineCustomElement(setup, props)` | Create a custom element class. Returns a constructor that extends `HostElement` and exposes each prop as a getter/setter. |
-| `registerCustomElement(name, ctor)` | Idempotent wrapper around `customElements.define`. Safe to call multiple times and on the server. |
-| `HostElement` | Base class for custom elements. Implements the `ReactiveControllerHost` protocol. |
+| Export                              | Description                                                                                                                                                     |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `defineProps<Props>(declaration)`   | Declare a typed set of props. Each entry specifies `default`, `attribute` (string name or `false`), and `type` (`'boolean' \| 'string' \| 'number' \| 'json'`). |
+| `defineCustomElement(setup, props)` | Create a custom element class. Returns a constructor that extends `HostElement` and exposes each prop as a getter/setter.                                       |
+| `registerCustomElement(name, ctor)` | Idempotent wrapper around `customElements.define`. Safe to call multiple times and on the server.                                                               |
+| `HostElement`                       | Base class for custom elements. Implements the `ReactiveControllerHost` protocol.                                                                               |
 
 ### Reactivity
 
-| Export | Description |
-| --- | --- |
-| `createSignal<T>(initial)` | Create a `{ get, set }` signal. |
-| `createState(propsDeclaration)` | Create a `State<Props>`, i.e. a record of signals from a props declaration. |
-| `computed(fn)` | Re-exported from `alien-signals`. Build a derived value that updates when its dependencies change. |
-| `useEffect(host, callback)` | Run an effect tied to the host's connected lifecycle. The callback may return a cleanup function. |
-| `onMount(host, callback)` | Run a one-shot callback when the host is connected. The callback may return a cleanup function. |
-| `useEventListener(host, type, listener)` | Add a DOM event listener that is automatically removed on disconnect. |
+| Export                                   | Description                                                                                        |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `createSignal<T>(initial)`               | Create a `{ get, set }` signal.                                                                    |
+| `createState(propsDeclaration)`          | Create a `State<Props>`, i.e. a record of signals from a props declaration.                        |
+| `computed(fn)`                           | Re-exported from `alien-signals`. Build a derived value that updates when its dependencies change. |
+| `useEffect(host, callback)`              | Run an effect tied to the host's connected lifecycle. The callback may return a cleanup function.  |
+| `onMount(host, callback)`                | Run a one-shot callback when the host is connected. The callback may return a cleanup function.    |
+| `useEventListener(host, type, listener)` | Add a DOM event listener that is automatically removed on disconnect.                              |
 
 ### Dependency injection
 
-| Export | Description |
-| --- | --- |
+| Export                  | Description                                                                      |
+| ----------------------- | -------------------------------------------------------------------------------- |
 | `createContext<T>(key)` | Create a context object with `provide(host, value)` and `consume(host)` methods. |
 
 `createContext` is implemented with bubbling DOM events, so providers and consumers do not need to know about each other directly — any descendant element can consume a value provided by an ancestor.

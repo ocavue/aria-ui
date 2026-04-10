@@ -12,12 +12,12 @@ A set of unstyled, accessible **light-DOM Web Components** for building user int
 
 ## Components
 
-| Component | Custom elements |
-| --- | --- |
-| **Listbox** | `aria-ui-listbox-root`, `aria-ui-listbox-item`, `aria-ui-listbox-empty` |
-| **Menu** | `aria-ui-menu-root`, `aria-ui-menu-trigger`, `aria-ui-menu-positioner`, `aria-ui-menu-popup`, `aria-ui-menu-item`, `aria-ui-menu-submenu-root`, `aria-ui-menu-submenu-trigger` |
-| **Popover** | `aria-ui-popover-root`, `aria-ui-popover-trigger`, `aria-ui-popover-positioner`, `aria-ui-popover-popup` |
-| **Tooltip** | `aria-ui-tooltip-root`, `aria-ui-tooltip-trigger`, `aria-ui-tooltip-positioner`, `aria-ui-tooltip-popup` |
+| Component   | Custom elements                                                                                                                                                                |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Listbox** | `aria-ui-listbox-root`, `aria-ui-listbox-item`, `aria-ui-listbox-empty`                                                                                                        |
+| **Menu**    | `aria-ui-menu-root`, `aria-ui-menu-trigger`, `aria-ui-menu-positioner`, `aria-ui-menu-popup`, `aria-ui-menu-item`, `aria-ui-menu-submenu-root`, `aria-ui-menu-submenu-trigger` |
+| **Popover** | `aria-ui-popover-root`, `aria-ui-popover-trigger`, `aria-ui-popover-positioner`, `aria-ui-popover-popup`                                                                       |
+| **Tooltip** | `aria-ui-tooltip-root`, `aria-ui-tooltip-trigger`, `aria-ui-tooltip-positioner`, `aria-ui-tooltip-popup`                                                                       |
 
 ## Installation
 
@@ -87,10 +87,7 @@ listbox.addEventListener('valueChange', (event) => {
 Each component is also published under its own subpath, so you can register only the parts you need:
 
 ```ts
-import {
-  registerListboxRootElement,
-  registerListboxItemElement,
-} from '@aria-ui/elements/listbox'
+import { registerListboxRootElement, registerListboxItemElement } from '@aria-ui/elements/listbox'
 
 registerListboxRootElement()
 registerListboxItemElement()
@@ -128,20 +125,21 @@ listbox.values = ['apple', 'banana']
 
 Components expose their state through standard accessibility attributes and a few `data-*` attributes:
 
-| Attribute | Used by | Meaning |
-| --- | --- | --- |
-| `aria-selected="true"` | listbox items | The option is selected |
-| `aria-expanded="true"` | popover/menu/tooltip triggers | The overlay is open |
-| `aria-disabled="true"` | any element | The element is disabled |
-| `data-active` | listbox items, menu items | The element is the currently highlighted option (`aria-activedescendant`) |
-| `data-state="open" \| "closed"` | overlay popups | Overlay open state, useful for transitions |
+| Attribute                       | Used by                       | Meaning                                                                   |
+| ------------------------------- | ----------------------------- | ------------------------------------------------------------------------- |
+| `aria-selected="true"`          | listbox items                 | The option is selected                                                    |
+| `aria-expanded="true"`          | popover/menu/tooltip triggers | The overlay is open                                                       |
+| `aria-disabled="true"`          | any element                   | The element is disabled                                                   |
+| `data-active`                   | listbox items, menu items     | The element is the currently highlighted option (`aria-activedescendant`) |
+| `data-state="open" \| "closed"` | overlay popups                | Overlay open state, useful for transitions                                |
 
 Example with Tailwind:
 
 ```html
 <aria-ui-listbox-item
   value="apple"
-  class="block px-3 py-2 cursor-pointer hover:bg-blue-50 aria-selected:bg-blue-100 data-active:outline-2 data-active:outline-blue-500">
+  class="block px-3 py-2 cursor-pointer hover:bg-blue-50 aria-selected:bg-blue-100 data-active:outline-2 data-active:outline-blue-500"
+>
   Apple
 </aria-ui-listbox-item>
 ```
@@ -150,12 +148,12 @@ Example with Tailwind:
 
 Components dispatch standard DOM events whose payload lives on the `detail` property:
 
-| Event | Dispatched by | `detail` |
-| --- | --- | --- |
-| `valueChange` | listbox (single select) | `string` |
-| `valuesChange` | listbox (multi-select) | `string[]` |
-| `openChange` | popover, menu, tooltip | `boolean` |
-| `select` | menu item, listbox item | (no payload) |
+| Event          | Dispatched by           | `detail`     |
+| -------------- | ----------------------- | ------------ |
+| `valueChange`  | listbox (single select) | `string`     |
+| `valuesChange` | listbox (multi-select)  | `string[]`   |
+| `openChange`   | popover, menu, tooltip  | `boolean`    |
+| `select`       | menu item, listbox item | (no payload) |
 
 `valueChange` / `valuesChange` are cancelable — call `event.preventDefault()` to take over the state yourself and run the listbox in a controlled mode.
 

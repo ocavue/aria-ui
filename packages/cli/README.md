@@ -35,14 +35,14 @@ npx aria-ui build \
 
 ### Flags
 
-| Flag | Required | Description |
-| --- | --- | --- |
-| `--tsconfig` | yes | Path to a `tsconfig.json` that can resolve the entry file. |
-| `--entry` | yes | Path to the entry file that re-exports the components you want wrapped. |
-| `--output` | yes | Output directory for the generated wrapper files. |
-| `--framework` | yes | One of `react`, `preact`, `solid`, `vue`, `svelte`. |
-| `--import-source` | yes | Module specifier the generated code uses to import the underlying elements (e.g. `@aria-ui/elements/listbox`). |
-| `--prefix` | no | Custom-element tag prefix. Defaults to `aria-ui`. |
+| Flag              | Required | Description                                                                                                    |
+| ----------------- | -------- | -------------------------------------------------------------------------------------------------------------- |
+| `--tsconfig`      | yes      | Path to a `tsconfig.json` that can resolve the entry file.                                                     |
+| `--entry`         | yes      | Path to the entry file that re-exports the components you want wrapped.                                        |
+| `--output`        | yes      | Output directory for the generated wrapper files.                                                              |
+| `--framework`     | yes      | One of `react`, `preact`, `solid`, `vue`, `svelte`.                                                            |
+| `--import-source` | yes      | Module specifier the generated code uses to import the underlying elements (e.g. `@aria-ui/elements/listbox`). |
+| `--prefix`        | no       | Custom-element tag prefix. Defaults to `aria-ui`.                                                              |
 
 ## Programmatic API
 
