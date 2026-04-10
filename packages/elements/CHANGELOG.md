@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.2
+
+### Patch Changes
+
+- 93b710c: Add `data-state="open"` / `data-state="closed"` attribute to positioner elements.
+
 ## 0.1.1
 
 ### Patch Changes
