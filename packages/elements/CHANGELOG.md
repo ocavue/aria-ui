@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.0.111
+
+### Patch Changes
+
+- 059df39: Custom events (`OpenChangeEvent`, `ValueChangeEvent`, `ValuesChangeEvent`) now expose their data via a `detail` property instead of `open`, `value`, and `values`.
+
 ## 0.0.110
 
 ### Patch Changes
