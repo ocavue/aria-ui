@@ -24,8 +24,8 @@ importers:
         specifier: ^10.2.0
         version: 10.2.0(jiti@2.6.1)
       knip:
-        specifier: ^6.3.0
-        version: 6.3.0
+        specifier: ^6.3.1
+        version: 6.3.1
       monorepo-typescript-references:
         specifier: ^1.1.1
         version: 1.1.1
@@ -51,8 +51,8 @@ importers:
         specifier: ^1.2.6
         version: 1.2.6
       devalue:
-        specifier: ^5.7.0
-        version: 5.7.0
+        specifier: ^5.7.1
+        version: 5.7.1
       just-memoize:
         specifier: ^2.2.0
         version: 2.2.0
@@ -230,11 +230,11 @@ importers:
         specifier: npm:@types/web@^0.0.345
         version: '@types/web@0.0.345'
       astro:
-        specifier: ^6.1.4
-        version: 6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
+        specifier: ^6.1.5
+        version: 6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
       astrobook:
         specifier: ^0.12.6
-        version: 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
+        version: 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
       tailwindcss:
         specifier: ^4.2.2
         version: 4.2.2
@@ -2055,8 +2055,8 @@ packages:
   astro-theme-toggle@0.8.0:
     resolution: {integrity: sha512-7ngEKDfCLKoVbxX4yxrggtBr8i6W8eT0un0TpNKHUeOG/Pq2g7BrjH+etP/l/XQYYSWQmeOIAI02LvLXDMvOWw==}
 
-  astro@6.1.4:
-    resolution: {integrity: sha512-SRy1bONuCHkGWhI5JiWCQKVDVbeaXOikjAVZs/Nz+lvUvubtdLoZfnacmuZHQ9RL2IOkU54M8/qZYm9ypJDKrg==}
+  astro@6.1.5:
+    resolution: {integrity: sha512-AJVw/JlssxUCBFi3Hp4djL8Pt7wUQqStBBawCd8cNGBBM2lBzp/rXGguzt4OcMfW+86fs0hpFwMyopHM2r6d3g==}
     engines: {node: '>=22.12.0', npm: '>=9.6.5', pnpm: '>=7.1.0'}
     hasBin: true
 
@@ -2297,8 +2297,8 @@ packages:
     resolution: {integrity: sha512-qE3Veg1YXzGHQhlA6jzebZN2qVf6NX+A7m7qlhCGG30dJixrAQhYOsJjsnBjJkCSmuOPpCk30145fr8FV0bzog==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  devalue@5.7.0:
-    resolution: {integrity: sha512-qCvc8m7cImp1QDCsiY+C2EdSBWSj7Ucfoq87scSdYboDiIKdvMtFbH1U2VReBls6WMhMaUOoK3ZJEDNG/7zm3w==}
+  devalue@5.7.1:
+    resolution: {integrity: sha512-MUbZ586EgQqdRnC4yDrlod3BEdyvE4TapGYHMW2CiaW+KkkFmWEFqBUaLltEZCGi0iFXCEjRF0OjF0DV2QHjOA==}
 
   devlop@1.1.0:
     resolution: {integrity: sha512-RWmIqhcFf1lRYBvNmr7qTNuyCt/7/ns2jbpp1+PalgE/rDQcBT0fioSMUpJ93irlUhC5hrg4cYqe6U+0ImW0rA==}
@@ -2916,8 +2916,8 @@ packages:
   keyv@4.5.4:
     resolution: {integrity: sha512-oxVHkHR/EJf2CNXnWxRLW6mg7JyCCUcG0DtEGmL2ctUo1PNTin1PUil+r/+4r5MpVgC/fn1kjsx7mjSujKqIpw==}
 
-  knip@6.3.0:
-    resolution: {integrity: sha512-g6dVPoTw6iNm3cubC5IWxVkVsd0r5hXhTBTbAGIEQN53GdA2ZM/slMTPJ7n5l8pBebNQPHpxjmKxuR4xVQ2/hQ==}
+  knip@6.3.1:
+    resolution: {integrity: sha512-22kLJloVcOVOAudCxlFOC0ICAMme7dKsS7pVTEnrmyKGpswb8ieznvAiSKUeFVDJhb01ect6dkDc1Ha1g1sPpg==}
     engines: {node: ^20.19.0 || >=22.12.0}
     hasBin: true
 
@@ -4236,9 +4236,9 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.13
       '@jridgewell/trace-mapping': 0.3.31
 
-  '@astrobook/core@0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)':
+  '@astrobook/core@0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)':
     dependencies:
-      '@astrobook/types': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrobook/types': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
       '@sveltejs/acorn-typescript': 1.0.9(acorn@8.16.0)
       acorn: 8.16.0
       fdir: 6.5.0(picomatch@4.0.4)
@@ -4247,22 +4247,22 @@ snapshots:
       valibot: 1.3.1(typescript@5.9.3)
       yoctocolors: 2.1.2
     optionalDependencies:
-      astro: 6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
+      astro: 6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
     transitivePeerDependencies:
       - typescript
 
-  '@astrobook/types@0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))':
+  '@astrobook/types@0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))':
     optionalDependencies:
-      astro: 6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
+      astro: 6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
 
-  '@astrobook/ui@0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)':
+  '@astrobook/ui@0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)':
     dependencies:
-      '@astrobook/core': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
-      '@astrobook/types': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrobook/core': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
+      '@astrobook/types': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
       astro-theme-toggle: 0.8.0
       just-group-by: 2.2.0
     optionalDependencies:
-      astro: 6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
+      astro: 6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
     transitivePeerDependencies:
       - typescript
 
@@ -5949,7 +5949,7 @@ snapshots:
 
   astro-theme-toggle@0.8.0: {}
 
-  astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3):
+  astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3):
     dependencies:
       '@astrojs/compiler': 3.0.1
       '@astrojs/internal-helpers': 0.8.0
@@ -5965,9 +5965,8 @@ snapshots:
       clsx: 2.1.1
       common-ancestor-path: 2.0.0
       cookie: 1.1.1
-      devalue: 5.7.0
+      devalue: 5.7.1
       diff: 8.0.4
-      dlv: 1.1.3
       dset: 3.1.4
       es-module-lexer: 2.0.0
       esbuild: 0.27.4
@@ -6043,13 +6042,13 @@ snapshots:
       - uploadthing
       - yaml
 
-  astrobook@0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3):
+  astrobook@0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3):
     dependencies:
-      '@astrobook/core': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
-      '@astrobook/types': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
-      '@astrobook/ui': 0.12.6(astro@6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
+      '@astrobook/core': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
+      '@astrobook/types': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))
+      '@astrobook/ui': 0.12.6(astro@6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3))(typescript@5.9.3)
     optionalDependencies:
-      astro: 6.1.4(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
+      astro: 6.1.5(@types/node@24.12.0)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.43.0)(typescript@5.9.3)(yaml@2.8.3)
     transitivePeerDependencies:
       - typescript
 
@@ -6230,7 +6229,7 @@ snapshots:
 
   detect-newline@4.0.1: {}
 
-  devalue@5.7.0: {}
+  devalue@5.7.1: {}
 
   devlop@1.1.0:
     dependencies:
@@ -6970,7 +6969,7 @@ snapshots:
     dependencies:
       json-buffer: 3.0.1
 
-  knip@6.3.0:
+  knip@6.3.1:
     dependencies:
       '@nodelib/fs.walk': 1.2.8
       fast-glob: 3.3.3
