@@ -5,10 +5,10 @@ import astrobook from 'astrobook'
 export default defineConfig({
   integrations: [
     astrobook({
-      title: 'aria-ui',
+      title: 'Aria UI',
       homeContent: {
-        subtitle: false,
-        title: 'aria-ui',
+        subtitle: "Composable Light-DOM-Only Web Components",
+        title: 'Aria UI',
         repo: { href: 'https://github.com/ocavue/aria-ui' },
         version: false,
       },

@@ -1,6 +1,6 @@
 # Aria UI
 
-An open-source collection of unstyled, accessible Web Components and tools for building inclusive user interfaces.
+**Composable Light-DOM-Only Web Components**
 
 **Playground:** [https://aria-ui.pages.dev/](https://aria-ui.pages.dev/)
 
