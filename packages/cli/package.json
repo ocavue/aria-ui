@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@stricli/core": "^1.2.6",
-    "devalue": "^5.7.0",
+    "devalue": "^5.7.1",
     "just-memoize": "^2.2.0",
     "obug": "^2.1.1",
     "oxfmt": "^0.44.0",
