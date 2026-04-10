@@ -144,10 +144,14 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
  * @public
  */
 export class ValueChangeEvent extends Event {
-  readonly value: string
+  /**
+   * The newly selected value.
+   */
+  readonly detail: string
+
   constructor(value: string) {
     super('valueChange', { bubbles: true, cancelable: true })
-    this.value = value
+    this.detail = value
   }
 }
 
@@ -155,11 +159,14 @@ export class ValueChangeEvent extends Event {
  * @public
  */
 export class ValuesChangeEvent extends Event {
-  readonly values: string[]
+  /**
+   * The newly selected values.
+   */
+  readonly detail: string[]
 
   constructor(values: string[]) {
     super('valuesChange', { bubbles: true, cancelable: true })
-    this.values = values
+    this.detail = values
   }
 }
 
