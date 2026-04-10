@@ -7,7 +7,7 @@ export default defineConfig({
     astrobook({
       title: 'Aria UI',
       homeContent: {
-        subtitle: "Unstyled Light-DOM-Only Web Components",
+        subtitle: 'Unstyled Light-DOM-Only Web Components',
         title: 'Aria UI',
         repo: { href: 'https://github.com/ocavue/aria-ui' },
         version: false,
