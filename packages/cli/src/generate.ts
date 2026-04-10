@@ -1444,26 +1444,12 @@ function addPropsInterface(options: PropsInterfaceOptions): void {
 
 function generateIndexFile(components: ComponentInfo[], importSource: string): string {
   const lines: string[] = []
-  const allEventTypeNames = new Set<string>()
-
   for (const component of components) {
     const fileName = getComponentFileName(component)
     const componentName = component.name
     const exports = [componentName, `type ${componentName}Props`]
 
     lines.push(`export { ${exports.join(', ')} } from './${fileName}'`)
-
-    for (const event of component.events) {
-      if (event.typeName) {
-        allEventTypeNames.add(event.typeName)
-      }
-    }
-  }
-
-  // Export event classes directly from the source package
-  if (allEventTypeNames.size > 0) {
-    const sorted = [...allEventTypeNames].sort()
-    lines.push(`export { ${sorted.join(', ')} } from '${importSource}'`)
   }
 
   return lines.join('\n\n') + '\n'
