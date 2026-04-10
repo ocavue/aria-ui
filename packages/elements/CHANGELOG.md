@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.1
+
+### Patch Changes
+
+- 8d91d7f: Fix overlay popup exit animation by ensuring `data-state` is updated before checks for running animations
+
 ## 0.1.0
 
 ### Minor Changes
