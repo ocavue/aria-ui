@@ -1,6 +1,6 @@
 # @aria-ui/elements
 
-A set of unstyled, accessible **light-DOM Web Components** for building user interfaces. Inspired by Radix UI and Ark UI, but shipped as native custom elements that work in any framework — or in plain HTML.
+A set of unstyled, accessible **Light-DOM-Only Web Components** for building user interfaces. Inspired by Radix UI and Ark UI, but shipped as native custom elements that work in any framework — or in plain HTML.
 
 **Playground:** [https://aria-ui.pages.dev/](https://aria-ui.pages.dev/)
 
