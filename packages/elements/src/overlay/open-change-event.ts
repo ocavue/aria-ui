@@ -2,10 +2,13 @@
  * @public
  */
 export class OpenChangeEvent extends Event {
-  readonly open: boolean
+  /**
+   * Whether the overlay is open.
+   */
+  readonly detail: boolean
 
   constructor(open: boolean) {
     super('openChange')
-    this.open = open
+    this.detail = open
   }
 }

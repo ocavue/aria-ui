@@ -51,8 +51,8 @@ export function setupTooltipRoot(host: HostElement, props: State<TooltipRootProp
   const store = useOverlayStore(host, props)
   TooltipStoreContext.provide(host, store)
   useEventListener(host, 'openChange', (event) => {
-    const open: boolean = event.open
-    if (open === false) {
+    const open: boolean = event.detail
+    if (!open) {
       notifyTooltipClosed()
     }
   })
