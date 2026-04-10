@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.2
+
+### Patch Changes
+
+- b87f7a1: Remove event re-export.
+
 ## 0.1.1
 
 ### Patch Changes
