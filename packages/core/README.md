@@ -4,6 +4,8 @@ A tiny framework for building **light-DOM** Web Components with a signal-based r
 
 `@aria-ui/core` is the foundation that [`@aria-ui/elements`](https://www.npmjs.com/package/@aria-ui/elements) is built on. You can also use it directly to author your own custom elements without pulling in a full UI framework.
 
+**Playground:** [https://aria-ui.pages.dev/](https://aria-ui.pages.dev/) — see what `@aria-ui/core` powers.
+
 ## Features
 
 - **Light DOM only.** Components render into the regular DOM tree, so global CSS, Tailwind classes, and `[aria-*]` / `[data-*]` selectors all work out of the box.

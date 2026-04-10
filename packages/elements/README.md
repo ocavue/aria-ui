@@ -2,6 +2,8 @@
 
 A set of unstyled, accessible **light-DOM Web Components** for building user interfaces. Inspired by Radix UI and Ark UI, but shipped as native custom elements that work in any framework — or in plain HTML.
 
+**Playground:** [https://aria-ui.pages.dev/](https://aria-ui.pages.dev/)
+
 ## Features
 
 - **Light DOM only.** No Shadow DOM, so your global stylesheet, Tailwind classes, and selectors like `[aria-selected="true"]` or `[data-active]` apply directly to the elements you put on the page.

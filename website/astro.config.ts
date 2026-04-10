@@ -5,6 +5,7 @@ import astrobook from 'astrobook'
 export default defineConfig({
   integrations: [
     astrobook({
+      title: "aria-ui",
       css: ['./src/styles/tailwind.css'],
     }),
   ],
