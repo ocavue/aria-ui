@@ -1,7 +1,7 @@
 {
   "name": "@aria-ui/cli",
   "type": "module",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "CLI tool for aria-ui",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
