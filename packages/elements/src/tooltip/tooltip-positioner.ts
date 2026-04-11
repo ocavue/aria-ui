@@ -9,9 +9,6 @@ import {
 
 import { TooltipStoreContext } from './tooltip-store.ts'
 
-/**
- * @public
- */
 export interface TooltipPositionerProps extends OverlayPositionerProps {}
 
 /**
@@ -27,8 +24,6 @@ export function setupTooltipPositioner(host: HostElement, props: State<TooltipPo
 }
 
 /**
- * @public
- *
  * `<aria-ui-tooltip-positioner>` custom element.
  *
  * Properties: {@link TooltipPositionerProps}

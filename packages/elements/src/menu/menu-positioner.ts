@@ -10,9 +10,6 @@ import {
 
 import { MenuStoreContext } from './menu-store.ts'
 
-/**
- * @public
- */
 export interface MenuPositionerProps extends Omit<OverlayPositionerProps, 'placement'> {
   /**
    * The initial placement of the floating element
@@ -44,8 +41,6 @@ export function setupMenuPositioner(host: HostElement, props: State<MenuPosition
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-positioner>` custom element.
  *
  * Properties: {@link MenuPositionerProps}

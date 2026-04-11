@@ -9,9 +9,6 @@ import {
 
 import { TooltipStoreContext } from './tooltip-store.ts'
 
-/**
- * @public
- */
 export interface TooltipPopupProps extends OverlayPopupProps {}
 
 /**
@@ -32,8 +29,6 @@ export function setupTooltipPopup(host: HostElement, _props: State<TooltipPopupP
 }
 
 /**
- * @public
- *
  * `<aria-ui-tooltip-popup>` custom element.
  *
  * Properties: {@link TooltipPopupProps}

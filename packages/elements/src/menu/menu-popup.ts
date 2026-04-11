@@ -21,9 +21,6 @@ import { setupOverlayPopup } from '../overlay/index.ts'
 
 import { closeMenuTree, MenuStoreContext, type MenuStore } from './menu-store.ts'
 
-/**
- * @public
- */
 export interface MenuPopupProps {
   /**
    * By default, the MenuPopup element will listen for keydown events.
@@ -256,8 +253,6 @@ function handleTypeahead(char: string, menuStore: MenuStore) {
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-popup>` custom element.
  *
  * Properties: {@link MenuPopupProps}

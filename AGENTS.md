@@ -4,19 +4,16 @@
 
 Each custom element class (e.g. `TooltipRootElement`, `PopoverTriggerElement`) must have a JSDoc comment above it with the following structure:
 
-1. `@public` tag
-2. Backticked custom element tag name followed by "custom element."
-3. **Properties** — `{@link}` to the corresponding Props type.
-4. **Events** — `{@link}` to the Events type. Omit this line if the element does not emit custom events.
-5. **Data attributes** — A markdown table listing `data-*` attributes. Omit this section if the element does not expose any `data-*` attributes.
-6. **CSS variables** - A markdown table listing CSS variables. Omit this section if the element does not expose any CSS variables.
+1. Backticked custom element tag name followed by "custom element."
+2. **Properties** — `{@link}` to the corresponding Props type.
+3. **Events** — `{@link}` to the Events type. Omit this line if the element does not emit custom events.
+4. **Data attributes** — A markdown table listing `data-*` attributes. Omit this section if the element does not expose any `data-*` attributes.
+5. **CSS variables** - A markdown table listing CSS variables. Omit this section if the element does not expose any CSS variables.
 
 ### Template
 
 ```ts
 /**
- * @public
- *
  * `<aria-ui-xxx-yyy>` custom element.
  *
  * Properties: {@link XxxYyyProps}

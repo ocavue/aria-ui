@@ -23,8 +23,6 @@ function isDisabled(element: HTMLElement): boolean {
 /**
  * An ordered collection of items with O(1) lookup and directional traversal.
  * Skips disabled items automatically.
- *
- * @public
  */
 export class Collection {
   private _items: HTMLElement[] = []

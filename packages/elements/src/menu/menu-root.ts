@@ -17,9 +17,6 @@ import { createMenuStore, MenuStoreContext } from './menu-store.ts'
 
 export { OpenChangeEvent }
 
-/**
- * @public
- */
 export interface MenuRootProps extends OverlayRootProps {}
 
 /**
@@ -29,9 +26,6 @@ export const MenuRootPropsDeclaration = defineProps<MenuRootProps>({
   ...OverlayRootPropsDeclaration,
 })
 
-/**
- * @public
- */
 export interface MenuRootEvents {
   /**
    * Emitted when the menu is opened or closed.
@@ -62,8 +56,6 @@ export function setupMenuRoot(host: HostElement, props: State<MenuRootProps>) {
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-root>` custom element.
  *
  * Properties: {@link MenuRootProps}

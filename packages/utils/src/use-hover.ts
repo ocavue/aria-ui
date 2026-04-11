@@ -1,6 +1,5 @@
 /**
  * Options for the useHover hook
- * @public
  */
 export interface UseHoverOptions {
   /**
@@ -49,8 +48,6 @@ export interface UseHoverOptions {
  * // Later, when you need to cleanup:
  * cleanup()
  * ```
- *
- * @public
  */
 export function useHover(target: HTMLElement, options: UseHoverOptions): VoidFunction {
   const { openDelay = 0, closeDelay = 0, onOpen, onClose } = options

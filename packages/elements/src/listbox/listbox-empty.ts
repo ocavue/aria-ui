@@ -9,9 +9,6 @@ import {
 
 import { ListboxStoreContext } from './listbox-store.ts'
 
-/**
- * @public
- */
 export interface ListboxEmptyProps {}
 
 /**
@@ -34,8 +31,6 @@ export function setupListboxEmpty(host: HostElement, _props: State<ListboxEmptyP
 }
 
 /**
- * @public
- *
  * `<aria-ui-listbox-empty>` custom element.
  *
  * Properties: {@link ListboxEmptyProps}

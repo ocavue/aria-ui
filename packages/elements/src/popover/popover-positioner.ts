@@ -9,9 +9,6 @@ import {
 
 import { PopoverStoreContext } from './popover-store.ts'
 
-/**
- * @public
- */
 export interface PopoverPositionerProps extends OverlayPositionerProps {}
 
 /**
@@ -27,8 +24,6 @@ export function setupPopoverPositioner(host: HostElement, props: State<PopoverPo
 }
 
 /**
- * @public
- *
  * `<aria-ui-popover-positioner>` custom element.
  *
  * Properties: {@link PopoverPositionerProps}

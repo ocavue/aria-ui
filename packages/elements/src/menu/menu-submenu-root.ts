@@ -15,9 +15,6 @@ import { createOverlayStore } from '../overlay/overlay-store.ts'
 
 import { createMenuStore, MenuStoreContext } from './menu-store.ts'
 
-/**
- * @public
- */
 export interface MenuSubmenuRootProps extends OverlayRootProps {}
 
 /**
@@ -28,9 +25,6 @@ export const MenuSubmenuRootPropsDeclaration =
     ...OverlayRootPropsDeclaration,
   })
 
-/**
- * @public
- */
 export interface MenuSubmenuRootEvents {
   /**
    * Emitted when the submenu is opened or closed.
@@ -69,8 +63,6 @@ export function setupMenuSubmenuRoot(host: HostElement, props: State<MenuSubmenu
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-submenu-root>` custom element.
  *
  * Properties: {@link MenuSubmenuRootProps}

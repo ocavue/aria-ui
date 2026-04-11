@@ -17,9 +17,6 @@ import { MenuStoreContext } from './menu-store.ts'
 const OPEN_DELAY = 200
 const CLOSE_DELAY = 150
 
-/**
- * @public
- */
 export interface MenuSubmenuTriggerProps {
   /**
    * The unique value for this submenu trigger in the parent menu.
@@ -141,8 +138,6 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubm
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-submenu-trigger>` custom element.
  *
  * Properties: {@link MenuSubmenuTriggerProps}

@@ -18,9 +18,6 @@ import { TooltipStoreContext } from './tooltip-store.ts'
 
 export { OpenChangeEvent }
 
-/**
- * @public
- */
 export interface TooltipRootProps extends OverlayRootProps {}
 
 /**
@@ -28,9 +25,6 @@ export interface TooltipRootProps extends OverlayRootProps {}
  */
 export const TooltipRootPropsDeclaration = OverlayRootPropsDeclaration
 
-/**
- * @public
- */
 export interface TooltipRootEvents {
   /**
    * Emitted when the tooltip is opened or closed.
@@ -59,8 +53,6 @@ export function setupTooltipRoot(host: HostElement, props: State<TooltipRootProp
 }
 
 /**
- * @public
- *
  * `<aria-ui-tooltip-root>` custom element.
  *
  * Properties: {@link TooltipRootProps}

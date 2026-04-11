@@ -1,51 +1,54 @@
 export {
   MenuItemElement,
-  registerMenuItemElement,
   MenuItemPropsDeclaration,
-  setupMenuItem,
-  type MenuItemProps,
-  type MenuItemEvents,
+  registerMenuItemElement,
   SelectEvent,
+  setupMenuItem,
+  type MenuItemEvents,
+  type MenuItemProps,
 } from './menu-item.ts'
 export {
   MenuPopupElement,
-  registerMenuPopupElement,
   MenuPopupPropsDeclaration,
+  registerMenuPopupElement,
   setupMenuPopup,
   type MenuPopupProps,
 } from './menu-popup.ts'
 export {
   MenuPositionerElement,
-  registerMenuPositionerElement,
   MenuPositionerPropsDeclaration,
+  registerMenuPositionerElement,
   setupMenuPositioner,
   type MenuPositionerProps,
 } from './menu-positioner.ts'
 export {
   MenuRootElement,
-  registerMenuRootElement,
-  OpenChangeEvent,
   MenuRootPropsDeclaration,
+  OpenChangeEvent,
+  registerMenuRootElement,
   setupMenuRoot,
   type MenuRootEvents,
   type MenuRootProps,
 } from './menu-root.ts'
 export {
   MenuSubmenuRootElement,
-  registerMenuSubmenuRootElement,
   MenuSubmenuRootPropsDeclaration,
+  registerMenuSubmenuRootElement,
   setupMenuSubmenuRoot,
+  type MenuSubmenuRootEvents,
+  type MenuSubmenuRootProps,
 } from './menu-submenu-root.ts'
 export {
   MenuSubmenuTriggerElement,
-  registerMenuSubmenuTriggerElement,
   MenuSubmenuTriggerPropsDeclaration,
+  registerMenuSubmenuTriggerElement,
   setupMenuSubmenuTrigger,
+  type MenuSubmenuTriggerProps,
 } from './menu-submenu-trigger.ts'
 export {
   MenuTriggerElement,
-  registerMenuTriggerElement,
   MenuTriggerPropsDeclaration,
+  registerMenuTriggerElement,
   setupMenuTrigger,
   type MenuTriggerEvents,
   type MenuTriggerProps,

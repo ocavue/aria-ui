@@ -9,9 +9,6 @@ import {
 
 import { PopoverStoreContext, type PopoverStore } from './popover-store.ts'
 
-/**
- * @public
- */
 export interface PopoverPopupProps extends OverlayPopupProps {}
 
 /**
@@ -32,8 +29,6 @@ export function setupPopoverPopup(host: HostElement, _props: State<PopoverPopupP
 }
 
 /**
- * @public
- *
  * `<aria-ui-popover-popup>` custom element.
  *
  * Properties: {@link PopoverPopupProps}

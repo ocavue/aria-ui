@@ -19,9 +19,6 @@ import type {
 import type { OverlayStore } from './overlay-store.ts'
 import { updatePlacement } from './positioning.ts'
 
-/**
- * @public
- */
 export interface OverlayPositionerProps {
   /**
    * The strategy to use for positioning

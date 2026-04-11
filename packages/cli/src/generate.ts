@@ -480,7 +480,7 @@ function generateReactComponentFile(
     sourceFile,
     component,
     name: `${componentName}Props`,
-    docs: [`Props for the {@link ${componentName}} React component.\n\n@public`],
+    docs: [`Props for the {@link ${componentName}} React component.`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -568,7 +568,7 @@ ${propsEffect}${mountEffect}
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
-    docs: [`A React component that renders an \`${tagName}\` custom element.\n\n@public`],
+    docs: [`A React component that renders an \`${tagName}\` custom element.`],
     declarations: [
       {
         name: componentName,
@@ -642,7 +642,7 @@ function generatePreactComponentFile(
     sourceFile,
     component,
     name: `${componentName}Props`,
-    docs: [`Props for the {@link ${componentName}} Preact component.\n\n@public`],
+    docs: [`Props for the {@link ${componentName}} Preact component.`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -729,7 +729,7 @@ ${propsEffect}${mountEffect}
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
-    docs: [`A Preact component that renders an \`${tagName}\` custom element.\n\n@public`],
+    docs: [`A Preact component that renders an \`${tagName}\` custom element.`],
     declarations: [
       {
         name: componentName,
@@ -790,7 +790,7 @@ function generateSolidComponentFile(
     sourceFile,
     component,
     name: `${componentName}Props`,
-    docs: [`Props for the {@link ${componentName}} Solid component.\n\n@public`],
+    docs: [`Props for the {@link ${componentName}} Solid component.`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -909,7 +909,7 @@ ${bodyLines.join('\n')}
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
-    docs: [`A Solid component that renders an \`${tagName}\` custom element.\n\n@public`],
+    docs: [`A Solid component that renders an \`${tagName}\` custom element.`],
     declarations: [
       {
         name: componentName,
@@ -962,7 +962,7 @@ function generateVueComponentFile(
     sourceFile,
     component,
     name: `${componentName}Props`,
-    docs: [`Props for the {@link ${componentName}} Vue component.\n\n@public`],
+    docs: [`Props for the {@link ${componentName}} Vue component.`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
   })
@@ -1099,7 +1099,7 @@ ${bodyLines.join('\n')}
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
-    docs: [`A Vue component that renders an \`${tagName}\` custom element.\n\n@public`],
+    docs: [`A Vue component that renders an \`${tagName}\` custom element.`],
     declarations: [
       {
         name: componentName,
@@ -1150,7 +1150,7 @@ function generateSvelteComponentFile(
     sourceFile,
     component,
     name: `${componentName}Props`,
-    docs: [`Props for the {@link ${componentName}} Svelte component.\n\n@public`],
+    docs: [`Props for the {@link ${componentName}} Svelte component.`],
     propsTypeName: hasProps ? propsTypeName : undefined,
     eventsTypeName: hasEvents ? eventsTypeName : undefined,
     includeChildren: true,
@@ -1161,7 +1161,7 @@ function generateSvelteComponentFile(
   sourceFile.addVariableStatement({
     isExported: true,
     declarationKind: VariableDeclarationKind.Const,
-    docs: [`A Svelte component that renders an \`${tagName}\` custom element.\n\n@public`],
+    docs: [`A Svelte component that renders an \`${tagName}\` custom element.`],
     declarations: [
       {
         name: componentName,
