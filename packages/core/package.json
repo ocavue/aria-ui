@@ -40,7 +40,7 @@
     "@typescript/lib-dom": "npm:@types/web@^0.0.345",
     "tsdown": "^0.21.7",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.3"
+    "vitest": "^4.1.4"
   },
   "publishConfig": {
     "access": "public"
