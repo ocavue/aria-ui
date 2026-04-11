@@ -114,7 +114,7 @@ function propertyFromAttribute(
     case 'number':
       return numberFromAttribute(attributeValue)
     case 'json':
-    case undefined:{
+    case undefined: {
       const jsonValue = jsonFromAttribute(attributeValue)
       return jsonValue === undefined ? declaration.default : jsonValue
     }

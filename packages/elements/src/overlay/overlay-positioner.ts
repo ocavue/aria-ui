@@ -176,10 +176,10 @@ export const OverlayPositionerPropsDeclaration =
   /* @__PURE__ */ defineProps<OverlayPositionerProps>({
     strategy: { default: 'absolute', attribute: 'strategy', type: 'string' },
     placement: { default: 'top', attribute: 'placement', type: 'string' },
-    autoUpdate: { default: true, attribute: false, type: 'json' },
+    autoUpdate: { default: true, attribute: false },
     hoist: { default: true, attribute: 'hoist', type: 'boolean' },
-    offset: { default: 6, attribute: false, type: 'json' },
-    flip: { default: true, attribute: false, type: 'json' },
+    offset: { default: 6, attribute: false },
+    flip: { default: true, attribute: false },
     shift: { default: true, attribute: 'shift', type: 'boolean' },
     overlap: { default: false, attribute: 'overlap', type: 'boolean' },
     fitViewport: { default: false, attribute: 'fit-viewport', type: 'boolean' },
@@ -187,7 +187,7 @@ export const OverlayPositionerPropsDeclaration =
     sameHeight: { default: false, attribute: 'same-height', type: 'boolean' },
     inline: { default: false, attribute: 'inline', type: 'boolean' },
     hide: { default: false, attribute: 'hide', type: 'boolean' },
-    boundary: { default: 'clippingAncestors', attribute: false, type: 'json' },
+    boundary: { default: 'clippingAncestors', attribute: false },
     rootBoundary: {
       default: 'viewport',
       attribute: 'root-boundary',
