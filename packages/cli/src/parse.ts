@@ -2,12 +2,12 @@ import memoize from 'just-memoize'
 import { Project, SyntaxKind, type InterfaceDeclaration, type SourceFile } from 'ts-morph'
 
 /**
- * Information about a component prop or event
+ * Information about a component prop
  */
 export interface PropInfo {
-  /** The name of the prop/event */
+  /** The name of the prop */
   name: string
-  /** JSDoc comment describing the prop/event */
+  /** JSDoc comment describing the prop */
   comment: string
 }
 
@@ -81,18 +81,13 @@ export const parse = memoize(parseImpl)
  * Extract component names by finding setupXXX function exports
  */
 function extractComponentNames(sourceFile: SourceFile): string[] {
-  const exportDeclarations = sourceFile.getExportDeclarations()
   const names: string[] = []
 
-  for (const exportDecl of exportDeclarations) {
-    const namedExports = exportDecl.getNamedExports()
-    for (const namedExport of namedExports) {
-      const name = namedExport.getName()
-      if (name.startsWith('setup')) {
-        // Extract component name: setupPopoverRoot -> PopoverRoot
-        const componentName = name.slice('setup'.length)
-        names.push(componentName)
-      }
+  for (const [name] of sourceFile.getExportedDeclarations()) {
+    if (name.startsWith('setup')) {
+      // Extract component name: setupPopoverRoot -> PopoverRoot
+      const componentName = name.slice('setup'.length)
+      names.push(componentName)
     }
   }
 
@@ -104,21 +99,15 @@ function extractComponentNames(sourceFile: SourceFile): string[] {
  */
 function getComponentSourceFilePath(sourceFile: SourceFile, componentName: string): string {
   const setupFunctionName = `setup${componentName}`
+  const decls = sourceFile.getExportedDeclarations().get(setupFunctionName)
 
-  // Find the export declaration that exports the setup function
-  const exportDecl = sourceFile.getExportDeclarations().find((exp) => {
-    return exp.getNamedExports().some((named) => {
-      return named.getName() === setupFunctionName
-    })
-  })
-
-  if (!exportDecl) {
+  if (!decls || decls.length === 0) {
     throw new Error(`Setup function not found for component: ${componentName}`)
   }
 
-  // Get the source file where this setup function is defined
-  const referencedFile = exportDecl.getModuleSpecifierSourceFileOrThrow()
-  return referencedFile.getFilePath()
+  // getExportedDeclarations() resolves through re-exports, so
+  // getSourceFile() returns the file where the function is originally defined.
+  return decls[0].getSourceFile().getFilePath()
 }
 
 /**
@@ -126,21 +115,10 @@ function getComponentSourceFilePath(sourceFile: SourceFile, componentName: strin
  */
 function extractProps(sourceFile: SourceFile, componentName: string): PropInfo[] {
   const propsInterfaceName = `${componentName}Props`
-
-  // Find the export declaration that exports this interface
-  const exportDecl = sourceFile.getExportDeclarations().find((exp) => {
-    return exp.getNamedExports().some((named) => {
-      const exportName = named.getName()
-      return exportName === propsInterfaceName
-    })
-  })
+  const interfaceDecl = findExportedInterface(sourceFile, propsInterfaceName)
 
   // Props interface is optional - not all components have props
-  if (!exportDecl) return []
-
-  // Once the interface is exported, all following steps are required
-  const referencedFile = exportDecl.getModuleSpecifierSourceFileOrThrow()
-  const interfaceDecl = resolveExportedInterface(referencedFile, propsInterfaceName)
+  if (!interfaceDecl) return []
 
   return extractPropertiesFromInterface(interfaceDecl)
 }
@@ -150,42 +128,31 @@ function extractProps(sourceFile: SourceFile, componentName: string): PropInfo[]
  */
 function extractEvents(sourceFile: SourceFile, componentName: string): EventInfo[] {
   const eventsInterfaceName = `${componentName}Events`
-
-  // Find the export declaration that exports this interface
-  const exportDecl = sourceFile.getExportDeclarations().find((exp) => {
-    return exp.getNamedExports().some((named) => {
-      const exportName = named.getName()
-      return exportName === eventsInterfaceName
-    })
-  })
+  const interfaceDecl = findExportedInterface(sourceFile, eventsInterfaceName)
 
   // Events interface is optional - not all components have events
-  if (!exportDecl) return []
-
-  // Once the interface is exported, all following steps are required
-  const referencedFile = exportDecl.getModuleSpecifierSourceFileOrThrow()
-  const interfaceDecl = resolveExportedInterface(referencedFile, eventsInterfaceName)
+  if (!interfaceDecl) return []
 
   return extractEventsFromInterface(interfaceDecl)
 }
 
 /**
- * Resolve an exported interface by name, following re-export chains via
- * `getExportedDeclarations()` which recursively resolves transitive re-exports.
+ * Find an exported interface by name. Uses `getExportedDeclarations()` which
+ * handles both direct declarations and re-exports (including transitive ones).
  */
-function resolveExportedInterface(
+function findExportedInterface(
   sourceFile: SourceFile,
   interfaceName: string,
-): InterfaceDeclaration {
-  const exportedDecls = sourceFile.getExportedDeclarations()
-  const decls = exportedDecls.get(interfaceName) ?? []
+): InterfaceDeclaration | undefined {
+  const decls = sourceFile.getExportedDeclarations().get(interfaceName) ?? []
 
   for (const decl of decls) {
     if (decl.isKind(SyntaxKind.InterfaceDeclaration)) {
       return decl satisfies InterfaceDeclaration
     }
   }
-  throw new Error(`Could not resolve interface '${interfaceName}' from ${sourceFile.getFilePath()}`)
+
+  return undefined
 }
 
 /**
