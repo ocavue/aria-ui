@@ -39,7 +39,7 @@ export interface MenuPopupProps {
  */
 export const MenuPopupPropsDeclaration =
   /* @__PURE__ */ defineProps<MenuPopupProps>({
-    eventTarget: { default: null, attribute: false, type: 'json' },
+    eventTarget: { default: null, attribute: false },
   })
 
 /**
