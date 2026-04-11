@@ -36,9 +36,7 @@ export const defaultItemFilter: ItemFilter = ({ value, query }) => {
     .includes(query.toLowerCase().replaceAll(/\s/g, ''))
 }
 
-/**
- * @public
- */
+  
 export interface ListboxRootProps {
   /**
    * The currently selected value. Only available when {@link multiple} is
@@ -140,9 +138,7 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
   eventTarget: { default: null, attribute: false },
 })
 
-/**
- * @public
- */
+  
 export class ValueChangeEvent extends Event {
   /**
    * The newly selected value.
@@ -155,9 +151,7 @@ export class ValueChangeEvent extends Event {
   }
 }
 
-/**
- * @public
- */
+  
 export class ValuesChangeEvent extends Event {
   /**
    * The newly selected values.
@@ -177,9 +171,7 @@ declare global {
   }
 }
 
-/**
- * @public
- */
+  
 export interface ListboxRootEvents {
   /**
    * Emitted when the selected value changes. Only available when multiple is

@@ -12,9 +12,7 @@ import { PopoverStoreContext } from './popover-store.ts'
 
 export { OpenChangeEvent }
 
-/**
- * @public
- */
+  
 export interface PopoverRootProps extends OverlayRootProps {
   /**
    * Whether the popover should be modal.
@@ -37,9 +35,7 @@ export const PopoverRootPropsDeclaration = defineProps<PopoverRootProps>({
   },
 })
 
-/**
- * @public
- */
+  
 export interface PopoverRootEvents {
   /**
    * Emitted when the popover is opened or closed.

@@ -21,9 +21,7 @@ import { setupOverlayPopup } from '../overlay/index.ts'
 
 import { closeMenuTree, MenuStoreContext, type MenuStore } from './menu-store.ts'
 
-/**
- * @public
- */
+  
 export interface MenuPopupProps {
   /**
    * By default, the MenuPopup element will listen for keydown events.

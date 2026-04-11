@@ -20,9 +20,7 @@ import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 
 import { MenuStoreContext } from './menu-store.ts'
 
-/**
- * @public
- */
+  
 export interface MenuTriggerProps {
   /**
    * Whether the component should ignore user interaction.
@@ -44,9 +42,7 @@ export const MenuTriggerPropsDeclaration =
     },
   })
 
-/**
- * @public
- */
+  
 export interface MenuTriggerEvents {
   /**
    * Emitted when the menu is opened or closed.

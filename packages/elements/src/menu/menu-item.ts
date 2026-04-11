@@ -15,9 +15,7 @@ import { closeMenuTree, MenuStoreContext } from './menu-store.ts'
 
 export { SelectEvent }
 
-/**
- * @public
- */
+  
 export interface MenuItemProps {
   /**
    * The unique value for this menu item.
@@ -51,9 +49,7 @@ export const MenuItemPropsDeclaration =
     closeOnSelect: { default: true, attribute: 'close-on-select', type: 'boolean' },
   })
 
-/**
- * @public
- */
+  
 export interface MenuItemEvents {
   /**
    * Emitted when the the item is selected.

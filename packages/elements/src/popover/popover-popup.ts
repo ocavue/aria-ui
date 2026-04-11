@@ -9,9 +9,7 @@ import {
 
 import { PopoverStoreContext, type PopoverStore } from './popover-store.ts'
 
-/**
- * @public
- */
+  
 export interface PopoverPopupProps extends OverlayPopupProps {}
 
 /**

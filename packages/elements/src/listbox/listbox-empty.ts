@@ -9,9 +9,7 @@ import {
 
 import { ListboxStoreContext } from './listbox-store.ts'
 
-/**
- * @public
- */
+  
 export interface ListboxEmptyProps {}
 
 /**

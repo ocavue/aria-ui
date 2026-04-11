@@ -12,9 +12,7 @@ import { createDelayedToggle, useAriaDescribedBy, useAriaDisabled } from '@aria-
 import { shouldSkipOpenDelay } from './tooltip-group.ts'
 import { TooltipStoreContext } from './tooltip-store.ts'
 
-/**
- * @public
- */
+  
 export interface TooltipTriggerProps {
   /**
    * Whether the component should ignore user interaction.

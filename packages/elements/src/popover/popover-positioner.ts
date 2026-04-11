@@ -9,9 +9,7 @@ import {
 
 import { PopoverStoreContext } from './popover-store.ts'
 
-/**
- * @public
- */
+  
 export interface PopoverPositionerProps extends OverlayPositionerProps {}
 
 /**

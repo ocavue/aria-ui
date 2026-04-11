@@ -9,9 +9,7 @@ import {
 
 import { TooltipStoreContext } from './tooltip-store.ts'
 
-/**
- * @public
- */
+  
 export interface TooltipPositionerProps extends OverlayPositionerProps {}
 
 /**
