@@ -17,15 +17,24 @@ const { story } = Astro.props
 </script>
 
 <style is:global>
-  aria-ui-popover-positioner:not(:defined) {
+  aria-ui-popover-positioner:not([data-state]) {
     display: none;
-    visibility: hidden;
-    opacity: 0;
   }
 
-  aria-ui-popover-popup:not(:defined) {
-    display: none;
-    visibility: hidden;
+  aria-ui-popover-popup {
+    transform-origin: var(--transform-origin);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  aria-ui-popover-popup[data-state="open"] {
+    @starting-style {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  aria-ui-popover-popup[data-state="closed"] {
+    transform: scale(0.9);
     opacity: 0;
   }
 </style>

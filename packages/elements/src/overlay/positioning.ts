@@ -68,6 +68,7 @@ export function updatePlacement(
     setupShift(options),
     setupSize(options),
     setupInline(options),
+    setupTransformOrigin(options),
     setupHide(options),
   ]
 
@@ -222,6 +223,54 @@ function setupSize(props: UpdatePlacementOpinions) {
 function setupInline(props: UpdatePlacementOpinions) {
   if (!props.inline) return
   return inline()
+}
+
+// Based on https://github.com/mui/base-ui/blob/d808eb5fc075eb955d50753bfc2dd007bcb4d9e5/packages/react/src/utils/useAnchorPositioning.ts#L356
+function setupTransformOrigin(props: UpdatePlacementOpinions): Middleware {
+  return {
+    name: 'transformOrigin',
+    fn(state) {
+      const { elements, middlewareData, placement: renderedPlacement, rects, x, y } = state
+
+      const [side] = getSideAndAlignFromPlacement(renderedPlacement)
+
+      const refCenterX = rects.reference.x + rects.reference.width / 2 - x
+      const refCenterY = rects.reference.y + rects.reference.height / 2 - y
+
+      const transformX = Math.max(0, Math.min(refCenterX, rects.floating.width))
+      const transformY = Math.max(0, Math.min(refCenterY, rects.floating.height))
+
+      const offsetValue = getMainAxisOffset(props.offset)
+
+      const shiftY = Math.abs(middlewareData.shift?.y || 0)
+      const isOverlapping = shiftY > offsetValue
+      const sideAxis = side === 'top' || side === 'bottom' ? 'y' : 'x'
+
+      let transformOrigin: string
+
+      if (props.overlap && sideAxis === 'y' && isOverlapping) {
+        const halfAnchorHeight = rects.reference.height / 2
+        transformOrigin = `${transformX}px ${rects.reference.y + halfAnchorHeight - y}px`
+      } else {
+        transformOrigin = {
+          top: `${transformX}px calc(100% + ${offsetValue}px)`,
+          bottom: `${transformX}px ${-offsetValue}px`,
+          left: `calc(100% + ${offsetValue}px) ${transformY}px`,
+          right: `${-offsetValue}px ${transformY}px`,
+        }[side]!
+      }
+
+      elements.floating.style.setProperty('--transform-origin', transformOrigin)
+
+      return {}
+    },
+  }
+}
+
+function getMainAxisOffset(offset: OffsetOptions): number {
+  if (typeof offset === 'number') return offset
+  if (typeof offset === 'object' && offset !== null) return offset.mainAxis ?? 0
+  return 0
 }
 
 function setupHide(props: UpdatePlacementOpinions) {

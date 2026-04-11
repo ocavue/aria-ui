@@ -17,6 +17,29 @@ const { story } = Astro.props
   registerElements()
 </script>
 
+<style is:global>
+  aria-ui-menu-positioner:not([data-state]) {
+    display: none;
+  }
+
+  aria-ui-menu-popup {
+    transform-origin: var(--transform-origin);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  aria-ui-menu-popup[data-state="open"] {
+    @starting-style {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+  }
+
+  aria-ui-menu-popup[data-state="closed"] {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+</style>
+
 <div class="p-4">
   {story === "basic" && <Basic />}
   {story === "disabled-items" && <DisabledItems />}
