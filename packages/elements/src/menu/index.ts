@@ -32,6 +32,8 @@ export {
 } from './menu-root.ts'
 export {
   MenuSubmenuRootElement,
+  MenuSubmenuRootProps,
+  MenuSubmenuRootEvents,
   registerMenuSubmenuRootElement,
   MenuSubmenuRootPropsDeclaration,
   setupMenuSubmenuRoot,
@@ -41,6 +43,7 @@ export {
   registerMenuSubmenuTriggerElement,
   MenuSubmenuTriggerPropsDeclaration,
   setupMenuSubmenuTrigger,
+  MenuSubmenuTriggerProps,
 } from './menu-submenu-trigger.ts'
 export {
   MenuTriggerElement,
