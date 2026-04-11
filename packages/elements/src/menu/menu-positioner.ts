@@ -10,7 +10,6 @@ import {
 
 import { MenuStoreContext } from './menu-store.ts'
 
-  
 export interface MenuPositionerProps extends Omit<OverlayPositionerProps, 'placement'> {
   /**
    * The initial placement of the floating element

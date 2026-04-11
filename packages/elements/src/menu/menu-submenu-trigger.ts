@@ -17,7 +17,6 @@ import { MenuStoreContext } from './menu-store.ts'
 const OPEN_DELAY = 200
 const CLOSE_DELAY = 150
 
-  
 export interface MenuSubmenuTriggerProps {
   /**
    * The unique value for this submenu trigger in the parent menu.

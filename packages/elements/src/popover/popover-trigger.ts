@@ -18,7 +18,6 @@ import {
 import type { OpenChangeEvent } from './popover-root.ts'
 import { PopoverStoreContext } from './popover-store.ts'
 
-  
 export interface PopoverTriggerProps {
   /**
    * Whether the component should ignore user interaction.
@@ -74,7 +73,6 @@ export const PopoverTriggerPropsDeclaration =
     },
   })
 
-  
 export interface PopoverTriggerEvents {
   /**
    * Emitted when the popover is opened or closed.

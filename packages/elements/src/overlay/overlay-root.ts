@@ -6,7 +6,6 @@ import type { OpenChangeEvent } from './open-change-event.ts'
 import type { OverlayStore } from './overlay-store.ts'
 import { createOverlayStore } from './overlay-store.ts'
 
-  
 export interface OverlayRootProps {
   /**
    * Whether the overlay is initially open.

@@ -17,7 +17,6 @@ import { ListboxStoreContext } from './listbox-store.ts'
 
 export { SelectEvent }
 
-  
 export interface ListboxItemProps {
   /**
    * The unique value for this option.
@@ -34,7 +33,6 @@ export interface ListboxItemProps {
   disabled: boolean
 }
 
-  
 export interface ListboxItemEvents {
   /**
    * Emitted when the the item is selected.

@@ -4,7 +4,6 @@ import { useDataState, useElementId, usePresence } from '@aria-ui/utils'
 
 import type { OverlayStore } from './overlay-store.ts'
 
-  
 export interface OverlayPopupProps {}
 
 /**

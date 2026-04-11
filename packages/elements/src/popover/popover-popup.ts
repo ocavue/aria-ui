@@ -9,7 +9,6 @@ import {
 
 import { PopoverStoreContext, type PopoverStore } from './popover-store.ts'
 
-  
 export interface PopoverPopupProps extends OverlayPopupProps {}
 
 /**

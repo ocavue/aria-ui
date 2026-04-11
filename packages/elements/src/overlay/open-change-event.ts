@@ -1,4 +1,3 @@
-  
 export class OpenChangeEvent extends Event {
   /**
    * Whether the overlay is open.

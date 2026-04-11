@@ -15,7 +15,6 @@ import { createOverlayStore } from '../overlay/overlay-store.ts'
 
 import { createMenuStore, MenuStoreContext } from './menu-store.ts'
 
-  
 export interface MenuSubmenuRootProps extends OverlayRootProps {}
 
 /**
@@ -26,7 +25,6 @@ export const MenuSubmenuRootPropsDeclaration =
     ...OverlayRootPropsDeclaration,
   })
 
-  
 export interface MenuSubmenuRootEvents {
   /**
    * Emitted when the submenu is opened or closed.

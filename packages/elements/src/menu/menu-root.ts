@@ -17,7 +17,6 @@ import { createMenuStore, MenuStoreContext } from './menu-store.ts'
 
 export { OpenChangeEvent }
 
-  
 export interface MenuRootProps extends OverlayRootProps {}
 
 /**
@@ -27,7 +26,6 @@ export const MenuRootPropsDeclaration = defineProps<MenuRootProps>({
   ...OverlayRootPropsDeclaration,
 })
 
-  
 export interface MenuRootEvents {
   /**
    * Emitted when the menu is opened or closed.

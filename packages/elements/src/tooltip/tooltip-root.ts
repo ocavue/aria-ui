@@ -18,7 +18,6 @@ import { TooltipStoreContext } from './tooltip-store.ts'
 
 export { OpenChangeEvent }
 
-  
 export interface TooltipRootProps extends OverlayRootProps {}
 
 /**
@@ -26,7 +25,6 @@ export interface TooltipRootProps extends OverlayRootProps {}
  */
 export const TooltipRootPropsDeclaration = OverlayRootPropsDeclaration
 
-  
 export interface TooltipRootEvents {
   /**
    * Emitted when the tooltip is opened or closed.
