@@ -136,8 +136,8 @@ export const ListboxRootPropsDeclaration = defineProps<ListboxRootProps>({
   loop: { default: false, attribute: 'loop', type: 'boolean' },
   autoHighlight: { default: false, attribute: 'auto-highlight', type: 'boolean' },
   query: { default: '', attribute: 'query', type: 'string' },
-  filter: { default: defaultItemFilter, attribute: false, type: 'json' },
-  eventTarget: { default: null, attribute: false, type: 'json' },
+  filter: { default: defaultItemFilter, attribute: false },
+  eventTarget: { default: null, attribute: false },
 })
 
 /**
