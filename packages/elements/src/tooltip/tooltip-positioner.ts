@@ -25,8 +25,6 @@ export function setupTooltipPositioner(host: HostElement, props: State<TooltipPo
 }
 
 /**
- * @public
- *
  * `<aria-ui-tooltip-positioner>` custom element.
  *
  * Properties: {@link TooltipPositionerProps}

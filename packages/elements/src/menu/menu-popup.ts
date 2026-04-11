@@ -254,8 +254,6 @@ function handleTypeahead(char: string, menuStore: MenuStore) {
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-popup>` custom element.
  *
  * Properties: {@link MenuPopupProps}

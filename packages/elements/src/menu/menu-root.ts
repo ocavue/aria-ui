@@ -58,8 +58,6 @@ export function setupMenuRoot(host: HostElement, props: State<MenuRootProps>) {
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-root>` custom element.
  *
  * Properties: {@link MenuRootProps}

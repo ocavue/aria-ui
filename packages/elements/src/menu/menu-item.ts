@@ -88,8 +88,6 @@ export function setupMenuItem(host: HostElement, props: State<MenuItemProps>) {
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-item>` custom element.
  *
  * Properties: {@link MenuItemProps}

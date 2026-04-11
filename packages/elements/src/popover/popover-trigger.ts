@@ -127,8 +127,6 @@ export function setupPopoverTrigger(host: HostElement, props: State<PopoverTrigg
 }
 
 /**
- * @public
- *
  * `<aria-ui-popover-trigger>` custom element.
  *
  * Properties: {@link PopoverTriggerProps}

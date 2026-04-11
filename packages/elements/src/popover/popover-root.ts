@@ -52,8 +52,6 @@ export function setupPopoverRoot(host: HostElement, props: State<PopoverRootProp
 }
 
 /**
- * @public
- *
  * `<aria-ui-popover-root>` custom element.
  *
  * Properties: {@link PopoverRootProps}

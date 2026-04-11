@@ -99,8 +99,6 @@ export function setupListboxItem(host: HostElement, props: State<ListboxItemProp
 }
 
 /**
- * @public
- *
  * `<aria-ui-listbox-item>` custom element.
  *
  * Properties: {@link ListboxItemProps}

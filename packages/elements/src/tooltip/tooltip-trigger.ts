@@ -137,8 +137,6 @@ export function setupTooltipTrigger(host: HostElement, props: State<TooltipTrigg
 }
 
 /**
- * @public
- *
  * `<aria-ui-tooltip-trigger>` custom element.
  *
  * Properties: {@link TooltipTriggerProps}

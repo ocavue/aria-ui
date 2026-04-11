@@ -139,8 +139,6 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubm
 }
 
 /**
- * @public
- *
  * `<aria-ui-menu-submenu-trigger>` custom element.
  *
  * Properties: {@link MenuSubmenuTriggerProps}

@@ -25,8 +25,6 @@ export function setupPopoverPositioner(host: HostElement, props: State<PopoverPo
 }
 
 /**
- * @public
- *
  * `<aria-ui-popover-positioner>` custom element.
  *
  * Properties: {@link PopoverPositionerProps}
