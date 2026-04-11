@@ -1,17 +1,5 @@
-import {
-  registerTooltipPopupElement,
-  setupTooltipPopup,
-  TooltipPopupElement,
-  TooltipPopupPropsDeclaration,
-  type TooltipPopupProps,
-} from './tooltip-popup.ts'
-import {
-  registerTooltipPositionerElement,
-  setupTooltipPositioner,
-  TooltipPositionerElement,
-  TooltipPositionerPropsDeclaration,
-  type TooltipPositionerProps,
-} from './tooltip-positioner.ts'
+
+
 import {
   OpenChangeEvent,
   registerTooltipRootElement,
@@ -42,14 +30,17 @@ export {
   TooltipTriggerElement,
   TooltipTriggerPropsDeclaration,
   type TooltipTriggerProps,
-  registerTooltipPopupElement,
-  setupTooltipPopup,
-  TooltipPopupElement,
-  TooltipPopupPropsDeclaration,
-  type TooltipPopupProps,
-  registerTooltipPositionerElement,
-  setupTooltipPositioner,
-  TooltipPositionerElement,
-  TooltipPositionerPropsDeclaration,
-  type TooltipPositionerProps,
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
+
+export {registerTooltipPopupElement, setupTooltipPopup, TooltipPopupElement, TooltipPopupPropsDeclaration, type TooltipPopupProps} from './tooltip-popup.ts'
+export {registerTooltipPositionerElement, setupTooltipPositioner, TooltipPositionerElement, TooltipPositionerPropsDeclaration, type TooltipPositionerProps} from './tooltip-positioner.ts'
