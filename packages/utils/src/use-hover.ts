@@ -1,6 +1,5 @@
 /**
  * Options for the useHover hook
- * @public
  */
 export interface UseHoverOptions {
   /**
