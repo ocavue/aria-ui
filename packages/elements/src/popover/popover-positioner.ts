@@ -38,6 +38,12 @@ export function setupPopoverPositioner(host: HostElement, props: State<PopoverPo
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when the popover is visible, `"closed"` otherwise |
+ *
+ * CSS variables:
+ *
+ * | Variable | Description |
+ * | --- | --- |
+ * | `--transform-origin` | The coordinates that this element is anchored to. Useful for scale animations. |
  */
 export class PopoverPositionerElement extends defineCustomElement(
   setupPopoverPositioner,

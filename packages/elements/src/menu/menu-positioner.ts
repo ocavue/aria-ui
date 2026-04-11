@@ -55,6 +55,12 @@ export function setupMenuPositioner(host: HostElement, props: State<MenuPosition
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when the menu is visible, `"closed"` otherwise |
+ *
+ * CSS variables:
+ *
+ * | Variable | Description |
+ * | --- | --- |
+ * | `--transform-origin` | The coordinates that this element is anchored to. Useful for scale animations. |
  */
 export class MenuPositionerElement extends defineCustomElement(
   setupMenuPositioner,

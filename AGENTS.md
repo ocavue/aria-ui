@@ -9,6 +9,7 @@ Each custom element class (e.g. `TooltipRootElement`, `PopoverTriggerElement`) m
 3. **Properties** — `{@link}` to the corresponding Props type.
 4. **Events** — `{@link}` to the Events type. Omit this line if the element does not emit custom events.
 5. **Data attributes** — A markdown table listing `data-*` attributes. Omit this section if the element does not expose any `data-*` attributes.
+6. **CSS variables** - A markdown table listing CSS variables. Omit this section if the element does not expose any CSS variables.
 
 ### Template
 
@@ -27,6 +28,12 @@ Each custom element class (e.g. `TooltipRootElement`, `PopoverTriggerElement`) m
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when visible, `"closed"` otherwise |
+ *
+ * CSS variables:
+ *
+ * | Variable | Description |
+ * | --- | --- |
+ * | `--transform-origin` | The coordinates that this element is anchored to. Useful for scale animations. |
  */
 export class XxxYyyElement {}
 ```
@@ -36,3 +43,4 @@ export class XxxYyyElement {}
 - Only include `data-*` attributes. Do not list `role` or `aria-*` attributes — those are internal implementation details that users do not need to care about.
 - Omit the "Events" line if the element does not emit any custom events.
 - Omit the "Data attributes" section entirely if the element does not expose any `data-*` attributes.
+- Omit the "CSS variables" section entirely if the element does not expose any CSS variables.

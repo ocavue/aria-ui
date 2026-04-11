@@ -28,6 +28,16 @@ const { story } = Astro.props
     visibility: hidden;
     opacity: 0;
   }
+
+  aria-ui-popover-popup {
+    transform-origin: var(--transform-origin);
+    transition: transform 200ms ease, opacity 200ms ease;
+  }
+
+  aria-ui-popover-popup[data-state="closed"] {
+    transform: scale(0.9);
+    opacity: 0;
+  }
 </style>
 
 <div class="p-4">

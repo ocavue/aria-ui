@@ -38,6 +38,12 @@ export function setupTooltipPositioner(host: HostElement, props: State<TooltipPo
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when the tooltip is visible, `"closed"` otherwise |
+ *
+ * CSS variables:
+ *
+ * | Variable | Description |
+ * | --- | --- |
+ * | `--transform-origin` | The coordinates that this element is anchored to. Useful for scale animations. |
  */
 export class TooltipPositionerElement extends defineCustomElement(
   setupTooltipPositioner,
