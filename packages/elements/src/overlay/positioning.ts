@@ -225,6 +225,7 @@ function setupInline(props: UpdatePlacementOpinions) {
   return inline()
 }
 
+// Based on https://github.com/mui/base-ui/blob/d808eb5fc075eb955d50753bfc2dd007bcb4d9e5/packages/react/src/utils/useAnchorPositioning.ts#L356
 function setupTransformOrigin(props: UpdatePlacementOpinions): Middleware {
   return {
     name: 'transformOrigin',
