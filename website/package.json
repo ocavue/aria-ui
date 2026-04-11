@@ -16,7 +16,7 @@
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.345",
     "astro": "^6.1.5",
-    "astrobook": "^0.12.7",
+    "astrobook": "^0.13.0",
     "tailwindcss": "^4.2.2",
     "typescript": "^5.9.3",
     "vite": "^7.3.2"
