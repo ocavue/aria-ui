@@ -5,8 +5,6 @@ export type AnyProps = Record<string, any>
 
 /**
  * Declare a property.
- *
- * @public
  */
 export interface PropDeclaration<T> {
   /**
@@ -27,8 +25,6 @@ export interface PropDeclaration<T> {
 
 /**
  * Declare a set of properties.
- *
- * @public
  */
 export type PropsDeclaration<Props extends AnyProps> = Readonly<{
   [K in keyof Props]: PropDeclaration<Props[K]>
@@ -36,8 +32,6 @@ export type PropsDeclaration<Props extends AnyProps> = Readonly<{
 
 /**
  * Define a set of properties.
- *
- * @public
  */
 export function defineProps<Props extends AnyProps>(
   props: PropsDeclaration<Props>,

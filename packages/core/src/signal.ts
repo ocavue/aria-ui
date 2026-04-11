@@ -2,8 +2,6 @@ import { signal } from 'alien-signals'
 
 /**
  * A reactive signal.
- *
- * @public
  */
 export interface Signal<T> {
   get: () => T

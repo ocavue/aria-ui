@@ -3,8 +3,6 @@ import { createSignal, type Signal } from './signal.ts'
 
 /**
  * A state is simply a collection of signals.
- *
- * @public
  */
 export type State<Props extends AnyProps> = {
   [Key in keyof Props]: Signal<Props[Key]>

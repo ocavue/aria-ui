@@ -22,8 +22,6 @@ export type { ItemFilter }
 
 /**
  * A simple case-insensitive substring match filter.
- *
- * @public
  */
 export const defaultItemFilter: ItemFilter = ({ value, query }) => {
   if (!query) {
