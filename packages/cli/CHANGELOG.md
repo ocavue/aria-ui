@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.4
+
+### Patch Changes
+
+- b89af29: Simplify auto-generated file comments.
+
 ## 0.1.3
 
 ### Patch Changes
