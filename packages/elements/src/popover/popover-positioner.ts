@@ -28,6 +28,16 @@ export function setupPopoverPositioner(host: HostElement, props: State<PopoverPo
 
 /**
  * @public
+ *
+ * `<aria-ui-popover-positioner>` custom element.
+ *
+ * Properties: {@link PopoverPositionerProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the popover is visible, `"closed"` otherwise |
  */
 export class PopoverPositionerElement extends defineCustomElement(
   setupPopoverPositioner,

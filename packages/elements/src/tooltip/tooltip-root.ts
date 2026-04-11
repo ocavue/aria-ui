@@ -60,6 +60,12 @@ export function setupTooltipRoot(host: HostElement, props: State<TooltipRootProp
 
 /**
  * @public
+ *
+ * `<aria-ui-tooltip-root>` custom element.
+ *
+ * Properties: {@link TooltipRootProps}
+ *
+ * Events: {@link TooltipRootEvents}
  */
 export class TooltipRootElement extends defineCustomElement(
   setupTooltipRoot,

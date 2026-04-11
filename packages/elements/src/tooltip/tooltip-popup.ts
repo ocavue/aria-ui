@@ -33,6 +33,16 @@ export function setupTooltipPopup(host: HostElement, _props: State<TooltipPopupP
 
 /**
  * @public
+ *
+ * `<aria-ui-tooltip-popup>` custom element.
+ *
+ * Properties: {@link TooltipPopupProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the tooltip is visible, `"closed"` otherwise |
  */
 export class TooltipPopupElement extends defineCustomElement(
   setupTooltipPopup,

@@ -257,6 +257,16 @@ function handleTypeahead(char: string, menuStore: MenuStore) {
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-popup>` custom element.
+ *
+ * Properties: {@link MenuPopupProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the menu is visible, `"closed"` otherwise |
  */
 export class MenuPopupElement extends defineCustomElement(
   setupMenuPopup,

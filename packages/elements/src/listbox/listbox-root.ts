@@ -320,6 +320,12 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
 
 /**
  * @public
+ *
+ * `<aria-ui-listbox-root>` custom element.
+ *
+ * Properties: {@link ListboxRootProps}
+ *
+ * Events: {@link ListboxRootEvents}
  */
 export class ListboxRootElement extends defineCustomElement(
   setupListboxRoot,

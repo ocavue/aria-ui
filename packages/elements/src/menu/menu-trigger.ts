@@ -86,6 +86,12 @@ export function setupMenuTrigger(host: HostElement, props: State<MenuTriggerProp
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-trigger>` custom element.
+ *
+ * Properties: {@link MenuTriggerProps}
+ *
+ * Events: {@link MenuTriggerEvents}
  */
 export class MenuTriggerElement extends defineCustomElement(
   setupMenuTrigger,

@@ -142,6 +142,16 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubm
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-submenu-trigger>` custom element.
+ *
+ * Properties: {@link MenuSubmenuTriggerProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-highlighted` | Present when the item is the currently highlighted option |
  */
 export class MenuSubmenuTriggerElement extends defineCustomElement(
   setupMenuSubmenuTrigger,
