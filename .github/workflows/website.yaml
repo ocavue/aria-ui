@@ -20,11 +20,11 @@ jobs:
         run: pnpm run build
 
       - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@f0a1cd58cd66095dee69bfa18fa5efd1dde93bca # v1.5.0
+        uses: cloudflare/wrangler-action@v3
+        if: ${{ env.CLOUDFLARE_ACCOUNT_ID != '' }}        
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: aria-ui
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          workingDirectory: website
-          directory: dist
+          command: pages deploy website/dist --project-name aria-ui --branch="${{ github.head_ref || github.ref_name }}"
+        timeout-minutes: 10
