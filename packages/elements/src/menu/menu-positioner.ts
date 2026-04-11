@@ -50,6 +50,8 @@ export function setupMenuPositioner(host: HostElement, props: State<MenuPosition
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when the menu is visible, `"closed"` otherwise |
+ * | `data-side` | The side of the anchor element the positioner is on |
+ * | `data-align` | The alignment of the positioner relative to the anchor element |
  *
  * CSS variables:
  *

@@ -33,6 +33,8 @@ export function setupPopoverPositioner(host: HostElement, props: State<PopoverPo
  * | Attribute | Description |
  * | --- | --- |
  * | `data-state` | `"open"` when the popover is visible, `"closed"` otherwise |
+ * | `data-side` | The side of the anchor element the positioner is on |
+ * | `data-align` | The alignment of the positioner relative to the anchor element |
  *
  * CSS variables:
  *
