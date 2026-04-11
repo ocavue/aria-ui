@@ -28,6 +28,16 @@ export function setupTooltipPositioner(host: HostElement, props: State<TooltipPo
 
 /**
  * @public
+ *
+ * `<aria-ui-tooltip-positioner>` custom element.
+ *
+ * Properties: {@link TooltipPositionerProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the tooltip is visible, `"closed"` otherwise |
  */
 export class TooltipPositionerElement extends defineCustomElement(
   setupTooltipPositioner,

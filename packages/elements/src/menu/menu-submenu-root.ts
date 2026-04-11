@@ -70,6 +70,18 @@ export function setupMenuSubmenuRoot(host: HostElement, props: State<MenuSubmenu
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-submenu-root>` custom element.
+ *
+ * Properties: {@link MenuSubmenuRootProps}
+ *
+ * Events: {@link MenuSubmenuRootEvents}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-menu-submenu-root` | Always present on the element |
  */
 export class MenuSubmenuRootElement extends defineCustomElement(
   setupMenuSubmenuRoot,

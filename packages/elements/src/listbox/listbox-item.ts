@@ -104,6 +104,18 @@ export function setupListboxItem(host: HostElement, props: State<ListboxItemProp
 
 /**
  * @public
+ *
+ * `<aria-ui-listbox-item>` custom element.
+ *
+ * Properties: {@link ListboxItemProps}
+ *
+ * Events: {@link ListboxItemEvents}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-highlighted` | Present when the item is the currently highlighted option |
  */
 export class ListboxItemElement extends defineCustomElement(
   setupListboxItem,

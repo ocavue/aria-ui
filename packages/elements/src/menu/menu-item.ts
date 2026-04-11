@@ -93,6 +93,18 @@ export function setupMenuItem(host: HostElement, props: State<MenuItemProps>) {
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-item>` custom element.
+ *
+ * Properties: {@link MenuItemProps}
+ *
+ * Events: {@link MenuItemEvents}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-highlighted` | Present when the item is the currently highlighted option |
  */
 export class MenuItemElement extends defineCustomElement(setupMenuItem, MenuItemPropsDeclaration) {}
 

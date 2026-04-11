@@ -33,6 +33,16 @@ export function setupPopoverPopup(host: HostElement, _props: State<PopoverPopupP
 
 /**
  * @public
+ *
+ * `<aria-ui-popover-popup>` custom element.
+ *
+ * Properties: {@link PopoverPopupProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the popover is visible, `"closed"` otherwise |
  */
 export class PopoverPopupElement extends defineCustomElement(
   setupPopoverPopup,

@@ -45,6 +45,16 @@ export function setupMenuPositioner(host: HostElement, props: State<MenuPosition
 
 /**
  * @public
+ *
+ * `<aria-ui-menu-positioner>` custom element.
+ *
+ * Properties: {@link MenuPositionerProps}
+ *
+ * Data attributes:
+ *
+ * | Attribute | Description |
+ * | --- | --- |
+ * | `data-state` | `"open"` when the menu is visible, `"closed"` otherwise |
  */
 export class MenuPositionerElement extends defineCustomElement(
   setupMenuPositioner,
