@@ -17,21 +17,20 @@ const { story } = Astro.props
 </script>
 
 <style is:global>
-  aria-ui-tooltip-positioner:not(:defined) {
+  aria-ui-tooltip-positioner:not([data-state]) {
     display: none;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  aria-ui-tooltip-popup:not(:defined) {
-    display: none;
-    visibility: hidden;
-    opacity: 0;
   }
 
   aria-ui-tooltip-popup {
     transform-origin: var(--transform-origin);
     transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  aria-ui-tooltip-popup[data-state="open"] {
+    @starting-style {
+      transform: scale(0.9);
+      opacity: 0;
+    }
   }
 
   aria-ui-tooltip-popup[data-state="closed"] {
