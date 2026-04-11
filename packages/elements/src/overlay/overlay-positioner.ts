@@ -269,7 +269,6 @@ export function setupOverlayPositioner(
     })
   })
 
-
   // Override the browser default `background-color: canvas` for `[popover]` elements.
   onMount(host, () => {
     host.style.setProperty('background-color', 'transparent')
