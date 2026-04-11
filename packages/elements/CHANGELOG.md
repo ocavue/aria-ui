@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.4
+
+### Patch Changes
+
+- a8e2bd7: Add missing type exports.
+
 ## 0.1.3
 
 ### Patch Changes
