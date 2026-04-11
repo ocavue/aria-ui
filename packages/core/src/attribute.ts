@@ -95,6 +95,7 @@ function propertyToAttribute(
     case 'number':
       return numberToAttribute(propertyValue)
     case 'json':
+    case undefined:
       return jsonToAttribute(propertyValue)
     default:
       throw new Error(`[aria-ui] Unsupported type: ${declaration.type satisfies never}`)
@@ -112,7 +113,8 @@ function propertyFromAttribute(
       return stringFromAttribute(attributeValue)
     case 'number':
       return numberFromAttribute(attributeValue)
-    case 'json': {
+    case 'json':
+    case undefined:{
       const jsonValue = jsonFromAttribute(attributeValue)
       return jsonValue === undefined ? declaration.default : jsonValue
     }

@@ -10,7 +10,7 @@ export type AnyProps = Record<string, any>
  */
 export interface PropDeclaration<T> {
   /**
-   * The default value of the property.
+   * The default value of the property. It must not be `undefined`. Use `null` if you want to indicate that the default value is empty.
    */
   default: T
 
@@ -20,9 +20,9 @@ export interface PropDeclaration<T> {
   attribute: string | false
 
   /**
-   * How the property is converted to and from a string.
+   * How the property is converted to and from an attribute string. This is not used when `attribute` is `false`. The default value is `"json"`.
    */
-  type: 'boolean' | 'string' | 'number' | 'json'
+  type?: 'boolean' | 'string' | 'number' | 'json'
 }
 
 /**
