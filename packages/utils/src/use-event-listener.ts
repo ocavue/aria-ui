@@ -1,12 +1,9 @@
-import type { HostElement } from './host-element.ts'
-import { onMount } from './on-mount.ts'
+import { onMount, type HostElement } from '@aria-ui/core'
 
-/**
+/*
  * Attaches a DOM event listener to a host element. The listener is added when
  * the element connects to the DOM and removed when it disconnects. Returns a
  * dispose function for manual cleanup.
- *
- * @deprecated Import `useEventListener` from `@aria-ui/utils` instead.
  */
 export function useEventListener<K extends keyof HTMLElementEventMap>(
   host: HostElement,

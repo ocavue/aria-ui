@@ -1,10 +1,11 @@
 import type { HostElement, State } from '@aria-ui/core'
-import { computed, useEffect, useEventListener } from '@aria-ui/core'
+import { computed, useEffect } from '@aria-ui/core'
 
 import { useAriaDisabled } from './aria.ts'
 import type { CollectionStore } from './collection-store.ts'
 import { getCollectionItemValue } from './collection.ts'
 import { useAttribute } from './use-attribute.ts'
+import { useEventListener } from './use-event-listener.ts'
 import { useIsMouseActive } from './use-is-mouse-active.ts'
 
 /**

@@ -57,6 +57,8 @@ Collection helpers let you build composite widgets — listboxes, menus, combobo
 
 | Hook                                                         | Description                                                                                              |
 | ------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------- |
+| `useEventListener(host, type, listener, options?)`           | Add a DOM event listener that is automatically removed when the host disconnects.                        |
+| `useGlobalEventListener(host, type, listener)`               | Add a `window` event listener tied to the host's connected lifecycle, deduplicated across hosts.         |
 | `usePress(host, onPress)`                                    | Unified press handler that fires for mouse, touch, and keyboard (Enter/Space) activation.                |
 | `useHover(host, { openDelay, closeDelay, onOpen, onClose })` | Hover tracking with configurable open/close delays. Used by popovers and tooltips.                       |
 | `usePresence(host, present)`                                 | Track whether the host should be present in the DOM, with hooks for unmount-after-animation behavior.    |
@@ -90,11 +92,10 @@ import {
   defineCustomElement,
   defineProps,
   onMount,
-  useEventListener,
   type HostElement,
   type State,
 } from '@aria-ui/core'
-import { setupCollectionItem, useAriaSelected } from '@aria-ui/utils'
+import { setupCollectionItem, useAriaSelected, useEventListener } from '@aria-ui/utils'
 
 import { MyListboxContext } from './my-listbox-context'
 

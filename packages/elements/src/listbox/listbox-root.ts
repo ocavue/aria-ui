@@ -5,7 +5,6 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  useEventListener,
   type State,
 } from '@aria-ui/core'
 import {
@@ -14,6 +13,7 @@ import {
   useAriaDisabled,
   useAriaMultiselectable,
   useAriaOrientation,
+  useEventListener,
 } from '@aria-ui/utils'
 
 import { createListboxStore, ListboxStoreContext, type ItemFilter } from './listbox-store.ts'

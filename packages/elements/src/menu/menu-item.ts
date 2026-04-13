@@ -4,10 +4,9 @@ import {
   defineProps,
   onMount,
   registerCustomElement,
-  useEventListener,
   type State,
 } from '@aria-ui/core'
-import { setupCollectionItem, useElementId } from '@aria-ui/utils'
+import { setupCollectionItem, useElementId, useEventListener } from '@aria-ui/utils'
 
 import { SelectEvent } from '../events/index.ts'
 

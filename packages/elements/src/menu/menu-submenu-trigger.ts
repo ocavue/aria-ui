@@ -5,10 +5,9 @@ import {
   onMount,
   registerCustomElement,
   useEffect,
-  useEventListener,
   type State,
 } from '@aria-ui/core'
-import { setupCollectionItem, useElementId } from '@aria-ui/utils'
+import { setupCollectionItem, useElementId, useEventListener } from '@aria-ui/utils'
 
 import { setAriaHasPopup } from '../../../utils/src/aria.ts'
 
