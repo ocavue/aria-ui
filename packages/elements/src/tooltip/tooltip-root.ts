@@ -1,10 +1,6 @@
 import type { HostElement } from '@aria-ui/core'
-import {
-  defineCustomElement,
-  registerCustomElement,
-  useEventListener,
-  type State,
-} from '@aria-ui/core'
+import { defineCustomElement, registerCustomElement, type State } from '@aria-ui/core'
+import { useEventListener } from '@aria-ui/utils'
 
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import {

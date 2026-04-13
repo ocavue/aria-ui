@@ -1,4 +1,6 @@
-import { useEventListener, type HostElement } from '@aria-ui/core'
+import type { HostElement } from '@aria-ui/core'
+
+import { useEventListener } from './use-event-listener.ts'
 
 /*
  * Attaches "press" interaction to a host element, handling both pointer and

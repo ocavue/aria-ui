@@ -29,9 +29,9 @@ pnpm add @aria-ui/core
 import {
   defineCustomElement,
   defineProps,
+  onMount,
   registerCustomElement,
   useEffect,
-  useEventListener,
   type HostElement,
   type State,
 } from '@aria-ui/core'
@@ -49,8 +49,10 @@ function setupCounter(host: HostElement, state: State<CounterProps>) {
     host.textContent = String(state.count.get())
   })
 
-  useEventListener(host, 'click', () => {
-    state.count.set(state.count.get() + 1)
+  onMount(host, () => {
+    const handler = () => state.count.set(state.count.get() + 1)
+    host.addEventListener('click', handler)
+    return () => host.removeEventListener('click', handler)
   })
 }
 
@@ -84,14 +86,13 @@ console.log(el.count) // 10
 
 ### Reactivity
 
-| Export                                   | Description                                                                                        |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `createSignal<T>(initial)`               | Create a `{ get, set }` signal.                                                                    |
-| `createState(propsDeclaration)`          | Create a `State<Props>`, i.e. a record of signals from a props declaration.                        |
-| `computed(fn)`                           | Re-exported from `alien-signals`. Build a derived value that updates when its dependencies change. |
-| `useEffect(host, callback)`              | Run an effect tied to the host's connected lifecycle. The callback may return a cleanup function.  |
-| `onMount(host, callback)`                | Run a one-shot callback when the host is connected. The callback may return a cleanup function.    |
-| `useEventListener(host, type, listener)` | Add a DOM event listener that is automatically removed on disconnect.                              |
+| Export                          | Description                                                                                        |
+| ------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `createSignal<T>(initial)`      | Create a `{ get, set }` signal.                                                                    |
+| `createState(propsDeclaration)` | Create a `State<Props>`, i.e. a record of signals from a props declaration.                        |
+| `computed(fn)`                  | Re-exported from `alien-signals`. Build a derived value that updates when its dependencies change. |
+| `useEffect(host, callback)`     | Run an effect tied to the host's connected lifecycle. The callback may return a cleanup function.  |
+| `onMount(host, callback)`       | Run a one-shot callback when the host is connected. The callback may return a cleanup function.    |
 
 ### Dependency injection
 
