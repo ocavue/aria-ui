@@ -3,7 +3,7 @@ import { onMount } from '@aria-ui/core'
 import { Counter, DefaultMap } from '@ocavue/utils'
 
 const eventListenerMap = /* @__PURE__ */ new DefaultMap<string, Counter<EventListener>>(
-  () => new Counter(),
+  () => new Counter<EventListener>(),
 )
 const abortControllerMap = /* @__PURE__ */ new Map<string, AbortController>()
 
