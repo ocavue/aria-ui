@@ -2,9 +2,11 @@ import type { HostElement } from '@aria-ui/core'
 import { onMount } from '@aria-ui/core'
 import { Counter, DefaultMap } from '@ocavue/utils'
 
-const eventListenerMap = new DefaultMap<string, Counter<EventListener>>(  () => new Counter<EventListener>())
+const eventListenerMap = new DefaultMap<string, Counter<EventListener>>(
+  () => new Counter<EventListener>(),
+)
 const abortControllerMap = new Map<string, AbortController>()
-  
+
 function addEventListener(type: string) {
   cleanEventListener(type)
   const abortController = new AbortController()
@@ -49,7 +51,7 @@ export function useGlobalEventListener<K extends keyof WindowEventMap>(
     listeners.increment(eventListener)
 
     return () => {
-      const current = listeners.get(eventListener) 
+      const current = listeners.get(eventListener)
       if (current <= 1) {
         listeners.delete(eventListener)
       } else {
