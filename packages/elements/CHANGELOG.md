@@ -1,5 +1,14 @@
 # @aria-ui/elements
 
+## 0.1.6
+
+### Patch Changes
+
+- c9f0156: Fix listbox auto-highlight not tracking async collection updates, so the first item is highlighted once async search results arrive.
+- Updated dependencies [4f60a80]
+  - @aria-ui/utils@0.1.3
+  - @aria-ui/core@0.1.2
+
 ## 0.1.5
 
 ### Patch Changes
