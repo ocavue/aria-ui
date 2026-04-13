@@ -2,7 +2,7 @@ import { getDocumentElement, getEventTarget } from '@zag-js/dom-query'
 
 import type { HostElement } from './host-element.ts'
 import type { ReactiveController } from './reactive-controller.ts'
-import { createSignal, type Signal } from './signal.ts'
+import { createSignal } from './signal.ts'
 
 type ContextCallback<T> = (value: T) => void
 
@@ -126,31 +126,27 @@ class ContextImpl<T> implements Context<T> {
   public consume(element: HostElement): () => T | undefined {
     const controller = new ConsumerController<T>(this.key, element)
     element.addController(controller)
-    return () => controller.signal.get()
+    return () => controller.get()
   }
 }
 
 class ConsumerController<T> implements ReactiveController {
-  readonly signal: Signal<T | undefined>
-
-  // `onRequest` is a class property. This ensures that this callback won't be
-  // garbage collected before the controller is garbage collected.
-  private readonly onRequest: (value: T) => void = (value: T) => {
-    this.signal.set(value)
-  }
+  private set: (value: T) => void
+  readonly get: () => T | undefined
 
   public constructor(
     private readonly key: string | symbol,
     private host: HostElement,
   ) {
-    this.signal = createSignal<T | undefined>(undefined)
-    this.onRequest = (value: T) => this.signal.set(value)
+    const {get, set} = createSignal<T | undefined>(undefined)
+    this.get = get
+    this.set = set
   }
 
   hostConnected() {
     ensureAttachRoot(getDocumentElement(this.host))
 
-    this.host.dispatchEvent(new ContextRequestEvent(this.key, this.onRequest))
+    this.host.dispatchEvent(new ContextRequestEvent(this.key, this.set))
   }
 }
 
@@ -238,7 +234,6 @@ function attachRoot(element: HTMLElement) {
       }
 
       // Re-dispatch if we still have the element and callback
-
       element.dispatchEvent(new ContextRequestEvent(event.key, callback))
     }
   }
