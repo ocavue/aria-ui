@@ -5,6 +5,7 @@ import { useAriaDisabled } from './aria.ts'
 import type { CollectionStore } from './collection-store.ts'
 import { getCollectionItemValue } from './collection.ts'
 import { useAttribute } from './use-attribute.ts'
+import { useIsMouseActive } from './use-is-mouse-active.ts'
 
 /**
  * Shared setup logic for collection items (listbox options, menu items, etc.).
@@ -53,10 +54,16 @@ export function setupCollectionItem(
     getStore()?.markDirty()
   })
 
-  useEventListener(host, 'mouseenter', () => {
-    if (getDisabled()) return
+  const getIsMouseActive = useIsMouseActive(host)
+
+  const handleMouseAction = () => {
     const store = getStore()
     if (!store) return
+    if (getDisabled()) return
+    if (!getIsMouseActive()) return
     store.setHighlightedValue(getValue())
-  })
+  }
+
+  useEventListener(host, 'mouseenter', handleMouseAction)
+  useEventListener(host, 'mousedown', handleMouseAction)
 }

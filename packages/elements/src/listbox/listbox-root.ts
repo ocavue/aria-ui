@@ -250,8 +250,10 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
         store.setHighlightedValue,
         orientation.get(),
       )
-    )
+    ) {
+      updateScroll()
       return
+    }
 
     switch (event.key) {
       case ' ':
@@ -299,9 +301,25 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
     // so the user can press Enter immediately to select it.
     if (!autoHighlight.get() || disabled.get()) return
     query.get()
-    const collection = store.getCollection()
-    store.setHighlightedValue(collection.first())
+
+    // Use `queueMicrotask` to untrack the current reactive scope
+    queueMicrotask(highlightFirstItem)
   })
+
+  const highlightFirstItem = () => {
+    const firstValue = store.getCollection().first()
+    if (firstValue == null) return
+    store.setHighlightedValue(firstValue)
+    updateScroll()
+  }
+
+  const updateScroll = () => {
+    const highlightedValue = store.getHighlightedValue()
+    if (highlightedValue == null) return
+    const element = store.getCollection().getElement(highlightedValue)
+    if (!element) return
+    element.scrollIntoView({ block: 'nearest', inline: 'nearest' })
+  }
 }
 
 /**

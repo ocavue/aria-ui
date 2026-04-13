@@ -1,6 +1,8 @@
 import type { HostElement } from './host-element.ts'
 import { onMount } from './on-mount.ts'
 
+// TODO: move this to utils
+
 /*
  * Attaches a DOM event listener to a host element. The listener is added when
  * the element connects to the DOM and removed when it disconnects. Returns a
