@@ -1,6 +1,6 @@
 import { createSignal, type HostElement } from '@aria-ui/core'
 
-import { useGlobalEventListener } from './use-global-event-listener'
+import { useGlobalEventListener } from './use-global-event-listener.ts'
 
 /**
  * Returns a function that tracks whether the mouse is currently active (i.e. the user has recently moved the mouse or clicked).
