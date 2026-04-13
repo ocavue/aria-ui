@@ -1,5 +1,5 @@
 ---
-'@aria-ui/utils': minor
+'@aria-ui/utils': patch
 '@aria-ui/core': patch
 ---
 
