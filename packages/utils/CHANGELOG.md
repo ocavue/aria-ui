@@ -1,5 +1,11 @@
 # @aria-ui/utils
 
+## 0.1.2
+
+### Patch Changes
+
+- d29140d: Avoid highlight flicker between keyboard and mouse interaction.
+
 ## 0.1.1
 
 ### Patch Changes
