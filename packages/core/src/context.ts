@@ -138,7 +138,7 @@ class ConsumerController<T> implements ReactiveController {
     private readonly key: string | symbol,
     private host: HostElement,
   ) {
-    const {get, set} = createSignal<T | undefined>(undefined)
+    const { get, set } = createSignal<T | undefined>(undefined)
     this.get = get
     this.set = set
   }
