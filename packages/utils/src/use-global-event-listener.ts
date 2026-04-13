@@ -1,10 +1,10 @@
 import type { HostElement } from '@aria-ui/core'
 import { onMount } from '@aria-ui/core'
-import { DefaultMap } from '@ocavue/utils'
+import { Counter, DefaultMap } from '@ocavue/utils'
 
-const eventListenerMap = new DefaultMap<string, Set<EventListener>>(() => new Set<EventListener>())
+const eventListenerMap = new DefaultMap<string, Counter<EventListener>>(  () => new Counter<EventListener>())
 const abortControllerMap = new Map<string, AbortController>()
-
+  
 function addEventListener(type: string) {
   cleanEventListener(type)
   const abortController = new AbortController()
@@ -13,7 +13,7 @@ function addEventListener(type: string) {
     type,
     (event) => {
       const listeners = eventListenerMap.get(type)
-      for (const listener of listeners) {
+      for (const listener of listeners.keys()) {
         listener(event)
       }
     },
@@ -33,24 +33,28 @@ function cleanEventListener(type: string) {
   }
 }
 
-export function useGlobalEventListener<K extends keyof HTMLElementEventMap>(
+export function useGlobalEventListener<K extends keyof WindowEventMap>(
   host: HostElement,
   type: K,
-  listener: (event: HTMLElementEventMap[K]) => void,
+  listener: (event: WindowEventMap[K]) => void,
 ): VoidFunction {
   const eventListener = listener as EventListener
 
   return onMount(host, () => {
     const listeners = eventListenerMap.get(type)
-    if (listeners.has(eventListener)) return
-    listeners.add(eventListener)
 
-    if (listeners.size === 1) {
+    if (listeners.size === 0) {
       addEventListener(type)
     }
+    listeners.increment(eventListener)
 
     return () => {
-      listeners.delete(eventListener)
+      const current = listeners.get(eventListener) 
+      if (current <= 1) {
+        listeners.delete(eventListener)
+      } else {
+        listeners.decrement(eventListener)
+      }
       if (listeners.size === 0) {
         cleanEventListener(type)
       }
