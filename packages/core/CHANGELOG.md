@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.1.2
+
+### Patch Changes
+
+- 4f60a80: Move `useEventListener` to `@aria-ui/utils`. The export from `@aria-ui/core` is now deprecated and will be removed in a future release; import it from `@aria-ui/utils` instead.
+
 ## 0.1.1
 
 ### Patch Changes
