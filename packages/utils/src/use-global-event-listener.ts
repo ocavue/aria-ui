@@ -2,10 +2,10 @@ import type { HostElement } from '@aria-ui/core'
 import { onMount } from '@aria-ui/core'
 import { Counter, DefaultMap } from '@ocavue/utils'
 
-const eventListenerMap = new DefaultMap<string, Counter<EventListener>>(
-  () => new Counter<EventListener>(),
+const eventListenerMap = /* @__PURE__ */ new DefaultMap<string, Counter<EventListener>>(
+  () => new Counter(),
 )
-const abortControllerMap = new Map<string, AbortController>()
+const abortControllerMap = /* @__PURE__ */ new Map<string, AbortController>()
 
 function addEventListener(type: string) {
   cleanEventListener(type)
