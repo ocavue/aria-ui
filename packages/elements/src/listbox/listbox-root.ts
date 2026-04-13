@@ -296,22 +296,18 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
     }
   })
 
+  // Highlight the first item on mount and whenever the query changes
   useEffect(host, () => {
     // Auto-highlight the first item on mount and whenever the query changes,
     // so the user can press Enter immediately to select it.
     if (!autoHighlight.get() || disabled.get()) return
     query.get()
-
-    // Use `queueMicrotask` to untrack the current reactive scope
-    queueMicrotask(highlightFirstItem)
-  })
-
-  const highlightFirstItem = () => {
     const firstValue = store.getCollection().first()
     if (firstValue == null) return
     store.setHighlightedValue(firstValue)
-    updateScroll()
-  }
+    // Use `queueMicrotask` to untrack the current reactive scope
+    queueMicrotask(updateScroll)
+  })
 
   const updateScroll = () => {
     const highlightedValue = store.getHighlightedValue()
