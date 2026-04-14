@@ -1,5 +1,12 @@
 # @aria-ui/utils
 
+## 0.1.5
+
+### Patch Changes
+
+- Updated dependencies [f890c39]
+  - @aria-ui/core@0.2.0
+
 ## 0.1.4
 
 ### Patch Changes
