@@ -7,4 +7,6 @@ minimumReleaseAgeExclude:
   - '@ocavue/*'
   - 'astrobook'
   - '@astrobook/*'
+  - tsdown
+  - astro
 strictPeerDependencies: true
