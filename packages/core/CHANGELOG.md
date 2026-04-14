@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.1.3
+
+### Patch Changes
+
+- ac62490: Update dependencies.
+
 ## 0.1.2
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @aria-ui/utils
 
+## 0.1.4
+
+### Patch Changes
+
+- ac62490: Update dependencies.
+- Updated dependencies [ac62490]
+  - @aria-ui/core@0.1.3
+
 ## 0.1.3
 
 ### Patch Changes
