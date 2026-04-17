@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.7
+
+### Patch Changes
+
+- 6fad931: Update dependency `oxfmt`.
+
 ## 0.1.6
 
 ### Patch Changes
