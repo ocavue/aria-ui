@@ -67,7 +67,7 @@
     "lit-html": "^3.3.2",
     "tsdown": "^0.21.8",
     "typescript": "^5.9.3",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.5"
   },
   "publishConfig": {
     "access": "public"
