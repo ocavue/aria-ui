@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.8
+
+### Patch Changes
+
+- 9787d6b: Update dependencies.
+
 ## 0.1.7
 
 ### Patch Changes
