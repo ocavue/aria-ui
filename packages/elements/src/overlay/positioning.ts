@@ -82,6 +82,15 @@ export function updatePlacement(
 
   let canceled = false
 
+  // Skip redundant writes between autoUpdate ticks.
+  let hoistApplied = false
+  let lastPosition: string | undefined
+  let topLeftSet = false
+  let lastTransform: string | undefined
+  let willChangeSet = false
+  let lastSide: string | undefined
+  let lastAlign: string | undefined
+
   const update = async () => {
     if (canceled) {
       return
@@ -93,9 +102,12 @@ export function updatePlacement(
     }
 
     if (options.hoist && FeatureDetection.supportsPopover()) {
-      // Override the `margin: auto` style, which breaks the positioning.
-      floating.style.margin = 'unset'
-      floating.setAttribute('popover', 'manual')
+      if (!hoistApplied) {
+        // Override the `margin: auto` style, which breaks the positioning.
+        floating.style.margin = 'unset'
+        floating.setAttribute('popover', 'manual')
+        hoistApplied = true
+      }
       floating.showPopover?.()
     }
 
@@ -128,20 +140,39 @@ export function updatePlacement(
     const y = Math.round(pos.y * dpr) / dpr
 
     if (!isTempHidden) {
-      floating.style.position = pos.strategy
-      floating.style.top = '0px'
-      floating.style.left = '0px'
-      floating.style.transform = `translate(${x}px,${y}px)`
+      if (lastPosition !== pos.strategy) {
+        floating.style.position = pos.strategy
+        lastPosition = pos.strategy
+      }
+
+      if (!topLeftSet) {
+        floating.style.top = '0px'
+        floating.style.left = '0px'
+        topLeftSet = true
+      }
+
+      const transform = `translate(${x}px,${y}px)`
+      if (lastTransform !== transform) {
+        floating.style.transform = transform
+        lastTransform = transform
+      }
 
       // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
-      if (dpr >= 1.5) {
+      if (dpr >= 1.5 && !willChangeSet) {
         floating.style.willChange = 'transform'
+        willChangeSet = true
       }
 
       const [side, align] = getSideAndAlignFromPlacement(pos.placement)
 
-      floating.setAttribute('data-side', side)
-      floating.setAttribute('data-align', align)
+      if (lastSide !== side) {
+        floating.setAttribute('data-side', side)
+        lastSide = side
+      }
+      if (lastAlign !== align) {
+        floating.setAttribute('data-align', align)
+        lastAlign = align
+      }
     }
   }
 
@@ -206,6 +237,11 @@ function setupShift(props: UpdatePlacementOpinions) {
 function setupSize(props: UpdatePlacementOpinions) {
   if (!props.fitViewport && !props.sameWidth && !props.sameHeight) return
 
+  let lastWidth: string | undefined
+  let lastHeight: string | undefined
+  let lastMaxWidth: string | undefined
+  let lastMaxHeight: string | undefined
+
   return size({
     ...getOverflowOptions(props),
 
@@ -213,14 +249,30 @@ function setupSize(props: UpdatePlacementOpinions) {
       const floating = elements.floating
 
       if (props.sameWidth) {
-        floating.style.width = `${Math.round(rects.reference.width)}px`
+        const width = `${Math.round(rects.reference.width)}px`
+        if (lastWidth !== width) {
+          floating.style.width = width
+          lastWidth = width
+        }
       }
       if (props.sameHeight) {
-        floating.style.height = `${Math.round(rects.reference.height)}px`
+        const height = `${Math.round(rects.reference.height)}px`
+        if (lastHeight !== height) {
+          floating.style.height = height
+          lastHeight = height
+        }
       }
       if (props.fitViewport) {
-        floating.style.maxWidth = `${Math.floor(availableWidth)}px`
-        floating.style.maxHeight = `${Math.floor(availableHeight)}px`
+        const maxWidth = `${Math.floor(availableWidth)}px`
+        if (lastMaxWidth !== maxWidth) {
+          floating.style.maxWidth = maxWidth
+          lastMaxWidth = maxWidth
+        }
+        const maxHeight = `${Math.floor(availableHeight)}px`
+        if (lastMaxHeight !== maxHeight) {
+          floating.style.maxHeight = maxHeight
+          lastMaxHeight = maxHeight
+        }
       }
     },
   })
@@ -233,6 +285,8 @@ function setupInline(props: UpdatePlacementOpinions) {
 
 // Based on https://github.com/mui/base-ui/blob/d808eb5fc075eb955d50753bfc2dd007bcb4d9e5/packages/react/src/utils/useAnchorPositioning.ts#L356
 function setupTransformOrigin(props: UpdatePlacementOpinions): Middleware {
+  let lastTransformOrigin: string | undefined
+
   return {
     name: 'transformOrigin',
     fn(state) {
@@ -266,7 +320,10 @@ function setupTransformOrigin(props: UpdatePlacementOpinions): Middleware {
         }[side]!
       }
 
-      elements.floating.style.setProperty('--transform-origin', transformOrigin)
+      if (lastTransformOrigin !== transformOrigin) {
+        elements.floating.style.setProperty('--transform-origin', transformOrigin)
+        lastTransformOrigin = transformOrigin
+      }
 
       return {}
     },
