@@ -5,6 +5,8 @@ import { OpenChangeEvent } from './open-change-event.ts'
 
 export interface OverlayStore {
   getIsOpen(): boolean
+  getIsHidden(): boolean
+  setIsHidden(hidden: boolean): void
   requestOpenChange(open: boolean): void
   requestOpenToggle(): void
   getPositionerId(): string
@@ -25,6 +27,7 @@ export function createOverlayStore(
   const anchorElement = createSignal<ReferenceElement | undefined>(undefined)
   const positionerId = createSignal<string>('')
   const popupId = createSignal<string>('')
+  const { get: getIsHidden, set: setIsHidden } = createSignal(false)
 
   const getIsOpen = computed((): boolean => {
     const canOpen = !getDisabled() && anchorElement.get()
@@ -46,6 +49,8 @@ export function createOverlayStore(
 
   return {
     getIsOpen,
+    getIsHidden,
+    setIsHidden,
     requestOpenChange,
     requestOpenToggle,
     getPositionerId: positionerId.get,
