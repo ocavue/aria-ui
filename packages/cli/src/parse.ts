@@ -4,7 +4,7 @@ import { Project, SyntaxKind, type InterfaceDeclaration, type SourceFile } from 
 /**
  * Information about a component prop
  */
-export interface PropInfo {
+interface PropInfo {
   /** The name of the prop */
   name: string
   /** JSDoc comment describing the prop */
@@ -14,7 +14,7 @@ export interface PropInfo {
 /**
  * Information about a component event
  */
-export interface EventInfo {
+interface EventInfo {
   /** The name of the event */
   name: string
   /** JSDoc comment describing the event */
