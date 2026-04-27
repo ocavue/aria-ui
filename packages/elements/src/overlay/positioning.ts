@@ -133,8 +133,6 @@ export function updatePlacement(
       floating.style.left = '0px'
       floating.style.transform = `translate(${x}px,${y}px)`
 
-      console.log('positioning', x, y)
-
       // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
       if (dpr >= 1.5) {
         floating.style.willChange = 'transform'
