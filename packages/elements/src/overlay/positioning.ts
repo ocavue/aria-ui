@@ -101,13 +101,11 @@ export function updatePlacement(
       return
     }
 
-    if (options.hoist && FeatureDetection.supportsPopover()) {
-      if (!hoistApplied) {
+    if (options.hoist && FeatureDetection.supportsPopover() && !hoistApplied) {
         // Override the `margin: auto` style, which breaks the positioning.
         floating.style.margin = 'unset'
         floating.setAttribute('popover', 'manual')
         hoistApplied = true
-      }
       floating.showPopover?.()
     }
 
