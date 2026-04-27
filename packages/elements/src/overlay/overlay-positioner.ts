@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { computed, defineProps, onMount, useEffect, type State } from '@aria-ui/core'
+import { computed,   defineProps, onMount, useEffect, type State } from '@aria-ui/core'
 import {
   FeatureDetection,
   useDataState,
@@ -211,11 +211,14 @@ export function setupOverlayPositioner(
   props: State<OverlayPositionerProps>,
   getStore: () => OverlayStore | undefined,
 ): void {
-  const getOpen = computed(() => getStore()?.getIsOpen() ?? false)
+  const getIsOpen = computed(() => getStore()?.getIsOpen() ?? false)
+  const getIsHidden = computed(() => getStore()?.getIsHidden() ?? false)
+  const setIsHidden = (hidden: boolean) => getStore()?.setIsHidden(hidden)
   const getAnchorElement = computed(() => getStore()?.getAnchorElement())
   const getHoist = props.hoist.get
+  const getIsVisible = computed(() => getIsOpen() && !getIsHidden())
 
-  const transitionStatus = useTransitionStatus(host, getOpen)
+  const transitionStatus = useTransitionStatus(host, getIsVisible)
   useDisabledMountTransitionStyle(host, transitionStatus)
 
   useEffect(host, () => {
@@ -237,10 +240,10 @@ export function setupOverlayPositioner(
     })
   }
 
-  useDataState(host, getOpen)
+  useDataState(host, getIsVisible)
 
   useEffect(host, () => {
-    const open = getOpen()
+    const open = getIsOpen()
     const anchorElement = getAnchorElement()
     if (!open || !anchorElement) return
 
@@ -263,6 +266,8 @@ export function setupOverlayPositioner(
       overflowPadding: props.overflowPadding.get(),
       elementContext: props.elementContext.get(),
       altBoundary: props.altBoundary.get(),
+
+      setIsHidden
     })
   })
 

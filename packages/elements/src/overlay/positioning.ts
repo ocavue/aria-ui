@@ -48,6 +48,8 @@ interface UpdatePlacementOpinions {
   overflowPadding: number
   elementContext: ElementContext
   altBoundary: boolean
+
+  setIsHidden: (hidden: boolean) => void
 }
 
 /**
@@ -107,15 +109,19 @@ export function updatePlacement(
       return
     }
 
-    if (options.hide) {
-      const hidden =
-        // Whether the floating element is fully clipped
-        pos.middlewareData.hide?.escaped ||
-        // Whether the reference element is fully clipped
-        pos.middlewareData.hide?.referenceHidden
 
-      floating.style.visibility = hidden ? 'hidden' : 'visible'
+    let isTempHidden = false
+    if (options.hide) {
+      const hideData = pos.middlewareData.hide
+      isTempHidden  =
+        // Whether the floating element is fully clipped
+        hideData?.escaped ||
+        // Whether the reference element is fully clipped
+        hideData?.referenceHidden ||
+        false
+      options.setIsHidden(isTempHidden)
     }
+
 
     const dpr = getDPR(floating)
 
@@ -123,20 +129,24 @@ export function updatePlacement(
     const x = Math.round(pos.x * dpr) / dpr
     const y = Math.round(pos.y * dpr) / dpr
 
-    floating.style.position = pos.strategy
-    floating.style.top = '0px'
-    floating.style.left = '0px'
-    floating.style.transform = `translate(${x}px,${y}px)`
+    if (!isTempHidden) {
+      floating.style.position = pos.strategy
+      floating.style.top = '0px'
+      floating.style.left = '0px'
+      floating.style.transform = `translate(${x}px,${y}px)`
+
+    console.log("positioning", x, y)
 
     // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
     if (dpr >= 1.5) {
       floating.style.willChange = 'transform'
     }
 
-    const [side, align] = getSideAndAlignFromPlacement(pos.placement)
+      const [side, align] = getSideAndAlignFromPlacement(pos.placement)
 
-    floating.setAttribute('data-side', side)
-    floating.setAttribute('data-align', align)
+      floating.setAttribute('data-side', side)
+      floating.setAttribute('data-align', align)
+    }
   }
 
   /* -----------------------------------------------------------------------------
