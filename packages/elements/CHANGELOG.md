@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.9
+
+### Patch Changes
+
+- f453d52: Track hidden state in store so transitions can react.
+
 ## 0.1.8
 
 ### Patch Changes
