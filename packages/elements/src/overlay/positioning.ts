@@ -109,11 +109,10 @@ export function updatePlacement(
       return
     }
 
-
     let isTempHidden = false
     if (options.hide) {
       const hideData = pos.middlewareData.hide
-      isTempHidden  =
+      isTempHidden =
         // Whether the floating element is fully clipped
         hideData?.escaped ||
         // Whether the reference element is fully clipped
@@ -121,7 +120,6 @@ export function updatePlacement(
         false
       options.setIsHidden(isTempHidden)
     }
-
 
     const dpr = getDPR(floating)
 
@@ -135,12 +133,12 @@ export function updatePlacement(
       floating.style.left = '0px'
       floating.style.transform = `translate(${x}px,${y}px)`
 
-    console.log("positioning", x, y)
+      console.log('positioning', x, y)
 
-    // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
-    if (dpr >= 1.5) {
-      floating.style.willChange = 'transform'
-    }
+      // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
+      if (dpr >= 1.5) {
+        floating.style.willChange = 'transform'
+      }
 
       const [side, align] = getSideAndAlignFromPlacement(pos.placement)
 

@@ -27,9 +27,8 @@ export function setupOverlayPopup(
   })
 
   const getIsOpen = () => getOverlayStore()?.getIsOpen() ?? false
-  const getIsHidden = () => getOverlayStore()?.getIsHidden()?? false
-  const getIsVisible = computed(() =>getIsOpen() && !getIsHidden()   )
-
+  const getIsHidden = () => getOverlayStore()?.getIsHidden() ?? false
+  const getIsVisible = computed(() => getIsOpen() && !getIsHidden())
 
   // `useDataState` must run before `usePresence`: when closing, `useDataState` sets
   // `data-state="closed"` which triggers CSS transitions, then `usePresence` checks

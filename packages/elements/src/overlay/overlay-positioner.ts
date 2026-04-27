@@ -1,5 +1,5 @@
 import type { HostElement } from '@aria-ui/core'
-import { computed,   defineProps, onMount, useEffect, type State } from '@aria-ui/core'
+import { computed, defineProps, onMount, useEffect, type State } from '@aria-ui/core'
 import {
   FeatureDetection,
   useDataState,
@@ -267,7 +267,7 @@ export function setupOverlayPositioner(
       elementContext: props.elementContext.get(),
       altBoundary: props.altBoundary.get(),
 
-      setIsHidden
+      setIsHidden,
     })
   })
 
