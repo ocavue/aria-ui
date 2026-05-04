@@ -6,11 +6,4 @@ allowBuilds:
   msw: false
   sharp: false
 ignoreWorkspaceRootCheck: true
-minimumReleaseAge: 1440 # 24 hours
-minimumReleaseAgeExclude:
-  - '@ocavue/*'
-  - 'astrobook'
-  - '@astrobook/*'
-  - tsdown
-  - astro
 strictPeerDependencies: true
