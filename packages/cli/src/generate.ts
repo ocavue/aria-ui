@@ -1,10 +1,9 @@
 import path from 'node:path'
 
 import { uneval } from 'devalue'
-import * as oxfmt from 'oxfmt'
 import { IndentationText, Project, VariableDeclarationKind, type SourceFile } from 'ts-morph'
 
-import { logger } from './logger'
+import { formatFile } from './format'
 import type { ComponentInfo } from './parse'
 import { vfs } from './vfs'
 
@@ -100,22 +99,6 @@ type WrapperExtensionSlots = {
   renderPropsExpression?: string
   reactPropOverrides: Record<string, string>
   svelteScriptStatements: string[]
-}
-
-async function formatFile(filePath: string, contents: string): Promise<string> {
-  const result = await oxfmt.format(filePath, contents, {
-    objectWrap: 'collapse',
-    printWidth: 320,
-    singleQuote: true,
-    sortImports: true,
-  })
-  for (const error of result.errors) {
-    const message = `Unable to format ${filePath}: ${error.message}`
-    logger.error(message)
-    throw new Error(message)
-  }
-
-  return result.code
 }
 
 const GENERATED_COMMENT =
