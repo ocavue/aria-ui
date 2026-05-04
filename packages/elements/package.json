@@ -63,7 +63,7 @@
     "@ocavue/tsconfig": "^0.7.1",
     "@ocavue/utils": "^1.6.0",
     "@types/node": "^24.0.0",
-    "@typescript/lib-dom": "npm:@types/web@^0.0.347",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.349",
     "lit-html": "^3.3.2",
     "tsdown": "^0.21.10",
     "typescript": "^5.9.3",
