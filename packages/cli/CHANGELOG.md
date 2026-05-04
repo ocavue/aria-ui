@@ -1,5 +1,11 @@
 # @aria-ui/cli
 
+## 0.1.9
+
+### Patch Changes
+
+- 49ca2c3: Set `oxfmt` as a peer dependency.
+
 ## 0.1.8
 
 ### Patch Changes
