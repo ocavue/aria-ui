@@ -1,5 +1,11 @@
 # @aria-ui/core
 
+## 0.2.1
+
+### Patch Changes
+
+- 3fbecb8: Use the built-in effect cleanup functions from `alien-signals`.
+
 ## 0.2.0
 
 ### Minor Changes
