@@ -2,4 +2,4 @@
 "@aria-ui/core": patch
 ---
 
-Update dependencies.
+Use the built-in effect cleanup functions from `alien-signals`.
