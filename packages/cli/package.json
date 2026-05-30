@@ -50,8 +50,8 @@
   "devDependencies": {
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.0.0",
-    "oxfmt": "^0.49.0",
-    "tsdown": "^0.22.0",
+    "oxfmt": "^0.52.0",
+    "tsdown": "^0.22.1",
     "typescript": "^6.0.3"
   },
   "publishConfig": {
