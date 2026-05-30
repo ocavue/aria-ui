@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@aria-ui/core": "workspace:*",
-    "@zag-js/dom-query": "^1.40.0"
+    "@zag-js/dom-query": "^1.41.1"
   },
   "devDependencies": {
     "@aria-ui/config-vitest": "workspace:*",
@@ -36,9 +36,9 @@
     "@ocavue/utils": "^1.6.0",
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.349",
-    "tsdown": "^0.22.0",
+    "tsdown": "^0.22.1",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.6"
+    "vitest": "^4.1.7"
   },
   "publishConfig": {
     "access": "public"
