@@ -25,12 +25,12 @@ export class HostElement extends HTMLElement implements ReactiveControllerHost {
   connectedCallback(): void {
     this._connected = true
     const controllers = Array.from(this._controllers ?? [])
-    controllers.forEach((c) => c.hostConnected?.())
+    for (const c of controllers) c.hostConnected?.()
   }
 
   disconnectedCallback(): void {
     this._connected = false
     const controllers = Array.from(this._controllers ?? [])
-    controllers.forEach((c) => c.hostDisconnected?.())
+    for (const c of controllers) c.hostDisconnected?.()
   }
 }
