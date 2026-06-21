@@ -33,12 +33,12 @@
   "devDependencies": {
     "@aria-ui/config-vitest": "workspace:*",
     "@ocavue/tsconfig": "^0.7.1",
-    "@ocavue/utils": "^1.6.0",
+    "@ocavue/utils": "^1.7.0",
     "@types/node": "^24.0.0",
-    "@typescript/lib-dom": "npm:@types/web@^0.0.349",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.350",
     "tsdown": "^0.22.1",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
+    "vitest": "^4.1.9"
   },
   "publishConfig": {
     "access": "public"
