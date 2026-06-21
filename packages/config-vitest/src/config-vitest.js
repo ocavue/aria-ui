@@ -45,7 +45,7 @@ function getDefaultConfig() {
 }
 
 /**
- * @param {import('vitest/config').UserWorkspaceConfig | undefined} userConfig
+ * @param {import('vitest/config').UserWorkspaceConfig | undefined} [userConfig]
  * @returns {import('vitest/config').UserWorkspaceConfig}
  */
 export function config(userConfig) {
