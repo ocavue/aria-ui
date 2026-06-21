@@ -1,4 +1,4 @@
-import type { AnyProps, PropsDeclaration } from './define-props.ts'
+import type { AnyProps, PropDeclaration, PropsDeclaration } from './define-props.ts'
 import { createSignal, type Signal } from './signal.ts'
 
 /**
@@ -16,8 +16,7 @@ export function createState<Props extends AnyProps>(
 ): State<Props> {
   const store: Record<string, Signal<any>> = {}
 
-  for (const key of Object.keys(propsDeclaration)) {
-    const declaration = propsDeclaration[key]
+  for (const [key, declaration] of Object.entries<PropDeclaration<unknown>>(propsDeclaration)) {
     const signal = createSignal(declaration.default)
     store[key] = signal
   }
