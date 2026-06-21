@@ -233,7 +233,7 @@ export function setupListboxRoot(host: HostElement, props: State<ListboxRootProp
   useAriaDisabled(host, disabled.get)
   useAriaActivedescendant(host, () => {
     const highlightedValue = store.getHighlightedValue()
-    if (highlightedValue == null) return undefined
+    if (highlightedValue == null) return
     const element = store.getCollection().getElement(highlightedValue)
     return element?.id
   })

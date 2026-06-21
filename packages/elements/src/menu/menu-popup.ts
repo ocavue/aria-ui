@@ -70,9 +70,9 @@ export function setupMenuPopup(host: HostElement, props: State<MenuPopupProps>) 
 
   useAriaActivedescendant(host, () => {
     const menuStore = getMenuStore()
-    if (!menuStore) return undefined
+    if (!menuStore) return
     const highlightedValue = menuStore.getHighlightedValue()
-    if (highlightedValue == null) return undefined
+    if (highlightedValue == null) return
     return menuStore.getCollection().getElement(highlightedValue)?.id
   })
 

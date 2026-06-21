@@ -99,7 +99,7 @@ class ContextImpl<T> implements Context<T> {
 
       // Re-parent all of our subscriptions in case this new child provider
       // should take them over.
-      const previousConsumers = Array.from(consumers.entries())
+      const previousConsumers = Array.from(consumers)
       consumers.clear()
 
       for (const [callback, consumer] of previousConsumers) {
