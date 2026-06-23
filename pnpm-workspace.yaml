@@ -7,4 +7,7 @@ allowBuilds:
   sharp: false
   workerd: false
 ignoreWorkspaceRootCheck: true
+minimumReleaseAgeExclude:
+  - '@astrojs/markdown-satteri@0.3.2'
+  - astro@7.0.2
 strictPeerDependencies: true
