@@ -21,17 +21,22 @@ import { createListboxStore, ListboxStoreContext, type ItemFilter } from './list
 export type { ItemFilter }
 
 /**
- * A simple case-insensitive substring match filter.
+ * A case-insensitive substring filter that ignores whitespace and punctuation,
+ * so a query like `#ban` still matches an item valued `banana`.
  */
 export const defaultItemFilter: ItemFilter = ({ value, query }) => {
-  if (!query) {
+  const normalizedQuery = normalizeFilterText(query)
+  if (!normalizedQuery) {
     return true
   }
 
-  return value
-    .toLowerCase()
-    .replaceAll(/\s/g, '')
-    .includes(query.toLowerCase().replaceAll(/\s/g, ''))
+  return normalizeFilterText(value).includes(normalizedQuery)
+}
+
+// Lowercase and drop everything that is not a letter or number, keeping letters
+// from every script (e.g. CJK and accented characters).
+function normalizeFilterText(text: string): string {
+  return text.toLowerCase().replaceAll(/[^\p{L}\p{N}]/gu, '')
 }
 
 export interface ListboxRootProps {
