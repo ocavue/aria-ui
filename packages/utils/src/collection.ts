@@ -71,7 +71,7 @@ export class Collection {
   }
 
   first(): string | undefined {
-    return this._find(0, +1)
+    return this._find(0, 1)
   }
 
   last(): string | undefined {
@@ -88,7 +88,7 @@ export class Collection {
       return this.first()
     }
 
-    return this._find(index + 1, +1)
+    return this._find(index + 1, 1)
   }
 
   prev(value: string | undefined): string | undefined {
