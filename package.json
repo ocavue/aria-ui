@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.0",
   "private": true,
-  "packageManager": "pnpm@11.4.0",
+  "packageManager": "pnpm@11.9.0",
   "description": "Monorepo for aria-ui",
   "scripts": {
     "build": "turbo run build && pnpm run build:tsc",
@@ -31,10 +31,10 @@
   },
   "devDependencies": {
     "@changesets/cli": "2.31.0",
-    "@ocavue/eslint-config": "^4.8.1",
+    "@ocavue/eslint-config": "^4.10.0",
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.12.0",
-    "eslint": "^10.5.0",
+    "eslint": "^10.6.0",
     "knip": "^6.17.1",
     "monorepo-typescript-references": "^1.1.2",
     "oxfmt": "^0.52.0",
