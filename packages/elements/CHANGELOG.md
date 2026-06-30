@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.11
+
+### Patch Changes
+
+- d3d1e7c: `defaultItemFilter` now ignores punctuation as well as whitespace, so a query like `#ban` matches an item valued `banana`.
+
 ## 0.1.10
 
 ### Patch Changes
