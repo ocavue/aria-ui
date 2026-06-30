@@ -225,6 +225,18 @@ describe('Listbox', () => {
       await expect.element(page.getByTestId('banana')).toBeVisible()
     })
 
+    test('query ignores punctuation', async () => {
+      renderListbox(html`
+        <aria-ui-listbox-root .query=${'#ban'}>
+          <aria-ui-listbox-item value="apple" data-testid="apple">Apple</aria-ui-listbox-item>
+          <aria-ui-listbox-item value="banana" data-testid="banana">Banana</aria-ui-listbox-item>
+        </aria-ui-listbox-root>
+      `)
+
+      await expect.element(page.getByTestId('apple')).not.toBeVisible()
+      await expect.element(page.getByTestId('banana')).toBeVisible()
+    })
+
     test('empty component shows when all items are filtered out', async () => {
       renderListbox(html`
         <aria-ui-listbox-root .query=${'xyz'}>
