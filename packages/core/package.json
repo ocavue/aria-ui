@@ -29,7 +29,7 @@
   },
   "dependencies": {
     "@ocavue/utils": "^1.7.0",
-    "@zag-js/dom-query": "^1.41.1",
+    "@zag-js/dom-query": "^1.41.2",
     "alien-signals": "^3.2.1",
     "server-dom-shim": "^1.1.0"
   },
@@ -38,7 +38,7 @@
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.350",
-    "tsdown": "^0.22.1",
+    "tsdown": "^0.22.3",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
   },
