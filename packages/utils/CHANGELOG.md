@@ -1,5 +1,11 @@
 # @aria-ui/utils
 
+## 0.1.7
+
+### Patch Changes
+
+- 883a4df: Skip overlay positioning while the anchor is not rendered, and apply the first position of a shown overlay without CSS transitions.
+
 ## 0.1.6
 
 ### Patch Changes
