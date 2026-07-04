@@ -1,4 +1,4 @@
-import { FeatureDetection } from '@aria-ui/utils'
+import { applyStylesWithoutTransition, FeatureDetection, isElementHidden } from '@aria-ui/utils'
 import {
   autoUpdate,
   computePosition,
@@ -49,6 +49,15 @@ interface UpdatePlacementOpinions {
   elementContext: ElementContext
   altBoundary: boolean
 
+  /**
+   * Whether to apply the first computed position without CSS transitions. Used
+   * when the floating element (re)opens: its inline `transform` still holds a
+   * stale position from the last time it was open, and a CSS transition on
+   * `transform` would visibly animate the floating element from that stale
+   * position instead of showing it in place.
+   */
+  disableFirstUpdateTransition: boolean
+
   setIsHidden: (hidden: boolean) => void
 }
 
@@ -91,6 +100,9 @@ export function updatePlacement(
   let lastSide: string | undefined
   let lastAlign: string | undefined
 
+  let firstUpdate = true
+  let skippedWhileHidden = false
+
   const update = async () => {
     if (canceled) {
       return
@@ -107,6 +119,18 @@ export function updatePlacement(
       floating.setAttribute('popover', 'manual')
       hoistApplied = true
       floating.showPopover?.()
+    }
+
+    // Skip positioning while the reference or the floating element is not
+    // rendered, e.g. an ancestor has `display: none`. `getBoundingClientRect()`
+    // returns a zero rect at the viewport origin for such elements, so
+    // positioning against them would park the floating element at a garbage
+    // position. `autoUpdate`'s ResizeObserver fires again once the elements
+    // regain their boxes, and that update applies its position without CSS
+    // transitions so the floating element cannot visibly "fly" back.
+    if (isReferenceHidden(reference) || isElementHidden(floating)) {
+      skippedWhileHidden = true
+      return
     }
 
     const pos = await computePosition(reference, floating, {
@@ -138,39 +162,52 @@ export function updatePlacement(
     const y = Math.round(pos.y * dpr) / dpr
 
     if (!isTempHidden) {
-      if (lastPosition !== pos.strategy) {
-        floating.style.position = pos.strategy
-        lastPosition = pos.strategy
+      const applyStyles = () => {
+        if (lastPosition !== pos.strategy) {
+          floating.style.position = pos.strategy
+          lastPosition = pos.strategy
+        }
+
+        if (!topLeftSet) {
+          floating.style.top = '0px'
+          floating.style.left = '0px'
+          topLeftSet = true
+        }
+
+        const transform = `translate(${x}px,${y}px)`
+        if (lastTransform !== transform) {
+          floating.style.transform = transform
+          lastTransform = transform
+        }
+
+        // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
+        if (dpr >= 1.5 && !willChangeSet) {
+          floating.style.willChange = 'transform'
+          willChangeSet = true
+        }
+
+        const [side, align] = getSideAndAlignFromPlacement(pos.placement)
+
+        if (lastSide !== side) {
+          floating.setAttribute('data-side', side)
+          lastSide = side
+        }
+        if (lastAlign !== align) {
+          floating.setAttribute('data-align', align)
+          lastAlign = align
+        }
       }
 
-      if (!topLeftSet) {
-        floating.style.top = '0px'
-        floating.style.left = '0px'
-        topLeftSet = true
+      const suppressTransition =
+        (firstUpdate && options.disableFirstUpdateTransition) || skippedWhileHidden
+      if (suppressTransition) {
+        applyStylesWithoutTransition(floating, applyStyles)
+      } else {
+        applyStyles()
       }
 
-      const transform = `translate(${x}px,${y}px)`
-      if (lastTransform !== transform) {
-        floating.style.transform = transform
-        lastTransform = transform
-      }
-
-      // Learned from https://github.com/floating-ui/floating-ui/blob/8f155121/packages/vue/src/useFloating.ts#L72
-      if (dpr >= 1.5 && !willChangeSet) {
-        floating.style.willChange = 'transform'
-        willChangeSet = true
-      }
-
-      const [side, align] = getSideAndAlignFromPlacement(pos.placement)
-
-      if (lastSide !== side) {
-        floating.setAttribute('data-side', side)
-        lastSide = side
-      }
-      if (lastAlign !== align) {
-        floating.setAttribute('data-align', align)
-        lastAlign = align
-      }
+      firstUpdate = false
+      skippedWhileHidden = false
     }
   }
 
@@ -340,6 +377,22 @@ function setupHide(props: UpdatePlacementOpinions) {
     padding: props.overflowPadding,
     elementContext: 'reference',
   })
+}
+
+/**
+ * Whether the reference is not rendered. A real element is judged by
+ * {@link isElementHidden}. A virtual element is judged by its own
+ * `getBoundingClientRect()`: an all-zero rect is what a non-rendered anchor
+ * produces, while its `contextElement` can be misleading (e.g. a
+ * `display: contents` wrapper reports no box even though the anchor rect is
+ * valid).
+ */
+function isReferenceHidden(reference: ReferenceElement): boolean {
+  if (isElementLike(reference)) {
+    return isElementHidden(reference)
+  }
+  const rect = reference.getBoundingClientRect()
+  return rect.x === 0 && rect.y === 0 && rect.width === 0 && rect.height === 0
 }
 
 function getDPR(element: Element): number {
