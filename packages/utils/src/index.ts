@@ -12,6 +12,7 @@ export {
   useAriaOrientation,
   useAriaSelected,
 } from './aria.ts'
+export { applyStylesWithoutTransition } from './apply-styles-without-transition.ts'
 export { setupCollectionItem } from './collection-item.ts'
 export { handleCollectionNavigation } from './collection-navigation.ts'
 export { createCollectionStore, type CollectionStore } from './collection-store.ts'
@@ -25,6 +26,7 @@ export { useDisabledMountTransitionStyle } from './use-disabled-mount-transition
 export { useElementId } from './use-element-id.ts'
 export { useEventListener } from './use-event-listener.ts'
 export { useGlobalEventListener } from './use-global-event-listener.ts'
+export { isElementHidden } from './is-element-hidden.ts'
 export { useHover, type UseHoverOptions } from './use-hover.ts'
 export { useIsMouseActive } from './use-is-mouse-active.ts'
 export { usePresence } from './use-presence.ts'

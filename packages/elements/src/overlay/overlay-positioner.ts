@@ -242,12 +242,26 @@ export function setupOverlayPositioner(
 
   useDataState(host, getIsVisible)
 
+  let wasOpen = false
+
   useEffect(host, () => {
     const open = getIsOpen()
     const anchorElement = getAnchorElement()
-    if (!open || !anchorElement) return
+    if (!open || !anchorElement) {
+      wasOpen = false
+      return
+    }
+
+    // Apply the first position of a (re)opened positioner without CSS
+    // transitions: the element still carries a stale `transform` from the last
+    // time it was open, and transitioning from it would visibly "fly" the
+    // positioner across the screen. Anchor or option changes while open keep
+    // transitions, so consumers can animate the positioner between anchors.
+    const disableFirstUpdateTransition = !wasOpen
+    wasOpen = true
 
     return updatePlacement(host, anchorElement, {
+      disableFirstUpdateTransition,
       strategy: props.strategy.get(),
       placement: props.placement.get(),
       autoUpdate: props.autoUpdate.get(),
