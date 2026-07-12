@@ -54,7 +54,7 @@
   "dependencies": {
     "@aria-ui/core": "workspace:*",
     "@aria-ui/utils": "workspace:*",
-    "@floating-ui/dom": "^1.7.6",
+    "@floating-ui/dom": "^1.8.0",
     "@zag-js/dismissable": "^1.42.0",
     "@zag-js/dom-query": "^1.42.0"
   },
@@ -65,9 +65,9 @@
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.352",
     "lit-html": "^3.3.3",
-    "tsdown": "^0.22.3",
+    "tsdown": "^0.22.5",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.9"
+    "vitest": "^4.1.10"
   },
   "publishConfig": {
     "access": "public"
