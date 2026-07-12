@@ -79,8 +79,8 @@ importers:
         specifier: ^0.58.0
         version: 0.58.0
       tsdown:
-        specifier: ^0.22.4
-        version: 0.22.4(oxc-resolver@11.21.3)(typescript@6.0.3)
+        specifier: ^0.22.5
+        version: 0.22.5(oxc-resolver@11.21.3)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -129,8 +129,8 @@ importers:
         specifier: npm:@types/web@^0.0.352
         version: '@types/web@0.0.352'
       tsdown:
-        specifier: ^0.22.4
-        version: 0.22.4(oxc-resolver@11.21.3)(typescript@6.0.3)
+        specifier: ^0.22.5
+        version: 0.22.5(oxc-resolver@11.21.3)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -175,8 +175,8 @@ importers:
         specifier: ^3.3.3
         version: 3.3.3
       tsdown:
-        specifier: ^0.22.4
-        version: 0.22.4(oxc-resolver@11.21.3)(typescript@6.0.3)
+        specifier: ^0.22.5
+        version: 0.22.5(oxc-resolver@11.21.3)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -209,8 +209,8 @@ importers:
         specifier: npm:@types/web@^0.0.352
         version: '@types/web@0.0.352'
       tsdown:
-        specifier: ^0.22.4
-        version: 0.22.4(oxc-resolver@11.21.3)(typescript@6.0.3)
+        specifier: ^0.22.5
+        version: 0.22.5(oxc-resolver@11.21.3)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -3867,18 +3867,18 @@ packages:
   ts-pattern@5.9.0:
     resolution: {integrity: sha512-6s5V71mX8qBUmlgbrfL33xDUwO0fq48rxAu2LBE11WBeGdpCPOsXksQbZJHvHwhrd3QjUusd3mAOM5Gg0mFBLg==}
 
-  tsdown@0.22.4:
-    resolution: {integrity: sha512-3a5FsNL2fH2jw3ozvFUuPMBgS0xXjX9wpZShHyB4klXelVhyaNw5Q5WA9TPCNeoGYpRZEc4OZdMx5wT4Fkma3A==}
+  tsdown@0.22.5:
+    resolution: {integrity: sha512-0iEpnuOVBGo7mPW+FlyglErHBExYOAlpLBlCl/QcTrRUJ+TF2prfzl6ipQS5VsjJejFXnmbkdh0Ta53B3stWxg==}
     engines: {node: ^22.18.0 || >=24.11.0}
     hasBin: true
     peerDependencies:
       '@arethetypeswrong/core': ^0.18.1
-      '@tsdown/css': 0.22.4
-      '@tsdown/exe': 0.22.4
+      '@tsdown/css': 0.22.5
+      '@tsdown/exe': 0.22.5
       '@vitejs/devtools': '*'
       publint: ^0.3.8
       tsx: '*'
-      typescript: ^5.0.0 || ^6.0.0
+      typescript: ^5.0.0 || ^6.0.0 || ^7.0.0
       unplugin-unused: ^0.5.0
       unrun: '*'
     peerDependenciesMeta:
@@ -8110,7 +8110,7 @@ snapshots:
 
   ts-pattern@5.9.0: {}
 
-  tsdown@0.22.4(oxc-resolver@11.21.3)(typescript@6.0.3):
+  tsdown@0.22.5(oxc-resolver@11.21.3)(typescript@6.0.3):
     dependencies:
       ansis: 4.3.1
       cac: 7.0.0

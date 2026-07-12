@@ -14,5 +14,6 @@ minimumReleaseAgeExclude:
   - '@floating-ui/core@1.8.0'
   - '@floating-ui/dom@1.8.0'
   - '@floating-ui/utils@0.2.12'
+  - tsdown@0.22.5
 
 strictPeerDependencies: true
