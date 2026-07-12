@@ -1,13 +1,18 @@
 packages:
   - website
   - packages/*
+
 allowBuilds:
   esbuild: false
   msw: false
   sharp: false
   workerd: false
+
 ignoreWorkspaceRootCheck: true
+
 minimumReleaseAgeExclude:
-  - '@astrojs/markdown-satteri@0.3.2'
-  - astro@7.0.2
+  - '@floating-ui/core@1.8.0'
+  - '@floating-ui/dom@1.8.0'
+  - '@floating-ui/utils@0.2.12'
+
 strictPeerDependencies: true
