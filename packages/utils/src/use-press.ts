@@ -29,7 +29,7 @@ export function usePress(host: HostElement, handler: () => void): VoidFunction {
   }, {capture:true, passive:true})
 
   const disposeKeyDown = useEventListener(host, 'keydown', (event) => {
-    if (event.isComposing || event.timeStamp < compositionEndedAt + COMPOSITION_TAIL_MS) return
+    if (event.isComposing || (event.timeStamp < compositionEndedAt + COMPOSITION_TAIL_MS)) return
 
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault()
