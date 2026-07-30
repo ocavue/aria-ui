@@ -12,12 +12,12 @@
   "devDependencies": {
     "@aria-ui/elements": "workspace:*",
     "@ocavue/tsconfig": "^0.7.1",
-    "@tailwindcss/vite": "^4.3.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.0.0",
-    "@typescript/lib-dom": "npm:@types/web@^0.0.352",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.354",
     "astro": "^7.0.7",
     "astrobook": "^0.13.2",
-    "tailwindcss": "^4.3.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
     "vite": "^8.1.4"
   }
