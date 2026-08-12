@@ -154,7 +154,6 @@ class ConsumerController<T> implements ReactiveController {
  * Creates a new context.
  *
  * @param key The key to use for the context.
- * @param defaultValue The default value to return if the signal is not provided.
  *
  * @group Contexts
  */
