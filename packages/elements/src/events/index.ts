@@ -4,7 +4,7 @@ export class SelectEvent extends Event {
    */
   readonly detail: string
 
-  constructor(value: string) {
+  constructor(value: string = '') {
     super('select', { bubbles: false })
     this.detail = value
   }
