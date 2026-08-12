@@ -91,7 +91,7 @@ export function setupListboxItem(host: HostElement, props: State<ListboxItemProp
     const current = store.selectedValues.get()
     const next = current.includes(value) ? current.filter((v) => v !== value) : [...current, value]
     store.emitSelectionChange(next)
-    host.dispatchEvent(new SelectEvent())
+    host.dispatchEvent(new SelectEvent(value))
   })
 }
 

@@ -1,5 +1,5 @@
 import { html, render, type TemplateResult } from 'lit-html'
-import { beforeEach, describe, expect, test } from 'vitest'
+import { beforeEach, describe, expect, test, vi } from 'vitest'
 import { page, type Locator } from 'vitest/browser'
 
 import { registerElements } from '../index.ts'
@@ -69,9 +69,13 @@ describe('Listbox', () => {
         </aria-ui-listbox-root>
       `)
 
+      const onSelect = vi.fn()
+      page.getByTestId('apple').element().addEventListener('select', onSelect)
+
       await page.getByTestId('apple').click()
       await expect.element(page.getByTestId('apple')).toHaveAttribute('aria-selected', 'true')
       await expect.element(page.getByTestId('banana')).toHaveAttribute('aria-selected', 'false')
+      expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ detail: 'apple' }))
     })
 
     test('value prop sets initial selection', async () => {

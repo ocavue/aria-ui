@@ -75,7 +75,7 @@ export function setupMenuItem(host: HostElement, props: State<MenuItemProps>) {
     const value = props.value.get()
     store.setHighlightedValue(value)
 
-    host.dispatchEvent(new SelectEvent())
+    host.dispatchEvent(new SelectEvent(value))
 
     if (props.closeOnSelect.get()) {
       closeMenuTree(store)
