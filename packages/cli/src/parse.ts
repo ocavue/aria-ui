@@ -5,9 +5,13 @@ import { Project, SyntaxKind, type InterfaceDeclaration, type SourceFile } from 
  * Information about a component prop
  */
 interface PropInfo {
-  /** The name of the prop */
+  /**
+   * The name of the prop
+   */
   name: string
-  /** JSDoc comment describing the prop */
+  /**
+   * JSDoc comment describing the prop
+   */
   comment: string
 }
 
@@ -15,11 +19,17 @@ interface PropInfo {
  * Information about a component event
  */
 interface EventInfo {
-  /** The name of the event */
+  /**
+   * The name of the event
+   */
   name: string
-  /** JSDoc comment describing the event */
+  /**
+   * JSDoc comment describing the event
+   */
   comment: string
-  /** The type name of the event (e.g., "OpenChangeEvent") */
+  /**
+   * The type name of the event (e.g., "OpenChangeEvent")
+   */
   typeName: string | undefined
 }
 
@@ -27,13 +37,21 @@ interface EventInfo {
  * Information about a component
  */
 export interface ComponentInfo {
-  /** The component name (e.g., "PopoverRoot") */
+  /**
+   * The component name (e.g., "PopoverRoot")
+   */
   name: string
-  /** Absolute path to the source file where this component is defined */
+  /**
+   * Absolute path to the source file where this component is defined
+   */
   sourceFilePath: string
-  /** Array of props with name and JSDoc comment */
+  /**
+   * Array of props with name and JSDoc comment
+   */
   props: PropInfo[]
-  /** Array of events with name and JSDoc comment */
+  /**
+   * Array of events with name and JSDoc comment
+   */
   events: EventInfo[]
 }
 
