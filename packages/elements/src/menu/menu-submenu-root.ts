@@ -20,10 +20,9 @@ export interface MenuSubmenuRootProps extends OverlayRootProps {}
 /**
  * @internal
  */
-export const MenuSubmenuRootPropsDeclaration =
-  /* @__PURE__ */ defineProps<MenuSubmenuRootProps>({
-    ...OverlayRootPropsDeclaration,
-  })
+export const MenuSubmenuRootPropsDeclaration = /* @__PURE__ */ defineProps<MenuSubmenuRootProps>({
+  ...OverlayRootPropsDeclaration,
+})
 
 export interface MenuSubmenuRootEvents {
   /**

@@ -49,29 +49,28 @@ export interface PopoverTriggerProps {
 /**
  * @internal
  */
-export const PopoverTriggerPropsDeclaration =
-  /* @__PURE__ */ defineProps<PopoverTriggerProps>({
-    disabled: {
-      default: false,
-      attribute: 'disabled',
-      type: 'boolean',
-    },
-    openOnHover: {
-      default: false,
-      attribute: 'open-on-hover',
-      type: 'boolean',
-    },
-    delay: {
-      default: 300,
-      attribute: 'delay',
-      type: 'number',
-    },
-    closeDelay: {
-      default: 0,
-      attribute: 'close-delay',
-      type: 'number',
-    },
-  })
+export const PopoverTriggerPropsDeclaration = /* @__PURE__ */ defineProps<PopoverTriggerProps>({
+  disabled: {
+    default: false,
+    attribute: 'disabled',
+    type: 'boolean',
+  },
+  openOnHover: {
+    default: false,
+    attribute: 'open-on-hover',
+    type: 'boolean',
+  },
+  delay: {
+    default: 300,
+    attribute: 'delay',
+    type: 'number',
+  },
+  closeDelay: {
+    default: 0,
+    attribute: 'close-delay',
+    type: 'number',
+  },
+})
 
 export interface PopoverTriggerEvents {
   /**

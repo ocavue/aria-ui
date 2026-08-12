@@ -34,10 +34,9 @@ export interface MenuPopupProps {
 /**
  * @internal
  */
-export const MenuPopupPropsDeclaration =
-  /* @__PURE__ */ defineProps<MenuPopupProps>({
-    eventTarget: { default: null, attribute: false },
-  })
+export const MenuPopupPropsDeclaration = /* @__PURE__ */ defineProps<MenuPopupProps>({
+  eventTarget: { default: null, attribute: false },
+})
 
 /**
  * @internal

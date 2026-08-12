@@ -32,14 +32,13 @@ export interface MenuTriggerProps {
 /**
  * @internal
  */
-export const MenuTriggerPropsDeclaration =
-  /* @__PURE__ */ defineProps<MenuTriggerProps>({
-    disabled: {
-      default: false,
-      attribute: 'disabled',
-      type: 'boolean',
-    },
-  })
+export const MenuTriggerPropsDeclaration = /* @__PURE__ */ defineProps<MenuTriggerProps>({
+  disabled: {
+    default: false,
+    attribute: 'disabled',
+    type: 'boolean',
+  },
+})
 
 export interface MenuTriggerEvents {
   /**
