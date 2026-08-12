@@ -1,5 +1,11 @@
 # @aria-ui/elements
 
+## 0.1.13
+
+### Patch Changes
+
+- 2ec5cf2: `SelectEvent` now carries the selected item's value on its `detail` property.
+
 ## 0.1.12
 
 ### Patch Changes
