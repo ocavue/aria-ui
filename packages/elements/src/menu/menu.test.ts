@@ -242,6 +242,7 @@ describe('Menu', () => {
       page.getByTestId('copy').element().addEventListener('select', onSelect)
       await page.getByTestId('copy').click()
       await vi.waitFor(() => expect(onSelect).toHaveBeenCalled())
+      expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ detail: 'copy' }))
       await expect.element(getMenu().popup).toHaveAttribute('data-state', 'closed')
     })
 
