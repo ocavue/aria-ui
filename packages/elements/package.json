@@ -55,8 +55,8 @@
     "@aria-ui/core": "workspace:*",
     "@aria-ui/utils": "workspace:*",
     "@floating-ui/dom": "^1.8.0",
-    "@zag-js/dismissable": "^1.42.0",
-    "@zag-js/dom-query": "^1.42.0"
+    "@zag-js/dismissable": "^1.43.0",
+    "@zag-js/dom-query": "^1.43.0"
   },
   "devDependencies": {
     "@aria-ui/config-vitest": "workspace:*",
@@ -65,7 +65,7 @@
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.354",
     "lit-html": "^3.3.3",
-    "tsdown": "^0.22.5",
+    "tsdown": "^0.22.14",
     "typescript": "^6.0.3",
     "vitest": "^4.1.10"
   },
