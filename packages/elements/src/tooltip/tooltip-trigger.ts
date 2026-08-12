@@ -35,24 +35,23 @@ export interface TooltipTriggerProps {
 /**
  * @internal
  */
-export const TooltipTriggerPropsDeclaration =
-  /* @__PURE__ */ defineProps<TooltipTriggerProps>({
-    disabled: {
-      default: false,
-      attribute: 'disabled',
-      type: 'boolean',
-    },
-    openDelay: {
-      default: 600,
-      attribute: 'open-delay',
-      type: 'number',
-    },
-    closeDelay: {
-      default: 0,
-      attribute: 'close-delay',
-      type: 'number',
-    },
-  })
+export const TooltipTriggerPropsDeclaration = /* @__PURE__ */ defineProps<TooltipTriggerProps>({
+  disabled: {
+    default: false,
+    attribute: 'disabled',
+    type: 'boolean',
+  },
+  openDelay: {
+    default: 600,
+    attribute: 'open-delay',
+    type: 'number',
+  },
+  closeDelay: {
+    default: 0,
+    attribute: 'close-delay',
+    type: 'number',
+  },
+})
 
 /**
  * @internal

@@ -40,12 +40,11 @@ export interface MenuItemProps {
 /**
  * @internal
  */
-export const MenuItemPropsDeclaration =
-  /* @__PURE__ */ defineProps<MenuItemProps>({
-    value: { default: '', attribute: 'value', type: 'string' },
-    disabled: { default: false, attribute: 'disabled', type: 'boolean' },
-    closeOnSelect: { default: true, attribute: 'close-on-select', type: 'boolean' },
-  })
+export const MenuItemPropsDeclaration = /* @__PURE__ */ defineProps<MenuItemProps>({
+  value: { default: '', attribute: 'value', type: 'string' },
+  disabled: { default: false, attribute: 'disabled', type: 'boolean' },
+  closeOnSelect: { default: true, attribute: 'close-on-select', type: 'boolean' },
+})
 
 export interface MenuItemEvents {
   /**
