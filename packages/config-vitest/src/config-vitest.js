@@ -16,6 +16,7 @@ function getDefaultConfig() {
     test: {
       maxWorkers: process.env.CI ? 1 : 2,
       retry: process.env.CI ? 2 : 0,
+      fileParallelism: true,
       browser: {
         enabled: true,
         viewport: {
@@ -32,7 +33,9 @@ function getDefaultConfig() {
         }),
         headless: !debug,
         ui: debug,
-        fileParallelism: true,
+        locators: {
+          exact: false,
+        },
         screenshotFailures: debug,
         instances: [
           {
