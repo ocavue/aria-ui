@@ -16,7 +16,6 @@ function getDefaultConfig() {
     test: {
       maxWorkers: process.env.CI ? 1 : 2,
       retry: process.env.CI ? 2 : 0,
-      // Vitest 5: fileParallelism moved out of browser.*
       fileParallelism: true,
       browser: {
         enabled: true,
@@ -34,7 +33,6 @@ function getDefaultConfig() {
         }),
         headless: !debug,
         ui: debug,
-        // Preserve Vitest 4 substring locator matching (v5 defaults to exact).
         locators: {
           exact: false,
         },
