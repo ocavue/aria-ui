@@ -194,33 +194,33 @@ export async function generateFiles(
 
     switch (options.framework) {
       case 'react':
-        await writeSourceFile(project, filePath, (sourceFile) =>
-          generateReactComponentFile(sourceFile, component, options),
-        )
+        await writeSourceFile(project, filePath, (sourceFile) => {
+          return generateReactComponentFile(sourceFile, component, options)
+        })
         counter++
         break
       case 'preact':
-        await writeSourceFile(project, filePath, (sourceFile) =>
-          generatePreactComponentFile(sourceFile, component, options),
-        )
+        await writeSourceFile(project, filePath, (sourceFile) => {
+          return generatePreactComponentFile(sourceFile, component, options)
+        })
         counter++
         break
       case 'solid':
-        await writeSourceFile(project, filePath, (sourceFile) =>
-          generateSolidComponentFile(sourceFile, component, options),
-        )
+        await writeSourceFile(project, filePath, (sourceFile) => {
+          return generateSolidComponentFile(sourceFile, component, options)
+        })
         counter++
         break
       case 'vue':
-        await writeSourceFile(project, filePath, (sourceFile) =>
-          generateVueComponentFile(sourceFile, component, options),
-        )
+        await writeSourceFile(project, filePath, (sourceFile) => {
+          return generateVueComponentFile(sourceFile, component, options)
+        })
         counter++
         break
       case 'svelte': {
-        await writeSourceFile(project, filePath, (sourceFile) =>
-          generateSvelteComponentFile(sourceFile, component, options),
-        )
+        await writeSourceFile(project, filePath, (sourceFile) => {
+          return generateSvelteComponentFile(sourceFile, component, options)
+        })
         counter++
         const svelteFileName = getSvelteComponentFileName(component)
         const svelteComponentPath = path.join(outputDir, svelteFileName)
@@ -1183,9 +1183,9 @@ function generateSvelteComponentSvelteFile(
   const extensionImports = slots.imports.map(
     (item) => `  import { ${item.namedImports.join(', ')} } from '${item.moduleSpecifier}'`,
   )
-  const scriptStatements = slots.svelteScriptStatements.map((statement) =>
-    indentBlock(statement, 2),
-  )
+  const scriptStatements = slots.svelteScriptStatements.map((statement) => {
+    return indentBlock(statement, 2)
+  })
 
   const hasProps = propBindings.length > 0
   const hasEvents = eventBindings.length > 0
