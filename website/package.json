@@ -14,11 +14,11 @@
     "@ocavue/tsconfig": "^0.7.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^24.0.0",
-    "@typescript/lib-dom": "npm:@types/web@^0.0.354",
-    "astro": "^7.2.0",
-    "astrobook": "^0.13.2",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.356",
+    "astro": "^7.3.2",
+    "astrobook": "^0.13.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^6.0.3",
-    "vite": "^8.2.1"
+    "vite": "^8.3.0"
   }
 }

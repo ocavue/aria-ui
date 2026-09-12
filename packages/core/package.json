@@ -28,8 +28,8 @@
     "build": "tsdown"
   },
   "dependencies": {
-    "@ocavue/utils": "^1.7.0",
-    "@zag-js/dom-query": "^1.43.0",
+    "@ocavue/utils": "^1.8.0",
+    "@zag-js/dom-query": "^1.43.3",
     "alien-signals": "^3.2.1",
     "server-dom-shim": "^1.1.0"
   },
@@ -37,8 +37,8 @@
     "@aria-ui/config-vitest": "workspace:*",
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.0.0",
-    "@typescript/lib-dom": "npm:@types/web@^0.0.354",
-    "tsdown": "^0.22.14",
+    "@typescript/lib-dom": "npm:@types/web@^0.0.356",
+    "tsdown": "^0.23.0",
     "typescript": "^6.0.3",
     "vitest": "^5.0.0"
   },
