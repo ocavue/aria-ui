@@ -73,32 +73,26 @@ export function usePresence(
 }
 
 /**
- * Resolves once the element's finite animations finish. Waits again when a
- * finished or canceled animation was replaced by a running one.
+ * Resolves once the element has no animation that is still on its way to the
+ * end. Checks again after every wait, since a canceled animation can be
+ * replaced by a new one.
  */
 async function waitForAnimations(element: HTMLElement, signal: AbortSignal): Promise<void> {
-  while (true) {
-    const animations = getFiniteAnimations(element)
+  while (!signal.aborted) {
+    const animations = element.getAnimations().filter(isFinishing)
     if (animations.length === 0) return
     await Promise.allSettled(animations.map((animation) => animation.finished))
-    if (signal.aborted) return
-    const running = getFiniteAnimations(element).some(
-      (animation) => animation.pending || animation.playState === 'running',
-    )
-    if (!running) return
   }
 }
 
 /**
- * Infinite animations never finish, so they are ignored.
+ * Whether the animation is running and will reach its end. Paused and
+ * infinite animations never resolve `finished`.
  */
-function getFiniteAnimations(element: HTMLElement): Animation[] {
-  return element.getAnimations().filter(isFiniteAnimation)
-}
-
-function isFiniteAnimation(animation: Animation): boolean {
-  const timing = animation.effect?.getTiming()
-  return timing?.duration !== Infinity && timing?.iterations !== Infinity
+function isFinishing(animation: Animation): boolean {
+  return (
+    animation.playState === 'running' && animation.effect?.getComputedTiming().endTime !== Infinity
+  )
 }
 
 function show(element: HTMLElement): void {

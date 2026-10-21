@@ -375,6 +375,22 @@ describe('Menu', () => {
       await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true, false]))
       expect(calls[1]).toEqual([false, 'none'])
     })
+
+    test('emits openChangeComplete after opening and after the popup is hidden', async () => {
+      const container = renderMenu()
+      const root = container.querySelector('aria-ui-menu-root')!
+      const popup = getMenu().popup.element() as HTMLElement
+      const calls: Array<[boolean, string]> = []
+      root.addEventListener('openChangeComplete', (event) => {
+        calls.push([event.detail, popup.style.display])
+      })
+
+      await page.getByTestId('trigger').click()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true]))
+      await page.getByTestId('trigger').click()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true, false]))
+      expect(calls[1]).toEqual([false, 'none'])
+    })
   })
 
   describe('Custom eventTarget', () => {

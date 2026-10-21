@@ -238,6 +238,22 @@ function runTests() {
       await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true, false]))
       expect(calls[1]).toEqual([false, 'none'])
     })
+
+    test('emits openChangeComplete after opening and after the popup is hidden', async () => {
+      const container = renderPopover(POPOVER_TEMPLATE)
+      const root = container.querySelector('aria-ui-popover-root')!
+      const popup = getPopover().popup.element() as HTMLElement
+      const calls: Array<[boolean, string]> = []
+      root.addEventListener('openChangeComplete', (event) => {
+        calls.push([event.detail, popup.style.display])
+      })
+
+      await getPopover().trigger.click()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true]))
+      await getPopover().trigger.click()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true, false]))
+      expect(calls[1]).toEqual([false, 'none'])
+    })
   })
 
   describe('Accessibility', () => {
