@@ -53,7 +53,7 @@ export const OverlayRootPropsDeclaration: PropsDeclaration<OverlayRootProps> =
 export function useOverlayStore(host: HostElement, props: State<OverlayRootProps>): OverlayStore {
   const getDisabled = computed(() => props.disabled.get())
 
-  const dispatchRootEvent = (event: Event) => {
+  const dispatchEvent = (event: Event) => {
     host.dispatchEvent(event)
   }
 
@@ -62,7 +62,8 @@ export function useOverlayStore(host: HostElement, props: State<OverlayRootProps
     props.open.set,
     props.defaultOpen.get,
     getDisabled,
-    dispatchRootEvent,
+    dispatchEvent,
+    dispatchEvent,
   )
 
   useAriaDisabled(host, getDisabled)

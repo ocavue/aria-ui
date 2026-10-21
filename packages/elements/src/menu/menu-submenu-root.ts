@@ -49,6 +49,9 @@ export function setupMenuSubmenuRoot(host: HostElement, props: State<MenuSubmenu
     (event) => {
       host.dispatchEvent(event)
     },
+    (event) => {
+      host.dispatchEvent(event)
+    },
   )
   onMount(host, () => {
     host.dataset.menuSubmenuRoot = ''
