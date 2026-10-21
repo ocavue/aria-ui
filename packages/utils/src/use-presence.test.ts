@@ -48,7 +48,7 @@ describe('usePresence', () => {
     expect(element.style.display).not.toBe('none')
   })
 
-  test('hides immediately when no animations', () => {
+  test('hides without waiting when no animations', async () => {
     const open = createSignal(true)
     const element = createTestElement((host) => {
       usePresence(host, open.get)
@@ -57,6 +57,7 @@ describe('usePresence', () => {
     vi.spyOn(element, 'getAnimations').mockReturnValue([])
 
     open.set(false)
+    await sleep(0)
     expect(element.style.display).toBe('none')
   })
 
@@ -192,7 +193,7 @@ describe('usePresence', () => {
     expect(onComplete).not.toHaveBeenCalled()
   })
 
-  test('ignores infinite animations', () => {
+  test('ignores infinite animations', async () => {
     const open = createSignal(true)
     const onComplete = vi.fn()
     const element = createTestElement((host) => {
@@ -207,6 +208,7 @@ describe('usePresence', () => {
     ])
 
     open.set(false)
+    await sleep(0)
     expect(element.style.display).toBe('none')
     expect(onComplete.mock.calls).toEqual([[false]])
   })
