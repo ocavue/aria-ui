@@ -12,11 +12,4 @@ export function setupOverlayTrigger(
   useEffect(host, () => {
     getStore()?.setAnchorElement(host)
   })
-
-  useEffect(host, () => {
-    const store = getStore()
-    if (!store) return
-    store.registerTrigger(host)
-    return () => store.unregisterTrigger(host)
-  })
 }

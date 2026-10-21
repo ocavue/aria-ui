@@ -9,7 +9,6 @@ import {
 } from '@aria-ui/core'
 import { createDelayedToggle, useAriaDescribedBy, useAriaDisabled } from '@aria-ui/utils'
 
-import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { shouldSkipOpenDelay } from './tooltip-group.ts'
@@ -55,13 +54,6 @@ export const TooltipTriggerPropsDeclaration = /* @__PURE__ */ defineProps<Toolti
     type: 'number',
   },
 })
-
-export interface TooltipTriggerEvents {
-  /**
-   * Emitted when the tooltip is opened or closed.
-   */
-  openChange: OpenChangeEvent
-}
 
 /**
  * @internal
@@ -146,8 +138,6 @@ export function setupTooltipTrigger(host: HostElement, props: State<TooltipTrigg
  * `<aria-ui-tooltip-trigger>` custom element.
  *
  * Properties: {@link TooltipTriggerProps}
- *
- * Events: {@link TooltipTriggerEvents}
  */
 export class TooltipTriggerElement extends defineCustomElement(
   setupTooltipTrigger,

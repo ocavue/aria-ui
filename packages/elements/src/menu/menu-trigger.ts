@@ -15,7 +15,6 @@ import {
   usePress,
 } from '@aria-ui/utils'
 
-import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { MenuStoreContext } from './menu-store.ts'
@@ -39,13 +38,6 @@ export const MenuTriggerPropsDeclaration = /* @__PURE__ */ defineProps<MenuTrigg
     type: 'boolean',
   },
 })
-
-export interface MenuTriggerEvents {
-  /**
-   * Emitted when the menu is opened or closed.
-   */
-  openChange: OpenChangeEvent
-}
 
 /**
  * @internal
@@ -79,8 +71,6 @@ export function setupMenuTrigger(host: HostElement, props: State<MenuTriggerProp
  * `<aria-ui-menu-trigger>` custom element.
  *
  * Properties: {@link MenuTriggerProps}
- *
- * Events: {@link MenuTriggerEvents}
  */
 export class MenuTriggerElement extends defineCustomElement(
   setupMenuTrigger,
