@@ -77,7 +77,7 @@ export function usePresence(
  * finished or canceled animation was replaced by a running one.
  */
 async function waitForAnimations(element: HTMLElement, signal: AbortSignal): Promise<void> {
-  for (;;) {
+  while (true) {
     const animations = getFiniteAnimations(element)
     if (animations.length === 0) return
     await Promise.allSettled(animations.map((animation) => animation.finished))
