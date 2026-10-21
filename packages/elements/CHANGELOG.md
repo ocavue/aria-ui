@@ -1,5 +1,12 @@
 # @aria-ui/elements
 
+## 0.1.14
+
+### Patch Changes
+
+- 5f6662f: Calling `preventDefault()` on `openChange` now keeps the overlay in its current state.
+- c068bae: Menu, submenu, popover, and tooltip triggers now emit `openChange`.
+
 ## 0.1.13
 
 ### Patch Changes
