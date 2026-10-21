@@ -30,18 +30,18 @@
     "website": "pnpm run --filter aria-ui-website dev"
   },
   "devDependencies": {
-    "@changesets/cli": "^3.0.0",
+    "@changesets/cli": "^3.0.3",
     "@ocavue/eslint-config": "^4.21.0",
     "@ocavue/tsconfig": "^0.7.1",
     "@types/node": "^24.12.0",
     "eslint": "^10.13.0",
-    "knip": "^6.32.1",
+    "knip": "^6.42.1",
     "monorepo-typescript-references": "^1.1.2",
     "oxfmt": "^0.74.0",
-    "playwright": "^1.62.0",
-    "turbo": "^2.10.9",
+    "playwright": "^1.64.1",
+    "turbo": "^2.11.9",
     "typescript": "^6.0.3",
-    "vitest": "^5.0.0",
-    "wrangler": "^4.120.1"
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.2"
   }
 }
