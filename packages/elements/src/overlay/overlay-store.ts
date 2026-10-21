@@ -39,14 +39,17 @@ export function createOverlayStore(
   })
 
   // The root receives `openChange` first, then every registered trigger, both
-  // before the open state changes.
+  // before the open state changes. Canceling any of these events stops the
+  // change and skips the remaining triggers.
   const requestOpenChange = (open: boolean) => {
     if (getDisabled()) return
     const event = new OpenChangeEvent(open)
     dispatchOpenChangeEvent(event)
     if (event.defaultPrevented) return
     for (const trigger of triggers) {
-      trigger.dispatchEvent(new OpenChangeEvent(open))
+      const triggerEvent = new OpenChangeEvent(open)
+      trigger.dispatchEvent(triggerEvent)
+      if (triggerEvent.defaultPrevented) return
     }
     setOpen(open)
   }

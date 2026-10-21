@@ -234,6 +234,17 @@ function runTests() {
       await getPopover().trigger.click()
       await expect.element(getPopover().popup).not.toBeVisible()
     })
+
+    test('canceling openChange on the trigger keeps the popover closed', async () => {
+      const container = renderPopover(POPOVER_TEMPLATE)
+      const trigger = container.querySelector('aria-ui-popover-trigger')!
+      trigger.addEventListener('openChange', (event) => {
+        event.preventDefault()
+      })
+
+      await getPopover().trigger.click()
+      await expect.element(getPopover().popup).not.toBeVisible()
+    })
   })
 
   describe('Accessibility', () => {
