@@ -43,81 +43,62 @@ export function usePresence(
     const initial = !initialized
     initialized = true
     const onComplete = initial ? undefined : options?.onComplete
+    const controller = new AbortController()
+    const { signal } = controller
 
     if (open) {
       visible.set(true)
-      if (!onComplete) return
-
-      let canceled = false
-      // Wait one frame so that animations started by the new styles (for
-      // example `@starting-style`) are registered.
-      const frame = requestAnimationFrame(() => {
-        whenAnimationsFinish(
-          host,
-          () => canceled,
-          () => onComplete(true),
-        )
-      })
-      return () => {
-        canceled = true
-        cancelAnimationFrame(frame)
+      if (onComplete) {
+        // Wait one frame so that animations started by the new styles (for
+        // example `@starting-style`) are registered.
+        const frame = requestAnimationFrame(() => {
+          void waitForAnimations(host, signal).then(() => {
+            if (!signal.aborted) onComplete(true)
+          })
+        })
+        signal.addEventListener('abort', () => cancelAnimationFrame(frame))
       }
-    }
-
-    let canceled = false
-    whenAnimationsFinish(
-      host,
-      () => canceled,
-      () => {
+    } else {
+      void waitForAnimations(host, signal).then(() => {
+        if (signal.aborted) return
         visible.set(false)
         onComplete?.(false)
-      },
-    )
-    return () => {
-      canceled = true
+      })
     }
+
+    return () => controller.abort()
   })
 
   return visible.get
 }
 
 /**
- * Runs `callback` once the element's finite animations finish, synchronously
- * when there are none. Waits again when a finished or canceled animation was
- * replaced by a running one.
+ * Resolves once the element's finite animations finish. Waits again when a
+ * finished or canceled animation was replaced by a running one.
  */
-function whenAnimationsFinish(
-  element: HTMLElement,
-  isCanceled: () => boolean,
-  callback: VoidFunction,
-): void {
-  const animations = getFiniteAnimations(element)
-  if (animations.length === 0) {
-    callback()
-    return
-  }
-
-  void Promise.allSettled(animations.map((animation) => animation.finished)).then(() => {
-    if (isCanceled()) return
+async function waitForAnimations(element: HTMLElement, signal: AbortSignal): Promise<void> {
+  for (;;) {
+    const animations = getFiniteAnimations(element)
+    if (animations.length === 0) return
+    await Promise.allSettled(animations.map((animation) => animation.finished))
+    if (signal.aborted) return
     const running = getFiniteAnimations(element).some(
       (animation) => animation.pending || animation.playState === 'running',
     )
-    if (running) {
-      whenAnimationsFinish(element, isCanceled, callback)
-      return
-    }
-    callback()
-  })
+    if (!running) return
+  }
 }
 
 /**
  * Infinite animations never finish, so they are ignored.
  */
 function getFiniteAnimations(element: HTMLElement): Animation[] {
-  return element.getAnimations().filter((animation) => {
-    const timing = animation.effect?.getTiming()
-    return timing?.duration !== Infinity && timing?.iterations !== Infinity
-  })
+  return element.getAnimations().filter(isFiniteAnimation)
+}
+
+function isFiniteAnimation(animation: Animation): boolean {
+  const timing = animation.effect?.getTiming()
+  return timing?.duration !== Infinity && timing?.iterations !== Infinity
 }
 
 function show(element: HTMLElement): void {
