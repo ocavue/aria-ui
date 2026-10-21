@@ -15,6 +15,8 @@ export interface OverlayStore {
   setPopupId(id: string): void
   getAnchorElement(): ReferenceElement | undefined
   setAnchorElement(element: ReferenceElement | undefined): void
+  registerTrigger(element: HTMLElement): void
+  unregisterTrigger(element: HTMLElement): void
 }
 
 export function createOverlayStore(
@@ -25,6 +27,7 @@ export function createOverlayStore(
   dispatchOpenChangeEvent: (event: OpenChangeEvent) => void,
 ): OverlayStore {
   const anchorElement = createSignal<ReferenceElement | undefined>(undefined)
+  const triggers = new Set<HTMLElement>()
   const positionerId = createSignal<string>('')
   const popupId = createSignal<string>('')
   const { get: getIsHidden, set: setIsHidden } = createSignal(false)
@@ -35,11 +38,16 @@ export function createOverlayStore(
     return canOpen ? openValue : false
   })
 
+  // The root receives `openChange` first, then every registered trigger, both
+  // before the open state changes.
   const requestOpenChange = (open: boolean) => {
     if (getDisabled()) return
     const event = new OpenChangeEvent(open)
     dispatchOpenChangeEvent(event)
     if (event.defaultPrevented) return
+    for (const trigger of triggers) {
+      trigger.dispatchEvent(new OpenChangeEvent(open))
+    }
     setOpen(open)
   }
 
@@ -59,5 +67,11 @@ export function createOverlayStore(
     setPopupId: popupId.set,
     getAnchorElement: anchorElement.get,
     setAnchorElement: anchorElement.set,
+    registerTrigger: (element) => {
+      triggers.add(element)
+    },
+    unregisterTrigger: (element) => {
+      triggers.delete(element)
+    },
   }
 }

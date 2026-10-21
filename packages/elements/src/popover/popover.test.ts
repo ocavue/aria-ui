@@ -212,6 +212,18 @@ function runTests() {
       expect(onOpenChange).toHaveBeenCalled()
     })
 
+    test('emits openChange event on the trigger', async () => {
+      const container = renderPopover(POPOVER_TEMPLATE)
+      const trigger = container.querySelector('aria-ui-popover-trigger')!
+      const onOpenChange = vi.fn()
+      trigger.addEventListener('openChange', (event) => {
+        onOpenChange(event.detail)
+      })
+      await getPopover().trigger.click()
+      await getPopover().trigger.click()
+      expect(onOpenChange.mock.calls).toEqual([[true], [false]])
+    })
+
     test('canceling openChange keeps the popover closed', async () => {
       const container = renderPopover(POPOVER_TEMPLATE)
       const root = container.querySelector('aria-ui-popover-root')!
