@@ -223,6 +223,8 @@ describe('Tooltip', () => {
       })
       await getTooltip().trigger.hover()
       await vi.waitFor(() => expect(onOpenChange.mock.calls).toEqual([[true]]))
+      await getTooltip().trigger.unhover()
+      await vi.waitFor(() => expect(onOpenChange.mock.calls).toEqual([[true], [false]]))
     })
   })
 

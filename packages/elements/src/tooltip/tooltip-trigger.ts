@@ -10,6 +10,7 @@ import {
 import { createDelayedToggle, useAriaDescribedBy, useAriaDisabled } from '@aria-ui/utils'
 
 import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
+import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { shouldSkipOpenDelay } from './tooltip-group.ts'
 import { TooltipStoreContext } from './tooltip-store.ts'
@@ -71,11 +72,7 @@ export function setupTooltipTrigger(host: HostElement, props: State<TooltipTrigg
   const getOpen = computed(() => getStore()?.getIsOpen())
   const getPopupId = computed(() => getStore()?.getPopupId())
 
-  useEffect(host, () => {
-    const store = getStore()
-    store?.setAnchorElement(host)
-    store?.setTriggerElement(host)
-  })
+  setupOverlayTrigger(host, getStore)
 
   const getAriaDescribedBy = computed(() => {
     const open = getOpen()

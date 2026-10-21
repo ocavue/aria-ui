@@ -15,3 +15,4 @@ export {
   type OverlayRootProps,
 } from './overlay-root.ts'
 export { createOverlayStore, type OverlayStore } from './overlay-store.ts'
+export { setupOverlayTrigger } from './overlay-trigger.ts'

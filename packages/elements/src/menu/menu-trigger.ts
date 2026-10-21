@@ -5,7 +5,6 @@ import {
   defineProps,
   onMount,
   registerCustomElement,
-  useEffect,
   type State,
 } from '@aria-ui/core'
 import {
@@ -17,6 +16,7 @@ import {
 } from '@aria-ui/utils'
 
 import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
+import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { MenuStoreContext } from './menu-store.ts'
 
@@ -62,11 +62,7 @@ export function setupMenuTrigger(host: HostElement, props: State<MenuTriggerProp
     getOverlayStore()?.requestOpenToggle()
   })
 
-  useEffect(host, () => {
-    const store = getOverlayStore()
-    store?.setAnchorElement(host)
-    store?.setTriggerElement(host)
-  })
+  setupOverlayTrigger(host, getOverlayStore)
 
   useAriaExpanded(host, getOpen)
   useAriaDisabled(host, getDisabled)

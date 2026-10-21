@@ -220,7 +220,8 @@ function runTests() {
         onOpenChange(event.detail)
       })
       await getPopover().trigger.click()
-      expect(onOpenChange.mock.calls).toEqual([[true]])
+      await getPopover().trigger.click()
+      expect(onOpenChange.mock.calls).toEqual([[true], [false]])
     })
   })
 

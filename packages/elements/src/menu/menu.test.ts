@@ -371,6 +371,38 @@ describe('Menu', () => {
       await page.getByTestId('trigger').click()
       expect(onOpenChange.mock.calls).toEqual([[true], [false]])
     })
+
+    test('emits openChange event on every registered trigger', async () => {
+      const container = renderMenu(html`
+        <aria-ui-menu-root>
+          <aria-ui-menu-trigger data-testid="first-trigger">First</aria-ui-menu-trigger>
+          <aria-ui-menu-trigger data-testid="trigger">Second</aria-ui-menu-trigger>
+          <aria-ui-menu-positioner>
+            <aria-ui-menu-popup data-testid="popup">
+              <aria-ui-menu-item value="cut">Cut</aria-ui-menu-item>
+            </aria-ui-menu-popup>
+          </aria-ui-menu-positioner>
+        </aria-ui-menu-root>
+      `)
+      const [first, second] = container.querySelectorAll('aria-ui-menu-trigger')
+      const onFirst = vi.fn()
+      const onSecond = vi.fn()
+      first.addEventListener('openChange', (event) => {
+        onFirst(event.detail)
+      })
+      second.addEventListener('openChange', (event) => {
+        onSecond(event.detail)
+      })
+
+      await page.getByTestId('trigger').click()
+      expect(onFirst.mock.calls).toEqual([[true]])
+      expect(onSecond.mock.calls).toEqual([[true]])
+
+      first.remove()
+      await page.getByTestId('trigger').click()
+      expect(onFirst.mock.calls).toEqual([[true]])
+      expect(onSecond.mock.calls).toEqual([[true], [false]])
+    })
   })
 
   describe('Custom eventTarget', () => {
@@ -461,6 +493,24 @@ describe('Menu', () => {
   })
 
   describe('Submenu: Opening', () => {
+    test('emits openChange event on the submenu trigger', async () => {
+      const container = renderMenu(SUBMENU_TEMPLATE)
+      await openMenu()
+      const trigger = container.querySelector('aria-ui-menu-submenu-trigger')!
+      const onOpenChange = vi.fn()
+      trigger.addEventListener('openChange', (event) => {
+        onOpenChange(event.detail)
+      })
+      const { popup } = getMenu()
+      pressKey(popup, 'ArrowDown')
+      await expect
+        .element(page.getByTestId('share-trigger'))
+        .toHaveAttribute('data-highlighted', '')
+      pressKey(popup, 'ArrowRight')
+      await expect.element(getSubmenu().popup).toHaveAttribute('data-state', 'open')
+      expect(onOpenChange.mock.calls).toEqual([[true]])
+    })
+
     test('ArrowRight on highlighted submenu trigger opens submenu', async () => {
       renderMenu(SUBMENU_TEMPLATE)
       await openMenu()

@@ -15,7 +15,9 @@ import {
   usePress,
 } from '@aria-ui/utils'
 
-import type { OpenChangeEvent } from './popover-root.ts'
+import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
+import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
+
 import { PopoverStoreContext } from './popover-store.ts'
 
 export interface PopoverTriggerProps {
@@ -111,11 +113,7 @@ export function setupPopoverTrigger(host: HostElement, props: State<PopoverTrigg
     })
   })
 
-  useEffect(host, () => {
-    const store = getStore()
-    store?.setAnchorElement(host)
-    store?.setTriggerElement(host)
-  })
+  setupOverlayTrigger(host, getStore)
 
   useAriaExpanded(host, getOpen)
 

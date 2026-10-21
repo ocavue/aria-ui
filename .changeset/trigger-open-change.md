@@ -2,4 +2,4 @@
 "@aria-ui/elements": patch
 ---
 
-Menu, popover, and tooltip triggers now emit `openChange`.
+Menu, submenu, popover, and tooltip triggers now emit `openChange`.
