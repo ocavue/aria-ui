@@ -2,7 +2,6 @@ import type { HostElement, PropsDeclaration } from '@aria-ui/core'
 import { computed, defineProps, type State } from '@aria-ui/core'
 import { useAriaDisabled } from '@aria-ui/utils'
 
-import type { OpenChangeEvent } from './open-change-event.ts'
 import type { OverlayStore } from './overlay-store.ts'
 import { createOverlayStore } from './overlay-store.ts'
 
@@ -54,7 +53,7 @@ export const OverlayRootPropsDeclaration: PropsDeclaration<OverlayRootProps> =
 export function useOverlayStore(host: HostElement, props: State<OverlayRootProps>): OverlayStore {
   const getDisabled = computed(() => props.disabled.get())
 
-  const dispatchOpenChangeEvent = (event: OpenChangeEvent) => {
+  const dispatchEvent = (event: Event) => {
     host.dispatchEvent(event)
   }
 
@@ -63,7 +62,8 @@ export function useOverlayStore(host: HostElement, props: State<OverlayRootProps
     props.open.set,
     props.defaultOpen.get,
     getDisabled,
-    dispatchOpenChangeEvent,
+    dispatchEvent,
+    dispatchEvent,
   )
 
   useAriaDisabled(host, getDisabled)

@@ -34,5 +34,16 @@ export function setupOverlayPopup(
   // `data-state="closed"` which triggers CSS transitions, then `usePresence` checks
   // `getAnimations()` to wait for those transitions before hiding the element.
   useDataState(host, getIsVisible)
-  usePresence(host, getIsVisible)
+
+  // Only a settled visibility that matches the open state completes an open
+  // change: a popup hidden while open (its anchor is hidden) does not.
+  let completed: boolean | undefined
+  usePresence(host, getIsVisible, {
+    onComplete: (visible) => {
+      const store = getOverlayStore()
+      if (!store || visible !== store.getIsOpen() || visible === completed) return
+      completed = visible
+      store.dispatchOpenChangeComplete(visible)
+    },
+  })
 }

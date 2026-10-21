@@ -1,6 +1,7 @@
 import type { HostElement } from '@aria-ui/core'
 import { defineCustomElement, defineProps, registerCustomElement, type State } from '@aria-ui/core'
 
+import { OpenChangeCompleteEvent } from '../overlay/open-change-complete-event.ts'
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import {
   OverlayRootPropsDeclaration,
@@ -10,7 +11,7 @@ import {
 
 import { PopoverStoreContext } from './popover-store.ts'
 
-export { OpenChangeEvent }
+export { OpenChangeCompleteEvent, OpenChangeEvent }
 
 export interface PopoverRootProps extends OverlayRootProps {
   /**
@@ -39,6 +40,10 @@ export interface PopoverRootEvents {
    * Emitted when the popover is opened or closed.
    */
   openChange: OpenChangeEvent
+  /**
+   * Emitted after the popover finishes opening or closing, including its animations.
+   */
+  openChangeComplete: OpenChangeCompleteEvent
 }
 
 /**

@@ -1,6 +1,7 @@
 import { computed, createSignal } from '@aria-ui/core'
 import type { ReferenceElement } from '@floating-ui/dom'
 
+import { OpenChangeCompleteEvent } from './open-change-complete-event.ts'
 import { OpenChangeEvent } from './open-change-event.ts'
 
 export interface OverlayStore {
@@ -9,6 +10,7 @@ export interface OverlayStore {
   setIsHidden(hidden: boolean): void
   requestOpenChange(open: boolean): void
   requestOpenToggle(): void
+  dispatchOpenChangeComplete(open: boolean): void
   getPositionerId(): string
   setPositionerId(id: string): void
   getPopupId(): string
@@ -25,6 +27,7 @@ export function createOverlayStore(
   getDefaultOpen: () => boolean,
   getDisabled: () => boolean,
   dispatchOpenChangeEvent: (event: OpenChangeEvent) => void,
+  dispatchOpenChangeCompleteEvent?: (event: OpenChangeCompleteEvent) => void,
 ): OverlayStore {
   const anchorElement = createSignal<ReferenceElement | undefined>(undefined)
   const triggers = new Set<HTMLElement>()
@@ -58,12 +61,17 @@ export function createOverlayStore(
     requestOpenChange(!getIsOpen())
   }
 
+  const dispatchOpenChangeComplete = (open: boolean) => {
+    dispatchOpenChangeCompleteEvent?.(new OpenChangeCompleteEvent(open))
+  }
+
   return {
     getIsOpen,
     getIsHidden,
     setIsHidden,
     requestOpenChange,
     requestOpenToggle,
+    dispatchOpenChangeComplete,
     getPositionerId: positionerId.get,
     setPositionerId: positionerId.set,
     getPopupId: popupId.get,

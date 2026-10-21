@@ -13,6 +13,7 @@ export {
   type TooltipPositionerProps,
 } from './tooltip-positioner.ts'
 export {
+  OpenChangeCompleteEvent,
   OpenChangeEvent,
   registerTooltipRootElement,
   setupTooltipRoot,

@@ -8,6 +8,7 @@ import {
   type State,
 } from '@aria-ui/core'
 
+import type { OpenChangeCompleteEvent } from '../overlay/open-change-complete-event.ts'
 import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import type { OverlayRootProps } from '../overlay/overlay-root.ts'
 import { OverlayRootPropsDeclaration } from '../overlay/overlay-root.ts'
@@ -29,6 +30,10 @@ export interface MenuSubmenuRootEvents {
    * Emitted when the submenu is opened or closed.
    */
   openChange: OpenChangeEvent
+  /**
+   * Emitted after the submenu finishes opening or closing, including its animations.
+   */
+  openChangeComplete: OpenChangeCompleteEvent
 }
 
 /**
@@ -41,6 +46,9 @@ export function setupMenuSubmenuRoot(host: HostElement, props: State<MenuSubmenu
     props.open.set,
     props.defaultOpen.get,
     props.disabled.get,
+    (event) => {
+      host.dispatchEvent(event)
+    },
     (event) => {
       host.dispatchEvent(event)
     },

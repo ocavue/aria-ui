@@ -24,6 +24,7 @@ export {
 export {
   MenuRootElement,
   MenuRootPropsDeclaration,
+  OpenChangeCompleteEvent,
   OpenChangeEvent,
   registerMenuRootElement,
   setupMenuRoot,

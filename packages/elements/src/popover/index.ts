@@ -1,4 +1,5 @@
 export {
+  OpenChangeCompleteEvent,
   OpenChangeEvent,
   PopoverRootElement,
   PopoverRootPropsDeclaration,
