@@ -1,5 +1,11 @@
 # @aria-ui/utils
 
+## 0.1.8
+
+### Patch Changes
+
+- 2050d18: Menu, submenu, popover, and tooltip roots now emit `openChangeComplete` after the overlay finishes opening or closing, including its animations.
+
 ## 0.1.7
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @aria-ui/elements
 
+## 0.2.0
+
+### Minor Changes
+
+- 2256a1c: Remove the `openChange` event from menu, submenu, popover, and tooltip triggers. Listen to `openChange` on the root instead.
+
+### Patch Changes
+
+- 2050d18: Menu, submenu, popover, and tooltip roots now emit `openChangeComplete` after the overlay finishes opening or closing, including its animations.
+- Updated dependencies [2050d18]
+  - @aria-ui/utils@0.1.8
+
 ## 0.1.14
 
 ### Patch Changes
