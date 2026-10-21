@@ -211,6 +211,17 @@ function runTests() {
       await getPopover().trigger.click()
       expect(onOpenChange).toHaveBeenCalled()
     })
+
+    test('canceling openChange keeps the popover closed', async () => {
+      const container = renderPopover(POPOVER_TEMPLATE)
+      const root = container.querySelector('aria-ui-popover-root')!
+      root.addEventListener('openChange', (event) => {
+        event.preventDefault()
+      })
+
+      await getPopover().trigger.click()
+      await expect.element(getPopover().popup).not.toBeVisible()
+    })
   })
 
   describe('Accessibility', () => {

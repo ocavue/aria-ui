@@ -5,7 +5,7 @@ export class OpenChangeEvent extends Event {
   readonly detail: boolean
 
   constructor(open: boolean) {
-    super('openChange')
+    super('openChange', { cancelable: true })
     this.detail = open
   }
 }
