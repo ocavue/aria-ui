@@ -112,7 +112,9 @@ export function setupPopoverTrigger(host: HostElement, props: State<PopoverTrigg
   })
 
   useEffect(host, () => {
-    getStore()?.setAnchorElement(host)
+    const store = getStore()
+    store?.setAnchorElement(host)
+    store?.setTriggerElement(host)
   })
 
   useAriaExpanded(host, getOpen)

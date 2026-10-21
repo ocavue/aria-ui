@@ -63,7 +63,9 @@ export function setupMenuTrigger(host: HostElement, props: State<MenuTriggerProp
   })
 
   useEffect(host, () => {
-    getOverlayStore()?.setAnchorElement(host)
+    const store = getOverlayStore()
+    store?.setAnchorElement(host)
+    store?.setTriggerElement(host)
   })
 
   useAriaExpanded(host, getOpen)

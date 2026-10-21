@@ -213,6 +213,17 @@ describe('Tooltip', () => {
       await getTooltip().trigger.hover()
       expect(onOpenChange).toHaveBeenCalled()
     })
+
+    test('emits openChange event on the trigger', async () => {
+      const container = renderTooltip(TOOLTIP_ZERO_DELAY)
+      const trigger = container.querySelector('aria-ui-tooltip-trigger')!
+      const onOpenChange = vi.fn()
+      trigger.addEventListener('openChange', (event) => {
+        onOpenChange(event.detail)
+      })
+      await getTooltip().trigger.hover()
+      await vi.waitFor(() => expect(onOpenChange.mock.calls).toEqual([[true]]))
+    })
   })
 
   describe('Accessibility', () => {

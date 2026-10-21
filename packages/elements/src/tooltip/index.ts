@@ -26,5 +26,6 @@ export {
   setupTooltipTrigger,
   TooltipTriggerElement,
   TooltipTriggerPropsDeclaration,
+  type TooltipTriggerEvents,
   type TooltipTriggerProps,
 } from './tooltip-trigger.ts'

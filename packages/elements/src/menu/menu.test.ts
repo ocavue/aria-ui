@@ -359,6 +359,18 @@ describe('Menu', () => {
       await page.getByTestId('trigger').click()
       expect(onOpenChange).toHaveBeenCalled()
     })
+
+    test('emits openChange event on the trigger', async () => {
+      const container = renderMenu()
+      const trigger = container.querySelector('aria-ui-menu-trigger')!
+      const onOpenChange = vi.fn()
+      trigger.addEventListener('openChange', (event) => {
+        onOpenChange(event.detail)
+      })
+      await page.getByTestId('trigger').click()
+      await page.getByTestId('trigger').click()
+      expect(onOpenChange.mock.calls).toEqual([[true], [false]])
+    })
   })
 
   describe('Custom eventTarget', () => {
