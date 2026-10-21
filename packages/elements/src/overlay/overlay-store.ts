@@ -24,7 +24,8 @@ export function createOverlayStore(
   setOpen: (open: boolean) => void,
   getDefaultOpen: () => boolean,
   getDisabled: () => boolean,
-  dispatchRootEvent: (event: Event) => void,
+  dispatchOpenChangeEvent: (event: OpenChangeEvent) => void,
+  dispatchOpenChangeCompleteEvent?: (event: OpenChangeCompleteEvent) => void,
 ): OverlayStore {
   const anchorElement = createSignal<ReferenceElement | undefined>(undefined)
   const positionerId = createSignal<string>('')
@@ -42,7 +43,7 @@ export function createOverlayStore(
   const requestOpenChange = (open: boolean) => {
     if (getDisabled()) return
     const event = new OpenChangeEvent(open)
-    dispatchRootEvent(event)
+    dispatchOpenChangeEvent(event)
     if (event.defaultPrevented) return
     setOpen(open)
   }
@@ -52,7 +53,7 @@ export function createOverlayStore(
   }
 
   const dispatchOpenChangeComplete = (open: boolean) => {
-    dispatchRootEvent(new OpenChangeCompleteEvent(open))
+    dispatchOpenChangeCompleteEvent?.(new OpenChangeCompleteEvent(open))
   }
 
   return {

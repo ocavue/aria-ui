@@ -50,6 +50,7 @@ export function setupMenuRoot(host: HostElement, props: State<MenuRootProps>) {
     props.defaultOpen.get,
     getDisabled,
     (event) => host.dispatchEvent(event),
+    (event) => host.dispatchEvent(event),
   )
   const menuStore = createMenuStore(overlayStore)
 
