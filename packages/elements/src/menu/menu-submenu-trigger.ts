@@ -10,7 +10,6 @@ import {
 import { setupCollectionItem, useElementId, useEventListener } from '@aria-ui/utils'
 
 import { setAriaHasPopup } from '../../../utils/src/aria.ts'
-import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { MenuStoreContext } from './menu-store.ts'
@@ -42,13 +41,6 @@ export const MenuSubmenuTriggerPropsDeclaration =
     value: { default: '', attribute: 'value', type: 'string' },
     disabled: { default: false, attribute: 'disabled', type: 'boolean' },
   })
-
-export interface MenuSubmenuTriggerEvents {
-  /**
-   * Emitted when the submenu is opened or closed.
-   */
-  openChange: OpenChangeEvent
-}
 
 /**
  * @internal
@@ -147,8 +139,6 @@ export function setupMenuSubmenuTrigger(host: HostElement, props: State<MenuSubm
  * `<aria-ui-menu-submenu-trigger>` custom element.
  *
  * Properties: {@link MenuSubmenuTriggerProps}
- *
- * Events: {@link MenuSubmenuTriggerEvents}
  *
  * Data attributes:
  *

@@ -44,7 +44,6 @@ export {
   MenuSubmenuTriggerPropsDeclaration,
   registerMenuSubmenuTriggerElement,
   setupMenuSubmenuTrigger,
-  type MenuSubmenuTriggerEvents,
   type MenuSubmenuTriggerProps,
 } from './menu-submenu-trigger.ts'
 export {
@@ -52,7 +51,6 @@ export {
   MenuTriggerPropsDeclaration,
   registerMenuTriggerElement,
   setupMenuTrigger,
-  type MenuTriggerEvents,
   type MenuTriggerProps,
 } from './menu-trigger.ts'
 

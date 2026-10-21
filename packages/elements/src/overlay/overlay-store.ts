@@ -17,8 +17,6 @@ export interface OverlayStore {
   setPopupId(id: string): void
   getAnchorElement(): ReferenceElement | undefined
   setAnchorElement(element: ReferenceElement | undefined): void
-  registerTrigger(element: HTMLElement): void
-  unregisterTrigger(element: HTMLElement): void
 }
 
 export function createOverlayStore(
@@ -30,7 +28,6 @@ export function createOverlayStore(
   dispatchOpenChangeCompleteEvent?: (event: OpenChangeCompleteEvent) => void,
 ): OverlayStore {
   const anchorElement = createSignal<ReferenceElement | undefined>(undefined)
-  const triggers = new Set<HTMLElement>()
   const positionerId = createSignal<string>('')
   const popupId = createSignal<string>('')
   const { get: getIsHidden, set: setIsHidden } = createSignal(false)
@@ -41,19 +38,13 @@ export function createOverlayStore(
     return canOpen ? openValue : false
   })
 
-  // The root receives `openChange` first, then every registered trigger, both
-  // before the open state changes. Canceling any of these events stops the
-  // change and skips the remaining triggers.
+  // The root receives `openChange` before the open state changes. Canceling
+  // the event stops the change.
   const requestOpenChange = (open: boolean) => {
     if (getDisabled()) return
     const event = new OpenChangeEvent(open)
     dispatchOpenChangeEvent(event)
     if (event.defaultPrevented) return
-    for (const trigger of triggers) {
-      const triggerEvent = new OpenChangeEvent(open)
-      trigger.dispatchEvent(triggerEvent)
-      if (triggerEvent.defaultPrevented) return
-    }
     setOpen(open)
   }
 
@@ -78,11 +69,5 @@ export function createOverlayStore(
     setPopupId: popupId.set,
     getAnchorElement: anchorElement.get,
     setAnchorElement: anchorElement.set,
-    registerTrigger: (element) => {
-      triggers.add(element)
-    },
-    unregisterTrigger: (element) => {
-      triggers.delete(element)
-    },
   }
 }

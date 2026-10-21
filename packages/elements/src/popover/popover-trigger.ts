@@ -15,7 +15,6 @@ import {
   usePress,
 } from '@aria-ui/utils'
 
-import type { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import { setupOverlayTrigger } from '../overlay/overlay-trigger.ts'
 
 import { PopoverStoreContext } from './popover-store.ts'
@@ -74,13 +73,6 @@ export const PopoverTriggerPropsDeclaration = /* @__PURE__ */ defineProps<Popove
   },
 })
 
-export interface PopoverTriggerEvents {
-  /**
-   * Emitted when the popover is opened or closed.
-   */
-  openChange: OpenChangeEvent
-}
-
 /**
  * @internal
  */
@@ -127,8 +119,6 @@ export function setupPopoverTrigger(host: HostElement, props: State<PopoverTrigg
  * `<aria-ui-popover-trigger>` custom element.
  *
  * Properties: {@link PopoverTriggerProps}
- *
- * Events: {@link PopoverTriggerEvents}
  */
 export class PopoverTriggerElement extends defineCustomElement(
   setupPopoverTrigger,

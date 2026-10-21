@@ -14,7 +14,6 @@ export {
   PopoverTriggerPropsDeclaration,
   registerPopoverTriggerElement,
   setupPopoverTrigger,
-  type PopoverTriggerEvents,
   type PopoverTriggerProps,
 } from './popover-trigger.ts'
 
