@@ -43,6 +43,7 @@ export {
   MenuSubmenuTriggerPropsDeclaration,
   registerMenuSubmenuTriggerElement,
   setupMenuSubmenuTrigger,
+  type MenuSubmenuTriggerEvents,
   type MenuSubmenuTriggerProps,
 } from './menu-submenu-trigger.ts'
 export {
