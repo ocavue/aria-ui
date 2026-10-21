@@ -2,6 +2,7 @@ import type { HostElement } from '@aria-ui/core'
 import { defineCustomElement, registerCustomElement, type State } from '@aria-ui/core'
 import { useEventListener } from '@aria-ui/utils'
 
+import { OpenChangeCompleteEvent } from '../overlay/open-change-complete-event.ts'
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import {
   OverlayRootPropsDeclaration,
@@ -12,7 +13,7 @@ import {
 import { notifyTooltipClosed } from './tooltip-group.ts'
 import { TooltipStoreContext } from './tooltip-store.ts'
 
-export { OpenChangeEvent }
+export { OpenChangeCompleteEvent, OpenChangeEvent }
 
 export interface TooltipRootProps extends OverlayRootProps {}
 
@@ -26,11 +27,16 @@ export interface TooltipRootEvents {
    * Emitted when the tooltip is opened or closed.
    */
   openChange: OpenChangeEvent
+  /**
+   * Emitted after the tooltip finishes opening or closing, including its animations.
+   */
+  openChangeComplete: OpenChangeCompleteEvent
 }
 
 declare global {
   interface HTMLElementEventMap {
     openChange: OpenChangeEvent
+    openChangeComplete: OpenChangeCompleteEvent
   }
 }
 

@@ -1,3 +1,4 @@
+export { OpenChangeCompleteEvent } from './open-change-complete-event.ts'
 export { OpenChangeEvent } from './open-change-event.ts'
 export {
   OverlayPopupPropsDeclaration,

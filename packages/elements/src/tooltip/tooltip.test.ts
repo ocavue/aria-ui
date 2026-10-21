@@ -226,6 +226,22 @@ describe('Tooltip', () => {
       await getTooltip().trigger.unhover()
       await vi.waitFor(() => expect(onOpenChange.mock.calls).toEqual([[true], [false]]))
     })
+
+    test('emits openChangeComplete after opening and after the popup is hidden', async () => {
+      const container = renderTooltip(TOOLTIP_ZERO_DELAY)
+      const root = container.querySelector('aria-ui-tooltip-root')!
+      const popup = getTooltip().popup.element() as HTMLElement
+      const calls: Array<[boolean, string]> = []
+      root.addEventListener('openChangeComplete', (event) => {
+        calls.push([event.detail, popup.style.display])
+      })
+
+      await getTooltip().trigger.hover()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true]))
+      await getTooltip().trigger.unhover()
+      await vi.waitFor(() => expect(calls.map(([open]) => open)).toEqual([true, false]))
+      expect(calls[1]).toEqual([false, 'none'])
+    })
   })
 
   describe('Accessibility', () => {

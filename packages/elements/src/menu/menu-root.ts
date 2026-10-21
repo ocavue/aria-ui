@@ -9,13 +9,14 @@ import {
 } from '@aria-ui/core'
 import { useAriaDisabled } from '@aria-ui/utils'
 
+import { OpenChangeCompleteEvent } from '../overlay/open-change-complete-event.ts'
 import { OpenChangeEvent } from '../overlay/open-change-event.ts'
 import { OverlayRootPropsDeclaration, type OverlayRootProps } from '../overlay/overlay-root.ts'
 import { createOverlayStore } from '../overlay/overlay-store.ts'
 
 import { createMenuStore, MenuStoreContext } from './menu-store.ts'
 
-export { OpenChangeEvent }
+export { OpenChangeCompleteEvent, OpenChangeEvent }
 
 export interface MenuRootProps extends OverlayRootProps {}
 
@@ -31,6 +32,10 @@ export interface MenuRootEvents {
    * Emitted when the menu is opened or closed.
    */
   openChange: OpenChangeEvent
+  /**
+   * Emitted after the menu finishes opening or closing, including its animations.
+   */
+  openChangeComplete: OpenChangeCompleteEvent
 }
 
 /**

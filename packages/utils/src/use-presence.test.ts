@@ -138,4 +138,76 @@ describe('usePresence', () => {
     open.set(true)
     expect(getVisible!()).toBe(true)
   })
+
+  test('calls onComplete with false after hiding', async () => {
+    const open = createSignal(true)
+    const calls: Array<[boolean, string]> = []
+    const element = createTestElement((host) => {
+      usePresence(host, open.get, {
+        onComplete: (value) => {
+          calls.push([value, host.style.display])
+        },
+      })
+    })
+
+    let resolveAnimation: () => void
+    const finishedPromise = new Promise<void>((resolve) => {
+      resolveAnimation = resolve
+    })
+    vi.spyOn(element, 'getAnimations').mockReturnValue([
+      { finished: finishedPromise } as unknown as Animation,
+    ])
+
+    open.set(false)
+    await sleep(0)
+    expect(calls).toEqual([])
+
+    resolveAnimation!()
+    await finishedPromise
+    await sleep(0)
+    expect(calls).toEqual([[false, 'none']])
+  })
+
+  test('calls onComplete with true after opening', async () => {
+    const open = createSignal(false)
+    const onComplete = vi.fn()
+    createTestElement((host) => {
+      usePresence(host, open.get, { onComplete })
+    })
+
+    open.set(true)
+    await vi.waitFor(() => expect(onComplete.mock.calls).toEqual([[true]]))
+  })
+
+  test('does not call onComplete for the initial state', async () => {
+    const onComplete = vi.fn()
+    createTestElement((host) => {
+      usePresence(host, () => true, { onComplete })
+    })
+    createTestElement((host) => {
+      usePresence(host, () => false, { onComplete })
+    })
+
+    await sleep(50)
+    expect(onComplete).not.toHaveBeenCalled()
+  })
+
+  test('ignores infinite animations', () => {
+    const open = createSignal(true)
+    const onComplete = vi.fn()
+    const element = createTestElement((host) => {
+      usePresence(host, open.get, { onComplete })
+    })
+
+    vi.spyOn(element, 'getAnimations').mockReturnValue([
+      {
+        finished: new Promise(() => {}),
+        effect: { getTiming: () => ({ iterations: Infinity }) },
+      } as unknown as Animation,
+    ])
+
+    open.set(false)
+    expect(element.style.display).toBe('none')
+    expect(onComplete.mock.calls).toEqual([[false]])
+  })
 })
