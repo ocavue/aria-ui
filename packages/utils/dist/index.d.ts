@@ -1,18 +1,18 @@
 import { getNearestOverflowAncestor } from "@zag-js/dom-query";
 import { HostElement, State } from "@aria-ui/core";
 //#region src/aria.d.ts
-declare function useAriaDisabled(host: HostElement, getAriaDisabled: () => boolean): VoidFunction;
-declare function useAriaExpanded(host: HostElement, getAriaExpanded: () => boolean | undefined): VoidFunction;
-declare function useAriaControls(host: HostElement, getAriaControls: () => string | undefined): VoidFunction;
-declare function useAriaDescribedBy(host: HostElement, getAriaDescribedBy: () => string | undefined): VoidFunction;
-declare function useAriaMultiselectable(host: HostElement, getMultiselectable: () => boolean): VoidFunction;
-declare function useAriaOrientation(host: HostElement, getOrientation: () => string): VoidFunction;
-declare function useAriaActivedescendant(host: HostElement, getActivedescendant: () => string | undefined): VoidFunction;
-declare function useAriaSelected(host: HostElement, getSelected: () => boolean): VoidFunction;
+export declare function useAriaDisabled(host: HostElement, getAriaDisabled: () => boolean): VoidFunction;
+export declare function useAriaExpanded(host: HostElement, getAriaExpanded: () => boolean | undefined): VoidFunction;
+export declare function useAriaControls(host: HostElement, getAriaControls: () => string | undefined): VoidFunction;
+export declare function useAriaDescribedBy(host: HostElement, getAriaDescribedBy: () => string | undefined): VoidFunction;
+export declare function useAriaMultiselectable(host: HostElement, getMultiselectable: () => boolean): VoidFunction;
+export declare function useAriaOrientation(host: HostElement, getOrientation: () => string): VoidFunction;
+export declare function useAriaActivedescendant(host: HostElement, getActivedescendant: () => string | undefined): VoidFunction;
+export declare function useAriaSelected(host: HostElement, getSelected: () => boolean): VoidFunction;
 type AriaHasPopup = 'menu' | 'listbox' | 'tree' | 'grid' | 'dialog' | 'true' | 'false';
-declare function useAriaHasPopup(host: HostElement, getHasPopup: () => AriaHasPopup | undefined | null): VoidFunction;
-declare function getAriaHasPopup(element: Element): AriaHasPopup | undefined | null;
-declare function setAriaHasPopup(element: Element, value: AriaHasPopup | undefined | null): void;
+export declare function useAriaHasPopup(host: HostElement, getHasPopup: () => AriaHasPopup | undefined | null): VoidFunction;
+export declare function getAriaHasPopup(element: Element): AriaHasPopup | undefined | null;
+export declare function setAriaHasPopup(element: Element, value: AriaHasPopup | undefined | null): void;
 //#endregion
 //#region src/apply-styles-without-transition.d.ts
 /**
@@ -25,7 +25,7 @@ declare function setAriaHasPopup(element: Element, value: AriaHasPopup | undefin
  * the browser would coalesce the writes and the restored transition would
  * animate them.
  */
-declare function applyStylesWithoutTransition(element: HTMLElement, applyStyles: VoidFunction): void;
+export declare function applyStylesWithoutTransition(element: HTMLElement, applyStyles: VoidFunction): void;
 //#endregion
 //#region src/collection.d.ts
 /**
@@ -33,12 +33,12 @@ declare function applyStylesWithoutTransition(element: HTMLElement, applyStyles:
  *
  * @internal
  */
-declare function getCollectionItemValue(element: HTMLElement): string;
+export declare function getCollectionItemValue(element: HTMLElement): string;
 /**
  * An ordered collection of items with O(1) lookup and directional traversal.
  * Skips disabled items automatically.
  */
-declare class Collection {
+export declare class Collection {
   readonly loop: boolean;
   private _items;
   private _indexes;
@@ -68,7 +68,7 @@ interface CollectionStore {
 /**
  * @internal
  */
-declare function createCollectionStore(): CollectionStore;
+export declare function createCollectionStore(): CollectionStore;
 //#endregion
 //#region src/collection-item.d.ts
 /**
@@ -79,7 +79,7 @@ declare function createCollectionStore(): CollectionStore;
  *
  * @internal
  */
-declare function setupCollectionItem(host: HostElement, props: State<{
+export declare function setupCollectionItem(host: HostElement, props: State<{
   value: string;
   disabled: boolean;
 }>, getStore: () => CollectionStore | undefined, shouldRegisterItem?: (element: HTMLElement) => boolean): void;
@@ -88,7 +88,7 @@ declare function setupCollectionItem(host: HostElement, props: State<{
 /**
  * @internal
  */
-declare function handleCollectionNavigation(event: KeyboardEvent, collection: Collection, getHighlightedValue: () => string | undefined, setHighlightedValue: (value: string | undefined) => void, orientation?: 'vertical' | 'horizontal', stopPropagation?: boolean): boolean;
+export declare function handleCollectionNavigation(event: KeyboardEvent, collection: Collection, getHighlightedValue: () => string | undefined, setHighlightedValue: (value: string | undefined) => void, orientation?: 'vertical' | 'horizontal', stopPropagation?: boolean): boolean;
 //#endregion
 //#region src/delayed-toggle.d.ts
 /**
@@ -102,7 +102,7 @@ interface DelayedToggle {
 /**
  * @internal
  */
-declare function createDelayedToggle(onOpen?: () => void, onClose?: () => void): DelayedToggle;
+export declare function createDelayedToggle(onOpen?: () => void, onClose?: () => void): DelayedToggle;
 declare namespace popover_d_exports {
   export { detect, get, override, reset };
 }
@@ -134,32 +134,32 @@ declare namespace feature_detection_d_exports {
  *
  * @internal
  */
-declare function useAttribute(element: HostElement, key: string, compute: () => string | number | undefined | null): VoidFunction;
+export declare function useAttribute(element: HostElement, key: string, compute: () => string | number | undefined | null): VoidFunction;
 //#endregion
 //#region src/use-data-state.d.ts
-declare function useDataState(host: HostElement, getOpen: () => boolean): void;
+export declare function useDataState(host: HostElement, getOpen: () => boolean): void;
 //#endregion
 //#region src/use-transition-status.d.ts
 /** @internal */
 type TransitionStatus = 'entering' | 'entered' | 'exiting' | 'exited';
 /** @internal */
-declare function useTransitionStatus(host: HostElement, getOpen: () => boolean): () => TransitionStatus;
+export declare function useTransitionStatus(host: HostElement, getOpen: () => boolean): () => TransitionStatus;
 //#endregion
 //#region src/use-disabled-mount-transition-style.d.ts
 /** @internal */
-declare function useDisabledMountTransitionStyle(host: HostElement, getTransitionStatus: () => TransitionStatus): void;
+export declare function useDisabledMountTransitionStyle(host: HostElement, getTransitionStatus: () => TransitionStatus): void;
 //#endregion
 //#region src/use-element-id.d.ts
 /**
  * Generates a unique id for an element if it doesn't already have one. Returns the existing id if it has one.
  */
-declare function useElementId(element: HostElement): string;
+export declare function useElementId(element: HostElement): string;
 //#endregion
 //#region src/use-event-listener.d.ts
-declare function useEventListener<K extends keyof HTMLElementEventMap>(host: HostElement, type: K, listener: (event: HTMLElementEventMap[K]) => void, options?: boolean | AddEventListenerOptions): VoidFunction;
+export declare function useEventListener<K extends keyof HTMLElementEventMap>(host: HostElement, type: K, listener: (event: HTMLElementEventMap[K]) => void, options?: boolean | AddEventListenerOptions): VoidFunction;
 //#endregion
 //#region src/use-global-event-listener.d.ts
-declare function useGlobalEventListener<K extends keyof WindowEventMap>(host: HostElement, type: K, listener: (event: WindowEventMap[K]) => void): VoidFunction;
+export declare function useGlobalEventListener<K extends keyof WindowEventMap>(host: HostElement, type: K, listener: (event: WindowEventMap[K]) => void): VoidFunction;
 //#endregion
 //#region src/is-element-hidden.d.ts
 /**
@@ -168,7 +168,7 @@ declare function useGlobalEventListener<K extends keyof WindowEventMap>(host: Ho
  * returns a zero rect at the viewport origin. Falls back to `false` in
  * browsers without `checkVisibility` support.
  */
-declare function isElementHidden(element: Element | undefined): boolean;
+export declare function isElementHidden(element: Element | undefined): boolean;
 //#endregion
 //#region src/use-hover.d.ts
 /**
@@ -218,7 +218,7 @@ interface UseHoverOptions {
  * cleanup()
  * ```
  */
-declare function useHover(target: HTMLElement, options: UseHoverOptions): VoidFunction;
+export declare function useHover(target: HTMLElement, options: UseHoverOptions): VoidFunction;
 //#endregion
 //#region src/use-is-mouse-active.d.ts
 /**
@@ -226,7 +226,7 @@ declare function useHover(target: HTMLElement, options: UseHoverOptions): VoidFu
  *
  * This is useful for components that want to ignore mouse hover styles when the user is using keyboard navigation.
  */
-declare function useIsMouseActive(host: HostElement): () => boolean;
+export declare function useIsMouseActive(host: HostElement): () => boolean;
 //#endregion
 //#region src/use-presence.d.ts
 /**
@@ -238,10 +238,10 @@ declare function useIsMouseActive(host: HostElement): () => boolean;
  *
  * @internal
  */
-declare function usePresence(host: HostElement, getOpen: () => boolean): () => boolean;
+export declare function usePresence(host: HostElement, getOpen: () => boolean): () => boolean;
 //#endregion
 //#region src/use-press.d.ts
-declare function usePress(host: HostElement, handler: () => void): VoidFunction;
+export declare function usePress(host: HostElement, handler: () => void): VoidFunction;
 //#endregion
-export { Collection, type CollectionStore, type DelayedToggle, feature_detection_d_exports as FeatureDetection, feature_detection_internals_d_exports as FeatureDetectionInternals, type TransitionStatus, type UseHoverOptions, applyStylesWithoutTransition, createCollectionStore, createDelayedToggle, getAriaHasPopup, getCollectionItemValue, getNearestOverflowAncestor, handleCollectionNavigation, isElementHidden, setAriaHasPopup, setupCollectionItem, useAriaActivedescendant, useAriaControls, useAriaDescribedBy, useAriaDisabled, useAriaExpanded, useAriaHasPopup, useAriaMultiselectable, useAriaOrientation, useAriaSelected, useAttribute, useDataState, useDisabledMountTransitionStyle, useElementId, useEventListener, useGlobalEventListener, useHover, useIsMouseActive, usePresence, usePress, useTransitionStatus };
+export { type CollectionStore, type DelayedToggle, feature_detection_d_exports as FeatureDetection, feature_detection_internals_d_exports as FeatureDetectionInternals, type TransitionStatus, type UseHoverOptions, getNearestOverflowAncestor };
 //# sourceMappingURL=index.d.ts.map

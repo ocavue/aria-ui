@@ -29,7 +29,7 @@ type PropsDeclaration<Props extends AnyProps> = Readonly<{ [K in keyof Props]: P
 /**
  * Define a set of properties.
  */
-declare function defineProps<Props extends AnyProps>(props: PropsDeclaration<Props>): PropsDeclaration<Props>;
+export declare function defineProps<Props extends AnyProps>(props: PropsDeclaration<Props>): PropsDeclaration<Props>;
 //#endregion
 //#region src/reactive-controller.d.ts
 interface ReactiveControllerHost {
@@ -42,7 +42,7 @@ interface ReactiveController {
 }
 //#endregion
 //#region src/host-element.d.ts
-declare class HostElement extends HTMLElement$1 implements ReactiveControllerHost {
+export declare class HostElement extends HTMLElement$1 implements ReactiveControllerHost {
   private _controllers;
   private _connected;
   addController(controller: ReactiveController): void;
@@ -64,7 +64,7 @@ interface Signal<T> {
  *
  * @internal
  */
-declare function createSignal<T>(initialValue: T): Signal<T>;
+export declare function createSignal<T>(initialValue: T): Signal<T>;
 //#endregion
 //#region src/store.d.ts
 /**
@@ -74,21 +74,21 @@ type State<Props extends AnyProps> = { [Key in keyof Props]: Signal<Props[Key]>;
 /**
  * @internal
  */
-declare function createState<Props extends AnyProps>(propsDeclaration: PropsDeclaration<Props>): State<Props>;
+export declare function createState<Props extends AnyProps>(propsDeclaration: PropsDeclaration<Props>): State<Props>;
 //#endregion
 //#region src/attribute.d.ts
 /**
  * @internal
  */
-declare function usePropertiesToAttributes(element: HostElement, store: State<AnyProps>, declarations: PropsDeclaration<AnyProps>): void;
+export declare function usePropertiesToAttributes(element: HostElement, store: State<AnyProps>, declarations: PropsDeclaration<AnyProps>): void;
 /**
  * @internal
  */
-declare function handleAttributeChanged(store: State<AnyProps>, declarations: PropsDeclaration<AnyProps>, attributeNameToPropertyName: Map<string, string>, attributeName: string, attributeValue: string | null | undefined): void;
+export declare function handleAttributeChanged(store: State<AnyProps>, declarations: PropsDeclaration<AnyProps>, attributeNameToPropertyName: Map<string, string>, attributeName: string, attributeValue: string | null | undefined): void;
 /**
  * @internal
  */
-declare function createAttributePropertyNameMap(declarations: PropsDeclaration<AnyProps>): Map<string, string>;
+export declare function createAttributePropertyNameMap(declarations: PropsDeclaration<AnyProps>): Map<string, string>;
 //#endregion
 //#region src/context.d.ts
 type ContextCallback<T> = (value: T) => void;
@@ -129,7 +129,7 @@ interface Context<T> {
  *
  * @group Contexts
  */
-declare function createContext<T>(key: string | symbol): Context<T>;
+export declare function createContext<T>(key: string | symbol): Context<T>;
 //#endregion
 //#region src/define-custom-element.d.ts
 /**
@@ -137,19 +137,19 @@ declare function createContext<T>(key: string | symbol): Context<T>;
  */
 type HostElementConstructor<Props extends AnyProps> = new () => HostElement & Props;
 type SetupFunction<Props extends AnyProps> = (host: HostElement, props: State<Props>) => void;
-declare function defineCustomElement<Props extends AnyProps = object>(setup: SetupFunction<Props>, props: PropsDeclaration<Props>): HostElementConstructor<Props>;
+export declare function defineCustomElement<Props extends AnyProps = object>(setup: SetupFunction<Props>, props: PropsDeclaration<Props>): HostElementConstructor<Props>;
 //#endregion
 //#region src/on-mount.d.ts
-declare function onMount(host: HostElement, callback: () => VoidFunction | void): VoidFunction;
+export declare function onMount(host: HostElement, callback: () => VoidFunction | void): VoidFunction;
 //#endregion
 //#region src/register-custom-element.d.ts
 /**
  * Adds the given custom element to the custom element registry.
  */
-declare function registerCustomElement(name: string, constructor: CustomElementConstructor): void;
+export declare function registerCustomElement(name: string, constructor: CustomElementConstructor): void;
 //#endregion
 //#region src/use-effect.d.ts
-declare function useEffect(host: HostElement, callback: () => VoidFunction | void): VoidFunction;
+export declare function useEffect(host: HostElement, callback: () => VoidFunction | void): VoidFunction;
 //#endregion
-export { type AnyProps, type Context, HostElement, type HostElementConstructor, type PropDeclaration, type PropsDeclaration, type Signal, type State, computed, createAttributePropertyNameMap, createContext, createSignal, createState, defineCustomElement, defineProps, handleAttributeChanged, onMount, registerCustomElement, useEffect, usePropertiesToAttributes };
+export { type AnyProps, type Context, type HostElementConstructor, type PropDeclaration, type PropsDeclaration, type Signal, type State, computed };
 //# sourceMappingURL=index.d.ts.map

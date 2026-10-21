@@ -1,2 +1,1 @@
-import { n as FRAMEWORKS, r as propFallback, t as build } from "./build-BSwhlBIa.mjs";
-export { FRAMEWORKS, build, propFallback };
+export { n as FRAMEWORKS, t as build, r as propFallback } from "./build-JGczvNce.mjs";

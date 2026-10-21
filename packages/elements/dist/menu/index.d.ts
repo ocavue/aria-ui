@@ -14,15 +14,15 @@ interface MenuStore extends CollectionStore {
 /**
  * @internal
  */
-declare function createMenuStore(overlayStore: OverlayStore, getParentStore?: () => MenuStore | undefined): MenuStore;
+export declare function createMenuStore(overlayStore: OverlayStore, getParentStore?: () => MenuStore | undefined): MenuStore;
 /**
  * @internal
  */
-declare const MenuStoreContext: Context<MenuStore>;
+export declare const MenuStoreContext: Context<MenuStore>;
 /**
  * @internal
  */
-declare function closeMenuTree(store: MenuStore): void;
+export declare function closeMenuTree(store: MenuStore): void;
 //#endregion
-export { MenuItemElement, type MenuItemEvents, type MenuItemProps, MenuItemPropsDeclaration, MenuPopupElement, type MenuPopupProps, MenuPopupPropsDeclaration, MenuPositionerElement, type MenuPositionerProps, MenuPositionerPropsDeclaration, MenuRootElement, type MenuRootEvents, type MenuRootProps, MenuRootPropsDeclaration, type MenuStore, MenuStoreContext, MenuSubmenuRootElement, type MenuSubmenuRootEvents, type MenuSubmenuRootProps, MenuSubmenuRootPropsDeclaration, MenuSubmenuTriggerElement, type MenuSubmenuTriggerProps, MenuSubmenuTriggerPropsDeclaration, MenuTriggerElement, type MenuTriggerEvents, type MenuTriggerProps, MenuTriggerPropsDeclaration, OpenChangeEvent, SelectEvent, closeMenuTree, createMenuStore, registerMenuItemElement, registerMenuPopupElement, registerMenuPositionerElement, registerMenuRootElement, registerMenuSubmenuRootElement, registerMenuSubmenuTriggerElement, registerMenuTriggerElement, setupMenuItem, setupMenuPopup, setupMenuPositioner, setupMenuRoot, setupMenuSubmenuRoot, setupMenuSubmenuTrigger, setupMenuTrigger };
+export { MenuItemElement, type MenuItemEvents, type MenuItemProps, MenuItemPropsDeclaration, MenuPopupElement, type MenuPopupProps, MenuPopupPropsDeclaration, MenuPositionerElement, type MenuPositionerProps, MenuPositionerPropsDeclaration, MenuRootElement, type MenuRootEvents, type MenuRootProps, MenuRootPropsDeclaration, type MenuStore, MenuSubmenuRootElement, type MenuSubmenuRootEvents, type MenuSubmenuRootProps, MenuSubmenuRootPropsDeclaration, MenuSubmenuTriggerElement, type MenuSubmenuTriggerProps, MenuSubmenuTriggerPropsDeclaration, MenuTriggerElement, type MenuTriggerEvents, type MenuTriggerProps, MenuTriggerPropsDeclaration, OpenChangeEvent, SelectEvent, registerMenuItemElement, registerMenuPopupElement, registerMenuPositionerElement, registerMenuRootElement, registerMenuSubmenuRootElement, registerMenuSubmenuTriggerElement, registerMenuTriggerElement, setupMenuItem, setupMenuPopup, setupMenuPositioner, setupMenuRoot, setupMenuSubmenuRoot, setupMenuSubmenuTrigger, setupMenuTrigger };
 //# sourceMappingURL=index.d.ts.map

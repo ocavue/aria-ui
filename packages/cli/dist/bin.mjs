@@ -1,4 +1,4 @@
-import { n as FRAMEWORKS, t as build } from "./build-BSwhlBIa.mjs";
+import { n as FRAMEWORKS, t as build } from "./build-JGczvNce.mjs";
 import { buildApplication, buildCommand, run } from "@stricli/core";
 //#region package.json
 var version = "0.1.9";

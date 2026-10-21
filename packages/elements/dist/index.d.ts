@@ -18,7 +18,7 @@ import { _ as TooltipPopupElement, b as registerTooltipPopupElement, f as Toolti
  * - 'aria-ui-tooltip-root'
  * - 'aria-ui-tooltip-trigger'
  */
-declare function registerElements(): void;
+export declare function registerElements(): void;
 declare global {
   interface HTMLElementTagNameMap {
     'aria-ui-listbox-root': ListboxRootElement;
@@ -42,5 +42,5 @@ declare global {
   }
 }
 //#endregion
-export { ListboxEmptyElement, ListboxItemElement, ListboxRootElement, MenuItemElement, MenuPopupElement, MenuPositionerElement, MenuRootElement, MenuSubmenuRootElement, MenuSubmenuTriggerElement, MenuTriggerElement, PopoverPopupElement, PopoverPositionerElement, PopoverRootElement, PopoverTriggerElement, TooltipPopupElement, TooltipPositionerElement, TooltipRootElement, TooltipTriggerElement, registerElements, registerListboxEmptyElement, registerListboxItemElement, registerListboxRootElement, registerMenuItemElement, registerMenuPopupElement, registerMenuPositionerElement, registerMenuRootElement, registerMenuSubmenuRootElement, registerMenuSubmenuTriggerElement, registerMenuTriggerElement, registerPopoverPopupElement, registerPopoverPositionerElement, registerPopoverRootElement, registerPopoverTriggerElement, registerTooltipPopupElement, registerTooltipPositionerElement, registerTooltipRootElement, registerTooltipTriggerElement };
+export { ListboxEmptyElement, ListboxItemElement, ListboxRootElement, MenuItemElement, MenuPopupElement, MenuPositionerElement, MenuRootElement, MenuSubmenuRootElement, MenuSubmenuTriggerElement, MenuTriggerElement, PopoverPopupElement, PopoverPositionerElement, PopoverRootElement, PopoverTriggerElement, TooltipPopupElement, TooltipPositionerElement, TooltipRootElement, TooltipTriggerElement, registerListboxEmptyElement, registerListboxItemElement, registerListboxRootElement, registerMenuItemElement, registerMenuPopupElement, registerMenuPositionerElement, registerMenuRootElement, registerMenuSubmenuRootElement, registerMenuSubmenuTriggerElement, registerMenuTriggerElement, registerPopoverPopupElement, registerPopoverPositionerElement, registerPopoverRootElement, registerPopoverTriggerElement, registerTooltipPopupElement, registerTooltipPositionerElement, registerTooltipRootElement, registerTooltipTriggerElement };
 //# sourceMappingURL=index.d.ts.map

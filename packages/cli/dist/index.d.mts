@@ -53,7 +53,7 @@ interface ComponentInfo {
 //#endregion
 //#region src/generate.d.ts
 type Framework = 'react' | 'preact' | 'solid' | 'vue' | 'svelte';
-declare const FRAMEWORKS: Framework[];
+export declare const FRAMEWORKS: Framework[];
 interface GenerateOptions {
   prefix: string;
   importSource: string;
@@ -88,7 +88,7 @@ interface PropFallbackExtensionOptions {
   match?: (context: WrapperMatchContext) => boolean;
   frameworks: Partial<Record<Framework, FrameworkHookResolver>>;
 }
-declare function propFallback(options: PropFallbackExtensionOptions): WrapperExtension;
+export declare function propFallback(options: PropFallbackExtensionOptions): WrapperExtension;
 //#endregion
 //#region src/build.d.ts
 interface BuildOptions {
@@ -100,7 +100,7 @@ interface BuildOptions {
   framework: Framework;
   wrapperExtensions?: WrapperExtension[];
 }
-declare function build(options: BuildOptions): Promise<void>;
+export declare function build(options: BuildOptions): Promise<void>;
 //#endregion
-export { type BuildOptions, FRAMEWORKS, type Framework, type FrameworkHookResolver, type GenerateOptions, type PropFallbackExtensionOptions, type WrapperApplyContext, type WrapperExtension, type WrapperMatchContext, build, propFallback };
+export type { BuildOptions, Framework, FrameworkHookResolver, GenerateOptions, PropFallbackExtensionOptions, WrapperApplyContext, WrapperExtension, WrapperMatchContext };
 //# sourceMappingURL=index.d.mts.map
