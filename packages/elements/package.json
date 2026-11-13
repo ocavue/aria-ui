@@ -61,7 +61,7 @@
   "devDependencies": {
     "@aria-ui/config-vitest": "workspace:*",
     "@ocavue/tsconfig": "^0.7.1",
-    "@ocavue/utils": "^1.9.0",
+    "@ocavue/utils": "^1.12.0",
     "@types/node": "^24.0.0",
     "@typescript/lib-dom": "npm:@types/web@^0.0.359",
     "lit-html": "^3.3.3",

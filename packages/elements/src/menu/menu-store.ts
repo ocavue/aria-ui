@@ -1,5 +1,6 @@
 import { createContext, type Context } from '@aria-ui/core'
 import { createCollectionStore, type CollectionStore } from '@aria-ui/utils'
+import { noop } from '@ocavue/utils'
 
 import type { OverlayStore } from '../overlay/overlay-store.ts'
 
@@ -21,7 +22,7 @@ export function createMenuStore(
   return {
     ...createCollectionStore(),
     overlayStore,
-    getParentStore: getParentStore || (() => undefined),
+    getParentStore: getParentStore || noop,
   }
 }
 

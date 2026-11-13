@@ -1,5 +1,5 @@
 import { createSignal, defineCustomElement, defineProps, type HostElement } from '@aria-ui/core'
-import { getId, sleep } from '@ocavue/utils'
+import { getId, returnFalse, returnTrue, sleep } from '@ocavue/utils'
 import { beforeEach, describe, expect, test, vi } from 'vitest'
 
 import { usePresence } from './use-presence.ts'
@@ -197,10 +197,10 @@ describe('usePresence', () => {
   test('does not call onComplete for the initial state', async () => {
     const onComplete = vi.fn()
     createTestElement((host) => {
-      usePresence(host, () => true, { onComplete })
+      usePresence(host, returnTrue, { onComplete })
     })
     createTestElement((host) => {
-      usePresence(host, () => false, { onComplete })
+      usePresence(host, returnFalse, { onComplete })
     })
 
     await sleep(50)

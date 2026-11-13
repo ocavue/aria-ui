@@ -1,3 +1,4 @@
+import { sleep } from '@ocavue/utils'
 import { html, render, type TemplateResult } from 'lit-html'
 import { afterEach, beforeEach, describe, expect, test } from 'vitest'
 import { page } from 'vitest/browser'
@@ -25,10 +26,6 @@ function getComputedTranslate(element: HTMLElement): { x: number; y: number } {
 function getInlineTranslate(element: HTMLElement): { x: number; y: number } {
   const matrix = new DOMMatrixReadOnly(element.style.transform)
   return { x: matrix.m41, y: matrix.m42 }
-}
-
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms))
 }
 
 const TEMPLATE = html`
