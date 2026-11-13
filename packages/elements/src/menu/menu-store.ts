@@ -22,7 +22,7 @@ export function createMenuStore(
   return {
     ...createCollectionStore(),
     overlayStore,
-    getParentStore: getParentStore || (noop),
+    getParentStore: getParentStore || noop,
   }
 }
 
